@@ -1,1 +1,0 @@
-System.register(["./index-legacy-f5250d22.js"],(function(e,r){"use strict";var t,n;return{setters:[e=>{t=e.W,n=e.A}],execute:function(){e("LabelPrinterWeb",class extends t{async write(e){if(e.url)return n.expandPath(e.url).then((e=>{document.location=e}));throw new TypeError("Undefined url")}async discover(){return{devices:["webPrinter"]}}})}}}));
