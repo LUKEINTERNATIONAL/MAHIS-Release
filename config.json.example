@@ -21,8 +21,6 @@
 		{ "name": "Registration", "available": true}
 	],
 	"otherApps": [
-		// defaultPort 80
-		// default protocol http
 		{ "name": "Test App", "IP": "127.0.0.1", "port": "8080", "protocol": "http"}
 	],
 	"platformProfiles":  {
