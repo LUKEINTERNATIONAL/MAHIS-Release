@@ -1,5 +1,5 @@
 {
-	"apiURL": "localhost",
+	"apiURL": "192.168.100.253",
 	"apiPort": "3000",
 	"apiProtocol": "http",
 	"appConf": {
