@@ -1,5 +1,5 @@
 {
-	"apiURL": "192.168.100.253",
+	"apiURL": "192.168.1.137",
 	"apiPort": "3000",
 	"apiProtocol": "http",
 	"appConf": {
