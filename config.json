@@ -1,6 +1,6 @@
 {
-	"apiURL": "154.66.124.45",
-	"apiPort": "3004",
+	"apiURL": "localhost",
+	"apiPort": "3000",
 	"apiProtocol": "http",
 	"appConf": {
 		"devMode": true,
