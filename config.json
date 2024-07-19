@@ -1,6 +1,6 @@
 {
-	"apiURL": "localhost",
-	"apiPort": "3000",
+	"apiURL": "154.66.124.72",
+	"apiPort": "3004",
 	"apiProtocol": "http",
 	"appConf": {
 		"devMode": true,
@@ -10,52 +10,20 @@
 		"dataCaching": true
 	},
 	"apps": [
-		{
-			"name": "EMC",
-			"available": true
-		},
-		{
-			"name": "ART",
-			"available": true
-		},
-		{
-			"name": "LOS",
-			"available": true
-		},
-		{
-			"name": "OPD",
-			"available": true
-		},
-		{
-			"name": "ANC",
-			"available": true
-		},
-		{
-			"name": "CxCa",
-			"available": true
-		},
-		{
-			"name": "RADIOLOGY",
-			"available": true
-		},
-		{
-			"name": "CRVS",
-			"available": true
-		},
-		{
-			"name": "Registration",
-			"available": true
-		}
+		{ "name": "EMC", "available": true },
+		{ "name": "ART", "available": true },
+		{ "name": "LOS", "available": true },
+		{ "name": "OPD", "available": true },
+		{ "name": "ANC", "available": true },
+		{ "name": "CxCa", "available": true },
+		{ "name": "RADIOLOGY", "available": true },
+		{ "name": "CRVS", "available": true },
+		{ "name": "Registration", "available": true}
 	],
 	"otherApps": [
-		{
-			"name": "Test App",
-			"IP": "127.0.0.1",
-			"port": "8080",
-			"protocol": "http"
-		}
+		{ "name": "Test App", "IP": "127.0.0.1", "port": "8080", "protocol": "http"}
 	],
-	"platformProfiles": {
+	"platformProfiles":  {
 		"Desktop": {
 			"profileName": "Desktop",
 			"fileExport": "WEB",
@@ -63,7 +31,7 @@
 			"printer": "WEB",
 			"keyboard": "NATIVE_AND_HIS_KEYBOARD"
 		},
-		"Mobile": {
+		"Mobile" : {
 			"profileName": "Mobile",
 			"fileExport": "FILE_SYSTEM",
 			"scanner": "CAMERA_SCANNER",
