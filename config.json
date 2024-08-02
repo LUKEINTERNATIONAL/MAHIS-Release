@@ -1,7 +1,8 @@
 {
-	"apiURL": "154.66.124.72",
-	"apiPort": "3004",
+	"apiURL": "0.0.0.0",
+	"apiPort": "3000",
 	"apiProtocol": "http",
+	"baseURL": "/mahis/",
 	"appConf": {
 		"devMode": true,
 		"enableVersionLocking": true,
