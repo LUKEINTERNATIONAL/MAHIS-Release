@@ -1,0 +1,1 @@
+System.register(["./index-legacy-b2923aa4.js"],(function(e,r){"use strict";var t,n;return{setters:[e=>{t=e.Z,n=e.a1}],execute:function(){e("LabelPrinterWeb",class extends t{async write(e){if(e.url)return n.expandPath(e.url).then((e=>{document.location=e}));throw new TypeError("Undefined url")}async discover(){return{devices:["webPrinter"]}}})}}}));
