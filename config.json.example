@@ -2,7 +2,6 @@
 	"apiURL": "localhost",
 	"apiPort": "3000",
 	"apiProtocol": "http",
-	"baseURL": "mahis",
 	"websockerURL": "apps.linmalawi.org/api/v1/cable",
 	"appConf": {
 		"devMode": true,
