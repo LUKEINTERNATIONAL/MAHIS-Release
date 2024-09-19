@@ -1,0 +1,1 @@
+import{W as n,Z as t}from"./index-0a34e7dd.js";class l extends n{async write(e){if(e.url)return t.expandPath(e.url).then(r=>{document.location=r});throw new TypeError("Undefined url")}async discover(){return{devices:["webPrinter"]}}}export{l as LabelPrinterWeb};
