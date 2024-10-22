@@ -3,6 +3,7 @@
 	"apiPort": "3000",
 	"apiProtocol": "http",
 	"websockerURL": "apps.linmalawi.org/api/v1/cable",
+	"websockerProtocol": "ws",
 	"appConf": {
 		"devMode": true,
 		"enableVersionLocking": true,
