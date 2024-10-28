@@ -1,5 +1,19 @@
 const LocationService = {
     async setOfflineLocation() {
+        let countryData = await DatabaseManager.getOfflineData("countries").then((data) => data?.[0]);
+        if (!countryData || countryData.length !== 257) {
+            countryData = await this.getCountries();
+            await DatabaseManager.overRideRecord("countries", countryData);
+        }
+
+        if (countryData.length === 257) {
+            self.postMessage({
+                payload: {
+                    total_countries: 257,
+                    total: 257,
+                },
+            });
+        }
         let districtsData = await DatabaseManager.getOfflineData("districts").then((data) => data?.[0]);
         if (!districtsData || districtsData.length !== 32) {
             districtsData = await this.getDistricts();
@@ -40,7 +54,9 @@ const LocationService = {
             });
         }
     },
-
+    async getCountries() {
+        return await ApiService.getData("/districts", { region_id: 4, paginate: false });
+    },
     async getDistricts() {
         let districtList = [];
         for (let i of [1, 2, 3]) {
@@ -71,9 +87,13 @@ const LocationService = {
                 if (newVillages.length > 0) {
                     allVillage.push(...newVillages);
                     await DatabaseManager.overRideRecord("villages", allVillage);
+                    let total_village = allVillage.length;
+                    if (allVillage.length > TOTALS.total_village) {
+                        total_village = TOTALS.total_village;
+                    }
                     self.postMessage({
                         payload: {
-                            total_village: allVillage.length,
+                            total_village: total_village,
                             total: TOTALS.total_village,
                         },
                     });
