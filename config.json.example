@@ -3,21 +3,18 @@
 		"apiURL": "localhost",
 		"apiPort": "3000",
 		"apiProtocol": "http",
-		"websockerURL": "",
-		"websockerProtocol": "ws"
+		"websocketProtocol": "ws"
 	},
 	"test": {
-		"apiURL": "localhost",
-		"apiPort": "3001",
-		"apiProtocol": "http",
-		"websockerURL": "",
-		"websockerProtocol": "ws"
+		"apiURL": "apps.linmalawi.org",
+		"apiPort": "",
+		"apiProtocol": "https",
+		"websocketProtocol": "wss"
 	},
 	"production": {
-		"apiURL": "localhost",
-		"apiPort": "3001",
+		"apiURL": "mahis.health.gov.mw",
+		"apiPort": "443",
 		"apiProtocol": "http",
-		"websockerURL": "",
-		"websockerProtocol": "ws"
+		"websocketProtocol": "wss"
 	}
 }
