@@ -1,6 +1,6 @@
 // start common code
 // import { DatabaseManager } from "./db";
-importScripts("db.js", "api.js", "location.js", "patient.js", "program.js", "relationships.js");
+importScripts("db.js", "client.js", "location.js", "patient.js", "program.js", "relationships.js");
 
 let APIURL = "";
 let APIKEY = "";
