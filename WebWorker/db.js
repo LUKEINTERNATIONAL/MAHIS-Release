@@ -2,7 +2,7 @@ const DatabaseManager = {
     db: null,
     async openDatabase() {
         return new Promise((resolve, reject) => {
-            const request = indexedDB.open("MaHis");
+            const request = indexedDB.open("MaHis", 1);
 
             request.onerror = (event) => {
                 reject("Database error: " + event.target.error);
