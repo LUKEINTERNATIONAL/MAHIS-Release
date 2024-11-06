@@ -3,7 +3,7 @@ const patientService = {
         const patientRecords = await DatabaseManager.getOfflineData("patientRecords");
         await Promise.all(
             patientRecords.map(async (record) => {
-                await this.saveDemographicsRecord(record);
+                return await this.saveDemographicsRecord(record);
             })
         );
     },
@@ -76,6 +76,7 @@ const patientService = {
         const patientID = await this.savePersonInformation(record);
         if (!patientID) return;
         await Promise.all([this.createGuardian(patientID, record), this.saveBirthdayData(patientID, record)]);
+        return patientID;
     },
     async validateID({ nationalID, birthID }) {
         return (await this.validateNationalID(nationalID)) && (await this.validateBirthID(birthID));
@@ -92,9 +93,9 @@ const patientService = {
                     saveStatusPersonInformation: "complete",
                     serverPatientID: patientID,
                 });
-                this.createIDs(record.otherPersonInformation, patientID);
-                this.enrollProgram(patientID);
-                this.createRegistrationEncounter(patientID);
+                await this.createIDs(record.otherPersonInformation, patientID);
+                await this.enrollProgram(patientID);
+                await this.createRegistrationEncounter(patientID);
                 return patientID;
             } catch (error) {
                 console.error("Failed to save person information", error);
