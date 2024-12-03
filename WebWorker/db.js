@@ -15,7 +15,7 @@ const DatabaseManager = {
 
             request.onupgradeneeded = (event) => {
                 const database = event.target.result;
-                const objectStores = ["relationship", "districts", "TAs", "villages", "countries", "programs", "patientRecords"];
+                const objectStores = ["relationship", "districts", "TAs", "villages", "countries", "programs", "patientRecords", "dde"];
 
                 objectStores.forEach((storeName) => {
                     if (!database.objectStoreNames.contains(storeName)) {
@@ -194,7 +194,7 @@ const DatabaseManager = {
 
                 // Find records that match all conditions in whereClause
                 const matchingRecords = records.filter((record) => {
-                    return Object.entries(whereClause).every(([key, value]) => record[key] === value);
+                    return Object.entries(whereClause).every(([key, value]) => record[key] == value);
                 });
 
                 if (matchingRecords.length === 0) {

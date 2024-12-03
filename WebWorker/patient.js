@@ -1,11 +1,13 @@
 const patientService = {
     async savePatientRecord() {
         const patientRecords = await DatabaseManager.getOfflineData("patientRecords");
-        await Promise.all(
-            patientRecords.map(async (record) => {
-                return await this.saveDemographicsRecord(record);
-            })
-        );
+        if (patientRecords) {
+            await Promise.all(
+                patientRecords.map(async (record) => {
+                    return await this.saveDemographicsRecord(record);
+                })
+            );
+        }
     },
     findByOtherID(idType, identifier) {
         return ApiService.getData("search/patients/by_identifier", {
@@ -75,7 +77,11 @@ const patientService = {
         if (!(await this.validateID(record.otherPersonInformation))) return;
         const patientID = await this.savePersonInformation(record);
         if (!patientID) return;
-        await Promise.all([this.createGuardian(patientID, record), this.saveBirthdayData(patientID, record)]);
+        await Promise.all([
+            await this.createGuardian(patientID, record),
+            await this.saveBirthdayData(patientID, record),
+            await this.saveVitalsData(patientID, record),
+        ]);
         return patientID;
     },
     async validateID({ nationalID, birthID }) {
@@ -87,11 +93,9 @@ const patientService = {
                 const data = await this.createPerson(record.personInformation);
                 const patient = await this.createPatient(data.person_id);
                 const patientID = data.person_id;
-                console.log("🚀 ~ savePersonInformation ~ patientID:", patientID);
-                await this.updatePatientInformation(record, patientID);
                 await this.updateSaveStatus(record, {
                     saveStatusPersonInformation: "complete",
-                    serverPatientID: patientID,
+                    patientID: patientID,
                 });
                 await this.createIDs(record.otherPersonInformation, patientID);
                 await this.enrollProgram(patientID);
@@ -101,17 +105,7 @@ const patientService = {
                 console.error("Failed to save person information", error);
             }
         }
-        return record.serverPatientID;
-    },
-    async updatePatientInformation(record, patientID) {
-        const patientData = await this.findByID(patientID);
-        await DatabaseManager.updateRecord(
-            "patientRecords",
-            { offlinePatientID: record.offlinePatientID },
-            {
-                patientData: patientData,
-            }
-        );
+        return record.patientID;
     },
     async create_patient_identifiers(newID, type, patientID) {
         await ApiService.post("patient_identifiers", {
@@ -159,6 +153,31 @@ const patientService = {
             }
         }
     },
+    async saveVitalsData(patientID, record) {
+        if (record.vitals.unsaved.length > 0) {
+            try {
+                const encounter = await this.createEncounter(patientID, 6);
+                const encounterID = encounter.encounter_id;
+                const obs = await this.saveObs({
+                    encounter_id: encounterID,
+                    observations: record.vitals.unsaved,
+                });
+                if (obs?.length > 0) {
+                    const vitals = record.vitals;
+                    vitals.unsaved = [];
+                    await DatabaseManager.updateRecord(
+                        "patientRecords",
+                        { ID: record.ID },
+                        {
+                            vitals: vitals,
+                        }
+                    );
+                }
+            } catch (error) {
+                console.error("Failed to save vitals information");
+            }
+        }
+    },
     async enrollProgram(patientId) {
         return await ApiService.post(`/patients/${patientId}/programs`, {
             program_id: PROGRAMID,
@@ -172,7 +191,7 @@ const patientService = {
     },
     async updateSaveStatus(record, saveStatus) {
         console.log("🚀 ~ updateSaveStatus ~ saveStatus:", saveStatus);
-        DatabaseManager.updateRecord("patientRecords", { offlinePatientID: record.offlinePatientID }, saveStatus);
+        DatabaseManager.updateRecord("patientRecords", { ID: record.ID }, saveStatus);
     },
     async validateNationalID(nationalID) {
         return (

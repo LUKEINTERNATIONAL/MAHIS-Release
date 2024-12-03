@@ -1,6 +1,6 @@
 // start common code
 // import { DatabaseManager } from "./db";
-importScripts("db.js", "client.js", "location.js", "patient.js", "program.js", "relationships.js");
+importScripts("db.js", "client.js", "location.js", "patient.js", "program.js", "relationships.js", "sync_patient_data.js", "dde.js");
 
 let APIURL = "";
 let APIKEY = "";
@@ -75,6 +75,14 @@ self.onmessage = async (event) => {
                     console.log("ADD_OBJECT_STORE ~ error:", error);
                 }
                 break;
+            case "OVERRIDE_OBJECT_STORE":
+                try {
+                    await DatabaseManager.overRideRecord(payload.storeName, payload.data);
+                    console.log("OVERRIDE_OBJECT_STORE ~ payload:", payload.storeName);
+                } catch (error) {
+                    console.log("OVERRIDE_OBJECT_STORE ~ error:", error);
+                }
+                break;
             case "UPDATE_RECORD":
                 try {
                     await DatabaseManager.updateRecord(payload.storeName, payload.whereClause, payload.data);
@@ -85,11 +93,22 @@ self.onmessage = async (event) => {
                 break;
             case "SYNC_PATIENT_RECORD":
                 try {
+                    self.postMessage("");
                     await patientService.savePatientRecord();
+                    await syncPatientDataService.getPatientData();
                     console.log("SYNC_PATIENT_RECORD ~ storeName:", type);
-                    self.postMessage("Done");
+                    self.postMessage(payload.msg);
                 } catch (error) {
                     console.log("SYNC_PATIENT_RECORD ~ error:", error);
+                }
+                break;
+            case "SYNC_DDE":
+                try {
+                    await ddeService.setDDEIds();
+                    console.log("SYNC_DDE ~ storeName:", type);
+                    self.postMessage("Done");
+                } catch (error) {
+                    console.log("SYNC_DDE ~ error:", error);
                 }
                 break;
             default:
