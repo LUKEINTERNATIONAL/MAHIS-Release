@@ -1,6 +1,6 @@
 // start common code
 // import { DatabaseManager } from "./db";
-importScripts("db.js", "client.js", "location.js", "patient.js", "program.js", "relationships.js", "sync_patient_data.js", "dde.js");
+importScripts("db.js", "client.js", "location.js", "patient.js", "program.js", "relationships.js", "sync_patient_data.js", "dde.js", "generics.js");
 
 let APIURL = "";
 let APIKEY = "";
@@ -102,6 +102,15 @@ self.onmessage = async (event) => {
                     console.log("SYNC_PATIENT_RECORD ~ error:", error);
                 }
                 break;
+            case "BUILD_PATIENT_RECORD":
+                try {
+                    const patientData = await syncPatientDataService.buildPatientData(payload.data);
+                    console.log("BUILD_PATIENT_RECORD ~ storeName:", type);
+                    self.postMessage({ payload: patientData, msg: "done building patient record" });
+                } catch (error) {
+                    console.log("BUILD_PATIENT_RECORD ~ error:", error);
+                }
+                break;
             case "SYNC_DDE":
                 try {
                     await ddeService.setDDEIds();
@@ -110,6 +119,8 @@ self.onmessage = async (event) => {
                 } catch (error) {
                     console.log("SYNC_DDE ~ error:", error);
                 }
+            case "RESET":
+                self.postMessage("");
                 break;
             default:
                 console.log("Unknown type: " + type);

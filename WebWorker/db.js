@@ -15,7 +15,7 @@ const DatabaseManager = {
 
             request.onupgradeneeded = (event) => {
                 const database = event.target.result;
-                const objectStores = ["relationship", "districts", "TAs", "villages", "countries", "programs", "patientRecords", "dde"];
+                const objectStores = ["relationship", "districts", "TAs", "villages", "countries", "programs", "patientRecords", "dde", "generics"];
 
                 objectStores.forEach((storeName) => {
                     if (!database.objectStoreNames.contains(storeName)) {
@@ -114,29 +114,155 @@ const DatabaseManager = {
             };
         });
     },
-    async getOfflineData(storeName) {
+    async deleteRecord(storeName, whereCondition = null) {
+        return new Promise((resolve, reject) => {
+            if (!this.db) {
+                reject(new Error("Database not initialized. Call openDatabase() first."));
+                return;
+            }
+
+            // Create a single readwrite transaction
+            const transaction = this.db.transaction([storeName], "readwrite");
+            const objectStore = transaction.objectStore(storeName);
+
+            // Handle transaction-level errors
+            transaction.onerror = (event) => {
+                reject(new Error(`Transaction error: ${event.target.error}`));
+            };
+
+            // If no where condition, clear all records
+            if (!whereCondition) {
+                const clearRequest = objectStore.clear();
+
+                clearRequest.onerror = (event) => {
+                    reject(event.target.error);
+                };
+
+                clearRequest.onsuccess = () => {
+                    resolve();
+                };
+            } else {
+                // Find and delete matching records
+                const getAllRequest = objectStore.getAll();
+
+                getAllRequest.onerror = (event) => {
+                    reject(event.target.error);
+                };
+
+                getAllRequest.onsuccess = (event) => {
+                    const allRecords = event.target.result;
+
+                    // Find records to delete based on where condition
+                    const recordsToDelete = allRecords.filter((record) =>
+                        Object.entries(whereCondition).every(([key, value]) => record[key] === value)
+                    );
+
+                    // If no records match, resolve immediately
+                    if (recordsToDelete.length === 0) {
+                        resolve();
+                        return;
+                    }
+
+                    // Track deletion progress
+                    let deletedCount = 0;
+                    let errorOccurred = false;
+
+                    recordsToDelete.forEach((record) => {
+                        // Prioritize deletion keys
+                        const deletionKeys = ["id", "_id", "key", "primaryKey", ...Object.keys(whereCondition)];
+
+                        // Find the first valid deletion key
+                        const deleteKey = deletionKeys.find((key) => record[key] !== undefined);
+
+                        if (deleteKey) {
+                            const deleteRequest = objectStore.delete(record[deleteKey]);
+
+                            deleteRequest.onerror = (event) => {
+                                if (!errorOccurred) {
+                                    errorOccurred = true;
+                                    reject(new Error(`Failed to delete record: ${event.target.error}`));
+                                }
+                            };
+
+                            deleteRequest.onsuccess = () => {
+                                deletedCount++;
+
+                                // If all records processed, resolve
+                                if (deletedCount === recordsToDelete.length && !errorOccurred) {
+                                    resolve(deletedCount);
+                                }
+                            };
+                        } else {
+                            // If no valid key found, log an error
+                            console.error("No valid key found for deletion", record);
+                            deletedCount++;
+                        }
+                    });
+                };
+            }
+        });
+    },
+    async getOfflineData(storeName, whereCondition = null) {
         return new Promise((resolve, reject) => {
             if (!this.db) {
                 reject(new Error("Database not initialized."));
                 return;
             }
+
             try {
                 const transaction = this.db.transaction([storeName], "readonly");
                 const objectStore = transaction.objectStore(storeName);
-                const request = objectStore.getAll();
+
+                let request;
+
+                // If a where condition is provided, use a cursor
+                if (whereCondition) {
+                    // Determine if an index exists for the filtering field
+                    const indexName = Object.keys(whereCondition)[0];
+
+                    if (objectStore.indexNames.contains(indexName)) {
+                        const index = objectStore.index(indexName);
+                        const keyRange = IDBKeyRange.only(whereCondition[indexName]);
+
+                        const results = [];
+                        request = index.openCursor(keyRange);
+
+                        request.onsuccess = (event) => {
+                            const cursor = event.target.result;
+                            if (cursor) {
+                                results.push(cursor.value);
+                                cursor.continue();
+                            } else {
+                                resolve(results.length > 0 ? results : null);
+                            }
+                        };
+                    } else {
+                        // Fallback to manual filtering if no index exists
+                        request = objectStore.getAll();
+                        request.onsuccess = (event) => {
+                            const allResults = event.target.result;
+                            const filteredResults = allResults.filter((item) => {
+                                return Object.entries(whereCondition).every(([key, value]) => item[key] === value);
+                            });
+                            resolve(filteredResults.length > 0 ? filteredResults : null);
+                        };
+                    }
+                } else {
+                    // If no condition, get all records
+                    request = objectStore.getAll();
+                    request.onsuccess = (event) => {
+                        const result = event.target.result;
+                        resolve(result.length > 0 ? result : null);
+                    };
+                }
 
                 request.onerror = (event) => {
                     const error = event.target.error;
                     reject(new Error(`Error getting data: ${error?.name} - ${error?.message}`));
                 };
-
-                request.onsuccess = (event) => {
-                    const result = event.target.result;
-                    resolve(result.length > 0 ? result : null);
-                };
             } catch (error) {
-                console.log("failed to get locations", error);
-                return null;
+                console.log("Failed to get data", error);
+                reject(error);
             }
         });
     },

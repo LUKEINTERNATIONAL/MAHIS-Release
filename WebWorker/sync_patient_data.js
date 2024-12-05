@@ -13,28 +13,33 @@ const syncPatientDataService = {
         return ids;
     },
     async getPatientData() {
-        const patients_ids = await ApiService.post("/sync/patients_ids", { ids: await this.getOfflineSavedPatientIds() });
+        const patients_sync_data = await ApiService.post("/sync/patients_ids", {
+            previous_sync_date: await previousSyncService.getPreviousSyncDate(),
+        });
         await Promise.all(
-            patients_ids.map(async (id) => {
+            patients_sync_data.not_synced_ids.map(async (id) => {
                 const record = await ApiService.getData(`/patients/${id}`);
                 await this.savePatientRecord(await this.buildPatientData(record));
             })
         );
+        await previousSyncService.setPreviousSyncDate(patients_sync_data.latest_encounter_datetime);
     },
     async savePatientRecord(data) {
-        await DatabaseManager.addData("patientRecords", data);
+        if (data) DatabaseManager.deleteRecord("patientRecords", { patientID: data.patientID });
+        if (data) DatabaseManager.addData("patientRecords", data);
     },
     async buildPatientData(record) {
+        if (!record?.person) return "";
         return {
             patientID: record.patient_id,
             ID: this.patientIdentifier(record, 3),
             NcdID: this.patientIdentifier(record, 31),
             personInformation: {
-                given_name: record.person.names[0].given_name,
-                middle_name: record.person.names[0].middle_name,
-                family_name: record.person.names[0].family_name,
-                gender: record.person.gender,
-                birthdate: record.person.birthdate,
+                given_name: record?.person?.names[0]?.given_name,
+                middle_name: record?.person?.names[0]?.middle_name,
+                family_name: record?.person?.names[0]?.family_name,
+                gender: record?.person?.gender,
+                birthdate: record?.person?.birthdate,
                 birthdate_estimated: "false",
                 home_region: "",
                 home_district: record?.person?.addresses[0]?.address2,
@@ -53,7 +58,7 @@ const syncPatientDataService = {
                 education_level: this.getAttribute(record, "EDUCATION LEVEL"),
             },
             guardianInformation: "",
-            birthRegistration: "",
+            birthRegistration: await this.getBirthRegistration(record.patient_id),
             otherPersonInformation: {
                 nationalID: "",
                 birthID: "",
@@ -85,6 +90,7 @@ const syncPatientDataService = {
     },
     async getVitals(patientId) {
         const encounters = await ApiService.getData("/encounters", {
+            encounter_type_id: 6,
             patient_id: patientId,
             paginate: false,
         });
@@ -96,6 +102,22 @@ const syncPatientDataService = {
                     obs_datetime: observation.obs_datetime,
                     value_numeric: observation.value_numeric,
                     obs_id: observation.obs_id,
+                }));
+        });
+    },
+    async getBirthRegistration(patientId) {
+        const encounters = await ApiService.getData("/encounters", {
+            encounter_type_id: 5,
+            patient_id: patientId,
+            paginate: false,
+        });
+        return encounters.flatMap((encounter) => {
+            return encounter.observations
+                .filter((observation) => [11764, 11759, 3753].includes(observation.concept_id))
+                .map((observation) => ({
+                    concept_id: observation.concept_id,
+                    obs_datetime: observation.obs_datetime,
+                    value_text: observation.value_text,
                 }));
         });
     },

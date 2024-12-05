@@ -5,8 +5,7 @@ const ddeService = {
             const existingDDE = await DatabaseManager.getOfflineData("dde");
 
             // Constants
-            const MAX_IDS_COUNT = 20;
-            const PROGRAM_ID = 33;
+            const MAX_IDS_COUNT = 10;
             const today = new Date().toDateString();
 
             // Determine how many new IDs to fetch
@@ -17,9 +16,9 @@ const ddeService = {
                 const latestDDE = existingDDE[0];
 
                 // If data is from today, adjust required count
-                if (latestDDE.id_created_date === today) {
-                    requiredIdCount -= latestDDE.ids?.length || 0;
-                }
+                // if (latestDDE.id_created_date === today) {
+                requiredIdCount -= latestDDE.ids?.length || 0;
+                // }
             }
 
             // Skip fetching if we already have enough IDs
@@ -28,14 +27,15 @@ const ddeService = {
             }
 
             // Fetch new DDE IDs
-            let newDDEIds = await ApiService.getData(`/dde/patients/sync_npids?count=${requiredIdCount}&program_id=${PROGRAM_ID}`);
+            let newDDEIds = await ApiService.getData(`/dde/patients/sync_npids?count=${requiredIdCount}&program_id=${PROGRAMID}`);
 
             // Ensure we have valid IDs
             newDDEIds = newDDEIds?.npids || [];
 
             // Merge with existing IDs if applicable
             let finalDDEIds = newDDEIds;
-            if (existingDDE && existingDDE[0]?.id_created_date === today) {
+            // if (existingDDE && existingDDE[0]?.id_created_date === today) {
+            if (existingDDE) {
                 finalDDEIds = [...(existingDDE[0].ids || []), ...newDDEIds];
             }
 
