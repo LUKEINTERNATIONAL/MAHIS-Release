@@ -67,10 +67,11 @@ const patientService = {
         const data = await ApiService.post("/people", person);
         return data;
     },
-    async createPatient(personId) {
+    async createPatient(personId, ddeId) {
         return await ApiService.post(`/patients/`, {
-            program_id: 32,
+            program_id: PROGRAMID,
             person_id: personId,
+            npid: ddeId,
         });
     },
     async saveDemographicsRecord(record) {
@@ -91,7 +92,7 @@ const patientService = {
         if (record.personInformation && record.saveStatusPersonInformation === "pending") {
             try {
                 const data = await this.createPerson(record.personInformation);
-                const patient = await this.createPatient(data.person_id);
+                const patient = await this.createPatient(data.person_id, record.ID);
                 const patientID = data.person_id;
                 await this.updateSaveStatus(record, {
                     saveStatusPersonInformation: "complete",
@@ -190,7 +191,6 @@ const patientService = {
         await this.saveValueCodedObs("Type of patient", "New Patient", encounterID);
     },
     async updateSaveStatus(record, saveStatus) {
-        console.log("🚀 ~ updateSaveStatus ~ saveStatus:", saveStatus);
         DatabaseManager.updateRecord("patientRecords", { ID: record.ID }, saveStatus);
     },
     async validateNationalID(nationalID) {

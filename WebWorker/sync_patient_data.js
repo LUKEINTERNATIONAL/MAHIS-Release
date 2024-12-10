@@ -19,12 +19,12 @@ const syncPatientDataService = {
         await Promise.all(
             patients_sync_data.not_synced_ids.map(async (id) => {
                 const record = await ApiService.getData(`/patients/${id}`);
-                await this.savePatientRecord(await this.buildPatientData(record));
+                await this.saveSyncedPatientRecord(await this.buildPatientData(record));
             })
         );
         await previousSyncService.setPreviousSyncDate(patients_sync_data.latest_encounter_datetime);
     },
-    async savePatientRecord(data) {
+    async saveSyncedPatientRecord(data) {
         if (data) DatabaseManager.deleteRecord("patientRecords", { patientID: data.patientID });
         if (data) DatabaseManager.addData("patientRecords", data);
     },
