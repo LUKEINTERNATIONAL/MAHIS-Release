@@ -68,6 +68,8 @@ const syncPatientDataService = {
                 saved: await this.getVitals(record.patient_id),
                 unsaved: [],
             },
+            vaccineAdministration: [],
+            immunizationDispensations: [],
             saveStatusPersonInformation: "complete",
             saveStatusGuardianInformation: "complete",
             saveStatusBirthRegistration: "complete",
