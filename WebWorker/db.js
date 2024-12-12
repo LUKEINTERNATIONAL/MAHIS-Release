@@ -26,6 +26,7 @@ const DatabaseManager = {
                     "dde",
                     "generics",
                     "stock",
+                    "genericVaccineSchedule",
                 ];
 
                 objectStores.forEach((storeName) => {

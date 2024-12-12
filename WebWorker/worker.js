@@ -10,6 +10,7 @@ importScripts(
     "sync_patient_data.js",
     "dde.js",
     "generics.js",
+    "generic_vaccine_schedule.js",
     "stock.js"
 );
 
@@ -68,6 +69,15 @@ self.onmessage = async (event) => {
                     console.log("SET_OFFLINE_RELATIONSHIPS ~ storeName:", type);
                 } catch (error) {
                     console.log("SET_OFFLINE_RELATIONSHIPS ~ error:", error);
+                }
+                break;
+            case "SET_GENERIC_VACCINE_SCHEDULE":
+                try {
+                    await genericsService.setOfflineGenericVaccineSchedule()
+
+                    console.log("SET_OFFLINE_LOCATION ~ storeName:", type);
+                } catch (error) { 
+                  console.log("GET_OFFLINE_LOCATION ~ error:", error);
                 }
                 break;
             case "DELETE_OBJECT_STORE":
