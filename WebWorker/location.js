@@ -1,6 +1,6 @@
 const LocationService = {
     async setOfflineLocation() {
-        let countryData = await DatabaseManager.getOfflineData("countries").then((data) => data?.[0]);
+        let countryData = await DatabaseManager.getOfflineData("countries");
         if (!countryData || countryData.length !== 257) {
             countryData = await this.getCountries();
             await DatabaseManager.overRideRecord("countries", countryData);
@@ -14,7 +14,7 @@ const LocationService = {
                 },
             });
         }
-        let districtsData = await DatabaseManager.getOfflineData("districts").then((data) => data?.[0]);
+        let districtsData = await DatabaseManager.getOfflineData("districts");
         if (!districtsData || districtsData.length !== 32) {
             districtsData = await this.getDistricts();
             await DatabaseManager.overRideRecord("districts", districtsData);
@@ -28,7 +28,7 @@ const LocationService = {
                 },
             });
         }
-        let TAsData = await DatabaseManager.getOfflineData("TAs").then((data) => data?.[0]);
+        let TAsData = await DatabaseManager.getOfflineData("TAs");
         if (!TAsData || TOTALS.total_TA > TAsData.length) {
             TAsData = await this.getTAs();
             await DatabaseManager.overRideRecord("TAs", TAsData);
@@ -42,7 +42,7 @@ const LocationService = {
                 },
             });
         }
-        const villagesData = await DatabaseManager.getOfflineData("villages").then((data) => data?.[0]);
+        const villagesData = await DatabaseManager.getOfflineData("villages");
         if (!villagesData || TOTALS.total_village > villagesData.length) {
             await this.getVillages();
         } else {
@@ -75,7 +75,7 @@ const LocationService = {
             const allVillage = [];
             let page = 1;
             let pageSize = 500;
-            const villagesData = await DatabaseManager.getOfflineData("villages").then((data) => data?.[0]);
+            const villagesData = await DatabaseManager.getOfflineData("villages");
             if (villagesData && villagesData.length > 0) {
                 page = parseInt(villagesData.length) / 500;
                 page = parseInt(page);

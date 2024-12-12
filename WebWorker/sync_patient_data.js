@@ -68,7 +68,7 @@ const syncPatientDataService = {
                 saved: await this.getVitals(record.patient_id),
                 unsaved: [],
             },
-            vaccineAdministration: [],
+            vaccineAdministration: await this.getVaccineAdministration(record.patient_id),
             immunizationDispensations: [],
             saveStatusPersonInformation: "complete",
             saveStatusGuardianInformation: "complete",
@@ -106,6 +106,9 @@ const syncPatientDataService = {
                     obs_id: observation.obs_id,
                 }));
         });
+    },
+    async getVaccineAdministration(patientID) {
+        return await ApiService.getData("eir/schedule", { patient_id: patientID });
     },
     async getBirthRegistration(patientId) {
         const encounters = await ApiService.getData("/encounters", {
