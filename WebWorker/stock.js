@@ -4,7 +4,10 @@ const stockService = {
         const endDate = await previousSyncService.getCurrentDateFormatted();
         let startDate = "2000-01-01";
         if (stockData) {
-            startDate = stockData[0]?.latest_date_changed;
+            const originalDate = new Date(stockData[0]?.latest_date_changed);
+            const previousDate = new Date(originalDate);
+            previousDate.setDate(originalDate.getDate() - 1);
+            startDate = previousDate.toISOString().slice(0, 19) + previousDate.toISOString().slice(23);
         }
         let stocks = [];
         try {
