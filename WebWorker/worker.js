@@ -73,11 +73,19 @@ self.onmessage = async (event) => {
                 break;
             case "SET_GENERIC_VACCINE_SCHEDULE":
                 try {
-                    await genericsService.setOfflineGenericVaccineSchedule()
+                    await genericsService.setOfflineGenericVaccineSchedule();
 
                     console.log("SET_OFFLINE_LOCATION ~ storeName:", type);
-                } catch (error) { 
-                  console.log("GET_OFFLINE_LOCATION ~ error:", error);
+                } catch (error) {
+                    console.log("GET_OFFLINE_LOCATION ~ error:", error);
+                }
+                break;
+            case "DELETE_RECORD":
+                try {
+                    await DatabaseManager.deleteRecord(payload.storeName, { ID: payload.data.ID });
+                    console.log("DELETE_RECORD ~ storeName:", type);
+                } catch (error) {
+                    console.log("DELETE_RECORD ~ error:", error);
                 }
                 break;
             case "DELETE_OBJECT_STORE":

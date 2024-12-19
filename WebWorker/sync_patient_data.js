@@ -13,8 +13,16 @@ const syncPatientDataService = {
         return ids;
     },
     async getPatientData() {
+        const date = await previousSyncService.getPreviousSyncDate();
+        let previous_sync_date = "";
+        if (date) {
+            const originalDate = new Date(await previousSyncService.getPreviousSyncDate());
+            const previousDate = new Date(originalDate);
+            previousDate.setDate(originalDate.getDate() - 1);
+            previous_sync_date = previousDate.toISOString().slice(0, 19) + previousDate.toISOString().slice(23);
+        }
         const patients_sync_data = await ApiService.post("/sync/patients_ids", {
-            previous_sync_date: await previousSyncService.getPreviousSyncDate(),
+            previous_sync_date: previous_sync_date,
         });
         await Promise.all(
             patients_sync_data.not_synced_ids.map(async (id) => {
