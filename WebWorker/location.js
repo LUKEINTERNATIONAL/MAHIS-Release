@@ -3,7 +3,7 @@ const LocationService = {
         let countryData = await DatabaseManager.getOfflineData("countries");
         if (!countryData || countryData.length !== 257) {
             countryData = await this.getCountries();
-            await DatabaseManager.overRideRecord("countries", countryData);
+            await DatabaseManager.overRideCollection("countries", countryData);
         }
 
         if (countryData.length === 257) {
@@ -17,7 +17,7 @@ const LocationService = {
         let districtsData = await DatabaseManager.getOfflineData("districts");
         if (!districtsData || districtsData.length !== 32) {
             districtsData = await this.getDistricts();
-            await DatabaseManager.overRideRecord("districts", districtsData);
+            await DatabaseManager.overRideCollection("districts", districtsData);
         }
 
         if (districtsData.length === 32) {
@@ -31,7 +31,7 @@ const LocationService = {
         let TAsData = await DatabaseManager.getOfflineData("TAs");
         if (!TAsData || TOTALS.total_TA > TAsData.length) {
             TAsData = await this.getTAs();
-            await DatabaseManager.overRideRecord("TAs", TAsData);
+            await DatabaseManager.overRideCollection("TAs", TAsData);
         }
 
         if (TAsData.length === TOTALS.total_TA) {
@@ -86,7 +86,7 @@ const LocationService = {
                 const newVillages = await ApiService.getData("/villages", { page, page_size: pageSize });
                 if (newVillages.length > 0) {
                     allVillage.push(...newVillages);
-                    await DatabaseManager.overRideRecord("villages", allVillage);
+                    await DatabaseManager.overRideCollection("villages", allVillage);
                     let total_village = allVillage.length;
                     if (allVillage.length > TOTALS.total_village) {
                         total_village = TOTALS.total_village;

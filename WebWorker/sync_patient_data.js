@@ -14,13 +14,13 @@ const syncPatientDataService = {
     },
     async getPatientData() {
         const date = await previousSyncService.getPreviousSyncDate();
-        let previous_sync_date = "";
-        if (date) {
-            const originalDate = new Date(await previousSyncService.getPreviousSyncDate());
-            const previousDate = new Date(originalDate);
-            previousDate.setDate(originalDate.getDate() - 1);
-            previous_sync_date = previousDate.toISOString().slice(0, 19) + previousDate.toISOString().slice(23);
-        }
+        let previous_sync_date = date;
+        // if (date) {
+        //     const originalDate = new Date(date);
+        //     const previousDate = new Date(originalDate);
+        //     previousDate.setDate(originalDate.getDate() - 1);
+        //     previous_sync_date = previousDate.toISOString().slice(0, 19) + previousDate.toISOString().slice(23);
+        // }
         const patients_sync_data = await ApiService.post("/sync/patients_ids", {
             previous_sync_date: previous_sync_date,
         });
@@ -77,7 +77,11 @@ const syncPatientDataService = {
                 unsaved: [],
             },
             vaccineSchedule: await this.getVaccineAdministration(record.patient_id),
-            vaccineAdministration: [],
+            vaccineAdministration: {
+                orders: [],
+                obs: [],
+                voided: [],
+            },
             saveStatusPersonInformation: "complete",
             saveStatusGuardianInformation: "complete",
             saveStatusBirthRegistration: "complete",
@@ -96,7 +100,7 @@ const syncPatientDataService = {
         }
     },
     getAttribute(item, name) {
-        return item.person.person_attributes.find((attribute) => attribute.type.name === attribute)?.value;
+        return item.person.person_attributes.find((attribute) => attribute.type.name === name)?.value;
     },
     async getVitals(patientId) {
         const encounters = await ApiService.getData("/encounters", {

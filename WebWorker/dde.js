@@ -44,7 +44,7 @@ const ddeService = {
 
             // Update database if we have new IDs
             if (finalDDEIds.length > 0) {
-                await DatabaseManager.overRideRecord("dde", {
+                await DatabaseManager.overRideCollection("dde", {
                     ids: finalDDEIds,
                     id_created_date: today,
                 });

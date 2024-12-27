@@ -27,6 +27,8 @@ const DatabaseManager = {
                     "generics",
                     "stock",
                     "genericVaccineSchedule",
+                    "conceptNames",
+                    "conceptSets",
                 ];
 
                 objectStores.forEach((storeName) => {
@@ -37,13 +39,17 @@ const DatabaseManager = {
             };
         });
     },
-
-    async overRideRecord(storeName, data) {
+    async overRideRecordRecord(storeName, data, whereClause) {
+        if (data) this.deleteRecord(storeName, whereClause);
+        if (data) this.addData(storeName, data);
+    },
+    async overRideCollection(storeName, data) {
         return new Promise((resolve, reject) => {
             if (!this.db) {
                 reject(new Error("Database not initialized. Call openDatabase() first."));
                 return;
             }
+
             const transaction = this.db.transaction([storeName], "readwrite");
             const objectStore = transaction.objectStore(storeName);
 
@@ -51,29 +57,31 @@ const DatabaseManager = {
             const clearRequest = objectStore.clear();
 
             clearRequest.onerror = (event) => {
-                reject(event.target.error);
+                reject(new Error(`Clear operation failed: ${event.target.error}`));
             };
 
             clearRequest.onsuccess = () => {
                 // After clearing, add the new data
-                let addRequest = "";
-                if (data.length > 0) {
-                    Promise.all(
-                        data.map(async (item) => {
-                            addRequest = objectStore.add(item);
-                        })
-                    );
-                } else {
-                    addRequest = objectStore.add(data);
-                }
+                const addPromises = data.map((item) => {
+                    return new Promise((resolve, reject) => {
+                        const addRequest = objectStore.add(item);
+                        addRequest.onerror = (event) => reject(event.target.error);
+                        addRequest.onsuccess = () => resolve();
+                    });
+                });
 
-                addRequest.onerror = (event) => {
-                    reject(event.target.error);
-                };
+                Promise.all(addPromises)
+                    .then(() => resolve())
+                    .catch((error) => reject(new Error(`Add operation failed: ${error}`)));
+            };
 
-                addRequest.onsuccess = () => {
-                    resolve();
-                };
+            // Handle transaction errors
+            transaction.onerror = (event) => {
+                reject(new Error(`Transaction failed: ${event.target.error}`));
+            };
+
+            transaction.oncomplete = () => {
+                console.log("Transaction completed successfully");
             };
         });
     },
@@ -287,34 +295,23 @@ const DatabaseManager = {
             }
         });
     },
-    deleteObjectStore(storeName) {
+    async emptyCollection(storeName) {
         return new Promise((resolve, reject) => {
-            if (!db) {
+            if (!this.db) {
                 reject(new Error("Database not initialized. Call openDatabase() first."));
                 return;
             }
 
-            if (!DatabaseManager.objectStoreNames.contains(storeName)) {
-                reject(new Error(`Object store "${storeName}" does not exist.`));
-                return;
-            }
+            const transaction = this.db.transaction([storeName], "readwrite");
+            const objectStore = transaction.objectStore(storeName);
 
-            const version = DatabaseManager.version + 1;
-            DatabaseManager.close();
+            const clearRequest = objectStore.clear();
 
-            const request = indexedDB.open("MaHis", version);
-
-            request.onerror = (event) => {
-                reject("Database error: " + event.target.error);
+            clearRequest.onerror = (event) => {
+                reject(new Error(`Failed to empty collection: ${event.target.error}`));
             };
 
-            request.onupgradeneeded = (event) => {
-                const database = event.target.result;
-                database.deleteObjectStore(storeName);
-            };
-
-            request.onsuccess = (event) => {
-                db = event.target.result;
+            clearRequest.onsuccess = () => {
                 resolve();
             };
         });

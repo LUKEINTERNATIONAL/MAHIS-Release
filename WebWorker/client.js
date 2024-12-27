@@ -6,9 +6,8 @@ const ApiService = {
         };
     },
     async execFetch(url, params = {}) {
-        const fullUrl = `${APIURL}${url}`; // Form full URL
+        const fullUrl = `${APIURL}${url}`;
 
-        // Add CORS mode and headers if not already present
         params = { mode: "cors", ...params };
         if (!params.headers) {
             params.headers = this.headers();
@@ -17,23 +16,30 @@ const ApiService = {
         try {
             const response = await fetch(fullUrl, params);
 
-            this.handleUnauthorized(response.statusText); // Ensure unauthorized handling
+            const responseText = await response.text(); // Get raw response text
+
+            this.handleUnauthorized(response.statusText);
 
             if (!response.ok) {
                 throw new Error(`Request failed with status: ${response.status}`);
             }
 
-            // Parse JSON response and return it
-            const data = await response.json();
-            return data;
+            // Only try to parse if we have content
+            if (!responseText) {
+                return null; // or whatever default value makes sense
+            }
+
+            // Now try to parse the text as JSON
+            const jsonData = JSON.parse(responseText);
+            return jsonData;
         } catch (error) {
             console.error(`Fetch Error: ${error.message}`);
+            console.error("Full error:", error);
 
             if (error.message.match(/NetworkError|Failed to fetch/i)) {
                 console.warn("Network error occurred.");
             }
 
-            // Re-throw the error to be handled by the caller
             throw error;
         }
     },
