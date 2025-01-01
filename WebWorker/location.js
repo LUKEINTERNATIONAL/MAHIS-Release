@@ -29,7 +29,7 @@ const LocationService = {
             });
         }
         let TAsData = await DatabaseManager.getOfflineData("TAs");
-        if (!TAsData || TOTALS.total_TA > TAsData.length) {
+        if (!TAsData || TOTALS.total_TA != TAsData.length) {
             TAsData = await this.getTAs();
             await DatabaseManager.overRideCollection("TAs", TAsData);
         }
@@ -43,7 +43,7 @@ const LocationService = {
             });
         }
         const villagesData = await DatabaseManager.getOfflineData("villages");
-        if (!villagesData || TOTALS.total_village > villagesData.length) {
+        if (!villagesData || TOTALS.total_village != villagesData.length) {
             await this.getVillages();
         } else {
             self.postMessage({

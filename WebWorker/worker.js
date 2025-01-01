@@ -91,7 +91,7 @@ self.onmessage = async (event) => {
                 break;
             case "DELETE_RECORD":
                 try {
-                    await DatabaseManager.deleteRecord(payload.storeName, { ID: payload.data.ID });
+                    await DatabaseManager.deleteRecord(payload.storeName, payload.whereClause);
                     console.log("DELETE_RECORD ~ storeName:", type);
                 } catch (error) {
                     console.log("DELETE_RECORD ~ error:", error);
