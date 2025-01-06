@@ -62,17 +62,28 @@ const DatabaseManager = {
 
             clearRequest.onsuccess = () => {
                 // After clearing, add the new data
-                const addPromises = data.map((item) => {
-                    return new Promise((resolve, reject) => {
-                        const addRequest = objectStore.add(item);
-                        addRequest.onerror = (event) => reject(event.target.error);
-                        addRequest.onsuccess = () => resolve();
+                if (data.length > 0) {
+                    const addPromises = data.map((item) => {
+                        return new Promise((resolve, reject) => {
+                            const addRequest = objectStore.add(item);
+                            addRequest.onerror = (event) => reject(event.target.error);
+                            addRequest.onsuccess = () => resolve();
+                        });
                     });
-                });
 
-                Promise.all(addPromises)
-                    .then(() => resolve())
-                    .catch((error) => reject(new Error(`Add operation failed: ${error}`)));
+                    Promise.all(addPromises)
+                        .then(() => resolve())
+                        .catch((error) => reject(new Error(`Add operation failed: ${error}`)));
+                } else {
+                    const addRequest = objectStore.add(data);
+                    addRequest.onerror = (event) => {
+                        reject(event.target.error);
+                    };
+
+                    addRequest.onsuccess = () => {
+                        resolve();
+                    };
+                }
             };
 
             // Handle transaction errors
