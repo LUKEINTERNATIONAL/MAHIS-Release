@@ -74,7 +74,7 @@ const LocationService = {
         try {
             const allVillage = [];
             let page = 1;
-            let pageSize = 500;
+            let pageSize = 1000;
             while (true) {
                 const newVillages = await ApiService.getData("/villages", { page, page_size: pageSize });
                 if (newVillages.length > 0) {
