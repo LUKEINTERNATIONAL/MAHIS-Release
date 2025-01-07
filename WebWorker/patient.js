@@ -78,7 +78,8 @@ const patientService = {
     },
     async saveDemographicsRecord(record) {
         if (!(await this.validateID(record.otherPersonInformation))) return;
-        const patientID = await this.savePersonInformation(record);
+        const data = await this.savePersonInformation(record);
+        const patientID = data.patientID;
         if (!patientID) return;
         await Promise.all([
             await this.createGuardian(patientID, record),
@@ -87,7 +88,7 @@ const patientService = {
             await this.saveVaccines(patientID, record),
             await this.voidVaccine(patientID, record),
         ]);
-        return patientID;
+        return data.ID;
     },
     async validateID({ nationalID, birthID }) {
         return (await this.validateNationalID(nationalID)) && (await this.validateBirthID(birthID));
@@ -97,20 +98,23 @@ const patientService = {
             try {
                 const data = await this.createPerson(record.personInformation);
                 const patient = await this.createPatient(data.person_id, record.ID);
+                const ID = syncPatientDataService.patientIdentifier(patient, 3);
                 const patientID = data.person_id;
                 await this.updateSaveStatus(record, {
                     saveStatusPersonInformation: "complete",
                     patientID: patientID,
+                    ID,
                 });
                 await this.createIDs(record.otherPersonInformation, patientID);
                 await this.enrollProgram(patientID);
                 await this.createRegistrationEncounter(patientID);
-                return patientID;
+
+                return { patientID, ID };
             } catch (error) {
                 console.error("Failed to save person information", error);
             }
         }
-        return record.patientID;
+        return { patientID: record.patientID, ID: record.ID };
     },
     async create_patient_identifiers(newID, type, patientID) {
         await ApiService.post("patient_identifiers", {
@@ -167,6 +171,7 @@ const patientService = {
                 });
                 if (obs?.length > 0) {
                     const vitals = record.vitals;
+                    vitals.saved = [...record.vitals.unsaved, ...record.vitals.saved];
                     vitals.unsaved = [];
                     await DatabaseManager.updateRecord(
                         "patientRecords",
@@ -197,6 +202,7 @@ const patientService = {
             });
             record.vaccineAdministration.orders = [];
             record.vaccineAdministration.obs = [];
+            record.vaccineSchedule = await syncPatientDataService.getVaccineAdministration(patientID);
             DatabaseManager.overRideRecordRecord("patientRecords", record, { ID: record.ID });
         }
     },
@@ -217,6 +223,7 @@ const patientService = {
             );
 
             record.vaccineAdministration.voided = [];
+            record.vaccineSchedule = await syncPatientDataService.getVaccineAdministration(patientID);
             DatabaseManager.overRideRecordRecord("patientRecords", record, { ID: record.ID });
         }
     },

@@ -2,7 +2,7 @@ const DatabaseManager = {
     db: null,
     async openDatabase() {
         return new Promise((resolve, reject) => {
-            const request = indexedDB.open("MaHis", 1);
+            const request = indexedDB.open("MaHis", 4);
 
             request.onerror = (event) => {
                 reject("Database error: " + event.target.error);
@@ -30,7 +30,9 @@ const DatabaseManager = {
                     "conceptNames",
                     "conceptSets",
                 ];
-
+                for (const storeName of Array.from(database.objectStoreNames)) {
+                    database.deleteObjectStore(storeName);
+                }
                 objectStores.forEach((storeName) => {
                     if (!database.objectStoreNames.contains(storeName)) {
                         database.createObjectStore(storeName, { keyPath: "id", autoIncrement: true });
@@ -91,9 +93,7 @@ const DatabaseManager = {
                 reject(new Error(`Transaction failed: ${event.target.error}`));
             };
 
-            transaction.oncomplete = () => {
-                console.log("Transaction completed successfully");
-            };
+            transaction.oncomplete = () => {};
         });
     },
     upsertSingleRecord(storeName, data) {
