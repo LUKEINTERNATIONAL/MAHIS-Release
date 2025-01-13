@@ -49,7 +49,8 @@ self.onmessage = async (event) => {
                     await genericsService.setOfflineGenericVaccineSchedule();
                     await LocationService.setOfflineLocation();
                     await patientService.savePatientRecord();
-                    await syncPatientDataService.getPatientData();
+                    const patientSyncedStatusData = await syncPatientDataService.getPatientData();
+                    self.postMessage(patientSyncedStatusData);
                     self.postMessage("Done syncing all data");
                     console.log("SYNC_ALL_DATA ~ storeName:", type);
                 } catch (error) {
@@ -126,6 +127,8 @@ self.onmessage = async (event) => {
             case "SYNC_STOCK_RECORD":
                 try {
                     await stockService.setStock();
+                    const stockData = await DatabaseManager.getOfflineData("stock");
+                    self.postMessage({ payload: stockData });
                     console.log("SYNC_STOCK_RECORD ~ storeName:", type);
                 } catch (error) {
                     console.log("SYNC_STOCK_RECORD ~ error:", error);

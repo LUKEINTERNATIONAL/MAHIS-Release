@@ -1,17 +1,4 @@
 const syncPatientDataService = {
-    async getOfflineSavedPatientIds() {
-        const patientRecords = await DatabaseManager.getOfflineData("patientRecords");
-        const ids = [];
-        if (patientRecords) {
-            await Promise.all(
-                patientRecords?.map(async (record) => {
-                    ids.push(record.ID);
-                })
-            );
-        }
-
-        return ids;
-    },
     async getPatientData() {
         try {
             // Get the previous sync date
@@ -137,8 +124,12 @@ const syncPatientDataService = {
         return item.person.person_attributes.find((attribute) => attribute.type.name === name)?.value;
     },
     async getGuardianData(patientId) {
-        const data = await ApiService.getData(`/people/${patientId}/relationships`);
-        return this.transformPersonData(data);
+        try {
+            const data = await ApiService.getData(`/people/${patientId}/relationships`);
+            return this.transformPersonData(data);
+        } catch (error) {
+            return [];
+        }
     },
     transformPersonData(jsonData) {
         // Ensure we have data
@@ -188,39 +179,51 @@ const syncPatientDataService = {
         });
     },
     async getVitals(patientId) {
-        const encounters = await ApiService.getData("/encounters", {
-            encounter_type_id: 6,
-            patient_id: patientId,
-            paginate: false,
-        });
-        return encounters.flatMap((encounter) => {
-            return encounter.observations
-                .filter((observation) => [5089, 5088, 5087, 5086, 5085, 5090, 5092, 5242, 2137].includes(observation.concept_id))
-                .map((observation) => ({
-                    concept_id: observation.concept_id,
-                    obs_datetime: observation.obs_datetime,
-                    value_numeric: observation.value_numeric,
-                    obs_id: observation.obs_id,
-                }));
-        });
+        try {
+            const encounters = await ApiService.getData("/encounters", {
+                encounter_type_id: 6,
+                patient_id: patientId,
+                paginate: false,
+            });
+            return encounters.flatMap((encounter) => {
+                return encounter.observations
+                    .filter((observation) => [5089, 5088, 5087, 5086, 5085, 5090, 5092, 5242, 2137].includes(observation.concept_id))
+                    .map((observation) => ({
+                        concept_id: observation.concept_id,
+                        obs_datetime: observation.obs_datetime,
+                        value_numeric: observation.value_numeric,
+                        obs_id: observation.obs_id,
+                    }));
+            });
+        } catch (error) {
+            return [];
+        }
     },
     async getVaccineAdministration(patientID) {
-        return await ApiService.getData("eir/schedule", { patient_id: patientID });
+        try {
+            return await ApiService.getData("eir/schedule", { patient_id: patientID });
+        } catch (error) {
+            return [];
+        }
     },
     async getBirthRegistration(patientId) {
-        const encounters = await ApiService.getData("/encounters", {
-            encounter_type_id: 5,
-            patient_id: patientId,
-            paginate: false,
-        });
-        return encounters.flatMap((encounter) => {
-            return encounter.observations
-                .filter((observation) => [11764, 11759, 3753].includes(observation.concept_id))
-                .map((observation) => ({
-                    concept_id: observation.concept_id,
-                    obs_datetime: observation.obs_datetime,
-                    value_text: observation.value_text,
-                }));
-        });
+        try {
+            const encounters = await ApiService.getData("/encounters", {
+                encounter_type_id: 5,
+                patient_id: patientId,
+                paginate: false,
+            });
+            return encounters.flatMap((encounter) => {
+                return encounter.observations
+                    .filter((observation) => [11764, 11759, 3753].includes(observation.concept_id))
+                    .map((observation) => ({
+                        concept_id: observation.concept_id,
+                        obs_datetime: observation.obs_datetime,
+                        value_text: observation.value_text,
+                    }));
+            });
+        } catch (error) {
+            return [];
+        }
     },
 };
