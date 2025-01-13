@@ -182,14 +182,19 @@ const patientService = {
     },
     async saveVaccines(patientID, record) {
         if (record?.vaccineAdministration?.orders?.length > 0) {
-            const encounterID = await this.createEncounter(patientID, 25);
-            const data = {
-                encounter_id: encounterID,
-                drug_orders: record.vaccineAdministration.orders,
-                program_id: PROGRAMID,
-                observations: record.vaccineAdministration.obs,
-            };
-            await ApiService.post("/immunization/administer_vaccine", data);
+            Promise.all(
+                record?.vaccineAdministration?.orders.map(async (order) => {
+                    const encounterID = await this.createEncounter(patientID, 25);
+                    const obs = record.vaccineAdministration.obs.find((item) => item.value_text === order.drug_name);
+                    const data = {
+                        encounter_id: encounterID,
+                        drug_orders: [order],
+                        program_id: PROGRAMID,
+                        observations: [obs],
+                    };
+                    await ApiService.post("/immunization/administer_vaccine", data);
+                })
+            );
 
             // await this.saveObs({
             //     encounter_id: encounterID,
