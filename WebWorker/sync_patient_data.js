@@ -2,36 +2,29 @@ const syncPatientDataService = {
     async getPatientData() {
         try {
             // Get the previous sync date
-            const date = await previousSyncService.getPreviousSyncDate();
-            let previous_sync_date = date;
+            let previous_sync_date = await previousSyncService.getPreviousSyncDate();
+            let patients_sync_data = await this.getPatientIds(previous_sync_date);
+            const patientCount = await DatabaseManager.getOfflineData("patientRecords").then((data) => data?.length);
 
-            // Get IDs of patients that need syncing
-            const patients_sync_data = await ApiService.post("/sync/patients_ids", {
-                previous_sync_date: previous_sync_date,
-            });
-
+            if (patientCount != patients_sync_data.server_patient_count) patients_sync_data = await this.getPatientIds("");
             // Sync all patient records in parallel
-            await Promise.all(
-                patients_sync_data.not_synced_ids.map(async (id) => {
-                    try {
-                        const record = await ApiService.getData(`/patients/${id}`);
-                        const patientData = await this.buildPatientData(record);
-                        await this.saveSyncedPatientRecord(patientData);
-                    } catch (error) {
-                        console.error(`Failed to sync patient ID ${id}:`, error);
-                        // You might want to add the failed ID to a retry queue
-                        throw error; // Re-throw to mark this promise as failed
-                    }
-                })
-            );
-            // Update the sync timestamp only if all operations succeeded
-            await previousSyncService.setPreviousSyncDate(patients_sync_data.latest_encounter_datetime);
-
-            return {
-                success: true,
-                syncedCount: patients_sync_data.not_synced_ids.length,
-                lastSyncDate: patients_sync_data.latest_encounter_datetime,
-            };
+            if (patients_sync_data.not_synced_ids) {
+                await Promise.all(
+                    patients_sync_data.not_synced_ids.map(async (id) => {
+                        try {
+                            const record = await ApiService.getData(`/patients/${id}`);
+                            const patientData = await this.buildPatientData(record);
+                            await this.saveSyncedPatientRecord(patientData, patients_sync_data);
+                        } catch (error) {
+                            console.error(`Failed to sync patient ID ${id}:`, error);
+                            // You might want to add the failed ID to a retry queue
+                            throw error; // Re-throw to mark this promise as failed
+                        }
+                    })
+                );
+                // Update the sync timestamp only if all operations succeeded
+                await previousSyncService.setPreviousSyncDate(patients_sync_data.latest_encounter_datetime);
+            }
         } catch (error) {
             console.error("Error in getPatientData:", error);
             return {
@@ -41,14 +34,31 @@ const syncPatientDataService = {
             };
         }
     },
+    async getPatientIds(previous_sync_date) {
+        // Get IDs of patients that need syncing
+        return await ApiService.post("/sync/patients_ids", {
+            previous_sync_date: previous_sync_date,
+        });
+    },
     async findSaveByID(id) {
         const record = await ApiService.getData(`/patients/${id}`);
         const patientData = await this.buildPatientData(record);
-        await this.saveSyncedPatientRecord(patientData);
+        // await this.saveSyncedPatientRecord(patientData);
     },
-    async saveSyncedPatientRecord(data) {
-        if (data) DatabaseManager.deleteRecord("patientRecords", { ID: data.ID });
-        if (data) DatabaseManager.addData("patientRecords", data);
+    async saveSyncedPatientRecord(data, patients_sync_data = "") {
+        if (data) {
+            DatabaseManager.deleteRecord("patientRecords", { patientID: data.patientID });
+            DatabaseManager.addData("patientRecords", data);
+            if (patients_sync_data) {
+                const patientCount = await DatabaseManager.getOfflineData("patientRecords").then((data) => data.length);
+                self.postMessage({
+                    syncedCount: patients_sync_data.not_synced_ids.length,
+                    lastSyncDate: patients_sync_data.latest_encounter_datetime,
+                    offlinePatientsCount: patientCount,
+                    serverPatientsCount: patients_sync_data.server_patient_count,
+                });
+            }
+        }
     },
     async buildPatientData(record) {
         if (!record?.person) return "";

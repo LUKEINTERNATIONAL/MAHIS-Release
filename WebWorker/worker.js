@@ -49,8 +49,7 @@ self.onmessage = async (event) => {
                     await genericsService.setOfflineGenericVaccineSchedule();
                     await LocationService.setOfflineLocation();
                     await patientService.savePatientRecord();
-                    const patientSyncedStatusData = await syncPatientDataService.getPatientData();
-                    self.postMessage(patientSyncedStatusData);
+                    await syncPatientDataService.getPatientData();
                     self.postMessage("Done syncing all data");
                     console.log("SYNC_ALL_DATA ~ storeName:", type);
                 } catch (error) {

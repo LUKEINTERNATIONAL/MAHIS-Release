@@ -23,7 +23,7 @@ const DatabaseManager = {
                     villages: { keyPath: "village_id", autoIncrement: true },
                     countries: { keyPath: "district_id", autoIncrement: true },
                     programs: { keyPath: "program_id", autoIncrement: true },
-                    patientRecords: { keyPath: "ID", autoIncrement: true },
+                    patientRecords: { keyPath: "id", autoIncrement: true },
                     dde: { keyPath: "id", autoIncrement: true },
                     generics: { keyPath: "id", autoIncrement: true },
                     stock: { keyPath: "id", autoIncrement: true },
