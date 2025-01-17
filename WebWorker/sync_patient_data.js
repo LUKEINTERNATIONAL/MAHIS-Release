@@ -2,6 +2,7 @@ const BATCH_SIZE = 50; // Increased batch size for better performance
 
 const syncPatientDataService = {
     async syncAllData() {
+        await patientService.savePatientRecord();
         await Promise.all([
             ddeService.setDDEIds(),
             stockService.setStock(),
@@ -10,7 +11,6 @@ const syncPatientDataService = {
             relationshipsService.setOfflineRelationship(),
             genericsService.setOfflineGenericVaccineSchedule(),
             LocationService.setOfflineLocation(),
-            patientService.savePatientRecord(),
             this.getPatientData(),
         ]);
     },

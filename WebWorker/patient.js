@@ -100,7 +100,7 @@ const patientService = {
             try {
                 const data = await this.createPerson(record.personInformation);
                 const patient = await this.createPatient(data.person_id, record.ID);
-                const ID = syncPatientDataService.patientIdentifier(patient, 3);
+                const ID = this.patientIdentifier(patient, 3);
                 const patientID = data.person_id;
                 await this.updateSaveStatus(record, {
                     saveStatusPersonInformation: "complete",
@@ -119,6 +119,16 @@ const patientService = {
             }
         }
         return { patientID: record.patientID, ID: record.ID };
+    },
+    patientIdentifier(identifiers, identifier_type_id) {
+        if (identifiers) {
+            return identifiers.patient_identifiers
+                .filter((identifier) => identifier.identifier_type === identifier_type_id)
+                .map((identifier) => identifier.identifier)
+                .join(", ");
+        } else {
+            return "";
+        }
     },
     async create_patient_identifiers(newID, type, patientID) {
         await ApiService.post("patient_identifiers", {
