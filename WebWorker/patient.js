@@ -82,13 +82,13 @@ const patientService = {
         const patientID = data.patientID;
         if (!patientID) return;
         await Promise.all([
-            await this.createGuardian(patientID, record),
-            await this.saveBirthdayData(patientID, record),
-            await this.saveVitalsData(patientID, record),
-            await this.saveVaccines(patientID, record),
-            await this.saveAppointments(patientID, record),
-            await this.sendSMS(patientID, record),
-            await this.voidVaccine(patientID, record),
+            this.createGuardian(patientID, record),
+            this.saveBirthdayData(patientID, record),
+            this.saveVitalsData(patientID, record),
+            this.saveVaccines(patientID, record),
+            this.saveAppointments(patientID, record),
+            this.sendSMS(patientID, record),
+            this.voidVaccine(patientID, record),
         ]);
         return { ID: data.ID, patientID };
     },
@@ -107,9 +107,11 @@ const patientService = {
                     patientID: patientID,
                     ID,
                 });
-                await this.createIDs(record.otherPersonInformation, patientID);
-                await this.enrollProgram(patientID);
-                await this.createRegistrationEncounter(patientID);
+                await Promise.all([
+                    this.createIDs(record.otherPersonInformation, patientID),
+                    this.enrollProgram(patientID),
+                    this.createRegistrationEncounter(patientID),
+                ]);
 
                 return { patientID, ID };
             } catch (error) {

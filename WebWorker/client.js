@@ -1,3 +1,10 @@
+// Connection state management
+let healthCheckInterval = null;
+let isReconnecting = false;
+const HEALTH_CHECK_INTERVAL = 2500;
+const INITIAL_RETRY_DELAY = 1000; // Start with 1 second
+const MAX_RETRY_DELAY = 30000; // Max 30 seconds between retries
+
 const ApiService = {
     headers() {
         return {
@@ -5,6 +12,45 @@ const ApiService = {
             "Content-Type": "application/json",
         };
     },
+
+    stopHealthCheck() {
+        if (healthCheckInterval) {
+            clearInterval(healthCheckInterval);
+            healthCheckInterval = null;
+            isReconnecting = false;
+        }
+    },
+
+    async startHealthCheck() {
+        if (!healthCheckInterval && !isReconnecting) {
+            isReconnecting = true;
+            let retryDelay = INITIAL_RETRY_DELAY;
+
+            const attemptReconnection = async () => {
+                try {
+                    await this.healthCheck();
+                    console.log("Connection restored!");
+                    this.stopHealthCheck();
+                    await syncPatientDataService.syncAllData();
+                    return true;
+                } catch (error) {
+                    console.warn("Health check failed, retrying...", error);
+                    // Increase delay exponentially but cap it
+                    retryDelay = Math.min(retryDelay * 1.5, MAX_RETRY_DELAY);
+                    return false;
+                }
+            };
+
+            // Initial attempt
+            if (!(await attemptReconnection())) {
+                // If initial attempt fails, start interval
+                healthCheckInterval = setInterval(async () => {
+                    await attemptReconnection();
+                }, retryDelay);
+            }
+        }
+    },
+
     async execFetch(url, params = {}) {
         const fullUrl = `${APIURL}${url}`;
 
@@ -15,8 +61,7 @@ const ApiService = {
 
         try {
             const response = await fetch(fullUrl, params);
-
-            const responseText = await response.text(); // Get raw response text
+            const responseText = await response.text();
 
             this.handleUnauthorized(response.statusText);
 
@@ -24,28 +69,29 @@ const ApiService = {
                 throw new Error(`Request failed with status: ${response.status}`);
             }
 
-            // Only try to parse if we have content
+            // Stop health check if request succeeds
+            this.stopHealthCheck();
+
             if (!responseText) {
-                return null; // or whatever default value makes sense
+                return null;
             }
 
-            // Now try to parse the text as JSON
-            const jsonData = JSON.parse(responseText);
-            return jsonData;
+            return JSON.parse(responseText);
         } catch (error) {
-            console.error(`Fetch Error: ${error.message}`);
-            console.error("Full error:", error);
-
-            if (error.message.match(/NetworkError|Failed to fetch/i)) {
-                console.warn("Network error occurred.");
+            const isNetworkError = error.message.match(/NetworkError|Failed to fetch/i);
+            if (isNetworkError) {
+                console.warn("Network error occurred, starting continuous retry...");
+                await this.startHealthCheck();
             }
 
             throw error;
         }
     },
+
     handleUnauthorized(response) {
-        if (response == "Unauthorized") {
+        if (response === "Unauthorized") {
             localStorage.setItem("apiKey", "");
+            this.stopHealthCheck(); // Stop health check on unauthorized
         }
     },
 
@@ -87,9 +133,11 @@ const ApiService = {
             .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
             .join("&");
     },
+
     async getTotals() {
         return await this.getData("/totals", { paginate: false });
     },
+
     async getData(url, params = {}) {
         return await this.get(this.buildUrl(url, params));
     },

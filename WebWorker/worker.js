@@ -41,17 +41,7 @@ self.onmessage = async (event) => {
         switch (type) {
             case "SYNC_ALL_DATA":
                 try {
-                    await Promise.all([
-                        ddeService.setDDEIds(),
-                        stockService.setStock(),
-                        conceptNameService.setConceptName(),
-                        conceptSetService.setConceptSet(),
-                        relationshipsService.setOfflineRelationship(),
-                        genericsService.setOfflineGenericVaccineSchedule(),
-                        LocationService.setOfflineLocation(),
-                        patientService.savePatientRecord(),
-                        syncPatientDataService.getPatientData(),
-                    ]);
+                    await syncPatientDataService.syncAllData();
                     self.postMessage("Done syncing all data");
                     console.log("SYNC_ALL_DATA ~ storeName:", type);
                 } catch (error) {
