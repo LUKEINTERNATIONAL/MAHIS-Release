@@ -81,6 +81,7 @@ const ApiService = {
             const isNetworkError = error.message.match(/NetworkError|Failed to fetch/i);
             if (isNetworkError) {
                 console.warn("Network error occurred, starting continuous retry...");
+                self.postMessage("healthCheckError");
                 await this.startHealthCheck();
             }
 

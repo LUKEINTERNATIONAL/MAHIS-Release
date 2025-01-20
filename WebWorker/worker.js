@@ -18,6 +18,7 @@ importScripts(
 
 let APIURL = "";
 let APIKEY = "";
+let APISTATUS = "";
 let TOTALS = "";
 let USERID = "";
 let PROGRAMID = "";
@@ -29,12 +30,13 @@ let DATE = "";
  **********************************************************************
  **********************************************************************/
 self.onmessage = async (event) => {
-    const { type, url, apiKey, userId, programId, totals, date, payload } = event.data;
+    const { type, url, apiKey, userId, programId, totals, date, payload, apiStatus } = event.data;
     USERID = userId;
     PROGRAMID = programId;
     DATE = date;
     APIURL = url;
     APIKEY = apiKey;
+    APISTATUS = apiStatus;
     TOTALS = JSON.parse(totals);
     await DatabaseManager.openDatabase();
     try {
