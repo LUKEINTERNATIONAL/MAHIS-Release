@@ -276,6 +276,6 @@ const patientService = {
         );
     },
     async checkIDExistence(nid, identifierId) {
-        return nid ? (await findByOtherID(nid, identifierId)).length > 0 : false;
+        return nid ? (await this.findByOtherID(nid, identifierId)).length > 0 : false;
     },
 };
