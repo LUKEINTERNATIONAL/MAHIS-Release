@@ -1,4 +1,5 @@
 const BATCH_SIZE = 50; // Increased batch size for better performance
+let count = [];
 
 const syncPatientDataService = {
     async syncAllData() {
@@ -24,31 +25,17 @@ const syncPatientDataService = {
                 return;
             }
 
-            const needsReset = await this.checkIfResetNeeded(patientsData);
-            if (needsReset) {
-                await this.handleDataReset();
-                previousSyncDate = "";
-                patientsData = await this.getPatientIds("");
-            }
-
             // Use a buffer to batch save operations
             await this.processBatchWithBuffer(patientsData);
-
+            await this.updateSyncStatus(patientsData.latest_encounter_datetime);
             // Process remaining pages in optimized batches
             if (patientsData.sync_count > BATCH_SIZE) {
                 await this.processRemainingPagesInBatches(previousSyncDate, patientsData.sync_count);
             }
-
-            await this.updateSyncStatus(patientsData.latest_encounter_datetime);
         } catch (error) {
             console.error("Error in getPatientData:", error);
             throw error;
         }
-    },
-
-    async checkIfResetNeeded(patientsData) {
-        const localCount = await this.getLocalPatientCount();
-        return localCount !== patientsData.server_patient_count;
     },
 
     async handleDataReset() {
@@ -66,7 +53,9 @@ const syncPatientDataService = {
                 const page = i + j + 2; // +2 because we already processed page 1
                 pagePromises.push(this.processPage(previousSyncDate, page));
             }
-            await Promise.all(pagePromises);
+            const dates = await Promise.all(pagePromises);
+            const latestDate = dates.sort().pop();
+            if (latestDate) await this.updateSyncStatus(latestDate);
         }
     },
 
@@ -75,6 +64,7 @@ const syncPatientDataService = {
             const pageData = await this.getPatientIds(previousSyncDate, BATCH_SIZE, page);
             if (pageData?.sync_patients?.length) {
                 await this.processBatchWithBuffer(pageData);
+                return pageData.latest_encounter_datetime;
             }
         } catch (error) {
             console.error(`Error processing page ${page}:`, error);
@@ -113,7 +103,6 @@ const syncPatientDataService = {
             await Promise.all(buffer.map((op) => op.delete()));
             // Then execute all adds
             await Promise.all(buffer.map((op) => op.add()));
-
             // Update progress after each buffer flush
             const currentCount = await this.getLocalPatientCount();
             this.updateProgressStatus(currentCount, patientsData.server_patient_count, patientsData.latest_encounter_datetime);
@@ -145,6 +134,7 @@ const syncPatientDataService = {
     },
 
     async updateSyncStatus(latestEncounterDateTime) {
+        console.log("🚀 ~ updateSyncStatus ~ latestEncounterDateTime:", latestEncounterDateTime);
         await previousSyncService.setPreviousSyncDate(latestEncounterDateTime);
     },
 };

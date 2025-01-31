@@ -43,8 +43,9 @@ const LocationService = {
             });
         }
         const villagesData = await DatabaseManager.getOfflineData("villages");
-        if (!villagesData || TOTALS.total_village != villagesData.length) {
-            await this.getVillages();
+        const totalOfflineVillages = villagesData?.length || 0;
+        if (!villagesData || TOTALS.total_village != totalOfflineVillages) {
+            await this.getVillages(totalOfflineVillages);
         } else {
             self.postMessage({
                 payload: {
@@ -70,35 +71,52 @@ const LocationService = {
         return await ApiService.getData("/traditional_authorities", { paginate: false });
     },
 
-    async getVillages() {
+    async getVillages(totalOfflineVillages) {
+        const pageSize = 1000;
+        const batchSize = 50;
+        let totalFetched = 0;
+        let pages = Math.ceil(TOTALS.total_village / 1000);
+        let page = 1;
+        if (totalOfflineVillages >= 1000) {
+            page = Math.floor(totalOfflineVillages / 1000) + 1;
+        }
         try {
-            const allVillage = [];
-            let page = 1;
-            let pageSize = 1000;
-            while (true) {
-                const newVillages = await ApiService.getData("/villages", { page, page_size: pageSize });
-                if (newVillages.length > 0) {
-                    allVillage.push(...newVillages);
-                    await DatabaseManager.overRideCollection("villages", allVillage);
-                    let total_village = allVillage.length;
-                    if (allVillage.length > TOTALS.total_village) {
-                        total_village = TOTALS.total_village;
-                    }
-                    self.postMessage({
-                        payload: {
-                            total_village: total_village,
-                            total: TOTALS.total_village,
-                        },
-                    });
-                    page++;
-                } else {
+            for (page; page <= pages; page++) {
+                const response = await ApiService.getData("/villages", {
+                    page,
+                    page_size: pageSize,
+                });
+
+                if (!response || response.length === 0) {
                     break;
                 }
+
+                // Process records in batches
+                for (let i = 0; i < response.length; i += batchSize) {
+                    const batch = response.slice(i, i + batchSize);
+
+                    // Process batch concurrently
+                    await Promise.all(batch.map((village) => DatabaseManager.addData("villages", village)));
+
+                    totalFetched += batch.length;
+
+                    // Send progress update
+                    self.postMessage({
+                        type: "progress",
+                        payload: {
+                            status: "processing",
+                            total_village: totalOfflineVillages + totalFetched,
+                            total: TOTALS.total_village,
+                            current_page: page,
+                            percentage: Math.round((totalFetched / TOTALS.total_village) * 100),
+                        },
+                    });
+                }
             }
-            return allVillage;
+
+            return totalFetched;
         } catch (error) {
             console.error("Error fetching villages:", error);
-            return [];
         }
     },
 };

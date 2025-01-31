@@ -31,7 +31,6 @@ const ApiService = {
                     await this.healthCheck();
                     console.log("Connection restored!");
                     this.stopHealthCheck();
-                    await syncPatientDataService.syncAllData();
                     return true;
                 } catch (error) {
                     console.warn("Health check failed, retrying...", error);
