@@ -96,7 +96,9 @@ const LocationService = {
                     const batch = response.slice(i, i + batchSize);
 
                     // Process batch concurrently
-                    await Promise.all(batch.map((village) => DatabaseManager.addData("villages", village)));
+                    try {
+                        await Promise.all(batch.map((village) => DatabaseManager.addData("villages", village)));
+                    } catch (error) {}
 
                     totalFetched += batch.length;
 
