@@ -2,7 +2,7 @@ const DatabaseManager = {
     db: null,
     async openDatabase() {
         return new Promise((resolve, reject) => {
-            const request = indexedDB.open("MaHis", 5);
+            const request = indexedDB.open("MaHis", 6);
 
             request.onerror = (event) => {
                 reject("Database error: " + event.target.error);
@@ -20,7 +20,7 @@ const DatabaseManager = {
                     relationship: { keyPath: "relationship_type_id", autoIncrement: true },
                     districts: { keyPath: "district_id", autoIncrement: true },
                     TAs: { keyPath: "traditional_authority_id", autoIncrement: true },
-                    villages: { keyPath: "village_id", autoIncrement: true },
+                    villages: { keyPath: "id", autoIncrement: true },
                     countries: { keyPath: "district_id", autoIncrement: true },
                     programs: { keyPath: "program_id", autoIncrement: true },
                     patientRecords: { keyPath: "id", autoIncrement: true },
@@ -149,6 +149,7 @@ const DatabaseManager = {
             const request = objectStore.add(data);
             request.onerror = (event) => {
                 const error = event.target.error;
+                console.log("🚀 ~ addData ~ storeName:", storeName, data, `Error adding data: ${error?.name} - ${error?.message}`);
                 reject(new Error(`Error adding data: ${error?.name} - ${error?.message}`));
             };
 
