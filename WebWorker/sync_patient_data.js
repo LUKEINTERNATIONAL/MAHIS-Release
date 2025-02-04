@@ -134,7 +134,6 @@ const syncPatientDataService = {
     },
 
     async updateSyncStatus(latestEncounterDateTime) {
-        console.log("🚀 ~ updateSyncStatus ~ latestEncounterDateTime:", latestEncounterDateTime);
         await previousSyncService.setPreviousSyncDate(latestEncounterDateTime);
     },
 };
