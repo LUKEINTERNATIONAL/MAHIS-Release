@@ -13,7 +13,10 @@ importScripts(
     "generic_vaccine_schedule.js",
     "stock.js",
     "concept_name.js",
-    "concept_set.js"
+    "concept_set.js",
+    "diagnosis.js",
+    "specimens.js",
+    "test_types.js"
 );
 
 let APIURL = "";

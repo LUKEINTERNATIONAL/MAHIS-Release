@@ -7,6 +7,9 @@ const syncPatientDataService = {
         await Promise.all([
             ddeService.setDDEIds(),
             stockService.setStock(),
+            testTypeService.setTestType(),
+            specimenService.setSpecimen(),
+            diagnosisService.setDiagnosis(),
             conceptNameService.setConceptName(),
             conceptSetService.setConceptSet(),
             relationshipsService.setOfflineRelationship(),
