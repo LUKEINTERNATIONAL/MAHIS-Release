@@ -15,6 +15,7 @@ const syncPatientDataService = {
             relationshipsService.setOfflineRelationship(),
             genericsService.setOfflineGenericVaccineSchedule(),
             LocationService.setOfflineLocation(),
+            DrugService.setOfflineDrugs(),
             this.getPatientData(),
         ]);
     },

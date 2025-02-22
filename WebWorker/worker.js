@@ -16,7 +16,8 @@ importScripts(
     "concept_set.js",
     "diagnosis.js",
     "specimens.js",
-    "test_types.js"
+    "test_types.js",
+    "drug.js",
 );
 
 let APIURL = "";
@@ -136,6 +137,14 @@ self.onmessage = async (event) => {
                     self.postMessage("Done");
                 } catch (error) {
                     console.log("SYNC_DDE ~ error:", error);
+                }
+                break;
+            case "SET_OFFLINE_DRUG":
+                try {
+                    await DrugService.setOfflineDrugs();
+                    console.log("SET_OFFLINE_DRUG ~ storeName:", type);
+                } catch (error) {
+                    console.log("SET_OFFLINE_DRUG ~ error:", error);
                 }
                 break;
         }
