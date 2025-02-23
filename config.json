@@ -1,0 +1,20 @@
+{
+	"development": {
+		"apiURL": "localhost",
+		"apiPort": "3000",
+		"apiProtocol": "http",
+		"websocketProtocol": "ws"
+	},
+	"test": {
+		"apiURL": "apps.linmalawi.org",
+		"apiPort": "",
+		"apiProtocol": "https",
+		"websocketProtocol": "wss"
+	},
+	"production": {
+		"apiURL": "mahis.health.gov.mw",
+		"apiPort": "443",
+		"apiProtocol": "http",
+		"websocketProtocol": "wss"
+	}
+}
