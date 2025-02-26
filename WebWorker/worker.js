@@ -1,5 +1,4 @@
 // start common code
-// import { DatabaseManager } from "./db";
 importScripts(
     "db.js",
     "client.js",
@@ -17,7 +16,7 @@ importScripts(
     "diagnosis.js",
     "specimens.js",
     "test_types.js",
-    "drug.js",
+    "drug.js"
 );
 
 let APIURL = "";
