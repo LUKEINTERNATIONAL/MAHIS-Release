@@ -2,7 +2,7 @@ const DatabaseManager = {
     db: null,
     async openDatabase() {
         return new Promise((resolve, reject) => {
-            const request = indexedDB.open("MaHis", 7);
+            const request = indexedDB.open("MaHis", 8);
 
             request.onerror = (event) => {
                 reject("Database error: " + event.target.error);
@@ -38,6 +38,7 @@ const DatabaseManager = {
                 };
 
                 for (const storeName of Array.from(database.objectStoreNames)) {
+                    localStorage.clear();
                     database.deleteObjectStore(storeName);
                 }
 
