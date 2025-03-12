@@ -2,7 +2,7 @@ const DatabaseManager = {
     db: null,
     async openDatabase() {
         return new Promise((resolve, reject) => {
-            const request = indexedDB.open("MaHis", 8);
+            const request = indexedDB.open("MaHis", 9);
 
             request.onerror = (event) => {
                 reject("Database error: " + event.target.error);
@@ -35,6 +35,7 @@ const DatabaseManager = {
                     specimens: { keyPath: "id", autoIncrement: true },
                     diagnosis: { keyPath: "id", autoIncrement: true },
                     drugs: { keyPath: "drug_id", autoIncrement: true },
+                    activeProgramInContext: { keyPath: "program_id", autoIncrement: true },
                 };
 
                 for (const storeName of Array.from(database.objectStoreNames)) {

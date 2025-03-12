@@ -1,12 +1,23 @@
 const BATCH_SIZE = 50; // Increased batch size for better performance
 let count = [];
 
+offineProgramIds = [33, 32];
+
+async function getPrograms() {
+    const data = await DatabaseManager.getOfflineData("activeProgramInContext");
+    return data;
+}
+
 const syncPatientDataService = {
     async syncAllData() {
         await patientService.savePatientRecord();
-        await Promise.all([
+
+        const activeProgramData = await getPrograms();
+        const activeProgramId = activeProgramData?.[0]?.program_id;
+        const isOfflineProgram = activeProgramId && offineProgramIds.includes(activeProgramId);
+
+        const services = [
             ddeService.setDDEIds(),
-            stockService.setStock(),
             testTypeService.setTestType(),
             specimenService.setSpecimen(),
             diagnosisService.setDiagnosis(),
@@ -14,12 +25,17 @@ const syncPatientDataService = {
             conceptSetService.setConceptSet(),
             relationshipsService.setOfflineRelationship(),
             DrugService.setOfflineDrugs(),
-            genericsService.setOfflineGenericVaccineSchedule(),
             LocationService.setOfflineLocation(),
+        ];
 
-            this.getPatientData(),
-        ]);
+        if (isOfflineProgram) {
+            services.push(stockService.setStock(), genericsService.setOfflineGenericVaccineSchedule(), this.getPatientData());
+        }
+
+        // Execute all services in parallel
+        await Promise.all(services);
     },
+
     async getPatientData() {
         try {
             let previousSyncDate = await previousSyncService.getPreviousSyncDate();
