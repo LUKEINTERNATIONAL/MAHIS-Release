@@ -1,9 +1,21 @@
 const DrugService = {
     async setOfflineDrugs() {
         let drugData = await DatabaseManager.getOfflineData("drugs");
-        if (!drugData) {
+        if (!drugData || TOTALS.total_OPD_drugs != drugData.length) {
             drugData = await this.getDrugs();
-            await DatabaseManager.overRideCollection("drugs", drugData);
+
+            if (drugData.length > 0 && drugData) {
+                await DatabaseManager.overRideCollection("drugs", drugData);
+            }
+        }
+
+        if (drugData.length === TOTALS.total_OPD_drugs) {
+            self.postMessage({
+                payload: {
+                    total_OPD_drugs: drugData.length,
+                    total: TOTALS.total_OPD_drugs,
+                },
+            });
         }
     },
 

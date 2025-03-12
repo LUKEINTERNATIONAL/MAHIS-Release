@@ -13,9 +13,10 @@ const syncPatientDataService = {
             conceptNameService.setConceptName(),
             conceptSetService.setConceptSet(),
             relationshipsService.setOfflineRelationship(),
+            DrugService.setOfflineDrugs(),
             genericsService.setOfflineGenericVaccineSchedule(),
             LocationService.setOfflineLocation(),
-            DrugService.setOfflineDrugs(),
+
             this.getPatientData(),
         ]);
     },
