@@ -6,8 +6,8 @@
 		"websocketProtocol": "ws"
 	},
 	"test": {
-		"apiURL": "apps.linmalawi.org",
-		"apiPort": "",
+		"apiURL": "mahistest.health.gov.mw",
+		"apiPort": "443",
 		"apiProtocol": "https",
 		"websocketProtocol": "wss"
 	},
