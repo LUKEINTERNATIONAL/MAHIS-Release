@@ -29,6 +29,7 @@ const DatabaseManager = {
 
             request.onupgradeneeded = (event) => {
                 const database = event.target.result;
+                const transaction = event.target.transaction;
 
                 // Corrected object store configurations
                 const schema = {
