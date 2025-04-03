@@ -2,51 +2,144 @@ const DatabaseManager = {
     db: null,
     async openDatabase() {
         return new Promise((resolve, reject) => {
-            const request = indexedDB.open("MaHis", 9);
+            const DB_NAME = "MaHis";
+            const DB_VERSION = 10; // Increment this when changing schema
+
+            const request = indexedDB.open(DB_NAME, DB_VERSION);
 
             request.onerror = (event) => {
-                reject("Database error: " + event.target.error);
+                reject(`Database error: ${event.target.error}`);
+            };
+
+            request.onblocked = () => {
+                reject("Database upgrade blocked by existing connection. Close other tabs using this database.");
             };
 
             request.onsuccess = (event) => {
                 this.db = event.target.result;
+
+                // Add version change listener for future upgrades
+                this.db.onversionchange = () => {
+                    this.db.close();
+                    console.log("Database is being upgraded elsewhere. Closing connection...");
+                };
+
                 resolve(this.db);
             };
 
             request.onupgradeneeded = (event) => {
                 const database = event.target.result;
 
-                const objectStores = {
-                    relationship: { keyPath: "relationship_type_id", autoIncrement: true },
-                    districts: { keyPath: "district_id", autoIncrement: true },
-                    TAs: { keyPath: "traditional_authority_id", autoIncrement: true },
-                    villages: { keyPath: "id", autoIncrement: true },
-                    countries: { keyPath: "district_id", autoIncrement: true },
-                    programs: { keyPath: "program_id", autoIncrement: true },
-                    patientRecords: { keyPath: "id", autoIncrement: true },
+                // Corrected object store configurations
+                const schema = {
+                    relationship: {
+                        keyPath: "relationship_type_id",
+                        indexes: [
+                            { name: "a_is_to_b", keyPath: "a_is_to_b" },
+                            { name: "b_is_to_a", keyPath: "b_is_to_a" },
+                        ],
+                    },
+                    districts: {
+                        keyPath: "district_id",
+                        indexes: [
+                            { name: "name", keyPath: "name" },
+                            { name: "region_id", keyPath: "region_id" },
+                        ],
+                    },
+                    TAs: {
+                        keyPath: "traditional_authority_id",
+                        indexes: [
+                            { name: "name", keyPath: "name" },
+                            { name: "district_id", keyPath: "district_id" },
+                        ],
+                    },
+                    villages: {
+                        keyPath: "id",
+                        autoIncrement: true,
+                        indexes: [
+                            { name: "name", keyPath: "name" },
+                            { name: "traditional_authority_id", keyPath: "traditional_authority_id" },
+                        ],
+                    },
+                    countries: {
+                        keyPath: "district_id",
+                        indexes: [
+                            { name: "name", keyPath: "name" },
+                            { name: "region_id", keyPath: "region_id" },
+                        ],
+                    },
+                    programs: { keyPath: "program_id", indexes: [{ name: "concept_id", keyPath: "concept_id" }] },
+                    patientRecords: {
+                        keyPath: "patientID",
+                        indexes: [
+                            { name: "given_name", keyPath: "personInformation.given_name" },
+                            { name: "family_name", keyPath: "personInformation.family_name" },
+                            { name: "ID", keyPath: "ID" },
+                        ],
+                    },
                     dde: { keyPath: "id", autoIncrement: true },
                     generics: { keyPath: "id", autoIncrement: true },
-                    stock: { keyPath: "id", autoIncrement: true },
+                    stock: { keyPath: "id", autoIncrement: true, indexes: [{ name: "pharmacy_batch_id", keyPath: "pharmacy_batch_id" }] },
                     genericVaccineSchedule: { keyPath: "id", autoIncrement: true },
-                    conceptNames: { keyPath: "id", autoIncrement: true },
-                    conceptSets: { keyPath: "id", autoIncrement: true },
-                    bookedAppointments: { keyPath: "id", autoIncrement: true },
-                    testTypes: { keyPath: "id", autoIncrement: true },
-                    specimens: { keyPath: "id", autoIncrement: true },
-                    diagnosis: { keyPath: "id", autoIncrement: true },
-                    drugs: { keyPath: "drug_id", autoIncrement: true },
-                    activeProgramInContext: { keyPath: "program_id", autoIncrement: true },
+                    conceptNames: {
+                        keyPath: "id",
+                        autoIncrement: true,
+                        indexes: [
+                            { name: "concept_id", keyPath: "concept_id" },
+                            { name: "name", keyPath: "name" },
+                        ],
+                    },
+                    conceptSets: {
+                        keyPath: "id",
+                        autoIncrement: true,
+                        indexes: [
+                            { name: "concept_set_name", keyPath: "concept_set_name" },
+                            { name: "member_ids", keyPath: "member_ids" },
+                        ],
+                    },
+                    bookedAppointments: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
+                    testTypes: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
+                    specimens: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
+                    diagnosis: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
+                    drugs: {
+                        keyPath: "drug_id",
+                        indexes: [
+                            { name: "name", keyPath: "name" },
+                            { name: "concept_id", keyPath: "concept_id" },
+                        ],
+                    },
+                    activeProgramInContext: { keyPath: "program_id" },
                 };
 
-                for (const storeName of Array.from(database.objectStoreNames)) {
-                    localStorage.clear();
-                    database.deleteObjectStore(storeName);
-                }
+                Object.entries(schema).forEach(([storeName, config]) => {
+                    let store;
+                    const indexes = config.indexes || []; // Handle missing indexes array
 
-                Object.entries(objectStores).forEach(([storeName, options]) => {
                     if (!database.objectStoreNames.contains(storeName)) {
-                        database.createObjectStore(storeName, options);
+                        store = database.createObjectStore(storeName, {
+                            keyPath: config.keyPath,
+                            autoIncrement: config.autoIncrement || false,
+                        });
+                    } else {
+                        store = transaction.objectStore(storeName); // Now using valid transaction
                     }
+
+                    indexes.forEach((index) => {
+                        try {
+                            // Recreate indexes safely
+                            if (store.indexNames.contains(index.name)) {
+                                store.deleteIndex(index.name);
+                            }
+                            store.createIndex(index.name, index.keyPath, {
+                                unique: !!index.unique,
+                                multiEntry: !!index.multiEntry,
+                            });
+                        } catch (error) {
+                            console.error(`Index error in ${storeName}:`, error);
+                            transaction.abort(); // Explicitly abort on error
+                            reject(error);
+                        }
+                    });
                 });
             };
         });
@@ -104,41 +197,6 @@ const DatabaseManager = {
             };
 
             transaction.oncomplete = () => {};
-        });
-    },
-    upsertSingleRecord(storeName, data) {
-        if (!this.db) {
-            throw new Error("Database not initialized. Call openDatabase() first.");
-        }
-
-        return new Promise((resolve, reject) => {
-            if (!this.db) {
-                reject(new Error("Database not initialized. Call openDatabase() first."));
-                return;
-            }
-            const transaction = this.db.transaction([storeName], "readwrite");
-            const objectStore = transaction.objectStore(storeName);
-
-            // Get all records (should be only one or none)
-            const getAllRequest = objectStore.getAll();
-
-            getAllRequest.onsuccess = (event) => {
-                const existingRecords = event.target.result;
-
-                if (existingRecords.length > 0) {
-                    // Update existing record
-                    const updateRequest = objectStore.put([...existingRecords[0], ...data]);
-                    updateRequest.onsuccess = () => resolve();
-                    updateRequest.onerror = (event) => reject(event.target.error);
-                } else {
-                    // Add new record
-                    const addRequest = objectStore.add(data);
-                    addRequest.onsuccess = () => resolve();
-                    addRequest.onerror = (event) => reject(event.target.error);
-                }
-            };
-
-            getAllRequest.onerror = (event) => reject(event.target.error);
         });
     },
 
@@ -432,6 +490,159 @@ const DatabaseManager = {
                     };
                 });
             };
+        });
+    },
+    async bulkAdd(storeName, records) {
+        return new Promise((resolve, reject) => {
+            if (!this.db) {
+                reject(new Error("Database not initialized. Call openDatabase() first."));
+                return;
+            }
+
+            const transaction = this.db.transaction([storeName], "readwrite");
+            const objectStore = transaction.objectStore(storeName);
+            let completedCount = 0;
+            let errorOccurred = false;
+
+            transaction.onerror = (event) => {
+                errorOccurred = true;
+                reject(new Error(`Transaction failed: ${event.target.error}`));
+            };
+
+            // Use chunking for very large arrays to prevent memory issues
+            const chunkSize = 100;
+            const chunks = [];
+            for (let i = 0; i < records.length; i += chunkSize) {
+                chunks.push(records.slice(i, i + chunkSize));
+            }
+
+            let currentChunk = 0;
+
+            const processNextChunk = () => {
+                if (currentChunk >= chunks.length) {
+                    if (!errorOccurred) {
+                        resolve(completedCount);
+                    }
+                    return;
+                }
+
+                const chunk = chunks[currentChunk++];
+
+                chunk.forEach((record) => {
+                    const request = objectStore.add(record);
+
+                    request.onsuccess = () => {
+                        completedCount++;
+                        if (completedCount === records.length && !errorOccurred) {
+                            resolve(completedCount);
+                        }
+                    };
+
+                    request.onerror = (event) => {
+                        console.warn(`Error adding record: ${event.target.error}`);
+                        // Continue processing despite errors
+                        completedCount++;
+                        if (completedCount === records.length && !errorOccurred) {
+                            resolve(completedCount);
+                        }
+                    };
+                });
+
+                // Process next chunk after a small delay to give main thread breathing room
+                setTimeout(processNextChunk, 0);
+            };
+
+            processNextChunk();
+        });
+    },
+
+    async bulkDelete(storeName, keys) {
+        return new Promise((resolve, reject) => {
+            if (!this.db) {
+                reject(new Error("Database not initialized. Call openDatabase() first."));
+                return;
+            }
+
+            const transaction = this.db.transaction([storeName], "readwrite");
+            const objectStore = transaction.objectStore(storeName);
+            let completedCount = 0;
+            let errorOccurred = false;
+
+            transaction.onerror = (event) => {
+                errorOccurred = true;
+                reject(new Error(`Transaction failed: ${event.target.error}`));
+            };
+
+            // Use chunking for very large arrays
+            const chunkSize = 100;
+            const chunks = [];
+            for (let i = 0; i < keys.length; i += chunkSize) {
+                chunks.push(keys.slice(i, i + chunkSize));
+            }
+
+            let currentChunk = 0;
+
+            const processNextChunk = () => {
+                if (currentChunk >= chunks.length) {
+                    if (!errorOccurred) {
+                        resolve(completedCount);
+                    }
+                    return;
+                }
+
+                const chunk = chunks[currentChunk++];
+
+                chunk.forEach((key) => {
+                    const request = objectStore.delete(key);
+
+                    request.onsuccess = () => {
+                        completedCount++;
+                        if (completedCount === keys.length && !errorOccurred) {
+                            resolve(completedCount);
+                        }
+                    };
+
+                    request.onerror = (event) => {
+                        console.warn(`Error deleting record: ${event.target.error}`);
+                        // Continue processing despite errors
+                        completedCount++;
+                        if (completedCount === keys.length && !errorOccurred) {
+                            resolve(completedCount);
+                        }
+                    };
+                });
+
+                // Process next chunk after a small delay
+                setTimeout(processNextChunk, 0);
+            };
+
+            processNextChunk();
+        });
+    },
+
+    async transaction(storeName, callback) {
+        return new Promise((resolve, reject) => {
+            if (!this.db) {
+                reject(new Error("Database not initialized. Call openDatabase() first."));
+                return;
+            }
+
+            const transaction = this.db.transaction([storeName], "readwrite");
+            const objectStore = transaction.objectStore(storeName);
+
+            transaction.onerror = (event) => {
+                reject(new Error(`Transaction failed: ${event.target.error}`));
+            };
+
+            transaction.oncomplete = () => {
+                resolve();
+            };
+
+            try {
+                callback(objectStore);
+            } catch (error) {
+                reject(error);
+            }
         });
     },
 };
