@@ -102,6 +102,7 @@ const DatabaseManager = {
                     testTypes: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
                     specimens: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
                     diagnosis: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
+                    testResultIndicators: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
                     drugs: {
                         keyPath: "drug_id",
                         indexes: [
