@@ -3,7 +3,7 @@ const DatabaseManager = {
     async openDatabase() {
         return new Promise((resolve, reject) => {
             const DB_NAME = "MaHis";
-            const DB_VERSION = 10; // Increment this when changing schema
+            const DB_VERSION = 11; // Increment this when changing schema
 
             const request = indexedDB.open(DB_NAME, DB_VERSION);
 
@@ -111,6 +111,8 @@ const DatabaseManager = {
                         ],
                     },
                     activeProgramInContext: { keyPath: "program_id" },
+                    facilities: { keyPath: "code" },
+                    wards: { keyPath: "location_id" },
                 };
 
                 Object.entries(schema).forEach(([storeName, config]) => {

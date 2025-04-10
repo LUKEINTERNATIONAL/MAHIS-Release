@@ -16,7 +16,9 @@ importScripts(
     "diagnosis.js",
     "specimens.js",
     "test_types.js",
-    "drug.js"
+    "drug.js",
+    "facility.js",
+    "wards.js",
 );
 
 let APIURL = "";
@@ -144,6 +146,22 @@ self.onmessage = async (event) => {
                     console.log("SET_OFFLINE_DRUG ~ storeName:", type);
                 } catch (error) {
                     console.log("SET_OFFLINE_DRUG ~ error:", error);
+                }
+                break;
+            case "SET_OFFLINE_FACILITY":
+                try {
+                    await FacilityService.setOfflineFacilities();
+                    console.log("SET_OFFLINE_FACILITY ~ storeName:", type);
+                } catch (error) {
+                    console.log("SET_OFFLINE_FACILITY ~ error:", error);
+                }
+                break;
+            case "SET_OFFLINE_WARDS":
+                try {
+                    await WardsService.setOfflineWards();
+                    console.log("SET_OFFLINE_WARDS ~ storeName:", type);
+                } catch (error) {
+                    console.log("SET_OFFLINE_WARDS ~ error:", error);
                 }
                 break;
         }

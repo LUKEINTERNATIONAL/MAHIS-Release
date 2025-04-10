@@ -104,6 +104,8 @@ const syncPatientDataService = {
                 relationshipsService.setOfflineRelationship(),
                 DrugService.setOfflineDrugs(),
                 LocationService.setOfflineLocation(),
+                FacilityService.setOfflineFacilities(),
+                WardsService.setOfflineWards(),
             ];
 
             if (isOfflineProgram) {
