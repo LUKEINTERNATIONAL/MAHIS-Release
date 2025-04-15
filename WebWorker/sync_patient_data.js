@@ -192,14 +192,18 @@ const syncPatientDataService = {
             await this.calculateProgressiveDelay(processedCount, totalPatients);
 
             try {
-                const pageData = await this.getPatientIds(previousSyncDate, dynamicBatchSize, page);
+                let pageData = await this.getPatientIds(previousSyncDate, dynamicBatchSize, page);
 
-                if (pageData?.sync_patients?.length) {
+                if (pageData?.sync_patients?.length > 0) {
                     await this.processBatchWithBuffer(pageData);
                     await this.updateSyncStatus(pageData.latest_encounter_datetime);
                     processedCount = await this.getLocalPatientCount();
-                    // Update progress periodically
+                    // At the end of the function
+                    if (processedCount === totalPatients) this.updateProgressStatus(processedCount, totalPatients, null, true);
                     this.updateProgressStatus(processedCount, totalPatients);
+                } else {
+                    previousSyncDate = "";
+                    page = 0;
                 }
 
                 // Yield to main thread
@@ -288,9 +292,9 @@ const syncPatientDataService = {
         }
     },
 
-    updateProgressStatus(offlineCount, serverCount, lastSyncDate = null) {
+    updateProgressStatus(offlineCount, serverCount, lastSyncDate = null, forceUpdate = false) {
         const now = Date.now();
-        if (now - lastProgressUpdate > PROGRESS_UPDATE_INTERVAL) {
+        if (forceUpdate || now - lastProgressUpdate > PROGRESS_UPDATE_INTERVAL) {
             lastProgressUpdate = now;
             self.postMessage({
                 lastSyncDate,
@@ -301,7 +305,7 @@ const syncPatientDataService = {
     },
 
     async getLocalPatientCount() {
-        const data = await DatabaseManager.getOfflineData("patientRecords");
+        const data = await DatabaseManager.getOfflineData("patientRecords", { location_id: LOCATIONID });
         return data?.length || 0;
     },
 
@@ -333,11 +337,11 @@ const syncPatientDataService = {
 
         // If response is fast, gradually increase batch size
         if (responseTime < 1000) {
-            dynamicBatchSize = Math.min(100, dynamicBatchSize + 5);
+            dynamicBatchSize = dynamicBatchSize >= 50 ? 50 : dynamicBatchSize;
         }
         // If response is slow, decrease batch size
         else if (responseTime > 3000) {
-            dynamicBatchSize = Math.max(10, dynamicBatchSize - 5);
+            dynamicBatchSize = dynamicBatchSize >= 50 ? 50 : dynamicBatchSize;
         }
     },
 

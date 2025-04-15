@@ -18,7 +18,7 @@ importScripts(
     "test_types.js",
     "drug.js",
     "facility.js",
-    "wards.js",
+    "wards.js"
 );
 
 let APIURL = "";
@@ -35,8 +35,9 @@ let DATE = "";
  **********************************************************************
  **********************************************************************/
 self.onmessage = async (event) => {
-    const { type, url, apiKey, userId, programId, totals, date, payload, apiStatus } = event.data;
+    const { type, url, apiKey, userId, locationId, programId, totals, date, payload, apiStatus } = event.data;
     USERID = userId;
+    LOCATIONID = locationId;
     PROGRAMID = programId;
     DATE = date;
     APIURL = url;
@@ -114,9 +115,8 @@ self.onmessage = async (event) => {
             case "SAVE_PATIENT_RECORD":
                 try {
                     self.postMessage("");
-                    const { ID, patientID } = await patientService.saveDemographicsRecord(payload.data);
+                    await patientService.savePatientRecord();
                     console.log("SAVE_PATIENT_RECORD ~ storeName:", type);
-                    self.postMessage({ ID, msg: "Patient record saved successfully" });
                 } catch (error) {
                     console.log("SAVE_PATIENT_RECORD ~ error:", error);
                 }
