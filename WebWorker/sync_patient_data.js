@@ -89,6 +89,8 @@ const syncPatientDataService = {
     async syncAllData() {
         try {
             await patientService.savePatientRecord();
+            // await patientService.setPatientCachedRecord();
+            // await patientService.sharePatientRecords();
 
             const activeProgramData = await getPrograms();
             const activeProgramId = activeProgramData?.[0]?.program_id;
