@@ -1,1 +1,0 @@
-import{R as t}from"./report_service-8f1a5f5f.js";class p extends t{constructor(){super()}generate(r,e){return this.getReport("/programs/".concat(this.programId,"/reports/").concat(r),e)}}export{p as P};
