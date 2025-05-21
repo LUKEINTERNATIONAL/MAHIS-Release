@@ -1,0 +1,1 @@
+System.register(["./index-legacy-e977a0fb.js","./lodash-legacy-78c9f2a0.js"],(function(e,t){"use strict";var a,i;return{setters:[e=>{a=e.L},e=>{i=e.l}],execute:function(){e("g",(async function(e=""){return(await a.getFacilities({name:e})).filter((e=>!i.isEmpty(e)&&""!=e.name.trim())).map((e=>({label:e.name,value:e.location_id,other:e})))}))}}}));
