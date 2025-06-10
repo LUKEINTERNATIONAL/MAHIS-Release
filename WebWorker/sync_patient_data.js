@@ -109,11 +109,13 @@ const syncPatientDataService = {
                 FacilityService.setOfflineFacilities(),
                 WardsService.setOfflineWards(),
             ];
-
-            if (isOfflineProgram) {
-                services.push(stockService.setStock(), genericsService.setOfflineGenericVaccineSchedule(), this.getPatientData());
-            }
-
+ 
+            services.push(
+                stockService.setStock(),
+                genericsService.setOfflineGenericVaccineSchedule(),
+                this.getPatientData()
+            );
+            
             // Execute services with controlled concurrency to avoid overwhelming resources
             await this.executeWithControlledConcurrency(services, 3);
         } catch (error) {
@@ -152,8 +154,16 @@ const syncPatientDataService = {
     },
 
     async getPatientData() {
+        const latestRecord = await DatabaseManager.getOfflineData(
+            "patientRecords",
+            { sync_status: "" },
+            {
+                getLatest: true,
+                orderBy: "encounter_datetime",
+            }
+        );
         try {
-            let previousSyncDate = await previousSyncService.getPreviousSyncDate();
+            let previousSyncDate = latestRecord?.encounter_datetime || "";
             let patientsData = await this.getPatientIds(previousSyncDate);
 
             if (!patientsData?.sync_patients) {
@@ -367,9 +377,6 @@ const syncPatientDataService = {
         // Get the latest date from all pending updates
         const latestDate = this.pendingSyncUpdates.sort().pop();
         this.pendingSyncUpdates = [];
-
-        // Perform the actual update
-        await previousSyncService.setPreviousSyncDate(latestDate);
 
         // Reset the scheduled flag
         this.syncUpdateScheduled = false;

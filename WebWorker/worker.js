@@ -47,6 +47,14 @@ self.onmessage = async (event) => {
     await DatabaseManager.openDatabase();
     try {
         switch (type) {
+            case "SYNC":
+                try {
+                    await syncPatientDataService.syncAllData();
+                    console.log("SYNC ~ storeName:", type);
+                } catch (error) {
+                    console.log("SYNC ~ error:", error);
+                }
+                break;
             case "SYNC_ALL_DATA":
                 try {
                     await syncPatientDataService.syncAllData();
@@ -116,6 +124,7 @@ self.onmessage = async (event) => {
                 try {
                     self.postMessage("");
                     await patientService.savePatientRecord();
+                    self.postMessage("Done saving data");
                     console.log("SAVE_PATIENT_RECORD ~ storeName:", type);
                 } catch (error) {
                     console.log("SAVE_PATIENT_RECORD ~ error:", error);

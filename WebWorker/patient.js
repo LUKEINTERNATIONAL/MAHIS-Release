@@ -16,7 +16,7 @@ const checkNetworkConnectivity = async (url) => {
 const patientService = {
     async savePatientRecord() {
         try {
-            const patientRecords = await DatabaseManager.getOfflineData("patientRecords", { encounter_datetime: { $ne: "" } });
+            const patientRecords = await DatabaseManager.getOfflineData("patientRecords", { sync_status: "unsynced" });
             if (patientRecords) {
                 await Promise.all(
                     patientRecords.map(async (record) => {

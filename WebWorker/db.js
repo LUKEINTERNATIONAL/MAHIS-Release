@@ -76,6 +76,7 @@ const DatabaseManager = {
                             { name: "given_name", keyPath: "personInformation.given_name" },
                             { name: "family_name", keyPath: "personInformation.family_name" },
                             { name: "ID", keyPath: "ID" },
+                            { name: "encounter_datetime", keyPath: "encounter_datetime" },
                         ],
                     },
                     dde: { keyPath: "id", autoIncrement: true },
@@ -314,7 +315,7 @@ const DatabaseManager = {
             }
         });
     },
-    async getOfflineData(storeName, whereCondition = null) {
+    async getOfflineData(storeName, whereCondition = null, options = {}) {
         return new Promise((resolve, reject) => {
             if (!this.db) {
                 reject(new Error("Database not initialized."));
@@ -327,7 +328,47 @@ const DatabaseManager = {
 
                 let request;
 
-                // If a where condition is provided, use a cursor
+                // Handle special case for getting latest record WITHOUT where condition
+                if (options.getLatest && options.orderBy && !whereCondition) {
+                    if (objectStore.indexNames.contains(options.orderBy)) {
+                        const index = objectStore.index(options.orderBy);
+                        request = index.openCursor(null, "prev");
+
+                        request.onsuccess = (event) => {
+                            const cursor = event.target.result;
+                            if (cursor) {
+                                resolve(cursor.value);
+                            } else {
+                                resolve(null);
+                            }
+                        };
+                    } else {
+                        // Fallback to get all and find latest
+                        request = objectStore.getAll();
+                        request.onsuccess = (event) => {
+                            const allResults = event.target.result;
+                            if (allResults.length === 0) {
+                                resolve(null);
+                                return;
+                            }
+
+                            const latestRecord = allResults.reduce((latest, current) => {
+                                const currentDate = new Date(current[options.orderBy]);
+                                const latestDate = new Date(latest[options.orderBy]);
+                                return currentDate > latestDate ? current : latest;
+                            });
+
+                            resolve(latestRecord);
+                        };
+                    }
+
+                    request.onerror = (event) => {
+                        reject(new Error(`Error getting latest record: ${event.target.error}`));
+                    };
+                    return;
+                }
+
+                // Handle where conditions (with or without getLatest)
                 if (whereCondition) {
                     // Separate equality and inequality conditions
                     const conditions = Object.entries(whereCondition).reduce(
@@ -374,7 +415,17 @@ const DatabaseManager = {
                                     }
                                     cursor.continue();
                                 } else {
-                                    resolve(results.length > 0 ? results : null);
+                                    // Apply getLatest logic to filtered results
+                                    if (options.getLatest && options.orderBy && results.length > 0) {
+                                        const latestRecord = results.reduce((latest, current) => {
+                                            const currentDate = new Date(current[options.orderBy]);
+                                            const latestDate = new Date(latest[options.orderBy]);
+                                            return currentDate > latestDate ? current : latest;
+                                        });
+                                        resolve(latestRecord);
+                                    } else {
+                                        resolve(results.length > 0 ? results : null);
+                                    }
                                 }
                             };
                         } else {
@@ -390,7 +441,18 @@ const DatabaseManager = {
                                         Object.entries(conditions.inequality).every(([key, value]) => item[key] !== value)
                                     );
                                 });
-                                resolve(filteredResults.length > 0 ? filteredResults : null);
+
+                                // Apply getLatest logic to filtered results
+                                if (options.getLatest && options.orderBy && filteredResults.length > 0) {
+                                    const latestRecord = filteredResults.reduce((latest, current) => {
+                                        const currentDate = new Date(current[options.orderBy]);
+                                        const latestDate = new Date(latest[options.orderBy]);
+                                        return currentDate > latestDate ? current : latest;
+                                    });
+                                    resolve(latestRecord);
+                                } else {
+                                    resolve(filteredResults.length > 0 ? filteredResults : null);
+                                }
                             };
                         }
                     } else {
@@ -401,7 +463,18 @@ const DatabaseManager = {
                             const filteredResults = allResults.filter((item) =>
                                 Object.entries(conditions.inequality).every(([key, value]) => item[key] !== value)
                             );
-                            resolve(filteredResults.length > 0 ? filteredResults : null);
+
+                            // Apply getLatest logic to filtered results
+                            if (options.getLatest && options.orderBy && filteredResults.length > 0) {
+                                const latestRecord = filteredResults.reduce((latest, current) => {
+                                    const currentDate = new Date(current[options.orderBy]);
+                                    const latestDate = new Date(latest[options.orderBy]);
+                                    return currentDate > latestDate ? current : latest;
+                                });
+                                resolve(latestRecord);
+                            } else {
+                                resolve(filteredResults.length > 0 ? filteredResults : null);
+                            }
                         };
                     }
                 } else {
