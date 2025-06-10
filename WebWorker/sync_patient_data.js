@@ -88,7 +88,7 @@ const syncPatientDataService = {
 
     async syncAllData() {
         try {
-            if (USEMODS) {
+            if (USEMODS == "true") {
                 await patientService.setPatientCachedRecord();
                 OfflineDataSyncWebsocketService.initWebsocket();
             } else {

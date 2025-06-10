@@ -64,7 +64,7 @@ self.onmessage = async (event) => {
                 break;
             case "SYNC_ALL_DATA":
                 try {
-                    if (USEMODS) {
+                    if (USEMODS == "true") {
                         await patientService.sharePatientRecords();
                         OfflineDataSyncWebsocketService.initWebsocket();
                         await syncPatientDataService.syncAllData();
@@ -136,7 +136,7 @@ self.onmessage = async (event) => {
             case "SAVE_PATIENT_RECORD":
                 try {
                     self.postMessage("");
-                    if (USEMODS) {
+                    if (USEMODS == "true") {
                         await patientService.sharePatientRecords();
                     } else {
                         await patientService.savePatientRecord();

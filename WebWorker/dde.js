@@ -2,8 +2,8 @@ const ddeService = {
     async setDDEIds() {
 
         try {
-            if (!USEMODS) {
-                            // Fetch existing offline DDE data
+            if (USEMODS == "false") {
+            // Fetch existing offline DDE data
             const existingDDE = await DatabaseManager.getOfflineData("dde");
 
             // Constants

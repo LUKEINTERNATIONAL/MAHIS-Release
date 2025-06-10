@@ -39,7 +39,7 @@ const patientService = {
 
     async setPatientCachedRecord(batchSize = 16) {
         try {
-            if (STORE_CACHE_RECORDS == true && USEMODS == true) {
+            if (STORE_CACHE_RECORDS == "true" && USEMODS == "true") {
                 const BASE_URL = await getConnectonString();
                 // const isReachable = await checkNetworkConnectivity(BASE_URL);
     
@@ -101,6 +101,10 @@ const patientService = {
     },
 
     async sharePatientRecords(batchSize = 50) {
+        if (USEMODS == "false") {
+            return
+        }
+        
         const patientRecords = await DatabaseManager.getOfflineData("patientRecords", { sync_status: "unsynced" });
 
         console.log("patientRecords", patientRecords);
