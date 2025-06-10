@@ -3,15 +3,21 @@ const getConnectonString = async () => {
     return connection_strings[0].connection_string
 }
 
-const checkNetworkConnectivity = async (url) => {
+const checkNetworkConnectivity = async (url, timeout = 3000) => {
     try {
+        const controller = new AbortController();
+        const id = setTimeout(() => controller.abort(), timeout);
+
         const response = await fetch(url, {
-            method: "HEAD",
-            mode: "no-cors",
+            method: "GET",
+            headers: { "Accept": "application/json" },
+            signal: controller.signal
         });
-        return true;
+
+        clearTimeout(id);
+        return response.ok;
     } catch (error) {
-        console.error("Network connectivity check failed:", error);
+        console.error("Connectivity check failed:", error.message);
         return false;
     }
 };
