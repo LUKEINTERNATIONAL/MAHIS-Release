@@ -25,7 +25,7 @@ if (typeof navigator !== "undefined" && navigator.connection) {
     });
 }
 
-const offineProgramIds = [33, 32, 14, 1];
+const offineProgramIds = [33];
 
 async function getProgram() {
     const data = await DatabaseManager.getOfflineData("activeProgramInContext");
@@ -88,8 +88,13 @@ const syncPatientDataService = {
 
     async syncAllData() {
         try {
-            await patientService.savePatientRecord();
-            // await patientService.setPatientCachedRecord();
+            if (USEMODS) {
+                await patientService.setPatientCachedRecord();
+                OfflineDataSyncWebsocketService.initWebsocket();
+            } else {
+                await patientService.savePatientRecord();
+            }
+            await patientService.setPatientCachedRecord();
             // await patientService.sharePatientRecords();
 
             const activeProgramData = await getProgram();

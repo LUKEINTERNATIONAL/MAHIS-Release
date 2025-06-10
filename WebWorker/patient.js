@@ -1,4 +1,7 @@
-const BASE_URL = "http://0.0.0.0:3009";
+const getConnectonString = async () => {
+    const connection_strings = await DatabaseManager.getOfflineData("offlineConnectionString");
+    return connection_strings[0].connection_string
+}
 
 const checkNetworkConnectivity = async (url) => {
     try {
@@ -22,7 +25,7 @@ const patientService = {
                     patientRecords.map(async (record) => {
                         const data = await ApiService.post("/save_patient_record", { record: record });
                         if (data) {
-                            DatabaseManager.overRideRecordRecord("patientRecords", data, { patientID: record.patientID });
+                            await DatabaseManager.overrideRecordExplicit('patientRecords', data, record.patientID);
                         }
                     })
                 );
@@ -36,44 +39,61 @@ const patientService = {
 
     async setPatientCachedRecord(batchSize = 16) {
         try {
-            const isReachable = await checkNetworkConnectivity(BASE_URL);
-
-            if (!isReachable) {
-                throw new Error("Server is not reachable");
+            if (STORE_CACHE_RECORDS == true && USEMODS == true) {
+                const BASE_URL = await getConnectonString();
+                // const isReachable = await checkNetworkConnectivity(BASE_URL);
+    
+                // if (!isReachable) {
+                //     throw new Error("Server is not reachable");
+                // }
+    
+                // Get remote patient IDs
+                const response = await fetch(`${BASE_URL}/patient-ids`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const remotePatientIds = await response.json();
+    
+                // Get local patient records
+                const localRecords = await DatabaseManager.getOfflineData("patientRecords");
+    
+                if (localRecords) {
+                    const localPatientIds = localRecords.map((record) => record.ID.toString());
+    
+        
+                    // Find missing patient IDs
+                    const missingPatientIds = remotePatientIds.filter((id) => !localPatientIds.includes(id));
+        
+                    // Process missing IDs in batches
+                    for (let i = 0; i < missingPatientIds.length; i += batchSize) {
+                        const batch = missingPatientIds.slice(i, i + batchSize);
+        
+                        await Promise.all(
+                            batch.map(async (patientId) => {
+                                const patientResponse = await fetch(`${BASE_URL}/patient/${patientId}/payload`);
+                                if (patientResponse.ok) {
+                                    const patientRecord = await patientResponse.json();
+                                    await DatabaseManager.addData("patientRecords", patientRecord);
+                                }
+                            })
+                        );
+        
+                        console.log(`Processed batch ${Math.floor(i / batchSize) + 1} of ${Math.ceil(missingPatientIds.length / batchSize)}`);
+                    }
+        
+                    return missingPatientIds.length; // Returns number of synced records
+                } else {
+                    await Promise.all(
+                        remotePatientIds.map(async (patientId) => {
+                            const patientResponse = await fetch(`${BASE_URL}/patient/${patientId}/payload`);
+                            if (patientResponse.ok) {
+                                const patientRecord = await patientResponse.json();
+                                await DatabaseManager.addData("patientRecords", patientRecord);
+                            }
+                        })
+                    );
+                }
             }
-
-            // Get remote patient IDs
-            const response = await fetch(`${BASE_URL}/patient-ids`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const remotePatientIds = await response.json();
-
-            // Get local patient records
-            const localRecords = await DatabaseManager.getOfflineData("patientRecords");
-            const localPatientIds = localRecords.map((record) => record.patientID.toString());
-
-            // Find missing patient IDs
-            const missingPatientIds = remotePatientIds.filter((id) => !localPatientIds.includes(id));
-
-            // Process missing IDs in batches
-            for (let i = 0; i < missingPatientIds.length; i += batchSize) {
-                const batch = missingPatientIds.slice(i, i + batchSize);
-
-                await Promise.all(
-                    batch.map(async (patientId) => {
-                        const patientResponse = await fetch(`${BASE_URL}/patient/${patientId}/payload`);
-                        if (patientResponse.ok) {
-                            const patientRecord = await patientResponse.json();
-                            await DatabaseManager.addData("patientRecords", patientRecord);
-                        }
-                    })
-                );
-
-                console.log(`Processed batch ${Math.floor(i / batchSize) + 1} of ${Math.ceil(missingPatientIds.length / batchSize)}`);
-            }
-
-            return missingPatientIds.length; // Returns number of synced records
         } catch (error) {
             console.error("Error syncing patient records:", error);
             return 0; // Return 0 synced records on failure
@@ -81,7 +101,9 @@ const patientService = {
     },
 
     async sharePatientRecords(batchSize = 50) {
-        const patientRecords = await DatabaseManager.getOfflineData("patientRecords", { encounter_datetime: { $ne: "" } });
+        const patientRecords = await DatabaseManager.getOfflineData("patientRecords", { sync_status: "unsynced" });
+
+        console.log("patientRecords", patientRecords);
 
         if (patientRecords) {
             // Process records in batches
@@ -95,10 +117,12 @@ const patientService = {
                         // Process the batch response
                         for (const record of response) {
                             if (record.hasChanges === true) {
-                                const parsedRecord = JSON.parse(record.record);
-                                await DatabaseManager.overRideRecordRecord("patientRecords", parsedRecord, {
-                                    patientID: parsedRecord.patientID,
-                                });
+                                const parsedRecord = record.record;
+                                await DatabaseManager.overrideRecordExplicit('patientRecords', parsedRecord, parsedRecord.patientID);
+                                if (record.id_to_remove) {
+                                    await DatabaseManager.deleteRecord("patientRecords", { patientID: record.id_to_remove });
+                                    self.postMessage({message:"update_stale_record", payload: parsedRecord, IDTR: record.id_to_remove});
+                                }  
                             }
                         }
                     }
@@ -111,21 +135,16 @@ const patientService = {
 
     async submitPatientRecord(record) {
         const response = await this.submitPayloadToExternalService(record);
-
         if (response) {
-            // console.log("type of : ", typeof response);
-            // console.log("Successfully submitted record:", JSON.parse(response.record).patientID);
-            // console.log("type of : ", JSON.parse(response.record));
             if (response.hasChanges === true) {
-                await DatabaseManager.overRideRecordRecord("patientRecords", JSON.parse(response.record), {
-                    patientID: JSON.parse(response.record).patientID,
-                });
+                await DatabaseManager.overrideRecordExplicit('patientRecords', response.record, response.record.patientID);
             }
         }
     },
 
     async submitPayloadToExternalService(payload) {
         try {
+            const BASE_URL = await getConnectonString();
             const isReachable = await checkNetworkConnectivity(BASE_URL);
 
             if (!isReachable) {

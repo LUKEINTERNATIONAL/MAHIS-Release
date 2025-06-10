@@ -1,7 +1,9 @@
 const ddeService = {
     async setDDEIds() {
+
         try {
-            // Fetch existing offline DDE data
+            if (!USEMODS) {
+                            // Fetch existing offline DDE data
             const existingDDE = await DatabaseManager.getOfflineData("dde");
 
             // Constants
@@ -51,6 +53,7 @@ const ddeService = {
             }
 
             return finalDDEIds;
+            }
         } catch (error) {
             console.error("Error in setDDEIds:", error);
             // Consider adding appropriate error handling strategy

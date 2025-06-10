@@ -1,4 +1,5 @@
 // start common code
+
 importScripts(
     "db.js",
     "client.js",
@@ -18,7 +19,9 @@ importScripts(
     "test_types.js",
     "drug.js",
     "facility.js",
-    "wards.js"
+    "wards.js",
+    "socket.io.min.js",
+    "websocket-listerner.js",
 );
 
 let APIURL = "";
@@ -28,6 +31,8 @@ let TOTALS = "";
 let USERID = "";
 let PROGRAMID = "";
 let DATE = "";
+let USEMODS = "";
+let STORE_CACHE_RECORDS = "";
 
 /**********************************************************************
  **********************************************************************
@@ -35,7 +40,7 @@ let DATE = "";
  **********************************************************************
  **********************************************************************/
 self.onmessage = async (event) => {
-    const { type, url, apiKey, userId, locationId, programId, totals, date, payload, apiStatus } = event.data;
+    const { type, url, apiKey, userId, locationId, programId, totals, date, payload, apiStatus, useMODS, storeCachedRecords} = event.data;
     USERID = userId;
     LOCATIONID = locationId;
     PROGRAMID = programId;
@@ -44,6 +49,8 @@ self.onmessage = async (event) => {
     APIKEY = apiKey;
     APISTATUS = apiStatus;
     TOTALS = JSON.parse(totals);
+    USEMODS = useMODS;
+    STORE_CACHE_RECORDS = storeCachedRecords;
     await DatabaseManager.openDatabase();
     try {
         switch (type) {
@@ -57,7 +64,13 @@ self.onmessage = async (event) => {
                 break;
             case "SYNC_ALL_DATA":
                 try {
-                    await syncPatientDataService.syncAllData();
+                    if (USEMODS) {
+                        await patientService.sharePatientRecords();
+                        OfflineDataSyncWebsocketService.initWebsocket();
+                        await syncPatientDataService.syncAllData();
+                    } else {
+                        await syncPatientDataService.syncAllData();
+                    }
                     self.postMessage("Done syncing all data");
                     console.log("SYNC_ALL_DATA ~ storeName:", type);
                 } catch (error) {
@@ -123,7 +136,11 @@ self.onmessage = async (event) => {
             case "SAVE_PATIENT_RECORD":
                 try {
                     self.postMessage("");
-                    await patientService.savePatientRecord();
+                    if (USEMODS) {
+                        await patientService.sharePatientRecords();
+                    } else {
+                        await patientService.savePatientRecord();
+                    }
                     self.postMessage("Done saving data");
                     console.log("SAVE_PATIENT_RECORD ~ storeName:", type);
                 } catch (error) {
