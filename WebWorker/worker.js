@@ -21,7 +21,7 @@ importScripts(
     "facility.js",
     "wards.js",
     "socket.io.min.js",
-    "websocket-listerner.js",
+    "websocket-listerner.js"
 );
 
 let APIURL = "";
@@ -40,7 +40,7 @@ let STORE_CACHE_RECORDS = "";
  **********************************************************************
  **********************************************************************/
 self.onmessage = async (event) => {
-    const { type, url, apiKey, userId, locationId, programId, totals, date, payload, apiStatus, useMODS, storeCachedRecords} = event.data;
+    const { type, url, apiKey, userId, locationId, programId, totals, date, payload, apiStatus, useMODS, storeCachedRecords } = event.data;
     USERID = userId;
     LOCATIONID = locationId;
     PROGRAMID = programId;
@@ -68,11 +68,12 @@ self.onmessage = async (event) => {
                         await patientService.sharePatientRecords();
                         OfflineDataSyncWebsocketService.initWebsocket();
                         await syncPatientDataService.syncAllData();
+                        console.log("USEMODS SYNC_ALL_DATA ~ storeName:", type);
                     } else {
                         await syncPatientDataService.syncAllData();
+                        console.log("SYNC_ALL_DATA ~ storeName:", type);
                     }
                     self.postMessage("Done syncing all data");
-                    console.log("SYNC_ALL_DATA ~ storeName:", type);
                 } catch (error) {
                     console.log("SYNC_ALL_DATA ~ error:", error);
                 }

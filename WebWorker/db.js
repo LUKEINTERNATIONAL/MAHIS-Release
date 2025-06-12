@@ -55,7 +55,7 @@ const DatabaseManager = {
                         ],
                     },
                     villages: {
-                        keyPath: "id",
+                        keyPath: "village_id",
                         autoIncrement: true,
                         indexes: [
                             { name: "name", keyPath: "name" },
@@ -112,7 +112,7 @@ const DatabaseManager = {
                         ],
                     },
                     activeProgramInContext: { keyPath: "program_id" },
-                    offlineConnectionString: { keyPath: "connection_string_id"},
+                    offlineConnectionString: { keyPath: "connection_string_id" },
                     facilities: { keyPath: "code" },
                     wards: { keyPath: "location_id" },
                 };
@@ -217,52 +217,52 @@ const DatabaseManager = {
      */
     async overrideRecordExplicit(storeName, newData, keyValue, debug = false) {
         if (!this.db) {
-            const error = 'Database not initialized. Call openDatabase() first.';
-            if (debug) console.error('[DEBUG] overrideRecordExplicit:', error);
+            const error = "Database not initialized. Call openDatabase() first.";
+            if (debug) console.error("[DEBUG] overrideRecordExplicit:", error);
             throw new Error(error);
         }
 
         if (debug) {
-            console.log('[DEBUG] overrideRecordExplicit: Starting operation');
-            console.log('[DEBUG] Parameters:', {
+            console.log("[DEBUG] overrideRecordExplicit: Starting operation");
+            console.log("[DEBUG] Parameters:", {
                 storeName,
                 keyValue,
                 newDataKeys: Object.keys(newData || {}),
-                newDataSize: JSON.stringify(newData).length + ' characters'
+                newDataSize: JSON.stringify(newData).length + " characters",
             });
         }
 
         return new Promise((resolve, reject) => {
-            if (debug) console.log('[DEBUG] Creating transaction for store:', storeName);
-            
-            const transaction = this.db.transaction([storeName], 'readwrite');
+            if (debug) console.log("[DEBUG] Creating transaction for store:", storeName);
+
+            const transaction = this.db.transaction([storeName], "readwrite");
             const store = transaction.objectStore(storeName);
 
             // Transaction event handlers
             transaction.oncomplete = () => {
-                if (debug) console.log('[DEBUG] Transaction completed successfully');
+                if (debug) console.log("[DEBUG] Transaction completed successfully");
             };
 
             transaction.onabort = (event) => {
-                if (debug) console.error('[DEBUG] Transaction aborted:', event.target.error);
+                if (debug) console.error("[DEBUG] Transaction aborted:", event.target.error);
             };
 
             transaction.onerror = (event) => {
                 const error = `Transaction error: ${event.target.error}`;
-                if (debug) console.error('[DEBUG]', error);
+                if (debug) console.error("[DEBUG]", error);
                 console.error(error);
                 reject(event.target.error);
             };
 
-            if (debug) console.log('[DEBUG] Attempting to delete record with key:', keyValue);
+            if (debug) console.log("[DEBUG] Attempting to delete record with key:", keyValue);
 
             // First delete the existing record
             const deleteRequest = store.delete(keyValue);
 
             deleteRequest.onsuccess = () => {
                 if (debug) {
-                    console.log('[DEBUG] Delete operation successful for key:', keyValue);
-                    console.log('[DEBUG] Now attempting to add new record');
+                    console.log("[DEBUG] Delete operation successful for key:", keyValue);
+                    console.log("[DEBUG] Now attempting to add new record");
                 }
 
                 // Then add the new record
@@ -271,8 +271,8 @@ const DatabaseManager = {
                 addRequest.onsuccess = () => {
                     const successMsg = `Record with key ${keyValue} successfully overridden in ${storeName}`;
                     if (debug) {
-                        console.log('[DEBUG] Add operation successful');
-                        console.log('[DEBUG] Override operation completed successfully');
+                        console.log("[DEBUG] Add operation successful");
+                        console.log("[DEBUG] Override operation completed successfully");
                     }
                     console.log(successMsg);
                     resolve(true);
@@ -281,13 +281,13 @@ const DatabaseManager = {
                 addRequest.onerror = (event) => {
                     const error = `Error adding new record in ${storeName}: ${event.target.error}`;
                     if (debug) {
-                        console.error('[DEBUG] Add operation failed:', event.target.error);
-                        console.error('[DEBUG] Add request error details:', {
+                        console.error("[DEBUG] Add operation failed:", event.target.error);
+                        console.error("[DEBUG] Add request error details:", {
                             errorName: event.target.error?.name,
                             errorMessage: event.target.error?.message,
                             errorCode: event.target.error?.code,
                             keyValue: keyValue,
-                            storeName: storeName
+                            storeName: storeName,
                         });
                     }
                     console.error(error);
@@ -297,8 +297,8 @@ const DatabaseManager = {
 
             deleteRequest.onerror = (event) => {
                 if (debug) {
-                    console.log('[DEBUG] Delete operation failed (likely record not found):', event.target.error);
-                    console.log('[DEBUG] Attempting to add record anyway (fallback to insert)');
+                    console.log("[DEBUG] Delete operation failed (likely record not found):", event.target.error);
+                    console.log("[DEBUG] Attempting to add record anyway (fallback to insert)");
                 }
 
                 // If delete fails (record doesn't exist), try to add anyway
@@ -307,8 +307,8 @@ const DatabaseManager = {
 
                 addRequest.onsuccess = () => {
                     if (debug) {
-                        console.log('[DEBUG] Fallback add operation successful');
-                        console.log('[DEBUG] Override operation completed (via fallback insert)');
+                        console.log("[DEBUG] Fallback add operation successful");
+                        console.log("[DEBUG] Override operation completed (via fallback insert)");
                     }
                     console.log(`New record with key ${keyValue} added to ${storeName}`);
                     resolve(true);
@@ -317,14 +317,14 @@ const DatabaseManager = {
                 addRequest.onerror = (event) => {
                     const error = `Error adding record in ${storeName}: ${event.target.error}`;
                     if (debug) {
-                        console.error('[DEBUG] Fallback add operation also failed:', event.target.error);
-                        console.error('[DEBUG] Fallback add error details:', {
+                        console.error("[DEBUG] Fallback add operation also failed:", event.target.error);
+                        console.error("[DEBUG] Fallback add error details:", {
                             errorName: event.target.error?.name,
                             errorMessage: event.target.error?.message,
                             errorCode: event.target.error?.code,
                             keyValue: keyValue,
                             storeName: storeName,
-                            operation: 'fallback_add_after_delete_failed'
+                            operation: "fallback_add_after_delete_failed",
                         });
                     }
                     console.error(error);
@@ -336,55 +336,55 @@ const DatabaseManager = {
 
     async deleteRecord(storeName, keyValue, debug = false) {
         if (!this.db) {
-            const error = 'Database not initialized. Call openDatabase() first.';
-            if (debug) console.error('[DEBUG] deleteRecord:', error);
+            const error = "Database not initialized. Call openDatabase() first.";
+            if (debug) console.error("[DEBUG] deleteRecord:", error);
             throw new Error(error);
         }
-    
+
         if (debug) {
-            console.log('[DEBUG] deleteRecord: Starting operation');
-            console.log('[DEBUG] Parameters:', { storeName, keyValue });
+            console.log("[DEBUG] deleteRecord: Starting operation");
+            console.log("[DEBUG] Parameters:", { storeName, keyValue });
         }
-    
+
         return new Promise((resolve, reject) => {
-            if (debug) console.log('[DEBUG] Creating transaction for store:', storeName);
-            
-            const transaction = this.db.transaction([storeName], 'readwrite');
+            if (debug) console.log("[DEBUG] Creating transaction for store:", storeName);
+
+            const transaction = this.db.transaction([storeName], "readwrite");
             const store = transaction.objectStore(storeName);
-    
+
             // Transaction error handler
             transaction.onerror = (event) => {
                 const error = `Transaction error: ${event.target.error}`;
-                if (debug) console.error('[DEBUG]', error);
+                if (debug) console.error("[DEBUG]", error);
                 console.error(error);
                 reject(event.target.error);
             };
-    
-            if (debug) console.log('[DEBUG] Attempting to delete record with key:', keyValue);
-    
+
+            if (debug) console.log("[DEBUG] Attempting to delete record with key:", keyValue);
+
             // Delete the record
             const deleteRequest = store.delete(keyValue);
-    
+
             deleteRequest.onsuccess = () => {
                 const successMsg = `Record with key ${keyValue} successfully deleted from ${storeName}`;
                 if (debug) {
-                    console.log('[DEBUG] Delete operation successful');
-                    console.log('[DEBUG] Delete operation completed successfully');
+                    console.log("[DEBUG] Delete operation successful");
+                    console.log("[DEBUG] Delete operation completed successfully");
                 }
                 console.log(successMsg);
                 resolve(true);
             };
-    
+
             deleteRequest.onerror = (event) => {
                 const error = `Error deleting record from ${storeName}: ${event.target.error}`;
                 if (debug) {
-                    console.error('[DEBUG] Delete operation failed:', event.target.error);
-                    console.error('[DEBUG] Delete request error details:', {
+                    console.error("[DEBUG] Delete operation failed:", event.target.error);
+                    console.error("[DEBUG] Delete request error details:", {
                         errorName: event.target.error?.name,
                         errorMessage: event.target.error?.message,
                         errorCode: event.target.error?.code,
                         keyValue: keyValue,
-                        storeName: storeName
+                        storeName: storeName,
                     });
                 }
                 console.error(error);
