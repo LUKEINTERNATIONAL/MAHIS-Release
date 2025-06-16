@@ -1,1 +1,0 @@
-System.register(["./index-legacy-BPlb_Khg.js","./vendor-legacy-Cw5iBHBf.js","./lodash-legacy-C-x9g9Na.js","./apexcharts-legacy-D8xiNEZ3.js","./chartjs-legacy-g8e0qBV0.js","./barcode-qrcode-reader-legacy-COy1wQvY.js"],(function(e,l){"use strict";return{setters:[l=>{l.b,e("default",l.b)},null,null,null,null,null],execute:function(){}}}));
