@@ -1,0 +1,1 @@
+import{L as a}from"./index-DuNDgd8X.js";import{l as e}from"./lodash-Dt8AsbQm.js";async function m(t=""){return(await a.getFacilities({name:t})).filter(i=>!e.isEmpty(i)&&i.name.trim()!="").map(i=>({label:i.name,value:i.location_id,other:i}))}export{m as g};
