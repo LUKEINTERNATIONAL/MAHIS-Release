@@ -1,58 +1,46 @@
 const ddeService = {
     async setDDEIds() {
-
         try {
             if (USEMODS == "false") {
-            // Fetch existing offline DDE data
-            const existingDDE = await DatabaseManager.getOfflineData("dde");
+                // Fetch existing offline DDE data
+                const existingDDE = await DatabaseManager.getOfflineData("dde");
 
-            // Constants
-            const MAX_IDS_COUNT = 10;
-            const today = new Date().toDateString();
+                // Constants
+                const MAX_IDS_COUNT = 10;
+                const today = new Date().toDateString();
 
-            // Determine how many new IDs to fetch
-            let requiredIdCount = MAX_IDS_COUNT;
+                // Determine how many new IDs to fetch
+                let requiredIdCount = MAX_IDS_COUNT;
 
-            // Check if existing DDE data exists and is from today
-            if (existingDDE && existingDDE.length > 0) {
-                const latestDDE = existingDDE[0];
+                // Check if existing DDE data exists and is from today
+                if (existingDDE && existingDDE.length > 0) {
+                    requiredIdCount -= existingDDE.length || 0;
+                }
 
-                // If data is from today, adjust required count
-                // if (latestDDE.id_created_date === today) {
-                requiredIdCount -= latestDDE.ids?.length || 0;
-                // }
-            }
+                // Skip fetching if we already have enough IDs
+                if (requiredIdCount <= 0) {
+                    return existingDDE;
+                }
 
-            // Skip fetching if we already have enough IDs
-            if (requiredIdCount <= 0) {
-                return existingDDE[0].ids;
-            }
+                // Fetch new DDE IDs
+                let newDDEIds = await ApiService.getData(`/dde/patients/sync_npids?count=${requiredIdCount}&program_id=${PROGRAMID}`);
 
-            // Fetch new DDE IDs
-            let newDDEIds = await ApiService.getData(`/dde/patients/sync_npids?count=${requiredIdCount}&program_id=${PROGRAMID}`);
+                // Ensure we have valid IDs
+                newDDEIds = newDDEIds?.npids || [];
 
-            // Ensure we have valid IDs
-            newDDEIds = newDDEIds?.npids || [];
+                // Merge with existing IDs if applicable
+                let finalDDEIds = newDDEIds;
+                // if (existingDDE && existingDDE[0]?.id_created_date === today) {
+                if (existingDDE) {
+                    finalDDEIds = [...existingDDE, ...newDDEIds];
+                }
 
-            // Merge with existing IDs if applicable
-            let finalDDEIds = newDDEIds;
-            // if (existingDDE && existingDDE[0]?.id_created_date === today) {
-            if (existingDDE) {
-                finalDDEIds = [...(existingDDE[0].ids || []), ...newDDEIds];
-            }
+                // Update database if we have new IDs
+                if (finalDDEIds.length > 0) {
+                    await DatabaseManager.overRideCollection("dde", finalDDEIds);
+                }
 
-            // Ensure we don't exceed max count
-            finalDDEIds = finalDDEIds.slice(0, MAX_IDS_COUNT);
-
-            // Update database if we have new IDs
-            if (finalDDEIds.length > 0) {
-                await DatabaseManager.overRideCollection("dde", {
-                    ids: finalDDEIds,
-                    id_created_date: today,
-                });
-            }
-
-            return finalDDEIds;
+                return finalDDEIds;
             }
         } catch (error) {
             console.error("Error in setDDEIds:", error);
