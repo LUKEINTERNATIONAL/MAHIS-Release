@@ -1,0 +1,1 @@
+import{P as i}from"./Stepper-DI6F2bdS.js";import{t as a,j as o}from"./index-xeAXLgY8.js";class D{async onSubmit(e,n,t){const s=new i(e,n);if(!await s.createEncounter())return a("Unable to create diagnosis encounter");if(!await s.saveObservationList(t))return a("Unable to create diagnosis !");o("Diagnosis has been created")}}export{D};
