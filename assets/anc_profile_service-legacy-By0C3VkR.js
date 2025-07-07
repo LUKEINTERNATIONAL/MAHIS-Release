@@ -1,1 +1,0 @@
-System.register(["./app_encounter_service-legacy-Ct6Y-4Xb.js"],function(e,t){"use strict";var s;return{setters:[e=>{s=e.A}],execute:function(){e("c",class extends s{constructor(e,t){super(e,81,t)}})}}});
