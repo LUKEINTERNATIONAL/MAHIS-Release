@@ -1,0 +1,1 @@
+System.register(["./index-legacy-WuUAmv2z.js"],function(e,r){"use strict";var t;return{setters:[e=>{t=e.bT}],execute:function(){e("P",class extends t{constructor(){super()}generate(e,r){return this.getReport(`/programs/${this.programId}/reports/${e}`,r)}})}}});
