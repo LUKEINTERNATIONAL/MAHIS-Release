@@ -8,7 +8,7 @@ const diagnosisService = {
         const allRecords = [];
         for (let i = 1; i <= totalPages; i++) {
             const diagnosis = await ApiService.getData("diagnosis", {
-                id: 7409, //Qech outpatient diagnosis list
+                id: 7409,
                 page: i,
                 page_size: 500,
             });

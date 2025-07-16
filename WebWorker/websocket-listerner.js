@@ -62,6 +62,7 @@ class SocketManager {
                 setTimeout(() => reject(new Error('Connection timeout')), 10000);
             });
 
+
             console.log('Socket connected successfully');
             return this.socket;
 

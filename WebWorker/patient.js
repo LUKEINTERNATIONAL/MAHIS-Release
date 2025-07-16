@@ -152,6 +152,7 @@ const patientService = {
         }
     },
 
+
     async submitPayloadToExternalService(payload) {
         try {
             const BASE_URL = await getConnectonString();

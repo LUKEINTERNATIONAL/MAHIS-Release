@@ -115,6 +115,29 @@ const DatabaseManager = {
                     offlineConnectionString: { keyPath: "connection_string_id" },
                     facilities: { keyPath: "code" },
                     wards: { keyPath: "location_id" },
+                    visits: {
+                        keyPath: "patientId",
+                    },
+                    unsavedVisits: {
+                        keyPath: "patientId",
+                    },
+                    stages: {
+                        keyPath: "id",
+                        indexes: [
+                            { name: "patientId", keyPath: "patientId" },
+                            { name: "stage", keyPath: "stage" },
+                            { name: "location_id", keyPath: "location_id" },
+                        ]
+                    },
+                    unsavedStages: {
+                        keyPath: "patientId",
+                        indexes: [
+                            { name: "patientId", keyPath: "patientId" },
+                            { name: "stage", keyPath: "stage" },
+                            { name: "location_id", keyPath: "location_id" }
+                        ]
+                    }
+
                 };
 
                 Object.entries(schema).forEach(([storeName, config]) => {
@@ -334,6 +357,83 @@ const DatabaseManager = {
         });
     },
 
+    /**
+     * Delete a record from the object store
+     * @param {string} storeName - Name of the object store
+     * @param {string|number} keyValue - The key value to delete
+     * @param {boolean} debug - Enable detailed debugging output
+     * @returns {Promise<boolean>} - Success status
+    */
+    async deleteRecordExplicit(storeName, keyValue, debug = false) {
+        if (!this.db) {
+            const error = "Database not initialized. Call openDatabase() first.";
+            if (debug) console.error("[DEBUG] deleteRecord:", error);
+            throw new Error(error);
+        }
+
+        if (debug) {
+            console.log("[DEBUG] deleteRecord: Starting operation");
+            console.log("[DEBUG] Parameters:", {
+                storeName,
+                keyValue
+            });
+        }
+
+        return new Promise((resolve, reject) => {
+            if (debug) console.log("[DEBUG] Creating transaction for store:", storeName);
+
+            const transaction = this.db.transaction([storeName], "readwrite");
+            const store = transaction.objectStore(storeName);
+
+            // Transaction event handlers
+            transaction.oncomplete = () => {
+                if (debug) console.log("[DEBUG] Delete transaction completed successfully");
+            };
+
+            transaction.onabort = (event) => {
+                if (debug) console.error("[DEBUG] Delete transaction aborted:", event.target.error);
+            };
+
+            transaction.onerror = (event) => {
+                const error = `Delete transaction error: ${event.target.error}`;
+                if (debug) console.error("[DEBUG]", error);
+                console.error(error);
+                reject(event.target.error);
+            };
+
+            if (debug) console.log("[DEBUG] Attempting to delete record with key:", keyValue);
+
+            // Delete the record
+            const deleteRequest = store.delete(keyValue);
+
+            deleteRequest.onsuccess = () => {
+                const successMsg = `Record with key ${keyValue} successfully deleted from ${storeName}`;
+                if (debug) {
+                    console.log("[DEBUG] Delete operation successful");
+                    console.log("[DEBUG] Delete operation completed successfully");
+                }
+                console.log(successMsg);
+                resolve(true);
+            };
+
+            deleteRequest.onerror = (event) => {
+                const error = `Error deleting record in ${storeName}: ${event.target.error}`;
+                if (debug) {
+                    console.error("[DEBUG] Delete operation failed:", event.target.error);
+                    console.error("[DEBUG] Delete error details:", {
+                        errorName: event.target.error?.name,
+                        errorMessage: event.target.error?.message,
+                        errorCode: event.target.error?.code,
+                        keyValue,
+                        storeName
+                    });
+                }
+                console.error(error);
+                reject(event.target.error);
+            };
+        });
+    },
+
     async deleteRecord(storeName, keyValue, debug = false) {
         if (!this.db) {
             const error = "Database not initialized. Call openDatabase() first.";
@@ -406,7 +506,7 @@ const DatabaseManager = {
             const request = objectStore.add(data);
             request.onerror = (event) => {
                 const error = event.target.error;
-                console.log("🚀 ~ addData ~ storeName:", storeName, data, `Error adding data: ${error?.name} - ${error?.message}`);
+                // console.log("🚀 ~ addData ~ storeName:", storeName, data, `Error adding data: ${error?.name} - ${error?.message}`);
                 reject(new Error(`Error adding data: ${error?.name} - ${error?.message}`));
             };
 
@@ -750,9 +850,11 @@ const DatabaseManager = {
                     updateRequest.onsuccess = () => {
                         updateCount++;
                         if (updateCount === matchingRecords.length) {
-                            resolve();
+                            // Return updated records to the caller
+                            resolve(matchingRecords.map(record => ({ ...record, ...updateData })));
                         }
                     };
+
                 });
             };
         });

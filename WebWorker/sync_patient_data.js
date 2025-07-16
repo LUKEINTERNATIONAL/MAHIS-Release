@@ -113,6 +113,11 @@ const syncPatientDataService = {
                 LocationService.setOfflineLocation(),
                 FacilityService.setOfflineFacilities(),
                 WardsService.setOfflineWards(),
+                visitsService.setOfflineVisits(),
+                stagesService.setOfflineStages(),
+                LDBStagesService.setStages(),
+                visitsService.submitUnsavedVisitis(),
+                stagesService.syncOfflineStages(),
             ];
  
             services.push(
