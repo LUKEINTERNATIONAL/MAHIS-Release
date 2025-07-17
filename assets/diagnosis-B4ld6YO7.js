@@ -1,1 +1,0 @@
-import{P as i}from"./OPDOutcome-T_vR39oD.js";import{t as a,z as o}from"./index-w0bp8tHE.js";class D{async onSubmit(e,n,t){const s=new i(e,n);if(!await s.createEncounter())return a("Unable to create diagnosis encounter");if(!await s.saveObservationList(t))return a("Unable to create diagnosis !");o("Diagnosis has been created")}}export{D};
