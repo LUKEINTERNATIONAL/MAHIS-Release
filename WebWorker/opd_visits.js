@@ -72,95 +72,73 @@ const visitsService = {
         }
     },
 
-    createVisit() {
-
-    },
-
-    updateVisit() {
-
-    },
-    async syncLocalChanges() {
+    async addVisit(data, storeName = 'unsavedVisits') {
         try {
-            const unsavedVisits = await DatabaseManager.getOfflineData("unsavedVisits", {
-                whereClause: { sync_status: 'pending' }
-            });
-
-            if (!unsavedVisits || unsavedVisits.length === 0) {
-                return { success: true, synced: 0 };
+            // Validate input
+            if (!data || !storeName) {
+                throw new Error("Missing required parameters");
             }
 
-            let syncedCount = 0;
-            const results = [];
-
-            for (const visit of unsavedVisits) {
-                try {
-                    const response = await ApiService.postData("visits", visit);
-
-                    if (response?.id) {
-                        // Add to synced store
-                        await DatabaseManager.addData("visits", {
-                            ...response,
-                            sync_status: 'synced'
-                        });
-
-                        // Remove from unsynced store
-                        await DatabaseManager.deleteRecord("unsavedVisits", visit.id);
-                        syncedCount++;
-
-                        results.push({
-                            id: visit.id,
-                            success: true,
-                            newId: response.id
-                        });
-                    } else {
-                        // Server returned an invalid response
-                        await DatabaseManager.updateRecord(
-                            "unsavedVisits",
-                            { id: visit.id },
-                            {
-                                sync_status: 'failed',
-                                error: "Invalid server response",
-                                updated_at: new Date().toISOString()
-                            }
-                        );
-                        results.push({
-                            id: visit.id,
-                            success: false,
-                            error: "Invalid server response"
-                        });
-                    }
-                } catch (error) {
-                    // On failure, mark record as failed
-                    await DatabaseManager.updateRecord(
-                        "unsavedVisits",
-                        { id: visit.id },
-                        {
-                            sync_status: 'failed',
-                            error: error.message,
-                            updated_at: new Date().toISOString()
-                        }
-                    );
-                    results.push({
-                        id: visit.id,
-                        success: false,
-                        error: error.message
-                    });
-                }
+            // Ensure valid store name
+            const validStores = ['visits', 'unsavedVisits'];
+            if (!validStores.includes(storeName)) {
+                throw new Error(`Invalid store name. Valid stores: ${validStores.join(', ')}`);
             }
 
-            return {
-                success: true,
-                synced: syncedCount,
-                failed: unsavedVisits.length - syncedCount,
-                results
+            // Check required fields
+            const requiredFields = ['patientId', 'startDate', 'location_id'];
+            const missingFields = requiredFields.filter(field => data[field] === undefined);
+            if (missingFields.length > 0) {
+                throw new Error(`Missing required fields: ${missingFields.join(', ')}`);
+            }
+
+            // Normalize data
+            const normalizedData = {
+                patientId: Number(data.patientId),
+                startDate: data.startDate || new Date().toISOString(),
+                closedDateTime: data.closedDateTime || null,
+                location_id: String(data.location_id),
+                programId: data.programId || null,
+                sync_status: 'pending',
+                updated_at: new Date().toISOString()
             };
 
+            // Save to database
+            await DatabaseManager.overrideRecordExplicit(storeName, normalizedData, normalizedData.patientId);
+            return true;
         } catch (error) {
-            console.error("[Visits] Error syncing local changes:", error);
-            return {
-                success: false,
-                error: error.message
+            console.error("Failed to add visit:", error);
+            throw error;
+        }
+    },
+
+    async updateVisit(whereClause, updateData, storeName) {
+        try {
+            // Validate input
+            if (!whereClause || !updateData || !storeName) {
+                throw new Error("Missing required parameters");
+            }
+            // Ensure valid store name
+            const validStores = ['visits', 'unsavedVisits'];
+            if (!validStores.includes(storeName)) {
+                throw new Error(`Invalid store name. Valid stores: ${validStores.join(', ')}`);
+            }
+            // Prepare update data
+            const normalizedUpdate = {
+                ...updateData,
+                updated_at: new Date().toISOString()
             };
+            // Perform update
+            await DatabaseManager.updateRecord(
+                storeName,
+                whereClause,
+                normalizedUpdate
+            );
+
+            return true;
+        } catch (error) {
+            console.error("Failed to update visit:", error);
+            throw error;
         }
     },
 

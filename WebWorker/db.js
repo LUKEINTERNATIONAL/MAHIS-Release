@@ -124,15 +124,15 @@ const DatabaseManager = {
                     stages: {
                         keyPath: "id",
                         indexes: [
-                            { name: "patientId", keyPath: "patientId" },
+                            { name: "patient_id", keyPath: "patient_id" },
                             { name: "stage", keyPath: "stage" },
                             { name: "location_id", keyPath: "location_id" },
                         ]
                     },
                     unsavedStages: {
-                        keyPath: "patientId",
+                        keyPath: "patient_id",
                         indexes: [
-                            { name: "patientId", keyPath: "patientId" },
+                            { name: "patient_id", keyPath: "patient_id" },
                             { name: "stage", keyPath: "stage" },
                             { name: "location_id", keyPath: "location_id" }
                         ]

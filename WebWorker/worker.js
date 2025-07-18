@@ -212,123 +212,30 @@ self.onmessage = async (event) => {
                 break;
             case "ADD_STAGE":
                 try {
-                    //  Ensure the payload includes both a store name and data
-                    if (!payload?.storeName || !payload?.data) {
-                        throw new Error("Payload missing storeName or data");
-                    }
-                    const validStageStores = [self.STORE_NAME, self.UNSAVED_STORE_NAME];
-                    if (!validStageStores.includes(payload.storeName)) {
-                        throw new Error(`Invalid store name for stage. Valid stores: ${validStageStores.join(', ')}`);
-                    }
-
-                    //  Check for required fields in the data object
-                    const requiredFields = ['patient_id', 'stage', 'location_id', 'status'];
-                    const missingFields = requiredFields.filter(field => payload.data[field] === undefined);
-                    if (missingFields.length > 0) {
-                        console.error("Missing required fields:", missingFields);
-                        throw new Error(`Missing required fields: ${missingFields.join(', ')}`);
-                    }
-
-                    // Normalize and sanitize the incoming data for storage
-                    const normalizedData = {
-                        patientId: Number(payload.data.patient_id),
-                        stage: String(payload.data.stage),
-                        location_id: String(payload.data.location_id),
-                        status: payload.data.status === true || payload.data.status === 1 ? 1 : 0,
-                        arrivalTime: payload.data.arrivalTime || new Date().toISOString(),
-                        fullName: payload.data.fullName || "",
-                        created_at: payload.data.created_at || new Date().toISOString(),
-                        updated_at: new Date().toISOString(),
-                        sync_status: payload.data.sync_status || 'pending'
-                    };
-
-                    //  Optionally include visit_id if it's a valid number
-                    if (typeof payload.data.visit_id === 'number' && !isNaN(payload.data.visit_id)) {
-                        normalizedData.visit_id = payload.data.visit_id;
-                    }
-
-                    //  Add the normalized stage entry to the database
-                    await DatabaseManager.overrideRecordExplicit('unsavedStages', normalizedData, normalizedData.patientId);
-
-                    //  Notify main thread of success
-                    self.postMessage({ success: true });
+                    const success = await stagesService.addStage(payload.data, payload.storeName);
+                    self.postMessage({ success });
                 } catch (error) {
-                    console.error("ADD_STAGE failed:", {
-                        error: error.message,
-                        payload
+                    console.error("ADD_STAGE failed:", error);
+                    self.postMessage({
+                        success: false,
+                        error: error.message
                     });
-                    self.postMessage({ success: false, error: error.message });
                 }
                 break;
 
             case "UPDATE_STAGE":
                 try {
-                    // Validate payload
-                    if (!payload?.storeName || !payload?.whereClause || !payload?.data) {
-                        throw new Error("Missing required parameters (storeName, whereClause, data)");
-                    }
-
-                    // Validate store
-                    const validStageStores = ["stages", "unsavedStages"]; // Explicit names are better than variables
-                    if (!validStageStores.includes(payload.storeName)) {
-                        throw new Error(`Invalid store name '${payload.storeName}' for stage update`);
-                    }
-
-                    // Debug log the incoming payload
-                    console.debug("[WORKER] UPDATE_STAGE payload:", {
-                        store: payload.storeName,
-                        where: payload.whereClause,
-                        updateData: payload.data
-                    });
-
-                    // Prepare update data
-                    const updateData = {
-                        ...payload.data,
-                        updated_at: new Date().toISOString(),
-                        sync_status: 'pending' // Ensure this is always set for offline-first
-                    };
-
-                    // Normalize status to number (0 or 1)
-                    if ('status' in updateData) {
-                        updateData.status = updateData.status === true || updateData.status === 1 ? 1 : 0;
-                    }
-
-                    // Perform update
-                    const updateResult = await DatabaseManager.updateRecord(
-                        payload.storeName,
+                    const success = await stagesService.updateStage(
                         payload.whereClause,
-                        updateData
+                        payload.data,
+                        payload.storeName
                     );
-
-                    // Verify update
-                    const updatedRecord = await DatabaseManager.getOfflineData(
-                        payload.storeName,
-                        { whereClause: payload.whereClause }
-                    );
-
-                    if (!updatedRecord || updatedRecord.length === 0) {
-                        throw new Error("Update failed - record not found after update");
-                    }
-
-                    // Debug log the result
-                    console.debug("[WORKER] UPDATE_STAGE result:", {
-                        success: true,
-                        previousStatus: updatedRecord[0].status,
-                        newStatus: updateData.status
-                    });
-
                     self.postMessage({
-                        success: true,
-                        updatedStatus: updateData.status
+                        success,
+                        updatedStatus: payload.data.status
                     });
-
                 } catch (error) {
-                    console.error("UPDATE_STAGE failed:", {
-                        storeName: payload?.storeName,
-                        whereClause: payload?.whereClause,
-                        error: error.message,
-                        stack: error.stack
-                    });
+                    console.error("UPDATE_STAGE failed:", error);
                     self.postMessage({
                         success: false,
                         error: error.message,
@@ -345,94 +252,34 @@ self.onmessage = async (event) => {
 
             case "ADD_VISIT":
                 try {
-                    // Validate payload
-                    if (!payload?.storeName || !payload?.data) {
-                        throw new Error("Payload missing storeName or data");
-                    }
-
-                    // Validate store
-                    const validVisitStores = ["visits", "unsavedVisits"];
-                    if (!validVisitStores.includes(payload.storeName)) {
-                        throw new Error(`Invalid store name for visit. Valid stores: ${validVisitStores.join(', ')}`);
-                    }
-
-                    // Check required fields
-                    const requiredFields = ['patientId', 'startDate', 'location_id'];
-                    const missingFields = requiredFields.filter(field => payload.data[field] === undefined);
-                    if (missingFields.length > 0) {
-                        throw new Error(`Missing required fields: ${missingFields.join(', ')}`);
-                    }
-
-                    // Normalize data
-                    const normalizedData = {
-                        patientId: Number(payload.data.patientId),
-                        startDate: payload.data.startDate || new Date().toISOString(),
-                        closedDateTime: payload.data.closedDateTime || null,
-                        location_id: String(payload.data.location_id),
-                        programId: payload.data.programId || null,
-                        sync_status: 'pending',
-                        updated_at: new Date().toISOString()
-                    };
-
-                    // Add to database
-                    await DatabaseManager.overrideRecordExplicit('unsavedVisits', normalizedData, normalizedData.patientId);
-
-                    self.postMessage({ success: true });
+                    const success = await visitsService.addVisit(payload.data, payload.storeName);
+                    self.postMessage({ success });
                 } catch (error) {
-                    console.error("ADD_VISIT failed:", {
-                        error: error.message,
-                        payload
+                    console.error("ADD_VISIT failed:", error);
+                    self.postMessage({
+                        success: false,
+                        error: error.message
                     });
-                    self.postMessage({ success: false, error: error.message });
                 }
                 break;
 
             case "UPDATE_VISIT":
                 try {
-                    // Validate payload
-                    if (!payload?.storeName || !payload?.whereClause || !payload?.data) {
-                        throw new Error("Missing required parameters");
-                    }
-
-                    // Validate store
-                    const validVisitStores = ["visits", "unsavedVisits"];
-                    if (!validVisitStores.includes(payload.storeName)) {
-                        throw new Error(`Invalid store name for visit update`);
-                    }
-
-                    // Get existing record
-                    const existing = await DatabaseManager.getOfflineData(
-                        payload.storeName,
-                        { whereClause: payload.whereClause }
+                    const success = await visitsService.updateVisit(payload.whereClause, payload.data, payload.storeName
                     );
-
-                    if (!existing || existing.length === 0) {
-                        return self.postMessage({ success: false, error: "No matching visit found" });
-                    }
-
-                    // Prepare update
-                    const updateData = {
-                        ...payload.data,
-                        updated_at: new Date().toISOString()
-                    };
-
-                    // Perform update
-                    await DatabaseManager.updateRecord(
-                        payload.storeName,
-                        payload.whereClause,
-                        updateData
-                    );
-
-                    self.postMessage({ success: true });
+                    self.postMessage({ success });
                 } catch (error) {
-                    console.error("UPDATE_VISIT failed:", {
-                        storeName: payload?.storeName,
-                        error: error.message
+                    console.error("UPDATE_VISIT failed:", error);
+                    self.postMessage({
+                        success: false,
+                        error: error.message,
+                        details: {
+                            store: payload?.storeName,
+                            where: payload?.whereClause
+                        }
                     });
-                    self.postMessage({ success: false, error: error.message });
                 }
                 break;
-
             case "SYNC_UNSAVED_VISITS":
                 await visitsService.submitUnsavedVisitis();
                 break;

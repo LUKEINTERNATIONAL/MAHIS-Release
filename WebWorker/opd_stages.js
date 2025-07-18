@@ -71,129 +71,86 @@ const stagesService = {
         }
     },
 
-    async addStage() {
-
-    },
-
-    async updateStage() {
+    async addStage(data, storeName = UNSAVED_STORE_NAME) {
         try {
-            //  Ensure required components are present
-            if (!payload?.storeName || !payload?.whereClause || !payload?.data) {
+            // Validate input
+            if (!data || !storeName) {
                 throw new Error("Missing required parameters");
             }
-            const validStageStores = [self.STORE_NAME, self.UNSAVED_STORE_NAME];
-            if (!validStageStores.includes(payload.storeName)) {
-                throw new Error(`Invalid store name for stage update`);
+
+            // Ensure valid store name
+            const validStores = [STORE_NAME, UNSAVED_STORE_NAME];
+            if (!validStores.includes(storeName)) {
+                throw new Error(`Invalid store name. Valid stores: ${validStores.join(', ')}`);
             }
 
-            //  Load all records from the specified store
-            const all = await DatabaseManager.getOfflineData(payload.storeName);
-            const existing = all.find(record => record.id === payload.whereClause.id);
-            if (!existing) {
-                return self.postMessage({ success: false, error: "No matching records found" });
-            }
-            const updateData = {
-                ...payload.data,
-                updated_at: new Date().toISOString()
+            // Normalize data
+            const normalizedData = {
+                patient_id: Number(data.patient_id),
+                stage: String(data.stage),
+                location_id: String(data.location_id),
+                status: data.status === true || data.status === 1 ? 1 : 0,
+                arrivalTime: data.arrivalTime || new Date().toISOString(),
+                fullName: data.fullName || "",
+                created_at: data.created_at || new Date().toISOString(),
+                updated_at: new Date().toISOString(),
+                sync_status: data.sync_status || 'pending'
             };
-            if (typeof updateData.status !== 'undefined') {
-                updateData.status = updateData.status === true || updateData.status === 1 ? 1 : 0;
-            }
-            const result = await DatabaseManager.updateRecord(
-                payload.storeName,
-                payload.whereClause,
-                updateData
-            );
-            self.postMessage({ success: true });
 
+            // Add visit_id if provided
+            if (typeof data.visit_id === 'number') {
+                normalizedData.visit_id = data.visit_id;
+            }
+
+            // Save to database
+            await DatabaseManager.overrideRecordExplicit(storeName, normalizedData, normalizedData.patient_id);
+            return true;
         } catch (error) {
-            console.error("UPDATE_STAGE failed:", {
-                storeName: payload?.storeName,
-                error: error.message
-            });
-            self.postMessage({ success: false, error: error.message });
+            console.error("Failed to add stage:", error);
+            throw error;
         }
     },
 
-    async syncLocalChanges() {
+
+    async updateStage(whereClause, updateData, storeName) {
         try {
-            const unsavedStages = await DatabaseManager.getOfflineData(
-                self.UNSAVED_STORE_NAME,
-                { whereClause: { sync_status: 'pending' } }
+            // Validate input
+            if (!whereClause || !updateData || !storeName) {
+                throw new Error("Missing required parameters");
+            }
+
+            // Ensure valid store name
+            const validStores = [STORE_NAME, UNSAVED_STORE_NAME];
+            if (!validStores.includes(storeName)) {
+                throw new Error(`Invalid store name. Valid stores: ${validStores.join(', ')}`);
+            }
+
+            // Prepare update data
+            const normalizedUpdate = {
+                ...updateData,
+                updated_at: new Date().toISOString(),
+                sync_status: 'pending'
+            };
+
+            // Normalize status if provided
+            if ('status' in normalizedUpdate) {
+                normalizedUpdate.status = normalizedUpdate.status === true || normalizedUpdate.status === 1 ? 1 : 0;
+            }
+
+            // Perform update
+            await DatabaseManager.updateRecord(
+                storeName,
+                whereClause,
+                normalizedUpdate
             );
 
-            if (!unsavedStages || unsavedStages.length === 0) {
-                self.postMessage({
-                    success: true,
-                    message: "No unsaved stages to sync",
-                    syncedCount: 0
-                });
-                return;
-            }
-
-            const results = [];
-            let syncedCount = 0;
-
-            for (const stage of unsavedStages) {
-                try {
-                    // Prepare clean payload without internal fields
-                    const { id, sync_status, ...cleanStage } = stage;
-
-                    const response = await ApiService.postData("stages", cleanStage);
-
-                    if (response?.id) {
-                        // Add to synced store
-                        await DatabaseManager.addData(self.STORE_NAME, {
-                            ...response,
-                            sync_status: 'synced',
-                            updated_at: new Date().toISOString()
-                        });
-
-                        // Remove from unsaved
-                        await DatabaseManager.deleteRecord(self.UNSAVED_STORE_NAME, stage.id);
-                        syncedCount++;
-
-                        results.push({
-                            oldId: stage.id,
-                            newId: response.id,
-                            success: true
-                        });
-                    } else {
-                        throw new Error("Invalid server response");
-                    }
-                } catch (error) {
-                    await DatabaseManager.updateRecord(
-                        self.UNSAVED_STORE_NAME,
-                        { id: stage.id },
-                        {
-                            sync_status: 'failed',
-                            error: error.message,
-                            updated_at: new Date().toISOString()
-                        }
-                    );
-                    results.push({
-                        id: stage.id,
-                        success: false,
-                        error: error.message
-                    });
-                }
-            }
-
-            self.postMessage({
-                success: true,
-                syncedCount,
-                failedCount: unsavedStages.length - syncedCount,
-                results
-            });
+            return true;
         } catch (error) {
-            console.error("SYNC_UNSAVED_STAGES failed:", error);
-            self.postMessage({
-                success: false,
-                error: error.message,
-                syncedCount: 0
-            });
+            console.error("Failed to update stage:", error);
+            throw error;
         }
     },
+
 
     async syncOfflineStages() {
         try {
@@ -231,7 +188,7 @@ const stagesService = {
 
                         await DatabaseManager.updateRecord(
                             "unsavedStages",
-                            { patientId: data.stage.patient_id },
+                            { patient_id: data.stage.patient_id },
                             {
                                 sync_status: "synced",
                             }
