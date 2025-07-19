@@ -25,8 +25,6 @@ if (typeof navigator !== "undefined" && navigator.connection) {
     });
 }
 
-const offineProgramIds = [33];
-
 async function getProgram() {
     const data = await DatabaseManager.getOfflineData("activeProgramInContext");
     return data;
@@ -96,10 +94,6 @@ const syncPatientDataService = {
             }
             await patientService.setPatientCachedRecord();
             // await patientService.sharePatientRecords();
-
-            const activeProgramData = await getProgram();
-            const activeProgramId = activeProgramData?.[0]?.program_id;
-            const isOfflineProgram = activeProgramId && offineProgramIds.includes(activeProgramId);
 
             const services = [
                 ddeService.setDDEIds(),
