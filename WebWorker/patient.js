@@ -132,7 +132,11 @@ const patientService = {
                                 if (record.id_to_remove) {
                                     await DatabaseManager.deleteRecord("patientRecords", { patientID: record.id_to_remove });
                                     self.postMessage({message:"update_stale_record", payload: parsedRecord, IDTR: record.id_to_remove});
-                                }  
+                                }
+                                
+                                if (record.id_to_update == null) {
+                                    self.postMessage({message:"update_stale_record", payload: record.record, IDTR: record.record.patientID, update: true});
+                                }
                             }
                         }
                     }
