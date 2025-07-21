@@ -47,8 +47,6 @@ const stagesService = {
             if (combinedRecords.length > 0) {
                 // Update both stores
                 await DatabaseManager.overRideCollection("stages", allRecords);
-                console.log("[Stages] Synced data saved to IndexedDB");
-
                 // Only update unsaved stages if we have changes
                 if (unsavedChanges.length > 0) {
                     await DatabaseManager.overRideCollection("unsavedStages", unsavedChanges);
@@ -118,25 +116,21 @@ const stagesService = {
             if (!whereClause || !updateData || !storeName) {
                 throw new Error("Missing required parameters");
             }
-
             // Ensure valid store name
             const validStores = [STORE_NAME, UNSAVED_STORE_NAME];
             if (!validStores.includes(storeName)) {
                 throw new Error(`Invalid store name. Valid stores: ${validStores.join(', ')}`);
             }
-
             // Prepare update data
             const normalizedUpdate = {
                 ...updateData,
                 updated_at: new Date().toISOString(),
                 sync_status: 'pending'
             };
-
             // Normalize status if provided
             if ('status' in normalizedUpdate) {
                 normalizedUpdate.status = normalizedUpdate.status === true || normalizedUpdate.status === 1 ? 1 : 0;
             }
-
             // Perform update
             await DatabaseManager.updateRecord(
                 storeName,
