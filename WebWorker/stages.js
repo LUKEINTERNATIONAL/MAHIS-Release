@@ -5,9 +5,11 @@ const LDBStagesService = {
 
             if (stagesData) {
                 stagesData.forEach(async (stage) => {
-                    await DatabaseManager.overrideRecordExplicit('stages', stage, stage.patient_id);
-                })
-            } 
+                    if (stage) return;
+                    DatabaseManager.deleteRecord("stages", { id: stage.id });
+                    DatabaseManager.addData("stages", data);
+                });
+            }
         } catch (error) {
             console.log("Error setting stages:", error);
         }
@@ -17,13 +19,12 @@ const LDBStagesService = {
         if (USEMODS == "true") {
             const BASE_URL = await getConnectonString();
             const response = await fetch(`${BASE_URL}/stages`);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             return await response.json();
         } else {
             return await ApiService.getData("/stages/active_stages");
         }
-        
     },
 };
