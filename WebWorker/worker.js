@@ -80,7 +80,7 @@ self.onmessage = async (event) => {
                         OfflineDataSyncWebsocketService.initWebsocket();
                         await syncPatientDataService.syncAllData();
                         console.log("USEMODS SYNC_ALL_DATA ~ storeName:", type);
-                    } else {
+                    } if (USEMODS == "false") {
                         await syncPatientDataService.syncAllData();
                         console.log("SYNC_ALL_DATA ~ storeName:", type);
                     }
@@ -150,7 +150,7 @@ self.onmessage = async (event) => {
                     self.postMessage("");
                     if (USEMODS == "true") {
                         await patientService.sharePatientRecords();
-                    } else {
+                    } if (USEMODS == "false") {
                         await patientService.savePatientRecord();
                     }
                     self.postMessage("Done saving data");
