@@ -1,0 +1,1 @@
+System.register(["./index-legacy-B4t4ToH_.js"],function(e,r){"use strict";var t;return{setters:[e=>{t=e.bR}],execute:function(){e("P",class extends t{constructor(){super()}generate(e,r){return this.getReport(`/programs/${this.programId}/reports/${e}`,r)}})}}});
