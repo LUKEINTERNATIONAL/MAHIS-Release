@@ -1,14 +1,15 @@
 const LDBStagesService = {
     async setStages() {
+        await this.createStages();
         try {
             let stagesData = await this.getStagesData();
 
             if (stagesData) {
-                stagesData.forEach(async (stage) => {
-                    if (stage) return;
-                    DatabaseManager.deleteRecord("stages", { id: stage.id });
-                    DatabaseManager.addData("stages", data);
-                });
+                for (const stage of stagesData) {
+                    if (!stage) return;
+                    await DatabaseManager.deleteRecord("stages", { identifier: `${stage.identifier}` });
+                    DatabaseManager.addData("stages", stage);
+                }
             }
         } catch (error) {
             console.log("Error setting stages:", error);
@@ -24,7 +25,14 @@ const LDBStagesService = {
             }
             return await response.json();
         } else {
-            return await ApiService.getData("/stages/active_stages");
+            return await ApiService.getData("/stages");
+        }
+    },
+
+    async createStages() {
+        const stagesData = await DatabaseManager.getOfflineData("stages", { sync_status: "pending" });
+        if (stagesData && stagesData.length > 0) {
+            ApiService.post("/stages", { stages: stagesData });
         }
     },
 };

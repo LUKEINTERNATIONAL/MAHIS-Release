@@ -108,18 +108,12 @@ const syncPatientDataService = {
                 FacilityService.setOfflineFacilities(),
                 WardsService.setOfflineWards(),
                 visitsService.setOfflineVisits(),
-                stagesService.setOfflineStages(),
                 LDBStagesService.setStages(),
                 visitsService.submitUnsavedVisitis(),
-                stagesService.syncOfflineStages(),
             ];
- 
-            services.push(
-                stockService.setStock(),
-                genericsService.setOfflineGenericVaccineSchedule(),
-                this.getPatientData()
-            );
-            
+
+            services.push(stockService.setStock(), genericsService.setOfflineGenericVaccineSchedule(), this.getPatientData());
+
             // Execute services with controlled concurrency to avoid overwhelming resources
             await this.executeWithControlledConcurrency(services, 3);
         } catch (error) {

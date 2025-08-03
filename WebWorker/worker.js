@@ -23,18 +23,9 @@ importScripts(
     "socket.io.min.js",
     "websocket-listerner.js",
     "opd_visits.js",
-    "opd_stages.js",
-    "stages.js",
+    "stages.js"
 );
-// Constants for stage stores
-const STORES = {
-    STAGES: "stages",
-    UNSAVED_STAGES: "unsavedStages"
-};
 
-// Make them available globally in the worker scope
-self.STORE_NAME = STORES.STAGES;
-self.UNSAVED_STORE_NAME = STORES.UNSAVED_STAGES;
 let APIURL = "";
 let APIKEY = "";
 let APISTATUS = "";
@@ -116,9 +107,9 @@ self.onmessage = async (event) => {
             case "DELETE_RECORD":
                 try {
                     await DatabaseManager.deleteRecord(payload.storeName, payload.whereClause);
-                    console.log("DELETE_RECORD ~ storeName:", type);
+                    console.log("DELETE_RECORD ~ storeName:", payload.storeName);
                 } catch (error) {
-                    console.log("DELETE_RECORD ~ error:", error);
+                    console.log("DELETE_RECORD ~ error:" + payload.storeName, error);
                 }
                 break;
             case "ADD_OBJECT_STORE":
@@ -126,7 +117,7 @@ self.onmessage = async (event) => {
                     await DatabaseManager.addData(payload.storeName, payload.data);
                     console.log("ADD_OBJECT_STORE ~ payload:", payload.storeName);
                 } catch (error) {
-                    console.log("ADD_OBJECT_STORE ~ error:", error);
+                    console.log("ADD_OBJECT_STORE ~ error:" + payload.storeName, error);
                 }
                 break;
             case "OVERRIDE_OBJECT_STORE":
@@ -218,21 +209,17 @@ self.onmessage = async (event) => {
                     console.error("ADD_STAGE failed:", error);
                     self.postMessage({
                         success: false,
-                        error: error.message
+                        error: error.message,
                     });
                 }
                 break;
 
             case "UPDATE_STAGE":
                 try {
-                    const success = await stagesService.updateStage(
-                        payload.whereClause,
-                        payload.data,
-                        payload.storeName
-                    );
+                    const success = await stagesService.updateStage(payload.whereClause, payload.data, payload.storeName);
                     self.postMessage({
                         success,
-                        updatedStatus: payload.data.status
+                        updatedStatus: payload.data.status,
                     });
                 } catch (error) {
                     console.error("UPDATE_STAGE failed:", error);
@@ -241,8 +228,8 @@ self.onmessage = async (event) => {
                         error: error.message,
                         details: {
                             store: payload?.storeName,
-                            where: payload?.whereClause
-                        }
+                            where: payload?.whereClause,
+                        },
                     });
                 }
                 break;
@@ -250,23 +237,9 @@ self.onmessage = async (event) => {
                 await stagesService.syncOfflineStages();
                 break;
 
-            case "ADD_VISIT":
-                try {
-                    const success = await visitsService.addVisit(payload.data, payload.storeName);
-                    self.postMessage({ success });
-                } catch (error) {
-                    console.error("ADD_VISIT failed:", error);
-                    self.postMessage({
-                        success: false,
-                        error: error.message
-                    });
-                }
-                break;
-
             case "UPDATE_VISIT":
                 try {
-                    const success = await visitsService.updateVisit(payload.whereClause, payload.data, payload.storeName
-                    );
+                    const success = await visitsService.updateVisit(payload.whereClause, payload.data, payload.storeName);
                     self.postMessage({ success });
                 } catch (error) {
                     console.error("UPDATE_VISIT failed:", error);
@@ -275,8 +248,8 @@ self.onmessage = async (event) => {
                         error: error.message,
                         details: {
                             store: payload?.storeName,
-                            where: payload?.whereClause
-                        }
+                            where: payload?.whereClause,
+                        },
                     });
                 }
                 break;
