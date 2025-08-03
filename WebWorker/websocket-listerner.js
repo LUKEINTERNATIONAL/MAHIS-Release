@@ -89,6 +89,7 @@ class SocketManager {
 
             try {
                 const parsedRecord = record.payload;
+                self.postMessage({ message: "update_stale_record", payload: parsedRecord, IDTR: parsedRecord.patientID });
                 await DatabaseManager.overrideRecordExplicit('patientRecords', parsedRecord, parsedRecord.patientID);  
             } catch (error) {
                 console.error("Error processing patient data update:", error);

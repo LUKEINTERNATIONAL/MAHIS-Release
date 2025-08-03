@@ -128,9 +128,10 @@ const patientService = {
                         for (const record of response) {
                             if (record.hasChanges === true) {
                                 const parsedRecord = record.record;
-                                await DatabaseManager.overrideRecordExplicit('patientRecords', parsedRecord, parsedRecord.patientID);
+                                // await DatabaseManager.overrideRecordExplicit('patientRecords', parsedRecord, parsedRecord.patientID);
                                 if (record.id_to_remove) {
-                                    await DatabaseManager.deleteRecord("patientRecords", { patientID: record.id_to_remove });
+                                    await DatabaseManager.deleteRecordExplicit("patientRecords", record?.id_to_remove);
+                                    await DatabaseManager.deleteRecordExplicit("patientRecords", record?.id_to_remove2);
                                     self.postMessage({message:"update_stale_record", payload: parsedRecord, IDTR: record.id_to_remove});
                                 }
                                 

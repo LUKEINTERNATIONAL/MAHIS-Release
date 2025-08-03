@@ -87,12 +87,12 @@ const syncPatientDataService = {
     async syncAllData() {
         try {
             if (USEMODS == "true") {
-                await patientService.setPatientCachedRecord();
+                // await patientService.setPatientCachedRecord();
                 OfflineDataSyncWebsocketService.initWebsocket();
             } else {
                 await patientService.savePatientRecord();
             }
-            await patientService.setPatientCachedRecord();
+            // for future iterlation
             // await patientService.sharePatientRecords();
 
             const services = [
