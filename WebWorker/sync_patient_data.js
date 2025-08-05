@@ -108,8 +108,6 @@ const syncPatientDataService = {
                 FacilityService.setOfflineFacilities(),
                 WardsService.setOfflineWards(),
                 visitsService.setOfflineVisits(),
-                LDBStagesService.setStages(),
-                visitsService.submitUnsavedVisitis(),
             ];
 
             services.push(stockService.setStock(), genericsService.setOfflineGenericVaccineSchedule(), this.getPatientData());

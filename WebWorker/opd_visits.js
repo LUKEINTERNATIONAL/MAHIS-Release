@@ -1,5 +1,8 @@
 const visitsService = {
     async setOfflineVisits() {
+        await this.submitUnsavedVisitis();
+        await this.updateVisit();
+        LDBStagesService.setStages();
         try {
             // Get existing visits from both synced and unsynced stores
             const existingVisits = await DatabaseManager.getOfflineData("visits");
@@ -19,7 +22,6 @@ const visitsService = {
             } else {
                 // Fetch today's visits from the server
                 response = await ApiService.getData("visits", {
-                    status: "active",
                     program_id: PROGRAMID,
                 });
             }
@@ -70,29 +72,25 @@ const visitsService = {
         }
     },
 
-    async updateVisit(whereClause, updateData, storeName) {
-        try {
-            // Validate input
-            if (!whereClause || !updateData || !storeName) {
-                throw new Error("Missing required parameters");
-            }
-            // Ensure valid store name
-            const validStores = ["visits", "unsavedVisits"];
-            if (!validStores.includes(storeName)) {
-                throw new Error(`Invalid store name. Valid stores: ${validStores.join(", ")}`);
-            }
-            // Prepare update data
-            const normalizedUpdate = {
-                ...updateData,
-                updated_at: new Date().toISOString(),
-            };
-            // Perform update
-            await DatabaseManager.updateRecord(storeName, whereClause, normalizedUpdate);
+    async updateVisit() {
+        const unsavedVisits = await DatabaseManager.getOfflineData("unsavedVisits", { sync_status: "update" });
+        if (!unsavedVisits || unsavedVisits?.length <= 0) return;
+        for (const visit of unsavedVisits) {
+            try {
+                const data = await ApiService.put(`/visits/close`, visit);
 
-            return true;
-        } catch (error) {
-            console.error("Failed to update visit:", error);
-            throw error;
+                if (data) {
+                    DatabaseManager.deleteRecord("unsavedVisits", { identifier: data.visit.identifier });
+                    DatabaseManager.deleteRecord("visits", { identifier: data.visit.identifier });
+                    DatabaseManager.deleteRecord("stages", { identifier: data.visit.identifier });
+                    DatabaseManager.addData("visits", data.visit);
+                    self.postMessage("update visits");
+                } else {
+                    throw new Error("Invalid server response");
+                }
+            } catch (error) {
+                console.error("Error syncing visit:", visit, error.message);
+            }
         }
     },
 
