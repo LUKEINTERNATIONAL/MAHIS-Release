@@ -1,4 +1,4 @@
-const BATCH_SIZE = 50; // Base batch size that will be adjusted dynamically
+const BATCH_SIZE = 15; // Base batch size that will be adjusted dynamically
 let dynamicBatchSize = BATCH_SIZE;
 let isOnline = true;
 let count = [];

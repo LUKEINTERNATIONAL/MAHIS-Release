@@ -1,5 +1,4 @@
 // start common code
-
 importScripts(
     "db.js",
     "client.js",
@@ -26,6 +25,7 @@ importScripts(
     "stages.js"
 );
 
+// Global vars
 let APIURL = "";
 let APIKEY = "";
 let APISTATUS = "";
@@ -36,13 +36,39 @@ let DATE = "";
 let USEMODS = "";
 let STORE_CACHE_RECORDS = "";
 
-/**********************************************************************
- **********************************************************************
-                            Web worker                                                       
- **********************************************************************
- **********************************************************************/
-self.onmessage = async (event) => {
+// Queue only for SYNC_ALL_DATA
+const syncQueue = [];
+let isSyncing = false;
+
+function enqueueSync(event) {
+    syncQueue.push(event);
+    processSyncQueue();
+}
+
+async function processSyncQueue() {
+    if (isSyncing || syncQueue.length === 0) return;
+
+    isSyncing = true;
+    const event = syncQueue.shift();
+    await handleMessage(event);
+    isSyncing = false;
+
+    processSyncQueue(); // Process next in queue
+}
+
+// Message handler
+self.onmessage = (event) => {
+    if (event.data.type === "SYNC_ALL_DATA") {
+        enqueueSync(event);
+    } else {
+        handleMessage(event); // Run other messages immediately
+    }
+};
+
+// Main handler
+async function handleMessage(event) {
     const { type, url, apiKey, userId, locationId, programId, totals, date, payload, apiStatus, useMODS, storeCachedRecords } = event.data;
+
     USERID = userId;
     LOCATIONID = locationId;
     PROGRAMID = programId;
@@ -53,7 +79,9 @@ self.onmessage = async (event) => {
     TOTALS = JSON.parse(totals);
     USEMODS = useMODS;
     STORE_CACHE_RECORDS = storeCachedRecords;
+
     await DatabaseManager.openDatabase();
+
     try {
         switch (type) {
             case "SYNC":
@@ -64,22 +92,22 @@ self.onmessage = async (event) => {
                     console.log("SYNC ~ error:", error);
                 }
                 break;
+
             case "SYNC_ALL_DATA":
                 try {
                     if (USEMODS == "true") {
                         await patientService.sharePatientRecords();
                         OfflineDataSyncWebsocketService.initWebsocket();
-                        await syncPatientDataService.syncAllData();
-                        console.log("USEMODS SYNC_ALL_DATA ~ storeName:", type);
-                    } if (USEMODS == "false") {
-                        await syncPatientDataService.syncAllData();
-                        console.log("SYNC_ALL_DATA ~ storeName:", type);
                     }
+
+                    await syncPatientDataService.syncAllData();
+                    console.log("SYNC_ALL_DATA ~ storeName:", type);
                     self.postMessage("Done syncing all data");
                 } catch (error) {
                     console.log("SYNC_ALL_DATA ~ error:", error);
                 }
                 break;
+
             case "SET_OFFLINE_LOCATION":
                 try {
                     await LocationService.setOfflineLocation();
@@ -88,6 +116,7 @@ self.onmessage = async (event) => {
                     console.log("SET_OFFLINE_LOCATION ~ error:", error);
                 }
                 break;
+
             case "SET_OFFLINE_PROGRAMS":
                 try {
                     self.postMessage({ payload: await programService.setOfflinePrograms() });
@@ -96,6 +125,7 @@ self.onmessage = async (event) => {
                     console.log("SET_OFFLINE_PROGRAMS ~ error:", error);
                 }
                 break;
+
             case "SET_OFFLINE_RELATIONSHIPS":
                 try {
                     await relationshipsService.setOfflineRelationship();
@@ -104,6 +134,7 @@ self.onmessage = async (event) => {
                     console.log("SET_OFFLINE_RELATIONSHIPS ~ error:", error);
                 }
                 break;
+
             case "DELETE_RECORD":
                 try {
                     await DatabaseManager.deleteRecord(payload.storeName, payload.whereClause);
@@ -112,14 +143,17 @@ self.onmessage = async (event) => {
                     console.log("DELETE_RECORD ~ error:" + payload.storeName, error);
                 }
                 break;
+
             case "ADD_OBJECT_STORE":
                 try {
                     await DatabaseManager.addData(payload.storeName, payload.data);
                     console.log("ADD_OBJECT_STORE ~ payload:", payload.storeName);
+                    self.postMessage("ADD-" + payload.storeName);
                 } catch (error) {
                     console.log("ADD_OBJECT_STORE ~ error:" + payload.storeName, error);
                 }
                 break;
+
             case "OVERRIDE_OBJECT_STORE":
                 try {
                     await DatabaseManager.overRideCollection(payload.storeName, payload.data);
@@ -128,6 +162,7 @@ self.onmessage = async (event) => {
                     console.log("OVERRIDE_OBJECT_STORE ~ error:", error);
                 }
                 break;
+
             case "UPDATE_RECORD":
                 try {
                     await DatabaseManager.updateRecord(payload.storeName, payload.whereClause, payload.data);
@@ -136,12 +171,13 @@ self.onmessage = async (event) => {
                     console.log("UPDATE_RECORD ~ error:", error);
                 }
                 break;
+
             case "SAVE_PATIENT_RECORD":
                 try {
                     self.postMessage("");
                     if (USEMODS == "true") {
                         await patientService.sharePatientRecords();
-                    } if (USEMODS == "false") {
+                    } else {
                         await patientService.savePatientRecord();
                     }
                     self.postMessage("Done saving data");
@@ -150,6 +186,7 @@ self.onmessage = async (event) => {
                     console.log("SAVE_PATIENT_RECORD ~ error:", error);
                 }
                 break;
+
             case "SYNC_STOCK_RECORD":
                 try {
                     await stockService.setStock();
@@ -160,6 +197,7 @@ self.onmessage = async (event) => {
                     console.log("SYNC_STOCK_RECORD ~ error:", error);
                 }
                 break;
+
             case "SYNC_DDE":
                 try {
                     await ddeService.setDDEIds();
@@ -169,6 +207,7 @@ self.onmessage = async (event) => {
                     console.log("SYNC_DDE ~ error:", error);
                 }
                 break;
+
             case "SET_OFFLINE_DRUG":
                 try {
                     await DrugService.setOfflineDrugs();
@@ -177,6 +216,7 @@ self.onmessage = async (event) => {
                     console.log("SET_OFFLINE_DRUG ~ error:", error);
                 }
                 break;
+
             case "SET_OFFLINE_FACILITY":
                 try {
                     await FacilityService.setOfflineFacilities();
@@ -185,6 +225,7 @@ self.onmessage = async (event) => {
                     console.log("SET_OFFLINE_FACILITY ~ error:", error);
                 }
                 break;
+
             case "SET_OFFLINE_WARDS":
                 try {
                     await WardsService.setOfflineWards();
@@ -193,14 +234,16 @@ self.onmessage = async (event) => {
                     console.log("SET_OFFLINE_WARDS ~ error:", error);
                 }
                 break;
+
             case "SET_OFFLINE_VISITS":
                 await visitsService.setOfflineVisits();
                 console.log("SET_OFFLINE_VISITS ~ storeName:", visitsService.setOfflineVisits());
-
                 break;
+
             case "SET_OFFLINE_STAGES":
                 await stagesService.setOfflineStages();
                 break;
+
             case "ADD_STAGE":
                 try {
                     const success = await stagesService.addStage(payload.data, payload.storeName);
@@ -233,6 +276,7 @@ self.onmessage = async (event) => {
                     });
                 }
                 break;
+
             case "SYNC_UNSAVED_STAGES":
                 await stagesService.syncOfflineStages();
                 break;
@@ -253,6 +297,7 @@ self.onmessage = async (event) => {
                     });
                 }
                 break;
+
             case "SYNC_UNSAVED_VISITS":
                 await visitsService.submitUnsavedVisitis();
                 break;
@@ -260,4 +305,4 @@ self.onmessage = async (event) => {
     } catch (error) {
         console.log("Error Offline database initialization: " + error);
     }
-};
+}

@@ -14,7 +14,6 @@ const diagnosisService = {
             });
             allRecords.push(...diagnosis);
         }
-        console.log("🚀 ~ setDiagnosis ~ allRecords:", allRecords);
 
         if (allRecords && Object.keys(allRecords).length > 0) {
             await DatabaseManager.overRideCollection("diagnosis", allRecords);

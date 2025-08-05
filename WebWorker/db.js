@@ -440,8 +440,7 @@ const DatabaseManager = {
             const request = objectStore.add(data);
             request.onerror = (event) => {
                 const error = event.target.error;
-                // console.log("🚀 ~ addData ~ storeName:", storeName, data, `Error adding data: ${error?.name} - ${error?.message}`);
-                reject(new Error(`Error adding data: ${error?.name} - ${error?.message}`));
+                reject(new Error(`Error adding data:${storeName} ${error?.name} - ${error?.message}`));
             };
 
             request.onsuccess = () => {
