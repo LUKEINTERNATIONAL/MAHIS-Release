@@ -1,1 +1,0 @@
-System.register(["./index-legacy-B6ewOiHD.js"],function(e,r){"use strict";var t;return{setters:[e=>{t=e.bR}],execute:function(){e("P",class extends t{constructor(){super()}generate(e,r){return this.getReport(`/programs/${this.programId}/reports/${e}`,r)}})}}});
