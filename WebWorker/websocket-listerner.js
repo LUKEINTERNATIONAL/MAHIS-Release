@@ -1,7 +1,24 @@
-const getConnectionString = async () => {
-    const connection_strings = await DatabaseManager.getOfflineData("offlineConnectionString");
-    return connection_strings[0].connection_string;
-};
+function getConnectionString() {
+    return new Promise((resolve) => {
+        // Send request to main thread
+        postMessage({ type: "getConnectionString", key: "offlineConnectionString" });
+
+        // Listen for main thread response
+        function handleMessage(event) {
+            const { type, key, value } = event.data;
+
+            if (type === "connectionStringValue" && key === "offlineConnectionString") {
+                // Clean up listener after receiving response
+                self.removeEventListener("message", handleMessage);
+
+                // Resolve with connection string
+                resolve(value ? JSON.parse(value).connection_string : null);
+            }
+        }
+
+        self.addEventListener("message", handleMessage);
+    });
+}
 
 // APPROACH 1: Simple Connection Manager (Recommended for most cases)
 class SocketManager {
@@ -40,7 +57,7 @@ class SocketManager {
 
             this.BASE_URL = await getConnectionString();
             const finalServerUrl = this.BASE_URL || "http://0.0.0.0:3002";
-                         
+
             this.socket = io(`${finalServerUrl}`, {
                 query: {
                     deviceId: "device-" + Math.random().toString(36).substr(2, 9),
@@ -52,20 +69,18 @@ class SocketManager {
             });
 
             this.setupEventListeners();
-            
+
             // Wait for connection to be established
             await new Promise((resolve, reject) => {
-                this.socket.on('connect', resolve);
-                this.socket.on('connect_error', reject);
-                
+                this.socket.on("connect", resolve);
+                this.socket.on("connect_error", reject);
+
                 // Timeout after 10 seconds
-                setTimeout(() => reject(new Error('Connection timeout')), 10000);
+                setTimeout(() => reject(new Error("Connection timeout")), 10000);
             });
 
-
-            console.log('Socket connected successfully');
+            console.log("Socket connected successfully");
             return this.socket;
-
         } catch (error) {
             console.error("Failed to initialize connection:", error);
             throw error;
@@ -90,7 +105,7 @@ class SocketManager {
             try {
                 const parsedRecord = record.payload;
                 self.postMessage({ message: "update_stale_record", payload: parsedRecord, IDTR: parsedRecord.patientID });
-                await DatabaseManager.overrideRecordExplicit('patientRecords', parsedRecord, parsedRecord.patientID);  
+                await DatabaseManager.overrideRecordExplicit("patientRecords", parsedRecord, parsedRecord.patientID);
             } catch (error) {
                 console.error("Error processing patient data update:", error);
             }
@@ -104,15 +119,16 @@ class SocketManager {
     // Usage: await socketManager.ensureConnection() before any socket operation
 }
 
-const OfflineDataSyncWebsocketService = { 
+const OfflineDataSyncWebsocketService = {
     initWebsocket() {
         const robustManager = new SocketManager();
-        robustManager.ensureConnection()
+        robustManager
+            .ensureConnection()
             .then(() => {
                 console.log("WebSocket connection established successfully");
             })
             .catch((error) => {
                 console.error("Failed to establish WebSocket connection:", error);
             });
-    }
-}
+    },
+};

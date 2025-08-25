@@ -13,7 +13,7 @@ const visitsService = {
             let response = null;
 
             if (USEMODS == "true") {
-                const BASE_URL = await getConnectonString();
+                const BASE_URL = await getConnectionString();
                 const _response_ = await fetch(`${BASE_URL}/visits`);
                 if (!_response_.ok) {
                     throw new Error(`HTTP error! status: ${_response_.status}`);
