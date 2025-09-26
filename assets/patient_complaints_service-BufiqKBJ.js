@@ -1,0 +1,1 @@
+import{aT as n,aM as a}from"./index-3VO6Sqm_.js";class s extends n{constructor(t,e){super(t,122,e)}static async getComplaintsList(t,e=""){return a.getConceptSet(t,e)}async fetchLatestTriageEncounter(){return await s.getObs({concept_id:await a.getConceptID("History of COVID-19 contact"),start_date:this.date,end_date:this.date,person_id:this.patientID})}}export{s as P};
