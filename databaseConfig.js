@@ -1,0 +1,25 @@
+const databaseConfig = {
+    liveSyncDatabases: ["patients_records", "visits", "stages"],
+    periodicSyncDatabases: [
+        "programs",
+        "facilities",
+        "drugs",
+        "relationship",
+        "traditional_authorities",
+        "villages",
+        "concept_sets",
+        "concept_names",
+        "districts",
+        "wards",
+        "stock",
+        "dde",
+        "test_types",
+        "specimens",
+        "test_result_indicators",
+    ],
+    locationFilters: {
+        patients_records: true,
+        visits: true,
+        stages: true,
+    },
+};
