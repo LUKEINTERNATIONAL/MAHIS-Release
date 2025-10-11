@@ -1,13 +1,13 @@
 {
 	"development": {
-		"apiURL": "196.11.86.145",
+		"apiURL": "127.0.0.1",
 		"apiPort": "3000",
 		"apiProtocol": "http",
 		"websocketProtocol": "ws",
 		"couchdbPassword": "root",
 		"couchdbUsername": "admin",
 		"couchdbPort": "5984",
-		"couchdbHost": "196.11.86.145",
+		"couchdbHost": "127.0.0.1",
 		"couchdbProtocol": "http"
 	},
 	"test": {
@@ -18,7 +18,7 @@
 		"couchdbPassword": "root",
 		"couchdbUsername": "admin",
 		"couchdbPort": "5984",
-		"couchdbHost": "196.11.86.145/",
+		"couchdbHost": "196.11.86.145",
 		"couchdbProtocol": "http"
 	},
 	"production": {
