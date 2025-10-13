@@ -1,0 +1,1 @@
+import{O as e,u as t}from"./index-v2y4nc5F.js";import{d as a,ab as r}from"./vendor-CwRShy1a.js";const d=a({data:()=>({userRole:"",ready:!1,labOrders:{}}),computed:{...r(t,["patient"])},watch:{$route:{async handler(s){this.labOrders=await e.getOrders(this.patient.patientID)},immediate:!0,deep:!0}}});export{d as _};

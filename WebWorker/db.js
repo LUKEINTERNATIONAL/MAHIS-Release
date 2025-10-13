@@ -1,947 +1,533 @@
+// Initialize PouchDB instances
+importScripts("../script/pouchdb.min.js", "../script/pouchdb.find.min.js");
+
+/**
+ * Core DatabaseManager - handles database operations only
+ * Sync functionality moved to separate SyncManager
+ */
 const DatabaseManager = {
-    db: null,
-    async openDatabase() {
-        return new Promise((resolve, reject) => {
-            const DB_NAME = "MaHis";
-            const DB_VERSION = 12; // Increment this when changing schema
+    databases: {},
+    lastRemoteStats: {},
+    lastLocalStats: {},
+    indexCache: new Set(),
+    isInitialized: false,
 
-            const request = indexedDB.open(DB_NAME, DB_VERSION);
+    // Get all database names in order
+    get databaseNames() {
+        return [...databaseConfig.liveSyncDatabases, ...databaseConfig.periodicSyncDatabases];
+    },
 
-            request.onerror = (event) => {
-                reject(`Database error: ${event.target.error}`);
-            };
+    // Check if database should use live sync
+    isLiveSyncDatabase(dbName) {
+        return databaseConfig.liveSyncDatabases.includes(dbName);
+    },
 
-            request.onblocked = () => {
-                reject("Database upgrade blocked by existing connection. Close other tabs using this database.");
-            };
+    // Check if database should use periodic sync
+    isPeriodicSyncDatabase(dbName) {
+        return databaseConfig.periodicSyncDatabases.includes(dbName);
+    },
+    getDatabaseHandle(remoteBaseUrl, useLocalStorage, auth, name) {
+        const PouchDB = self.PouchDB;
+        if (useLocalStorage) {
+            // Local IndexedDB (default PouchDB)
+            return new PouchDB(name);
+        } else {
+            // Remote-only CouchDB (no IndexedDB)
+            return new PouchDB(`${remoteBaseUrl}/${name}`, {
+                skip_setup: false,
+                auth,
+            });
+        }
+    },
+    async init(remoteBaseUrl, useLocalStorage, auth) {
+        if (this.isInitialized) return;
 
-            request.onsuccess = (event) => {
-                this.db = event.target.result;
+        try {
+            // Ensure PouchDB is available
+            if (typeof self.PouchDB === "undefined") {
+                throw new Error("PouchDB is not loaded. Make sure to import PouchDB scripts before initializing.");
+            }
 
-                // Add version change listener for future upgrades
-                this.db.onversionchange = () => {
-                    this.db.close();
-                    console.log("Database is being upgraded elsewhere. Closing connection...");
-                };
+            for (const name of this.databaseNames) {
+                const db = this.getDatabaseHandle(remoteBaseUrl, useLocalStorage, auth, name);
+                this.databases[name] = db;
 
-                resolve(this.db);
-            };
+                // only makes sense for local stores
+                if (useLocalStorage && typeof db.revsLimit === "function") {
+                    await db.revsLimit(1);
+                }
+            }
+            if (useLocalStorage) {
+                // Background compaction only in local mode
+                setTimeout(() => this.runBackgroundCompaction(), 60000 * 10); // 1 min after init
+                await DatabaseManager.autoCompactAll();
+            }
 
-            request.onupgradeneeded = (event) => {
-                const database = event.target.result;
-                const transaction = event.target.transaction;
+            this.isInitialized = true;
+            console.log("DatabaseManager initialized successfully", {
+                liveSyncDbs: databaseConfig.liveSyncDatabases,
+                periodicSyncDbs: databaseConfig.periodicSyncDatabases.length,
+                totalDbs: this.databaseNames.length,
+            });
+        } catch (error) {
+            console.error("Failed to initialize databases:", error);
+            throw new Error("Database initialization failed: " + error.message);
+        }
+    },
+    async runBackgroundCompaction() {
+        console.log("[DB] Starting background compaction...");
+        try {
+            const dbEntries = Object.entries(this.databases);
 
-                // Corrected object store configurations
-                const schema = {
-                    relationship: {
-                        keyPath: "relationship_type_id",
-                        indexes: [
-                            { name: "a_is_to_b", keyPath: "a_is_to_b" },
-                            { name: "b_is_to_a", keyPath: "b_is_to_a" },
-                        ],
-                    },
-                    districts: {
-                        keyPath: "district_id",
-                        indexes: [
-                            { name: "name", keyPath: "name" },
-                            { name: "region_id", keyPath: "region_id" },
-                        ],
-                    },
-                    TAs: {
-                        keyPath: "traditional_authority_id",
-                        indexes: [
-                            { name: "name", keyPath: "name" },
-                            { name: "district_id", keyPath: "district_id" },
-                        ],
-                    },
-                    villages: {
-                        keyPath: "village_id",
-                        autoIncrement: true,
-                        indexes: [
-                            { name: "name", keyPath: "name" },
-                            { name: "traditional_authority_id", keyPath: "traditional_authority_id" },
-                        ],
-                    },
-                    countries: {
-                        keyPath: "district_id",
-                        indexes: [
-                            { name: "name", keyPath: "name" },
-                            { name: "region_id", keyPath: "region_id" },
-                        ],
-                    },
-                    programs: { keyPath: "program_id", indexes: [{ name: "concept_id", keyPath: "concept_id" }] },
-                    patientRecords: {
-                        keyPath: "patientID",
-                        indexes: [
-                            { name: "given_name", keyPath: "personInformation.given_name" },
-                            { name: "family_name", keyPath: "personInformation.family_name" },
-                            { name: "ID", keyPath: "ID" },
-                            { name: "encounter_datetime", keyPath: "encounter_datetime" },
-                        ],
-                    },
-                    dde: { keyPath: "id", autoIncrement: true },
-                    generics: { keyPath: "id", autoIncrement: true },
-                    stock: { keyPath: "id", autoIncrement: true, indexes: [{ name: "pharmacy_batch_id", keyPath: "pharmacy_batch_id" }] },
-                    genericVaccineSchedule: { keyPath: "id", autoIncrement: true },
-                    conceptNames: {
-                        keyPath: "id",
-                        autoIncrement: true,
-                        indexes: [
-                            { name: "concept_id", keyPath: "concept_id" },
-                            { name: "name", keyPath: "name" },
-                        ],
-                    },
-                    conceptSets: {
-                        keyPath: "id",
-                        autoIncrement: true,
-                        indexes: [
-                            { name: "concept_set_name", keyPath: "concept_set_name" },
-                            { name: "member_ids", keyPath: "member_ids" },
-                        ],
-                    },
-                    bookedAppointments: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
-                    testTypes: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
-                    specimens: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
-                    diagnosis: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
-                    testResultIndicators: { keyPath: "id", autoIncrement: true, indexes: [{ name: "name", keyPath: "name" }] },
-                    drugs: {
-                        keyPath: "drug_id",
-                        indexes: [
-                            { name: "name", keyPath: "name" },
-                            { name: "concept_id", keyPath: "concept_id" },
-                        ],
-                    },
-                    activeProgramInContext: { keyPath: "program_id" },
-                    offlineConnectionString: { keyPath: "connection_string_id" },
-                    facilities: { keyPath: "code" },
-                    wards: { keyPath: "location_id" },
-                    visits: {
-                        keyPath: "id",
-                        autoIncrement: true,
-                    },
-                    unsavedVisits: {
-                        keyPath: "id",
-                        autoIncrement: true,
-                    },
-                    stages: {
-                        keyPath: "id",
-                        autoIncrement: true,
-                        indexes: [
-                            { name: "stage", keyPath: "stage" },
-                            { name: "location_id", keyPath: "location_id" },
-                        ],
-                    },
-                };
+            const compactionPromises = dbEntries.map(async ([name, db]) => {
+                console.log(`[Compact] Starting compaction for ${name}...`);
+                await db.compact();
+                console.log(`[Compact] Successfully compacted ${name}`);
+            });
 
-                Object.entries(schema).forEach(([storeName, config]) => {
-                    let store;
-                    const indexes = config.indexes || []; // Handle missing indexes array
+            await Promise.allSettled(compactionPromises);
+        } finally {
+        }
+    },
 
-                    if (!database.objectStoreNames.contains(storeName)) {
-                        store = database.createObjectStore(storeName, {
-                            keyPath: config.keyPath,
-                            autoIncrement: config.autoIncrement || false,
-                        });
-                    } else {
-                        store = transaction.objectStore(storeName); // Now using valid transaction
-                    }
+    validateDatabase(storeName) {
+        if (!this.isInitialized) {
+            throw new Error("DatabaseManager not initialized. Call init() first.");
+        }
+        if (!this.databases[storeName]) {
+            throw new Error(`Database "${storeName}" not found. Available databases: ${Object.keys(this.databases).join(", ")}`);
+        }
+    },
 
-                    indexes.forEach((index) => {
-                        try {
-                            // Recreate indexes safely
-                            if (store.indexNames.contains(index.name)) {
-                                store.deleteIndex(index.name);
-                            }
-                            store.createIndex(index.name, index.keyPath, {
-                                unique: !!index.unique,
-                                multiEntry: !!index.multiEntry,
-                            });
-                        } catch (error) {
-                            console.error(`Index error in ${storeName}:`, error);
-                            transaction.abort(); // Explicitly abort on error
-                            reject(error);
-                        }
-                    });
+    validateDocumentData(data) {
+        if (!data || typeof data !== "object") {
+            throw new Error("Document data must be a valid object");
+        }
+        if (!data._id) {
+            throw new Error("Document must have an _id property");
+        }
+    },
+
+    async ensureIndex(db, fields, storeName) {
+        const indexKey = `${storeName}:${fields.sort().join(",")}`;
+
+        if (!this.indexCache.has(indexKey)) {
+            try {
+                await db.createIndex({
+                    index: {
+                        fields: fields,
+                        name: `idx_${fields.join("_")}`,
+                    },
                 });
-            };
-        });
-    },
-    async overRideRecordRecord(storeName, data, whereClause) {
-        if (data) this.deleteRecord(storeName, whereClause);
-        if (data) this.addData(storeName, data);
-    },
-    async overRideCollection(storeName, data) {
-        return new Promise((resolve, reject) => {
-            if (!this.db) {
-                reject(new Error("Database not initialized. Call openDatabase() first."));
-                return;
-            }
-
-            const transaction = this.db.transaction([storeName], "readwrite");
-            const objectStore = transaction.objectStore(storeName);
-
-            // Clear all existing data
-            const clearRequest = objectStore.clear();
-
-            clearRequest.onerror = (event) => {
-                reject(new Error(`Clear operation failed: ${event.target.error}`));
-            };
-
-            clearRequest.onsuccess = () => {
-                // After clearing, add the new data
-                if (data.length > 0) {
-                    const addPromises = data.map((item) => {
-                        return new Promise((resolve, reject) => {
-                            const addRequest = objectStore.add(item);
-                            addRequest.onerror = (event) => reject(event.target.error);
-                            addRequest.onsuccess = () => resolve();
-                        });
-                    });
-
-                    Promise.all(addPromises)
-                        .then(() => resolve())
-                        .catch((error) => reject(new Error(`Add operation failed: ${error}`)));
-                } else {
-                    const addRequest = objectStore.add(data);
-                    addRequest.onerror = (event) => {
-                        reject(event.target.error);
-                    };
-
-                    addRequest.onsuccess = () => {
-                        resolve();
-                    };
+                this.indexCache.add(indexKey);
+            } catch (error) {
+                if (!error.message.includes("exists")) {
+                    console.warn(`Failed to create index for ${indexKey}:`, error);
                 }
-            };
-
-            // Handle transaction errors
-            transaction.onerror = (event) => {
-                reject(new Error(`Transaction failed: ${event.target.error}`));
-            };
-
-            transaction.oncomplete = () => {};
-        });
+            }
+        }
     },
 
     /**
-     * Alternative override method that explicitly deletes then adds
-     * Use this if you need to ensure a complete replacement
-     * @param {string} storeName - Name of the object store
-     * @param {*} newData - New data to insert
-     * @param {string|number} keyValue - The key value to delete first
-     * @param {boolean} debug - Enable detailed debugging output
-     * @returns {Promise<boolean>} - Success status
+     * Advanced record retrieval function with pagination support
+     * @param {string} dbName - Database name
+     * @param {Object} options - Query options
+     * @param {number} options.currentPage - Current page number (default: 1)
+     * @param {number} options.itemsPerPage - Items per page (0 = no pagination, default: 0)
+     * @param {Object} options.selector - PouchDB selector object for filtering
+     * @param {Array} options.sort - Sort array for ordering results
+     * @param {Array} options.fields - Fields to return (projection)
+     * @param {string} options.docType - Document type filter
+     * @returns {Promise<Object|Array>} Records with pagination info or array of records
      */
-    async overrideRecordExplicit(storeName, newData, keyValue, debug = false) {
-        if (!this.db) {
-            const error = "Database not initialized. Call openDatabase() first.";
-            if (debug) console.error("[DEBUG] overrideRecordExplicit:", error);
-            throw new Error(error);
-        }
+    async get(dbName, options = {}) {
+        try {
+            this.validateDatabase(dbName);
 
-        if (debug) {
-            console.log("[DEBUG] overrideRecordExplicit: Starting operation");
-            console.log("[DEBUG] Parameters:", {
-                storeName,
-                keyValue,
-                newDataKeys: Object.keys(newData || {}),
-                newDataSize: JSON.stringify(newData).length + " characters",
-            });
-        }
+            const { currentPage = 1, itemsPerPage = 0, selector = {}, sort, fields, docType } = options;
 
-        return new Promise((resolve, reject) => {
-            if (debug) console.log("[DEBUG] Creating transaction for store:", storeName);
+            // Use the already initialized database from DatabaseManager
+            const db = this.databases[dbName];
 
-            const transaction = this.db.transaction([storeName], "readwrite");
-            const store = transaction.objectStore(storeName);
+            // Build final selector with docType if provided
+            const finalSelector = docType ? { ...selector, $or: [{ docType }, { type: docType }] } : selector;
 
-            // Transaction event handlers
-            transaction.oncomplete = () => {
-                if (debug) console.log("[DEBUG] Transaction completed successfully");
-            };
-
-            transaction.onabort = (event) => {
-                if (debug) console.error("[DEBUG] Transaction aborted:", event.target.error);
-            };
-
-            transaction.onerror = (event) => {
-                const error = `Transaction error: ${event.target.error}`;
-                if (debug) console.error("[DEBUG]", error);
-                console.error(error);
-                reject(event.target.error);
-            };
-
-            if (debug) console.log("[DEBUG] Attempting to delete record with key:", keyValue);
-
-            // First delete the existing record
-            const deleteRequest = store.delete(keyValue);
-
-            deleteRequest.onsuccess = () => {
-                if (debug) {
-                    console.log("[DEBUG] Delete operation successful for key:", keyValue);
-                    console.log("[DEBUG] Now attempting to add new record");
-                }
-
-                // Then add the new record
-                const addRequest = store.add(newData);
-
-                addRequest.onsuccess = () => {
-                    const successMsg = `Record with key ${keyValue} successfully overridden in ${storeName}`;
-                    if (debug) {
-                        console.log("[DEBUG] Add operation successful");
-                        console.log("[DEBUG] Override operation completed successfully");
-                    }
-                    console.log(successMsg);
-                    resolve(true);
-                };
-
-                addRequest.onerror = (event) => {
-                    const error = `Error adding new record in ${storeName}: ${event.target.error}`;
-                    if (debug) {
-                        console.error("[DEBUG] Add operation failed:", event.target.error);
-                        console.error("[DEBUG] Add request error details:", {
-                            errorName: event.target.error?.name,
-                            errorMessage: event.target.error?.message,
-                            errorCode: event.target.error?.code,
-                            keyValue: keyValue,
-                            storeName: storeName,
-                        });
-                    }
-                    console.error(error);
-                    reject(event.target.error);
-                };
-            };
-
-            deleteRequest.onerror = (event) => {
-                if (debug) {
-                    console.log("[DEBUG] Delete operation failed (likely record not found):", event.target.error);
-                    console.log("[DEBUG] Attempting to add record anyway (fallback to insert)");
-                }
-
-                // If delete fails (record doesn't exist), try to add anyway
-                console.log(`Record ${keyValue} not found for deletion, adding new record`);
-                const addRequest = store.add(newData);
-
-                addRequest.onsuccess = () => {
-                    if (debug) {
-                        console.log("[DEBUG] Fallback add operation successful");
-                        console.log("[DEBUG] Override operation completed (via fallback insert)");
-                    }
-                    console.log(`New record with key ${keyValue} added to ${storeName}`);
-                    resolve(true);
-                };
-
-                addRequest.onerror = (event) => {
-                    const error = `Error adding record in ${storeName}: ${event.target.error}`;
-                    if (debug) {
-                        console.error("[DEBUG] Fallback add operation also failed:", event.target.error);
-                        console.error("[DEBUG] Fallback add error details:", {
-                            errorName: event.target.error?.name,
-                            errorMessage: event.target.error?.message,
-                            errorCode: event.target.error?.code,
-                            keyValue: keyValue,
-                            storeName: storeName,
-                            operation: "fallback_add_after_delete_failed",
-                        });
-                    }
-                    console.error(error);
-                    reject(event.target.error);
-                };
-            };
-        });
-    },
-
-    /**
-     * Delete a record from the object store
-     * @param {string} storeName - Name of the object store
-     * @param {string|number} keyValue - The key value to delete
-     * @param {boolean} debug - Enable detailed debugging output
-     * @returns {Promise<boolean>} - Success status
-     */
-    async deleteRecordExplicit(storeName, keyValue, debug = false) {
-        if (!this.db) {
-            const error = "Database not initialized. Call openDatabase() first.";
-            if (debug) console.error("[DEBUG] deleteRecord:", error);
-            throw new Error(error);
-        }
-
-        if (debug) {
-            console.log("[DEBUG] deleteRecord: Starting operation");
-            console.log("[DEBUG] Parameters:", {
-                storeName,
-                keyValue,
-            });
-        }
-
-        return new Promise((resolve, reject) => {
-            if (debug) console.log("[DEBUG] Creating transaction for store:", storeName);
-
-            const transaction = this.db.transaction([storeName], "readwrite");
-            const store = transaction.objectStore(storeName);
-
-            // Transaction event handlers
-            transaction.oncomplete = () => {
-                if (debug) console.log("[DEBUG] Delete transaction completed successfully");
-            };
-
-            transaction.onabort = (event) => {
-                if (debug) console.error("[DEBUG] Delete transaction aborted:", event.target.error);
-            };
-
-            transaction.onerror = (event) => {
-                const error = `Delete transaction error: ${event.target.error}`;
-                if (debug) console.error("[DEBUG]", error);
-                console.error(error);
-                reject(event.target.error);
-            };
-
-            if (debug) console.log("[DEBUG] Attempting to delete record with key:", keyValue);
-
-            // Delete the record
-            const deleteRequest = store.delete(keyValue);
-
-            deleteRequest.onsuccess = () => {
-                const successMsg = `Record with key ${keyValue} successfully deleted from ${storeName}`;
-                if (debug) {
-                    console.log("[DEBUG] Delete operation successful");
-                    console.log("[DEBUG] Delete operation completed successfully");
-                }
-                console.log(successMsg);
-                resolve(true);
-            };
-
-            deleteRequest.onerror = (event) => {
-                const error = `Error deleting record in ${storeName}: ${event.target.error}`;
-                if (debug) {
-                    console.error("[DEBUG] Delete operation failed:", event.target.error);
-                    console.error("[DEBUG] Delete error details:", {
-                        errorName: event.target.error?.name,
-                        errorMessage: event.target.error?.message,
-                        errorCode: event.target.error?.code,
-                        keyValue,
-                        storeName,
-                    });
-                }
-                console.error(error);
-                reject(event.target.error);
-            };
-        });
-    },
-
-    addData(storeName, data) {
-        return new Promise((resolve, reject) => {
-            if (!this.db) {
-                reject(new Error("Database not initialized. Call openDatabase() first."));
-                return;
+            // Ensure index exists for selector fields
+            const selectorFields = Object.keys(finalSelector);
+            if (selectorFields.length > 0) {
+                await this.ensureIndex(db, selectorFields, dbName);
             }
 
-            const transaction = this.db.transaction([storeName], "readwrite");
-            const objectStore = transaction.objectStore(storeName);
+            // Get total count for pagination
+            const countResult = await db.find({
+                selector: finalSelector,
+                fields: ["_id"],
+            });
+            const totalCount = countResult.docs.length;
 
-            const request = objectStore.add(data);
-            request.onerror = (event) => {
-                const error = event.target.error;
-                reject(new Error(`Error adding data:${storeName} ${error?.name} - ${error?.message}`));
+            // Build find options
+            const findOptions = {
+                selector: finalSelector,
+                ...(sort && { sort }),
+                ...(fields && { fields }),
             };
 
-            request.onsuccess = () => {
-                resolve();
-            };
-        });
-    },
-    async deleteRecord(storeName, whereCondition = null) {
-        return new Promise((resolve, reject) => {
-            if (!this.db) {
-                reject(new Error("Database not initialized. Call openDatabase() first."));
-                return;
+            // Add pagination if requested
+            if (itemsPerPage !== 0) {
+                findOptions.skip = (currentPage - 1) * itemsPerPage;
+                findOptions.limit = itemsPerPage;
             }
 
-            // Create a single readwrite transaction
-            const transaction = this.db.transaction([storeName], "readwrite");
-            const objectStore = transaction.objectStore(storeName);
+            const result = await db.find(findOptions);
 
-            // Handle transaction-level errors
-            transaction.onerror = (event) => {
-                reject(new Error(`Transaction error: ${event.target.error}`));
-            };
-
-            // If no where condition, clear all records
-            if (!whereCondition) {
-                const clearRequest = objectStore.clear();
-
-                clearRequest.onerror = (event) => {
-                    reject(event.target.error);
+            // Return with pagination info or just records
+            if (itemsPerPage !== 0) {
+                return {
+                    records: result.docs,
+                    totalCount,
+                    currentPage,
+                    itemsPerPage,
+                    totalPages: Math.ceil(totalCount / itemsPerPage),
                 };
+            }
 
-                clearRequest.onsuccess = () => {
-                    resolve();
-                };
+            return result.docs;
+        } catch (error) {
+            console.error(`Error retrieving records from ${dbName}:`, error);
+            throw new Error(`Failed to retrieve records from ${dbName}: ${error.message}`);
+        }
+    },
+
+    async upsertDocument(storeName, data, options = {}) {
+        try {
+            this.validateDatabase(storeName);
+            this.validateDocumentData(data);
+
+            const db = this.databases[storeName];
+            const { upsert = true } = options;
+
+            let result;
+            if (upsert) {
+                try {
+                    const existingDoc = await db.get(data._id);
+                    const updatedDoc = { ...existingDoc, ...data, _rev: existingDoc._rev };
+                    result = await db.put(updatedDoc);
+                } catch (err) {
+                    if (err.name === "not_found") {
+                        result = await db.put(data);
+                    } else {
+                        throw err;
+                    }
+                }
             } else {
-                // Find and delete matching records
-                const getAllRequest = objectStore.getAll();
-
-                getAllRequest.onerror = (event) => {
-                    reject(event.target.error);
-                };
-
-                getAllRequest.onsuccess = (event) => {
-                    const allRecords = event.target.result;
-
-                    // Find records to delete based on where condition
-                    const recordsToDelete = allRecords.filter((record) =>
-                        Object.entries(whereCondition).every(([key, value]) => record[key] === value)
-                    );
-
-                    // If no records match, resolve immediately
-                    if (recordsToDelete.length === 0) {
-                        resolve();
-                        return;
-                    }
-
-                    // Track deletion progress
-                    let deletedCount = 0;
-                    let errorOccurred = false;
-
-                    recordsToDelete.forEach((record) => {
-                        // Prioritize deletion keys
-                        const deletionKeys = ["id", "_id", "key", "primaryKey", ...Object.keys(whereCondition)];
-
-                        // Find the first valid deletion key
-                        const deleteKey = deletionKeys.find((key) => record[key] !== undefined);
-
-                        if (deleteKey) {
-                            const deleteRequest = objectStore.delete(record[deleteKey]);
-
-                            deleteRequest.onerror = (event) => {
-                                if (!errorOccurred) {
-                                    errorOccurred = true;
-                                    reject(new Error(`Failed to delete record: ${event.target.error}`));
-                                }
-                            };
-
-                            deleteRequest.onsuccess = () => {
-                                deletedCount++;
-
-                                // If all records processed, resolve
-                                if (deletedCount === recordsToDelete.length && !errorOccurred) {
-                                    resolve(deletedCount);
-                                }
-                            };
-                        } else {
-                            // If no valid key found, log an error
-                            console.error("No valid key found for deletion", record);
-                            deletedCount++;
-                        }
-                    });
-                };
+                result = await db.put(data);
             }
-        });
+
+            return result;
+        } catch (error) {
+            console.error(`Error adding data to ${storeName}:`, error);
+            throw new Error(`Failed to add data to ${storeName}: ${error.message}`);
+        }
     },
-    async getOfflineData(storeName, whereCondition = null, options = {}) {
-        return new Promise((resolve, reject) => {
-            if (!this.db) {
-                reject(new Error("Database not initialized."));
+    async deleteData(storeName, obj) {
+        try {
+            this.validateDatabase(storeName);
+
+            if (!obj) {
+                console.error("Document identifier is required for deletion");
                 return;
             }
 
-            try {
-                const transaction = this.db.transaction([storeName], "readonly");
-                const objectStore = transaction.objectStore(storeName);
+            const db = this.databases[storeName];
 
-                let request;
+            let doc;
+            if (typeof obj === "object") {
+                const result = await db.find({ selector: obj });
 
-                // Handle special case for getting latest record WITHOUT where condition
-                if (options.getLatest && options.orderBy && !whereCondition) {
-                    if (objectStore.indexNames.contains(options.orderBy)) {
-                        const index = objectStore.index(options.orderBy);
-                        request = index.openCursor(null, "prev");
-
-                        request.onsuccess = (event) => {
-                            const cursor = event.target.result;
-                            if (cursor) {
-                                resolve(cursor.value);
-                            } else {
-                                resolve(null);
-                            }
-                        };
-                    } else {
-                        // Fallback to get all and find latest
-                        request = objectStore.getAll();
-                        request.onsuccess = (event) => {
-                            const allResults = event.target.result;
-                            if (allResults.length === 0) {
-                                resolve(null);
-                                return;
-                            }
-
-                            const latestRecord = allResults.reduce((latest, current) => {
-                                const currentDate = new Date(current[options.orderBy]);
-                                const latestDate = new Date(latest[options.orderBy]);
-                                return currentDate > latestDate ? current : latest;
-                            });
-
-                            resolve(latestRecord);
-                        };
-                    }
-
-                    request.onerror = (event) => {
-                        reject(new Error(`Error getting latest record: ${event.target.error}`));
-                    };
+                if (result.docs.length === 0) {
+                    console.error(`Document  not found in ${storeName}`);
                     return;
                 }
 
-                // Handle where conditions (with or without getLatest)
-                if (whereCondition) {
-                    // Separate equality and inequality conditions
-                    const conditions = Object.entries(whereCondition).reduce(
-                        (acc, [key, value]) => {
-                            if (typeof value === "object" && value !== null) {
-                                if ("$ne" in value) {
-                                    acc.inequality[key] = value.$ne;
-                                } else {
-                                    acc.equality[key] = value;
-                                }
-                            } else {
-                                acc.equality[key] = value;
-                            }
-                            return acc;
+                doc = result.docs[0];
+            } else {
+                // assume it's an _id
+                doc = await db.get(obj);
+            }
+
+            const deleted = await db.remove(doc);
+
+            console.log(`[DB] Document deleted from ${storeName}`);
+            return deleted;
+        } catch (error) {
+            if (error.name === "not_found") {
+                throw new Error(`Document not found in ${storeName}`);
+            }
+            console.error(`Error deleting data from ${storeName}:`, error);
+            throw new Error(`Failed to delete data from ${storeName}: ${error.message}`);
+        }
+    },
+
+    async getCount(storeName, selector = null) {
+        try {
+            this.validateDatabase(storeName);
+            const db = this.databases[storeName];
+
+            if (selector) {
+                const result = await db.find({
+                    selector,
+                    fields: ["_id"],
+                    limit: Number.MAX_SAFE_INTEGER,
+                });
+                return result.docs.length;
+            } else {
+                const info = await db.info();
+                return info.doc_count;
+            }
+        } catch (error) {
+            console.error(`Error getting count from ${storeName}:`, error);
+            throw new Error(`Failed to get count from ${storeName}: ${error.message}`);
+        }
+    },
+
+    async bulkOperation(storeName, docs, operation = "insert") {
+        try {
+            this.validateDatabase(storeName);
+            if (!Array.isArray(docs) || docs.length === 0) {
+                throw new Error("Documents must be a non-empty array");
+            }
+
+            const db = this.databases[storeName];
+
+            if (operation === "delete") {
+                docs = docs.map((doc) => ({ ...doc, _deleted: true }));
+            }
+
+            const result = await db.bulkDocs(docs);
+            console.log(`[DB] Bulk ${operation} completed for ${storeName}:`, {
+                totalDocs: docs.length,
+                successful: result.filter((r) => !r.error).length,
+                errors: result.filter((r) => r.error).length,
+            });
+
+            return result;
+        } catch (error) {
+            console.error(`Error in bulk ${operation} for ${storeName}:`, error);
+            throw new Error(`Failed bulk ${operation} in ${storeName}: ${error.message}`);
+        }
+    },
+
+    getDatabaseInstance(storeName) {
+        this.validateDatabase(storeName);
+        return this.databases[storeName];
+    },
+
+    async closeAllDatabases() {
+        const closePromises = Object.values(this.databases).map((db) => {
+            try {
+                return db.close();
+            } catch (error) {
+                console.warn("Error closing database:", error);
+                return Promise.resolve();
+            }
+        });
+
+        await Promise.allSettled(closePromises);
+        this.indexCache.clear();
+        this.databases = {};
+        this.isInitialized = false;
+        console.log("[DB] All databases closed");
+    },
+
+    async getLocalStats(databaseName = null) {
+        if (!this.isInitialized) {
+            throw new Error("DatabaseManager not initialized");
+        }
+
+        const stats = {};
+
+        // If databaseName is specified, only process that database
+        const databasesToProcess = databaseName ? { [databaseName]: this.databases[databaseName] } : this.databases;
+
+        // Validate that the specified database exists
+        if (databaseName && !this.databases[databaseName]) {
+            throw new Error(`Database '${databaseName}' not found`);
+        }
+
+        for (const [name, db] of Object.entries(databasesToProcess)) {
+            try {
+                let docCount;
+
+                const info = await db.info();
+
+                if (USE_LOCAL_STORAGE) {
+                    // Count design documents to subtract from total
+                    const designDocs = await db.allDocs({
+                        startkey: "_design/",
+                        endkey: "_design/\ufff0",
+                        include_docs: false,
+                    });
+                    docCount = info.doc_count - designDocs.rows.length;
+                } else {
+                    docCount = 0;
+                }
+
+                stats[name] = { docCount, syncType: this.isLiveSyncDatabase(name) ? "live" : "periodic" };
+            } catch (error) {
+                stats[name] = {
+                    error: error.message,
+                    ...(location_id && { location_id: location_id }),
+                };
+            }
+        }
+        return stats;
+    },
+
+    async getRemoteStats(remoteBaseUrl, options = {}, databaseName = null) {
+        const stats = {};
+        const auth = btoa(`${options.username}:${options.password}`);
+
+        // If databaseName is specified, only process that database
+        const databasesToProcess = databaseName ? [databaseName] : this.databaseNames;
+
+        // Validate that the specified database exists in databaseNames
+        if (databaseName && !this.databaseNames.includes(databaseName)) {
+            throw new Error(`Database '${databaseName}' not found in databaseNames`);
+        }
+
+        for (const dbName of databasesToProcess) {
+            try {
+                let docCount;
+                const selector = SyncManager.getLocationSelector(dbName);
+
+                if (selector) {
+                    // Add filter to exclude design documents and index records
+                    const enhancedSelector = {
+                        $and: [
+                            selector,
+                            {
+                                _id: {
+                                    $not: { $regex: "^_design/" }, // Exclude design documents
+                                },
+                            },
+                        ],
+                    };
+
+                    // Use find endpoint to count documents matching location_id, excluding design docs
+                    const findResponse = await fetch(`${remoteBaseUrl}/${dbName}/_find`, {
+                        method: "POST",
+                        headers: {
+                            Authorization: `Basic ${auth}`,
+                            "Content-Type": "application/json",
                         },
-                        { equality: {}, inequality: {} }
-                    );
+                        body: JSON.stringify({
+                            selector: enhancedSelector,
+                            fields: ["_id"], // Only return _id to minimize data transfer
+                            limit: 25000, // CouchDB default max, adjust as needed
+                        }),
+                    });
 
-                    // Check if we have any equality conditions to use with index
-                    const equalityKeys = Object.keys(conditions.equality);
-                    if (equalityKeys.length > 0) {
-                        const indexName = equalityKeys[0];
+                    if (!findResponse.ok) {
+                        throw new Error(`Find request failed: ${findResponse.status}`);
+                    }
 
-                        if (objectStore.indexNames.contains(indexName)) {
-                            const index = objectStore.index(indexName);
-                            const keyRange = IDBKeyRange.only(conditions.equality[indexName]);
+                    const findResult = await findResponse.json();
+                    docCount = findResult.docs.length;
 
-                            const results = [];
-                            request = index.openCursor(keyRange);
-
-                            request.onsuccess = (event) => {
-                                const cursor = event.target.result;
-                                if (cursor) {
-                                    const item = cursor.value;
-                                    // Check both equality and inequality conditions
-                                    const matchesAllConditions =
-                                        // Check remaining equality conditions
-                                        Object.entries(conditions.equality).every(([key, value]) => item[key] === value) &&
-                                        // Check inequality conditions
-                                        Object.entries(conditions.inequality).every(([key, value]) => item[key] !== value);
-
-                                    if (matchesAllConditions) {
-                                        results.push(item);
-                                    }
-                                    cursor.continue();
-                                } else {
-                                    // Apply getLatest logic to filtered results
-                                    if (options.getLatest && options.orderBy && results.length > 0) {
-                                        const latestRecord = results.reduce((latest, current) => {
-                                            const currentDate = new Date(current[options.orderBy]);
-                                            const latestDate = new Date(latest[options.orderBy]);
-                                            return currentDate > latestDate ? current : latest;
-                                        });
-                                        resolve(latestRecord);
-                                    } else {
-                                        resolve(results.length > 0 ? results : null);
-                                    }
-                                }
-                            };
-                        } else {
-                            // Fallback to manual filtering if no index exists
-                            request = objectStore.getAll();
-                            request.onsuccess = (event) => {
-                                const allResults = event.target.result;
-                                const filteredResults = allResults.filter((item) => {
-                                    return (
-                                        // Check equality conditions
-                                        Object.entries(conditions.equality).every(([key, value]) => item[key] === value) &&
-                                        // Check inequality conditions
-                                        Object.entries(conditions.inequality).every(([key, value]) => item[key] !== value)
-                                    );
-                                });
-
-                                // Apply getLatest logic to filtered results
-                                if (options.getLatest && options.orderBy && filteredResults.length > 0) {
-                                    const latestRecord = filteredResults.reduce((latest, current) => {
-                                        const currentDate = new Date(current[options.orderBy]);
-                                        const latestDate = new Date(latest[options.orderBy]);
-                                        return currentDate > latestDate ? current : latest;
-                                    });
-                                    resolve(latestRecord);
-                                } else {
-                                    resolve(filteredResults.length > 0 ? filteredResults : null);
-                                }
-                            };
-                        }
-                    } else {
-                        // If we only have inequality conditions
-                        request = objectStore.getAll();
-                        request.onsuccess = (event) => {
-                            const allResults = event.target.result;
-                            const filteredResults = allResults.filter((item) =>
-                                Object.entries(conditions.inequality).every(([key, value]) => item[key] !== value)
-                            );
-
-                            // Apply getLatest logic to filtered results
-                            if (options.getLatest && options.orderBy && filteredResults.length > 0) {
-                                const latestRecord = filteredResults.reduce((latest, current) => {
-                                    const currentDate = new Date(current[options.orderBy]);
-                                    const latestDate = new Date(latest[options.orderBy]);
-                                    return currentDate > latestDate ? current : latest;
-                                });
-                                resolve(latestRecord);
-                            } else {
-                                resolve(filteredResults.length > 0 ? filteredResults : null);
-                            }
-                        };
+                    // Check if there might be more documents (handle pagination if needed)
+                    if (findResult.bookmark) {
+                        // You might want to implement pagination here if you expect large result sets
+                        console.warn(`Potential pagination needed for ${dbName} with location_id ${selector}`);
                     }
                 } else {
-                    // If no condition, get all records
-                    request = objectStore.getAll();
-                    request.onsuccess = (event) => {
-                        const result = event.target.result;
-                        resolve(result.length > 0 ? result : null);
-                    };
-                }
+                    // Get total document count from database info, then subtract design docs
+                    const infoResponse = await fetch(`${remoteBaseUrl}/${dbName}`, {
+                        headers: {
+                            Authorization: `Basic ${auth}`,
+                        },
+                    });
 
-                request.onerror = (event) => {
-                    const error = event.target.error;
-                    reject(new Error(`Error getting data: ${error?.name} - ${error?.message}`));
-                };
-            } catch (error) {
-                console.log("Failed to get data", error);
-                reject(error);
-            }
-        });
-    },
-    async emptyCollection(storeName) {
-        return new Promise((resolve, reject) => {
-            if (!this.db) {
-                reject(new Error("Database not initialized. Call openDatabase() first."));
-                return;
-            }
-
-            const transaction = this.db.transaction([storeName], "readwrite");
-            const objectStore = transaction.objectStore(storeName);
-
-            const clearRequest = objectStore.clear();
-
-            clearRequest.onerror = (event) => {
-                reject(new Error(`Failed to empty collection: ${event.target.error}`));
-            };
-
-            clearRequest.onsuccess = () => {
-                resolve();
-            };
-        });
-    },
-    async updateRecord(storeName, whereClause, updateData) {
-        return new Promise((resolve, reject) => {
-            if (!this.db) {
-                reject(new Error("Database not initialized. Call openDatabase() first."));
-                return;
-            }
-
-            const transaction = this.db.transaction([storeName], "readwrite");
-            const objectStore = transaction.objectStore(storeName);
-
-            // Get all records to find matching ones
-            const getAllRequest = objectStore.getAll();
-
-            getAllRequest.onerror = (event) => {
-                reject(event.target.error);
-            };
-
-            getAllRequest.onsuccess = (event) => {
-                const records = event.target.result;
-
-                // Find records that match all conditions in whereClause
-                const matchingRecords = records.filter((record) => {
-                    return Object.entries(whereClause).every(([key, value]) => record[key] == value);
-                });
-
-                if (matchingRecords.length === 0) {
-                    reject(new Error("No matching records found", storeName));
-                    return;
-                }
-
-                // Update each matching record
-                let updateCount = 0;
-                matchingRecords.forEach((record) => {
-                    // Merge the existing record with the update data
-                    const updatedRecord = { ...record, ...updateData };
-
-                    const updateRequest = objectStore.put(updatedRecord);
-
-                    updateRequest.onerror = (event) => {
-                        reject(event.target.error);
-                    };
-
-                    updateRequest.onsuccess = () => {
-                        updateCount++;
-                        if (updateCount === matchingRecords.length) {
-                            // Return updated records to the caller
-                            resolve(matchingRecords.map((record) => ({ ...record, ...updateData })));
-                        }
-                    };
-                });
-            };
-        });
-    },
-    async bulkAdd(storeName, records) {
-        return new Promise((resolve, reject) => {
-            if (!this.db) {
-                reject(new Error("Database not initialized. Call openDatabase() first."));
-                return;
-            }
-
-            const transaction = this.db.transaction([storeName], "readwrite");
-            const objectStore = transaction.objectStore(storeName);
-            let completedCount = 0;
-            let errorOccurred = false;
-
-            transaction.onerror = (event) => {
-                errorOccurred = true;
-                reject(new Error(`Transaction failed: ${event.target.error}`));
-            };
-
-            // Use chunking for very large arrays to prevent memory issues
-            const chunkSize = 100;
-            const chunks = [];
-            for (let i = 0; i < records.length; i += chunkSize) {
-                chunks.push(records.slice(i, i + chunkSize));
-            }
-
-            let currentChunk = 0;
-
-            const processNextChunk = () => {
-                if (currentChunk >= chunks.length) {
-                    if (!errorOccurred) {
-                        resolve(completedCount);
+                    if (!infoResponse.ok) {
+                        throw new Error(`Info request failed: ${infoResponse.status}`);
                     }
-                    return;
-                }
 
-                const chunk = chunks[currentChunk++];
+                    const info = await infoResponse.json();
 
-                chunk.forEach((record) => {
-                    const request = objectStore.add(record);
+                    // Count design documents to subtract from total
+                    const designDocsResponse = await fetch(`${remoteBaseUrl}/${dbName}/_all_docs?startkey="_design/"&endkey="_design/\ufff0"`, {
+                        headers: {
+                            Authorization: `Basic ${auth}`,
+                        },
+                    });
 
-                    request.onsuccess = () => {
-                        completedCount++;
-                        if (completedCount === records.length && !errorOccurred) {
-                            resolve(completedCount);
-                        }
-                    };
-
-                    request.onerror = (event) => {
-                        console.warn(`Error adding record: ${event.target.error}`);
-                        // Continue processing despite errors
-                        completedCount++;
-                        if (completedCount === records.length && !errorOccurred) {
-                            resolve(completedCount);
-                        }
-                    };
-                });
-
-                // Process next chunk after a small delay to give main thread breathing room
-                setTimeout(processNextChunk, 0);
-            };
-
-            processNextChunk();
-        });
-    },
-
-    async bulkDelete(storeName, keys) {
-        return new Promise((resolve, reject) => {
-            if (!this.db) {
-                reject(new Error("Database not initialized. Call openDatabase() first."));
-                return;
-            }
-
-            const transaction = this.db.transaction([storeName], "readwrite");
-            const objectStore = transaction.objectStore(storeName);
-            let completedCount = 0;
-            let errorOccurred = false;
-
-            transaction.onerror = (event) => {
-                errorOccurred = true;
-                reject(new Error(`Transaction failed: ${event.target.error}`));
-            };
-
-            // Use chunking for very large arrays
-            const chunkSize = 100;
-            const chunks = [];
-            for (let i = 0; i < keys.length; i += chunkSize) {
-                chunks.push(keys.slice(i, i + chunkSize));
-            }
-
-            let currentChunk = 0;
-
-            const processNextChunk = () => {
-                if (currentChunk >= chunks.length) {
-                    if (!errorOccurred) {
-                        resolve(completedCount);
+                    if (designDocsResponse.ok) {
+                        const designDocsResult = await designDocsResponse.json();
+                        docCount = info.doc_count - designDocsResult.rows.length;
+                    } else {
+                        // Fallback: use total count if design doc query fails
+                        docCount = info.doc_count;
+                        console.warn(`Could not count design docs for ${dbName}, using total count`);
                     }
-                    return;
                 }
 
-                const chunk = chunks[currentChunk++];
-
-                chunk.forEach((key) => {
-                    const request = objectStore.delete(key);
-
-                    request.onsuccess = () => {
-                        completedCount++;
-                        if (completedCount === keys.length && !errorOccurred) {
-                            resolve(completedCount);
-                        }
-                    };
-
-                    request.onerror = (event) => {
-                        console.warn(`Error deleting record: ${event.target.error}`);
-                        // Continue processing despite errors
-                        completedCount++;
-                        if (completedCount === keys.length && !errorOccurred) {
-                            resolve(completedCount);
-                        }
-                    };
-                });
-
-                // Process next chunk after a small delay
-                setTimeout(processNextChunk, 0);
-            };
-
-            processNextChunk();
-        });
+                stats[dbName] = { docCount };
+            } catch (error) {
+                stats[dbName] = { error: error.message, source: "remote" };
+            }
+        }
+        return stats;
     },
 
-    async transaction(storeName, callback) {
-        return new Promise((resolve, reject) => {
-            if (!this.db) {
-                reject(new Error("Database not initialized. Call openDatabase() first."));
-                return;
-            }
+    async getStats(remoteBaseUrl, options = {}, databaseName = null) {
+        // Initialize state preservation properties if they don't exist
+        if (!this.lastRemoteStats) this.lastRemoteStats = {};
+        if (!this.lastLocalStats) this.lastLocalStats = {};
 
-            const transaction = this.db.transaction([storeName], "readwrite");
-            const objectStore = transaction.objectStore(storeName);
+        // Get the new stats for the specified database(s)
+        let newRemoteStats = await this.getRemoteStats(remoteBaseUrl, options, databaseName);
 
-            transaction.onerror = (event) => {
-                reject(new Error(`Transaction failed: ${event.target.error}`));
-            };
+        // Apply the hardcoded override for dde database if it exists in the results
+        if (newRemoteStats.dde) {
+            newRemoteStats.dde.docCount = 10;
+        }
 
-            transaction.oncomplete = () => {
-                resolve();
-            };
+        const newLocalStats = await this.getLocalStats(databaseName);
 
-            try {
-                callback(objectStore);
-            } catch (error) {
-                reject(error);
-            }
+        // Merge with existing stats to preserve other databases' information
+        let finalRemoteStats = { ...this.lastRemoteStats, ...newRemoteStats };
+        let finalLocalStats = { ...this.lastLocalStats, ...newLocalStats };
+
+        // Store the current complete stats for future partial updates
+        this.lastRemoteStats = finalRemoteStats;
+        this.lastLocalStats = finalLocalStats;
+
+        self.postMessage({
+            type: "db_stats",
+            local: finalLocalStats,
+            remote: finalRemoteStats,
+            updatedDatabase: databaseName, // Include info about which DB was updated
+            isPartialUpdate: !!databaseName, // Flag to indicate if this was a partial update
         });
+
+        console.log(`🚀 ~ getStats ~ { local, remote }:`, {
+            local: finalLocalStats,
+            remote: finalRemoteStats,
+            ...(databaseName && { updatedDatabase: databaseName, isPartialUpdate: true }),
+        });
+
+        return {
+            local: finalLocalStats,
+            remote: finalRemoteStats,
+            ...(databaseName && { updatedDatabase: databaseName, isPartialUpdate: true }),
+        };
+    },
+    async autoCompactAll(intervalHours = 3) {
+        const intervalId = setInterval(async () => {
+            console.log("[DB] Running automatic database compaction...");
+            this.runBackgroundCompaction();
+        }, intervalHours * 60 * 60 * 1000);
+
+        // Return the interval ID so it can be cleared if needed
+        return intervalId;
     },
 };
