@@ -204,26 +204,42 @@ const DatabaseManager = {
             this.validateDocumentData(data);
 
             const db = this.databases[storeName];
-            const { upsert = true } = options;
+            const { upsert = true, maxRetries = 3 } = options;
 
+            let attempt = 0;
             let result;
-            if (upsert) {
+
+            while (attempt < maxRetries) {
                 try {
-                    const existingDoc = await db.get(data._id);
-                    const updatedDoc = { ...existingDoc, ...data, _rev: existingDoc._rev };
-                    result = await db.put(updatedDoc);
+                    if (upsert) {
+                        // Try to get the existing document
+                        const existingDoc = await db.get(data._id);
+                        const updatedDoc = { ...existingDoc, ...data, _rev: existingDoc._rev };
+                        result = await db.put(updatedDoc);
+                    } else {
+                        result = await db.put(data);
+                    }
+
+                    return result; // ✅ success
                 } catch (err) {
                     if (err.name === "not_found") {
+                        // No document yet — create new
                         result = await db.put(data);
+                        return result;
+                    } else if (err.status === 409 && upsert) {
+                        // ⚠️ Conflict: fetch latest and retry
+                        attempt++;
+                        const latestDoc = await db.get(data._id);
+                        data._rev = latestDoc._rev;
+                        console.warn(`Conflict detected, retrying upsert (attempt ${attempt})`);
+                        continue;
                     } else {
                         throw err;
                     }
                 }
-            } else {
-                result = await db.put(data);
             }
 
-            return result;
+            throw new Error(`Failed after ${maxRetries} conflict retries`);
         } catch (error) {
             console.error(`Error adding data to ${storeName}:`, error);
             throw new Error(`Failed to add data to ${storeName}: ${error.message}`);
