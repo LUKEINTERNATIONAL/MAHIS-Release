@@ -59,7 +59,6 @@ const DatabaseManager = {
             }
             if (useLocalStorage) {
                 // Background compaction only in local mode
-                setTimeout(() => this.runBackgroundCompaction(), 60000 * 10); // 1 min after init
                 await DatabaseManager.autoCompactAll();
             }
 
