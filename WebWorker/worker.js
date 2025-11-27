@@ -4,14 +4,16 @@ importScripts("db.js", "sync_manager.js", "../databaseConfig.js");
 // Global vars
 let LOCATION_ID = "";
 let USE_LOCAL_STORAGE = "";
+let USE_LAN_CONNECTION = "";
 let SYNC_BATCH_SIZE = "";
 
 // Enhanced Web Worker Message Handler
 self.onmessage = async (event) => {
-    const { command, location_id, remoteUrl, auth, storeName, data, useLocalStorage, sync_batch_size } = event.data;
+    const { command, location_id, remoteUrl, auth, storeName, data, useLocalStorage, useLanConnection, sync_batch_size } = event.data;
 
     LOCATION_ID = location_id;
     USE_LOCAL_STORAGE = useLocalStorage;
+    USE_LAN_CONNECTION = useLanConnection;
     SYNC_BATCH_SIZE = sync_batch_size;
 
     // Helper function to send response

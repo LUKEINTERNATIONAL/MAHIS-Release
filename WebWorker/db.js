@@ -11,6 +11,8 @@ const DatabaseManager = {
     lastLocalStats: {},
     indexCache: new Set(),
     isInitialized: false,
+    useLocalStorage: false, // Track storage mode
+    remoteBaseUrl: null, // Store remote URL for reference
 
     // Get all database names in order
     get databaseNames() {
@@ -26,27 +28,53 @@ const DatabaseManager = {
     isPeriodicSyncDatabase(dbName) {
         return databaseConfig.periodicSyncDatabases.includes(dbName);
     },
+
+    /**
+     * Get current storage mode information
+     * @returns {Object} Storage mode details
+     */
+    getStorageMode() {
+        return {
+            mode: this.useLocalStorage ? "local-with-sync" : "remote-only",
+            description: this.useLocalStorage
+                ? "Data is saved to local PouchDB (IndexedDB) and synced to CouchDB"
+                : "Data is saved directly to remote CouchDB (no local storage)",
+            useLocalStorage: this.useLocalStorage,
+            isInitialized: this.isInitialized,
+            remoteUrl: this.remoteBaseUrl,
+        };
+    },
+
     getDatabaseHandle(remoteBaseUrl, useLocalStorage, auth, name) {
         const PouchDB = self.PouchDB;
         if (useLocalStorage) {
             // Local IndexedDB (default PouchDB)
+            console.log(`[DB] Creating LOCAL PouchDB handle for: ${name}`);
             return new PouchDB(name);
         } else {
             // Remote-only CouchDB (no IndexedDB)
+            console.log(`[DB] Creating REMOTE CouchDB handle for: ${name}`);
             return new PouchDB(`${remoteBaseUrl}/${name}`, {
                 skip_setup: false,
                 auth,
             });
         }
     },
+
     async init(remoteBaseUrl, useLocalStorage, auth) {
         if (this.isInitialized) return;
 
         try {
+            // Store configuration
+            this.useLocalStorage = useLocalStorage;
+            this.remoteBaseUrl = remoteBaseUrl;
+
             // Ensure PouchDB is available
             if (typeof self.PouchDB === "undefined") {
                 throw new Error("PouchDB is not loaded. Make sure to import PouchDB scripts before initializing.");
             }
+
+            console.log(`[DB] Initializing DatabaseManager in ${useLocalStorage ? "LOCAL-WITH-SYNC" : "REMOTE-ONLY"} mode`);
 
             for (const name of this.databaseNames) {
                 const db = this.getDatabaseHandle(remoteBaseUrl, useLocalStorage, auth, name);
@@ -57,22 +85,34 @@ const DatabaseManager = {
                     await db.revsLimit(1);
                 }
             }
+
             if (useLocalStorage) {
                 // Background compaction only in local mode
                 await DatabaseManager.autoCompactAll();
             }
 
             this.isInitialized = true;
+
+            const modeInfo = this.getStorageMode();
             console.log("DatabaseManager initialized successfully", {
+                storageMode: modeInfo.mode,
+                description: modeInfo.description,
                 liveSyncDbs: databaseConfig.liveSyncDatabases,
                 periodicSyncDbs: databaseConfig.periodicSyncDatabases.length,
                 totalDbs: this.databaseNames.length,
+            });
+
+            // Post initialization status to main thread
+            self.postMessage({
+                type: "db_initialized",
+                storageMode: modeInfo,
             });
         } catch (error) {
             console.error("Failed to initialize databases:", error);
             throw new Error("Database initialization failed: " + error.message);
         }
     },
+
     async runBackgroundCompaction() {
         console.log("[DB] Starting background compaction...");
         try {
@@ -145,6 +185,8 @@ const DatabaseManager = {
 
             const { currentPage = 1, itemsPerPage = 0, selector = {}, sort, fields, docType } = options;
 
+            console.log(`[DB] Reading from ${this.useLocalStorage ? "LOCAL PouchDB" : "REMOTE CouchDB"} - ${dbName}`);
+
             // Use the already initialized database from DatabaseManager
             const db = this.databases[dbName];
 
@@ -202,6 +244,12 @@ const DatabaseManager = {
             this.validateDatabase(storeName);
             this.validateDocumentData(data);
 
+            const storageTarget = this.useLocalStorage ? "LOCAL PouchDB (will sync to CouchDB)" : "REMOTE CouchDB directly";
+            console.log(`[DB] 💾 SAVING to ${storageTarget} - ${storeName}`, {
+                docId: data._id,
+                mode: this.getStorageMode().mode,
+            });
+
             const db = this.databases[storeName];
             const { upsert = true } = options;
 
@@ -211,15 +259,18 @@ const DatabaseManager = {
                     const existingDoc = await db.get(data._id);
                     const updatedDoc = { ...existingDoc, ...data, _rev: existingDoc._rev };
                     result = await db.put(updatedDoc);
+                    console.log(`[DB] ✅ UPDATED in ${storageTarget} - ${storeName}/${data._id}`);
                 } catch (err) {
                     if (err.name === "not_found") {
                         result = await db.put(data);
+                        console.log(`[DB] ✅ CREATED in ${storageTarget} - ${storeName}/${data._id}`);
                     } else {
                         throw err;
                     }
                 }
             } else {
                 result = await db.put(data);
+                console.log(`[DB] ✅ SAVED to ${storageTarget} - ${storeName}/${data._id}`);
             }
 
             return result;
@@ -228,6 +279,7 @@ const DatabaseManager = {
             throw new Error(`Failed to add data to ${storeName}: ${error.message}`);
         }
     },
+
     async deleteData(storeName, obj) {
         try {
             this.validateDatabase(storeName);
@@ -237,6 +289,9 @@ const DatabaseManager = {
                 return;
             }
 
+            const storageTarget = this.useLocalStorage ? "LOCAL PouchDB (will sync to CouchDB)" : "REMOTE CouchDB directly";
+            console.log(`[DB] 🗑️ DELETING from ${storageTarget} - ${storeName}`);
+
             const db = this.databases[storeName];
 
             let doc;
@@ -244,7 +299,7 @@ const DatabaseManager = {
                 const result = await db.find({ selector: obj });
 
                 if (result.docs.length === 0) {
-                    console.error(`Document  not found in ${storeName}`);
+                    console.error(`Document not found in ${storeName}`);
                     return;
                 }
 
@@ -256,7 +311,7 @@ const DatabaseManager = {
 
             const deleted = await db.remove(doc);
 
-            console.log(`[DB] Document deleted from ${storeName}`);
+            console.log(`[DB] ✅ Document deleted from ${storageTarget} - ${storeName}/${doc._id}`);
             return deleted;
         } catch (error) {
             if (error.name === "not_found") {
@@ -296,6 +351,9 @@ const DatabaseManager = {
                 throw new Error("Documents must be a non-empty array");
             }
 
+            const storageTarget = this.useLocalStorage ? "LOCAL PouchDB (will sync to CouchDB)" : "REMOTE CouchDB directly";
+            console.log(`[DB] 📦 BULK ${operation.toUpperCase()} to ${storageTarget} - ${storeName} (${docs.length} docs)`);
+
             const db = this.databases[storeName];
 
             if (operation === "delete") {
@@ -303,10 +361,12 @@ const DatabaseManager = {
             }
 
             const result = await db.bulkDocs(docs);
-            console.log(`[DB] Bulk ${operation} completed for ${storeName}:`, {
+
+            console.log(`[DB] ✅ Bulk ${operation} completed for ${storeName}:`, {
                 totalDocs: docs.length,
                 successful: result.filter((r) => !r.error).length,
                 errors: result.filter((r) => r.error).length,
+                target: storageTarget,
             });
 
             return result;
@@ -335,6 +395,8 @@ const DatabaseManager = {
         this.indexCache.clear();
         this.databases = {};
         this.isInitialized = false;
+        this.useLocalStorage = false;
+        this.remoteBaseUrl = null;
         console.log("[DB] All databases closed");
     },
 
@@ -359,7 +421,7 @@ const DatabaseManager = {
 
                 const info = await db.info();
 
-                if (USE_LOCAL_STORAGE) {
+                if (this.useLocalStorage) {
                     // Count design documents to subtract from total
                     const designDocs = await db.allDocs({
                         startkey: "_design/",
@@ -371,7 +433,11 @@ const DatabaseManager = {
                     docCount = 0;
                 }
 
-                stats[name] = { docCount, syncType: this.isLiveSyncDatabase(name) ? "live" : "periodic" };
+                stats[name] = {
+                    docCount,
+                    syncType: this.isLiveSyncDatabase(name) ? "live" : "periodic",
+                    storageMode: this.getStorageMode().mode,
+                };
             } catch (error) {
                 stats[name] = {
                     error: error.message,
@@ -500,8 +566,11 @@ const DatabaseManager = {
         this.lastRemoteStats = finalRemoteStats;
         this.lastLocalStats = finalLocalStats;
 
+        const modeInfo = this.getStorageMode();
+
         self.postMessage({
             type: "db_stats",
+            storageMode: modeInfo,
             local: finalLocalStats,
             remote: finalRemoteStats,
             updatedDatabase: databaseName, // Include info about which DB was updated
@@ -509,17 +578,20 @@ const DatabaseManager = {
         });
 
         console.log(`🚀 ~ getStats ~ { local, remote }:`, {
+            storageMode: modeInfo.mode,
             local: finalLocalStats,
             remote: finalRemoteStats,
             ...(databaseName && { updatedDatabase: databaseName, isPartialUpdate: true }),
         });
 
         return {
+            storageMode: modeInfo,
             local: finalLocalStats,
             remote: finalRemoteStats,
             ...(databaseName && { updatedDatabase: databaseName, isPartialUpdate: true }),
         };
     },
+
     async autoCompactAll(intervalHours = 3) {
         const intervalId = setInterval(async () => {
             console.log("[DB] Running automatic database compaction...");

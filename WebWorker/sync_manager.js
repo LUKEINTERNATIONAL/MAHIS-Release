@@ -72,7 +72,7 @@ const SyncManager = {
                     console.log(`[SYNC] Processing DDE database with ID claiming...`);
                     // Generate a unique device ID if not provided
                     const deviceId = options.deviceId || `device_not_provided`;
-                    await DdeManager.claimDdeIds(remoteBaseUrl, options, deviceId, 10); // Always maintain 10 IDs
+                    if (!USE_LAN_CONNECTION) await DdeManager.claimDdeIds(remoteBaseUrl, options, deviceId, 10); // Always maintain 10 IDs
                 } else {
                     // Step 1: Initial sync to get existing documents
                     await InitialSyncManager.performInitialSync(dbName, remoteBaseUrl, options);
