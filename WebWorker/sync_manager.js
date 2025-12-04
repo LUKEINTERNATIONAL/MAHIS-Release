@@ -65,9 +65,6 @@ const SyncManager = {
             }
         });
 
-        // Start ALL live DB initial syncs simultaneously
-        await Promise.all(livePromises);
-
         // ================================
         // 2. PERIODIC SYNC DATABASES
         // ================================
@@ -94,6 +91,8 @@ const SyncManager = {
             }
         });
 
+        // Start ALL live DB initial syncs simultaneously
+        await Promise.all(livePromises);
         // Only wait for periodic sync setup, not live sync
         await Promise.all(periodicPromises);
 
