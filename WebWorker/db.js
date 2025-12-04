@@ -88,6 +88,7 @@ const DatabaseManager = {
 
             if (useLocalStorage) {
                 // Background compaction only in local mode
+                // setTimeout(() => this.runBackgroundCompaction(), 60000 * 10); // 1 min after init
                 await DatabaseManager.autoCompactAll();
             }
 
@@ -113,19 +114,29 @@ const DatabaseManager = {
         }
     },
 
-    async runBackgroundCompaction() {
+    async runBackgroundCompaction(targetDbName = "") {
         console.log("[DB] Starting background compaction...");
+
         try {
             const dbEntries = Object.entries(this.databases);
 
-            const compactionPromises = dbEntries.map(async ([name, db]) => {
+            // Filter to only the target DB if a name is given
+            const filteredEntries = targetDbName ? dbEntries.filter(([name]) => name === targetDbName) : dbEntries;
+
+            if (filteredEntries.length === 0) {
+                console.warn(`[Compact] No database found with name '${targetDbName}'`);
+                return;
+            }
+
+            const compactionPromises = filteredEntries.map(async ([name, db]) => {
                 console.log(`[Compact] Starting compaction for ${name}...`);
                 await db.compact();
                 console.log(`[Compact] Successfully compacted ${name}`);
             });
 
             await Promise.allSettled(compactionPromises);
-        } finally {
+        } catch (err) {
+            console.error("[Compact] Error during compaction:", err);
         }
     },
 
@@ -245,6 +256,7 @@ const DatabaseManager = {
             this.validateDocumentData(data);
 
             const storageTarget = this.useLocalStorage ? "LOCAL PouchDB (will sync to CouchDB)" : "REMOTE CouchDB directly";
+
             console.log(`[DB] 💾 SAVING to ${storageTarget} - ${storeName}`, {
                 docId: data._id,
                 mode: this.getStorageMode().mode,
@@ -254,12 +266,24 @@ const DatabaseManager = {
             const { upsert = true } = options;
 
             let result;
+
             if (upsert) {
                 try {
-                    const existingDoc = await db.get(data._id);
+                    // ⬅️ IMPORTANT: fetch with conflicts
+                    const existingDoc = await db.get(data._id, { conflicts: true });
+
                     const updatedDoc = { ...existingDoc, ...data, _rev: existingDoc._rev };
                     result = await db.put(updatedDoc);
+
                     console.log(`[DB] ✅ UPDATED in ${storageTarget} - ${storeName}/${data._id}`);
+
+                    // ⬅️ FIX: Remove old conflicting revisions
+                    if (existingDoc._conflicts) {
+                        for (const rev of existingDoc._conflicts) {
+                            await db.remove(data._id, rev);
+                        }
+                    }
+                    await this.runBackgroundCompaction(storeName);
                 } catch (err) {
                     if (err.name === "not_found") {
                         result = await db.put(data);
@@ -279,7 +303,6 @@ const DatabaseManager = {
             throw new Error(`Failed to add data to ${storeName}: ${error.message}`);
         }
     },
-
     async deleteData(storeName, obj) {
         try {
             this.validateDatabase(storeName);
@@ -592,10 +615,10 @@ const DatabaseManager = {
         };
     },
 
-    async autoCompactAll(intervalHours = 3) {
+    async autoCompactAll(intervalHours = 1) {
         const intervalId = setInterval(async () => {
             console.log("[DB] Running automatic database compaction...");
-            this.runBackgroundCompaction();
+            await this.runBackgroundCompaction();
         }, intervalHours * 60 * 60 * 1000);
 
         // Return the interval ID so it can be cleared if needed

@@ -59,7 +59,8 @@ const LiveSyncManager = {
                     timestamp: new Date().toISOString(),
                 });
             })
-            .on("paused", (err) => {
+            .on("paused", async (err) => {
+                await DatabaseManager.runBackgroundCompaction(dbName);
                 if (err) {
                     console.warn(`[LIVE-SYNC] ${dbName} paused due to error:`, err);
                 } else {

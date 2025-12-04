@@ -21,14 +21,16 @@ const InitialSyncManager = {
         try {
             const selector = SyncManager.getLocationSelector(dbName);
 
-            await SyncUtils.clearSyncCheckpoints(localDB, dbName);
+            // await SyncUtils.clearSyncCheckpoints(localDB, dbName);
 
             console.log("🚀 ~ performInitialSync ~ SYNC_BATCH_SIZE:", SYNC_BATCH_SIZE);
             const syncOptions = {
                 batch_size: SYNC_BATCH_SIZE,
-                batches_limit: 5,
+                batches_limit: 20,
                 timeout: SYNC_CONFIG.TIMEOUTS.DEFAULT,
-                retry: false,
+                live: false,
+                retry: true,
+                auto_compaction: true,
             };
 
             if (selector) {

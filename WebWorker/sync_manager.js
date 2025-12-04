@@ -42,58 +42,66 @@ const SyncManager = {
             throw new Error("DatabaseManager not initialized. Call DatabaseManager.init() first.");
         }
 
-        console.log("[SYNC] Starting sequential sync for all databases...");
+        console.log("[SYNC] Starting optimized parallel sync for all databases...");
+
         const stats = await DatabaseManager.getStats(remoteBaseUrl, options);
         console.log("🚀 ~ syncAll ~ stats:=======", stats);
 
-        // First, sync live sync databases with initial + live sync
-        for (const dbName of databaseConfig.liveSyncDatabases) {
+        // ================================
+        // 1. LIVE SYNC DATABASES
+        // ================================
+
+        const livePromises = databaseConfig.liveSyncDatabases.map(async (dbName) => {
             try {
-                // Step 1: Initial sync to get existing documents
+                // Initial sync in parallel
                 await InitialSyncManager.performInitialSync(dbName, remoteBaseUrl, options);
 
-                // Step 2: Start live sync
-                await LiveSyncManager.startLiveSync(dbName, remoteBaseUrl, options);
+                // Start live sync immediately when that DB is ready
+                LiveSyncManager.startLiveSync(dbName, remoteBaseUrl, options);
 
-                // Small delay between databases
-                await new Promise((resolve) => setTimeout(resolve, 500));
+                console.log(`[SYNC] Live sync active for ${dbName}`);
             } catch (error) {
-                console.error(`[SYNC] Failed to sync live database ${dbName}:`, error);
+                console.error(`[SYNC] Live database failed to sync ${dbName}:`, error);
             }
-        }
+        });
 
-        // Wait a bit before starting periodic databases
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        // Start ALL live DB initial syncs simultaneously
+        await Promise.all(livePromises);
 
-        // Then, sync periodic databases with initial sync + periodic setup
-        for (const dbName of databaseConfig.periodicSyncDatabases) {
+        // ================================
+        // 2. PERIODIC SYNC DATABASES
+        // ================================
+
+        const periodicPromises = databaseConfig.periodicSyncDatabases.map(async (dbName) => {
             try {
                 if (dbName === "dde") {
-                    console.log(`[SYNC] Processing DDE database with ID claiming...`);
-                    // Generate a unique device ID if not provided
                     const deviceId = options.deviceId || `device_not_provided`;
-                    if (!USE_LAN_CONNECTION) await DdeManager.claimDdeIds(remoteBaseUrl, options, deviceId, 10); // Always maintain 10 IDs
-                } else {
-                    // Step 1: Initial sync to get existing documents
-                    await InitialSyncManager.performInitialSync(dbName, remoteBaseUrl, options);
-
-                    // Step 2: Setup periodic sync
-                    await PeriodicSyncManager.setupPeriodicSync(dbName, remoteBaseUrl, options);
+                    if (!USE_LAN_CONNECTION) {
+                        await DdeManager.claimDdeIds(remoteBaseUrl, options, deviceId, 10);
+                    }
+                    return;
                 }
 
-                // Longer delay for periodic databases
-                await new Promise((resolve) => setTimeout(resolve, 1000));
+                // Initial sync in parallel
+                await InitialSyncManager.performInitialSync(dbName, remoteBaseUrl, options);
+
+                // Start periodic sync
+                PeriodicSyncManager.setupPeriodicSync(dbName, remoteBaseUrl, options);
+
+                console.log(`[SYNC] Periodic sync active for ${dbName}`);
             } catch (error) {
                 console.error(`[SYNC] Failed to sync periodic database ${dbName}:`, error);
             }
-        }
+        });
 
-        console.log("[SYNC] Sequential sync initialization complete", {
+        // Only wait for periodic sync setup, not live sync
+        await Promise.all(periodicPromises);
+
+        console.log("[SYNC] Parallel sync initialization complete", {
             liveSyncDatabases: databaseConfig.liveSyncDatabases.length,
             periodicSyncDatabases: databaseConfig.periodicSyncDatabases.length,
         });
     },
-
     // Stop sync methods
     stopSync(dbName) {
         let stopped = false;

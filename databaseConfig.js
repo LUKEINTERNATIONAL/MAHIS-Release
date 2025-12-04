@@ -21,5 +21,6 @@ const databaseConfig = {
         patients_records: true,
         visits: true,
         stages: true,
+        stock: true,
     },
 };
