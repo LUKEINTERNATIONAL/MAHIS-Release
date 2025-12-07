@@ -1,0 +1,32 @@
+name: Manual CD - Release (TEST)
+
+on:
+  workflow_dispatch:   # manual trigger only
+
+jobs:
+  deploy-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout infra repo
+        uses: actions/checkout@v3
+
+      - name: Install Ansible
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ansible
+
+      - name: Configure SSH key
+        env:
+          TEST_SSH_KEY: ${{ secrets.MAHIS_TEST_AWS }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$TEST_SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          printf "Host 13.247.36.140\n  StrictHostKeyChecking no\n" >> ~/.ssh/config
+
+      - name: Verify connectivity
+        run: ssh ubuntu@13.247.36.140 "echo connected && uname -a"
+
+      - name: Run Ansible Playbook
+        run: ansible-playbook -i inventory.ini release.yml
+
