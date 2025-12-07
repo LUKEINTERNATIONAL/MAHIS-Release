@@ -1,0 +1,16 @@
+- name: Deploy MAHIS Release to TEST
+  hosts: test
+  become: true
+  tasks:
+    - name: Pull latest Release build
+      git:
+        repo: "https://github.com/LUKEINTERNATIONAL/MAHIS-Release.git"
+        dest: /var/www/MAHIS-Release
+        version: master   # ✅ always use master branch
+
+    - name: Reload Nginx
+      become: true
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
+
