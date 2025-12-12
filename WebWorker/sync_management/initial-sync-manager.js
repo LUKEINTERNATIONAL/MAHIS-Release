@@ -34,7 +34,9 @@ const InitialSyncManager = {
             };
 
             if (selector) {
-                syncOptions.selector = selector;
+                syncOptions.selector = {
+                    $or: [selector, { _deleted: true }],
+                };
                 console.log(`[SYNC] Using location filter for ${dbName}: ${selector.location_id}`);
             }
 

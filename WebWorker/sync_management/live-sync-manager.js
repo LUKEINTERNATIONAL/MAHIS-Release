@@ -43,7 +43,9 @@ const LiveSyncManager = {
 
         const selector = SyncManager.getLocationSelector(dbName);
         if (selector) {
-            syncOptions.selector = selector;
+            syncOptions.selector = {
+                $or: [selector, { _deleted: true }],
+            };
             console.log(`[LIVE-SYNC] Using location filter for ${dbName}: ${selector.location_id}`);
         }
 
