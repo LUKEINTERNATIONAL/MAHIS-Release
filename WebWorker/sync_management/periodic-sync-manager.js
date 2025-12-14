@@ -39,9 +39,7 @@ const PeriodicSyncManager = {
                 };
 
                 if (selector) {
-                    syncOptions.selector = {
-                        $or: [selector, { _deleted: true }],
-                    };
+                    syncOptions.pull = { selector };
                 }
 
                 const result = await localDB.sync(remoteDB, syncOptions).on("change", async (info) => {
