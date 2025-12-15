@@ -38,8 +38,16 @@ const PeriodicSyncManager = {
                     retry: false,
                 };
 
-                if (selector) {
-                    syncOptions.pull = { selector };
+                if (selector?.location_id) {
+                    const locationId = selector.location_id;
+
+                    syncOptions.pull = {
+                        selector: {
+                            $or: [{ location_id: locationId }, { deleted_location_id: locationId }],
+                        },
+                    };
+
+                    console.log(`[LIVE-SYNC] Using location filter for ${dbName}: ${locationId}`);
                 }
 
                 const result = await localDB.sync(remoteDB, syncOptions).on("change", async (info) => {

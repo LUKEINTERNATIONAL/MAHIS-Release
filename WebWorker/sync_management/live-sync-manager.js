@@ -42,9 +42,17 @@ const LiveSyncManager = {
         };
 
         const selector = SyncManager.getLocationSelector(dbName);
-        if (selector) {
-            syncOptions.pull = { selector };
-            console.log(`[LIVE-SYNC] Using location filter for ${dbName}: ${selector.location_id}`);
+
+        if (selector?.location_id) {
+            const locationId = selector.location_id;
+
+            syncOptions.pull = {
+                selector: {
+                    $or: [{ location_id: locationId }, { deleted_location_id: locationId }],
+                },
+            };
+
+            console.log(`[LIVE-SYNC] Using location filter for ${dbName}: ${locationId}`);
         }
 
         const handler = localDB

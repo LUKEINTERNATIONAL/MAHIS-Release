@@ -313,6 +313,7 @@ const DatabaseManager = {
             }
 
             const storageTarget = this.useLocalStorage ? "LOCAL PouchDB (will sync to CouchDB)" : "REMOTE CouchDB directly";
+
             console.log(`[DB] 🗑️ DELETING from ${storageTarget} - ${storeName}`);
 
             const db = this.databases[storeName];
@@ -328,13 +329,21 @@ const DatabaseManager = {
 
                 doc = result.docs[0];
             } else {
-                // assume it's an _id
                 doc = await db.get(obj);
             }
 
-            const deleted = await db.remove(doc);
+            // 🔑 Preserve selector fields BEFORE delete
+            const tombstone = {
+                _id: doc._id,
+                _rev: doc._rev,
+                _deleted: true,
+                deleted_location_id: LOCATION_ID, // required for selective pull
+            };
 
-            console.log(`[DB] ✅ Document deleted from ${storageTarget} - ${storeName}/${doc._id}`);
+            const deleted = await db.put(tombstone);
+
+            console.log(`[DB] ✅ Document deleted (tombstone) from ${storageTarget} - ${storeName}/${doc._id}`);
+
             return deleted;
         } catch (error) {
             if (error.name === "not_found") {
