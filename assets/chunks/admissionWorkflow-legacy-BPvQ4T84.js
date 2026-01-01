@@ -1,0 +1,1 @@
+System.register([],function(e,t){"use strict";return{execute:function(){const t=e=>(null!=e?e:"").toString().trim().toUpperCase();e("g",(e,n)=>{if(!n.length)return 0;const r=(e=>{if(null==e||!e.length)return new Set;const n=new Set;return e.forEach(e=>n.add(t(e))),n})(e);let o=0;for(const s of n){if(!s.encounterNames.some(e=>r.has(t(e))))break;o+=1}return o})}}});

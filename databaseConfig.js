@@ -16,11 +16,13 @@ const databaseConfig = {
         "test_types",
         "specimens",
         "test_result_indicators",
+        "printer_configurations",
     ],
     locationFilters: {
         patients_records: true,
         visits: true,
         stages: true,
         stock: true,
+        printer_configurations: true,
     },
 };
