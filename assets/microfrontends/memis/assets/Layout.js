@@ -8432,7 +8432,8 @@ const MainLayout = ({ children }) => {
         localStorage.setItem("memisAuthPending", "1");
         bridgeNavigate("reload");
         return;
-      } catch (e) {
+      } catch (err) {
+        console.log({ err });
       }
     } else {
       try {
@@ -8467,7 +8468,7 @@ const MainLayout = ({ children }) => {
     return { groups, unGrouped };
   }, [menuItems]);
   const onRefresh = async () => {
-    await Promise.all([refreshMenu?.(), refreshPrograms?.(), getMessages()]);
+    await Promise.all([refreshMenu?.(), getUser(), refreshPrograms?.(), getMessages()]);
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(IonMenu, { contentId: "main-content", children: [
@@ -8584,8 +8585,9 @@ const MainLayout = ({ children }) => {
                       await LocalForageServiceInstance.clearStorage("dataStore");
                       await LocalForageServiceInstance.clearStorage("metadata");
                       showToast("Logout successfully", "info");
-                      navigate("https://mahistest.health.gov.mw/login", { replace: true });
+                      navigate("https://mahistest.health.gov.mw/logout", { replace: true });
                     } catch (err) {
+                      console.log({ err });
                       showToast(err.message, "error");
                     }
                   },

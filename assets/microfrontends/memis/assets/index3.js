@@ -2,7 +2,7 @@ class DataStore {
   constructor() {
     const savedCreds = localStorage.getItem("memisCredentials");
     this.defaultCredentials = savedCreds ? JSON.parse(savedCreds) : null;
-    this.baseUrl = `${"http://157.245.109.228:8011/memisdev"}`;
+    this.baseUrl = `${"https://memis-test.bintelanalytics.mw/api/memisdev"}`;
   }
   buildUrl(endpoint) {
     return `${this.baseUrl}/${endpoint}`;
