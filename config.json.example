@@ -3,7 +3,7 @@
 		"apiURL": "localhost",
 		"apiPort": "3000",
 		"apiProtocol": "http",
-		"websocketProtocol": "ws"
+		"websocketProtocol": "ws",
 		"couchdbPassword": "password",
 		"couchdbUsername": "username",
 		"couchdbPort": 5984,
@@ -14,7 +14,7 @@
 		"apiURL": "mahistest.health.gov.mw",
 		"apiPort": "443",
 		"apiProtocol": "https",
-		"websocketProtocol": "wss"
+		"websocketProtocol": "wss",
 		"couchdbPassword": "password",
 		"couchdbUsername": "username",
 		"couchdbPort": 5984,
@@ -25,7 +25,7 @@
 		"apiURL": "mahis.health.gov.mw",
 		"apiPort": "443",
 		"apiProtocol": "http",
-		"websocketProtocol": "wss"
+		"websocketProtocol": "wss",
 		"couchdbPassword": "password",
 		"couchdbUsername": "username",
 		"couchdbPort": 5984,
