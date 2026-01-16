@@ -1,9 +1,9 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Layout.js","assets/__federation_fn_import.js","assets/breadCrumb.js","assets/index3.js","assets/_commonjsHelpers.js"])))=>i.map(i=>d[i]);
 import { importShared } from './__federation_fn_import.js';
-import { L as LocalForageServiceInstance, j as jsxRuntimeExports, M as MEMISContext, u as useDataStore, d as documentText, P as PROGRAMS_FIELDS, a as PROGRAM_RULES_FIELDS, U as USER_ORGANISATION_UNITS, O as ORGANISATION_UNITS_DESCENDANTS, D as DataStoreProvider, b as PermissionsProvider, s as sendNotification, c as setupIonicReact, _ as __vitePreload, e as setActiveProgramCookie, B as BrowserRouter, T as ToastItem, R as Route, f as Routes, S as SuspenseLoader } from './breadCrumb.js';
+import { j as jsxRuntimeExports, M as MEMISContext, u as useDataStore, d as documentText, P as PROGRAMS_FIELDS, a as PROGRAM_RULES_FIELDS, U as USER_ORGANISATION_UNITS, O as ORGANISATION_UNITS_DESCENDANTS, D as DataStoreProvider, b as PermissionsProvider, s as sendNotification, c as setupIonicReact, _ as __vitePreload, e as setActiveProgramCookie, B as BrowserRouter, T as ToastItem, R as Route, f as Routes, S as SuspenseLoader } from './breadCrumb.js';
 import { r as requireReact } from './index.js';
 import { r as requireReactDom } from './index2.js';
-import dataStore from './index3.js';
+import { d as dataStore, L as LocalForageServiceInstance } from './index3.js';
 
 var client = {exports: {}};
 
@@ -16168,7 +16168,7 @@ function MenuProvider({ children }) {
         icon: p?.icon || documentText,
         showAddButton: p?.showAddButton,
         // prefer explicit link if provided (some nav configs use direct slugs), otherwise link by program id
-        link: p?.link || `/program/${p.id}`,
+        link: p?.link || `/memis/program/${p.id}`,
         programType: p?.programType,
         order,
         isProgram: p?.isProgram,
