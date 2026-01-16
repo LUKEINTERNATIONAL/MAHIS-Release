@@ -8348,10 +8348,6 @@ const MainLayout = ({ children }) => {
     } catch {
     }
     const go = () => {
-      {
-        const url = window.location.href.split("?")[0];
-        window.location.replace(url);
-      }
     };
     if (document.startViewTransition) {
       document.startViewTransition(go);
@@ -8420,31 +8416,31 @@ const MainLayout = ({ children }) => {
     return () => document.removeEventListener("mousedown", handleOutside);
   }, []);
   const getUser = async () => {
-    const userData = localStorage.getItem("memisCredentials") && JSON.parse(localStorage.getItem("memisCredentials")) || null;
-    const superUserData = localStorage.getItem("memisViewSettings");
-    new URLSearchParams(search);
-    if ((userData === null || superUserData === null) && search?.trim !== "") {
-      try {
-        const obj = JSON.parse(
-          CryptoJS.AES.decrypt(search.slice(1), "secretkey123").toString(CryptoJS.enc.Utf8)
-        );
+    try {
+      const rawUserData = localStorage.getItem("memisCredentials");
+      const superUserData = localStorage.getItem("memisViewSettings");
+      const hasSearch = typeof search === "string" && search.trim() !== "";
+      if ((!rawUserData || !superUserData) && hasSearch) {
+        const decrypted = CryptoJS.AES.decrypt(
+          search.slice(1),
+          "secretkey123"
+        ).toString(CryptoJS.enc.Utf8);
+        const obj = JSON.parse(decrypted);
         localStorage.setItem("memisCredentials", JSON.stringify(obj));
         localStorage.setItem("memisAuthPending", "1");
         bridgeNavigate("reload");
         return;
-      } catch (err) {
-        console.log({ err });
       }
-    } else {
-      try {
-        const parsedUser = JSON.parse(userData);
+      if (rawUserData) {
+        const parsedUser = JSON.parse(rawUserData);
         setUser(parsedUser);
         getMessages();
-      } catch (err) {
-        console.log({ err });
-        console.error("Error parsing user data:", err);
-        navigate("https://mahistest.health.gov.mw/login", { replace: true });
+        return;
       }
+      navigate("https://mahistest.health.gov.mw/login", { replace: true });
+    } catch (err) {
+      console.error("getUser failed:", err);
+      navigate("https://mahistest.health.gov.mw/login", { replace: true });
     }
   };
   useEffect$15(() => {

@@ -16621,7 +16621,7 @@ function _readDedup() {
         return pruned;
     } catch { return {}; }
 }
-function _writeDedup(m) { try { localStorage.setItem(DEDUP_STORAGE_KEY, JSON.stringify(m)); } catch {} }
+function _writeDedup(m) { try { localStorage.setItem(DEDUP_STORAGE_KEY, JSON.stringify(m)); } catch { } }
 const _ddKey = (ruleId, eventId, iso) => `${ruleId}:${eventId}:${iso}`;
 const isDeduped = (ruleId, eventId, iso) => !!_readDedup()[_ddKey(ruleId, eventId, iso)];
 function markDeduped(ruleId, eventId, iso) { const m = _readDedup(); m[_ddKey(ruleId, eventId, iso)] = Date.now(); _writeDedup(m); }
@@ -16650,7 +16650,7 @@ async function getRulesDoc(pid) { const idx = await readRulesIndex(); const hit 
 
 // ---------- endpoint + ouMode resolver (tries API + plain + versioned + tracker) ----------
 function getCachedOuMode() { try { return localStorage.getItem(OUMODE_CACHE_KEY) || "ACCESSIBLE"; } catch { return "ACCESSIBLE"; } }
-function setCachedOuMode(v) { try { localStorage.setItem(OUMODE_CACHE_KEY, v); } catch {} }
+function setCachedOuMode(v) { try { localStorage.setItem(OUMODE_CACHE_KEY, v); } catch { } }
 
 function normalizeEventsArray(res) {
     if (Array.isArray(res?.events)) return res.events;     // classic
@@ -16662,7 +16662,7 @@ function normalizeEventsArray(res) {
 
 async function resolveEventsEndpoint() {
     // honor pinned/manual override
-    try { const pinned = localStorage.getItem(EVENTS_ENDPOINT_CACHE_KEY); if (pinned) return pinned; } catch {}
+    try { const pinned = localStorage.getItem(EVENTS_ENDPOINT_CACHE_KEY); if (pinned) return pinned; } catch { }
 
     // probe helper (200 + object payload is enough)
     async function probe(ep) {
@@ -16673,29 +16673,30 @@ async function resolveEventsEndpoint() {
     }
 
     // A) unversioned with /api
-    const apiUnversioned = ["api/events", "api/events.json", "api/tracker/events", "api/tracker/events.json"];
+    const apiUnversioned = ["tracker/events", "tracker/events.json"];
     // B) unversioned plain (no /api)
-    const plainUnversioned = ["events", "events.json", "tracker/events", "tracker/events.json"];
+    const plainUnversioned = ["tracker/events", "tracker/events.json"];
 
     // C) versioned candidates (with & without /api)
     let version = null;
     try {
-        const info = await dataStore.get("api/system/info");
+        const info = await dataStore.get("system/info");
         if (info) {
-            if (typeof info.contextPath === "string") { const m = info.contextPath.match(/\/api\/(\d+)/); if (m) version = m[1]; }
+            if (typeof info.contextPath === "string") {
+                const m = info.contextPath.match(/\/api\/(\d+)/);
+                if (m) version = m[1];
+            }
             if (!version && typeof info.version === "string") { const m = info.version.match(/2\.(\d+)/); if (m) version = m[1]; }
         }
     } catch { /* may not exist on this origin */ }
 
-    const majors = version ? [version] : ["42", "41", "40", "39", "38", "37", "36", "35", "34", "33", "32", "31", "30", "29"];
-    const apiVersioned = majors.flatMap((v) => [
-        `api/${v}/events`, `api/${v}/events.json`,
-        `api/${v}/tracker/events`, `api/${v}/tracker/events.json`,
-    ]);
-    const plainVersioned = majors.flatMap((v) => [
-        `${v}/events`, `${v}/events.json`,
-        `${v}/tracker/events`, `${v}/tracker/events.json`,
-    ]);
+    // const majors = version ? [version] : ["42", "41", "40", "39", "38", "37", "36", "35", "34", "33", "32", "31", "30", "29"];
+    const apiVersioned = [
+        `tracker/events`, `tracker/events.json`,
+    ];
+    const plainVersioned = [
+        `tracker/events`, `tracker/events.json`,
+    ];
 
     const candidates = [
         ...apiUnversioned,
@@ -16713,8 +16714,8 @@ async function resolveEventsEndpoint() {
     }
 
     // last resort: plain classic
-    localStorage.setItem(EVENTS_ENDPOINT_CACHE_KEY, "events.json");
-    return "events.json";
+    localStorage.setItem(EVENTS_ENDPOINT_CACHE_KEY, "tracker/events.json");
+    return "tracker/events.json";
 }
 
 async function fetchEventsRaw(endpoint, params) {
@@ -16971,7 +16972,7 @@ if (typeof window !== "undefined") {
             startReminderDaemon();
             console.info("[MEMIS] Reminder daemon autostarted");
         }
-    } catch {}
+    } catch { }
 }
 
 const {useEffect,Suspense,lazy} = await importShared('react');

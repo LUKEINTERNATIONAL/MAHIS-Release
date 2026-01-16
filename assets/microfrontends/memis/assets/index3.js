@@ -2,7 +2,7 @@ class DataStore {
   constructor() {
     const savedCreds = localStorage.getItem("memisCredentials");
     this.defaultCredentials = savedCreds ? JSON.parse(savedCreds) : null;
-    this.baseUrl = `${"https://memis-test.bintelanalytics.mw/api/memisdev"}`;
+    this.baseUrl = `${"https://memis-test.bintelanalytics.mw"}`;
   }
   buildUrl(endpoint) {
     return `${this.baseUrl}/${endpoint}`;
@@ -105,6 +105,7 @@ class DataStore {
       return { status, statusText, data: text };
     } catch (error) {
       console.error("HTTP Request error:", error);
+      console.log({ method, endpoint });
       return {
         status: error?.status || 500,
         message: error?.message || "Request failed"
