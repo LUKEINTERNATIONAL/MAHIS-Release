@@ -8348,6 +8348,10 @@ const MainLayout = ({ children }) => {
     } catch {
     }
     const go = () => {
+      {
+        const url = window.location.href.split("?")[0];
+        window.location.replace(url);
+      }
     };
     if (document.startViewTransition) {
       document.startViewTransition(go);
@@ -8437,7 +8441,7 @@ const MainLayout = ({ children }) => {
         getMessages();
         return;
       }
-      navigate("https://mahistest.health.gov.mw/login", { replace: true });
+      window.location.replace("https://mahistest.health.gov.mw/login");
     } catch (err) {
       console.error("getUser failed:", err);
       window.location.replace("https://mahistest.health.gov.mw/logout");
