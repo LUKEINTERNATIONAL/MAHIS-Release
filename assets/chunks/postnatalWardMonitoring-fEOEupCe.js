@@ -1,0 +1,166 @@
+import { q as defineComponent, bE as IonModal, a6 as IonLabel, an as IonItem, aF as IonAccordionGroup, aE as IonAccordion, b7 as IonCardTitle, cD as IonCardSubtitle, b8 as IonCardHeader, ba as IonCardContent, bJ as IonCard, M as IonButton, aA as IonToolbar, aB as IonTitle, bs as IonPage, cu as IonMenuButton, I as IonHeader, aD as IonContent, b9 as checkmark, bW as chevronBackOutline, v as resolveComponent, N as createBlock, y as openBlock, B as withCtx, z as createVNode } from './vendor-CyoemPPl.js';
+import { B as BasicFooter, _ as _sfc_main$2 } from './SetEncounter.vue_vue_type_script_lang-CHKqJyHu.js';
+import { aY as AppEncounterService, a3 as ToolbarSearch, T as Toolbar, o as createModal, S as Service, t as toastWarning, G as toastSuccess, bM as resetPatientData, u as useDemographicsStore, n as icons, _ as _export_sfc } from '../index-QeoU54UC.js';
+import { D as DemographicBar } from './DemographicBar-DBchOFJz.js';
+import { S as SaveProgressModal } from './SaveProgressModal-DUcqBi3q.js';
+import { S as Stepper, A as usePostnatalWardStayStore } from './Stepper-Cj2PF248.js';
+import { m as mapState } from './pinia-DNgegnBS.js';
+import { b as formatCheckBoxData, c as formatRadioButtonData, f as formatInputFiledData } from './formatServerData-uaaiA1JB.js';
+import { a as _sfc_main$1 } from './Investigations-DVBee4OH.js';
+
+class PostnatalWardStayService extends AppEncounterService {
+  constructor(patientID, providerID) {
+    super(patientID, 151, providerID);
+  }
+}
+
+const _sfc_main = defineComponent({
+  name: "postnatalWardMonitoring",
+  mixins: [_sfc_main$1, _sfc_main$2],
+  components: {
+    BasicFooter,
+    IonContent,
+    IonHeader,
+    IonMenuButton,
+    IonPage,
+    IonTitle,
+    IonToolbar,
+    Toolbar,
+    ToolbarSearch,
+    DemographicBar,
+    IonButton,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardSubtitle,
+    IonCardTitle,
+    IonAccordion,
+    IonAccordionGroup,
+    IonItem,
+    IonLabel,
+    IonModal,
+    Stepper
+  },
+  data() {
+    return {
+      wizardData: [
+        {
+          title: "Routine monitoring",
+          class: "common_step",
+          checked: "",
+          icon: false,
+          disabled: false,
+          number: 1,
+          last_step: "last_step"
+        }
+      ],
+      StepperData: [
+        {
+          title: "Postnatal ward routine monitoring and management",
+          component: "PostnatalWardMonitoring",
+          value: "1"
+        }
+      ],
+      isOpen: false,
+      iconsContent: icons
+    };
+  },
+  watch: {},
+  getFormatedData(data) {
+    return data.map((item) => {
+      return item?.data;
+    });
+  },
+  computed: {
+    ...mapState(useDemographicsStore, ["patient"]),
+    ...mapState(usePostnatalWardStayStore, ["dangerSigns", "vitals", "otherExams"])
+  },
+  mounted() {
+    this.markWizard();
+  },
+  setup() {
+    return { chevronBackOutline, checkmark };
+  },
+  methods: {
+    markWizard() {
+    },
+    getSaveFunction() {
+    },
+    deleteDisplayData(data) {
+      return data.map((item) => {
+        delete item?.display;
+        return item?.data;
+      });
+    },
+    async saveData() {
+      await this.saveWardMonitoring();
+      toastSuccess("Postnatal ward stay data saved successfully");
+      await resetPatientData();
+      this.$router.push("home");
+    },
+    async saveWardMonitoring() {
+      if (this.dangerSigns.length > 0 && this.vitals.length > 0 && this.otherExams.length > 0) {
+        const userID = Service.getUserID();
+        const wardMonitoring = new PostnatalWardStayService(this.patient.patientID, userID);
+        const encounter = await wardMonitoring.createEncounter();
+        if (!encounter) return toastWarning("Unable to create patient postnatal ward stay encounter");
+        const patientStatus = await wardMonitoring.saveObservationList(await this.buildWardStayMonitoring());
+        if (!patientStatus) return toastWarning("Unable to create patient routine monitoring details!");
+        toastSuccess("Ward  details have been created");
+      }
+      console.log(await this.buildWardStayMonitoring());
+    },
+    async buildWardStayMonitoring() {
+      return [
+        ...await formatCheckBoxData(this.dangerSigns),
+        ...await formatCheckBoxData(this.vitals),
+        ...await formatCheckBoxData(this.otherExams),
+        ...await formatRadioButtonData(this.dangerSigns),
+        ...await formatRadioButtonData(this.vitals),
+        ...await formatRadioButtonData(this.otherExams),
+        ...await formatInputFiledData(this.dangerSigns),
+        ...await formatInputFiledData(this.vitals),
+        ...await formatInputFiledData(this.otherExams)
+      ];
+    },
+    openModal() {
+      createModal(SaveProgressModal);
+    }
+  }
+});
+
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_Toolbar = resolveComponent("Toolbar");
+  const _component_DemographicBar = resolveComponent("DemographicBar");
+  const _component_Stepper = resolveComponent("Stepper");
+  const _component_ion_content = resolveComponent("ion-content");
+  const _component_BasicFooter = resolveComponent("BasicFooter");
+  const _component_ion_page = resolveComponent("ion-page");
+  return openBlock(), createBlock(_component_ion_page, null, {
+    default: withCtx(() => [
+      createVNode(_component_Toolbar),
+      createVNode(_component_ion_content, { fullscreen: true }, {
+        default: withCtx(() => [
+          createVNode(_component_DemographicBar),
+          createVNode(_component_Stepper, {
+            stepperTitle: "Postnatal ward stay",
+            wizardData: _ctx.wizardData,
+            onUpdateStatus: _ctx.markWizard,
+            StepperData: _ctx.StepperData,
+            backUrl: _ctx.userRoleSettings.url,
+            backBtn: _ctx.userRoleSettings.btnName,
+            getSaveFunction: _ctx.getSaveFunction
+          }, null, 8, ["wizardData", "onUpdateStatus", "StepperData", "backUrl", "backBtn", "getSaveFunction"])
+        ]),
+        _: 1
+      }),
+      createVNode(_component_BasicFooter, {
+        onFinishBtn: _cache[0] || (_cache[0] = ($event) => _ctx.saveData())
+      })
+    ]),
+    _: 1
+  });
+}
+const postnatalWardMonitoring = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+
+export { postnatalWardMonitoring as default };
