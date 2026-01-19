@@ -15966,7 +15966,6 @@ const UserRolesProvider = ({ children }) => {
       setUser(userObj);
       return userObj;
     } catch (err) {
-      console.error("User fetch failed:", err);
       setUser(null);
       return null;
     }
@@ -15979,7 +15978,6 @@ const UserRolesProvider = ({ children }) => {
       setUserRoles(roles);
       return roles;
     } catch (err) {
-      console.error("Roles fetch failed:", err);
       setUserRoles([]);
       return [];
     }
@@ -16494,7 +16492,6 @@ function UserProvider({ children }) {
       setUserOrganisationUnits(orgUnits);
       return orgUnits;
     } catch (e) {
-      console.error("Failed loading org units:", e);
       setUserOrganisationUnits([]);
       return [];
     } finally {

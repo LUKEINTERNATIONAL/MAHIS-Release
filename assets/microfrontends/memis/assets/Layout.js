@@ -8470,6 +8470,11 @@ const MainLayout = ({ children }) => {
   const onRefresh = async () => {
     await Promise.all([refreshMenu?.(), getUser(), refreshPrograms?.(), getMessages()]);
   };
+  useEffect$18(() => {
+    if (menuItems?.length == 0 && programs?.length > 0) {
+      window.location.reload();
+    }
+  }, [programs]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(IonMenu, { contentId: "main-content", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(IonHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonToolbar, { color: "primary", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonTitle, { children: "MEMIS" }) }) }),
@@ -8556,7 +8561,7 @@ const MainLayout = ({ children }) => {
               border: "1px solid #ccc",
               borderRadius: "6px",
               zIndex: 9999,
-              minWidth: "180px"
+              minWidth: "250px"
             },
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { lines: "none", children: [
@@ -8572,18 +8577,12 @@ const MainLayout = ({ children }) => {
                     try {
                       localStorage.removeItem("memisCredentials");
                       localStorage.removeItem("memisViewSettings");
-                      localStorage.removeItem("dataStore");
+                      localStorage.removeItem("memis_cookie");
                       localStorage.removeItem("memisAuthPending", "1");
-                      localStorage.removeItem("notificationConfigurations");
                       await LocalForageServiceInstance.clearStorage("memis");
                       await LocalForageServiceInstance.clearStorage("programs");
-                      await LocalForageServiceInstance.clearStorage("programRules");
-                      await LocalForageServiceInstance.clearStorage("sharingSettings");
                       await LocalForageServiceInstance.clearStorage("user");
-                      await LocalForageServiceInstance.clearStorage("userRoles");
                       await LocalForageServiceInstance.clearStorage("userOrgUnits");
-                      await LocalForageServiceInstance.clearStorage("dataStore");
-                      await LocalForageServiceInstance.clearStorage("metadata");
                       showToast("Logout successfully", "info");
                       window.location.replace("https://mahistest.health.gov.mw/logout");
                     } catch (err) {
@@ -10029,7 +10028,7 @@ async function getSectionAccess(sectionId, programId, user) {
 async function queryTrackedEntities(params) {
     const qs = new URLSearchParams({
         fields:
-            "trackedEntity,trackedEntityInstance,orgUnit,attributes[attribute,value]",
+            "trackedEntity,orgUnit,attributes[attribute,value]",
         skipPaging: "true",
         order: "createdAt:desc",
         ...params,
@@ -21382,7 +21381,7 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
       }
       params.append("orgUnit", sortedOrgUnits[0]?.id);
       let res;
-      res = await dataStore.query(`tracker/events?${params}${eventSearchFilter(programId)?.filter || ""}`);
+      res = await dataStore.get(`tracker/events?${params}${eventSearchFilter(programId)?.filter || ""}`);
       setPagination(res?.data?.pager);
       let program = await LocalForageServiceInstance.getItem("programs", "programs");
       const filtered = program?.find((p) => p?.id === programId);
@@ -22499,6 +22498,8 @@ const Login = () => {
         reloadDataStore();
         showToast(`Success`, "success");
         navigate("/memis", { replace: true });
+        window.location.reload();
+        return { status: 200, message: "Login successful" };
       } else if (result?.status >= 400) {
         showToast("Login failed.", "error");
       }
@@ -70049,6 +70050,7 @@ function TeiEvents() {
   const [event, setEvent] = useState$1();
   const [orgUnit, setOu] = useState$1();
   const [programData, setProgramData] = useState$1(null);
+  const [isMaintenanceSection, setIsMaintenanceSection] = useState$1(false);
   const [ouName, setName] = useState$1();
   const [crumbs, setCrumbs] = useState$1([
     {
@@ -70124,7 +70126,7 @@ function TeiEvents() {
           )[0];
           setCrumbs((prev) => {
             const newCrumbs = buildProgramBreadcrumbs(p, [
-              { label: nam?.value, ref: `program/${p?.id}/${tei}` },
+              { label: nam?.value, ref: `/memis/program/${p?.id}/${tei}` },
               obj
             ]);
             const filtered = newCrumbs?.filter(
@@ -70197,7 +70199,11 @@ function TeiEvents() {
     let mt = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
     mt = mt?.MaintainanceWorkflows;
     if (mt?.program === program2) {
+      setIsMaintenanceSection(true);
       setWorkFlows(mt);
+    } else {
+      setIsMaintenanceSection(false);
+      setWorkFlows(null);
     }
   };
   const getVal = (id, dataElement) => {
@@ -70330,7 +70336,8 @@ function TeiEvents() {
       ] }),
       pg?.programStageSections?.map((section) => {
         const wf = appworkFlow();
-        if (wf?.sections?.includes(section.id)) {
+        const sectionFlow = isMaintenanceSection ? wf?.sections?.includes(section.id) : { sections: pg?.programStageSections?.map((s) => s.id) };
+        if (sectionFlow) {
           return /* @__PURE__ */ jsxRuntimeExports.jsxs(
             "div",
             {

@@ -2837,65 +2837,62 @@ const localforage = /*@__PURE__*/getDefaultExportFromCjs(localforageExports);
 class LocalForageService {
   constructor(defaultStore = "memis") {
     this.defaultStore = defaultStore;
+    this.stores = new Map();
   }
 
   /**
-   * Get a LocalForage store dynamically by name.
-   * If no storeName is provided, use the default.
+   * Get or create a LocalForage store by name.
+   * Ensures a single instance per store.
    */
   getStore(storeName = this.defaultStore) {
-    return localforage.createInstance({
-      driver: localforage.INDEXEDDB,
-      name: "memiscache",
-      storeName,
-      description: "Local CacheStorage for memis",
-    });
+    if (!this.stores.has(storeName)) {
+      const store = localforage.createInstance({
+        name: "memiscache",
+        storeName,
+        version: 1,
+        description: "Local CacheStorage for memis",
+        driver: [
+          localforage.INDEXEDDB,
+          localforage.LOCALSTORAGE,
+        ],
+      });
+
+      this.stores.set(storeName, store);
+
+      // Optional but very useful in production
+      store.ready().then(() => {
+        store.driver().then(d =>
+          console.info(
+            `[LocalForage] Store "${storeName}" using driver:`,
+            d
+          )
+        );
+      }).catch(err => {
+        // console.error(`[LocalForage] Store "${storeName}" failed to initialize`, err);
+        return err
+      });
+    }
+
+    return this.stores.get(storeName);
   }
 
-  /** Set item in a specific store */
   async setItem(key, value, storeName) {
-    const store = this.getStore(storeName);
-    try {
-      await store.setItem(key, value);
-    } catch (err) {
-      console.error(`Error setting item in store "${storeName}"`, err);
-    }
+    return this.getStore(storeName).setItem(key, value);
   }
 
-  /** Get item from a specific store */
   async getItem(key, storeName) {
-    const store = this.getStore(storeName);
-    try {
-      const res = await store.getItem(key);
-      return res
-    } catch (err) {
-      console.error(`Error getting item from store "${storeName}"`, err);
-      return null;
-    }
+    return this.getStore(storeName).getItem(key);
   }
 
-  /** Remove item from a specific store */
   async removeItem(key, storeName) {
-    const store = this.getStore(storeName);
-    try {
-      await store.removeItem(key);
-    } catch (err) {
-      console.error(`Error removing item from store "${storeName}"`, err);
-    }
+    return this.getStore(storeName).removeItem(key);
   }
 
-  /** Clear all items in a specific store */
   async clearStorage(storeName) {
-    const store = this.getStore(storeName);
-    try {
-      await store.clear();
-    } catch (err) {
-      console.error(`Error clearing store "${storeName}"`, err);
-    }
+    return this.getStore(storeName).clear();
   }
 }
 
-// Export a singleton instance
 const LocalForageServiceInstance = new LocalForageService();
 
 class DataStore {
@@ -2988,7 +2985,12 @@ class DataStore {
       const contentType = response.headers.get("content-type") || "";
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`HTTP ${status}: ${errorText}`);
+        console.log({
+          status,
+          statusText,
+          message: errorText
+        });
+        return { status, statusText, message: errorText };
       }
       if (status === 204 || response.headers.get("content-length") === "0") {
         return { status, statusText, data: null };
