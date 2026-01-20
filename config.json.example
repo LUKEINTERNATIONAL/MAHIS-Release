@@ -8,7 +8,8 @@
 		"couchdbUsername": "username",
 		"couchdbPort": 5984,
 		"couchdbHost": "127.0.0.1",
-		"couchdbProtocol": "http"
+		"couchdbProtocol": "http",
+		"mahisReportURL": "https://mahistest.health.gov.mw/reports/home"
 	},
 	"test": {
 		"apiURL": "mahistest.health.gov.mw",
@@ -19,7 +20,8 @@
 		"couchdbUsername": "username",
 		"couchdbPort": 5984,
 		"couchdbHost": "127.0.0.1",
-		"couchdbProtocol": "http"
+		"couchdbProtocol": "http",
+		"mahisReportURL": "https://mahistest.health.gov.mw/reports/home",
 	},
 	"production": {
 		"apiURL": "mahis.health.gov.mw",
@@ -30,6 +32,7 @@
 		"couchdbUsername": "username",
 		"couchdbPort": 5984,
 		"couchdbHost": "127.0.0.1",
-		"couchdbProtocol": "http"
+		"couchdbProtocol": "http",
+		"mahisReportURL": "https://mahistest.health.gov.mw/reports/home"
 	}
 }

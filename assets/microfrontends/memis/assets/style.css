@@ -1088,6 +1088,8 @@ ion-tab-bar {
 }
 
 :root {
+    color-scheme: light !important;
+
     /* Primary */
     --ion-color-primary: #006401 !important;
     --ion-color-primary-rgb: 0, 100, 1 !important;
@@ -1131,7 +1133,21 @@ ion-tab-bar {
     --ion-color-light: #f4f5f8 !important;
 
     /*Background Color*/
-    --ion-background-color: #F2F2F2;
+    --ion-background-color: #ffffff;
+}
+
+/*Force light theme*/
+/* Force Ionic to use light theme */
+html.ios, html.md {
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: light;
+
+    --ion-background-color: #ffffff;
+    --ion-text-color: #000000;
+    --ion-item-background: #ffffff;
 }
 
 .section-header {
@@ -1162,7 +1178,7 @@ ion-tab-bar {
 
 .custom-modal-content {
     border-radius: 12px;
-    background: #fff;
+    background: var(--ion-background-color);
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -1387,7 +1403,7 @@ ion-tab-bar {
     ion-popover.datetime-popover-mobile ion-datetime::part(action-buttons) {
         padding: 12px 16px !important;
         margin-top: 8px !important;
-        background: white;
+        background: var(--ion-background-color);
         position: sticky;
         bottom: 0;
         z-index: 10;
@@ -1483,7 +1499,7 @@ ion-tab-bar {
   /* Buttons container on mobile */
   .toolbar-actions {
     display: flex;
-    column-gap: 12px;               
+    column-gap: 12px;
     flex-shrink: 0;
   }
 

@@ -2834,7 +2834,7 @@ const localforage = /*@__PURE__*/getDefaultExportFromCjs(localforageExports);
 
 // src/services/LocalForageService.js
 
-class LocalForageService {
+class LocalForageServiceInstance {
   constructor(defaultStore = "memis") {
     this.defaultStore = defaultStore;
     this.stores = new Map();
@@ -2893,7 +2893,7 @@ class LocalForageService {
   }
 }
 
-const LocalForageServiceInstance = new LocalForageService();
+const LocalForageServiceInstance$1 = new LocalForageServiceInstance();
 
 class DataStore {
   constructor() {
@@ -3072,7 +3072,7 @@ class QRConfigService extends DataStore {
   }
   async getQrConfig(programId) {
     try {
-      let config = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
+      let config = await LocalForageServiceInstance$1.getItem("dataStore", "dataStore");
       config = config?.qrCodesConfigurations;
       const qr = config?.configurations?.find(
         (q) => q?.source?.programId === programId
@@ -3147,4 +3147,4 @@ const index = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 	qrConfigService
 }, Symbol.toStringTag, { value: 'Module' }));
 
-export { LocalForageServiceInstance as L, commonjsRequire as c, dataStore as d, index as i, qrConfigService as q };
+export { LocalForageServiceInstance$1 as L, commonjsRequire as c, dataStore as d, index as i, qrConfigService as q };

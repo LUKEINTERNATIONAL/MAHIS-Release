@@ -8470,11 +8470,6 @@ const MainLayout = ({ children }) => {
   const onRefresh = async () => {
     await Promise.all([refreshMenu?.(), getUser(), refreshPrograms?.(), getMessages()]);
   };
-  useEffect$18(() => {
-    if (menuItems?.length == 0 && programs?.length > 0) {
-      window.location.reload();
-    }
-  }, [programs]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(IonMenu, { contentId: "main-content", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(IonHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonToolbar, { color: "primary", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonTitle, { children: "MEMIS" }) }) }),
@@ -8578,13 +8573,19 @@ const MainLayout = ({ children }) => {
                       localStorage.removeItem("memisCredentials");
                       localStorage.removeItem("memisViewSettings");
                       localStorage.removeItem("memis_cookie");
+                      localStorage.removeItem("dataStore");
                       localStorage.removeItem("memisAuthPending", "1");
                       await LocalForageServiceInstance.clearStorage("memis");
                       await LocalForageServiceInstance.clearStorage("programs");
                       await LocalForageServiceInstance.clearStorage("user");
                       await LocalForageServiceInstance.clearStorage("userOrgUnits");
+                      await LocalForageServiceInstance.clearStorage("dataStore");
                       showToast("Logout successfully", "info");
-                      window.location.replace("https://mahistest.health.gov.mw/logout");
+                      const logoutEvent = new CustomEvent("mfe:logout-success");
+                      window.dispatchEvent(logoutEvent);
+                      setTimeout(() => {
+                        window.location.replace("https://mahistest.health.gov.mw/logout");
+                      }, 300);
                     } catch (err) {
                       console.log({ err });
                       showToast(err.message, "error");
@@ -14298,8 +14299,8 @@ const equipmentCollectionStatus = async (config, options) => {
     const isAcknowledgment = config?.event === "EQUIPMENT_COLLECTION_ACKNOWLEDGMENT";
 
     const subject = isAcknowledgment
-      ? `Collection of ${equipmentNameText} ${serialNumberText} acknowledged | ${options?.program}.${options?.tei}`
-      : `Acknowledge receipt of ${equipmentNameText} ${serialNumberText} | ${options?.program}.${options?.tei}`;
+      ? `Collection of ${equipmentNameText} ${serialNumberText} acknowledged | ${options?.program}.${options?.tei} .${options?.eventId}`
+      : `Acknowledge receipt of ${equipmentNameText} ${serialNumberText} | ${options?.program}.${options?.tei}.${options?.eventId} `;
 
     const body = isAcknowledgment
       ? `Ward-incharge has acknowledged receipt of the allocated ${equipmentNameText} ${serialNumberText}.`
@@ -14766,8 +14767,9 @@ const equipmentRequisitionNotificationApproval = async (config, options) => {
       (d) => d?.dataElement === config?.equipment?.dataElement
     );
     const ou = await dataStore.get(
-      `organisationUnits/${data?.data?.orgUnit}?fields=name,id,parent(id,name)`
+      `organisationUnits/${data?.data?.orgUnit}?fields=name,id,parent(id,name),children(id,name)`
     );
+    console.log({ ou });
 
     let users = [];
     const isApproved = dataElement?.value === "true";
@@ -14792,6 +14794,7 @@ const equipmentRequisitionNotificationApproval = async (config, options) => {
         });
         users.push(...approvedUsers);
       }
+
     } else {
       // If declined, also notify admin/hospital administrator
       const declinedRole = config?.userRoles?.find(
@@ -14831,6 +14834,7 @@ const equipmentRequisitionNotificationApproval = async (config, options) => {
     const body = `${optionName?.name || "equipment"
       } requisition request has been updated.`;
     const usersId = users?.map((id) => id?.id);
+
     sendNotificationHandler(subject, body, usersId);
   } catch (error) {
     console.log({ error });
@@ -14934,7 +14938,89 @@ const equipmentSLANotification = async (config, options) => {
   }
 };
 
-const getUsers$a = async ({ targetOrgUnitId, userRoleId, isPermanent }) => {
+const getUsers$a = async ({ userRoleId, facilityLevel }) => {
+  let usersResp = null;
+  try {
+    if (facilityLevel === "NATIONAL_LEVEL") {
+      // Get users with PAM Central role at national level
+      usersResp = await dataStore.get(
+        `users.json?paging=false&fields=id,username,displayName&filter=userRoles.id:eq:${userRoleId}`
+      );
+    }
+  } catch (e) {
+    console.error("User role search failed:", e);
+  }
+
+  return usersResp?.data?.users?.map((u) => ({ id: u.id })) || [];
+};
+
+const equipmentTransferOutsideSubmitNotification = async (config, options) => {
+  try {
+
+    const data = await dataStore.get(
+      `tracker/events/${options?.event}?program=${options?.program}&fields=*`
+    );
+
+    // Get equipment information
+    const equipmentDataElement = data?.data?.dataValues?.find(
+      (d) => d.dataElement === config?.equipment?.dataElement
+    );
+
+    let equipmentName = "Equipment";
+    if (config.equipment.isOptionCode && equipmentDataElement) {
+      const option = await dataStore.get(
+        `optionSets/${config?.equipment?.optionSetId}?fields=id,name,code,options(id,name,code)`
+      );
+      equipmentName = option?.data?.options?.find(
+        (op) => op?.code === equipmentDataElement?.value
+      )?.name || "Equipment";
+    }
+
+    // Get transfer type (permanent/temporary)
+    const transferType = data?.data?.dataValues?.find(
+      (d) => d.dataElement === config?.transferType
+    );
+
+    let transferTypeName = "transfer";
+    if (transferType?.value && config?.permanentTransferCode && config?.tranferTypeOptonSet) {
+      const transferTypeOptionSet = await dataStore.get(
+        `optionSets/${config?.tranferTypeOptonSet}?fields=id,name,code,options(id,name,code)`
+      );
+      const permanentOption = transferTypeOptionSet?.data?.options?.find(
+        (op) => op?.code === config?.permanentTransferCode
+      );
+      transferTypeName = transferType?.value === permanentOption?.code ? "permanent transfer" : "temporary transfer";
+    }
+
+    // Get source facility information
+    const ou = await dataStore.get(
+      `organisationUnits/${data?.data.orgUnit}?fields=name,id,level,parent(id,name,level)`
+    );
+
+    // Get users to notify (PAM Central)
+    let users = [];
+    for (const role of config?.userRoles || []) {
+      if (role.facilityLevel === "NATIONAL_LEVEL") {
+        const roleUsers = await getUsers$a({
+          userRoleId: role.id,
+          facilityLevel: role.facilityLevel,
+        });
+        users.push(...roleUsers);
+      }
+    }
+
+    const subject = `Outside facility ${transferTypeName} request submitted - ${equipmentName} | ${options?.program}.${options?.event}`;
+    const body = `A ${transferTypeName} request has been submitted for ${equipmentName} from ${ou?.data?.name} to an outside facility. Please review and coordinate the approval process.`;
+
+    const usersId = users?.map((user) => user?.id);
+
+    sendNotificationHandler(subject, body, usersId);
+  } catch (error) {
+    console.error("Outside transfer submit notification error:", error);
+  }
+};
+
+const getUsers$9 = async ({ targetOrgUnitId, userRoleId, isPermanent }) => {
   console.log({ targetOrgUnitId, userRoleId });
 
   let usersResp = null;
@@ -14973,6 +15059,21 @@ const equipmentTransferNotification = async (config, options) => {
     const dataElement = data?.data?.dataValues.find(
       (d) => d.dataElement === config?.equipment.dataElement
     );
+
+    const transfer_location_type = data?.data?.dataValues.find(
+      (d) => d.dataElement === config?.transferLocationType
+    );
+    const outsideFacility = transfer_location_type?.value === config?.outsideFacilityOptionCode;
+
+    if (outsideFacility) {
+      const configData = await getNotificationEvent(
+        config?.programId,
+        "EQUIPMENT_TRANSFER_OUTSIDE"
+      );
+
+      equipmentTransferOutsideSubmitNotification(configData, options);
+      return;
+    }
     const fields =
       "updatedBy[username,uid,surname,firstName],createdAt,orgUnit,trackedEntity,enrollments[enrollment,orgUnit,program,events[*]],attributes[attribute,value,createdAt,updatedAt,valueType,code,displayName,optionSetValue],relationships";
 
@@ -15004,7 +15105,7 @@ const equipmentTransferNotification = async (config, options) => {
 
     for (let index = 0; index < roles.length; index++) {
       const element = roles[index];
-      const res = await getUsers$a({
+      const res = await getUsers$9({
         targetOrgUnitId: current_location?.value,
         userRoleId: element?.id,
         isPermanent,
@@ -15053,7 +15154,146 @@ const equipmentTransferNotification = async (config, options) => {
   } catch (error) { }
 };
 
-const getUsers$9 = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$8 = async ({ targetOrgUnitId, userRoleId, facilityLevel }) => {
+  let usersResp = null;
+  try {
+    if (facilityLevel === "SAME_ORG_UNIT" && targetOrgUnitId) {
+      // Get users at the same organization unit (source facility)
+      usersResp = await dataStore.get(
+        `users.json?paging=false&fields=id,username,displayName&filter=userRoles.id:eq:${userRoleId}&filter=organisationUnits.id:eq:${targetOrgUnitId}`
+      );
+    } else if (facilityLevel === "TARGET_FACILITY") {
+      // For target facility, we need to get the target facility from the transfer data
+      // This would typically be stored in a data element for target facility
+      usersResp = await dataStore.get(
+        `users.json?paging=false&fields=id,username,displayName&filter=userRoles.id:eq:${userRoleId}`
+      );
+    }
+  } catch (e) {
+    console.error("User role/orgUnit search failed:", e);
+  }
+
+  return usersResp?.data?.users?.map((u) => ({ id: u.id })) || [];
+};
+
+const equipmentTransferOutsideApprovalNotification = async (config, options) => {
+  try {
+    console.log({ config, options});
+
+    const data = await dataStore.get(
+      `tracker/events/${options?.event}?program=${options?.program}&fields=*`
+    );
+
+    // Get approval status
+    const approvalDataElement = data?.data?.dataValues?.find(
+      (d) => d?.dataElement === config?.equipment?.dataElement
+    );
+    const isApproved = approvalDataElement?.value === "true";
+
+    // Get equipment information
+    const equipmentDataElement = data?.data?.dataValues?.find(
+      (d) => d.dataElement === config?.equipment.messageDE
+    );
+
+    let equipmentName = "Equipment";
+    if (config.equipment.isOptionCode && equipmentDataElement) {
+      const option = await dataStore.get(
+        `optionSets/${config?.equipment?.optionSetId}?fields=id,name,code,options(id,name,code)`
+      );
+      equipmentName = option?.data?.options?.find(
+        (op) => op?.code === equipmentDataElement?.value
+      )?.name || "Equipment";
+    }
+
+    // Get transfer type (permanent/temporary)
+    const transferType = data?.data?.dataValues?.find(
+      (d) => d.dataElement === config?.transferType
+    );
+
+    let transferTypeName = "transfer";
+    if (transferType?.value && config?.permanentTransferCode && config?.tranferTypeOptonSet) {
+      const transferTypeOptionSet = await dataStore.get(
+        `optionSets/${config?.tranferTypeOptonSet}?fields=id,name,code,options(id,name,code)`
+      );
+      const permanentOption = transferTypeOptionSet?.data?.options?.find(
+        (op) => op?.code === config?.permanentTransferCode
+      );
+      transferTypeName = transferType?.value === permanentOption?.code ? "permanent transfer" : "temporary transfer";
+    }
+
+    // Get source facility information
+    const ou = await dataStore.get(
+      `organisationUnits/${data?.data?.orgUnit}?fields=name,id,level,parent(id,name,level)`
+    );
+
+    let users = [];
+
+    // Always notify the creator (requester)
+    if (config.userSource?.createdBy) {
+      users.push({ id: data?.data?.createdBy?.uid });
+    }
+
+    // Notify based on approval status
+    if (isApproved) {
+      // If approved, notify Hospital Administrator (source) and Biomedical Engineer (target facility)
+      for (const role of config?.userRoles || []) {
+        if (role.accepted === "true") {
+          let roleUsers = [];
+
+          if (role.facilityLevel === "SAME_ORG_UNIT") {
+            // Hospital Administrator at source facility
+            roleUsers = await getUsers$8({
+              targetOrgUnitId: ou?.data?.id,
+              userRoleId: role.id,
+              facilityLevel: role.facilityLevel,
+            });
+          } else if (role.facilityLevel === "TARGET_FACILITY") {
+            // Biomedical Engineer at target facility
+            // Note: In a real implementation, you'd need to get the target facility ID
+            // from the transfer data (e.g., from a target facility data element)
+            roleUsers = await getUsers$8({
+              userRoleId: role.id,
+              facilityLevel: role.facilityLevel,
+            });
+          }
+
+          users.push(...roleUsers);
+        }
+      }
+    } else {
+      // If declined, notify Hospital Administrator (source) and Creator
+      for (const role of config?.userRoles || []) {
+        if (role.accepted === "false" || role.facilityLevel === "SAME_ORG_UNIT") {
+          const roleUsers = await getUsers$8({
+            targetOrgUnitId: ou?.data?.id,
+            userRoleId: role.id,
+            facilityLevel: role.facilityLevel,
+          });
+          users.push(...roleUsers);
+        }
+      }
+    }
+
+    const actionText = isApproved ? "approved" : "declined";
+    const subject = `Outside facility ${transferTypeName} ${actionText} - ${equipmentName} | ${options?.program}.${options?.event}`;
+
+    let body;
+    if (isApproved) {
+      body = `The outside facility ${transferTypeName} request for ${equipmentName} from ${ou?.data?.name} has been approved. Please coordinate the transfer process.`;
+    } else {
+      body = `The outside facility ${transferTypeName} request for ${equipmentName} from ${ou?.data?.name} has been declined.`;
+    }
+
+    const usersId = users?.map((user) => user?.id);
+    console.log({ usersId, subject, body });
+
+    sendNotificationHandler(subject, body, usersId);
+  } catch (error) {
+    console.error("Outside transfer approval notification error:", error);
+  }
+};
+
+const getUsers$7 = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -15088,19 +15328,33 @@ const equipmentTransferApprovalNotification = async (config, options) => {
 
     let users = [];
     const isApproved = approvalDataElement?.value === "true";
-    
+
+    const transfer_location_type = data?.data?.dataValues.find(
+      (d) => d.dataElement === config?.transferLocationType
+    );
+    const outsideFacility = transfer_location_type?.value === config?.outsideFacilityOptionCode;
+
+    if (isApproved && outsideFacility) {
+      const configData = await getNotificationEvent(
+        config?.programId,
+        "EQUIPMENT_TRANSFER_OUTSIDE_APPROVE"
+      );
+
+      equipmentTransferOutsideApprovalNotification(configData, options);
+      return;
+    }
     // Always notify the creator (requester)
     if (config.userSource?.createdBy) {
       users.push({ id: data?.data?.createdBy?.uid });
     }
-    
+
     // If approved, also notify additional roles
     if (isApproved) {
       const approvedRole = config?.userRoles?.find(
         (roles) => roles.accepted === "true"
       );
       if (approvedRole) {
-        const approvedUsers = await getUsers$9({
+        const approvedUsers = await getUsers$7({
           targetOrgUnitId:
             approvedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.data?.id
@@ -15115,7 +15369,7 @@ const equipmentTransferApprovalNotification = async (config, options) => {
         (roles) => roles.accepted === "false"
       );
       if (declinedRole) {
-        const declinedUsers = await getUsers$9({
+        const declinedUsers = await getUsers$7({
           targetOrgUnitId:
             declinedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.data?.id
@@ -15130,10 +15384,10 @@ const equipmentTransferApprovalNotification = async (config, options) => {
     const equipmentDataElement = data?.data?.dataValues?.find(
       (d) => d.dataElement === config?.equipment.messageDE
     );
-    
+
     let option;
     let equipmentName = "Equipment";
-    
+
     if (config.equipment.isOptionCode) {
       option = await dataStore.get(
         `optionSets/${config?.equipment?.optionSetId}?fields=id,name,code,options(id,name,code)`
@@ -15147,7 +15401,7 @@ const equipmentTransferApprovalNotification = async (config, options) => {
     const transferType = data?.data?.dataValues?.find(
       (d) => d?.dataElement === config?.transferType
     );
-    
+
     let transferTypeName = "transfer";
     if (transferType?.value && config?.permanentTransferCode && config?.tranferTypeOptonSet) {
       const tranferTypeOptonSet = await dataStore.get(
@@ -15160,11 +15414,11 @@ const equipmentTransferApprovalNotification = async (config, options) => {
     }
 
     const actionText = approvalDataElement?.value === "true" ? "approved" : "declined";
-    
+
     const subject = `${equipmentName} ${transferTypeName} ${actionText} | ${data?.data?.program}.${data?.data?.event}`;
-    
+
     const body = `${equipmentName} ${transferTypeName} request has been ${actionText}.`;
-    
+
     const usersId = users?.map((id) => id?.id);
     sendNotificationHandler(subject, body, usersId);
   } catch (error) {
@@ -15172,7 +15426,7 @@ const equipmentTransferApprovalNotification = async (config, options) => {
   }
 };
 
-const getUsers$8 = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$6 = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -15223,7 +15477,7 @@ const equipmentTransferAcknowledgmentNotification = async (config, options) => {
         ? data?.data?.orgUnit 
         : null;
       
-      const wardUsers = await getUsers$8({
+      const wardUsers = await getUsers$6({
         targetOrgUnitId,
         userRoleId: wardInChargeRole?.id,
       });
@@ -15238,7 +15492,7 @@ const equipmentTransferAcknowledgmentNotification = async (config, options) => {
           ? data?.data?.orgUnit 
           : null;
         
-        const engineerUsers = await getUsers$8({
+        const engineerUsers = await getUsers$6({
           targetOrgUnitId,
           userRoleId: engineerRole?.id,
         });
@@ -15273,221 +15527,6 @@ const equipmentTransferAcknowledgmentNotification = async (config, options) => {
     sendNotificationHandler(subject, body, usersId);
   } catch (error) {
     console.error("Transfer acknowledgment notification error:", error);
-  }
-};
-
-const getUsers$7 = async ({ userRoleId, facilityLevel }) => {
-  let usersResp = null;
-  try {
-    if (facilityLevel === "NATIONAL_LEVEL") {
-      // Get users with PAM Central role at national level
-      usersResp = await dataStore.get(
-        `users.json?paging=false&fields=id,username,displayName&filter=userRoles.id:eq:${userRoleId}`
-      );
-    }
-  } catch (e) {
-    console.error("User role search failed:", e);
-  }
-
-  return usersResp?.data?.users?.map((u) => ({ id: u.id })) || [];
-};
-
-const equipmentTransferOutsideSubmitNotification = async (config, options) => {
-  try {
-    const data = await dataStore.get(
-      `tracker/events/${options?.event}?program=${options?.program}&fields=*`
-    );
-
-    // Get equipment information
-    const equipmentDataElement = data?.data?.dataValues?.find(
-      (d) => d.dataElement === config?.equipment?.dataElement
-    );
-
-    let equipmentName = "Equipment";
-    if (config.equipment.isOptionCode && equipmentDataElement) {
-      const option = await dataStore.get(
-        `optionSets/${config?.equipment?.optionSetId}?fields=id,name,code,options(id,name,code)`
-      );
-      equipmentName = option?.data?.options?.find(
-        (op) => op?.code === equipmentDataElement?.value
-      )?.name || "Equipment";
-    }
-
-    // Get transfer type (permanent/temporary)
-    const transferType = data?.data?.dataValues?.find(
-      (d) => d.dataElement === config?.transferType
-    );
-    
-    let transferTypeName = "transfer";
-    if (transferType?.value && config?.permanentTransferCode && config?.tranferTypeOptonSet) {
-      const transferTypeOptionSet = await dataStore.get(
-        `optionSets/${config?.tranferTypeOptonSet}?fields=id,name,code,options(id,name,code)`
-      );
-      const permanentOption = transferTypeOptionSet?.data?.options?.find(
-        (op) => op?.code === config?.permanentTransferCode
-      );
-      transferTypeName = transferType?.value === permanentOption?.code ? "permanent transfer" : "temporary transfer";
-    }
-
-    // Get source facility information
-    const ou = await dataStore.get(
-      `organisationUnits/${data?.data.orgUnit}?fields=name,id,level,parent(id,name,level)`
-    );
-
-    // Get users to notify (PAM Central)
-    let users = [];
-    for (const role of config?.userRoles || []) {
-      if (role.facilityLevel === "NATIONAL_LEVEL") {
-        const roleUsers = await getUsers$7({
-          userRoleId: role.id,
-          facilityLevel: role.facilityLevel,
-        });
-        users.push(...roleUsers);
-      }
-    }
-
-    const subject = `Outside facility ${transferTypeName} request submitted - ${equipmentName} | ${options?.program}.${options?.event}`;
-    const body = `A ${transferTypeName} request has been submitted for ${equipmentName} from ${ou?.data?.name} to an outside facility. Please review and coordinate the approval process.`;
-    
-    const usersId = users?.map((user) => user?.id);
-    sendNotificationHandler(subject, body, usersId);
-  } catch (error) {
-    console.error("Outside transfer submit notification error:", error);
-  }
-};
-
-const getUsers$6 = async ({ targetOrgUnitId, userRoleId, facilityLevel }) => {
-  let usersResp = null;
-  try {
-    if (facilityLevel === "SAME_ORG_UNIT" && targetOrgUnitId) {
-      // Get users at the same organization unit (source facility)
-      usersResp = await dataStore.get(
-        `users.json?paging=false&fields=id,username,displayName&filter=userRoles.id:eq:${userRoleId}&filter=organisationUnits.id:eq:${targetOrgUnitId}`
-      );
-    } else if (facilityLevel === "TARGET_FACILITY") {
-      // For target facility, we need to get the target facility from the transfer data
-      // This would typically be stored in a data element for target facility
-      usersResp = await dataStore.get(
-        `users.json?paging=false&fields=id,username,displayName&filter=userRoles.id:eq:${userRoleId}`
-      );
-    }
-  } catch (e) {
-    console.error("User role/orgUnit search failed:", e);
-  }
-
-  return usersResp?.data?.users?.map((u) => ({ id: u.id })) || [];
-};
-
-const equipmentTransferOutsideApprovalNotification = async (config, options) => {
-  try {
-    const data = await dataStore.get(
-      `tracker/events/${options?.event}?program=${options?.program}&fields=*`
-    );
-
-    // Get approval status
-    const approvalDataElement = data?.data?.dataValues?.find(
-      (d) => d?.dataElement === config?.equipment?.dataElement
-    );
-    const isApproved = approvalDataElement?.value === "true";
-
-    // Get equipment information
-    const equipmentDataElement = data?.data?.dataValues?.find(
-      (d) => d.dataElement === config?.equipment.messageDE
-    );
-    
-    let equipmentName = "Equipment";
-    if (config.equipment.isOptionCode && equipmentDataElement) {
-      const option = await dataStore.get(
-        `optionSets/${config?.equipment?.optionSetId}?fields=id,name,code,options(id,name,code)`
-      );
-      equipmentName = option?.data?.options?.find(
-        (op) => op?.code === equipmentDataElement?.value
-      )?.name || "Equipment";
-    }
-
-    // Get transfer type (permanent/temporary)
-    const transferType = data?.data?.dataValues?.find(
-      (d) => d.dataElement === config?.transferType
-    );
-    
-    let transferTypeName = "transfer";
-    if (transferType?.value && config?.permanentTransferCode && config?.tranferTypeOptonSet) {
-      const transferTypeOptionSet = await dataStore.get(
-        `optionSets/${config?.tranferTypeOptonSet}?fields=id,name,code,options(id,name,code)`
-      );
-      const permanentOption = transferTypeOptionSet?.data?.options?.find(
-        (op) => op?.code === config?.permanentTransferCode
-      );
-      transferTypeName = transferType?.value === permanentOption?.code ? "permanent transfer" : "temporary transfer";
-    }
-
-    // Get source facility information
-    const ou = await dataStore.get(
-      `organisationUnits/${data?.data?.orgUnit}?fields=name,id,level,parent(id,name,level)`
-    );
-
-    let users = [];
-    
-    // Always notify the creator (requester)
-    if (config.userSource?.createdBy) {
-      users.push({ id: data?.data?.createdBy?.uid });
-    }
-
-    // Notify based on approval status
-    if (isApproved) {
-      // If approved, notify Hospital Administrator (source) and Biomedical Engineer (target facility)
-      for (const role of config?.userRoles || []) {
-        if (role.accepted === "true") {
-          let roleUsers = [];
-          
-          if (role.facilityLevel === "SAME_ORG_UNIT") {
-            // Hospital Administrator at source facility
-            roleUsers = await getUsers$6({
-              targetOrgUnitId: ou?.data?.id,
-              userRoleId: role.id,
-              facilityLevel: role.facilityLevel,
-            });
-          } else if (role.facilityLevel === "TARGET_FACILITY") {
-            // Biomedical Engineer at target facility
-            // Note: In a real implementation, you'd need to get the target facility ID
-            // from the transfer data (e.g., from a target facility data element)
-            roleUsers = await getUsers$6({
-              userRoleId: role.id,
-              facilityLevel: role.facilityLevel,
-            });
-          }
-          
-          users.push(...roleUsers);
-        }
-      }
-    } else {
-      // If declined, notify Hospital Administrator (source) and Creator
-      for (const role of config?.userRoles || []) {
-        if (role.accepted === "false" || role.facilityLevel === "SAME_ORG_UNIT") {
-          const roleUsers = await getUsers$6({
-            targetOrgUnitId: ou?.data?.id,
-            userRoleId: role.id,
-            facilityLevel: role.facilityLevel,
-          });
-          users.push(...roleUsers);
-        }
-      }
-    }
-
-    const actionText = isApproved ? "approved" : "declined";
-    const subject = `Outside facility ${transferTypeName} ${actionText} - ${equipmentName} | ${options?.program}.${options?.event}`;
-    
-    let body;
-    if (isApproved) {
-      body = `The outside facility ${transferTypeName} request for ${equipmentName} from ${ou?.data?.name} has been approved. Please coordinate the transfer process.`;
-    } else {
-      body = `The outside facility ${transferTypeName} request for ${equipmentName} from ${ou?.data?.name} has been declined.`;
-    }
-    
-    const usersId = users?.map((user) => user?.id);
-    sendNotificationHandler(subject, body, usersId);
-  } catch (error) {
-    console.error("Outside transfer approval notification error:", error);
   }
 };
 
@@ -16194,9 +16233,6 @@ const notificationSendTrigger = async (event, options) => {
       case "EQUIPMENT_TRANSFER_CREATE":
         equipmentTransferNotification(config, options);
         break;
-      case "EQUIPMENT_TRANSFER_OUTSIDE_CREATE":
-        equipmentTransferOutsideSubmitNotification(config, options);
-        break;
       case "EQUIPMENT_TRANSFER_OUTSIDE_ACKNOWLEDGMENT":
         equipmentTransferOutsideAcknowledgmentNotification(config, options);
         break;
@@ -16206,7 +16242,7 @@ const notificationSendTrigger = async (event, options) => {
       case "EQUIPMENT_TRANSFER_APPROVAL":
         equipmentTransferApprovalNotification(config, options);
         break;
-      case "EQUIPMENT_TRANSFER_OUTSIDE_APPROVAL":
+      case "EQUIPMENT_TRANSFER_OUTSIDE_APPROVE":
         equipmentTransferOutsideApprovalNotification(config, options);
         break;
       case "WARRANT_SERVICE_LEVEL_AGREEMENT_CREATE":
@@ -19515,7 +19551,7 @@ function useTeiSearch(columns = []) {
     async ({ programId, orgUnits, query, attributeUids, pageSize = 25 }) => {
       if (!programId || !query || !attributeUids?.length) return [];
 
-      const programMetadata = await dataStore.query(
+      const programMetadata = await dataStore.get(
         `programs/${programId}?fields=programTrackedEntityAttributes[` +
           `trackedEntityAttribute[id,name,valueType,optionSet[id,options[id,code,name]]]]`
       );
@@ -19546,7 +19582,7 @@ function useTeiSearch(columns = []) {
 
       const fetchOne = async (attrUid) => {
         const params = buildParams(attrUid);
-        return dataStore.query(`tracker/trackedEntities?${params}`);
+        return dataStore.get(`tracker/trackedEntities?${params}`);
       };
 
       const results = await Promise.allSettled(attributeUids.map(fetchOne));
@@ -21941,6 +21977,18 @@ function GeneralComponent({ programProp }) {
   const [resolutionComplete, setResolutionComplete] = useState$I(false);
   const [buttonConfig, setButtonConfig] = useState$I(null);
   const [loadingButtonConfig, setLoadingButtonConfig] = useState$I(true);
+  const isNativeMobile = Capacitor.getPlatform() === "android" || Capacitor.getPlatform() === "ios";
+  const [isMobileView, setIsMobileView] = useState$I(() => {
+    if (isNativeMobile) return true;
+    return typeof window !== "undefined" ? window.innerWidth <= 600 : false;
+  });
+  useEffect$G(() => {
+    if (!isNativeMobile) {
+      const handleResize = () => setIsMobileView(window.innerWidth <= 600);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, [isNativeMobile]);
   const [pendingAction, setPendingAction] = useState$I(null);
   const [persistedEquipment, setPersistedEquipment] = useState$I(null);
   const {
@@ -22353,7 +22401,7 @@ function GeneralComponent({ programProp }) {
         " Loading program..."
       ] }) }),
       !formActive && buttonConfig && !loadingButtonConfig && addButtonLabel && programProp?.showAddButton && !showEquipmentPicker && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { slot: "end", className: "toolbar-actions", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "add-btn-label", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        !isMobileView && /* @__PURE__ */ jsxRuntimeExports.jsxs(
           IonButton,
           {
             fill: "outline",
@@ -22380,8 +22428,8 @@ function GeneralComponent({ programProp }) {
               /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: addButtonLabel })
             ]
           }
-        ) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "responsive-add-btn", style: { display: "none" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        ),
+        isMobileView && /* @__PURE__ */ jsxRuntimeExports.jsx(
           IonIcon,
           {
             onClick: handleAddButtonClick,
@@ -22396,7 +22444,7 @@ function GeneralComponent({ programProp }) {
               "cursor": "pointer"
             }
           }
-        ) })
+        )
       ] })
     ] }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-no-padding", children: [
@@ -50501,7 +50549,7 @@ function ApproveModal({
         const deMeta = await dataStore.get(
           `dataElements/${DE_TRANSFER_EQUIPMENT_NAME}.json?fields=optionSet[options[code,name,displayName]]`
         );
-        const options = deMeta?.optionSet?.options || [];
+        const options = deMeta?.data?.optionSet?.options || [];
         const norm = (v) => String(v ?? "").trim().toLowerCase();
         const map = {};
         options.forEach((opt) => {
@@ -50669,7 +50717,7 @@ function ApproveModal({
           "tracker?async=false&importStrategy=UPDATE",
           { events: [payload2] }
         );
-        if (result2?.status === "OK") {
+        if (result2?.status === 200) {
           showToast("Report submitted for review successfully", "success");
           handleCloseModal();
           await getEventDetails(event?.event);
@@ -50780,15 +50828,16 @@ function ApproveModal({
             (dv) => dv.dataElement === DE_TRANSFER_LOCATION_TYPE
           )?.value;
           if (transferLocationTypeValue === OPTION_CODE_OUTSIDE_FACILITY) {
-            notificationEvent = "EQUIPMENT_TRANSFER_OUTSIDE_APPROVAL";
+            notificationEvent = "EQUIPMENT_TRANSFER_OUTSIDE_APPROVE";
           } else {
             notificationEvent = "EQUIPMENT_TRANSFER_APPROVAL";
           }
         }
         const configData = await getNotificationEvent(program?.id, notificationEvent);
-        console.log({ configData });
         await notificationSendTrigger(configData?.event, payload);
         showToast("Success", "success");
+        handleCloseModal();
+        await getEventDetails(event?.event);
       } else {
         showToast("Failed to update approval. Please try again.", "danger");
       }
@@ -51310,7 +51359,7 @@ function AllocateEquipmentModal({
             status: event.status,
             dataValues: values2
           };
-          const resu = await dataStore.post(
+          await dataStore.post(
             "tracker?async=false&importStrategy=UPDATE",
             { events: [payload2] }
           );
@@ -51471,7 +51520,7 @@ function AllocateEquipmentModal({
       {
         isOpen: openModal,
         onClose: handleCloseModal,
-        height: "45%",
+        height: "50%",
         width: "35%",
         onSave: handleSubmit,
         disabledPositiveButtonController: isSaveDisabled,
@@ -51916,7 +51965,7 @@ function CollectionModal({
             initial[df.id] = todayYMD();
           }
         } else {
-          const me = await dataStore.get(`me?fields=username`);
+          const me = await LocalForageServiceInstance.getItem("userRes", "user");
           const username = String(me?.username || "").trim();
           const userNoDomain = username.includes("@") ? username.split("@")[0] : username;
           const opts = cache.get(dispatchField.id) || [];
@@ -51953,7 +52002,7 @@ function CollectionModal({
         return;
       }
       try {
-        const me = await dataStore.get("me?fields=username");
+        const me = await LocalForageServiceInstance.getItem("userRes", "user");
         const currentUsername = String(me?.username || "").toLowerCase();
         const requesterCandidates = [
           event?.storedBy,
@@ -63101,6 +63150,7 @@ function EventPage() {
   const [expandedSections, setExpandedSections] = useState$n({});
   const [showRegisterButton, setShowRegisterButton] = useState$n(false);
   const [showRegisterButtonByUserRole, setShowRegisterButtonByUserRole] = useState$n(false);
+  const [openApprovalButtonWhenInNoFlowRules, setOpenApprovalButtonWhenInNoFlowRules] = useState$n(false);
   const getUser = async () => {
     const me = await LocalForageServiceInstance.getItem("userRes", "user");
     setUser(me);
@@ -63234,8 +63284,14 @@ function EventPage() {
       const flow = effectiveFlowRules.flows?.find(
         (f) => f.programId === evv?.data?.program
       );
+      if (flow === null || flow === void 0) {
+        setOpenApprovalButtonWhenInNoFlowRules(true);
+      }
       const approvalFieldId2 = flow?.approvalField || buttons?.[0]?.field || null;
       const approvedYes2 = approvalFieldId2 ? truthy(byDE.get(approvalFieldId2)) : false;
+      if (!approvedYes2) {
+        setOpenApprovalButtonWhenInNoFlowRules(true);
+      }
       setIsApproved(!!approvedYes2);
     } catch (err) {
       console.error("Error fetching event details:", err);
@@ -63491,7 +63547,7 @@ function EventPage() {
   const normalizedStatusValue = (statusValue || "").trim().toLowerCase();
   const isStatusUnderReview = normalizedStatusValue === "under review" || normalizedStatusValue === "under_review";
   const isStatusApproved = normalizedStatusValue === "approved";
-  const shouldShowApproveButton = (() => {
+  (() => {
     if (reportRequiresApproval === false) return false;
     const isDraft = normalizedStatusValue === "draft";
     if (isDraft) return false;
@@ -63535,36 +63591,6 @@ function EventPage() {
     return value !== void 0 && value !== null && value !== "";
   }) || false;
   const isTrainingDateSet = trainingDateValue !== void 0 && trainingDateValue !== null && trainingDateValue !== "";
-  const shouldShowApproveButtonEnhanced = (section) => {
-    const sectionButton = programButtons.find(
-      (btn) => btn.programId === event?.program && btn?.sectionId === section?.id
-    );
-    if (!sectionButton?.sectionId) {
-      return shouldShowApproveButton;
-    }
-    const isApprovalSection = sectionButton?.field === approvalFieldId;
-    const isSchedulingSection = sectionButton?.field === trainingDateFieldId;
-    if (isApprovalSection && !trainingValidation.isValid) {
-      return false;
-    }
-    const fieldValue = currentByDE.get(sectionButton?.field);
-    const fieldHasValue = fieldValue !== void 0 && fieldValue !== null && fieldValue !== "";
-    if (isApprovalSection) {
-      if (fieldHasValue) return false;
-      if (isDeclined && flowMain?.hideApprovalWhenDeclined) {
-        return false;
-      }
-      return decisionUnset || !isDeclined;
-    }
-    if (isSchedulingSection) {
-      if (!isApprovedAlready) return false;
-      if (isFeedbackFilled && sectionButton?.hideWhenFeedbackFilled) {
-        return false;
-      }
-      return true;
-    }
-    return shouldShowApproveButton;
-  };
   const getApprovalButtonLabelEnhanced = (section) => {
     const sectionButton = programButtons.find(
       (btn) => btn.programId === event?.program && btn.sectionId === section?.id
@@ -63827,7 +63853,7 @@ function EventPage() {
                   const isSchedulingSection = sectionButton?.field === trainingDateFieldId;
                   const isApprovalSection = sectionButton?.field === approvalFieldId;
                   const isFeedbackSection = section?.id === feedbackConfig?.sectionId;
-                  const needsAccessCheck = isApprovalSection || isSchedulingSection || isFeedbackSection;
+                  const needsAccessCheck = isApprovalSection || isSchedulingSection || isFeedbackSection || openApprovalButtonWhenInNoFlowRules;
                   if (!needsAccessCheck) {
                     return null;
                   }
@@ -63908,30 +63934,24 @@ function EventPage() {
                     }
                     return null;
                   }
-                  if (!shouldShowApproveButtonEnhanced(section)) {
-                    return null;
-                  }
-                  if (shouldShowApproveButtonEnhanced(section) && statusValue !== "Approved" && !isUserCreateEvent && showApprovalButtonBasedOnTransferType) {
-                    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "no-print", style: { marginBottom: 16 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                      ApproveModal,
-                      {
-                        getEventDetails,
-                        program: pg,
-                        openModal,
-                        event,
-                        onClose: () => setOpenModal(false),
-                        setOpenModal,
-                        section,
-                        buttonLabel: getApprovalButtonLabelEnhanced(section),
-                        showAvailable: Boolean(sectionConfig?.showAvailableCount),
-                        available: sectionConfig?.showAvailableCount ?? 0,
-                        statusFieldId,
-                        statusOptions: statusOptionMap,
-                        programIndicatorAvailableCount
-                      }
-                    ) });
-                  }
-                  return null;
+                  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "no-print", style: { marginBottom: 16 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    ApproveModal,
+                    {
+                      getEventDetails,
+                      program: pg,
+                      openModal,
+                      event,
+                      onClose: () => setOpenModal(false),
+                      setOpenModal,
+                      section,
+                      buttonLabel: getApprovalButtonLabelEnhanced(section),
+                      showAvailable: Boolean(sectionConfig?.showAvailableCount),
+                      available: sectionConfig?.showAvailableCount ?? 0,
+                      statusFieldId,
+                      statusOptions: statusOptionMap,
+                      programIndicatorAvailableCount
+                    }
+                  ) });
                 })(),
                 showCollectionCTA && section?.id === cta?.sectionId && hideCollectionIfHasValue(event, formSection) && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "no-print", style: { marginBottom: 16 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                   IonButton,
@@ -66740,7 +66760,7 @@ function UpdateCollectionStatus({
     setLoading(true);
     try {
       const result = await dataStore.get("dataStore/memis/equipmentCollectionProcesses");
-      const data = result?.programAllocationFields.find((pg) => pg?.programId === program);
+      const data = result?.data?.programAllocationFields.find((pg) => pg?.programId === program);
       if (data) {
         setTargetProgram(data);
         const autofillCfg = data?.fields?.reduce((acc, field) => {
@@ -66754,7 +66774,7 @@ function UpdateCollectionStatus({
         const dataElements = await dataStore.get(
           `dataElements?fields=id,name,code,valueType,description,formName,optionSetValue,optionSet[id,name,code,options[id,code,name]]&filter=id:in:[${pa}]`
         );
-        setFields(dataElements?.dataElements || []);
+        setFields(dataElements?.data?.dataElements || []);
       } else {
         setFields([]);
       }
@@ -66791,10 +66811,10 @@ function UpdateCollectionStatus({
         stage,
         program,
         payload,
-        events: result?.bundleReport?.typeReportMap?.EVENT?.objectReports.map((b) => b?.uid)
+        events: result?.data?.bundleReport?.typeReportMap?.EVENT?.objectReports.map((b) => b?.uid)
       });
-      if (result?.status === "OK") {
-        showToast("Saved", "success");
+      if (result?.status === 200) {
+        showToast("Updated", "success");
         handleCloseModal();
         getEventDetails(evnt, stage);
       } else {
@@ -66813,8 +66833,8 @@ function UpdateCollectionStatus({
       const fields2 = "updatedBy[username,uid,surname,firstName],createdAt,orgUnit,trackedEntity,enrollments[enrollment,orgUnit,program,events[*]],attributes[attribute,value,createdAt,updatedAt,valueType,code,displayName,optionSetValue],relationships";
       const queryParam = `program=${targetProgram?.targetProgramId}&orgUnit=${event?.orgUnit}&filter=${valueSearchKey}:eq:${fieldKeyValue}&fields=${fields2}&skipPaging=true`;
       const result = await dataStore.get(`tracker/trackedEntities?${queryParam}`);
-      setProgramDataTEI(result?.trackedEntities || []);
-      return result?.trackedEntities || [];
+      setProgramDataTEI(result?.data?.trackedEntities || []);
+      return result?.data?.trackedEntities || [];
     } catch (error2) {
       console.error("Error fetching equipment:", error2);
       return [];
@@ -66963,7 +66983,7 @@ function UpdateCollectionStatus({
       {
         isOpen: openModal,
         onClose: handleCloseModal,
-        height: "40%",
+        height: "50%",
         width: "35%",
         onSave: handleSubmit,
         disabledPositiveButtonController: isSaveDisabled,
@@ -67047,7 +67067,7 @@ function AcknowledgeCollectionStatus({
         dataValues: values
       };
       const result = await dataStore.post("tracker?async=false&importStrategy=UPDATE", { events: [payload] });
-      if (result?.status === "OK") {
+      if (result?.status === 200) {
         await notificationSendTrigger("EQUIPMENT_COLLECTION_ACKNOWLEDGMENT", {
           program: event?.program,
           tei: event?.trackedEntity,
@@ -67075,8 +67095,8 @@ function AcknowledgeCollectionStatus({
       const fields2 = "updatedBy[username,uid,surname,firstName],createdAt,orgUnit,trackedEntity,enrollments[enrollment,orgUnit,program,events[*]],attributes[attribute,value,createdAt,updatedAt,valueType,code,displayName,optionSetValue],relationships";
       const queryParam = `program=${targetProgram?.targetProgramId}&orgUnit=${event?.orgUnit}&filter=${valueSearchKey}:eq:${fieldKeyValue}&fields=${fields2}&skipPaging=true`;
       const result = await dataStore.get(`tracker/trackedEntities?${queryParam}`);
-      setProgramDataTEI(result?.trackedEntities || []);
-      return result?.trackedEntities || [];
+      setProgramDataTEI(result?.data?.trackedEntities || []);
+      return result?.data?.trackedEntities || [];
     } catch (error2) {
       console.error("Error fetching equipment:", error2);
       return [];
@@ -67193,7 +67213,7 @@ function AcknowledgeCollectionStatus({
       {
         isOpen: openModal,
         onClose: handleCloseModal,
-        height: "40%",
+        height: "50%",
         width: "35%",
         onSave: handleSubmit,
         disabledPositiveButtonController: isSaveDisabled,
@@ -67268,7 +67288,7 @@ function DeregistrationEventView() {
     const nameAttr = p?.programTrackedEntityAttributes?.find(
       (e) => e?.trackedEntityAttribute?.attributeValues?.[0]?.value === "true"
     )?.trackedEntityAttribute;
-    const t = await dataStore.query(
+    const t = await dataStore.get(
       `tracker/trackedEntities/${tei}?program=${program}&fields=attributes[*]`
     );
     const nam = t?.attributes?.find(
@@ -67276,7 +67296,7 @@ function DeregistrationEventView() {
     );
     setCrumbs((prev) => {
       const newCrumbs = buildProgramBreadcrumbs(p, [
-        { label: nam?.value, ref: `program/${p.id}/${tei}` },
+        { label: nam?.value, ref: `/memis/program/${p.id}/${tei}` },
         obj
       ]);
       const filtered = newCrumbs.filter(
@@ -67297,7 +67317,7 @@ function DeregistrationEventView() {
       setPg(progEventStage);
       setCrmbs({
         label: progEventStage?.name,
-        ref: `program/${program}/${tei}/${stage2}/${evnt}`
+        ref: `/memis/program/${program}/${tei}/${stage2}/${evnt}`
       });
     } catch (error) {
       console.error("Error fetching event details:", error);
@@ -67507,12 +67527,11 @@ function DeregistrationEventView() {
           ...processedDataValues
         ]
       };
-      const response = await dataStore.mutate(
+      const response = await dataStore.post(
         "tracker?async=false&importStrategy=UPDATE",
-        "POST",
         { events: [updatePayload] }
       );
-      if (response?.status === "OK" || response?.data?.status === "OK") {
+      if (response?.status === 200 || response?.data?.status === 200) {
         const teiId = response?.bundleReport?.typeReportMap?.EVENT?.objectReports?.[0]?.uid;
         const configData = await getNotificationEvent(
           event?.program,
@@ -67549,12 +67568,11 @@ function DeregistrationEventView() {
                   ]
                 }]
               };
-              const teiResponse = await dataStore.mutate(
+              const teiResponse = await dataStore.post(
                 "tracker?async=false&importStrategy=UPDATE",
-                "POST",
                 teiUpdatePayload
               );
-              if (teiResponse?.status === "OK" || teiResponse?.data?.status === "OK") {
+              if (teiResponse?.status === 200 || teiResponse?.data?.status === 200) {
                 setEquipmentState(DEREGISTRATION_CONFIG.DEREGISTERED_STATE);
                 showToast("Equipment state updated to DEREGISTERED", "success");
               }
@@ -67578,12 +67596,11 @@ function DeregistrationEventView() {
                   ]
                 }]
               };
-              const teiResponse = await dataStore.mutate(
+              const teiResponse = await dataStore.post(
                 "tracker?async=false&importStrategy=UPDATE",
-                "POST",
                 teiUpdatePayload
               );
-              if (teiResponse?.status === "OK" || teiResponse?.data?.status === "OK") {
+              if (teiResponse?.status === 200 || teiResponse?.data?.status === 200) {
                 setEquipmentState("LOCKED");
                 showToast("Approval declined. Equipment state reverted to LOCKED", "info");
               }
@@ -67790,12 +67807,11 @@ function DeregistrationEventView() {
           }
         ]
       };
-      const response = await dataStore.mutate(
+      const response = await dataStore.post(
         "tracker?async=false&importStrategy=UPDATE",
-        "POST",
         { trackedEntities: [updatePayload] }
       );
-      if (response?.status === "OK" || response?.data?.status === "OK") {
+      if (response?.status === 200 || response?.data?.status === 200) {
         setEquipmentState(DEREGISTRATION_CONFIG.DEREGISTERED_STATE);
         refreshEventData();
         showToast("Deregistration completed successfully! Equipment state updated to DEREGISTERED.", "success");
@@ -70139,10 +70155,8 @@ function TeiEvents() {
     );
   };
   const getUser = async () => {
-    const me = await dataStore.get(
-      `me?fields=id,username,firstName,surname,userRoles[id,name]`
-    );
-    setUser(me?.data);
+    const me = await LocalForageServiceInstance.getItem("userRes", "user");
+    setUser(me);
   };
   const getEventDetails = useCallback(
     async (id, stage2) => {
@@ -70164,10 +70178,10 @@ function TeiEvents() {
           label: progEventStage?.data?.name,
           ref: `/memis/program/${program}/${tei}/${stage2}/${evnt}`
         });
-        const results = LocalForageServiceInstance.getItem("dataStore", "dataStore");
+        const results = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
         const allocationProc = results?.equipmentCollectionProcesses;
         const acknowledgeResult = results?.acknowledgementEquipmentReceiptProcesses;
-        const mnt = results?.maintenanceProcesses.catch(() => null);
+        const mnt = results?.maintenanceProcesses;
         if (mnt?.data) {
           const mBtn = (mnt?.data?.programMaintenanceButtons || []).filter(
             (b) => b.programId === progEvent?.data?.program
@@ -70179,7 +70193,7 @@ function TeiEvents() {
           setMaintenanceButtons(mBtn);
           setMaintenanceRoles(mRole?.userRoles || []);
         }
-        const allocationsResponseData = allocationProc?.data?.configurations?.find(
+        const allocationsResponseData = allocationProc?.configurations?.find(
           (usp) => usp?.programId === progEvent?.data?.program
         );
         const acknowledgeData = acknowledgeResult?.data?.configurations?.find(
@@ -70517,7 +70531,7 @@ const MessageView = () => {
       const data = await dataStore.get(
         `messageConversations?fields=id,subject,messages[id,text,created,sender[id,name]],messageType,read,lastUpdated&filter=messageType:eq:PRIVATE&paging=false`
       );
-      const conversations = data?.messageConversations || [];
+      const conversations = data?.data?.messageConversations || [];
       const sortedConversations = conversations?.slice().sort((a, b) => {
         const aLast = a.messages && a.messages.length > 0 ? new Date(a.messages[a.messages.length - 1].created).getTime() : 0;
         const bLast = b.messages && b.messages.length > 0 ? new Date(b.messages[b.messages.length - 1].created).getTime() : 0;
@@ -70618,23 +70632,23 @@ const MessageView = () => {
           msg?.subject?.split("Allocation: ")[1];
           return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonCard, { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(IonCardHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonCardTitle, { children: msg.subject?.split(" | ")[0] || "No Subject" }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(IonCardContent, { className: "ion-no-padding", children: msg.messages.map((m) => {
-              const subjectParts = msg.subject?.split("|")?.map((s) => s.trim()) || [];
+            /* @__PURE__ */ jsxRuntimeExports.jsx(IonCardContent, { className: "ion-no-padding", children: msg?.messages?.map((m) => {
+              const subjectParts = msg?.subject?.split("|")?.map((s) => s?.trim()) || [];
               const programTei = subjectParts[1] || "";
-              const [programId, teiId] = programTei.split(".");
+              const [programId, teiId] = programTei?.split(".");
               let allocationLine = subjectParts[2] || "";
               let preventive = subjectParts[2] || "";
               let allocations = [];
-              if (allocationLine.startsWith("Allocations:")) {
+              if (allocationLine?.startsWith("Allocations:")) {
                 allocations = allocationLine.replace("Allocations:", "").split(",").map((a) => a.trim()).filter((a) => a !== "");
               }
               return /* @__PURE__ */ jsxRuntimeExports.jsx(IonItem, { lines: "none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonLabel, { children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { style: { fontWeight: 600 }, children: m.sender?.name || "Unknown" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "medium", style: { fontSize: "13px" }, children: new Date(m.created).toLocaleString() }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { style: { fontWeight: 600 }, children: m?.sender?.name || "Unknown" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "medium", style: { fontSize: "13px" }, children: new Date(m?.created).toLocaleString() }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { marginTop: "6px", whiteSpace: "pre-wrap" }, children: m.text }),
-                allocations.length > 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(IonList, { children: allocations.map(
+                allocations?.length > 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(IonList, { children: allocations?.map(
                   (allocId, index) => {
-                    const serials = m.text.split(": ")[1]?.split(",");
+                    const serials = m?.text?.split(": ")[1]?.split(",");
                     return /* @__PURE__ */ jsxRuntimeExports.jsx(
                       IonButton,
                       {
@@ -70644,7 +70658,7 @@ const MessageView = () => {
                         onClick: () => navigate(`/memis/program/${programId}/${teiId}/${allocId?.split(".")[0]}/${allocId?.split(".")[1]}`),
                         children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonLabel, { style: { color: "white", fontWeight: 600 }, children: [
                           "View Allocation: ",
-                          serials[index]
+                          serials?.length > 0 ? serials[index] : "Details"
                         ] })
                       },
                       allocId
