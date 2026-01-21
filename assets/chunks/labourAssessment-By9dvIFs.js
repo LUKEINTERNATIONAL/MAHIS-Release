@@ -1,0 +1,106 @@
+import { v as defineComponent, aK as useRouter, P as createBlock, A as openBlock, D as withCtx, B as createVNode, G as unref, aF as IonContent, C as createBaseVNode, c as computed, z as createElementBlock, bY as chevronBackOutline, K as Fragment, S as renderList, T as withDirectives, c3 as resolveDynamicComponent, f as ref, U as vShow, bu as IonPage } from './vendor-CJ5LqAxe.js';
+import { _ as _sfc_main$1, u as useFormWizard } from './useFormWizard-DaQAwIrH.js';
+import { T as Toolbar, F as DynamicButton } from '../index-BBSKuWmW.js';
+import { D as DemographicBar } from './DemographicBar-D6z2Hri6.js';
+import { c as _sfc_main$2, b as _sfc_main$3, _ as _sfc_main$4, a as _sfc_main$5 } from './FirstVaginalExamination.vue_vue_type_script_setup_true_lang-M47-cBy2.js';
+
+const _hoisted_1 = { style: { "width": "90vw", "margin": "0 auto", "margin-top": "10px" } };
+const _hoisted_2 = { class: "back_profile" };
+const _sfc_main = /* @__PURE__ */ defineComponent({
+  __name: "labourAssessment",
+  setup(__props) {
+    const router = useRouter();
+    const { onChangeCurrentTab, currentTabIndex } = useFormWizard();
+    const TABS = [
+      { title: "Quick Check", icon: "" },
+      { title: "Physical Examination", icon: "" },
+      { title: "First Vaginal Examination", icon: "" },
+      { title: "Pelvic Assessment", icon: "" }
+    ];
+    const COMPONENTS = [
+      { name: "QuickCheck", component: _sfc_main$2 },
+      { name: "PhysicalExamination", component: _sfc_main$3 },
+      { name: "FirstVaginalExamination", component: _sfc_main$4 },
+      { name: "PelvicAssessment", component: _sfc_main$5 }
+    ];
+    const componentRefs = ref([]);
+    const isSaving = ref(false);
+    const doneButtonOptions = computed(() => ({
+      text: isSaving.value ? "Saving..." : "Finish",
+      icon: isSaving.value ? "hourglassOutline" : "checkmark",
+      hideText: false,
+      hideIcon: false,
+      disabled: isSaving.value
+    }));
+    const saveData = async () => {
+      isSaving.value = true;
+      try {
+        for (const compRef of componentRefs.value) {
+          if (compRef?.onSubmit) {
+            await compRef.onSubmit();
+          }
+        }
+        router.push("ANChome");
+      } catch (error) {
+        console.error("Error saving data:", error);
+      } finally {
+        isSaving.value = false;
+      }
+    };
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(IonPage), null, {
+        default: withCtx(() => [
+          createVNode(Toolbar),
+          createVNode(DemographicBar),
+          createVNode(unref(IonContent), { fullscreen: true }, {
+            default: withCtx(() => [
+              createBaseVNode("div", _hoisted_1, [
+                createVNode(_sfc_main$1, {
+                  ref: "wizard",
+                  headingTitle: "Labour assessment",
+                  "vertical-tabs": "",
+                  "navigable-tabs": "",
+                  "scrollable-tabs": "",
+                  startIndex: 0,
+                  doneButton: doneButtonOptions.value,
+                  "custom-tabs": TABS,
+                  onChange: unref(onChangeCurrentTab),
+                  "onComplete:wizard": _cache[1] || (_cache[1] = ($event) => saveData())
+                }, {
+                  default: withCtx(() => [
+                    createBaseVNode("div", null, [
+                      createBaseVNode("div", _hoisted_2, [
+                        createVNode(DynamicButton, {
+                          name: "Back",
+                          iconSlot: "start",
+                          fill: "clear",
+                          icon: unref(chevronBackOutline),
+                          "font-weight": "600",
+                          onClick: _cache[0] || (_cache[0] = ($event) => unref(router).push("ANChome"))
+                        }, null, 8, ["icon"])
+                      ])
+                    ]),
+                    (openBlock(), createElementBlock(Fragment, null, renderList(COMPONENTS, (comp, index) => {
+                      return withDirectives(createVNode(resolveDynamicComponent(comp.component), {
+                        key: comp.name,
+                        ref_for: true,
+                        ref: (el) => componentRefs.value[index] = el
+                      }), [
+                        [vShow, unref(currentTabIndex) === index]
+                      ]);
+                    }), 64))
+                  ]),
+                  _: 1
+                }, 8, ["doneButton", "onChange"])
+              ])
+            ]),
+            _: 1
+          })
+        ]),
+        _: 1
+      });
+    };
+  }
+});
+
+export { _sfc_main as default };

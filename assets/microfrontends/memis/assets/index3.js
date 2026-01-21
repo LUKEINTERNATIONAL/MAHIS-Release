@@ -2832,8 +2832,6 @@ function requireLocalforage () {
 var localforageExports = requireLocalforage();
 const localforage = /*@__PURE__*/getDefaultExportFromCjs(localforageExports);
 
-// src/services/LocalForageService.js
-
 class LocalForageServiceInstance {
   constructor(defaultStore = "memis") {
     this.defaultStore = defaultStore;

@@ -1,6 +1,6 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/index3.js","assets/_commonjsHelpers.js","assets/index.es.js"])))=>i.map(i=>d[i]);
 import { importShared } from './__federation_fn_import.js';
-import { g as useLocation, h as useNavigate, i as icons, j as jsxRuntimeExports, I as IonMenuToggle, k as IonItem, l as IonIcon, m as IonLabel, _ as __vitePreload, n as IonRefresher, o as IonRefresherContent, M as MEMISContext, p as usePermissions, q as IonMenu, r as IonHeader, t as IonToolbar, v as IonTitle, w as IonContent, x as IonList, L as Link, y as home, z as IonAccordionGroup, A as IonAccordion, C as albumsOutline, e as setActiveProgramCookie, E as settingsSharp, F as IonButtons, G as IonMenuButton, H as IonButton, J as mailOutline, K as notificationsOutline, N as IonBadge, Q as personCircleOutline, V as logOutOutline, W as showToast, X as Outlet, Y as IonCard, Z as IonCardContent, $ as IonPage, a0 as IonGrid, a1 as IonRow, a2 as IonCol, a3 as chevronDownOutline, a4 as searchOutline, a5 as checkmarkOutline, a6 as IonInput, a7 as addOutline, a8 as y$1, s as sendNotification, a9 as IonSpinner, aa as close, d as documentText, ab as imageOutline, ac as document$1, ad as alertCircleOutline, ae as IonText, af as arrowBackCircleOutline, ag as chevronBackOutline, ah as chevronForwardOutline, ai as saveOutline, aj as IonCheckbox, ak as IonRadioGroup, al as IonRadio, am as IonPopover, an as IonDatetime, ao as IonTextarea, ap as IonCardHeader, aq as IonCardTitle, ar as parseApiError, as as IonSearchbar, at as filterOutline, au as optionsOutline, av as ellipsisVertical, aw as arrowUp, ax as arrowDown, ay as removeOutline, az as pencilOutline, aA as trashOutline, aB as closeOutline, aC as IonActionSheet, aD as IonAlert, aE as addCircleOutline, u as useDataStore, aF as IonLoading, aG as IonInputPasswordToggle, aH as chevronUpOutline, aI as checkmarkDoneOutline, aJ as timeOutline, aK as createOutline, aL as IonBreadcrumbs, aM as IonBreadcrumb, aN as chevronForward, aO as useParams, aP as IonAvatar, aQ as qrCodeOutline, P as PROGRAMS_FIELDS, aR as IonSelect, aS as IonSelectOption, aT as closeCircle, aU as statsChartOutline, aV as downloadOutline, aW as printOutline, aX as PROGRAM_STAGES_FIELDS, aY as informationCircleOutline, aZ as homeOutline, a_ as arrowBackOutline, a$ as useNavigation, b0 as add, b1 as eyeOutline, b2 as trash, b3 as chatbubble, b4 as IonItemDivider, b5 as IonModal, b6 as funnelOutline, b7 as addCircle, b8 as refresh, b9 as IonTabs, ba as IonTabBar, bb as IonTabButton, bc as settings, bd as lockClosed, be as documentLock, bf as IonTab, bg as useSearchParams, bh as checkmarkCircleOutline, bi as chatbubbleOutline, S as SuspenseLoader, f as Routes, R as Route, bj as Navigate } from './breadCrumb.js';
+import { g as useLocation, h as useNavigate, i as icons, j as jsxRuntimeExports, I as IonMenuToggle, k as IonItem, l as IonIcon, m as IonLabel, _ as __vitePreload, n as IonRefresher, o as IonRefresherContent, M as MEMISContext, p as usePermissions, q as IonMenu, r as IonHeader, t as IonToolbar, v as IonTitle, w as IonContent, x as IonList, L as Link, y as home, z as IonAccordionGroup, A as IonAccordion, C as albumsOutline, e as setActiveProgramCookie, E as settingsSharp, F as IonButtons, G as IonMenuButton, H as IonButton, J as mailOutline, K as notificationsOutline, N as IonBadge, Q as personCircleOutline, V as logOutOutline, W as showToast, X as Outlet, Y as IonCard, Z as IonCardContent, $ as IonPage, a0 as IonGrid, a1 as IonRow, a2 as IonCol, a3 as chevronDownOutline, a4 as searchOutline, a5 as checkmarkOutline, a6 as IonInput, a7 as addOutline, a8 as y$1, s as sendNotification, a9 as IonSpinner, aa as close, d as documentText, ab as imageOutline, ac as document$1, ad as alertCircleOutline, ae as IonText, af as arrowBackCircleOutline, ag as chevronBackOutline, ah as chevronForwardOutline, ai as saveOutline, aj as IonLoading, ak as IonCheckbox, al as IonRadioGroup, am as IonRadio, an as IonPopover, ao as IonDatetime, ap as IonTextarea, aq as IonCardHeader, ar as IonCardTitle, as as parseApiError, at as IonSearchbar, au as filterOutline, av as optionsOutline, aw as ellipsisVertical, ax as arrowUp, ay as arrowDown, az as removeOutline, aA as pencilOutline, aB as trashOutline, aC as closeOutline, aD as IonActionSheet, aE as IonAlert, aF as addCircleOutline, u as useDataStore, aG as IonInputPasswordToggle, aH as chevronUpOutline, aI as checkmarkDoneOutline, aJ as timeOutline, aK as createOutline, aL as IonBreadcrumbs, aM as IonBreadcrumb, aN as chevronForward, aO as useParams, aP as IonAvatar, aQ as qrCodeOutline, P as PROGRAMS_FIELDS, aR as IonSelect, aS as IonSelectOption, aT as closeCircle, aU as statsChartOutline, aV as downloadOutline, aW as printOutline, aX as PROGRAM_STAGES_FIELDS, aY as informationCircleOutline, aZ as homeOutline, a_ as arrowBackOutline, a$ as useNavigation, b0 as add, b1 as eyeOutline, b2 as trash, b3 as chatbubble, b4 as IonItemDivider, b5 as IonModal, b6 as funnelOutline, b7 as addCircle, b8 as refresh, b9 as IonTabs, ba as IonTabBar, bb as IonTabButton, bc as settings, bd as lockClosed, be as documentLock, bf as IonTab, bg as useSearchParams, bh as checkmarkCircleOutline, bi as chatbubbleOutline, S as SuspenseLoader, f as Routes, R as Route, bj as Navigate } from './breadCrumb.js';
 import { c as commonjsRequire, L as LocalForageServiceInstance, d as dataStore, q as qrConfigService } from './index3.js';
 import { a as getAugmentedNamespace, c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers.js';
 
@@ -8817,7 +8817,8 @@ function OrganisationUnitsWidget({
   disabled = false,
   dataStoreData,
   program,
-  user
+  user,
+  teiOu
 }) {
   const searchParams = new URLSearchParams(window.location.search);
   searchParams.get("q");
@@ -8825,6 +8826,18 @@ function OrganisationUnitsWidget({
   searchParams.get("equipmentId");
   const [facility, setFacility] = useState$1a("Facility");
   const [orgUnitName, setOrgUnitName] = useState$1a("");
+  const getTEI = async (teiOu2) => {
+    try {
+      await dataStore.get(`tracker/trackedEntities/${teiOu2}`).then(async (res) => {
+        await dataStore.get(`organisationUnits/${res.data.orgUnit}?fields=id,name`).then((orgRes) => {
+          setOrgUnitName(orgRes.data.name || "");
+          setSelectedOrganisationUnit(res.data.orgUnit);
+        });
+      });
+    } catch (error) {
+      console.error("Failed to fetch TEI data:", error);
+    }
+  };
   useEffect$16(() => {
     if (!Array.isArray(programOrgUnits) || programOrgUnits.length === 0 || !dataStoreData) {
       return;
@@ -8838,8 +8851,12 @@ function OrganisationUnitsWidget({
     );
     const targetOrgUnit = hasRole ? sortedOrgUnits[1] || sortedOrgUnits[0] : sortedOrgUnits[0];
     setFacility(hasRole ? "Ward" : "Facility");
-    setOrgUnitName(targetOrgUnit?.name || "");
-    setSelectedOrganisationUnit(targetOrgUnit?.id || null);
+    if (config?.programStage === "Maintenance") {
+      getTEI(teiOu);
+    } else {
+      setOrgUnitName(targetOrgUnit?.name || "");
+      setSelectedOrganisationUnit(targetOrgUnit?.id || null);
+    }
   }, [programOrgUnits, dataStoreData, program, user]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { className: "ion-margin-bottom", lines: "none", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { style: { marginBottom: 5, fontSize: "24px" }, position: "stacked", children: facility }),
@@ -8868,7 +8885,8 @@ const SearchableSelect$1 = ({
   placeholder = "Select...",
   onChange,
   disabled = false,
-  value = null
+  value = null,
+  closeOnSignal
 }) => {
   const [isOpen, setIsOpen] = useState$19(false);
   const [searchTerm, setSearchTerm] = useState$19("");
@@ -8891,6 +8909,12 @@ const SearchableSelect$1 = ({
     );
     if (!isEqual) setSelectedItems(newSelected);
   }, [value, multiple, itemValueField, data, selectedItems]);
+  useEffect$15(() => {
+    if (closeOnSignal) {
+      setIsOpen(false);
+      setSearchTerm("");
+    }
+  }, [closeOnSignal]);
   const filteredData = useMemo$I(() => {
     const term = searchTerm?.toLowerCase();
     return data.filter(
@@ -10642,22 +10666,62 @@ function useSectionsList({
 
 let cachedConfig = null;
 
+const normalizeToArray = (value) => {
+  if (value == null) return [];
+
+  // Handle wrapped values: { value: ... }
+  const raw =
+    typeof value === "object" && value?.value !== undefined ? value.value : value;
+
+  if (Array.isArray(raw)) {
+    return raw
+      .map((x) => (x == null ? "" : String(x).trim()))
+      .filter(Boolean);
+  }
+
+  if (typeof raw === "string") {
+    const s = raw.trim();
+    if (!s) return [];
+
+    // Support comma/semicolon delimited fallback
+    const delimiter = s.includes(";") ? ";" : s.includes(",") ? "," : null;
+
+    if (delimiter) {
+      return s
+        .split(delimiter)
+        .map((x) => x.trim())
+        .filter(Boolean);
+    }
+
+    return [s];
+  }
+
+  return [String(raw).trim()].filter(Boolean);
+};
+
+/**
+ * Check if field value contains "OTHER".
+ * Works for TEXT + MULTI_TEXT.
+ */
+const isOtherSelected = (value, otherCode = "OTHER") => {
+  const tokens = normalizeToArray(value);
+  const target = String(otherCode).toUpperCase();
+  return tokens.some((t) => String(t).toUpperCase() === target);
+};
+
 /**
  * Fetch OTHER field mappings from datastore
- * Simple configuration for showing/hiding "Other" text fields
  */
 const fetchOtherFieldMappings = async () => {
-  if (cachedConfig) {
-    return cachedConfig;
-  }
-  
+  if (cachedConfig) return cachedConfig;
+
   try {
-    const response = await dataStore.get('dataStore/memis/otherFieldMappings');
+    const response = await dataStore.get("dataStore/memis/otherFieldMappings");
     const responseData = response.data || response;
     cachedConfig = responseData.otherFieldMappings || {};
     return cachedConfig;
   } catch (error) {
-    console.error('Failed to fetch other fields config:', error);
+    console.error("Failed to fetch other fields config:", error);
     return {};
   }
 };
@@ -10669,11 +10733,39 @@ const getStageMappings = (config, stageId) => {
   return config[stageId]?.mappings || [];
 };
 
-/**
- * Check if field value is "OTHER"
- */
-const isOtherSelected = (value) => {
-  return value === "OTHER";
+const applyOtherFieldRules = ({
+  otherFieldMappings,
+  formData,
+  hiddenFields,
+  setFormData,
+  clearHiddenOtherFields = true,
+}) => {
+  if (!Array.isArray(otherFieldMappings) || otherFieldMappings.length === 0) return;
+
+  otherFieldMappings.forEach(({ triggerField, otherField }) => {
+    if (!triggerField || !otherField) return;
+
+    const triggerValue = formData?.[triggerField];
+    const showOther = isOtherSelected(triggerValue);
+
+    if (showOther) {
+      hiddenFields.delete(otherField);
+      return;
+    }
+
+    hiddenFields.add(otherField);
+
+    if (clearHiddenOtherFields) {
+      const currentOther = formData?.[otherField];
+
+      if (currentOther !== null && currentOther !== undefined && currentOther !== "") {
+        setFormData((prev) => {
+          if (prev?.[otherField] === "" || prev?.[otherField] == null) return prev;
+          return { ...prev, [otherField]: "" };
+        });
+      }
+    }
+  });
 };
 
 const {useState: useState$11,useEffect: useEffect$$,useMemo: useMemo$C,useRef: useRef$h} = await importShared('react');
@@ -10696,9 +10788,9 @@ function useHiddenFields({
   const initialHiddenFields = useMemo$C(() => {
     const hidden = new Set();
 
-    if (!isEdit && otherFieldMappings.length > 0) {
+    if (!isEdit && Array.isArray(otherFieldMappings) && otherFieldMappings.length > 0) {
       otherFieldMappings.forEach((mapping) => {
-        hidden.add(mapping.otherField);
+        if (mapping?.otherField) hidden.add(mapping.otherField);
       });
     }
 
@@ -10712,29 +10804,27 @@ function useHiddenFields({
   useEffect$$(() => {
     const newHidden = new Set();
 
-    // Initialize with OTHER fields that should be hidden by default
-    if (!isEdit && otherFieldMappings.length > 0) {
+    // Initialize with OTHER fields that should be hidden by default (create mode)
+    if (!isEdit && Array.isArray(otherFieldMappings) && otherFieldMappings.length > 0) {
       otherFieldMappings.forEach((mapping) => {
-        newHidden.add(mapping.otherField);
+        if (mapping?.otherField) newHidden.add(mapping.otherField);
       });
     }
 
+    /**
+     * If there is no skip logic at all, only apply OTHER rules and exit early.
+     */
     if (!skipLogicMap || Object.keys(skipLogicMap).length === 0) {
-      // Apply OTHER field logic only
-      if (otherFieldMappings.length > 0) {
-        otherFieldMappings.forEach((mapping) => {
-          const triggerValue = formData[mapping.triggerField];
-          const shouldShow = isOtherSelected(triggerValue);
+      applyOtherFieldRules({
+        otherFieldMappings,
+        formData,
+        hiddenFields: newHidden,
+        setFormData,
+        // In this early-return branch we typically don't want extra clearing
+        // beyond the default hide-on-create behavior. Keep it false for stability.
+        clearHiddenOtherFields: false,
+      });
 
-          if (shouldShow) {
-            newHidden.delete(mapping.otherField);
-          } else {
-            newHidden.add(mapping.otherField);
-          }
-        });
-      }
-      
-      // Only update if changed
       const hasChanged =
         hiddenFieldsRef.current.size !== newHidden.size ||
         [...newHidden].some((id) => !hiddenFieldsRef.current.has(id));
@@ -10743,10 +10833,13 @@ function useHiddenFields({
         hiddenFieldsRef.current = newHidden;
         setHiddenFields(newHidden);
       }
+
       return;
     }
 
-    // Apply standard skip-logic rules
+    /**
+     * Apply standard skip-logic rules.
+     */
     Object.keys(skipLogicMap).forEach((fieldId) => {
       const rules = skipLogicMap[fieldId];
       const fieldValue = formData[fieldId];
@@ -10754,8 +10847,7 @@ function useHiddenFields({
       // Special handling for firstTimeRegistration field
       if (fieldId === "firstTimeRegistration" && fieldValue !== undefined) {
         const rule = rules.find(
-          (r) =>
-            String(r.value).toLowerCase() === String(fieldValue).toLowerCase()
+          (r) => String(r.value).toLowerCase() === String(fieldValue).toLowerCase()
         );
         if (rule && rule.hide) {
           rule.hide.forEach((sectionId) => newHidden.add(sectionId));
@@ -10771,50 +10863,26 @@ function useHiddenFields({
 
       if (matchingRule) {
         if (matchingRule.hide && Array.isArray(matchingRule.hide)) {
-          matchingRule.hide.forEach((fieldToHide) =>
-            newHidden.add(fieldToHide)
-          );
+          matchingRule.hide.forEach((fieldToHide) => newHidden.add(fieldToHide));
         }
 
         if (matchingRule.show && Array.isArray(matchingRule.show)) {
-          matchingRule.show.forEach((fieldToShow) =>
-            newHidden.delete(fieldToShow)
-          );
+          matchingRule.show.forEach((fieldToShow) => newHidden.delete(fieldToShow));
         }
       }
     });
 
-    // Handle OTHER field visibility (always apply)
-    if (otherFieldMappings.length > 0) {
-      const fieldsToClear = [];
-
-      otherFieldMappings.forEach((mapping) => {
-        const triggerValue = formData[mapping.triggerField];
-        const shouldShow = isOtherSelected(triggerValue);
-
-        if (shouldShow) {
-          newHidden.delete(mapping.otherField);
-        } else {
-          newHidden.add(mapping.otherField);
-
-          // Clear value when hiding
-          if (formData[mapping.otherField]) {
-            fieldsToClear.push(mapping.otherField);
-          }
-        }
-      });
-
-      // Clear fields if needed
-      if (fieldsToClear.length > 0) {
-        setFormData((prev) => {
-          const updated = { ...prev };
-          fieldsToClear.forEach((fieldId) => {
-            updated[fieldId] = "";
-          });
-          return updated;
-        });
-      }
-    }
+    /**
+     * Always apply OTHER field visibility rules after skip-logic.
+     * This ensures OTHER fields stay correct even when skip-logic is present.
+     */
+    applyOtherFieldRules({
+      otherFieldMappings,
+      formData,
+      hiddenFields: newHidden,
+      setFormData,
+      clearHiddenOtherFields: true,
+    });
 
     // Only update if hidden fields actually changed
     const hasChanged =
@@ -10828,9 +10896,7 @@ function useHiddenFields({
       // Guard against being left on a hidden section
       if (activeSection && newHidden.has(activeSection.id) && setStepIndex) {
         const visibleSections = sections.filter((s) => !newHidden.has(s.id));
-        const visibleIndex = visibleSections.findIndex(
-          (s) => s.id === activeSection.id
-        );
+        const visibleIndex = visibleSections.findIndex((s) => s.id === activeSection.id);
         if (visibleIndex === -1) {
           setStepIndex(0);
         }
@@ -10845,6 +10911,7 @@ function useHiddenFields({
     activeSection,
     otherFieldMappings,
     setStepIndex,
+    setFormData,
   ]);
 
   return {
@@ -11022,43 +11089,54 @@ const {useState: useState$Z,useEffect: useEffect$Y} = await importShared('react'
  * Hook to manage OTHER field configuration and mappings
  * Handles showing/hiding "Other" text fields based on dropdown selections
  */
-function useOtherFieldLogic({ selectedStageId, programObj, isEdit }) {
-    const [otherFieldConfig, setOtherFieldConfig] = useState$Z({});
-    const [otherFieldMappings, setOtherFieldMappings] = useState$Z([]);
+function useOtherFieldLogic({ selectedStageId, programObj }) {
+  const [otherFieldConfig, setOtherFieldConfig] = useState$Z({});
+  const [otherFieldMappings, setOtherFieldMappings] = useState$Z([]);
 
-    // Fetch OTHER field configuration on mount
-    useEffect$Y(() => {
-        const loadConfig = async () => {
-            const config = await fetchOtherFieldMappings();
-            setOtherFieldConfig(config);
-        };
-        loadConfig();
-    }, []);
+  // Fetch OTHER field configuration on mount
+  useEffect$Y(() => {
+    let mounted = true;
 
-    // Load OTHER field mappings when stage changes
-    useEffect$Y(() => {
-        let stageIdToUse = selectedStageId;
-
-        if (!stageIdToUse && programObj?.programStages?.length > 0) {
-            stageIdToUse = programObj.programStages[0].id;
-        }
-
-        // Try stage ID first, then fall back to program ID (for event programs)
-        let mappings = [];
-        if (stageIdToUse && otherFieldConfig[stageIdToUse]) {
-            mappings = getStageMappings(otherFieldConfig, stageIdToUse);
-        } else if (programObj?.id && otherFieldConfig[programObj.id]) {
-            // For event programs without stages, use program ID
-            mappings = getStageMappings(otherFieldConfig, programObj.id);
-        }
-
-        setOtherFieldMappings(mappings);
-    }, [selectedStageId, programObj, otherFieldConfig]);
-
-    return {
-        otherFieldConfig,
-        otherFieldMappings,
+    const loadConfig = async () => {
+      const config = await fetchOtherFieldMappings();
+      if (!mounted) return;
+      setOtherFieldConfig(config || {});
     };
+
+    loadConfig();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // Load OTHER field mappings when stage/program changes
+  useEffect$Y(() => {
+    const stageIdFromProgram =
+      !selectedStageId && Array.isArray(programObj?.programStages) && programObj.programStages.length > 0
+        ? programObj.programStages[0]?.id
+        : null;
+
+    const stageIdToUse = selectedStageId || stageIdFromProgram || null;
+
+    let mappings = [];
+
+    // Stage mapping for tracker stages
+    if (stageIdToUse && otherFieldConfig?.[stageIdToUse]) {
+      mappings = getStageMappings(otherFieldConfig, stageIdToUse);
+    }
+    // Program mapping for event programs (no stages)
+    else if (programObj?.id && otherFieldConfig?.[programObj.id]) {
+      mappings = getStageMappings(otherFieldConfig, programObj.id);
+    }
+
+    setOtherFieldMappings(Array.isArray(mappings) ? mappings : []);
+  }, [selectedStageId, programObj, otherFieldConfig]);
+
+  return {
+    otherFieldConfig,
+    otherFieldMappings,
+  };
 }
 
 const {useState: useState$Y,useEffect: useEffect$X} = await importShared('react');
@@ -12583,6 +12661,7 @@ function ConfigurableForm({
   programId,
   trackedEntityUID,
   currentStep,
+  teiOu,
   setCurrentStep,
   setSections: setSectionsOut,
   setCurrentSection,
@@ -12665,9 +12744,7 @@ function ConfigurableForm({
   });
   const { otherFieldMappings } = useOtherFieldLogic({
     selectedStageId,
-    programObj,
-    isEdit
-  });
+    programObj});
   const stageObj = (programKey === "teiEvents" && programObj ? A$7(programObj.programStages).find((s) => s?.id === selectedStageId) : null) || (isStageObj(dataElements) ? dataElements : null);
   const sections = useSections({ programObj, stageObj, programKey, selectedStageId });
   const { sectionsList, sectionAccessMap } = useSectionsList({
@@ -12766,6 +12843,8 @@ function ConfigurableForm({
     isCheckingRegistration,
     setIsCheckingRegistration
   });
+  useEffect$R(() => {
+  }, [sectionAccessMap, sectionsList]);
   const getPreFilled = (id, preFill) => {
     try {
       if (Array.isArray(preFill)) {
@@ -13417,6 +13496,10 @@ function ConfigurableForm({
     if (!sectionsList.length) return null;
     const tooMany = sectionsList.length > 6;
     const lockSteps = reviewNavigationLocked;
+    let sections2 = sectionsList;
+    if (selectedStage === "VlwQGgBvd9i") {
+      sections2 = sectionsList.filter((sec) => sec.name === "Request maintenance");
+    }
     return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         "div",
@@ -13439,7 +13522,7 @@ function ConfigurableForm({
                 overflowX: "auto",
                 scrollbarWidth: "thin"
               },
-              children: sectionsList?.filter((secL) => !dataStoreData?.reporthideApproveSectionIfQeuryIsAddOrCreatedByLoggedInUser?.configurations?.some((conf) => conf?.sectionId === secL?.id && conf?.hideOnCreate === true)).map((s, i) => {
+              children: sections2?.filter((secL) => !dataStoreData?.reporthideApproveSectionIfQeuryIsAddOrCreatedByLoggedInUser?.configurations?.some((conf) => conf?.sectionId === secL?.id && conf?.hideOnCreate === true)).map((s, i) => {
                 const done = i < stepIndex;
                 const active = i === stepIndex;
                 const inline = extractInlineBtnHint(
@@ -13788,6 +13871,7 @@ function ConfigurableForm({
         programOrgUnits: user?.organisationUnits,
         selectedOrganisationUnit,
         setSelectedOrganisationUnit,
+        teiOu,
         dataStoreData,
         program: programId,
         user
@@ -13826,7 +13910,7 @@ function ConfigurableForm({
         ]
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Block, { style: { marginTop: 8 }, children: activeSection.name !== "Request maintenance" && firstStageDe.length === 0 ? Array.isArray(activeSection?.fields) && activeSection?.fields.filter((el) => {
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Block, { style: { marginTop: 8 }, children: activeSection.name === "Request maintenance" || firstStageDe?.length === 0 ? Array.isArray(activeSection?.fields) && activeSection?.fields.filter((el) => {
       const id = el?.id || el?.attribute || el?.dataElement?.id || el;
       return id !== statusFieldId;
     }).map((el) => {
@@ -13998,7 +14082,7 @@ function ConfigurableForm({
                     ]
                   }
                 ),
-                stepIndex < sectionsList.length - 1 && !reviewNavigationLocked && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                stepIndex < sectionsList.length - 1 && !reviewNavigationLocked && selectedStage !== "VlwQGgBvd9i" && /* @__PURE__ */ jsxRuntimeExports.jsxs(
                   IonButton,
                   {
                     type: "button",
@@ -14084,6 +14168,17 @@ function ConfigurableForm({
               programId,
               valueType: previewModal.valueType
             }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            IonLoading,
+            {
+              isOpen: loading,
+              message: "Please wait...",
+              spinner: "dots",
+              duration: 6e4,
+              backdropDismiss: false,
+              cssClass: "custom-loader"
+            }
           )
         ]
       }
@@ -14148,7 +14243,7 @@ const sendNotificationHandler = async (subject, message, userIds) => {
   }
 };
 
-const getUsers$i = async ({ targetOrgUnitId, userRoleId, username }) => {
+const getUsers$j = async ({ targetOrgUnitId, userRoleId, username }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14202,7 +14297,7 @@ const equipmentAllocation = async (config, options) => {
         if (element?.createdBy) {
           users.push({ id: options?.event?.createdBy?.uid });
         } else {
-          const res = await getUsers$i({
+          const res = await getUsers$j({
             targetOrgUnitId:
               element?.facilityLevel === "SAME_ORG_UNIT"
                 ? ou?.id
@@ -14299,8 +14394,8 @@ const equipmentCollectionStatus = async (config, options) => {
     const isAcknowledgment = config?.event === "EQUIPMENT_COLLECTION_ACKNOWLEDGMENT";
 
     const subject = isAcknowledgment
-      ? `Collection of ${equipmentNameText} ${serialNumberText} acknowledged | ${options?.program}.${options?.tei} .${options?.eventId}`
-      : `Acknowledge receipt of ${equipmentNameText} ${serialNumberText} | ${options?.program}.${options?.tei}.${options?.eventId} `;
+      ? `Collection of ${equipmentNameText} ${serialNumberText} acknowledged | ${options?.program}.${options?.tei}.${options?.payload?.stage}.${options?.eventId}`
+      : `Acknowledge receipt of ${equipmentNameText} ${serialNumberText} | ${options?.program}.${options?.tei}.${options?.payload?.stage}.${options?.eventId} `;
 
     const body = isAcknowledgment
       ? `Ward-incharge has acknowledged receipt of the allocated ${equipmentNameText} ${serialNumberText}.`
@@ -14311,7 +14406,7 @@ const equipmentCollectionStatus = async (config, options) => {
     if (config?.event === "EQUIPMENT_COLLECTION_ACKNOWLEDGMENT" && config?.userRoles) {
       let ou = null;
       const ouData = await dataStore.get(
-        `organisationUnits/${data.orgUnit}?fields=name,id,parent(id,name)`
+        `organisationUnits/${data?.data?.orgUnit}?fields=name,id,parent(id,name)`
       );
       ou = ouData?.data;
       for (const role of config.userRoles) {
@@ -14322,6 +14417,8 @@ const equipmentCollectionStatus = async (config, options) => {
         const roleUsers = usersResp?.data?.users?.map((u) => u.id) || [];
         usersId.push(...roleUsers);
       }
+      console.log({ place: "inside", usersId });
+
     } else {
       // For EQUIPMENT_COLLECTION_STATUS, notify specific receiver
       const receiverDetails = await dataStore.get(
@@ -14336,7 +14433,7 @@ const equipmentCollectionStatus = async (config, options) => {
   }
 };
 
-const getUsers$h = async ({ targetOrgUnitId, userRoleId, username }) => {
+const getUsers$i = async ({ targetOrgUnitId, userRoleId, username }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14380,7 +14477,7 @@ const equipmentDeregistrationApprovalNotification = async (config, options) => {
     } else {
       for (let index = 0; index < config?.userRoles.length; index++) {
         const element = config?.userRoles[index];
-        const res = await getUsers$h({
+        const res = await getUsers$i({
           targetOrgUnitId: options?.orgUnit,
           userRoleId: element?.id
         });
@@ -14424,7 +14521,7 @@ const equipmentDeregistrationApprovalNotification = async (config, options) => {
   }
 };
 
-const getUsers$g = async ({ targetOrgUnitId, userRoleId, username }) => {
+const getUsers$h = async ({ targetOrgUnitId, userRoleId, username }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14457,7 +14554,7 @@ const equipmentDeregistrationNotification = async (config, options) => {
       if (element?.createdBy) {
         users.push({ id: options?.event?.createdBy?.uid });
       } else {
-        const res = await getUsers$g({
+        const res = await getUsers$h({
           targetOrgUnitId: options?.orgUnit,
           userRoleId: element?.id,
         });
@@ -14511,7 +14608,7 @@ const equipmentDeregistrationNotification = async (config, options) => {
   }
 };
 
-const getUsers$f = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$g = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14538,7 +14635,7 @@ const equipmentRegistrationNotification = async (config, options) => {
       let users = [];
       for (let index = 0; index < config?.userRoles.length; index++) {
         const element = config?.userRoles[index];
-        const res = await getUsers$f({
+        const res = await getUsers$g({
           targetOrgUnitId: options?.orgUnit,
           userRoleId: element?.id,
         });
@@ -14580,7 +14677,7 @@ const equipmentRegistrationNotification = async (config, options) => {
   } catch (error) { }
 };
 
-const getUsers$e = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$f = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14604,7 +14701,7 @@ const equipmentRegistrationTaskNotification = async (config, options) => {
       let users = [];
       for (let index = 0; index < config?.userRoles.length; index++) {
         const element = config?.userRoles[index];
-        const res = await getUsers$e({
+        const res = await getUsers$f({
           targetOrgUnitId: options?.orgUnit,
           userRoleId: element?.id,
         });
@@ -14645,7 +14742,7 @@ const equipmentRegistrationTaskNotification = async (config, options) => {
   } catch (error) {}
 };
 
-const getUsers$d = async ({ targetOrgUnitId, userRoleId, mode }) => {
+const getUsers$e = async ({ targetOrgUnitId, userRoleId, mode }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14677,7 +14774,7 @@ const equipmentRequisitionNotification = async (config, options) => {
     let users = [];
     for (let index = 0; index < config?.userRoles.length; index++) {
       const element = config?.userRoles[index];
-      const res = await getUsers$d({
+      const res = await getUsers$e({
         targetOrgUnitId: options?.orgUnit,
         userRoleId: element?.id,
         mode: config?.facilityLevel,
@@ -14737,7 +14834,7 @@ const equipmentRequisitionNotification = async (config, options) => {
   }
 };
 
-const getUsers$c = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$d = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14785,7 +14882,7 @@ const equipmentRequisitionNotificationApproval = async (config, options) => {
         (roles) => roles.accepted === "true"
       );
       if (approvedRole) {
-        const approvedUsers = await getUsers$c({
+        const approvedUsers = await getUsers$d({
           targetOrgUnitId:
             approvedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.data?.id
@@ -14801,7 +14898,7 @@ const equipmentRequisitionNotificationApproval = async (config, options) => {
         (roles) => roles.accepted === "false"
       );
       if (declinedRole) {
-        const declinedUsers = await getUsers$c({
+        const declinedUsers = await getUsers$d({
           targetOrgUnitId:
             declinedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.id
@@ -14842,7 +14939,7 @@ const equipmentRequisitionNotificationApproval = async (config, options) => {
   }
 };
 
-const getUsers$b = async ({ targetOrgUnitId, userRoleId, username }) => {
+const getUsers$c = async ({ targetOrgUnitId, userRoleId, username }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14882,7 +14979,7 @@ const equipmentSLANotification = async (config, options) => {
       if (element?.createdBy) {
         users.push({ id: options?.event?.createdBy?.uid });
       } else {
-        const res = await getUsers$b({
+        const res = await getUsers$c({
           targetOrgUnitId: options?.orgUnit,
           userRoleId: element?.id,
         });
@@ -14938,7 +15035,7 @@ const equipmentSLANotification = async (config, options) => {
   }
 };
 
-const getUsers$a = async ({ userRoleId, facilityLevel }) => {
+const getUsers$b = async ({ userRoleId, facilityLevel }) => {
   let usersResp = null;
   try {
     if (facilityLevel === "NATIONAL_LEVEL") {
@@ -15001,7 +15098,7 @@ const equipmentTransferOutsideSubmitNotification = async (config, options) => {
     let users = [];
     for (const role of config?.userRoles || []) {
       if (role.facilityLevel === "NATIONAL_LEVEL") {
-        const roleUsers = await getUsers$a({
+        const roleUsers = await getUsers$b({
           userRoleId: role.id,
           facilityLevel: role.facilityLevel,
         });
@@ -15020,7 +15117,7 @@ const equipmentTransferOutsideSubmitNotification = async (config, options) => {
   }
 };
 
-const getUsers$9 = async ({ targetOrgUnitId, userRoleId, isPermanent }) => {
+const getUsers$a = async ({ targetOrgUnitId, userRoleId, isPermanent }) => {
   console.log({ targetOrgUnitId, userRoleId });
 
   let usersResp = null;
@@ -15105,7 +15202,7 @@ const equipmentTransferNotification = async (config, options) => {
 
     for (let index = 0; index < roles.length; index++) {
       const element = roles[index];
-      const res = await getUsers$9({
+      const res = await getUsers$a({
         targetOrgUnitId: current_location?.value,
         userRoleId: element?.id,
         isPermanent,
@@ -15154,7 +15251,7 @@ const equipmentTransferNotification = async (config, options) => {
   } catch (error) { }
 };
 
-const getUsers$8 = async ({ targetOrgUnitId, userRoleId, facilityLevel }) => {
+const getUsers$9 = async ({ targetOrgUnitId, userRoleId, facilityLevel }) => {
   let usersResp = null;
   try {
     if (facilityLevel === "SAME_ORG_UNIT" && targetOrgUnitId) {
@@ -15178,7 +15275,6 @@ const getUsers$8 = async ({ targetOrgUnitId, userRoleId, facilityLevel }) => {
 
 const equipmentTransferOutsideApprovalNotification = async (config, options) => {
   try {
-    console.log({ config, options});
 
     const data = await dataStore.get(
       `tracker/events/${options?.event}?program=${options?.program}&fields=*`
@@ -15235,6 +15331,7 @@ const equipmentTransferOutsideApprovalNotification = async (config, options) => 
 
     // Notify based on approval status
     if (isApproved) {
+
       // If approved, notify Hospital Administrator (source) and Biomedical Engineer (target facility)
       for (const role of config?.userRoles || []) {
         if (role.accepted === "true") {
@@ -15242,7 +15339,7 @@ const equipmentTransferOutsideApprovalNotification = async (config, options) => 
 
           if (role.facilityLevel === "SAME_ORG_UNIT") {
             // Hospital Administrator at source facility
-            roleUsers = await getUsers$8({
+            roleUsers = await getUsers$9({
               targetOrgUnitId: ou?.data?.id,
               userRoleId: role.id,
               facilityLevel: role.facilityLevel,
@@ -15251,7 +15348,7 @@ const equipmentTransferOutsideApprovalNotification = async (config, options) => 
             // Biomedical Engineer at target facility
             // Note: In a real implementation, you'd need to get the target facility ID
             // from the transfer data (e.g., from a target facility data element)
-            roleUsers = await getUsers$8({
+            roleUsers = await getUsers$9({
               userRoleId: role.id,
               facilityLevel: role.facilityLevel,
             });
@@ -15264,7 +15361,7 @@ const equipmentTransferOutsideApprovalNotification = async (config, options) => 
       // If declined, notify Hospital Administrator (source) and Creator
       for (const role of config?.userRoles || []) {
         if (role.accepted === "false" || role.facilityLevel === "SAME_ORG_UNIT") {
-          const roleUsers = await getUsers$8({
+          const roleUsers = await getUsers$9({
             targetOrgUnitId: ou?.data?.id,
             userRoleId: role.id,
             facilityLevel: role.facilityLevel,
@@ -15285,7 +15382,6 @@ const equipmentTransferOutsideApprovalNotification = async (config, options) => 
     }
 
     const usersId = users?.map((user) => user?.id);
-    console.log({ usersId, subject, body });
 
     sendNotificationHandler(subject, body, usersId);
   } catch (error) {
@@ -15293,7 +15389,7 @@ const equipmentTransferOutsideApprovalNotification = async (config, options) => 
   }
 };
 
-const getUsers$7 = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$8 = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -15354,7 +15450,7 @@ const equipmentTransferApprovalNotification = async (config, options) => {
         (roles) => roles.accepted === "true"
       );
       if (approvedRole) {
-        const approvedUsers = await getUsers$7({
+        const approvedUsers = await getUsers$8({
           targetOrgUnitId:
             approvedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.data?.id
@@ -15369,7 +15465,7 @@ const equipmentTransferApprovalNotification = async (config, options) => {
         (roles) => roles.accepted === "false"
       );
       if (declinedRole) {
-        const declinedUsers = await getUsers$7({
+        const declinedUsers = await getUsers$8({
           targetOrgUnitId:
             declinedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.data?.id
@@ -15426,112 +15522,9 @@ const equipmentTransferApprovalNotification = async (config, options) => {
   }
 };
 
-const getUsers$6 = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$7 = async ({ targetOrgUnitId, userRoleId, facilityLevel }) => {
   let usersResp = null;
-  try {
-    if (targetOrgUnitId) {
-      usersResp = await dataStore.get(
-        `users.json?paging=false&fields=id,username,displayName&filter=userRoles.id:eq:${userRoleId}&filter=organisationUnits.id:eq:${targetOrgUnitId}`
-      );
-    } else {
-      usersResp = await dataStore.get(
-        `users.json?paging=false&fields=id,username,displayName&filter=userRoles.id:eq:${userRoleId}`
-      );
-    }
-  } catch (e) {
-    console.error("User role/orgUnit search failed:", e);
-  }
 
-  return usersResp?.data?.users?.map((u) => ({ id: u.id })) || [];
-};
-
-const equipmentTransferAcknowledgmentNotification = async (config, options) => {
-  try {
-    const data = await dataStore.get(
-      `tracker/events/${options?.event}?program=${options?.program}&fields=*`
-    );
-
-    let users = [];
-
-    // Get transfer type to determine who to notify
-    const transferTypeDataElement = data?.data?.dataValues?.find(
-      (d) => d.dataElement === config?.transferType
-    );
-    
-    // Check if it's a permanent transfer
-    let isPermanent = false;
-    if (transferTypeDataElement && config?.permanentTransferCode && config?.tranferTypeOptonSet) {
-      const transferTypeOptionSet = await dataStore.get(
-        `optionSets/${config?.tranferTypeOptonSet}?fields=id,name,code,options(id,name,code)`
-      );
-      const permanentOption = transferTypeOptionSet?.data?.options?.find(
-        (op) => op?.code === config?.permanentTransferCode
-      );
-      isPermanent = transferTypeDataElement?.value === permanentOption?.code;
-    }
-
-    // Always notify Ward InCharge (the other ward)
-    const wardInChargeRole = config?.userRoles?.find(role => role.name === "Ward InCharge");
-    if (wardInChargeRole) {
-      const targetOrgUnitId = wardInChargeRole?.facilityLevel === "SAME_ORG_UNIT" 
-        ? data?.data?.orgUnit 
-        : null;
-      
-      const wardUsers = await getUsers$6({
-        targetOrgUnitId,
-        userRoleId: wardInChargeRole?.id,
-      });
-      users.push(...wardUsers);
-    }
-
-    // Only notify Engineer if it's a permanent transfer
-    if (isPermanent) {
-      const engineerRole = config?.userRoles?.find(role => role.name === "Biomedical Engineer / Techinician");
-      if (engineerRole) {
-        const targetOrgUnitId = engineerRole?.facilityLevel === "SAME_ORG_UNIT" 
-          ? data?.data?.orgUnit 
-          : null;
-        
-        const engineerUsers = await getUsers$6({
-          targetOrgUnitId,
-          userRoleId: engineerRole?.id,
-        });
-        users.push(...engineerUsers);
-      }
-    }
-    
-    // Also notify creator if configured
-    if (config.userSource?.createdBy) {
-      users.push({ id: data?.data?.createdBy?.uid });
-    }
-
-    // Get equipment name
-    const equipmentDataElement = data?.data?.dataValues?.find(
-      (d) => d.dataElement === config?.equipment.dataElement
-    );
-    
-    let equipmentName = "Equipment";
-    if (config.equipment.isOptionCode && equipmentDataElement) {
-      const option = await dataStore.get(
-        `optionSets/${config?.equipment?.optionSetId}?fields=id,name,code,options(id,name,code)`
-      );
-      equipmentName = option?.data?.options?.find(
-        (op) => op?.code === equipmentDataElement?.value
-      )?.name || "Equipment";
-    }
-
-    const subject = `Collection of ${equipmentName} transfer acknowledged | ${options?.program}.${options?.event}`;
-    const body = `Ward-incharge has acknowledged receipt of the transferred ${equipmentName}.`;
-    
-    const usersId = users?.map((id) => id?.id);
-    sendNotificationHandler(subject, body, usersId);
-  } catch (error) {
-    console.error("Transfer acknowledgment notification error:", error);
-  }
-};
-
-const getUsers$5 = async ({ targetOrgUnitId, userRoleId, facilityLevel }) => {
-  let usersResp = null;
   try {
     if (facilityLevel === "NATIONAL_LEVEL") {
       // Get PAM Central users at national level
@@ -15552,6 +15545,7 @@ const getUsers$5 = async ({ targetOrgUnitId, userRoleId, facilityLevel }) => {
 };
 
 const equipmentTransferOutsideAcknowledgmentNotification = async (config, options) => {
+
   try {
     const data = await dataStore.get(
       `tracker/events/${options?.event}?program=${options?.program}&fields=*`
@@ -15561,7 +15555,7 @@ const equipmentTransferOutsideAcknowledgmentNotification = async (config, option
     const equipmentDataElement = data?.data?.dataValues?.find(
       (d) => d.dataElement === config?.equipment?.dataElement
     );
-    
+
     let equipmentName = "Equipment";
     if (config.equipment.isOptionCode && equipmentDataElement) {
       const option = await dataStore.get(
@@ -15576,7 +15570,7 @@ const equipmentTransferOutsideAcknowledgmentNotification = async (config, option
     const transferType = data?.data?.dataValues?.find(
       (d) => d.dataElement === config?.transferType
     );
-    
+
     let transferTypeName = "transfer";
     if (transferType?.value && config?.permanentTransferCode && config?.tranferTypeOptonSet) {
       const transferTypeOptionSet = await dataStore.get(
@@ -15590,7 +15584,7 @@ const equipmentTransferOutsideAcknowledgmentNotification = async (config, option
 
     // Get source facility information
     const ou = await dataStore.get(
-      `organisationUnits/${data.orgUnit}?fields=name,id,level,parent(id,name,level)`
+      `organisationUnits/${data?.data?.orgUnit}?fields=name,id,level,parent(id,name,level)`
     );
 
     let users = [];
@@ -15598,22 +15592,24 @@ const equipmentTransferOutsideAcknowledgmentNotification = async (config, option
     // Notify configured roles
     for (const role of config?.userRoles || []) {
       let roleUsers = [];
-      
+
       if (role.facilityLevel === "NATIONAL_LEVEL") {
         // PAM Central
-        roleUsers = await getUsers$5({
+        roleUsers = await getUsers$7({
           userRoleId: role.id,
           facilityLevel: role.facilityLevel,
         });
+
       } else if (role.facilityLevel === "SOURCE_FACILITY") {
         // Hospital Administrator at source facility
-        roleUsers = await getUsers$5({
+        roleUsers = await getUsers$7({
           targetOrgUnitId: ou?.data?.id,
           userRoleId: role.id,
           facilityLevel: role.facilityLevel,
         });
+
       }
-      
+
       users.push(...roleUsers);
     }
 
@@ -15624,15 +15620,134 @@ const equipmentTransferOutsideAcknowledgmentNotification = async (config, option
 
     const subject = `Outside facility ${transferTypeName} acknowledged - ${equipmentName} | ${options?.program}.${options?.event}`;
     const body = `The target facility has acknowledged receipt of the ${equipmentName} ${transferTypeName} from ${ou?.data?.name}. The transfer process is now complete.`;
-    
+
     const usersId = users?.map((user) => user?.id);
+    // console.log({ usersId });
+
     sendNotificationHandler(subject, body, usersId);
   } catch (error) {
+
     console.error("Outside transfer acknowledgment notification error:", error);
   }
 };
 
-const getUsers$4 = async ({ targetOrgUnitId, userRoleId, mode }) => {
+const getUsers$6 = async ({ targetOrgUnitId, userRoleId }) => {
+  let usersResp = null;
+  try {
+    if (targetOrgUnitId) {
+      usersResp = await dataStore.get(
+        `users.json?paging=false&fields=id,username,displayName&filter=userRoles.id:eq:${userRoleId}&filter=organisationUnits.id:eq:${targetOrgUnitId}`
+      );
+    } else {
+      usersResp = await dataStore.get(
+        `users.json?paging=false&fields=id,username,displayName&filter=userRoles.id:eq:${userRoleId}`
+      );
+    }
+  } catch (e) {
+    console.error("User role/orgUnit search failed:", e);
+  }
+
+  return usersResp?.data?.users?.map((u) => ({ id: u.id })) || [];
+};
+
+const equipmentTransferAcknowledgmentNotification = async (config, options) => {
+
+  try {
+    const data = await dataStore.get(
+      `tracker/events/${options?.event}?program=${options?.program}&fields=*`
+    );
+
+    let users = [];
+
+    // Get transfer type to determine who to notify
+    const transferTypeDataElement = data?.data?.dataValues?.find(
+      (d) => d.dataElement === config?.transferType
+    );
+
+    // Get transfer type to determine who to notify
+    const transferLocationTypeDataElement = data?.data?.dataValues?.find(
+      (d) => d.dataElement === config?.transferLocationType
+    );
+    if (transferLocationTypeDataElement?.value === config?.transferLocationValue) {
+      const res = await getNotificationEvent(data?.data?.program, "EQUIPMENT_TRANSFER_OUTSIDE_ACKNOWLEDGMENT");
+      // If transfer location type matches configured value, do not send notification
+      equipmentTransferOutsideAcknowledgmentNotification(res, options);
+      return;
+    }
+
+    // Check if it's a permanent transfer
+    let isPermanent = false;
+    if (transferTypeDataElement && config?.permanentTransferCode && config?.tranferTypeOptonSet) {
+      const transferTypeOptionSet = await dataStore.get(
+        `optionSets/${config?.tranferTypeOptonSet}?fields=id,name,code,options(id,name,code)`
+      );
+      const permanentOption = transferTypeOptionSet?.data?.options?.find(
+        (op) => op?.code === config?.permanentTransferCode
+      );
+      isPermanent = transferTypeDataElement?.value === permanentOption?.code;
+    }
+
+    // Always notify Ward InCharge (the other ward)
+    const wardInChargeRole = config?.userRoles?.find(role => role.name === "Ward InCharge");
+    if (wardInChargeRole) {
+      const targetOrgUnitId = wardInChargeRole?.facilityLevel === "SAME_ORG_UNIT"
+        ? data?.data?.orgUnit
+        : null;
+
+      const wardUsers = await getUsers$6({
+        targetOrgUnitId,
+        userRoleId: wardInChargeRole?.id,
+      });
+      users.push(...wardUsers);
+    }
+
+    // Only notify Engineer if it's a permanent transfer
+    if (isPermanent) {
+      const engineerRole = config?.userRoles?.find(role => role.name === "Biomedical Engineer / Techinician");
+      if (engineerRole) {
+        const targetOrgUnitId = engineerRole?.facilityLevel === "SAME_ORG_UNIT"
+          ? data?.data?.orgUnit
+          : null;
+
+        const engineerUsers = await getUsers$6({
+          targetOrgUnitId,
+          userRoleId: engineerRole?.id,
+        });
+        users.push(...engineerUsers);
+      }
+    }
+
+    // Also notify creator if configured
+    if (config.userSource?.createdBy) {
+      users.push({ id: data?.data?.createdBy?.uid });
+    }
+
+    // Get equipment name
+    const equipmentDataElement = data?.data?.dataValues?.find(
+      (d) => d.dataElement === config?.equipment.dataElement
+    );
+
+    let equipmentName = "Equipment";
+    if (config.equipment.isOptionCode && equipmentDataElement) {
+      const option = await dataStore.get(
+        `optionSets/${config?.equipment?.optionSetId}?fields=id,name,code,options(id,name,code)`
+      );
+      equipmentName = option?.data?.options?.find(
+        (op) => op?.code === equipmentDataElement?.value
+      )?.name || "Equipment";
+    }
+
+    const subject = `Collection of ${equipmentName} transfer acknowledged | ${options?.program}.${options?.event}`;
+    const body = `Ward-incharge has acknowledged receipt of the transferred ${equipmentName}.`;
+
+    const usersId = users?.map((id) => id?.id);
+    sendNotificationHandler(subject, body, usersId);
+  } catch (error) {
+    console.error("Transfer acknowledgment notification error:", error);
+  }
+};
+
+const getUsers$5 = async ({ targetOrgUnitId, userRoleId, mode }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -15667,7 +15782,7 @@ const managingUserTrainingNotification = async (config, options) => {
     // Notify configured user roles (Hospital Administrators)
     for (let index = 0; index < config?.userRoles.length; index++) {
       const element = config?.userRoles[index];
-      const res = await getUsers$4({
+      const res = await getUsers$5({
         targetOrgUnitId: options?.orgUnit,
         userRoleId: element?.id,
         mode: config?.facilityLevel,
@@ -15697,7 +15812,7 @@ const managingUserTrainingNotification = async (config, options) => {
             );
             
             for (const ward of wardSearch?.data?.organisationUnits || []) {
-              const wardUsers = await getUsers$4({
+              const wardUsers = await getUsers$5({
                 targetOrgUnitId: ward.id,
                 userRoleId: config.wardInChargeRoleId,
                 mode: "SAME_ORG_UNIT",
@@ -15745,7 +15860,7 @@ const managingUserTrainingNotification = async (config, options) => {
   } catch (error) {}
 };
 
-const getUsers$3 = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$4 = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -15794,7 +15909,7 @@ const trainingRequestNotificationApproval = async (config, options) => {
       trainingType?.value === config?.decision?.notifyEngineerIfTrainingIs
     ) {
       const rol = roles?.find((r) => r?.notifiedOnTechnicalTraining === "true");
-      const res = await getUsers$3({
+      const res = await getUsers$4({
         targetOrgUnitId:
           rol?.facilityLevel === "SAME_ORG_UNIT" ? ou?.id : ou?.parent?.id,
         userRoleId: rol?.id,
@@ -15804,7 +15919,7 @@ const trainingRequestNotificationApproval = async (config, options) => {
       const rol = roles?.find(
         (r) => r?.notifiedOnTechnicalTraining === "false"
       );
-      const res = await getUsers$3({
+      const res = await getUsers$4({
         targetOrgUnitId:
           rol?.facilityLevel === "SAME_ORG_UNIT" ? ou?.id : ou?.parent?.id,
         userRoleId: rol?.id,
@@ -15840,7 +15955,7 @@ const trainingRequestNotificationApproval = async (config, options) => {
   } catch (error) { }
 };
 
-const getUsers$2 = async ({ targetOrgUnitId, userRoleId, mode }) => {
+const getUsers$3 = async ({ targetOrgUnitId, userRoleId, mode }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -15874,7 +15989,7 @@ const reportCreationNotification = async (config, options) => {
     let users = [];
     for (let index = 0; index < config?.userRoles.length; index++) {
       const element = config?.userRoles[index];
-      const res = await getUsers$2({
+      const res = await getUsers$3({
         targetOrgUnitId: options?.orgUnit,
         userRoleId: element?.id,
         mode: userRole && config?.userAtLowerLevel?.facilityLevel || config?.facilityLevel,
@@ -15899,7 +16014,7 @@ const reportCreationNotification = async (config, options) => {
   } catch (error) { }
 };
 
-const getUsers$1 = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$2 = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -15939,7 +16054,7 @@ const reportCreationNotificationApproval = async (config, options) => {
     const isApproved = dataElement?.value === "true";
 
     // Always notify the creator (requester)
-    if (config.userSource?.createdBy) {
+    if (config?.userSource?.createdBy) {
       users.push({ id: data?.createdBy?.uid });
     }
 
@@ -15949,7 +16064,7 @@ const reportCreationNotificationApproval = async (config, options) => {
         (roles) => roles.accepted === "true"
       );
       if (approvedRole) {
-        const approvedUsers = await getUsers$1({
+        const approvedUsers = await getUsers$2({
           targetOrgUnitId:
             approvedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.id
@@ -15964,7 +16079,7 @@ const reportCreationNotificationApproval = async (config, options) => {
         (roles) => roles.accepted === "false"
       );
       if (declinedRole) {
-        const declinedUsers = await getUsers$1({
+        const declinedUsers = await getUsers$2({
           targetOrgUnitId:
             declinedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.id
@@ -16004,6 +16119,7 @@ const reportCreationNotificationApproval = async (config, options) => {
 };
 
 const sparePartCollectionStatus = async (config, options) => {
+
   try {
     const data = await dataStore.get(
       `tracker/events/${options?.event?.event}?program=${options?.event?.program}&fields=*`
@@ -16055,7 +16171,7 @@ const sparePartCollectionStatus = async (config, options) => {
     if (config?.event === "EQUIPMENT_COLLECTION_ACKNOWLEDGMENT" && config?.userRoles) {
       let ou = null;
       const ouData = await dataStore.get(
-        `organisationUnits/${data.orgUnit}?fields=name,id,parent(id,name)`
+        `organisationUnits/${data?.data?.orgUnit}?fields=name,id,parent(id,name)`
       );
       ou = ouData?.data;
       for (const role of config.userRoles) {
@@ -16076,11 +16192,13 @@ const sparePartCollectionStatus = async (config, options) => {
 
     sendNotificationHandler(subject, body, usersId);
   } catch (error) {
+    console.log({ error });
+
     return error
   }
 };
 
-const getUsers = async ({ targetOrgUnitId, userRoleId, username }) => {
+const getUsers$1 = async ({ targetOrgUnitId, userRoleId, username }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -16141,7 +16259,7 @@ const equipmentAllocationDefault = async (config, options) => {
                 : null,
         userRoleId: element?.id,
       };
-      const res = await getUsers(payloadData);
+      const res = await getUsers$1(payloadData);
       users.push(...res);
     }
 
@@ -16159,9 +16277,8 @@ const equipmentAllocationDefault = async (config, options) => {
     const equipment = equipmentDetails?.data?.attributes?.filter((f) => f?.attribute === config?.equipment?.serialNumber)
       ?.map((j) => j?.value)
       ?.join(",");
-    // const allocations = events.map(
-    //   (ev) => ev.event?.programStage + "." + ev.event?.event
-    // );
+    
+    const allocations = options?.teiId ? [`${requestedWard?.programStage}.${options?.teiId}`] : [];
 
     const equipmentName = equipmentDetails?.data?.attributes?.find((f) => f?.attribute === config?.equipment?.equipmentAttribute);
 
@@ -16175,10 +16292,109 @@ const equipmentAllocationDefault = async (config, options) => {
     const subject = `${equip?.options.find((eq) => eq?.code === equipmentName?.value)?.name ||
       "Equipment"
       } has been allocated  to ${(ouRecord?.name && ouRecord?.name) || ""} | ${options?.program}.${options?.trackedEntity
-      } | Allocations: ${equipment}`;
+      } | Allocations: ${allocations?.join(",")}`;
 
     const body = `Equipment has been allocated. Search using these serial numbers : ${equipment}`;
     const usersId = users?.map((id) => id?.id)?.filter(Boolean);
+
+    sendNotificationHandler(subject, body, usersId);
+  } catch (error) {
+    console.log({ error });
+
+  }
+};
+
+const getUsers = async ({ targetOrgUnitId, userRoleId, username }) => {
+  let usersResp = null;
+  try {
+    if (targetOrgUnitId) {
+      usersResp = await dataStore.get(
+        `users.json?paging=false&fields=id,username,displayName,organisationUnits(id,name,level,parent)
+        &filter=userRoles.id:eq:${userRoleId}&filter=organisationUnits.id:eq:${targetOrgUnitId}`
+      );
+    } else if (username) {
+      usersResp = await dataStore.get(
+        `users.json?paging=false&fields=id,username,displayName&filter=username:eq:${username}`
+      );
+    } else {
+      usersResp = await dataStore.get(
+        `users.json?paging=false&fields=id,username,displayName&filter=userRoles.id:eq:${userRoleId}`
+      );
+    }
+  } catch (e) {
+    console.error("User role/orgUnit search failed:", e);
+  }
+
+  return usersResp?.data?.users?.map((u) => ({ id: u.id })) || [];
+};
+const maintencaaneCreateNotification = async (config, options) => {
+  try {
+    const searchParams = new URLSearchParams(window.location.search);
+    const equipmentDetails = await dataStore.get("tracker/trackedEntities/" + options?.trackedEntity + "?fields=*");
+
+    let wardAllocated = equipmentDetails?.data?.enrollments?.flatMap(enr => enr?.events);
+    const requestedWard = wardAllocated?.find(ev => ev?.event === options?.teiId);
+    const sectionId = searchParams.get("sectionId");
+    const stage = searchParams.get("stage");
+    const triggerAt = searchParams.get("triggerAt");
+    const state = searchParams.get("q");
+
+    // For demo purposes, sending to a static user
+
+    let ou = null;
+    const ouData = await LocalForageServiceInstance.getItem("userOrganisationUnits", "userOrgUnits");
+    ou = ouData?.find(org => org?.id === options?.orgUnit);
+
+    let users = [];
+    const userRoles = config?.userRoles.filter(ur => ur?.sectionId === sectionId) || [];
+
+    for (let index = 0; index < userRoles.length; index++) {
+      const element = userRoles[index];
+      wardAllocated = requestedWard?.dataValues?.find(
+        (de) => de?.dataElement === config?.ward
+      );
+      const payloadData = {
+        targetOrgUnitId:
+          element?.facilityLevel === "SAME_ORG_UNIT"
+            ? ou?.id
+            : element?.facilityLevel === "CHILD_ORG_UNIT"
+              ? wardAllocated?.value
+              : element?.facilityLevel === "PARENT_ORG_UNIT"
+                ? ou?.parent?.id
+                : null,
+        userRoleId: element?.id,
+      };
+      const res = await getUsers(payloadData);
+      users.push(...res);
+    }
+
+    const serialNumbers = [];
+    const equipmentData = [];
+
+    if (equipmentDetails) {
+      equipmentData.push([equipmentDetails?.data]);
+      serialNumbers.push([equipmentDetails?.data]);
+    }
+
+    const equipment = equipmentDetails?.data?.attributes?.filter((f) => f?.attribute === config?.equipment?.serialNumber)
+      ?.map((j) => j?.value)
+      ?.join(",");
+
+    const equipmentName = equipmentDetails?.data?.attributes?.find((f) => f?.attribute === config?.equipment?.equipmentAttribute);
+
+    const equipData = await LocalForageServiceInstance.getItem("optionSets", "metadata");
+    const equip = equipData?.find(opt => opt?.id === config?.equipment?.optionSetId);
+    const ward = requestedWard?.dataValues?.find(
+      (de) => de?.dataElement === config.ward
+    );
+    
+    const wardData = ouData?.find(org => org?.id === ward?.value);
+    const ouRecord = wardData?.name || (ou?.name && ou?.name) || "";
+    const usersId = users?.map((id) => id?.id)?.filter(Boolean);
+
+    const subject = `${triggerAt} request created for ${equip?.options.find((eq) => eq?.code === equipmentName?.value)?.name ||
+      "equipment"} at ${ouRecord} | ${options?.program}.${options?.trackedEntity}.${stage}.${options?.teiId}`;
+    const body = `A new ${triggerAt} request has been created. Please review the request details in the system. Search using these serial number : ${equipment}`;
 
     sendNotificationHandler(subject, body, usersId);
   } catch (error) {
@@ -16221,6 +16437,9 @@ const notificationSendTrigger = async (event, options) => {
       case "EQUIPMENT_ALLOCATION_STAGE_CREATE":
         equipmentAllocationDefault(config, options);
         break;
+      case "MAINTENANCE_STAGE_CREATE":
+        maintencaaneCreateNotification(config, options);
+        break;
       case "EQUIPMENT_COLLECTION_STATUS":
       case "EQUIPMENT_COLLECTION_ACKNOWLEDGMENT":
         equipmentCollectionStatus(config, options);
@@ -16245,10 +16464,10 @@ const notificationSendTrigger = async (event, options) => {
       case "EQUIPMENT_TRANSFER_OUTSIDE_APPROVE":
         equipmentTransferOutsideApprovalNotification(config, options);
         break;
-      case "WARRANT_SERVICE_LEVEL_AGREEMENT_CREATE":
+      case "WARRANT_SERVICE_LEVEL_AGREEMENT_STAGE_CREATE":
         equipmentSLANotification(config, options);
         break;
-      case "EQUIPMENT_DEREGISTRATION_CREATE":
+      case "EQUIPMENT_DEREGISTRATION_STAGE_CREATE":
         equipmentDeregistrationNotification(config, options);
         break;
       case "EQUIPMENT_DEREGISTRATION_APPROVAL":
@@ -16648,6 +16867,7 @@ async function programWithRegistrationEvent(
     if (importStrategy === "CREATE") {
       const teiId =
         response?.data?.bundleReport?.typeReportMap?.EVENT?.objectReports?.[0]?.uid;
+
       const configData = await getNotificationEvent(
         program?.id,
         importStrategy = "STAGE_CREATE",
@@ -17527,10 +17747,12 @@ function FormComponent({
   const [lockedFields, setLockedFields] = useState$R(/* @__PURE__ */ new Set());
   const [pM, setPM] = useState$R();
   const [ranKey, setKey] = useState$R(Math.random().toString(36).substring(2, 10).toUpperCase());
+  const [triggerAt, setTriggerAt] = useState$R(queryParams.get("triggerAt"));
   const [loading, setLoading] = useState$R(false);
   const [eventDate, setEventDate] = useState$R((/* @__PURE__ */ new Date()).toISOString().slice(0, 10));
   const navigate = useNavigate();
   const { user } = useContext$y(MEMISContext.UserRolesContext);
+  const [pgRules, setRule] = useState$R([]);
   const [selectedOrganisationUnit, setSelectedOrganisationUnit] = useState$R(null);
   const [enrollmentDate, setEnrollmentDate] = useState$R(
     editData?.enrollmentDate || Date.now()
@@ -17541,6 +17763,7 @@ function FormComponent({
   const [entityId, setEntityId] = useState$R(
     editData?.trackedEntity || editData?.id || null
   );
+  const [ackModalOpen, setAckModalOpen] = useState$R(false);
   const autoFillFacilityAppliedRef = useRef$f(false);
   const isEditMode = useMemo$w(() => {
     return query === "edit" || !!editData;
@@ -17551,6 +17774,28 @@ function FormComponent({
     selectedStage,
     isEditMode
   );
+  const getRules = async () => {
+    try {
+      const rules = await dataStore.get("dataStore/memis/programRules");
+      const r = rules.data.programRule.filter((pr) => pr.program === program.id && pr.programStage === selectedStage);
+      setRule(r);
+      r.forEach((rule) => {
+        if (rule.action === "assign value" && rule.value === "username") {
+          setFormData((prev) => ({
+            ...prev,
+            [rule.field]: user.username
+          }));
+        } else if (rule.action === "assign value" && rule.value === "user_ou") {
+          setFormData((prev) => ({
+            ...prev,
+            [rule.field]: user?.organisationUnits.length === 1 ? user?.organisationUnits[0]?.id : user?.organisationUnits.find((org) => org.level === 4)?.id
+          }));
+        }
+      });
+    } catch (error) {
+      console.error("Failed to fetch deregistration autofill rules:", error);
+    }
+  };
   useEffect$O(() => {
     if (autoFillFacilityAppliedRef.current) return;
     if (isEditMode) return;
@@ -17573,9 +17818,56 @@ function FormComponent({
       return "Referral_maintenance";
     }
   };
+  const getWarrant = async (maintainanceType) => {
+    console.log("Fetching warrant data for:", maintainanceType);
+    try {
+      const data = await dataStore.get(
+        `tracker/events?trackedEntity=${trackedEntity}&program=${program?.id}&programStage=oQC7mT3EpN2`
+      );
+      if (data?.data.events.length === 0) {
+        setFormData((prev) => ({
+          ...prev,
+          "ZRmJ2n29bEk": false
+        }));
+      } else {
+        const latestEvent = data?.data.events.reduce(
+          (latest, current) => new Date(current.occurredAt) > new Date(latest.occurredAt) ? current : latest
+        );
+        const startDateValue = latestEvent.dataValues.find(
+          (dv) => dv.dataElement === "pRzB2EpbDbv"
+        )?.value;
+        const endDateValue = latestEvent.dataValues.find(
+          (dv) => dv.dataElement === "cCqlXRoopMo"
+        )?.value;
+        const currentDate = /* @__PURE__ */ new Date();
+        currentDate.setHours(0, 0, 0, 0);
+        if (currentDate >= new Date(startDateValue) && currentDate <= new Date(endDateValue)) {
+          if (maintainanceType === "Referral Maintenance") {
+            setAckModalOpen(true);
+          } else {
+            setFormData((prev) => ({
+              ...prev,
+              "ZRmJ2n29bEk": true,
+              "q1y1L0Jojqm": latestEvent.dataValues.find((dv) => dv.dataElement === "JP9h4ZsVqK4")?.value
+            }));
+          }
+        } else {
+          setFormData((prev) => ({
+            ...prev,
+            "ZRmJ2n29bEk": false
+          }));
+        }
+      }
+    } catch (err) {
+      console.error("Failed to fetch warrant data:", err);
+    }
+  };
   useEffect$O(() => {
+    console.log("Trigger at changed:", triggerAt);
+    getRules();
     const q = queryParams.get("triggerAt");
     if (q === "Corrective Maintenance") {
+      getWarrant(q);
       setFormData((prev) => ({
         ...prev,
         "EbJI5Loxjbl": "Corrective_maintenance"
@@ -17590,16 +17882,14 @@ function FormComponent({
       }));
       setPM("Preventive_maintenance");
     } else if (q === "Referral Maintenance") {
+      getWarrant(q);
       setFormData((prev) => ({
         ...prev,
         "EbJI5Loxjbl": "Referral_maintenance"
       }));
       setPM("Referral_maintenance");
     }
-  }, []);
-  useEffect$O(() => {
-    console.log(workflow);
-  }, [workflow]);
+  }, [triggerAt]);
   const buildSuccess = ({ isEditMode: isEditMode2 }) => {
     const verb = isEditMode2 ? "Updated" : "Created";
     return `${verb} successfully`;
@@ -18001,7 +18291,7 @@ function FormComponent({
     }
   }, [selectedStage, trackedEntity, program, editData, user, location.search]);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(IonPage, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", fullscreen: true, children: [
-    queryParams.get("q") === "add" && program?.programType === "WITH_REGISTRATION" && /* @__PURE__ */ jsxRuntimeExports.jsx(
+    queryParams.get("q") === "add" && program?.programType === "WITH_REGISTRATION" && !selectedStage && /* @__PURE__ */ jsxRuntimeExports.jsx(
       MultiEntryCheckBox,
       {
         isMultiple,
@@ -18049,6 +18339,7 @@ function FormComponent({
         dataElements: program?.programType === "WITHOUT_REGISTRATION" ? program?.programStages?.[0] : programKey === "teiEvents" && selectedStage ? { program, selectedStage } : { program },
         formData,
         setFormData,
+        teiOu: trackedEntity,
         setEnrollmentDate,
         setSelectedOrganisationUnit,
         selectedOrganisationUnit: (() => {
@@ -18737,17 +19028,29 @@ const dateTime = {
     FORMAT_PRESETS,
 };
 
-// File: src/utils/transferHelpers.js
-
-// Quantity data elements shared across transfer flows
 const DE_QUANTITY_REQUESTED = "nIfxgWKqNg1";
 const DE_QUANTITY_APPROVED = "JOG28vqU6JO";
 
+/**
+ * Convert input into a number or null.
+ * - Empty/whitespace returns null (critical: prevents "" -> 0).
+ * - Supports decimal comma.
+ */
 const toNumberOrNull = (value) => {
-    const n = Number(String(value ?? "").trim().replace(",", "."));
+    const raw = String(value ?? "").trim();
+    if (raw === "") return null;
+
+    const n = Number(raw.replace(",", "."));
     return Number.isFinite(n) ? n : null;
 };
 
+/**
+ * Validate collected quantity:
+ * - If approved exists: collected must be <= approved
+ * - Else if requested exists: collected must be <= requested
+ * - If collected missing: no error
+ * - Never manufactures a 0 limit from empty strings
+ */
 const validateCollectedQuantity = ({
     requestedRaw,
     approvedRaw,
@@ -18759,10 +19062,12 @@ const validateCollectedQuantity = ({
     const collected = toNumberOrNull(collectedRaw);
 
     if (collected == null) return "";
+
     if (approved != null && collected > approved) {
         return `You cannot collect more than the approved quantity (${approved}).`;
     }
-    if (requested != null && collected > requested) {
+
+    if (approved == null && requested != null && collected > requested) {
         return fallbackMessage.replace("{requested}", String(requested));
     }
 
@@ -18943,16 +19248,14 @@ async function resolveOptionValue(optionSetId, value) {
 /**
  * Enrich transfer rows:
  * - Map OU UIDs → display names
- * - Map Equipment TEI → label (name • brand • model • SN)
+ * - Map Equipment TEI → label
  * - Resolve option values using data element option sets
- * - Uses in-memory + persistent cache to reduce API calls
  */
 async function enrichTransferRows(rows, columns = [], cfg = {}) {
     if (!Array.isArray(rows) || rows.length === 0) return [];
 
     const optionSetByKey = { ...(cfg.optionSets || {}) };
 
-    // Auto-discover option sets for any column that is a data element UID
     for (const col of columns) {
         if (col?.key && DHIS_UID.test(col.key) && !optionSetByKey[col.key]) {
             const osId = await getOptionSetIdFromDataElement(col.key);
@@ -18960,11 +19263,9 @@ async function enrichTransferRows(rows, columns = [], cfg = {}) {
         }
     }
 
-    // Detect OU columns from config + label heuristics
     const ouKeys = [...(cfg.ouKeys || [])];
     const ouColumnLabels = ["facility", "ward", "location", "org unit", "organisation unit", "receiving"];
 
-    // Detect equipment columns from config + label heuristics
     const equipmentKeys = [...(cfg.equipmentKeys || [])];
     const equipmentColumnLabels = ["equipment", "asset", "device", "machine"];
 
@@ -18977,7 +19278,6 @@ async function enrichTransferRows(rows, columns = [], cfg = {}) {
     const explicitEquipmentKey = cfg.equipmentKey;
     if (explicitEquipmentKey && !equipmentKeys.includes(explicitEquipmentKey)) equipmentKeys.push(explicitEquipmentKey);
 
-    // Batch process rows to avoid bursty requests
     const batchSize = 5;
     const results = [];
 
@@ -18987,21 +19287,18 @@ async function enrichTransferRows(rows, columns = [], cfg = {}) {
             batch.map(async (row) => {
                 const enriched = { ...row };
 
-                // OU resolution
                 for (const ouKey of ouKeys) {
                     if (enriched[ouKey] != null && DHIS_UID.test(String(enriched[ouKey]))) {
                         enriched[ouKey] = await resolveOrgUnitName$1(enriched[ouKey]);
                     }
                 }
 
-                // Equipment resolution
                 for (const eqKey of equipmentKeys) {
                     if (enriched[eqKey] != null && DHIS_UID.test(String(enriched[eqKey]))) {
                         enriched[eqKey] = await resolveEquipmentName(enriched[eqKey]);
                     }
                 }
 
-                // Option set value resolution
                 for (const [dataElement, optionSetId] of Object.entries(optionSetByKey)) {
                     if (enriched[dataElement] != null) {
                         enriched[dataElement] = await resolveOptionValue(optionSetId, enriched[dataElement]);
@@ -50541,6 +50838,7 @@ function ApproveModal({
   const [visibleFields, setVisibleFields] = useState$v([]);
   const [hideApprovalButton, setHideApprovalButton] = useState$v(false);
   const [hideCheckDone, setHideCheckDone] = useState$v(false);
+  const [activeActionConfig, setActiveActionConfig] = useState$v(null);
   const [equipmentNameOptionMap, setEquipmentNameOptionMap] = useState$v({});
   useEffect$u(() => {
     let cancelled = false;
@@ -50615,6 +50913,10 @@ function ApproveModal({
       const data = result?.programApprovalFields?.find(
         (pg) => pg?.programId === program?.id
       );
+      const actionConfig = result?.programApprovalActions?.find(
+        (action) => action?.programId === program?.id
+      );
+      setActiveActionConfig(actionConfig);
       const fieldsData = data?.fields || [];
       const fieldsWithOptions = await Promise.all(
         fieldsData.map(async (field) => {
@@ -50729,17 +51031,35 @@ function ApproveModal({
         }
         return;
       }
-      const requestedQty = toNumberOrNull(
-        getEventDataValue(event, DE_QUANTITY_REQUESTED)
-      );
-      const approvedQty = toNumberOrNull(
-        formData[DE_QUANTITY_APPROVED] ?? getEventDataValue(event, DE_QUANTITY_APPROVED)
-      );
-      if (requestedQty != null && approvedQty != null && approvedQty > requestedQty) {
-        showToast(
-          "Approved quantity cannot be greater than the requested quantity.",
-          "danger"
+      let validationPassed = true;
+      const validationConfig = activeActionConfig?.validation || activeActionConfig;
+      if (validationConfig?.type === "MAX_QUANTITY") {
+        const { approvedFieldId: approvedFieldId2, requestedFieldId, errorMessage } = validationConfig;
+        const requestedQty = toNumberOrNull(getEventDataValue(event, requestedFieldId));
+        const approvedQty = toNumberOrNull(
+          formData[approvedFieldId2] ?? getEventDataValue(event, approvedFieldId2)
         );
+        if (requestedQty != null && approvedQty != null && approvedQty > requestedQty) {
+          showToast(errorMessage || "Approved quantity cannot be greater than requested.", "danger");
+          validationPassed = false;
+        }
+      } else {
+        const requestedQty = toNumberOrNull(
+          getEventDataValue(event, DE_QUANTITY_REQUESTED)
+        );
+        const approvedQty = toNumberOrNull(
+          formData[DE_QUANTITY_APPROVED] ?? getEventDataValue(event, DE_QUANTITY_APPROVED)
+        );
+        if (requestedQty != null && approvedQty != null && approvedQty > requestedQty) {
+          showToast(
+            "Approved quantity cannot be greater than the requested quantity.",
+            "danger"
+          );
+          validationPassed = false;
+        }
+      }
+      if (!validationPassed) {
+        setSaving(false);
         return;
       }
       const approvedField = fields.find((f) => f.valueType === "BOOLEAN");
@@ -50872,10 +51192,10 @@ function ApproveModal({
             data: equipmentOptionsForName,
             itemTextField: "name",
             itemValueField: "name",
-            multiple: true,
+            multiple: false,
             title: field?.name || "Select equipment to be transferred",
             placeholder: equipmentLoading ? "Loading equipment..." : !hasAnyEquipment ? "No equipment found" : "Select equipment...",
-            value: A$7(formData[field?.id]),
+            value: formData[field?.id] || "",
             disabled: equipmentLoading,
             onChange: (selected) => {
               const selectedValue = selected && selected.length > 0 ? selected[0]?.name || selected[0] : "";
@@ -51364,6 +51684,8 @@ function AllocateEquipmentModal({
             { events: [payload2] }
           );
         }
+        handleCloseModal();
+        getEventDetails(event?.event);
       } else {
         showToast("Save failed", "danger");
       }
@@ -51588,9 +51910,9 @@ const mapSparePartFromTei = (tei) => {
 };
 
 function useSparePartOptions({
-  programId,
-  selectedOrganisationUnit,
-} = {}) {
+                                      programId,
+                                      selectedOrganisationUnit,
+                                    } = {}) {
   const cacheRef = useRef$3(new Map());
   const [sparePartOptions, setSparePartOptions] = useState$t([]);
   const [sparePartLoading, setSparePartLoading] = useState$t(false);
@@ -51599,10 +51921,6 @@ function useSparePartOptions({
     let active = true;
 
     const load = async () => {
-      if (programId && programId !== SPARE_PART_PROGRAM_ID) {
-        if (active) setSparePartOptions([]);
-        return;
-      }
 
       const key = `${SPARE_PART_PROGRAM_ID}|${selectedOrganisationUnit || "ACCESSIBLE"}`;
       if (cacheRef.current.has(key)) {
@@ -51613,12 +51931,12 @@ function useSparePartOptions({
       setSparePartLoading(true);
       try {
         const q1 = selectedOrganisationUnit
-          ? queryTrackedEntities({
+            ? queryTrackedEntities({
               program: SPARE_PART_PROGRAM_ID,
               orgUnit: selectedOrganisationUnit,
               ouMode: "DESCENDANTS",
             })
-          : Promise.resolve([]);
+            : Promise.resolve([]);
 
         const q2 = queryTrackedEntities({
           program: SPARE_PART_PROGRAM_ID,
@@ -51635,7 +51953,12 @@ function useSparePartOptions({
           return true;
         });
 
-        const options = rows.map(mapSparePartFromTei);
+        // --- unnamed spare part FIX ---
+        // Map to options, Filter out any item where sparePartName is missing or empty
+        const options = rows
+            .map(mapSparePartFromTei)
+            .filter(opt => opt.sparePartName && opt.sparePartName.trim() !== "");
+
         cacheRef.current.set(key, options);
         if (active) setSparePartOptions(options);
       } finally {
@@ -51648,12 +51971,9 @@ function useSparePartOptions({
     return () => {
       active = false;
     };
-  }, [programId, selectedOrganisationUnit]);
+  }, [selectedOrganisationUnit]);
 
-  return {
-    sparePartOptions,
-    sparePartLoading,
-  };
+  return { sparePartOptions, sparePartLoading };
 }
 
 const React$p = await importShared('react');
@@ -51673,20 +51993,16 @@ function findRequestedQuantity({ deMetaById, event, validationCfg }) {
     const dvExplicit = event.dataValues.find(
       (d) => d.dataElement === validationCfg.requestQuantityDataElementId
     );
-    if (dvExplicit && dvExplicit.value != null && dvExplicit.value !== "") {
-      const n = Number(String(dvExplicit.value).replace(",", "."));
-      if (Number.isFinite(n)) {
-        return n;
-      }
-    }
+    const n = toNumberOrNull(dvExplicit?.value);
+    if (n != null) return n;
   }
   const matchesName = (s) => typeof s === "string" && (s.trim() === "MEMIS_RFSP_Quantity" || /RFSP_Quantity/i.test(s));
   for (const dv of event.dataValues) {
     const meta = deMetaById.get(dv.dataElement);
     const nm = meta?.formName || meta?.displayFormName || meta?.displayName || meta?.name || "";
     if (!matchesName(nm)) continue;
-    const n = Number(String(dv.value ?? "").replace(",", "."));
-    if (Number.isFinite(n)) return n;
+    const n = toNumberOrNull(dv.value);
+    if (n != null) return n;
   }
   return null;
 }
@@ -51703,8 +52019,8 @@ function findQuantityLike({ deMetaById, event }) {
   const hasQty = (s) => typeof s === "string" && /(^|\s)(qty|quantity)(\s|$)/i.test(s);
   for (const dv of event.dataValues) {
     const meta = deMetaById.get(dv.dataElement);
-    const n = Number(String(dv.value).replace(",", "."));
-    if (!Number.isFinite(n)) continue;
+    const n = toNumberOrNull(dv.value);
+    if (n == null) continue;
     const nm = meta?.formName || meta?.displayFormName || meta?.displayName || meta?.name || "";
     if (hasQty(nm)) return String(n);
   }
@@ -51771,13 +52087,13 @@ function CollectionModal({
     selectedOrganisationUnit: event?.orgUnit
   });
   const existingByDE = useMemo$d(
-    () => new Map(
-      (event?.dataValues || []).map((dv) => [dv.dataElement, dv.value])
-    ),
+    () => new Map((event?.dataValues || []).map((dv) => [dv.dataElement, dv.value])),
     [event]
   );
   const requestedQty = useMemo$d(() => {
-    const requestedDirect = toNumberOrNull(existingByDE?.get(quantitiesId["DE_QUANTITY_REQUESTED"]));
+    const requestedDirect = toNumberOrNull(
+      existingByDE?.get(quantitiesId["DE_QUANTITY_REQUESTED"])
+    );
     if (requestedDirect != null) return requestedDirect;
     const explicitOrNamed = findRequestedQuantity({
       deMetaById,
@@ -51786,16 +52102,14 @@ function CollectionModal({
     });
     if (explicitOrNamed != null) return explicitOrNamed;
     const guessed = findQuantityLike({ deMetaById, event });
-    if (guessed !== "") {
-      const n = Number(String(guessed).replace(",", "."));
-      return Number.isFinite(n) ? n : null;
-    }
+    const guessedN = toNumberOrNull(guessed);
+    if (guessedN != null) return guessedN;
     return null;
-  }, [deMetaById, event, validationCfg, existingByDE]);
+  }, [deMetaById, event, validationCfg, existingByDE, quantitiesId]);
   const approvedQty = useMemo$d(() => {
     const raw = existingByDE?.get(quantitiesId["DE_QUANTITY_APPROVED"]);
     return toNumberOrNull(raw);
-  }, [existingByDE, formData]);
+  }, [existingByDE, quantitiesId]);
   const loadOptionSet = async (optionSetId) => {
     if (!optionSetId) return [];
     try {
@@ -51826,17 +52140,15 @@ function CollectionModal({
   const coerceForServer = (f, value) => {
     if (value == null || value === "") return "";
     const osId = f?.optionSetId || f?.optionSet?.id;
-    if (osId) {
-      return toCode(f.id, value);
-    }
+    if (osId) return toCode(f.id, value);
     switch (norm$1(f.valueType)) {
       case "NUMBER":
       case "INTEGER":
       case "INTEGER_ZERO_OR_POSITIVE":
       case "INTEGER_NEGATIVE":
       case "INTEGER_POSITIVE": {
-        const n = typeof value === "number" ? value : Number(String(value).trim().replace(",", "."));
-        return Number.isFinite(n) ? n : "";
+        const n = toNumberOrNull(value);
+        return n != null ? n : "";
       }
       case "DATE":
       case "DATETIME":
@@ -51847,7 +52159,6 @@ function CollectionModal({
   };
   const getCollectedQuantityField = () => byKey.get("quantityCollected") || fields.find((f) => f?.id === quantitiesId["DE_QUANTITY_COLLECTED"]);
   const validateCollectedQuantityLocal = (rawValue) => {
-    existingByDE?.get(quantitiesId["DE_QUANTITY_APPROVED"]);
     return validateCollectedQuantity({
       requestedRaw: requestedQty,
       approvedRaw: approvedQty,
@@ -51855,30 +52166,20 @@ function CollectionModal({
       fallbackMessage: validationCfg?.errorMessage || "You cannot collect more than the requested quantity ({requested})."
     });
   };
+  const isFieldRequired = (f) => {
+    if (f?.required === false) return false;
+    if (f?.optional === true) return false;
+    if (f?.compulsory === false) return false;
+    return true;
+  };
   const validateBeforeSave = () => {
     const qtyField = getCollectedQuantityField();
     if (qtyField) {
       const raw = formData[qtyField.id];
-      const qtyProblem = validateCollectedQuantity({
-        requestedRaw: requestedQty,
-        approvedRaw: approvedQty,
-        collectedRaw: raw,
-        fallbackMessage: validationCfg?.errorMessage || "You cannot collect more than the requested quantity ({requested})."
-      });
+      const qtyProblem = validateCollectedQuantityLocal(raw);
       if (qtyProblem) {
         setQtyError(qtyProblem);
         return qtyProblem;
-      }
-    }
-    if (qtyField) {
-      const raw = formData[qtyField.id];
-      const entered = Number(
-        String(raw ?? "").trim().replace(",", ".")
-      );
-      if (Number.isFinite(entered) && entered > requestedQty) {
-        const msg = (validationCfg?.errorMessage || "You cannot collect more than the requested quantity ({requested}).").replace("{requested}", String(requestedQty));
-        setQtyError(msg);
-        return msg;
       }
     }
     setQtyError("");
@@ -51899,6 +52200,14 @@ function CollectionModal({
         return `Invalid option for “${f.name}”. Please select a valid item.`;
       }
     }
+    const missingRequired = fields.filter((f) => {
+      if (!isFieldRequired(f)) return false;
+      const raw = formData[f.id];
+      return raw === void 0 || raw === null || String(raw).trim() === "";
+    });
+    if (missingRequired.length > 0) {
+      return "Please fill all required fields.";
+    }
     return null;
   };
   useEffect$r(() => {
@@ -51907,6 +52216,13 @@ function CollectionModal({
       setLoading(true);
       setError(null);
       try {
+        let username = "";
+        try {
+          const me = await LocalForageServiceInstance.getItem("userRes", "user");
+          username = String(me?.username || "").trim();
+        } catch (e) {
+          console.warn("Could not fetch user from storage", e);
+        }
         const cache = /* @__PURE__ */ new Map();
         for (const f of fields) {
           const osId = f?.optionSetId || f?.optionSet?.id;
@@ -51921,14 +52237,14 @@ function CollectionModal({
             }
           }
         }
-        setOptionsCache(cache);
         const existing = new Map(
           (event?.dataValues || []).map((dv) => [dv.dataElement, dv.value])
         );
         const initial = {};
         for (const f of fields) {
           let v = existing.get(f.id) ?? "";
-          if (!v) {
+          const isRestrictedAutofill = f.key === "sparePartName" || f.key === "collectorName";
+          if (!v && !isRestrictedAutofill) {
             v = findBySameOptionSet({
               field: f,
               optionsCache: cache,
@@ -51947,32 +52263,42 @@ function CollectionModal({
           }
           initial[f.id] = v ?? "";
         }
-        const dispatchField = byKey.get("dispatchOfficer");
-        const collectorName = byKey.get("collectorName");
+        for (const f of fields) {
+          const isConfigAutofill = f.autofill === "CURRENT_USER";
+          const isLegacyDispatch = f.key === "dispatchOfficer";
+          if ((isConfigAutofill || isLegacyDispatch) && username) {
+            if (!existing.has(f.id)) {
+              initial[f.id] = username;
+            }
+            const osId = f?.optionSetId || f?.optionSet?.id;
+            if (osId && initial[f.id] === username) {
+              const opts = cache.get(f.id) || [];
+              const exists = opts.some(
+                (o) => String(o.code).toLowerCase() === username.toLowerCase() || String(o.name).toLowerCase() === username.toLowerCase()
+              );
+              if (!exists) {
+                const injected = {
+                  id: `__user__${username}`,
+                  code: username,
+                  name: username
+                };
+                cache.set(f.id, [...opts, injected]);
+              }
+            }
+          }
+        }
         if (prefillCfg?.userPrefills && prefillCfg?.userPrefills?.length > 0) {
           for (let index = 0; index < prefillCfg?.userPrefills?.length; index++) {
             const element = prefillCfg?.userPrefills[index];
-            if (element?.useCreatedBy) {
-              const userData = event?.createdBy?.username;
-              initial[byKey.get(element?.fieldKey).id] = userData;
-            } else if (element?.useUpdatedBy) {
-              const userData = event?.updatedBy?.username;
-              initial[byKey.get(element?.fieldKey).id] = userData;
+            const fieldObj = byKey.get(element?.fieldKey);
+            if (fieldObj && !existing.has(fieldObj.id) && initial[fieldObj.id] !== username) {
+              if (element?.useCreatedBy) {
+                initial[fieldObj.id] = event?.createdBy?.username;
+              } else if (element?.useUpdatedBy) {
+                initial[fieldObj.id] = event?.updatedBy?.username;
+              }
             }
           }
-          const df = fields.find((ff) => ff.key === prefillCfg.dateKey);
-          if (df && (!initial[df.id] || String(initial[df.id]).trim() === "")) {
-            initial[df.id] = todayYMD();
-          }
-        } else {
-          const me = await LocalForageServiceInstance.getItem("userRes", "user");
-          const username = String(me?.username || "").trim();
-          const userNoDomain = username.includes("@") ? username.split("@")[0] : username;
-          const opts = cache.get(dispatchField.id) || [];
-          const exact = opts.find(
-            (o) => o.code && (o.code === username || o.code === userNoDomain)
-          );
-          if (exact) initial[dispatchField.id] = exact.code;
         }
         if (prefillCfg?.dateKey) {
           const df = fields.find((ff) => ff.key === prefillCfg.dateKey);
@@ -51980,9 +52306,11 @@ function CollectionModal({
             initial[df.id] = todayYMD();
           }
         }
+        setOptionsCache(cache);
         setQtyError("");
         setFormData(initial);
-      } catch {
+      } catch (err) {
+        console.error(err);
         setError("Failed to prepare form.");
       } finally {
         setLoading(false);
@@ -52020,6 +52348,22 @@ function CollectionModal({
     };
     check();
   }, [isOpen, flow, event]);
+  useEffect$r(() => {
+    const load = async () => {
+      const result = await getRequestedApprovedCollectedQuantitiesId(
+        program?.id,
+        formSection?.title
+      );
+      const data = {};
+      if (result) {
+        result.forEach((res) => {
+          data[res?.key] = res?.fieldId;
+        });
+        setQuantitiesId(data);
+      }
+    };
+    if (isOpen) load();
+  }, [isOpen, event, program, formSection?.title]);
   const renderField = (f) => {
     const labelText = f.name || f.label || f.key || "—";
     const label = /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { className: "ion-margin-bottom", position: "stacked", children: labelText });
@@ -52028,9 +52372,7 @@ function CollectionModal({
     const isCollectionDate = f.key && f.key === "collectionDate" || prefillCfg?.dateKey && f.key === prefillCfg.dateKey;
     const isCollectedQuantityField = (() => {
       const key = f.key || "";
-      if (validationCfg?.collectedQuantityKey) {
-        return key === validationCfg?.collectedQuantityKey;
-      }
+      if (validationCfg?.collectedQuantityKey) return key === validationCfg.collectedQuantityKey;
       if (f.id === quantitiesId["DE_QUANTITY_COLLECTED"]) return true;
       return key === "quantityCollected";
     })();
@@ -52048,6 +52390,7 @@ function CollectionModal({
             title: labelText,
             placeholder: sparePartLoading ? "Loading spare parts..." : `Select ${(labelText).toLowerCase()}`,
             value,
+            closeOnSignal: !isOpen || saving,
             disabled: false,
             onChange: (selected) => {
               const picked = selected?.[0] || null;
@@ -52060,8 +52403,36 @@ function CollectionModal({
         )
       ] }, f.id);
     }
+    if (osId && f.key === "collectorName") {
+      const opts = optionsCache.get(f.id) || [];
+      return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
+        label,
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          SearchableSelect$1,
+          {
+            data: opts,
+            itemTextField: "name",
+            itemValueField: "code",
+            multiple: false,
+            title: labelText,
+            placeholder: `Select ${(labelText).toLowerCase()}`,
+            value,
+            closeOnSignal: !isOpen || saving,
+            disabled: false,
+            onChange: (selected) => {
+              const picked = selected?.[0] || null;
+              setFormData({
+                ...formData,
+                [f.id]: picked?.code || picked?.name || ""
+              });
+            }
+          }
+        )
+      ] }, f.id);
+    }
     if (osId) {
       const opts = optionsCache.get(f.id) || [];
+      const isDispatchOfficer = f.id === byKey.get("dispatchOfficer")?.id;
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
         label,
         /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -52072,6 +52443,7 @@ function CollectionModal({
             "aria-label": labelText,
             placeholder: `Select ${(labelText).toLowerCase()}`,
             value,
+            disabled: isDispatchOfficer && !!value,
             onIonChange: (e) => setFormData({ ...formData, [f.id]: e.detail.value || "" }),
             children: opts.map((o) => /* @__PURE__ */ jsxRuntimeExports.jsx(IonSelectOption, { value: o.code, children: o.name }, o.id))
           }
@@ -52113,10 +52485,11 @@ function CollectionModal({
               const next = { ...formData, [f.id]: raw };
               setFormData(next);
               if (isCollectedQuantityField) {
-                console.log({ raw });
                 const msg = validateCollectedQuantityLocal(raw);
                 setQtyError(msg);
-              } else if (qtyError) setQtyError("");
+              } else if (qtyError) {
+                setQtyError("");
+              }
             }
           }
         )
@@ -52140,10 +52513,7 @@ function CollectionModal({
   };
   const handleSave = async () => {
     if (flow?.collectionOnlyForRequester && !collectionAllowed) {
-      showToast(
-        "Only the requester can record collection for this transfer.",
-        "danger"
-      );
+      showToast("Only the requester can record collection for this transfer.", "danger");
       return;
     }
     try {
@@ -52157,14 +52527,7 @@ function CollectionModal({
         const raw = formData[f.id];
         const coerced = coerceForServer(f, raw);
         return { dataElement: f.id, value: coerced };
-      }).filter(
-        (dv) => dv.value !== "" && dv.value !== null && dv.value !== void 0
-      );
-      const payloadData = fields?.filter((de) => !dvForThisForm?.some((fie) => fie?.dataElement === de?.id));
-      if (dvForThisForm.length === 0 || payloadData?.length > 0) {
-        showToast("Please fill all fields.", "warning");
-        return;
-      }
+      }).filter((dv) => dv.value !== "" && dv.value !== null && dv.value !== void 0);
       const payload = {
         event: event.event,
         program: event.program,
@@ -52178,21 +52541,29 @@ function CollectionModal({
         "tracker?async=false&importStrategy=CREATE_AND_UPDATE",
         { events: [payload] }
       );
-      if (res?.status === "OK") {
-        showToast("Collection saved.", "success");
+      const resStatus = String(res?.status || "").toUpperCase();
+      const numericStatus = Number(res?.status);
+      const isOk = resStatus === "OK" || resStatus === "SUCCESS" || numericStatus === 200;
+      const isWarn = resStatus === "WARNING";
+      if (isOk || isWarn) {
+        showToast(
+          isWarn ? "Collection saved with warnings." : "Collection saved.",
+          isWarn ? "warning" : "success"
+        );
         if (program?.id === "vGj7q3Q0fCX") {
           try {
             await notificationSendTrigger("EQUIPMENT_TRANSFER_ACKNOWLEDGMENT", {
               program: event.program,
               event: event.event,
-              orgUnit: event.orgUnit
+              orgUnit: event.orgUnit,
+              payload: event
             });
           } catch (notificationError) {
             console.error("Equipment transfer acknowledgment notification failed:", notificationError);
           }
         }
-        await getEventDetails?.(event?.event);
         onClose?.();
+        await getEventDetails?.(event?.event);
         return;
       }
       if (res?.validationReport?.errorReports?.length) {
@@ -52210,10 +52581,7 @@ function CollectionModal({
       }
       const rawMsg = e?.response?.data?.message;
       if (rawMsg && /completed/i.test(String(rawMsg))) {
-        showToast(
-          "This event is COMPLETED and cannot be edited with your permissions.",
-          "danger"
-        );
+        showToast("This event is COMPLETED and cannot be edited with your permissions.", "danger");
         return;
       }
       showToast("Failed to save collection details.", "danger");
@@ -52221,19 +52589,6 @@ function CollectionModal({
       setSaving(false);
     }
   };
-  useEffect$r(() => {
-    const load = async () => {
-      const result = await getRequestedApprovedCollectedQuantitiesId(program?.id, formSection?.title);
-      const data = {};
-      if (result) {
-        result?.map((res) => {
-          data[res?.key] = res?.fieldId;
-        });
-        setQuantitiesId(data);
-      }
-    };
-    load();
-  }, [isOpen, event, program]);
   const isSaveDisabled = loading || fields.length === 0 || !!qtyError;
   const disablePositive = isSaveDisabled || saving || flow?.collectionOnlyForRequester && (!permissionChecked || !collectionAllowed);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -52248,39 +52603,32 @@ function CollectionModal({
       positiveButtonText: saving ? "Saving…" : "Save",
       cancelButton: "Close",
       title: formSection?.title || "Enter collection details",
-      children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        IonContent,
-        {
-          className: "ion-padding",
-          style: { position: "relative", minHeight: 220 },
-          children: [
-            (loading || saving) && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "div",
-              {
-                style: {
-                  position: "absolute",
-                  inset: 0,
-                  background: "rgba(255,255,255,0.85)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  zIndex: 2,
-                  gap: 12
-                },
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "medium", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { margin: 0, fontSize: 14 }, children: loading ? "Preparing collection form…" : "Saving collection details…" }) })
-                ]
-              }
-            ),
-            error && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "danger", children: error }),
-            qtyError && !loading && !saving && !error && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "danger", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { marginTop: 8, marginBottom: 12 }, children: qtyError }) }),
-            !loading && !saving && !error && fields.length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: "No collection fields configured." }),
-            !loading && !saving && !error && fields.map((f) => renderField(f))
-          ]
-        }
-      )
+      children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", style: { position: "relative", minHeight: 220 }, children: [
+        (loading || saving) && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "div",
+          {
+            style: {
+              position: "absolute",
+              inset: 0,
+              background: "rgba(255,255,255,0.85)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 2,
+              gap: 12
+            },
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "medium", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { margin: 0, fontSize: 14 }, children: loading ? "Preparing collection form…" : "Saving collection details…" }) })
+            ]
+          }
+        ),
+        error && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "danger", children: error }),
+        qtyError && !loading && !saving && !error && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "danger", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { marginTop: 8, marginBottom: 12 }, children: qtyError }) }),
+        !loading && !saving && !error && fields.length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: "No collection fields configured." }),
+        !loading && !saving && !error && fields.map((f) => renderField(f))
+      ] })
     }
   );
 }
@@ -63547,7 +63895,7 @@ function EventPage() {
   const normalizedStatusValue = (statusValue || "").trim().toLowerCase();
   const isStatusUnderReview = normalizedStatusValue === "under review" || normalizedStatusValue === "under_review";
   const isStatusApproved = normalizedStatusValue === "approved";
-  (() => {
+  const shouldShowApproveButton = (() => {
     if (reportRequiresApproval === false) return false;
     const isDraft = normalizedStatusValue === "draft";
     if (isDraft) return false;
@@ -63591,6 +63939,36 @@ function EventPage() {
     return value !== void 0 && value !== null && value !== "";
   }) || false;
   const isTrainingDateSet = trainingDateValue !== void 0 && trainingDateValue !== null && trainingDateValue !== "";
+  const shouldShowApproveButtonEnhanced = (section) => {
+    const sectionButton = programButtons.find(
+      (btn) => btn.programId === event?.program && btn?.sectionId === section?.id
+    );
+    if (!sectionButton?.sectionId) {
+      return shouldShowApproveButton;
+    }
+    const isApprovalSection = sectionButton?.field === approvalFieldId;
+    const isSchedulingSection = sectionButton?.field === trainingDateFieldId;
+    if (isApprovalSection && !trainingValidation.isValid) {
+      return false;
+    }
+    const fieldValue = currentByDE.get(sectionButton?.field);
+    const fieldHasValue = fieldValue !== void 0 && fieldValue !== null && fieldValue !== "";
+    if (isApprovalSection) {
+      if (fieldHasValue) return false;
+      if (isDeclined && flowMain?.hideApprovalWhenDeclined) {
+        return false;
+      }
+      return decisionUnset || !isDeclined;
+    }
+    if (isSchedulingSection) {
+      if (!isApprovedAlready) return false;
+      if (isFeedbackFilled && sectionButton?.hideWhenFeedbackFilled) {
+        return false;
+      }
+      return true;
+    }
+    return shouldShowApproveButton;
+  };
   const getApprovalButtonLabelEnhanced = (section) => {
     const sectionButton = programButtons.find(
       (btn) => btn.programId === event?.program && btn.sectionId === section?.id
@@ -63934,24 +64312,30 @@ function EventPage() {
                     }
                     return null;
                   }
-                  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "no-print", style: { marginBottom: 16 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    ApproveModal,
-                    {
-                      getEventDetails,
-                      program: pg,
-                      openModal,
-                      event,
-                      onClose: () => setOpenModal(false),
-                      setOpenModal,
-                      section,
-                      buttonLabel: getApprovalButtonLabelEnhanced(section),
-                      showAvailable: Boolean(sectionConfig?.showAvailableCount),
-                      available: sectionConfig?.showAvailableCount ?? 0,
-                      statusFieldId,
-                      statusOptions: statusOptionMap,
-                      programIndicatorAvailableCount
-                    }
-                  ) });
+                  if (!shouldShowApproveButtonEnhanced(section)) {
+                    return null;
+                  }
+                  if (shouldShowApproveButtonEnhanced(section) && statusValue !== "Approved" && !isUserCreateEvent && showApprovalButtonBasedOnTransferType) {
+                    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "no-print", style: { marginBottom: 16 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      ApproveModal,
+                      {
+                        getEventDetails,
+                        program: pg,
+                        openModal,
+                        event,
+                        onClose: () => setOpenModal(false),
+                        setOpenModal,
+                        section,
+                        buttonLabel: getApprovalButtonLabelEnhanced(section),
+                        showAvailable: Boolean(sectionConfig?.showAvailableCount),
+                        available: sectionConfig?.showAvailableCount ?? 0,
+                        statusFieldId,
+                        statusOptions: statusOptionMap,
+                        programIndicatorAvailableCount
+                      }
+                    ) });
+                  }
+                  return null;
                 })(),
                 showCollectionCTA && section?.id === cta?.sectionId && hideCollectionIfHasValue(event, formSection) && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "no-print", style: { marginBottom: 16 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                   IonButton,
@@ -67004,6 +67388,26 @@ function UpdateCollectionStatus({
   ] });
 }
 
+const prefillAcknowledgingReceiver = async (allocationData) => {
+  try {
+    const data = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
+
+    if (!data || !data?.prefillReceiverNameEquipment) return { value: null };
+    const task = data?.prefillReceiverNameEquipment;
+
+    if (allocationData?.program !== task?.programId) return { value: null };
+
+    const source = allocationData?.dataValues?.find(
+      (f) => f.dataElement === task?.sourceId
+    );
+
+    if (!source) return { value: null };
+    return { value: { id: task.targetId, value: source.value } };
+  } catch (error) {
+    return { value: null };
+  }
+};
+
 const React$a = await importShared('react');
 const {useContext: useContext$8,useEffect: useEffect$d,useState: useState$c} = React$a;
 const A$1 = (x) => Array.isArray(x) ? x : [];
@@ -67029,8 +67433,8 @@ function AcknowledgeCollectionStatus({
   const getFields = async () => {
     setLoading(true);
     try {
-      const result = await dataStore.get("dataStore/memis/acknowledgementEquipmentReceiptProcesses");
-      const data = result?.data?.programAllocationFields.find((pg) => pg?.programId === program?.id);
+      const result = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
+      const data = result?.acknowledgementEquipmentReceiptProcesses?.programAllocationFields.find((pg) => pg?.programId === program?.id);
       const pa = data?.fields.map((field) => field?.id);
       const dataElements = await dataStore.get(`dataElements?fields=id,name,code,valueType,description,formName,optionSetValue,optionSet[id,name,code,options[id,code,name]]&filter=id:in:[${pa}]`);
       if (data) {
@@ -67068,13 +67472,16 @@ function AcknowledgeCollectionStatus({
       };
       const result = await dataStore.post("tracker?async=false&importStrategy=UPDATE", { events: [payload] });
       if (result?.status === 200) {
+        console.log({ event });
         await notificationSendTrigger("EQUIPMENT_COLLECTION_ACKNOWLEDGMENT", {
           program: event?.program,
           tei: event?.trackedEntity,
           event: {
             event: event?.event,
             program: event?.program
-          }
+          },
+          payload: event,
+          stage: event?.programStage
         });
         showToast("Saved", "success");
         handleCloseModal();
@@ -67192,18 +67599,21 @@ function AcknowledgeCollectionStatus({
     getFields();
   }, []);
   useEffect$d(() => {
-    if (openModal && fields.length > 0) {
-      const initial = {};
-      const user = localStorage.getItem("memisCredentials") ? JSON.parse(localStorage.getItem("memisCredentials")) : null;
-      fields.forEach((f) => {
-        if (user && f?.id === prefillReceiverName?.id) {
-          initial[f.id] = user?.username;
-        }
-      });
-      setFormData(initial);
-      setVisibleFields(fields.map((f) => f?.id));
-      loadEquipmentForFields();
-    }
+    const load = async () => {
+      if (openModal && fields.length > 0) {
+        const initial = {};
+        const rec = await prefillAcknowledgingReceiver(event);
+        fields.forEach((f) => {
+          if (rec && f?.id === rec?.value?.id) {
+            initial[f.id] = rec?.value?.value;
+          }
+        });
+        setFormData(initial);
+        setVisibleFields(fields.map((f) => f?.id));
+        loadEquipmentForFields();
+      }
+    };
+    load();
   }, [openModal, fields]);
   const isSaveDisabled = loading || saving || visibleFields.length === 0 || visibleFields.every((id) => formData[id] === void 0 || formData[id] === "" || formData[id] === null);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
@@ -67441,6 +67851,14 @@ function DeregistrationEventView() {
     const isEngineer = isolationAccess.canWrite;
     const approvalAccess = getSectionAccess(DEREGISTRATION_CONFIG.SECTIONS.APPROVAL);
     const isAdministrator = approvalAccess.canWrite;
+    const isApprovalSection = sectionId === DEREGISTRATION_CONFIG.SECTIONS.APPROVAL;
+    if (isApprovalSection && (eventStatus.status === "approved" || eventStatus.status === "declined")) {
+      return {
+        canEdit: false,
+        canView: access.canRead,
+        title
+      };
+    }
     let canEdit = access.canWrite;
     if (isEngineer && !isAdministrator && (eventStatus.status === "approved" || eventStatus.status === "completed" || eventStatus.status === "declined")) {
       canEdit = false;
@@ -67532,7 +67950,7 @@ function DeregistrationEventView() {
         { events: [updatePayload] }
       );
       if (response?.status === 200 || response?.data?.status === 200) {
-        const teiId = response?.bundleReport?.typeReportMap?.EVENT?.objectReports?.[0]?.uid;
+        const teiId = evnt;
         const configData = await getNotificationEvent(
           event?.program,
           "DEREGISTRATION_APPROVAL",
@@ -67954,23 +68372,15 @@ function DeregistrationEventView() {
                 }
               ),
               expandedSections[section.id] && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginTop: 10 }, children: [
-                sectionPerms?.canEdit && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                sectionPerms?.canEdit && /* @__PURE__ */ jsxRuntimeExports.jsx(
                   IonButton,
                   {
-                    style: {
-                      "--border-radius": "5px",
-                      marginBottom: "15px"
-                    },
-                    fill: "outline",
                     color: "primary",
                     onClick: (e) => {
                       e.stopPropagation();
                       handleSectionEdit(section);
                     },
-                    children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(IonIcon, { icon: createOutline, slot: "start" }),
-                      isApprovalSection ? "Approve" : "Edit Section"
-                    ]
+                    children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", alignItems: "center", gap: 8 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: isApprovalSection ? "Approve" : "Edit Section" }) })
                   }
                 ),
                 section.dataElements.map((de) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginBottom: 18 }, children: [
@@ -69439,11 +69849,9 @@ function ConfirmMaintenanceModal({ program, event, section, getEventDetails, but
   ] });
 }
 
-const hideUpdateButtonAfterEquipmentIsCollected = (field) => {
+const hideUpdateButtonAfterEquipmentIsCollected = async (field) => {
   try {
-    const data =
-      localStorage.getItem("dataStore") &&
-      JSON.parse(localStorage.getItem("dataStore"));
+    const data = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
     if (!data || !data?.equipmentCollectionHideUpdate)
       return {
         showButton: true,
@@ -69482,11 +69890,9 @@ const hideUpdateButtonAfterEquipmentIsCollected = (field) => {
   }
 };
 
-const hideAcknowledgeButton = (allocationData) => {
+const hideAcknowledgeButton = async (allocationData) => {
   try {
-    const data =
-      localStorage.getItem("dataStore") &&
-      JSON.parse(localStorage.getItem("dataStore"));
+    const data = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
     if (!data || !data?.prefillReceiverNameEquipment)
       return {
         showButton: true,
@@ -69527,28 +69933,6 @@ const hideAcknowledgeButton = (allocationData) => {
     return {
       showButton: true,
     };
-  }
-};
-
-const prefillAcknowledgingReceiver = (allocationData) => {
-  try {
-    const data =
-      localStorage.getItem("dataStore") &&
-      JSON.parse(localStorage.getItem("dataStore"));
-
-    if (!data || !data?.prefillReceiverNameEquipment) return { value: null };
-    const task = data?.prefillReceiverNameEquipment;
-
-    if (allocationData?.program !== task?.programId) return { value: null };
-
-    const source = allocationData?.dataValues?.find(
-      (f) => f.dataElement === task?.sourceId
-    );
-    console.log({ source, target: task.targetId, task, allocationData });
-    if (!source) return { value: null };
-    return { value: { id: task.targetId, value: source.value } };
-  } catch (error) {
-    return { value: null };
   }
 };
 
@@ -70076,6 +70460,8 @@ function TeiEvents() {
   ]);
   const [allocationsUserRoles, setAllocationsUserRoles] = useState$1({});
   const [acknowledgesUserRoles, setAcknowledgesUserRoles] = useState$1({});
+  const [isCollected, setIsCollected] = useState$1(false);
+  const [isAllocated, setIsAllocated] = useState$1(false);
   const [user, setUser] = useState$1(null);
   const [openModal, setOpenModal] = useState$1(false);
   const [openModalAck, setOpenModalAck] = useState$1(false);
@@ -70196,7 +70582,7 @@ function TeiEvents() {
         const allocationsResponseData = allocationProc?.configurations?.find(
           (usp) => usp?.programId === progEvent?.data?.program
         );
-        const acknowledgeData = acknowledgeResult?.data?.configurations?.find(
+        const acknowledgeData = acknowledgeResult?.configurations?.find(
           (usp) => usp?.programId === progEvent?.data?.program
         );
         setAcknowledgesUserRoles(acknowledgeData);
@@ -70287,6 +70673,28 @@ function TeiEvents() {
     fetchOuValues();
     getWorkflow(pg?.id);
   }, [event, pg]);
+  useEffect$2(() => {
+    const load = async () => {
+      const res = await hideUpdateButtonAfterEquipmentIsCollected(event);
+      if (res) {
+        setIsCollected(res?.showButton);
+      } else {
+        setIsCollected(false);
+      }
+    };
+    load();
+  }, [event]);
+  useEffect$2(() => {
+    const load = async () => {
+      const res = await hideAcknowledgeButton(event);
+      if (res) {
+        setIsAllocated(res?.showButton);
+      } else {
+        setIsAllocated(false);
+      }
+    };
+    load();
+  }, [event]);
   if (isDeregistrationStageCheck) {
     return /* @__PURE__ */ jsxRuntimeExports.jsx(DeregistrationEventView, {});
   }
@@ -70395,7 +70803,7 @@ function TeiEvents() {
                       ) })
                     ] }, de2.id);
                   }),
-                  hideUpdateButtonAfterEquipmentIsCollected(event)?.showButton && allocationsUserRoles?.userRoles?.find(
+                  isCollected && allocationsUserRoles?.userRoles?.find(
                     (usr) => user?.userRoles?.some((r) => r?.id === usr?.id)
                   ) && allocationsUserRoles?.sectionId === section?.id && /* @__PURE__ */ jsxRuntimeExports.jsx(
                     UpdateCollectionStatus,
@@ -70485,7 +70893,7 @@ function TeiEvents() {
                       getVal
                     }
                   ),
-                  hideAcknowledgeButton(event)?.showButton && acknowledgesUserRoles?.userRoles?.find(
+                  isAllocated && acknowledgesUserRoles?.userRoles?.find(
                     (usr) => user?.userRoles?.some((r) => r?.id === usr?.id)
                   ) && acknowledgesUserRoles?.sectionId === section?.id && /* @__PURE__ */ jsxRuntimeExports.jsx(
                     AcknowledgeCollectionStatus,
@@ -70499,7 +70907,7 @@ function TeiEvents() {
                       section,
                       buttonPositiveName: "Acknowledge",
                       buttonNegativeName: "Cancel",
-                      prefillReceiverName: event && prefillAcknowledgingReceiver(event)?.value
+                      prefillReceiverName: event
                     }
                   )
                 ] })
@@ -70649,13 +71057,14 @@ const MessageView = () => {
                 allocations?.length > 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(IonList, { children: allocations?.map(
                   (allocId, index) => {
                     const serials = m?.text?.split(": ")[1]?.split(",");
+                    const [stageId, eventId] = allocId?.split(".") || [];
                     return /* @__PURE__ */ jsxRuntimeExports.jsx(
                       IonButton,
                       {
                         className: "primary",
                         color: "primary",
                         style: { padding: "10px", cursor: "pointer" },
-                        onClick: () => navigate(`/memis/program/${programId}/${teiId}/${allocId?.split(".")[0]}/${allocId?.split(".")[1]}`),
+                        onClick: () => navigate(`/memis/program/${programId}/${teiId}/${stageId}/${eventId}`),
                         children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonLabel, { style: { color: "white", fontWeight: 600 }, children: [
                           "View Allocation: ",
                           serials?.length > 0 ? serials[index] : "Details"

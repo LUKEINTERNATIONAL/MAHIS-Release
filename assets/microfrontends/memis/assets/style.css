@@ -1529,6 +1529,11 @@ html.ios, html.md {
   gap: 8px;
   flex-shrink: 0;
 }
+.custom-loader {
+  --background: #ffffff;
+  --spinner-color: var(--ion-color-primary);
+  --color: #333;
+}
 .new-btn {
   --background: green;         /* button background color */
   --background-hover: #006400; /* darker green on hover */
