@@ -1,0 +1,171 @@
+import { c3 as HisFooter, H as HisDate, S as Service, _ as _export_sfc } from '../index-DIdCIGDg.js';
+import { v as defineComponent, aF as IonContent, bu as IonPage, dH as IonLoading, y as resolveComponent, z as openBlock, A as createElementBlock, B as createVNode, P as createBlock, J as createCommentVNode, C as withCtx, D as createBaseVNode, K as Fragment } from './vendor-Cbv9TWZo.js';
+import { a as HisStandardForm, _ as _sfc_main$1, I as IDSRReportService } from './ReportMixin.vue_vue_type_script_lang-pCS4zlix.js';
+import { H as HmisHeader } from './MOHReportHeader-BQIZ1jPt.js';
+import { M as Monthly } from './IDSRTableTemplate-CRG-maC5.js';
+
+const _sfc_main = defineComponent({
+  mixins: [_sfc_main$1],
+  components: { IonLoading, IdsrH: HmisHeader, Monthly, HisStandardForm, HisFooter, IonPage, IonContent },
+  data: () => ({
+    formData: {},
+    componentKey: 0,
+    computedFormData: {},
+    idsr: {},
+    btns: [],
+    isLoading: false,
+    fields: [],
+    reportID: -1,
+    periodLabel: "Month Dates",
+    reportTitle: "",
+    periodDates: "",
+    reportName: "MONTHLY DISEASE SURVEILLANCE REPORT",
+    rangeLabel: "Month",
+    range: "",
+    TotalOPDVisits: 0,
+    clinicName: IDSRReportService.getLocationName(),
+    reportReady: false,
+    reportparams: {}
+  }),
+  created() {
+    this.btns = this.getBtns();
+    this.fields = this.getMonthlyFields();
+  },
+  methods: {
+    async onPeriod(form, config, regenerate = false) {
+      this.componentKey += 1;
+      this.formData = form;
+      this.computedFormData = config;
+      this.reportReady = true;
+      this.isLoading = true;
+      this.report = new IDSRReportService();
+      this.report.setRegenerate(regenerate);
+      this.report.setEpiWeek(form.idsrmonth.label);
+      this.report.setStartDate(HisDate.toStandardHisFormat(form.idsrmonth.other.start));
+      this.report.setEndDate(HisDate.toStandardHisFormat(form.idsrmonth.other.end));
+      this.periodDates = this.report.getReportPeriod();
+      this.range = form.idsrmonth.label.split(" ")[0];
+      this.reportTitle = `MOH ${Service.getLocationName()} Monthly IDSR ${this.periodDates}`;
+      try {
+        const idsr = await this.report.requestIDSRMonthly();
+        const visits = await this.report.getAttendance();
+        if (idsr && visits) {
+          this.reportID = "data";
+          this.TotalOPDVisits = visits.length;
+          this.idsr = idsr;
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+    getBtns() {
+      return [
+        {
+          name: "CSV",
+          size: "large",
+          slot: "start",
+          color: "primary",
+          visible: true,
+          onClick: async () => {
+            const rep = this.$refs.rep;
+            rep.onDownload(this.reportTitle);
+          }
+        },
+        {
+          name: "PDF",
+          size: "large",
+          slot: "start",
+          color: "primary",
+          visible: true,
+          onClick: () => this.exportToCustomPDF(this.reportTitle)
+        },
+        {
+          name: "Back",
+          size: "large",
+          slot: "end",
+          color: "warning",
+          visible: true,
+          onClick: () => this.reportReady = false
+        },
+        {
+          name: "Refresh",
+          size: "large",
+          slot: "end",
+          color: "warning",
+          visible: true,
+          onClick: async () => await this.onPeriod(this.formData, this.computedFormData, true)
+        },
+        {
+          name: "Finish",
+          size: "large",
+          slot: "end",
+          color: "success",
+          visible: true,
+          onClick: () => this.$router.push({ path: "/" })
+        }
+      ];
+    }
+  }
+});
+
+const _hoisted_1 = { id: "report-content" };
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_ion_loading = resolveComponent("ion-loading");
+  const _component_his_standard_form = resolveComponent("his-standard-form");
+  const _component_idsr_h = resolveComponent("idsr-h");
+  const _component_monthly = resolveComponent("monthly");
+  const _component_ion_content = resolveComponent("ion-content");
+  const _component_his_footer = resolveComponent("his-footer");
+  const _component_ion_page = resolveComponent("ion-page");
+  return openBlock(), createElementBlock(Fragment, null, [
+    createVNode(_component_ion_loading, {
+      "is-open": _ctx.isLoading,
+      message: "Please wait..."
+    }, null, 8, ["is-open"]),
+    !_ctx.reportReady ? (openBlock(), createBlock(_component_his_standard_form, {
+      key: 0,
+      onOnFinish: _ctx.onPeriod,
+      skipSummary: true,
+      fields: _ctx.fields
+    }, null, 8, ["onOnFinish", "fields"])) : createCommentVNode("", true),
+    _ctx.reportReady ? (openBlock(), createBlock(_component_ion_page, { key: 1 }, {
+      default: withCtx(() => [
+        createVNode(_component_ion_content, null, {
+          default: withCtx(() => [
+            createBaseVNode("div", _hoisted_1, [
+              (openBlock(), createBlock(_component_idsr_h, {
+                key: _ctx.componentKey,
+                reportName: _ctx.reportName,
+                reportparams: _ctx.reportparams,
+                rangeLabel: _ctx.rangeLabel,
+                range: _ctx.range,
+                ref: "header",
+                periodLabel: _ctx.periodLabel,
+                periodDates: _ctx.periodDates,
+                clinicName: _ctx.clinicName,
+                totalOPDVisits: _ctx.TotalOPDVisits
+              }, null, 8, ["reportName", "reportparams", "rangeLabel", "range", "periodLabel", "periodDates", "clinicName", "totalOPDVisits"])),
+              (openBlock(), createBlock(_component_monthly, {
+                key: _ctx.componentKey,
+                onDrillDown: _ctx.onDrillDown,
+                periodDates: _ctx.periodDates,
+                params: _ctx.idsr,
+                month: _ctx.range,
+                ref: "rep"
+              }, null, 8, ["onDrillDown", "periodDates", "params", "month"]))
+            ])
+          ]),
+          _: 1
+        }),
+        createVNode(_component_his_footer, { btns: _ctx.btns }, null, 8, ["btns"])
+      ]),
+      _: 1
+    })) : createCommentVNode("", true),
+    _cache[0] || (_cache[0] = createBaseVNode("div", { id: "print" }, null, -1))
+  ], 64);
+}
+const IDSRMonthly = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+
+export { IDSRMonthly as default };
