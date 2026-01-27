@@ -1,6 +1,6 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/index3.js","assets/_commonjsHelpers.js","assets/index.es.js"])))=>i.map(i=>d[i]);
 import { importShared } from './__federation_fn_import.js';
-import { h as useLocation, i as useNavigate, k as icons, j as jsxRuntimeExports, I as IonMenuToggle, l as IonItem, m as IonIcon, n as IonLabel, _ as __vitePreload, o as IonRefresher, p as IonRefresherContent, M as MEMISContext, q as usePermissions, r as IonMenu, t as IonHeader, v as IonToolbar, w as IonTitle, x as IonContent, y as IonList, L as Link, z as home, A as IonAccordionGroup, C as IonAccordion, E as albumsOutline, e as setActiveProgramCookie, F as settingsSharp, G as IonButtons, H as IonMenuButton, J as IonButton, K as mailOutline, N as notificationsOutline, Q as IonBadge, V as personCircleOutline, W as logOutOutline, X as showToast, Y as Outlet, Z as IonCard, $ as IonCardContent, a0 as IonPage, a1 as IonGrid, a2 as IonRow, a3 as IonCol, a4 as chevronDownOutline, a5 as searchOutline, a6 as checkmarkOutline, a7 as IonInput, a8 as addOutline, a9 as y$1, s as sendNotification, aa as IonSpinner, ab as close, d as documentText, ac as imageOutline, ad as document$1, ae as alertCircleOutline, af as IonText, ag as arrowBackCircleOutline, ah as chevronBackOutline, ai as chevronForwardOutline, aj as saveOutline, ak as IonLoading, al as IonCheckbox, am as IonRadioGroup, an as IonRadio, ao as IonPopover, ap as IonDatetime, aq as IonTextarea, ar as IonCardHeader, as as IonCardTitle, at as parseApiError, au as IonSearchbar, av as filterOutline, aw as optionsOutline, ax as ellipsisVertical, ay as arrowUp, az as arrowDown, aA as removeOutline, aB as pencilOutline, aC as trashOutline, aD as closeOutline, aE as IonActionSheet, aF as IonAlert, g as api, aG as addCircleOutline, u as useDataStore, aH as IonInputPasswordToggle, aI as chevronUpOutline, aJ as checkmarkDoneOutline, aK as timeOutline, aL as createOutline, aM as IonBreadcrumbs, aN as IonBreadcrumb, aO as chevronForward, aP as useParams, aQ as IonAvatar, aR as qrCodeOutline, P as PROGRAMS_FIELDS, aS as IonSelect, aT as IonSelectOption, aU as closeCircle, aV as statsChartOutline, aW as downloadOutline, aX as printOutline, aY as PROGRAM_STAGES_FIELDS, aZ as informationCircleOutline, a_ as homeOutline, a$ as arrowBackOutline, b0 as useNavigation, b1 as add, b2 as eyeOutline, b3 as trash, b4 as chatbubble, b5 as IonItemDivider, b6 as IonModal, b7 as funnelOutline, b8 as addCircle, b9 as refresh, ba as IonTabs, bb as IonTabBar, bc as IonTabButton, bd as settings, be as lockClosed, bf as documentLock, bg as IonTab, bh as useSearchParams, bi as checkmarkCircleOutline, bj as chatbubbleOutline, S as SuspenseLoader, f as Routes, R as Route, bk as Navigate } from './breadCrumb.js';
+import { h as useLocation, i as useNavigate, k as icons, j as jsxRuntimeExports, I as IonMenuToggle, l as IonItem, m as IonIcon, n as IonLabel, _ as __vitePreload, o as IonRefresher, p as IonRefresherContent, M as MEMISContext, q as usePermissions, r as IonMenu, t as IonHeader, v as IonToolbar, w as IonTitle, x as IonContent, y as IonList, L as Link, z as home, A as IonAccordionGroup, C as IonAccordion, E as albumsOutline, e as setActiveProgramCookie, F as settingsSharp, G as IonButtons, H as IonMenuButton, J as IonButton, K as mailOutline, N as notificationsOutline, Q as IonBadge, V as personCircleOutline, W as logOutOutline, X as showToast, Y as Outlet, Z as IonCard, $ as IonCardContent, a0 as IonPage, a1 as IonGrid, a2 as IonRow, a3 as IonCol, a4 as chevronDownOutline, a5 as searchOutline, a6 as checkmarkOutline, a7 as IonInput, a8 as addOutline, a9 as y$1, s as sendNotification, aa as IonSpinner, ab as close, d as documentText, ac as imageOutline, ad as document$1, ae as alertCircleOutline, af as IonText, ag as arrowBackCircleOutline, ah as chevronBackOutline, ai as chevronForwardOutline, aj as saveOutline, ak as IonLoading, al as IonCheckbox, am as IonRadioGroup, an as IonRadio, ao as IonPopover, ap as IonDatetime, aq as IonTextarea, ar as IonCardHeader, as as IonCardTitle, at as useSearchParams, au as parseApiError, av as IonSearchbar, aw as filterOutline, ax as optionsOutline, ay as ellipsisVertical, az as arrowUp, aA as arrowDown, aB as removeOutline, aC as pencilOutline, aD as trashOutline, aE as closeOutline, aF as IonActionSheet, aG as IonAlert, g as api, aH as addCircleOutline, u as useDataStore, aI as IonInputPasswordToggle, aJ as chevronUpOutline, aK as checkmarkDoneOutline, aL as timeOutline, aM as createOutline, aN as IonBreadcrumbs, aO as IonBreadcrumb, aP as chevronForward, aQ as useParams, aR as IonAvatar, aS as qrCodeOutline, P as PROGRAMS_FIELDS, aT as IonSelect, aU as IonSelectOption, aV as closeCircle, aW as statsChartOutline, aX as downloadOutline, aY as printOutline, aZ as PROGRAM_STAGES_FIELDS, a_ as informationCircleOutline, a$ as homeOutline, b0 as arrowBackOutline, b1 as useNavigation, b2 as add, b3 as eyeOutline, b4 as trash, b5 as chatbubble, b6 as IonItemDivider, b7 as IonModal, b8 as funnelOutline, b9 as addCircle, ba as refresh, bb as IonTabs, bc as IonTabBar, bd as IonTabButton, be as settings, bf as lockClosed, bg as documentLock, bh as IonTab, bi as checkmarkCircleOutline, bj as chatbubbleOutline, S as SuspenseLoader, f as Routes, R as Route, bk as Navigate } from './breadCrumb.js';
 import { c as commonjsRequire, d as dataStore, L as LocalForageServiceInstance, q as qrConfigService } from './index3.js';
 import { a as getAugmentedNamespace, c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers.js';
 
@@ -14280,7 +14280,7 @@ const sendNotificationHandler = async (subject, message, userIds) => {
   }
 };
 
-const getUsers$j = async ({ targetOrgUnitId, userRoleId, username }) => {
+const getUsers$k = async ({ targetOrgUnitId, userRoleId, username }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14334,7 +14334,7 @@ const equipmentAllocation = async (config, options) => {
         if (element?.createdBy) {
           users.push({ id: options?.event?.createdBy?.uid });
         } else {
-          const res = await getUsers$j({
+          const res = await getUsers$k({
             targetOrgUnitId:
               element?.facilityLevel === "SAME_ORG_UNIT"
                 ? ou?.id
@@ -14470,7 +14470,7 @@ const equipmentCollectionStatus = async (config, options) => {
   }
 };
 
-const getUsers$i = async ({ targetOrgUnitId, userRoleId, username }) => {
+const getUsers$j = async ({ targetOrgUnitId, userRoleId, username }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14514,7 +14514,7 @@ const equipmentDeregistrationApprovalNotification = async (config, options) => {
     } else {
       for (let index = 0; index < config?.userRoles.length; index++) {
         const element = config?.userRoles[index];
-        const res = await getUsers$i({
+        const res = await getUsers$j({
           targetOrgUnitId: options?.orgUnit,
           userRoleId: element?.id
         });
@@ -14558,7 +14558,7 @@ const equipmentDeregistrationApprovalNotification = async (config, options) => {
   }
 };
 
-const getUsers$h = async ({ targetOrgUnitId, userRoleId, username }) => {
+const getUsers$i = async ({ targetOrgUnitId, userRoleId, username }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14591,7 +14591,7 @@ const equipmentDeregistrationNotification = async (config, options) => {
       if (element?.createdBy) {
         users.push({ id: options?.event?.createdBy?.uid });
       } else {
-        const res = await getUsers$h({
+        const res = await getUsers$i({
           targetOrgUnitId: options?.orgUnit,
           userRoleId: element?.id,
         });
@@ -14645,7 +14645,7 @@ const equipmentDeregistrationNotification = async (config, options) => {
   }
 };
 
-const getUsers$g = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$h = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14672,7 +14672,7 @@ const equipmentRegistrationNotification = async (config, options) => {
       let users = [];
       for (let index = 0; index < config?.userRoles.length; index++) {
         const element = config?.userRoles[index];
-        const res = await getUsers$g({
+        const res = await getUsers$h({
           targetOrgUnitId: options?.orgUnit,
           userRoleId: element?.id,
         });
@@ -14714,7 +14714,7 @@ const equipmentRegistrationNotification = async (config, options) => {
   } catch (error) { }
 };
 
-const getUsers$f = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$g = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14738,7 +14738,7 @@ const equipmentRegistrationTaskNotification = async (config, options) => {
       let users = [];
       for (let index = 0; index < config?.userRoles.length; index++) {
         const element = config?.userRoles[index];
-        const res = await getUsers$f({
+        const res = await getUsers$g({
           targetOrgUnitId: options?.orgUnit,
           userRoleId: element?.id,
         });
@@ -14779,7 +14779,7 @@ const equipmentRegistrationTaskNotification = async (config, options) => {
   } catch (error) {}
 };
 
-const getUsers$e = async ({ targetOrgUnitId, userRoleId, mode }) => {
+const getUsers$f = async ({ targetOrgUnitId, userRoleId, mode }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14811,7 +14811,7 @@ const equipmentRequisitionNotification = async (config, options) => {
     let users = [];
     for (let index = 0; index < config?.userRoles.length; index++) {
       const element = config?.userRoles[index];
-      const res = await getUsers$e({
+      const res = await getUsers$f({
         targetOrgUnitId: options?.orgUnit,
         userRoleId: element?.id,
         mode: config?.facilityLevel,
@@ -14871,7 +14871,7 @@ const equipmentRequisitionNotification = async (config, options) => {
   }
 };
 
-const getUsers$d = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$e = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -14919,7 +14919,7 @@ const equipmentRequisitionNotificationApproval = async (config, options) => {
         (roles) => roles.accepted === "true"
       );
       if (approvedRole) {
-        const approvedUsers = await getUsers$d({
+        const approvedUsers = await getUsers$e({
           targetOrgUnitId:
             approvedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.data?.id
@@ -14935,7 +14935,7 @@ const equipmentRequisitionNotificationApproval = async (config, options) => {
         (roles) => roles.accepted === "false"
       );
       if (declinedRole) {
-        const declinedUsers = await getUsers$d({
+        const declinedUsers = await getUsers$e({
           targetOrgUnitId:
             declinedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.id
@@ -14976,7 +14976,7 @@ const equipmentRequisitionNotificationApproval = async (config, options) => {
   }
 };
 
-const getUsers$c = async ({ targetOrgUnitId, userRoleId, username }) => {
+const getUsers$d = async ({ targetOrgUnitId, userRoleId, username }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -15016,7 +15016,7 @@ const equipmentSLANotification = async (config, options) => {
       if (element?.createdBy) {
         users.push({ id: options?.event?.createdBy?.uid });
       } else {
-        const res = await getUsers$c({
+        const res = await getUsers$d({
           targetOrgUnitId: options?.orgUnit,
           userRoleId: element?.id,
         });
@@ -15072,7 +15072,7 @@ const equipmentSLANotification = async (config, options) => {
   }
 };
 
-const getUsers$b = async ({ userRoleId, facilityLevel }) => {
+const getUsers$c = async ({ userRoleId, facilityLevel }) => {
   let usersResp = null;
   try {
     if (facilityLevel === "NATIONAL_LEVEL") {
@@ -15135,7 +15135,7 @@ const equipmentTransferOutsideSubmitNotification = async (config, options) => {
     let users = [];
     for (const role of config?.userRoles || []) {
       if (role.facilityLevel === "NATIONAL_LEVEL") {
-        const roleUsers = await getUsers$b({
+        const roleUsers = await getUsers$c({
           userRoleId: role.id,
           facilityLevel: role.facilityLevel,
         });
@@ -15154,7 +15154,7 @@ const equipmentTransferOutsideSubmitNotification = async (config, options) => {
   }
 };
 
-const getUsers$a = async ({ targetOrgUnitId, userRoleId, isPermanent }) => {
+const getUsers$b = async ({ targetOrgUnitId, userRoleId, isPermanent }) => {
   console.log({ targetOrgUnitId, userRoleId });
 
   let usersResp = null;
@@ -15239,7 +15239,7 @@ const equipmentTransferNotification = async (config, options) => {
 
     for (let index = 0; index < roles.length; index++) {
       const element = roles[index];
-      const res = await getUsers$a({
+      const res = await getUsers$b({
         targetOrgUnitId: current_location?.value,
         userRoleId: element?.id,
         isPermanent,
@@ -15288,7 +15288,7 @@ const equipmentTransferNotification = async (config, options) => {
   } catch (error) { }
 };
 
-const getUsers$9 = async ({ targetOrgUnitId, userRoleId, facilityLevel }) => {
+const getUsers$a = async ({ targetOrgUnitId, userRoleId, facilityLevel }) => {
   let usersResp = null;
   try {
     if (facilityLevel === "SAME_ORG_UNIT" && targetOrgUnitId) {
@@ -15376,7 +15376,7 @@ const equipmentTransferOutsideApprovalNotification = async (config, options) => 
 
           if (role.facilityLevel === "SAME_ORG_UNIT") {
             // Hospital Administrator at source facility
-            roleUsers = await getUsers$9({
+            roleUsers = await getUsers$a({
               targetOrgUnitId: ou?.data?.id,
               userRoleId: role.id,
               facilityLevel: role.facilityLevel,
@@ -15385,7 +15385,7 @@ const equipmentTransferOutsideApprovalNotification = async (config, options) => 
             // Biomedical Engineer at target facility
             // Note: In a real implementation, you'd need to get the target facility ID
             // from the transfer data (e.g., from a target facility data element)
-            roleUsers = await getUsers$9({
+            roleUsers = await getUsers$a({
               userRoleId: role.id,
               facilityLevel: role.facilityLevel,
             });
@@ -15398,7 +15398,7 @@ const equipmentTransferOutsideApprovalNotification = async (config, options) => 
       // If declined, notify Hospital Administrator (source) and Creator
       for (const role of config?.userRoles || []) {
         if (role.accepted === "false" || role.facilityLevel === "SAME_ORG_UNIT") {
-          const roleUsers = await getUsers$9({
+          const roleUsers = await getUsers$a({
             targetOrgUnitId: ou?.data?.id,
             userRoleId: role.id,
             facilityLevel: role.facilityLevel,
@@ -15426,7 +15426,7 @@ const equipmentTransferOutsideApprovalNotification = async (config, options) => 
   }
 };
 
-const getUsers$8 = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$9 = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -15487,7 +15487,7 @@ const equipmentTransferApprovalNotification = async (config, options) => {
         (roles) => roles.accepted === "true"
       );
       if (approvedRole) {
-        const approvedUsers = await getUsers$8({
+        const approvedUsers = await getUsers$9({
           targetOrgUnitId:
             approvedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.data?.id
@@ -15502,7 +15502,7 @@ const equipmentTransferApprovalNotification = async (config, options) => {
         (roles) => roles.accepted === "false"
       );
       if (declinedRole) {
-        const declinedUsers = await getUsers$8({
+        const declinedUsers = await getUsers$9({
           targetOrgUnitId:
             declinedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.data?.id
@@ -15559,7 +15559,7 @@ const equipmentTransferApprovalNotification = async (config, options) => {
   }
 };
 
-const getUsers$7 = async ({ targetOrgUnitId, userRoleId, facilityLevel }) => {
+const getUsers$8 = async ({ targetOrgUnitId, userRoleId, facilityLevel }) => {
   let usersResp = null;
 
   try {
@@ -15632,14 +15632,14 @@ const equipmentTransferOutsideAcknowledgmentNotification = async (config, option
 
       if (role.facilityLevel === "NATIONAL_LEVEL") {
         // PAM Central
-        roleUsers = await getUsers$7({
+        roleUsers = await getUsers$8({
           userRoleId: role.id,
           facilityLevel: role.facilityLevel,
         });
 
       } else if (role.facilityLevel === "SOURCE_FACILITY") {
         // Hospital Administrator at source facility
-        roleUsers = await getUsers$7({
+        roleUsers = await getUsers$8({
           targetOrgUnitId: ou?.data?.id,
           userRoleId: role.id,
           facilityLevel: role.facilityLevel,
@@ -15668,7 +15668,7 @@ const equipmentTransferOutsideAcknowledgmentNotification = async (config, option
   }
 };
 
-const getUsers$6 = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$7 = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -15731,7 +15731,7 @@ const equipmentTransferAcknowledgmentNotification = async (config, options) => {
         ? data?.data?.orgUnit
         : null;
 
-      const wardUsers = await getUsers$6({
+      const wardUsers = await getUsers$7({
         targetOrgUnitId,
         userRoleId: wardInChargeRole?.id,
       });
@@ -15746,7 +15746,7 @@ const equipmentTransferAcknowledgmentNotification = async (config, options) => {
           ? data?.data?.orgUnit
           : null;
 
-        const engineerUsers = await getUsers$6({
+        const engineerUsers = await getUsers$7({
           targetOrgUnitId,
           userRoleId: engineerRole?.id,
         });
@@ -15784,7 +15784,7 @@ const equipmentTransferAcknowledgmentNotification = async (config, options) => {
   }
 };
 
-const getUsers$5 = async ({ targetOrgUnitId, userRoleId, mode }) => {
+const getUsers$6 = async ({ targetOrgUnitId, userRoleId, mode }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -15819,7 +15819,7 @@ const managingUserTrainingNotification = async (config, options) => {
     // Notify configured user roles (Hospital Administrators)
     for (let index = 0; index < config?.userRoles.length; index++) {
       const element = config?.userRoles[index];
-      const res = await getUsers$5({
+      const res = await getUsers$6({
         targetOrgUnitId: options?.orgUnit,
         userRoleId: element?.id,
         mode: config?.facilityLevel,
@@ -15849,7 +15849,7 @@ const managingUserTrainingNotification = async (config, options) => {
             );
             
             for (const ward of wardSearch?.data?.organisationUnits || []) {
-              const wardUsers = await getUsers$5({
+              const wardUsers = await getUsers$6({
                 targetOrgUnitId: ward.id,
                 userRoleId: config.wardInChargeRoleId,
                 mode: "SAME_ORG_UNIT",
@@ -15897,7 +15897,7 @@ const managingUserTrainingNotification = async (config, options) => {
   } catch (error) {}
 };
 
-const getUsers$4 = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$5 = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -15946,7 +15946,7 @@ const trainingRequestNotificationApproval = async (config, options) => {
       trainingType?.value === config?.decision?.notifyEngineerIfTrainingIs
     ) {
       const rol = roles?.find((r) => r?.notifiedOnTechnicalTraining === "true");
-      const res = await getUsers$4({
+      const res = await getUsers$5({
         targetOrgUnitId:
           rol?.facilityLevel === "SAME_ORG_UNIT" ? ou?.id : ou?.parent?.id,
         userRoleId: rol?.id,
@@ -15956,7 +15956,7 @@ const trainingRequestNotificationApproval = async (config, options) => {
       const rol = roles?.find(
         (r) => r?.notifiedOnTechnicalTraining === "false"
       );
-      const res = await getUsers$4({
+      const res = await getUsers$5({
         targetOrgUnitId:
           rol?.facilityLevel === "SAME_ORG_UNIT" ? ou?.id : ou?.parent?.id,
         userRoleId: rol?.id,
@@ -15992,20 +15992,23 @@ const trainingRequestNotificationApproval = async (config, options) => {
   } catch (error) { }
 };
 
-const getUsers$3 = async ({ targetOrgUnitId, userRoleId, mode }) => {
+const getUsers$4 = async ({ targetOrgUnitId, userRoleId, mode }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
-      const org = await dataStore.get(
-        `organisationUnits/${targetOrgUnitId}.json?fields=id,name,code,level,parent(id,name,code,level)`
-      );
+      // const org = await dataStore.get(
+      //   `organisationUnits/${targetOrgUnitId}.json?fields=id,name,code,level,parent(id,name,code,level)`
+      // );
+      const ouData = await LocalForageServiceInstance.getItem("organisationUnits", "organisationUnits");
+      const org = ouData.find(org => org?.id === targetOrgUnitId);
+
       usersResp = await dataStore.get(
         `users.json?paging=false&fields=id,username,displayName,organisationUnits(id,name,level,parent)
         &filter=userRoles.id:eq:${userRoleId}&filter=organisationUnits.id:eq:${mode === "PARENT_ORG_UNIT"
-          ? org?.data?.parent?.id
+          ? org?.parent?.id
           : mode === "CHILD_ORG_UNIT"
-            ? org?.data?.children[0]?.id
-            : org?.data?.id
+            ? org?.children[0]?.id
+            : org?.id
         }`
       );
     } else {
@@ -16019,6 +16022,7 @@ const getUsers$3 = async ({ targetOrgUnitId, userRoleId, mode }) => {
 
   return usersResp?.data?.users?.map((u) => ({ id: u.id })) || [];
 };
+
 const reportCreationNotification = async (config, options) => {
   try {
     const loggedInUser = await LocalForageServiceInstance.getItem("userRes", "user");
@@ -16026,10 +16030,10 @@ const reportCreationNotification = async (config, options) => {
     let users = [];
     for (let index = 0; index < config?.userRoles.length; index++) {
       const element = config?.userRoles[index];
-      const res = await getUsers$3({
+      const res = await getUsers$4({
         targetOrgUnitId: options?.orgUnit,
         userRoleId: element?.id,
-        mode: userRole && config?.userAtLowerLevel?.facilityLevel || config?.facilityLevel,
+        mode: (userRole && config?.userAtLowerLevel?.facilityLevel) || config?.facilityLevel,
       });
 
       users.push(...res);
@@ -16038,20 +16042,21 @@ const reportCreationNotification = async (config, options) => {
       `tracker/events/${options?.teiId}?program=${options?.program}&fields=*`
     );
 
-    const ou = await dataStore.get(
-      `organisationUnits/${data?.data?.orgUnit}?fields=name,id`
-    );
-
+    // const ou = await dataStore.get(
+    //   `organisationUnits/${data?.data?.orgUnit}?fields=name,id`
+    // );
+    const ouData = await LocalForageServiceInstance.getItem("organisationUnits", "organisationUnits");
+    const ou = ouData.find(org => org?.id === data?.data?.orgUnit);
     const subject = `New report has been generated. Waiting for your review. | ${options?.program
       }.${options?.teiId}`;
-    const body = `The report ${ou?.data?.name && "from " + ou?.data?.name} is waiting approval.`;
+    const body = `The report ${ou?.name && "from " + ou?.name} is waiting approval.`;
 
     const usersId = users?.map((id) => id?.id);
     sendNotificationHandler(subject, body, usersId);
   } catch (error) { }
 };
 
-const getUsers$2 = async ({ targetOrgUnitId, userRoleId }) => {
+const getUsers$3 = async ({ targetOrgUnitId, userRoleId }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -16101,7 +16106,7 @@ const reportCreationNotificationApproval = async (config, options) => {
         (roles) => roles.accepted === "true"
       );
       if (approvedRole) {
-        const approvedUsers = await getUsers$2({
+        const approvedUsers = await getUsers$3({
           targetOrgUnitId:
             approvedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.id
@@ -16116,7 +16121,7 @@ const reportCreationNotificationApproval = async (config, options) => {
         (roles) => roles.accepted === "false"
       );
       if (declinedRole) {
-        const declinedUsers = await getUsers$2({
+        const declinedUsers = await getUsers$3({
           targetOrgUnitId:
             declinedRole?.facilityLevel === "SAME_ORG_UNIT"
               ? ou?.id
@@ -16235,7 +16240,7 @@ const sparePartCollectionStatus = async (config, options) => {
   }
 };
 
-const getUsers$1 = async ({ targetOrgUnitId, userRoleId, username }) => {
+const getUsers$2 = async ({ targetOrgUnitId, userRoleId, username }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -16296,7 +16301,7 @@ const equipmentAllocationDefault = async (config, options) => {
                 : null,
         userRoleId: element?.id,
       };
-      const res = await getUsers$1(payloadData);
+      const res = await getUsers$2(payloadData);
       users.push(...res);
     }
 
@@ -16341,7 +16346,7 @@ const equipmentAllocationDefault = async (config, options) => {
   }
 };
 
-const getUsers = async ({ targetOrgUnitId, userRoleId, username }) => {
+const getUsers$1 = async ({ targetOrgUnitId, userRoleId, username }) => {
   let usersResp = null;
   try {
     if (targetOrgUnitId) {
@@ -16401,7 +16406,7 @@ const maintencaaneCreateNotification = async (config, options) => {
                 : null,
         userRoleId: element?.id,
       };
-      const res = await getUsers(payloadData);
+      const res = await getUsers$1(payloadData);
       users.push(...res);
     }
 
@@ -16527,7 +16532,9 @@ const notificationSendTrigger = async (event, options) => {
       case "MAINTENANCE_DECLINE":
         equipmentRequisitionNotificationApproval(config, options);
         break;
-
+      case "REFERRAL_MAINTENANCE_NOTIFY_ADMIN":
+        managingUserTrainingNotification(config, options);
+        break;
       default:
         break;
     }
@@ -17919,26 +17926,124 @@ const RefModal = ({
   );
 };
 
+const getUsers = async ({ targetOrgUnitId, userRoleId, mode }) => {
+  let usersResp = null;
+  try {
+    if (targetOrgUnitId) {
+      const ouData = await LocalForageServiceInstance.getItem("organisationUnits", "organisationUnits");
+      const org = ouData.find(org => org?.id === targetOrgUnitId);
+
+      usersResp = await dataStore.get(
+        `users.json?paging=false&fields=id,username,displayName,organisationUnits(id,name,level,parent)
+        &filter=userRoles.id:eq:${userRoleId}&filter=organisationUnits.id:eq:${mode === "PARENT_ORG_UNIT"
+          ? org?.parent?.id
+          : mode === "CHILD_ORG_UNIT"
+            ? org?.children[0]?.id
+            : org?.id
+        }`
+      );
+    } else {
+      usersResp = await dataStore.get(
+        `users.json?paging=false&fields=id,username,displayName&filter=userRoles.id:eq:${userRoleId}`
+      );
+    }
+  } catch (e) {
+    console.error("User role/orgUnit search failed:", e);
+  }
+
+  return usersResp?.data?.users?.map((u) => ({ id: u.id })) || [];
+};
+
+const referralApprovalNotification = async (config, options) => {
+  try {
+    const loggedInUser = await LocalForageServiceInstance.getItem("userRes", "user");
+    const userRole = loggedInUser?.userRoles.find(us => us?.id === config?.userAtLowerLevel?.id);
+    let users = [];
+    for (let index = 0; index < config?.userRoles.length; index++) {
+      const element = config?.userRoles[index];
+      const res = await getUsers({
+        targetOrgUnitId: options?.orgUnit,
+        userRoleId: element?.id,
+        mode: userRole && config?.userAtLowerLevel?.facilityLevel || config?.facilityLevel,
+      });
+
+      users.push(...res);
+    }
+    const data = await dataStore.get(
+      `tracker/trackedEntities/${options?.teiId}?program=${options?.programId}&fields=*`
+    );
+
+    const ouData = await LocalForageServiceInstance.getItem("organisationUnits", "organisationUnits");
+    const ou = ouData.find(org => org?.id === data?.data?.orgUnit);
+    const optionSets = await LocalForageServiceInstance.getItem("optionSets", "metadata"
+    );
+    const equip = optionSets?.find(opt => opt?.id === config?.equipment?.optionSetId);
+
+    const equipment = data?.data?.attributes?.find(
+      (f) => f?.attribute === config?.equipment?.serialNumber
+    );
+    const equipmentName = data?.data?.attributes?.find(
+      (f) => f?.attribute === config?.equipment?.equipmentAttribute
+    );
+
+    const equipmentLabel =
+      equip?.options.find((eq) => eq?.code === equipmentName?.value)?.name ||
+      "Equipment";
+
+    const serialLabel = equipment?.value
+      ? ` with serial number ${equipment?.value}`
+      : "";
+
+    const subject = `${equipmentLabel}${serialLabel} requires referral for maintenance under valid warranty. Please contact the supplier. | ${options?.program}.${options?.trackedEntity}.${options?.payload?.programStage}.${options?.teiId}`;
+
+    const body = `The ${equipmentLabel}${serialLabel} requires referral for maintenance under a valid warranty. Please contact the supplier. 
+    ${ou?.name && "The request is from " + ou?.name}`;
+
+    const usersId = users?.map((id) => id?.id);
+
+    sendNotificationHandler(subject, body, usersId);
+    return { status: 201 }
+  } catch (error) {
+    console.log({ error });
+
+    return {
+      status: 500
+    }
+  }
+};
+
 function AcknowledgementReferralMaintenance({
+  formData,
+  program,
   isOpen,
-  onClose
+  onClose,
+  orgUnit
 }) {
-  const sendNortification = () => {
-    console.log("Notification sent");
-    onClose();
+  const [searchParams] = new useSearchParams();
+  const sendNortification = async () => {
+    try {
+      const config = await getNotificationEvent(program?.id, "REFERRAL_MAINTENANCE_NOTIFY_ADMIN");
+      const programId = searchParams.get("programId");
+      const teiId = searchParams.get("equipmentId");
+      await referralApprovalNotification(config, { program, programId, orgUnit, payload: formData, teiId });
+      console.log("Notification sent");
+      onClose();
+    } catch (error) {
+      console.log("Notification not sent");
+    }
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     RefModal,
     {
       isOpen,
       onClose,
-      okButtonText: "Send Notification",
+      okButtonText: "Notify Admin",
       okButtonIonicThemeColor: "success",
       onOkClick: sendNortification,
       children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "ack-modal-content", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { className: "ack-title", children: /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { children: "Warranty Confirmed" }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { className: "ack-description", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "This equipment is currently covered by a valid service warranty." }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "ack-info", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Contact the authorized warranty service provider." }) }) })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "ack-info", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Notify hospital administrator to contact the authorized warranty service provider." }) }) })
       ] })
     }
   );
@@ -18514,7 +18619,7 @@ function FormComponent({
     }
   }, [selectedStage, trackedEntity, program, editData, user, location.search]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonPage, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", fullscreen: true, children: [
+    !ackModalOpen && /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", fullscreen: true, children: [
       queryParams.get("q") === "add" && program?.programType === "WITH_REGISTRATION" && !selectedStage && /* @__PURE__ */ jsxRuntimeExports.jsx(
         MultiEntryCheckBox,
         {
@@ -18606,6 +18711,8 @@ function FormComponent({
       {
         isOpen: ackModalOpen,
         formData,
+        program,
+        orgUnit: selectedOrganisationUnit,
         onClose: () => {
           setAckModalOpen(false);
           navigate(window.location.pathname, { replace: true });
@@ -69425,7 +69532,10 @@ function JobCardGenerate({
   const handleSubmit = async () => {
     setSaving(true);
     try {
-      if (!event) return console.error("Event data missing");
+      if (!event) {
+        console.error("Event data missing");
+        return;
+      }
       const values = formData ? Object.keys(formData).map((key) => ({ dataElement: key, value: formData[key] })) : [];
       const payload = {
         event: event?.event,
@@ -69456,7 +69566,8 @@ function JobCardGenerate({
     }
   };
   const getOptions = async (optionSet) => {
-    const opt = await dataStore.query(`optionSets/${optionSet}?fields=options[id,code,name]`);
+    const options = await LocalForageServiceInstance.getItem("optionSets", "metadata");
+    const opt = options.find((opti) => opti?.id === optionSet);
     return opt.options || [];
   };
   useEffect$6(() => {
