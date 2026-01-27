@@ -1530,9 +1530,7 @@ html.ios, html.md {
   flex-shrink: 0;
 }
 .custom-loader {
-  --background: #ffffff;
   --spinner-color: var(--ion-color-primary);
-  --color: #333;
 }
 .new-btn {
   --background: green;         /* button background color */

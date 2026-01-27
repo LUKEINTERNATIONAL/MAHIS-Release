@@ -35339,6 +35339,138 @@ function useViewTransitionState(to, { relative } = {}) {
 }
 await importShared('react');
 
+/*! js-cookie v3.0.5 | MIT */
+/* eslint-disable no-var */
+function assign (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+    for (var key in source) {
+      target[key] = source[key];
+    }
+  }
+  return target
+}
+/* eslint-enable no-var */
+
+/* eslint-disable no-var */
+var defaultConverter = {
+  read: function (value) {
+    if (value[0] === '"') {
+      value = value.slice(1, -1);
+    }
+    return value.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent)
+  },
+  write: function (value) {
+    return encodeURIComponent(value).replace(
+      /%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g,
+      decodeURIComponent
+    )
+  }
+};
+/* eslint-enable no-var */
+
+/* eslint-disable no-var */
+
+function init (converter, defaultAttributes) {
+  function set (name, value, attributes) {
+    if (typeof document === 'undefined') {
+      return
+    }
+
+    attributes = assign({}, defaultAttributes, attributes);
+
+    if (typeof attributes.expires === 'number') {
+      attributes.expires = new Date(Date.now() + attributes.expires * 864e5);
+    }
+    if (attributes.expires) {
+      attributes.expires = attributes.expires.toUTCString();
+    }
+
+    name = encodeURIComponent(name)
+      .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
+      .replace(/[()]/g, escape);
+
+    var stringifiedAttributes = '';
+    for (var attributeName in attributes) {
+      if (!attributes[attributeName]) {
+        continue
+      }
+
+      stringifiedAttributes += '; ' + attributeName;
+
+      if (attributes[attributeName] === true) {
+        continue
+      }
+
+      // Considers RFC 6265 section 5.2:
+      // ...
+      // 3.  If the remaining unparsed-attributes contains a %x3B (";")
+      //     character:
+      // Consume the characters of the unparsed-attributes up to,
+      // not including, the first %x3B (";") character.
+      // ...
+      stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
+    }
+
+    return (document.cookie =
+      name + '=' + converter.write(value, name) + stringifiedAttributes)
+  }
+
+  function get (name) {
+    if (typeof document === 'undefined' || (arguments.length && !name)) {
+      return
+    }
+
+    // To prevent the for loop in the first place assign an empty array
+    // in case there are no cookies at all.
+    var cookies = document.cookie ? document.cookie.split('; ') : [];
+    var jar = {};
+    for (var i = 0; i < cookies.length; i++) {
+      var parts = cookies[i].split('=');
+      var value = parts.slice(1).join('=');
+
+      try {
+        var found = decodeURIComponent(parts[0]);
+        jar[found] = converter.read(value, found);
+
+        if (name === found) {
+          break
+        }
+      } catch (e) {}
+    }
+
+    return name ? jar[name] : jar
+  }
+
+  return Object.create(
+    {
+      set,
+      get,
+      remove: function (name, attributes) {
+        set(
+          name,
+          '',
+          assign({}, attributes, {
+            expires: -1
+          })
+        );
+      },
+      withAttributes: function (attributes) {
+        return init(this.converter, assign({}, this.attributes, attributes))
+      },
+      withConverter: function (converter) {
+        return init(assign({}, this.converter, converter), this.attributes)
+      }
+    },
+    {
+      attributes: { value: Object.freeze(defaultAttributes) },
+      converter: { value: Object.freeze(converter) }
+    }
+  )
+}
+
+var api = init(defaultConverter, { path: '/' });
+
 const React$2 = await importShared('react');
 
 const MEMISContext = {
@@ -39093,4 +39225,4 @@ const sendNotification = async (
   }
 };
 
-export { IonPage as $, IonAccordion as A, BrowserRouter as B, albumsOutline as C, DataStoreProvider as D, settingsSharp as E, IonButtons as F, IonMenuButton as G, IonButton as H, IonMenuToggle as I, mailOutline as J, notificationsOutline as K, Link as L, MEMISContext as M, IonBadge as N, ORGANISATION_UNITS_DESCENDANTS as O, PROGRAMS_FIELDS as P, personCircleOutline as Q, Route as R, SuspenseLoader as S, ToastItem as T, USER_ORGANISATION_UNITS as U, logOutOutline as V, showToast as W, Outlet as X, IonCard as Y, IonCardContent as Z, __vitePreload as _, PROGRAM_RULES_FIELDS as a, useNavigation as a$, IonGrid as a0, IonRow as a1, IonCol as a2, chevronDownOutline as a3, searchOutline as a4, checkmarkOutline as a5, IonInput as a6, addOutline as a7, y as a8, IonSpinner as a9, pencilOutline as aA, trashOutline as aB, closeOutline as aC, IonActionSheet as aD, IonAlert as aE, addCircleOutline as aF, IonInputPasswordToggle as aG, chevronUpOutline as aH, checkmarkDoneOutline as aI, timeOutline as aJ, createOutline as aK, IonBreadcrumbs as aL, IonBreadcrumb as aM, chevronForward as aN, useParams as aO, IonAvatar as aP, qrCodeOutline as aQ, IonSelect as aR, IonSelectOption as aS, closeCircle as aT, statsChartOutline as aU, downloadOutline as aV, printOutline as aW, PROGRAM_STAGES_FIELDS as aX, informationCircleOutline as aY, homeOutline as aZ, arrowBackOutline as a_, close as aa, imageOutline as ab, document$1 as ac, alertCircleOutline as ad, IonText as ae, arrowBackCircleOutline as af, chevronBackOutline as ag, chevronForwardOutline as ah, saveOutline as ai, IonLoading as aj, IonCheckbox as ak, IonRadioGroup as al, IonRadio as am, IonPopover as an, IonDatetime as ao, IonTextarea as ap, IonCardHeader as aq, IonCardTitle as ar, parseApiError as as, IonSearchbar as at, filterOutline as au, optionsOutline as av, ellipsisVertical as aw, arrowUp as ax, arrowDown as ay, removeOutline as az, PermissionsProvider as b, add as b0, eyeOutline as b1, trash as b2, chatbubble as b3, IonItemDivider as b4, IonModal as b5, funnelOutline as b6, addCircle as b7, refresh as b8, IonTabs as b9, getScrollElement as bA, scrollByPoint as bB, createAnimation as bC, getIonPageElement as bD, IonTabBar as ba, IonTabButton as bb, settings as bc, lockClosed as bd, documentLock as be, IonTab as bf, useSearchParams as bg, checkmarkCircleOutline as bh, chatbubbleOutline as bi, Navigate as bj, isRTL$1 as bk, createGesture as bl, clamp as bm, doc as bn, pointerCoord as bo, readTask as bp, findClosestIonContent as bq, componentOnReady as br, writeTask$1 as bs, scrollToTop as bt, Keyboard as bu, addEventListener$1 as bv, removeEventListener as bw, KeyboardResize as bx, win$2 as by, raf as bz, setupIonicReact as c, documentText as d, setActiveProgramCookie as e, Routes as f, useLocation as g, useNavigate as h, icons as i, jsxRuntimeExports as j, IonItem as k, IonIcon as l, IonLabel as m, IonRefresher as n, IonRefresherContent as o, usePermissions as p, IonMenu as q, IonHeader as r, sendNotification as s, IonToolbar as t, useDataStore as u, IonTitle as v, IonContent as w, IonList as x, home as y, IonAccordionGroup as z };
+export { IonCardContent as $, IonAccordionGroup as A, BrowserRouter as B, IonAccordion as C, DataStoreProvider as D, albumsOutline as E, settingsSharp as F, IonButtons as G, IonMenuButton as H, IonMenuToggle as I, IonButton as J, mailOutline as K, Link as L, MEMISContext as M, notificationsOutline as N, ORGANISATION_UNITS_DESCENDANTS as O, PROGRAMS_FIELDS as P, IonBadge as Q, Route as R, SuspenseLoader as S, ToastItem as T, USER_ORGANISATION_UNITS as U, personCircleOutline as V, logOutOutline as W, showToast as X, Outlet as Y, IonCard as Z, __vitePreload as _, PROGRAM_RULES_FIELDS as a, arrowBackOutline as a$, IonPage as a0, IonGrid as a1, IonRow as a2, IonCol as a3, chevronDownOutline as a4, searchOutline as a5, checkmarkOutline as a6, IonInput as a7, addOutline as a8, y as a9, removeOutline as aA, pencilOutline as aB, trashOutline as aC, closeOutline as aD, IonActionSheet as aE, IonAlert as aF, addCircleOutline as aG, IonInputPasswordToggle as aH, chevronUpOutline as aI, checkmarkDoneOutline as aJ, timeOutline as aK, createOutline as aL, IonBreadcrumbs as aM, IonBreadcrumb as aN, chevronForward as aO, useParams as aP, IonAvatar as aQ, qrCodeOutline as aR, IonSelect as aS, IonSelectOption as aT, closeCircle as aU, statsChartOutline as aV, downloadOutline as aW, printOutline as aX, PROGRAM_STAGES_FIELDS as aY, informationCircleOutline as aZ, homeOutline as a_, IonSpinner as aa, close as ab, imageOutline as ac, document$1 as ad, alertCircleOutline as ae, IonText as af, arrowBackCircleOutline as ag, chevronBackOutline as ah, chevronForwardOutline as ai, saveOutline as aj, IonLoading as ak, IonCheckbox as al, IonRadioGroup as am, IonRadio as an, IonPopover as ao, IonDatetime as ap, IonTextarea as aq, IonCardHeader as ar, IonCardTitle as as, parseApiError as at, IonSearchbar as au, filterOutline as av, optionsOutline as aw, ellipsisVertical as ax, arrowUp as ay, arrowDown as az, PermissionsProvider as b, useNavigation as b0, add as b1, eyeOutline as b2, trash as b3, chatbubble as b4, IonItemDivider as b5, IonModal as b6, funnelOutline as b7, addCircle as b8, refresh as b9, raf as bA, getScrollElement as bB, scrollByPoint as bC, createAnimation as bD, getIonPageElement as bE, IonTabs as ba, IonTabBar as bb, IonTabButton as bc, settings as bd, lockClosed as be, documentLock as bf, IonTab as bg, useSearchParams as bh, checkmarkCircleOutline as bi, chatbubbleOutline as bj, Navigate as bk, isRTL$1 as bl, createGesture as bm, clamp as bn, doc as bo, pointerCoord as bp, readTask as bq, findClosestIonContent as br, componentOnReady as bs, writeTask$1 as bt, scrollToTop as bu, Keyboard as bv, addEventListener$1 as bw, removeEventListener as bx, KeyboardResize as by, win$2 as bz, setupIonicReact as c, documentText as d, setActiveProgramCookie as e, Routes as f, api as g, useLocation as h, useNavigate as i, jsxRuntimeExports as j, icons as k, IonItem as l, IonIcon as m, IonLabel as n, IonRefresher as o, IonRefresherContent as p, usePermissions as q, IonMenu as r, sendNotification as s, IonHeader as t, useDataStore as u, IonToolbar as v, IonTitle as w, IonContent as x, IonList as y, home as z };

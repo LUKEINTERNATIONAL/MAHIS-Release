@@ -1,7 +1,7 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/index3.js","assets/_commonjsHelpers.js","assets/index.es.js"])))=>i.map(i=>d[i]);
 import { importShared } from './__federation_fn_import.js';
-import { g as useLocation, h as useNavigate, i as icons, j as jsxRuntimeExports, I as IonMenuToggle, k as IonItem, l as IonIcon, m as IonLabel, _ as __vitePreload, n as IonRefresher, o as IonRefresherContent, M as MEMISContext, p as usePermissions, q as IonMenu, r as IonHeader, t as IonToolbar, v as IonTitle, w as IonContent, x as IonList, L as Link, y as home, z as IonAccordionGroup, A as IonAccordion, C as albumsOutline, e as setActiveProgramCookie, E as settingsSharp, F as IonButtons, G as IonMenuButton, H as IonButton, J as mailOutline, K as notificationsOutline, N as IonBadge, Q as personCircleOutline, V as logOutOutline, W as showToast, X as Outlet, Y as IonCard, Z as IonCardContent, $ as IonPage, a0 as IonGrid, a1 as IonRow, a2 as IonCol, a3 as chevronDownOutline, a4 as searchOutline, a5 as checkmarkOutline, a6 as IonInput, a7 as addOutline, a8 as y$1, s as sendNotification, a9 as IonSpinner, aa as close, d as documentText, ab as imageOutline, ac as document$1, ad as alertCircleOutline, ae as IonText, af as arrowBackCircleOutline, ag as chevronBackOutline, ah as chevronForwardOutline, ai as saveOutline, aj as IonLoading, ak as IonCheckbox, al as IonRadioGroup, am as IonRadio, an as IonPopover, ao as IonDatetime, ap as IonTextarea, aq as IonCardHeader, ar as IonCardTitle, as as parseApiError, at as IonSearchbar, au as filterOutline, av as optionsOutline, aw as ellipsisVertical, ax as arrowUp, ay as arrowDown, az as removeOutline, aA as pencilOutline, aB as trashOutline, aC as closeOutline, aD as IonActionSheet, aE as IonAlert, aF as addCircleOutline, u as useDataStore, aG as IonInputPasswordToggle, aH as chevronUpOutline, aI as checkmarkDoneOutline, aJ as timeOutline, aK as createOutline, aL as IonBreadcrumbs, aM as IonBreadcrumb, aN as chevronForward, aO as useParams, aP as IonAvatar, aQ as qrCodeOutline, P as PROGRAMS_FIELDS, aR as IonSelect, aS as IonSelectOption, aT as closeCircle, aU as statsChartOutline, aV as downloadOutline, aW as printOutline, aX as PROGRAM_STAGES_FIELDS, aY as informationCircleOutline, aZ as homeOutline, a_ as arrowBackOutline, a$ as useNavigation, b0 as add, b1 as eyeOutline, b2 as trash, b3 as chatbubble, b4 as IonItemDivider, b5 as IonModal, b6 as funnelOutline, b7 as addCircle, b8 as refresh, b9 as IonTabs, ba as IonTabBar, bb as IonTabButton, bc as settings, bd as lockClosed, be as documentLock, bf as IonTab, bg as useSearchParams, bh as checkmarkCircleOutline, bi as chatbubbleOutline, S as SuspenseLoader, f as Routes, R as Route, bj as Navigate } from './breadCrumb.js';
-import { c as commonjsRequire, L as LocalForageServiceInstance, d as dataStore, q as qrConfigService } from './index3.js';
+import { h as useLocation, i as useNavigate, k as icons, j as jsxRuntimeExports, I as IonMenuToggle, l as IonItem, m as IonIcon, n as IonLabel, _ as __vitePreload, o as IonRefresher, p as IonRefresherContent, M as MEMISContext, q as usePermissions, r as IonMenu, t as IonHeader, v as IonToolbar, w as IonTitle, x as IonContent, y as IonList, L as Link, z as home, A as IonAccordionGroup, C as IonAccordion, E as albumsOutline, e as setActiveProgramCookie, F as settingsSharp, G as IonButtons, H as IonMenuButton, J as IonButton, K as mailOutline, N as notificationsOutline, Q as IonBadge, V as personCircleOutline, W as logOutOutline, X as showToast, Y as Outlet, Z as IonCard, $ as IonCardContent, a0 as IonPage, a1 as IonGrid, a2 as IonRow, a3 as IonCol, a4 as chevronDownOutline, a5 as searchOutline, a6 as checkmarkOutline, a7 as IonInput, a8 as addOutline, a9 as y$1, s as sendNotification, aa as IonSpinner, ab as close, d as documentText, ac as imageOutline, ad as document$1, ae as alertCircleOutline, af as IonText, ag as arrowBackCircleOutline, ah as chevronBackOutline, ai as chevronForwardOutline, aj as saveOutline, ak as IonLoading, al as IonCheckbox, am as IonRadioGroup, an as IonRadio, ao as IonPopover, ap as IonDatetime, aq as IonTextarea, ar as IonCardHeader, as as IonCardTitle, at as parseApiError, au as IonSearchbar, av as filterOutline, aw as optionsOutline, ax as ellipsisVertical, ay as arrowUp, az as arrowDown, aA as removeOutline, aB as pencilOutline, aC as trashOutline, aD as closeOutline, aE as IonActionSheet, aF as IonAlert, g as api, aG as addCircleOutline, u as useDataStore, aH as IonInputPasswordToggle, aI as chevronUpOutline, aJ as checkmarkDoneOutline, aK as timeOutline, aL as createOutline, aM as IonBreadcrumbs, aN as IonBreadcrumb, aO as chevronForward, aP as useParams, aQ as IonAvatar, aR as qrCodeOutline, P as PROGRAMS_FIELDS, aS as IonSelect, aT as IonSelectOption, aU as closeCircle, aV as statsChartOutline, aW as downloadOutline, aX as printOutline, aY as PROGRAM_STAGES_FIELDS, aZ as informationCircleOutline, a_ as homeOutline, a$ as arrowBackOutline, b0 as useNavigation, b1 as add, b2 as eyeOutline, b3 as trash, b4 as chatbubble, b5 as IonItemDivider, b6 as IonModal, b7 as funnelOutline, b8 as addCircle, b9 as refresh, ba as IonTabs, bb as IonTabBar, bc as IonTabButton, bd as settings, be as lockClosed, bf as documentLock, bg as IonTab, bh as useSearchParams, bi as checkmarkCircleOutline, bj as chatbubbleOutline, S as SuspenseLoader, f as Routes, R as Route, bk as Navigate } from './breadCrumb.js';
+import { c as commonjsRequire, d as dataStore, L as LocalForageServiceInstance, q as qrConfigService } from './index3.js';
 import { a as getAugmentedNamespace, c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers.js';
 
 await importShared('react');
@@ -693,11 +693,11 @@ const App = registerPlugin('App', {
     web: () => __vitePreload(() => import('./web.js'),true              ?[]:void 0).then(m => new m.AppWeb()),
 });
 
-const {useEffect: useEffect$19} = await importShared('react');
+const {useEffect: useEffect$1a} = await importShared('react');
 const useAndroidBackButton = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  useEffect$19(() => {
+  useEffect$1a(() => {
     let backHandler;
     const setupBackHandler = async () => {
       backHandler = await App.addListener("backButton", () => {
@@ -8257,18 +8257,19 @@ function requireCryptoJs () {
 var cryptoJsExports = requireCryptoJs();
 const CryptoJS = /*@__PURE__*/getDefaultExportFromCjs(cryptoJsExports);
 
-const React$G = await importShared('react');
-const {useContext: useContext$D,useEffect: useEffect$18,useRef: useRef$l,useState: useState$1c,useMemo: useMemo$J} = React$G;
+const React$H = await importShared('react');
+const {useContext: useContext$E,useEffect: useEffect$19,useRef: useRef$l,useState: useState$1d,useMemo: useMemo$J} = React$H;
 const MainLayout = ({ children }) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState$1c(null);
+  const isApk = Capacitor.isNativePlatform();
+  const [user, setUser] = useState$1d(null);
   const { search } = useLocation();
-  const [superuser, setSuperUser] = useState$1c(null);
-  const [showNotifications, setShowNotifications] = useState$1c(false);
-  const [notifications, setNotifications] = useState$1c([]);
-  const [unReadNotifications, setUnReadNotifications] = useState$1c([]);
-  const [messageCount, setMessageCount] = useState$1c(0);
-  const [showDropdown, setShowDropdown] = useState$1c(false);
+  const [superuser, setSuperUser] = useState$1d(null);
+  const [showNotifications, setShowNotifications] = useState$1d(false);
+  const [notifications, setNotifications] = useState$1d([]);
+  const [unReadNotifications, setUnReadNotifications] = useState$1d([]);
+  const [messageCount, setMessageCount] = useState$1d(0);
+  const [showDropdown, setShowDropdown] = useState$1d(false);
   const notificationsRef = useRef$l(null);
   const dropdownRef = useRef$l(null);
   function bridgeNavigate(target) {
@@ -8365,8 +8366,8 @@ const MainLayout = ({ children }) => {
     loading: menuLoading = false,
     refresh: refreshMenu,
     menuError
-  } = useContext$D(MEMISContext.MenuContext) || {};
-  const { programs = [], loading: programsLoading = false, refresh: refreshPrograms } = useContext$D(MEMISContext.ProgramContext) || {};
+  } = useContext$E(MEMISContext.MenuContext) || {};
+  const { programs = [], loading: programsLoading = false, refresh: refreshPrograms } = useContext$E(MEMISContext.ProgramContext) || {};
   usePermissions();
   const waitingForContexts = menuLoading || programsLoading;
   const getMessages = async () => {
@@ -8411,7 +8412,7 @@ const MainLayout = ({ children }) => {
       console.error("Error handling notification click", err);
     }
   };
-  useEffect$18(() => {
+  useEffect$19(() => {
     const handleOutside = (e) => {
       if (notificationsRef.current && !notificationsRef.current.contains(e.target)) setShowNotifications(false);
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) setShowDropdown(false);
@@ -8447,7 +8448,7 @@ const MainLayout = ({ children }) => {
       window.location.replace("https://mahistest.health.gov.mw/logout");
     }
   };
-  useEffect$18(() => {
+  useEffect$19(() => {
     getUser();
   }, []);
   useAndroidBackButton();
@@ -8467,6 +8468,42 @@ const MainLayout = ({ children }) => {
     unGrouped.sort((a, b) => (a.order ?? Infinity) - (b.order ?? Infinity) || (a.name || "").localeCompare(b.name || ""));
     return { groups, unGrouped };
   }, [menuItems]);
+  async function logoutAndBroadcast() {
+    try {
+      document.cookie.split(";").forEach((cookie) => {
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+        document.cookie = name.trim() + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+      });
+      localStorage.clear();
+      sessionStorage.clear();
+      if (indexedDB.databases) {
+        const databases = await indexedDB.databases();
+        await Promise.all(
+          databases.map((db) => {
+            if (!db.name) return;
+            return new Promise((resolve) => {
+              const req = indexedDB.deleteDatabase(db.name);
+              req.onsuccess = () => resolve();
+              req.onerror = () => resolve();
+              req.onblocked = () => resolve();
+            });
+          })
+        );
+      }
+    } catch (e) {
+      console.log(e);
+    } finally {
+      showToast("Logout successfully", "info");
+      if (isApk) {
+        window.dispatchEvent(new CustomEvent("mfe:logout-success"));
+      } else {
+        setTimeout(() => {
+          window.location.replace("https://mahistest.health.gov.mw/logout");
+        }, 300);
+      }
+    }
+  }
   const onRefresh = async () => {
     await Promise.all([refreshMenu?.(), getUser(), refreshPrograms?.(), getMessages()]);
   };
@@ -8570,24 +8607,8 @@ const MainLayout = ({ children }) => {
                   lines: "none",
                   onClick: async () => {
                     try {
-                      localStorage.removeItem("memisCredentials");
-                      localStorage.removeItem("memisViewSettings");
-                      localStorage.removeItem("memis_cookie");
-                      localStorage.removeItem("dataStore");
-                      localStorage.removeItem("memisAuthPending", "1");
-                      await LocalForageServiceInstance.clearStorage("memis");
-                      await LocalForageServiceInstance.clearStorage("programs");
-                      await LocalForageServiceInstance.clearStorage("user");
-                      await LocalForageServiceInstance.clearStorage("userOrgUnits");
-                      await LocalForageServiceInstance.clearStorage("dataStore");
-                      showToast("Logout successfully", "info");
-                      const logoutEvent = new CustomEvent("mfe:logout-success");
-                      window.dispatchEvent(logoutEvent);
-                      setTimeout(() => {
-                        window.location.replace("https://mahistest.health.gov.mw/logout");
-                      }, 300);
+                      await logoutAndBroadcast();
                     } catch (err) {
-                      console.log({ err });
                       showToast(err.message, "error");
                     }
                   },
@@ -8710,13 +8731,22 @@ const EquipmentStatusChart = ({ title, items }) => {
   ] }) });
 };
 
-const React$F = await importShared('react');
-const {useEffect: useEffect$17,useState: useState$1b} = React$F;
+const React$G = await importShared('react');
+const {useEffect: useEffect$18,useState: useState$1c} = React$G;
 function ChartLayout({ data }) {
-  const [chartData, setChartData] = useState$1b([]);
-  useEffect$17(() => {
+  const [chartData, setChartData] = useState$1c([]);
+  useEffect$18(() => {
     const getData = async () => {
       try {
+        const ou = await LocalForageServiceInstance.getItem("userOnlyOrgUnits", "userOnlyOrgUnits");
+        const orgUnit = ou?.sort((a, b) => a?.level - b?.level);
+        const userOnlyOrgUnit = orgUnit?.slice(-1)[0];
+        if (data?.isEvents) {
+          data.params.orgUnit = userOnlyOrgUnit?.id;
+        } else {
+          data.params.orgUnits = userOnlyOrgUnit?.id;
+        }
+        data.params.orgUnitMode = "CHILDREN";
         const queryString = new URLSearchParams(data?.params).toString();
         const url = `${data?.baseUrl}?${queryString}`;
         const result = await dataStore.get(url);
@@ -8775,11 +8805,11 @@ function ChartLayout({ data }) {
   ] });
 }
 
-const {useContext: useContext$C} = await importShared('react');
+const {useContext: useContext$D} = await importShared('react');
 const Dashboard = () => {
-  const { dashboardConfigs } = useContext$C(MEMISContext.DashboardContext);
+  const { dashboardConfigs } = useContext$D(MEMISContext.DashboardContext);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonPage, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(IonHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonToolbar, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonTitle, { children: "Dashboard" }) }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(IonHeader, { color: "light", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonToolbar, { color: "light", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonTitle, { children: "Dashboard" }) }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(IonContent, { fullscreen: true, className: "ion-padding", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonGrid, { children: dashboardConfigs?.map((config) => {
       const {
         id,
@@ -8808,8 +8838,8 @@ const Dashboard = () => {
   ] });
 };
 
-const React$E = await importShared('react');
-const {useEffect: useEffect$16,useState: useState$1a} = React$E;
+const React$F = await importShared('react');
+const {useEffect: useEffect$17,useState: useState$1b} = React$F;
 function OrganisationUnitsWidget({
   programOrgUnits = [],
   selectedOrganisationUnit,
@@ -8824,22 +8854,24 @@ function OrganisationUnitsWidget({
   searchParams.get("q");
   searchParams.get("stage");
   searchParams.get("equipmentId");
-  const [facility, setFacility] = useState$1a("Facility");
-  const [orgUnitName, setOrgUnitName] = useState$1a("");
+  const [facility, setFacility] = useState$1b("Facility");
+  const [orgUnitName, setOrgUnitName] = useState$1b("");
   const getTEI = async (teiOu2) => {
     try {
       await dataStore.get(`tracker/trackedEntities/${teiOu2}`).then(async (res) => {
-        await dataStore.get(`organisationUnits/${res.data.orgUnit}?fields=id,name`).then((orgRes) => {
-          setOrgUnitName(orgRes.data.name || "");
-          setSelectedOrganisationUnit(res.data.orgUnit);
+        await LocalForageServiceInstance.getItem("userOrganisationUnits", "userOrgUnits").then((orgRes) => {
+          const orgUint = orgRes?.find((org) => org?.id === res?.data?.orgUnit);
+          setOrgUnitName(orgUint?.name || "");
+          setSelectedOrganisationUnit(res?.data?.orgUnit);
+          setFacility("Facility");
         });
       });
     } catch (error) {
       console.error("Failed to fetch TEI data:", error);
     }
   };
-  useEffect$16(() => {
-    if (!Array.isArray(programOrgUnits) || programOrgUnits.length === 0 || !dataStoreData) {
+  useEffect$17(() => {
+    if (!Array.isArray(programOrgUnits) || programOrgUnits?.length === 0 || !dataStoreData) {
       return;
     }
     const config = dataStoreData?.facilityOrWardSHeader?.configuration?.find((prog) => prog?.program === program);
@@ -8851,7 +8883,7 @@ function OrganisationUnitsWidget({
     );
     const targetOrgUnit = hasRole ? sortedOrgUnits[1] || sortedOrgUnits[0] : sortedOrgUnits[0];
     setFacility(hasRole ? "Ward" : "Facility");
-    if (config?.programStage === "Maintenance") {
+    if (config?.isStage == "true" && config?.programStage === "Maintenance") {
       getTEI(teiOu);
     } else {
       setOrgUnitName(targetOrgUnit?.name || "");
@@ -8872,8 +8904,8 @@ function OrganisationUnitsWidget({
   ] });
 }
 
-const React$D = await importShared('react');
-const {useState: useState$19,useEffect: useEffect$15,useMemo: useMemo$I,useCallback: useCallback$j} = React$D;
+const React$E = await importShared('react');
+const {useState: useState$1a,useEffect: useEffect$16,useMemo: useMemo$I,useCallback: useCallback$j} = React$E;
 
 const {createPortal: createPortal$4} = await importShared('react-dom');
 const SearchableSelect$1 = ({
@@ -8888,10 +8920,10 @@ const SearchableSelect$1 = ({
   value = null,
   closeOnSignal
 }) => {
-  const [isOpen, setIsOpen] = useState$19(false);
-  const [searchTerm, setSearchTerm] = useState$19("");
-  const [selectedItems, setSelectedItems] = useState$19([]);
-  useEffect$15(() => {
+  const [isOpen, setIsOpen] = useState$1a(false);
+  const [searchTerm, setSearchTerm] = useState$1a("");
+  const [selectedItems, setSelectedItems] = useState$1a([]);
+  useEffect$16(() => {
     if (value == null) {
       if (selectedItems?.length > 0) setSelectedItems([]);
       return;
@@ -8909,7 +8941,7 @@ const SearchableSelect$1 = ({
     );
     if (!isEqual) setSelectedItems(newSelected);
   }, [value, multiple, itemValueField, data, selectedItems]);
-  useEffect$15(() => {
+  useEffect$16(() => {
     if (closeOnSignal) {
       setIsOpen(false);
       setSearchTerm("");
@@ -9363,7 +9395,7 @@ const ComponentsField = ({
   ] });
 };
 
-const {useEffect: useEffect$14,useMemo: useMemo$H,useState: useState$18} = await importShared('react');
+const {useEffect: useEffect$15,useMemo: useMemo$H,useState: useState$19} = await importShared('react');
 
 /**
  * Hook to fetch and manage section visibility configuration from DataStore.
@@ -9383,18 +9415,18 @@ const {useEffect: useEffect$14,useMemo: useMemo$H,useState: useState$18} = await
  * // }
  */
 function useSectionVisibilityConfig(programId) {
-    const [tick, setTick] = useState$18(0);
-    const [config, setConfig] = useState$18(null);
+    const [tick, setTick] = useState$19(0);
+    const [config, setConfig] = useState$19(null);
 
     // Listen for external updates
-    useEffect$14(() => {
+    useEffect$15(() => {
         const onUpdate = () => setTick((n) => n + 1);
         window.addEventListener("memis:sectionVisibility:updated", onUpdate);
         return () => window.removeEventListener("memis:sectionVisibility:updated", onUpdate);
     }, []);
 
     // Fetch data asynchronously
-    useEffect$14(() => {
+    useEffect$15(() => {
         let mounted = true;
         const fetchConfig = async () => {
             try {
@@ -9697,7 +9729,7 @@ const DE_TRANSFER_TO_LOCATION = "Hk2JSouuvga";
 const DE_TRANSFER_EQUIPMENT_NAME = "wObkfr29dtK";
 const DE_TRANSFER_EQUIPMENT_TO_BE_TRANSFERRED = "oIEtXbVslFN";
 
-const {useEffect: useEffect$13,useRef: useRef$k,useState: useState$17} = await importShared('react');
+const {useEffect: useEffect$14,useRef: useRef$k,useState: useState$18} = await importShared('react');
 
 const NO_WARD_ALLOCATED_MESSAGE = "THE USER HAS NO WARD ALLOCATED";
 let facilityOrgUnitsCache = null;
@@ -9772,7 +9804,7 @@ function useTransferDefaults({
 
     const transferLocationValue = formData?.[DE_TRANSFER_LOCATION_TYPE];
 
-    useEffect$13(() => {
+    useEffect$14(() => {
         if (transferLocationDefaultAppliedRef.current) return;
         if (!isWardInChargeForTransfer && !isHospitalAdminForTransfer) return;
         if (isEdit) return;
@@ -9805,7 +9837,7 @@ function useTransferDefaults({
         setFormData,
     ]);
 
-    useEffect$13(() => {
+    useEffect$14(() => {
         const shouldPrefill =
             isWardInChargeForTransfer || isHospitalAdminForTransfer;
         if (!shouldPrefill) return;
@@ -9857,8 +9889,8 @@ function useTransferOrganisationUnitOptions({
     isHospitalAdminForTransfer,
     transferLocationValue,
 }) {
-    const [facilityOrgUnits, setFacilityOrgUnits] = useState$17([]);
-    const [facilityOrgUnitsLoading, setFacilityOrgUnitsLoading] = useState$17(false);
+    const [facilityOrgUnits, setFacilityOrgUnits] = useState$18([]);
+    const [facilityOrgUnitsLoading, setFacilityOrgUnitsLoading] = useState$18(false);
     const facilityOrgUnitsLoadedRef = useRef$k(false);
 
     const shouldUseFacilityGroup =
@@ -9866,7 +9898,7 @@ function useTransferOrganisationUnitOptions({
         transferLocationValue &&
         String(transferLocationValue).trim() === OPTION_CODE_OUTSIDE_FACILITY;
 
-    useEffect$13(() => {
+    useEffect$14(() => {
         if (!shouldUseFacilityGroup) return;
         if (facilityOrgUnitsLoadedRef.current) return;
 
@@ -10209,7 +10241,7 @@ async function getEquipmentListOnTransferOutside(event) {
     }
 }
 
-const {useState: useState$16,useEffect: useEffect$12,useRef: useRef$j} = await importShared('react');
+const {useState: useState$17,useEffect: useEffect$13,useRef: useRef$j} = await importShared('react');
 
 const ATTR$1 = ATTRIBUTE_FOR_EQUIPMENT_LOOKUP;
 
@@ -10225,8 +10257,8 @@ function useEquipmentOptions(
     event = null
 ) {
     const equipmentCacheRef = useRef$j(new Map());
-    const [equipmentOptions, setEquipmentOptions] = useState$16([]);
-    const [equipmentLoading, setEquipmentLoading] = useState$16(false);
+    const [equipmentOptions, setEquipmentOptions] = useState$17([]);
+    const [equipmentLoading, setEquipmentLoading] = useState$17(false);
 
     /* ---------------------------------------------------------
        Determine whether outside-facility logic should apply
@@ -10359,7 +10391,7 @@ function useEquipmentOptions(
     /* ---------------------------------------------------------
        Effect trigger
        --------------------------------------------------------- */
-    useEffect$12(() => {
+    useEffect$13(() => {
         let active = true;
 
         const run = async () => {
@@ -10390,18 +10422,18 @@ function useEquipmentOptions(
     };
 }
 
-const {useState: useState$15,useEffect: useEffect$11,useRef: useRef$i} = await importShared('react');
+const {useState: useState$16,useEffect: useEffect$12,useRef: useRef$i} = await importShared('react');
 
 /**
  * Custom hook to manage status field initialization and tracking
  * Encapsulates status-related state logic
  */
 function useStatusField({ programObj, programKey, selectedStageId, isEdit, formData, setFormData }) {
-    const [statusFieldId, setStatusFieldId] = useState$15(null);
-    const [statusOptionCodes, setStatusOptionCodes] = useState$15({});
+    const [statusFieldId, setStatusFieldId] = useState$16(null);
+    const [statusOptionCodes, setStatusOptionCodes] = useState$16({});
     const lastApproverNotificationRef = useRef$i(null);
 
-    useEffect$11(() => {
+    useEffect$12(() => {
         if (!programObj || isEdit) return;
 
         let statusDE = null;
@@ -10456,7 +10488,7 @@ function useStatusField({ programObj, programKey, selectedStageId, isEdit, formD
     };
 }
 
-const {useState: useState$14} = await importShared('react');
+const {useState: useState$15} = await importShared('react');
 
 
 /**
@@ -10464,8 +10496,8 @@ const {useState: useState$14} = await importShared('react');
  * Consolidates image-related state
  */
 function useImageState() {
-    const [imageUrls, setImageUrls] = useState$14({});
-    const [imageLoading, setImageLoading] = useState$14({});
+    const [imageUrls, setImageUrls] = useState$15({});
+    const [imageLoading, setImageLoading] = useState$15({});
 
     return {
         imageUrls,
@@ -10475,7 +10507,7 @@ function useImageState() {
     };
 }
 
-const {useState: useState$13} = await importShared('react');
+const {useState: useState$14} = await importShared('react');
 
 
 /**
@@ -10483,7 +10515,7 @@ const {useState: useState$13} = await importShared('react');
  * Consolidates date picker UI state
  */
 function useDateRangePopover() {
-    const [dateRangePopover, setDateRangePopover] = useState$13({
+    const [dateRangePopover, setDateRangePopover] = useState$14({
         from: false,
         to: false,
         fieldId: null,
@@ -10576,7 +10608,7 @@ function useSections({ programObj, stageObj, programKey, selectedStageId }) {
     }, [programObj, stageObj, programKey, selectedStageId]);
 }
 
-const {useMemo: useMemo$D,useEffect: useEffect$10,useState: useState$12} = await importShared('react');
+const {useMemo: useMemo$D,useEffect: useEffect$11,useState: useState$13} = await importShared('react');
 
 function useSectionsList({
   sections,
@@ -10585,10 +10617,10 @@ function useSectionsList({
   user,
   formData,
 }) {
-  const [sectionAccessMap, setSectionAccessMap] = useState$12(null);
+  const [sectionAccessMap, setSectionAccessMap] = useState$13(null);
 
   // 🔹 1. Load section access asynchronously
-  useEffect$10(() => {
+  useEffect$11(() => {
 
     if (!sections || !user || !programId) return;
 
@@ -10768,7 +10800,7 @@ const applyOtherFieldRules = ({
   });
 };
 
-const {useState: useState$11,useEffect: useEffect$$,useMemo: useMemo$C,useRef: useRef$h} = await importShared('react');
+const {useState: useState$12,useEffect: useEffect$10,useMemo: useMemo$C,useRef: useRef$h} = await importShared('react');
 
 /**
  * Hook to manage field visibility based on skip logic and OTHER field rules
@@ -10797,11 +10829,11 @@ function useHiddenFields({
     return hidden;
   }, [selectedStage, isEdit, otherFieldMappings]);
 
-  const [hiddenFields, setHiddenFields] = useState$11(initialHiddenFields);
+  const [hiddenFields, setHiddenFields] = useState$12(initialHiddenFields);
   const hiddenFieldsRef = useRef$h(hiddenFields);
 
   // Apply skip-logic whenever relevant formData changes
-  useEffect$$(() => {
+  useEffect$10(() => {
     const newHidden = new Set();
 
     // Initialize with OTHER fields that should be hidden by default (create mode)
@@ -10920,7 +10952,7 @@ function useHiddenFields({
   };
 }
 
-const {useState: useState$10} = await importShared('react');
+const {useState: useState$11} = await importShared('react');
 
 
 /**
@@ -10928,10 +10960,10 @@ const {useState: useState$10} = await importShared('react');
  * Handles loading state for task-based form prefilling
  */
 function useTaskPrefill() {
-    const [taskAvailableInQuery, setTaskAvailableInQuery] = useState$10(null);
-    const [prefilledValues, setPrefilledValues] = useState$10([]);
-    const [isCheckingRegistration, setIsCheckingRegistration] = useState$10(false);
-    const [formLoading, setFormLoading] = useState$10(false);
+    const [taskAvailableInQuery, setTaskAvailableInQuery] = useState$11(null);
+    const [prefilledValues, setPrefilledValues] = useState$11([]);
+    const [isCheckingRegistration, setIsCheckingRegistration] = useState$11(false);
+    const [formLoading, setFormLoading] = useState$11(false);
 
     return {
         taskAvailableInQuery,
@@ -10945,7 +10977,7 @@ function useTaskPrefill() {
     };
 }
 
-const {useEffect: useEffect$_} = await importShared('react');
+const {useEffect: useEffect$$} = await importShared('react');
 
 /**
  * Hook to handle task prefill logic
@@ -10957,7 +10989,7 @@ function useTaskPrefillLogic({
     setFormLoading,
     setFormData,
 }) {
-    useEffect$_(() => {
+    useEffect$$(() => {
         const loadTaskPrefill = async () => {
             const taskId = queryParams.get("taskId");
             if (!taskId) return;
@@ -11044,14 +11076,14 @@ function useTaskPrefillLogic({
     }, []);
 }
 
-const {useState: useState$$} = await importShared('react');
+const {useState: useState$10} = await importShared('react');
 
 
 /**
  * Hook to manage simple popover visibility state
  */
 function usePopoverState(initialState = false) {
-    const [showPopover, setShowPopover] = useState$$(initialState);
+    const [showPopover, setShowPopover] = useState$10(initialState);
 
     return {
         showPopover,
@@ -11059,7 +11091,7 @@ function usePopoverState(initialState = false) {
     };
 }
 
-const {useState: useState$_,useEffect: useEffect$Z} = await importShared('react');
+const {useState: useState$$,useEffect: useEffect$_} = await importShared('react');
 
 
 /**
@@ -11067,14 +11099,14 @@ const {useState: useState$_,useEffect: useEffect$Z} = await importShared('react'
  */
 function useViewport() {
     // Initialize with actual window width to prevent flash
-    const [isMobile, setIsMobile] = useState$_(() => {
+    const [isMobile, setIsMobile] = useState$$(() => {
         if (typeof window !== 'undefined') {
             return window.innerWidth <= 600;
         }
         return false;
     });
 
-    useEffect$Z(() => {
+    useEffect$_(() => {
         const handleResize = () => setIsMobile(window.innerWidth <= 600);
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
@@ -11083,18 +11115,18 @@ function useViewport() {
     return { isMobile };
 }
 
-const {useState: useState$Z,useEffect: useEffect$Y} = await importShared('react');
+const {useState: useState$_,useEffect: useEffect$Z} = await importShared('react');
 
 /**
  * Hook to manage OTHER field configuration and mappings
  * Handles showing/hiding "Other" text fields based on dropdown selections
  */
 function useOtherFieldLogic({ selectedStageId, programObj }) {
-  const [otherFieldConfig, setOtherFieldConfig] = useState$Z({});
-  const [otherFieldMappings, setOtherFieldMappings] = useState$Z([]);
+  const [otherFieldConfig, setOtherFieldConfig] = useState$_({});
+  const [otherFieldMappings, setOtherFieldMappings] = useState$_([]);
 
   // Fetch OTHER field configuration on mount
-  useEffect$Y(() => {
+  useEffect$Z(() => {
     let mounted = true;
 
     const loadConfig = async () => {
@@ -11111,7 +11143,7 @@ function useOtherFieldLogic({ selectedStageId, programObj }) {
   }, []);
 
   // Load OTHER field mappings when stage/program changes
-  useEffect$Y(() => {
+  useEffect$Z(() => {
     const stageIdFromProgram =
       !selectedStageId && Array.isArray(programObj?.programStages) && programObj.programStages.length > 0
         ? programObj.programStages[0]?.id
@@ -11139,9 +11171,9 @@ function useOtherFieldLogic({ selectedStageId, programObj }) {
   };
 }
 
-const {useState: useState$Y,useEffect: useEffect$X} = await importShared('react');
+const {useState: useState$Z,useEffect: useEffect$Y} = await importShared('react');
 
-const {useEffect: useEffect$W} = await importShared('react');
+const {useEffect: useEffect$X} = await importShared('react');
 
 /**
  * Hook to load image URLs for IMAGE type fields when editing
@@ -11190,7 +11222,7 @@ function useImageLoader({
     /**
      * When editing a TEI, load existing IMAGE values for data elements so they can be previewed.
      */
-    useEffect$W(() => {
+    useEffect$X(() => {
         const load = async () => {
             if (!trackedEntityUID || !programId) return;
 
@@ -11243,23 +11275,23 @@ function useImageLoader({
     }, [trackedEntityUID, programId, programObj, stageObj, selectedStageId]);
 }
 
-const {useState: useState$X,useEffect: useEffect$V} = await importShared('react');
+const {useState: useState$Y,useEffect: useEffect$W} = await importShared('react');
 
 /**
  * Hook to manage equipment context for workflows that require equipment selection
  * Simplified version: Shows all equipment in user's org unit except deregistered
  */
 function useEquipmentContext({ stageId, programId, routeEquipmentId, resetTrigger }) {
-    const [contextConfig, setContextConfig] = useState$X(null);
-    const [selectedEquipment, setSelectedEquipment] = useState$X(null);
-    const [availableEquipment, setAvailableEquipment] = useState$X([]);
-    const [showEquipmentPicker, setShowEquipmentPicker] = useState$X(false);
-    const [loading, setLoading] = useState$X(false);
-    const [error, setError] = useState$X(null);
-    const [configLoaded, setConfigLoaded] = useState$X(false);
+    const [contextConfig, setContextConfig] = useState$Y(null);
+    const [selectedEquipment, setSelectedEquipment] = useState$Y(null);
+    const [availableEquipment, setAvailableEquipment] = useState$Y([]);
+    const [showEquipmentPicker, setShowEquipmentPicker] = useState$Y(false);
+    const [loading, setLoading] = useState$Y(false);
+    const [error, setError] = useState$Y(null);
+    const [configLoaded, setConfigLoaded] = useState$Y(false);
 
     // Reset state when stage/program changes OR when resetTrigger changes (new action)
-    useEffect$V(() => {
+    useEffect$W(() => {
         setContextConfig(null);
         setSelectedEquipment(null);
         setAvailableEquipment([]);
@@ -11602,7 +11634,7 @@ function useRequiredFields({
     return { requiredById };
 }
 
-const {useState: useState$W,useEffect: useEffect$U,useMemo: useMemo$A} = await importShared('react');
+const {useState: useState$X,useEffect: useEffect$V,useMemo: useMemo$A} = await importShared('react');
 
 
 /**
@@ -11616,7 +11648,7 @@ function useStepNavigation({
     sectionsList,
     reviewNavigationLocked,
 }) {
-    const [internalStep, setInternalStep] = useState$W(0);
+    const [internalStep, setInternalStep] = useState$X(0);
 
     const stepIndex = typeof currentStep === "number" ? currentStep : internalStep;
 
@@ -11661,7 +11693,7 @@ function useStepNavigation({
     };
 
     // Update current section when active section changes
-    useEffect$U(() => {
+    useEffect$V(() => {
         if (typeof setCurrentSection === "function" && activeSection) {
             setCurrentSection(activeSection);
         }
@@ -11900,7 +11932,7 @@ const triggerNotifications = async ({
   }
 };
 
-const {useEffect: useEffect$T} = await importShared('react');
+const {useEffect: useEffect$U} = await importShared('react');
 
 /**
  * Hook to manage approval officer assignment and notifications
@@ -11957,7 +11989,7 @@ function useApprovalNotifications({
      * Ensure the "approving officer" TEI is set:
      *   - On new forms when navigation is locked for review.
      */
-    useEffect$T(() => {
+    useEffect$U(() => {
         if (!isAddFlow || !approvingOfficerFieldId) return;
 
         setFormData((prev) => {
@@ -11993,7 +12025,7 @@ function useApprovalNotifications({
      *   - On new forms when navigation is locked for review.
      *   - On edits when status transitions to "Feedback required".
      */
-    useEffect$T(() => {
+    useEffect$U(() => {
         if (!programObj?.id) return;
         if (!assignedApprover || !approvingOfficerFieldId || !approvingSectionId)
             return;
@@ -12252,7 +12284,7 @@ const wslDurationAutoFill = async (program, stage, formData) => {
     return null
 };
 
-const ReactDOM = await importShared('react-dom');
+const ReactDOM$1 = await importShared('react-dom');
 
 const CustomModal = ({
   isOpen,
@@ -12271,7 +12303,7 @@ const CustomModal = ({
   className = ""
 }) => {
   if (!isOpen) return null;
-  return ReactDOM.createPortal(
+  return ReactDOM$1.createPortal(
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "div",
       {
@@ -12346,47 +12378,51 @@ const CustomModal = ({
           }
         }
 
-        @media (max-width: 576px) {
-          .cm-root.custom-modal-overlay {
-            padding: 0 !important;
-          }
+    @media (max-width: 576px) {
+      .cm-root.custom-modal-overlay {
+      padding: 12px !important;             
+      align-items: center;                   
+      justify-content: center;               
+    }
 
-          .cm-root .custom-modal-content {
-            width: 100vw !important;
-            max-width: 100vw !important;
-            height: 100vh !important;
-            max-height: 100vh !important;
-            border-radius: 0 !important;
-            box-sizing: border-box;
-          }
+    .cm-root .custom-modal-content {
+    width: 100% !important;
+    max-width: 100% !important;
 
-          .cm-root .custom-modal-body {
-            padding: 10px !important;
-            box-sizing: border-box;
-          }
+    height: auto !important;               
+    max-height: calc(100vh - 96px) !important; 
 
-          .cm-root .custom-modal-body ion-card {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            width: 100% !important;
-          }
+    border-radius: 12px !important;        
+    box-sizing: border-box;
+  }
 
-          .cm-root .custom-modal-body * {
-            max-width: 100%;
-            box-sizing: border-box;
-          }
+  .cm-root .custom-modal-body {
+    padding: 10px !important;
+    box-sizing: border-box;
+  }
 
-          .cm-root .custom-modal-footer {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-          }
+  .cm-root .custom-modal-body ion-card {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
 
-          .cm-root .custom-modal-footer ion-button {
-            flex: 1 1 auto;
-          }
-        }
-      ` })
+  .cm-root .custom-modal-body * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .cm-root .custom-modal-footer {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .cm-root .custom-modal-footer ion-button {
+    flex: 1 1 auto;
+  }
+    
+  } ` })
         ]
       }
     ),
@@ -12394,7 +12430,7 @@ const CustomModal = ({
   );
 };
 
-const {useEffect: useEffect$S,useState: useState$V} = await importShared('react');
+const {useEffect: useEffect$T,useState: useState$W} = await importShared('react');
 function FilePreviewModal({
   isOpen,
   onClose,
@@ -12407,13 +12443,13 @@ function FilePreviewModal({
   dataElementId,
   programId
 }) {
-  const [loading, setLoading] = useState$V(true);
-  const [imageUrl, setImageUrl] = useState$V(null);
-  const [fileData, setFileData] = useState$V(null);
-  const [error, setError] = useState$V(null);
-  const [mimeType, setMimeType] = useState$V("application/octet-stream");
-  const [downloading, setDownloading] = useState$V(false);
-  useEffect$S(() => {
+  const [loading, setLoading] = useState$W(true);
+  const [imageUrl, setImageUrl] = useState$W(null);
+  const [fileData, setFileData] = useState$W(null);
+  const [error, setError] = useState$W(null);
+  const [mimeType, setMimeType] = useState$W("application/octet-stream");
+  const [downloading, setDownloading] = useState$W(false);
+  useEffect$T(() => {
     if (isOpen && fileId && (teiId && attributeId || eventId && dataElementId)) {
       fetchFile();
     } else if (!isOpen) {
@@ -12639,7 +12675,7 @@ function FilePreviewModal({
   );
 }
 
-const {useContext: useContext$B,useEffect: useEffect$R,useMemo: useMemo$z,useState: useState$U} = await importShared('react');
+const {useContext: useContext$C,useEffect: useEffect$S,useMemo: useMemo$z,useState: useState$V} = await importShared('react');
 function ConfigurableForm({
   handleSubmit,
   handleCancel,
@@ -12672,20 +12708,20 @@ function ConfigurableForm({
   autoFillFacilityLoading = false,
   lockedFields = /* @__PURE__ */ new Set()
 }) {
-  const [wardData, setWardData] = useState$U(null);
+  const [wardData, setWardData] = useState$V(null);
   const location = useLocation();
-  const { userOrganisationUnits } = useContext$B(MEMISContext.UserContext);
-  const { user } = useContext$B(MEMISContext.UserRolesContext) || {};
-  const [futureDateFields, setFutureDateFields] = useState$U([]);
-  const [wlsDuration, setWlsDuration] = useState$U({});
-  const [dataStoreData, setDataStoreData] = useState$U({});
-  const [firstStageDe, setfirstDE] = useState$U([]);
-  const [componentInputs, setComponentInputs] = useState$U({});
+  const { userOrganisationUnits } = useContext$C(MEMISContext.UserContext);
+  const { user } = useContext$C(MEMISContext.UserRolesContext) || {};
+  const [futureDateFields, setFutureDateFields] = useState$V([]);
+  const [wlsDuration, setWlsDuration] = useState$V({});
+  const [dataStoreData, setDataStoreData] = useState$V({});
+  const [firstStageDe, setfirstDE] = useState$V([]);
+  const [componentInputs, setComponentInputs] = useState$V({});
   const { showPopover, setShowPopover } = usePopoverState();
   const { setDateRangePopover } = useDateRangePopover();
   const { imageUrls, setImageUrls, imageLoading, setImageLoading } = useImageState();
   const { isMobile } = useViewport();
-  const [previewModal, setPreviewModal] = useState$U({
+  const [previewModal, setPreviewModal] = useState$V({
     isOpen: false,
     fileId: null,
     fileName: null,
@@ -12722,7 +12758,7 @@ function ConfigurableForm({
   );
   const skipLogicMap = getSkipLogicConfig(programId);
   const sectionVisibilityRules = useSectionVisibilityConfig(programId);
-  const { programs } = useContext$B(MEMISContext.ProgramContext);
+  const { programs } = useContext$C(MEMISContext.ProgramContext);
   const programObj = useMemo$z(() => {
     if (!programId) return null;
     const list = Array.isArray(programs) ? programs : programs?.programs || [];
@@ -12843,7 +12879,7 @@ function ConfigurableForm({
     isCheckingRegistration,
     setIsCheckingRegistration
   });
-  useEffect$R(() => {
+  useEffect$S(() => {
   }, [sectionAccessMap, sectionsList]);
   const getPreFilled = (id, preFill) => {
     try {
@@ -12896,7 +12932,7 @@ function ConfigurableForm({
     switch (vt) {
       case "TEXT":
       case "USERNAME":
-        if (el?.optionSetValue) {
+        if (el?.optionSet) {
           return /* @__PURE__ */ jsxRuntimeExports.jsx(
             SearchableSelect$1,
             {
@@ -13670,7 +13706,7 @@ function ConfigurableForm({
       console.log({ error });
     }
   };
-  useEffect$R(() => {
+  useEffect$S(() => {
     const loadTaskPrefill = async () => {
       const taskId = queryParams.get("taskId");
       if (!taskId) return;
@@ -13724,7 +13760,7 @@ function ConfigurableForm({
     loadTaskPrefill();
     prefillWard();
   }, [programObj]);
-  useEffect$R(() => {
+  useEffect$S(() => {
     if (!wardData?.use || !wardData?.field) return;
     const targetId = wardData.field;
     setFormData((prev) => {
@@ -13737,7 +13773,7 @@ function ConfigurableForm({
       };
     });
   }, [wardData, setFormData]);
-  useEffect$R(() => {
+  useEffect$S(() => {
     let mounted = true;
     const loadFutureDateConfig = async () => {
       const dataStore2 = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
@@ -13749,7 +13785,7 @@ function ConfigurableForm({
       mounted = false;
     };
   }, [programObj, sectionsList]);
-  useEffect$R(() => {
+  useEffect$S(() => {
     let mounted = true;
     const loadFutureDateConfig = async () => {
       const dataStore2 = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
@@ -13770,7 +13806,7 @@ function ConfigurableForm({
     stageObj,
     activeSection
   ]);
-  useEffect$R(() => {
+  useEffect$S(() => {
     let cancelled = false;
     const loadFutureDateConfig = async () => {
       try {
@@ -13794,7 +13830,7 @@ function ConfigurableForm({
       cancelled = true;
     };
   }, [programId, selectedStage, formData]);
-  useEffect$R(() => {
+  useEffect$S(() => {
     let mounted = true;
     if (mounted) {
       const config = dataStoreData?.reportGenerationDatePrefill?.configurations;
@@ -13818,13 +13854,14 @@ function ConfigurableForm({
     [formLoading, autoFillFacilityLoading]
   );
   const getDe = async (de) => {
-    await dataStore.get(`dataElements?filter=id:in:[${de}]&fields=id,name,formName,valueType,optionSet[id,name]`).then((r) => {
+    await dataStore.get(`dataElements?filter=id:in:[${de}]&fields=id,name,formName,valueType,optionSet[id,name,options[id,name,code]]`).then((r) => {
+      console.log("r.dataElements", r.data.dataElements);
       setfirstDE(
-        r.dataElements
+        r.data.dataElements
       );
     });
   };
-  useEffect$R(() => {
+  useEffect$S(() => {
     if (!workflow) return;
     const wf = workflow?.workflows?.find((e) => e.value === pM);
     const w = wf?.firstStage;
@@ -13833,7 +13870,7 @@ function ConfigurableForm({
       const j = de.join(",");
       getDe(j);
     }
-  }, [workflow]);
+  }, [workflow, pM]);
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "", children: isInitiallyLoading ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "div",
     {
@@ -13910,7 +13947,7 @@ function ConfigurableForm({
         ]
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Block, { style: { marginTop: 8 }, children: activeSection.name === "Request maintenance" || firstStageDe?.length === 0 ? Array.isArray(activeSection?.fields) && activeSection?.fields.filter((el) => {
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Block, { style: { marginTop: 8 }, children: activeSection.name !== "Request maintenance" || firstStageDe?.length === 0 ? Array.isArray(activeSection?.fields) && activeSection?.fields.filter((el) => {
       const id = el?.id || el?.attribute || el?.dataElement?.id || el;
       return id !== statusFieldId;
     }).map((el) => {
@@ -16788,19 +16825,54 @@ async function programWithoutRegistration(
 
       const teiId =
         response?.data?.bundleReport?.typeReportMap?.EVENT?.objectReports?.[0]?.uid;
-      const configData = await getNotificationEvent(
-        program?.id,
-        importStrategy
-      );
 
+      // Check if this report requires approval before sending notification
+      const dataStoreData = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
+      const reportTypesConfig = dataStoreData?.reportTypesConfigurations;
+      let shouldSendNotification = true;
 
-      await notificationSendTrigger(configData?.event, {
-        orgUnit: selectedOrganisationUnit,
-        program: program?.id,
-        count: 1,
-        teiId,
-        event: teiId
-      });
+      // Only check for reports program
+      if (reportTypesConfig?.programId === program?.id) {
+        const reports = reportTypesConfig?.reports || [];
+
+        // Try to find matching report by checking all form data values against report configurations
+        // This matches by displayName or reportCode
+        const formValues = Object.values(formData).filter(v => typeof v === "string");
+
+        const matchingReport = reports.find(report => {
+          const reportName = (report.displayName || report.name || "").toLowerCase();
+          const reportCode = report.reportCode || "";
+
+          return formValues.some(value => {
+            const normalizedValue = (value || "").toLowerCase();
+            return normalizedValue === reportName || value === reportCode;
+          });
+        });
+
+        // Only send notification if report requires approval
+        if (matchingReport) {
+          shouldSendNotification = !!matchingReport.requiresApproval;
+        } else {
+          // No matching report config found, default to sending notification
+          // (for safety, in case this is a new report type not yet configured)
+          shouldSendNotification = true;
+        }
+      }
+
+      if (shouldSendNotification) {
+        const configData = await getNotificationEvent(
+          program?.id,
+          importStrategy
+        );
+
+        await notificationSendTrigger(configData?.event, {
+          orgUnit: selectedOrganisationUnit,
+          program: program?.id,
+          count: 1,
+          teiId,
+          event: teiId
+        });
+      }
 
     }
     return response;
@@ -16898,8 +16970,8 @@ const CreateDataItemsController = {
   programWithRegistrationEvent,
 };
 
-const React$C = await importShared('react');
-const {useContext: useContext$A,useEffect: useEffect$Q,useMemo: useMemo$y,useState: useState$T} = React$C;
+const React$D = await importShared('react');
+const {useContext: useContext$B,useEffect: useEffect$R,useMemo: useMemo$y,useState: useState$U} = React$D;
 const A$6 = (x) => Array.isArray(x) ? x : [];
 function MultiEntryForm({
   dataElements = null,
@@ -16909,18 +16981,18 @@ function MultiEntryForm({
   worklow,
   onClose
 }) {
-  const [numEntries, setNumEntries] = useState$T(2);
-  const [step, setStep] = useState$T("count");
-  const [commonData, setCommonData] = useState$T({});
-  const [entries, setEntries] = useState$T([]);
-  const [loading, setLoading] = useState$T(false);
-  const [selectedCommonFields, setSelectedCommonFields] = useState$T([]);
-  const [showPopover, setShowPopover] = useState$T(false);
-  const [imageUrls, setImageUrls] = useState$T({});
-  const [imageLoading, setImageLoading] = useState$T({});
+  const [numEntries, setNumEntries] = useState$U(2);
+  const [step, setStep] = useState$U("count");
+  const [commonData, setCommonData] = useState$U({});
+  const [entries, setEntries] = useState$U([]);
+  const [loading, setLoading] = useState$U(false);
+  const [selectedCommonFields, setSelectedCommonFields] = useState$U([]);
+  const [showPopover, setShowPopover] = useState$U(false);
+  const [imageUrls, setImageUrls] = useState$U({});
+  const [imageLoading, setImageLoading] = useState$U({});
   const navigate = useNavigate();
-  const { userOrganisationUnits } = useContext$A(MEMISContext.UserContext);
-  const { user } = useContext$A(MEMISContext.UserRolesContext);
+  const { userOrganisationUnits } = useContext$B(MEMISContext.UserContext);
+  const { user } = useContext$B(MEMISContext.UserRolesContext);
   const commonFields = useMemo$y(() => {
     if (!dataElements) return [];
     const program2 = dataElements?.program;
@@ -17004,7 +17076,7 @@ function MultiEntryForm({
       setLoading(false);
     }
   };
-  useEffect$Q(() => {
+  useEffect$R(() => {
     console.log(worklow);
   }, []);
   const renderInput = (el, canAddUpdateSection, idx, isCommonField) => {
@@ -17515,7 +17587,7 @@ const calculateDeregistrationAutofill = (teiAttributes, isolationDate = null, cu
     return autofillValues;
 };
 
-const {useState: useState$S,useEffect: useEffect$P,useContext: useContext$z,useMemo: useMemo$x,useRef: useRef$g} = await importShared('react');
+const {useState: useState$T,useEffect: useEffect$Q,useContext: useContext$A,useMemo: useMemo$x,useRef: useRef$g} = await importShared('react');
 
 /**
  * Hook to automatically fill facility/org unit based on DataStore configuration
@@ -17532,11 +17604,11 @@ function useFacilityAutoFill(
   isEdit
 ) {
   const location = useLocation();
-  const { userOrganisationUnits } = useContext$z(MEMISContext.UserContext);
-  const { user } = useContext$z(MEMISContext.UserRolesContext) || {};
+  const { userOrganisationUnits } = useContext$A(MEMISContext.UserContext);
+  const { user } = useContext$A(MEMISContext.UserRolesContext) || {};
 
-  const [autoFilledOrgUnit, setAutoFilledOrgUnit] = useState$S(null);
-  const [loading, setLoading] = useState$S(false);
+  const [autoFilledOrgUnit, setAutoFilledOrgUnit] = useState$T(null);
+  const [loading, setLoading] = useState$T(false);
 
   // Track if we've already loaded to prevent re-fetching
   const hasLoadedRef = useRef$g(false);
@@ -17552,7 +17624,7 @@ function useFacilityAutoFill(
     return user?.id || "";
   }, [user?.id]);
 
-  useEffect$P(() => {
+  useEffect$Q(() => {
     // Skip if we're in edit mode
     if (isEdit) {
       setAutoFilledOrgUnit(null);
@@ -17721,7 +17793,158 @@ function getUserPrimaryOrgUnit(userOrgUnits, user) {
   return userOrgUnits[0]?.id || null;
 }
 
-const {useContext: useContext$y,useEffect: useEffect$O,useState: useState$R,useMemo: useMemo$w,useRef: useRef$f} = await importShared('react');
+const ReactDOM = await importShared('react-dom');
+
+const RefModal = ({
+  isOpen,
+  onClose,
+  children,
+  title = "Information",
+  height = "auto",
+  width = "40%",
+  maxHeight = "85%",
+  maxWidth = "85%",
+  okButtonText = "OK",
+  onOkClick,
+  className = ""
+}) => {
+  if (!isOpen) return null;
+  return ReactDOM.createPortal(
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "div",
+      {
+        className: `custom-modal-overlay cm-root ${className}`,
+        onClick: onClose,
+        role: "dialog",
+        "aria-modal": "true",
+        "aria-labelledby": "modalTitle",
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "div",
+            {
+              className: "custom-modal-content",
+              style: {
+                width,
+                maxWidth,
+                height,
+                maxHeight,
+                position: "relative",
+                display: "flex",
+                flexDirection: "column"
+              },
+              onClick: (e) => e.stopPropagation(),
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "div",
+                  {
+                    className: "custom-modal-body",
+                    style: {
+                      flex: "1 1 auto",
+                      overflowY: "auto",
+                      minHeight: 0
+                    },
+                    children
+                  }
+                ),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                  "div",
+                  {
+                    className: "custom-modal-footer",
+                    style: {
+                      paddingTop: "12px",
+                      display: "flex",
+                      justifyContent: "flex-end"
+                    },
+                    children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(
+                        IonButton,
+                        {
+                          onClick: onClose,
+                          color: "medium",
+                          children: "Cancel"
+                        }
+                      ),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(
+                        IonButton,
+                        {
+                          onClick: onOkClick,
+                          children: okButtonText
+                        }
+                      )
+                    ]
+                  }
+                )
+              ]
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("style", { children: `
+        @media (max-width: 992px) {
+          .cm-root .custom-modal-content {
+            width: 92vw !important;
+            max-width: 92vw !important;
+            max-height: 92vh !important;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .cm-root.custom-modal-overlay {
+            padding: 0 !important;
+          }
+
+          .cm-root .custom-modal-content {
+            width: 100vw !important;
+            max-width: 100vw !important;
+            height: 100vh !important;
+            max-height: 100vh !important;
+            border-radius: 0 !important;
+          }
+
+          .cm-root .custom-modal-body {
+            padding: 10px !important;
+          }
+
+          .cm-root .custom-modal-footer {
+            padding: 10px;
+          }
+
+          .cm-root .custom-modal-footer ion-button {
+            width: 100%;
+          }
+        }
+      ` })
+        ]
+      }
+    ),
+    document.body
+  );
+};
+
+function AcknowledgementReferralMaintenance({
+  isOpen,
+  onClose
+}) {
+  const sendNortification = () => {
+    console.log("Notification sent");
+    onClose();
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    RefModal,
+    {
+      isOpen,
+      onClose,
+      okButtonText: "Send Notification",
+      okButtonIonicThemeColor: "success",
+      onOkClick: sendNortification,
+      children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "ack-modal-content", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { className: "ack-title", children: /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { children: "Warranty Confirmed" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { className: "ack-description", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "This equipment is currently covered by a valid service warranty." }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "ack-info", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Contact the authorized warranty service provider." }) }) })
+      ] })
+    }
+  );
+}
+
+const {useContext: useContext$z,useEffect: useEffect$P,useState: useState$S,useMemo: useMemo$w,useRef: useRef$f} = await importShared('react');
 const A$5 = (x) => Array.isArray(x) ? x : [];
 function FormComponent({
   program,
@@ -17736,34 +17959,34 @@ function FormComponent({
   workflow,
   editData
 }) {
-  const [isMultiple, setIsMultiple] = useState$R(false);
+  const [isMultiple, setIsMultiple] = useState$S(false);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const [query, setQuery] = useState$R(queryParams.get("query") || "");
-  const [formData, setFormData] = useState$R({});
-  const [maintainanceTye, setMaintenancetype] = useState$R();
-  const [currentSection, setCurrentSection] = useState$R(0);
-  const [fieldMultiText, setFieldMultiText] = useState$R([]);
-  const [lockedFields, setLockedFields] = useState$R(/* @__PURE__ */ new Set());
-  const [pM, setPM] = useState$R();
-  const [ranKey, setKey] = useState$R(Math.random().toString(36).substring(2, 10).toUpperCase());
-  const [triggerAt, setTriggerAt] = useState$R(queryParams.get("triggerAt"));
-  const [loading, setLoading] = useState$R(false);
-  const [eventDate, setEventDate] = useState$R((/* @__PURE__ */ new Date()).toISOString().slice(0, 10));
+  const [query, setQuery] = useState$S(queryParams.get("query") || "");
+  const [formData, setFormData] = useState$S({});
+  const [maintainanceTye, setMaintenancetype] = useState$S();
+  const [currentSection, setCurrentSection] = useState$S(0);
+  const [fieldMultiText, setFieldMultiText] = useState$S([]);
+  const [lockedFields, setLockedFields] = useState$S(/* @__PURE__ */ new Set());
+  const [pM, setPM] = useState$S();
+  const [ranKey, setKey] = useState$S(Math.random().toString(36).substring(2, 10).toUpperCase());
+  const [triggerAt, setTriggerAt] = useState$S(queryParams.get("triggerAt"));
+  const [loading, setLoading] = useState$S(false);
+  const [eventDate, setEventDate] = useState$S((/* @__PURE__ */ new Date()).toISOString().slice(0, 10));
   const navigate = useNavigate();
-  const { user } = useContext$y(MEMISContext.UserRolesContext);
-  const [pgRules, setRule] = useState$R([]);
-  const [selectedOrganisationUnit, setSelectedOrganisationUnit] = useState$R(null);
-  const [enrollmentDate, setEnrollmentDate] = useState$R(
+  const { user } = useContext$z(MEMISContext.UserRolesContext);
+  const [pgRules, setRule] = useState$S([]);
+  const [selectedOrganisationUnit, setSelectedOrganisationUnit] = useState$S(null);
+  const [enrollmentDate, setEnrollmentDate] = useState$S(
     editData?.enrollmentDate || Date.now()
   );
-  const [incidentDate, setIncidentDate] = useState$R(
+  const [incidentDate, setIncidentDate] = useState$S(
     editData?.incidentDate || Date.now()
   );
-  const [entityId, setEntityId] = useState$R(
+  const [entityId, setEntityId] = useState$S(
     editData?.trackedEntity || editData?.id || null
   );
-  const [ackModalOpen, setAckModalOpen] = useState$R(false);
+  const [ackModalOpen, setAckModalOpen] = useState$S(false);
   const autoFillFacilityAppliedRef = useRef$f(false);
   const isEditMode = useMemo$w(() => {
     return query === "edit" || !!editData;
@@ -17796,7 +18019,7 @@ function FormComponent({
       console.error("Failed to fetch deregistration autofill rules:", error);
     }
   };
-  useEffect$O(() => {
+  useEffect$P(() => {
     if (autoFillFacilityAppliedRef.current) return;
     if (isEditMode) return;
     if (!autoFilledOrgUnit) return;
@@ -17805,7 +18028,7 @@ function FormComponent({
     setSelectedOrganisationUnit(autoFilledOrgUnit);
     autoFillFacilityAppliedRef.current = true;
   }, [autoFilledOrgUnit, autoFillLoading, isEditMode]);
-  useEffect$O(() => {
+  useEffect$P(() => {
     autoFillFacilityAppliedRef.current = false;
   }, [program?.id]);
   const qry = () => {
@@ -17862,9 +18085,9 @@ function FormComponent({
       console.error("Failed to fetch warrant data:", err);
     }
   };
-  useEffect$O(() => {
-    console.log("Trigger at changed:", triggerAt);
+  useEffect$P(() => {
     getRules();
+    console.log("triggerAt changed", queryParams.get("triggerAt"));
     const q = queryParams.get("triggerAt");
     if (q === "Corrective Maintenance") {
       getWarrant(q);
@@ -17889,7 +18112,7 @@ function FormComponent({
       }));
       setPM("Referral_maintenance");
     }
-  }, [triggerAt]);
+  }, [queryParams.get("triggerAt")]);
   const buildSuccess = ({ isEditMode: isEditMode2 }) => {
     const verb = isEditMode2 ? "Updated" : "Created";
     return `${verb} successfully`;
@@ -18148,7 +18371,7 @@ function FormComponent({
     onClose?.();
     navigate(window.location.pathname, { replace: true });
   };
-  useEffect$O(() => {
+  useEffect$P(() => {
     if (editData && Object.keys(editData).length > 0 && program) {
       setQuery("edit");
       const getFieldMetadata = (fieldId) => {
@@ -18247,7 +18470,7 @@ function FormComponent({
       setEntityId(editData.trackedEntity || editData.id);
     }
   }, [editData, program, programKey, selectedStage]);
-  useEffect$O(() => {
+  useEffect$P(() => {
     const queryParams2 = new URLSearchParams(location.search);
     const equipmentId = trackedEntity || queryParams2.get("equipmentId");
     const isNewDeregistration = !editData && selectedStage && isDeregistrationStage(selectedStage, null) && equipmentId;
@@ -18290,97 +18513,110 @@ function FormComponent({
       fetchEquipmentDataAndPrefill();
     }
   }, [selectedStage, trackedEntity, program, editData, user, location.search]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(IonPage, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", fullscreen: true, children: [
-    queryParams.get("q") === "add" && program?.programType === "WITH_REGISTRATION" && !selectedStage && /* @__PURE__ */ jsxRuntimeExports.jsx(
-      MultiEntryCheckBox,
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonPage, { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", fullscreen: true, children: [
+      queryParams.get("q") === "add" && program?.programType === "WITH_REGISTRATION" && !selectedStage && /* @__PURE__ */ jsxRuntimeExports.jsx(
+        MultiEntryCheckBox,
+        {
+          isMultiple,
+          setIsMultiple
+        }
+      ),
+      isMultiple ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+        MultiEntryForm,
+        {
+          dataElements: program?.programType === "WITHOUT_REGISTRATION" ? program?.programStages?.[0] : programKey === "teiEvents" && selectedStage ? { program, selectedStage } : { program },
+          formData,
+          setFormData,
+          setEnrollmentDate,
+          setSelectedOrganisationUnit,
+          selectedOrganisationUnit,
+          incidentDate,
+          setIncidentDate,
+          enrollmentDate,
+          organisationUnits: A$5(program?.organisationUnits).filter(
+            (org) => A$5(user?.organisationUnits).some(
+              (uo) => uo.id === org?.id || uo.id === org?.parent?.id
+            )
+          ),
+          onSubmit: handleSubmit,
+          handleCancel,
+          loading,
+          programKey,
+          eventDate,
+          setEventDate,
+          isEdit: query === "edit" || !!editData,
+          programId: program?.id,
+          trackedEntityUID: entityId,
+          setCurrentSection,
+          setFieldMultiText,
+          selectedStage,
+          workflow,
+          program,
+          onClose
+        }
+      ) : /* @__PURE__ */ jsxRuntimeExports.jsx(IonCard, { className: "ion-padding", style: { boxSizing: "border-box" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        ConfigurableForm,
+        {
+          pM: qry(),
+          workflow,
+          dataElements: program?.programType === "WITHOUT_REGISTRATION" ? program?.programStages?.[0] : programKey === "teiEvents" && selectedStage ? { program, selectedStage } : { program },
+          formData,
+          setFormData,
+          teiOu: trackedEntity,
+          setEnrollmentDate,
+          setSelectedOrganisationUnit,
+          selectedOrganisationUnit: (() => {
+            const params = new URLSearchParams(location.search);
+            const hasEquipmentId = params.has("equipmentId");
+            if (programKey === "teiEvents" && hasEquipmentId) {
+              return selectedOrganisationUnit || selectedOrgUnit;
+            }
+            return programKey === "teiEvents" ? selectedOrgUnit : selectedOrganisationUnit;
+          })(),
+          incidentDate,
+          setIncidentDate,
+          enrollmentDate,
+          organisationUnits: A$5(program?.organisationUnits).filter(
+            (org) => A$5(user?.organisationUnits).some(
+              (uo) => uo.id === org?.id || uo.id === org?.parent?.id
+            )
+          ),
+          handleSubmit,
+          handleCancel,
+          loading,
+          programKey,
+          eventDate,
+          setEventDate,
+          eventId: editData?.event,
+          isEdit: query === "edit" || !!editData,
+          programId: program?.id,
+          trackedEntityUID: entityId,
+          setCurrentSection,
+          setFieldMultiText,
+          selectedStage,
+          autoFillFacilityLoading: autoFillLoading,
+          lockedFields
+        },
+        qry()
+      ) })
+    ] }),
+    ackModalOpen && /* @__PURE__ */ jsxRuntimeExports.jsx(
+      AcknowledgementReferralMaintenance,
       {
-        isMultiple,
-        setIsMultiple
-      }
-    ),
-    isMultiple ? /* @__PURE__ */ jsxRuntimeExports.jsx(
-      MultiEntryForm,
-      {
-        dataElements: program?.programType === "WITHOUT_REGISTRATION" ? program?.programStages?.[0] : programKey === "teiEvents" && selectedStage ? { program, selectedStage } : { program },
+        isOpen: ackModalOpen,
         formData,
-        setFormData,
-        setEnrollmentDate,
-        setSelectedOrganisationUnit,
-        selectedOrganisationUnit,
-        incidentDate,
-        setIncidentDate,
-        enrollmentDate,
-        organisationUnits: A$5(program?.organisationUnits).filter(
-          (org) => A$5(user?.organisationUnits).some(
-            (uo) => uo.id === org?.id || uo.id === org?.parent?.id
-          )
-        ),
-        onSubmit: handleSubmit,
-        handleCancel,
-        loading,
-        programKey,
-        eventDate,
-        setEventDate,
-        isEdit: query === "edit" || !!editData,
-        programId: program?.id,
-        trackedEntityUID: entityId,
-        setCurrentSection,
-        setFieldMultiText,
-        selectedStage,
-        workflow,
-        program,
-        onClose
+        onClose: () => {
+          setAckModalOpen(false);
+          navigate(window.location.pathname, { replace: true });
+        }
       }
-    ) : /* @__PURE__ */ jsxRuntimeExports.jsx(IonCard, { className: "ion-padding", style: { boxSizing: "border-box" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-      ConfigurableForm,
-      {
-        pM: qry(),
-        workflow,
-        dataElements: program?.programType === "WITHOUT_REGISTRATION" ? program?.programStages?.[0] : programKey === "teiEvents" && selectedStage ? { program, selectedStage } : { program },
-        formData,
-        setFormData,
-        teiOu: trackedEntity,
-        setEnrollmentDate,
-        setSelectedOrganisationUnit,
-        selectedOrganisationUnit: (() => {
-          const params = new URLSearchParams(location.search);
-          const hasEquipmentId = params.has("equipmentId");
-          if (programKey === "teiEvents" && hasEquipmentId) {
-            return selectedOrganisationUnit || selectedOrgUnit;
-          }
-          return programKey === "teiEvents" ? selectedOrgUnit : selectedOrganisationUnit;
-        })(),
-        incidentDate,
-        setIncidentDate,
-        enrollmentDate,
-        organisationUnits: A$5(program?.organisationUnits).filter(
-          (org) => A$5(user?.organisationUnits).some(
-            (uo) => uo.id === org?.id || uo.id === org?.parent?.id
-          )
-        ),
-        handleSubmit,
-        handleCancel,
-        loading,
-        programKey,
-        eventDate,
-        setEventDate,
-        eventId: editData?.event,
-        isEdit: query === "edit" || !!editData,
-        programId: program?.id,
-        trackedEntityUID: entityId,
-        setCurrentSection,
-        setFieldMultiText,
-        selectedStage,
-        autoFillFacilityLoading: autoFillLoading,
-        lockedFields
-      },
-      qry()
-    ) })
-  ] }) });
+    )
+  ] });
 }
 
-const React$B = await importShared('react');
-const {useState: useState$Q,useEffect: useEffect$N,useMemo: useMemo$v} = React$B;
+const React$C = await importShared('react');
+const {useState: useState$R,useEffect: useEffect$O,useMemo: useMemo$v} = React$C;
 const SearchFilterCard = ({
   children,
   searchText,
@@ -18396,8 +18632,8 @@ const SearchFilterCard = ({
   showApprovalFilters = true,
   showFilterButton = true
 }) => {
-  const [popoverEvent, setPopoverEvent] = useState$Q(null);
-  const [filterPopoverEvent, setFilterPopoverEvent] = useState$Q(null);
+  const [popoverEvent, setPopoverEvent] = useState$R(null);
+  const [filterPopoverEvent, setFilterPopoverEvent] = useState$R(null);
   const placeHolder = useMemo$v(() => {
     if (searchPlaceholder) return searchPlaceholder;
     const labels = (filterColumns || []).map((c) => c.label).filter(Boolean);
@@ -18408,7 +18644,7 @@ const SearchFilterCard = ({
   }, [searchPlaceholder, filterColumns]);
   const activeFiltersCount = Object.values(filterOptions).filter(Boolean).length;
   const hiddenColumnsCount = filterColumns.length - visibleColumnKeys.size;
-  useEffect$N(() => {
+  useEffect$O(() => {
     const styleId = "search-filter-card-styles";
     if (!document.getElementById(styleId)) {
       const style = document.createElement("style");
@@ -18549,7 +18785,9 @@ const SearchFilterCard = ({
             onIonChange: (e) => {
               const value = e.detail.value;
               onToggleFilter?.(value);
-              setFilterPopoverEvent(null);
+              setTimeout(() => {
+                setFilterPopoverEvent(null);
+              }, 0);
             },
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
@@ -18562,8 +18800,12 @@ const SearchFilterCard = ({
                   /* @__PURE__ */ jsxRuntimeExports.jsx(IonRadio, { slot: "start", value: "APPROVED" })
                 ] }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: "Unapproved" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(IonRadio, { slot: "start", value: "UNAPPROVED" })
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: "Pending" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(IonRadio, { slot: "start", value: "PENDING" })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: "Rejected" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(IonRadio, { slot: "start", value: "REJECTED" })
                 ] })
               ] }),
               includeIsolated && /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
@@ -19149,8 +19391,14 @@ async function resolveOrgUnitName$1(id) {
     if (cache.orgUnits.has(id)) return cache.orgUnits.get(id);
 
     try {
-        const res = await dataStore.get(`organisationUnits/${id}.json`, { fields: "id,name,displayName" });
-        const name = res?.displayName || res?.name || id;
+        const org = await LocalForageServiceInstance.getItem("organisationUnits", "organisationUnits");
+
+        const data = org?.find(orgUint => orgUint?.id === id);
+
+        // FIX rendering uids: Access 'res.data' because DataStore returns a wrapper object
+
+        const name = data?.displayName || data?.name || id;
+
         cache.orgUnits.set(id, name);
         saveCacheToStorage();
         return name;
@@ -19170,14 +19418,14 @@ async function resolveEquipmentName(teiId) {
             fields: "attributes[attribute,value]",
         });
 
-        const attributes = res?.attributes || [];
-        const name = attributes.find((x) => x.attribute === "RiiMQRa0S8v")?.value || "Unnamed Equipment";
+        const attributes = res?.data?.attributes || [];
+        const name = attributes.find((x) => x.attribute === "RiiMQRa0S8v")?.value || "Unknown";
         const brand = attributes.find((x) => x.attribute === "cHWWv4Tn1NE")?.value || "";
         const model = attributes.find((x) => x.attribute === "d406DPkIhPU")?.value || "";
         const serial = attributes.find((x) => x.attribute === "W5SNKqBFLgb")?.value || "";
 
         const label = [name, brand, model, serial ? `SN:${serial}` : ""].filter(Boolean).join(" • ");
-        cache.equipment.set(teiId, label);
+        cache?.equipment?.set(teiId, label);
         saveCacheToStorage();
         return label;
     } catch {
@@ -19191,13 +19439,13 @@ async function getOptionSetMap(optionSetId) {
     if (cache.optionSets.has(optionSetId)) return cache.optionSets.get(optionSetId);
 
     try {
-        const res = await dataStore.get(`optionSets/${optionSetId}.json`, {
-            fields: "id,options[id,code,name,displayName]",
-        });
-        if (!res?.options?.length) return null;
+        const options = await LocalForageServiceInstance.getItem("optionSets", "metadata");
+        const res = options?.find(op => op?.id === optionSetId);
+
+        if (!res?.data?.optionSets?.length) return null;
 
         const m = new Map();
-        res.options.forEach((opt) => {
+        res?.data?.optionSets?.options?.forEach((opt) => {
             const id = opt?.id ?? "";
             const code = opt?.code ?? "";
             const display = opt?.displayName || opt?.name || code || id;
@@ -19221,7 +19469,8 @@ async function getOptionSetIdFromDataElement(deId) {
         const res = await dataStore.get(`dataElements/${deId}.json`, {
             fields: "id,displayName,optionSet[id,displayName]",
         });
-        const osId = res?.optionSet?.id || null;
+
+        const osId = res?.data?.dataElements?.id || null;
         cache.dataElementOptionSets.set(deId, osId);
         saveCacheToStorage();
         return osId;
@@ -19284,7 +19533,7 @@ async function enrichTransferRows(rows, columns = [], cfg = {}) {
     for (let i = 0; i < rows.length; i += batchSize) {
         const batch = rows.slice(i, i + batchSize);
         const batchResults = await Promise.all(
-            batch.map(async (row) => {
+            batch?.map(async (row) => {
                 const enriched = { ...row };
 
                 for (const ouKey of ouKeys) {
@@ -19308,13 +19557,13 @@ async function enrichTransferRows(rows, columns = [], cfg = {}) {
                 return enriched;
             })
         );
-        results.push(...batchResults);
+        results?.push(...batchResults);
     }
 
     return results;
 }
 
-const {useState: useState$P,useMemo: useMemo$u,useEffect: useEffect$M} = await importShared('react');
+const {useState: useState$Q,useMemo: useMemo$u,useEffect: useEffect$N} = await importShared('react');
 const DataTable = ({
   columns,
   rows,
@@ -19341,15 +19590,15 @@ const DataTable = ({
   priorities,
   approvalStatusColors
 }) => {
-  const [localSortKey, setLocalSortKey] = useState$P("");
-  const [localSortOrder, setLocalSortOrder] = useState$P("asc");
-  const [isMobile, setIsMobile] = useState$P(() => {
+  const [localSortKey, setLocalSortKey] = useState$Q("");
+  const [localSortOrder, setLocalSortOrder] = useState$Q("asc");
+  const [isMobile, setIsMobile] = useState$Q(() => {
     if (typeof window !== "undefined") {
       return window.innerWidth < 768;
     }
     return false;
   });
-  const [resolvedRows, setResolvedRows] = useState$P(rows);
+  const [resolvedRows, setResolvedRows] = useState$Q(rows);
   const correctedColumns = useMemo$u(() => {
     if (!Array.isArray(columns)) return [];
     const keyCorrections = {
@@ -19375,13 +19624,13 @@ const DataTable = ({
       return correctedKey !== col.key ? { ...col, key: correctedKey } : col;
     });
   }, [columns]);
-  useEffect$M(() => {
+  useEffect$N(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
-  useEffect$M(() => {
+  useEffect$N(() => {
     let mounted = true;
     (async () => {
       try {
@@ -19681,7 +19930,7 @@ const DataTable = ({
         )),
         /* @__PURE__ */ jsxRuntimeExports.jsx(IonCol, { size: "auto", style: { width: "80px" }, className: "ion-text-start padding-text", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { style: { fontWeight: "bold", fontSize: "16px" }, children: "Actions" }) })
       ] }),
-      loading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", justifyContent: "center", padding: 20 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }) }) : displayRows.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { padding: 20, textAlign: "center" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "medium", children: "No data available" }) }) : sortByKeyValue(displayRows)?.map((item, idx) => {
+      loading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", justifyContent: "center", padding: 20 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }) }) : displayRows?.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { padding: 20, textAlign: "center" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "medium", children: "No data available" }) }) : sortByKeyValue(displayRows)?.map((item, idx) => {
         const isSelected = selectedIds.has(getRowId(item));
         const isStriped = striped && idx % 2 === 1;
         return /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -19717,7 +19966,7 @@ const DataTable = ({
                     className: "ion-text-start padding-text",
                     size: col.width,
                     style: { borderRight: gridLines ? "1px solid #ddd" : "none", overflow: "hidden", textOverflow: "ellipsis" },
-                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { className: "text-sm font-normal", title: typeof value === "string" ? value : void 0, children: setColorPriority(col, item) })
+                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { className: "text-sm font-normal", title: typeof value === "string" ? value : void 0, children: value })
                   },
                   cIdx
                 );
@@ -19800,6 +20049,8 @@ const DataTable = ({
 
 const {useCallback: useCallback$i,useMemo: useMemo$t} = await importShared('react');
 
+const unwrap = (res) => res?.data ?? res;
+
 function useTeiSearch(columns = []) {
  
   const colKeySet = useMemo$t(() => {
@@ -19848,14 +20099,15 @@ function useTeiSearch(columns = []) {
     async ({ programId, orgUnits, query, attributeUids, pageSize = 25 }) => {
       if (!programId || !query || !attributeUids?.length) return [];
 
-      const programMetadata = await dataStore.get(
-        `programs/${programId}?fields=programTrackedEntityAttributes[` +
-          `trackedEntityAttribute[id,name,valueType,optionSet[id,options[id,code,name]]]]`
+      const programMetadata = unwrap(
+      await dataStore.get(
+          `programs/${programId}?fields=programTrackedEntityAttributes[` +
+            `trackedEntityAttribute[id,name,valueType,optionSet[id,options[id,code,name]]]]`
+        )
       );
 
       const attrMap = new Map();
-      (programMetadata?.programTrackedEntityAttributes || []).forEach(
-        (ptea) => {
+      (programMetadata?.programTrackedEntityAttributes || []).forEach((ptea) => {
           const attr = ptea?.trackedEntityAttribute;
           if (attr?.id) {
             attrMap.set(attr.id, attr);
@@ -19879,8 +20131,9 @@ function useTeiSearch(columns = []) {
 
       const fetchOne = async (attrUid) => {
         const params = buildParams(attrUid);
-        return dataStore.get(`tracker/trackedEntities?${params}`);
+        return unwrap(await dataStore.get(`tracker/trackedEntities?${params}`));
       };
+
 
       const results = await Promise.allSettled(attributeUids.map(fetchOne));
 
@@ -19917,6 +20170,22 @@ const eventSearchFilter = async (programId, data) => {
 
   if (!data) return null;
 
+  // Check if user has an approval role for this program
+  // Approvers should see ALL reports without filters
+  const approvalProcessConfigs = data?.approvalProcesses?.configurations?.filter(
+    (cfg) => cfg?.programId === programId
+  ) || [];
+  const isApprover = approvalProcessConfigs.some((cfg) =>
+    cfg?.userRoles?.some((approverRole) =>
+      user?.userRoles?.some((userRole) => userRole?.id === approverRole?.id)
+    )
+  );
+
+  // Skip filters for approvers - they need to see all reports
+  if (isApprover) {
+    return null;
+  }
+
   // No eventSearchFilter stored
   if (!data?.eventSearchFilter) {
     return null;
@@ -19946,7 +20215,7 @@ const eventSearchFilter = async (programId, data) => {
   return { filter: "&filter=" + filterString };
 };
 
-const {useEffect: useEffect$L,useRef: useRef$e,useState: useState$O,useMemo: useMemo$s,useCallback: useCallback$h} = await importShared('react');
+const {useEffect: useEffect$M,useRef: useRef$e,useState: useState$P,useMemo: useMemo$s,useCallback: useCallback$h} = await importShared('react');
 function ItemSearch({
   programId,
   orgUnits,
@@ -19957,15 +20226,15 @@ function ItemSearch({
   onResults,
   onLoadingChange
 }) {
-  const [debounced, setDebounced] = useState$O((searchText || "").trim());
-  const [programType, setProgramType] = useState$O(null);
+  const [debounced, setDebounced] = useState$P((searchText || "").trim());
+  const [programType, setProgramType] = useState$P(null);
   const mountedRef = useRef$e(true);
   const onResultsRef = useRef$e(onResults);
   const onLoadingRef = useRef$e(onLoadingChange);
-  useEffect$L(() => {
+  useEffect$M(() => {
     onResultsRef.current = onResults;
   }, [onResults]);
-  useEffect$L(() => {
+  useEffect$M(() => {
     onLoadingRef.current = onLoadingChange;
   }, [onLoadingChange]);
   const keySet = useMemo$s(
@@ -20000,23 +20269,23 @@ function ItemSearch({
     },
     [colKeys]
   );
-  useEffect$L(() => {
+  useEffect$M(() => {
     mountedRef.current = true;
     return () => {
       mountedRef.current = false;
     };
   }, []);
-  useEffect$L(() => {
+  useEffect$M(() => {
     const t = setTimeout(() => setDebounced((searchText || "").trim()), 250);
     return () => clearTimeout(t);
   }, [searchText]);
-  useEffect$L(() => {
+  useEffect$M(() => {
     let cancelled = false;
     const fetchProgramType = async () => {
       if (!programId) return;
       try {
         const res = await dataStore.get(
-          `programs/${encodeURIComponent(programId)}.json?fields=programType`
+          `programs/${encodeURIComponent(programId)}?fields=programType`
         );
         if (!cancelled && mountedRef.current) {
           setProgramType(res?.data?.programType || "WITH_REGISTRATION");
@@ -20032,7 +20301,7 @@ function ItemSearch({
       cancelled = true;
     };
   }, [programId]);
-  useEffect$L(() => {
+  useEffect$M(() => {
     let cancelled = false;
     const runTei = async () => {
       const attributeUids = pickTeiScope();
@@ -20057,6 +20326,9 @@ function ItemSearch({
         onResultsRef.current?.([]);
         return;
       }
+      const viewAccess = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
+      const viewSearchFilter = await eventSearchFilter(programId, viewAccess);
+      viewSearchFilter?.filter || "";
       const buildQueryString = (deUid) => {
         const p = new URLSearchParams({
           program: programId,
@@ -20068,8 +20340,8 @@ function ItemSearch({
         (orgUnits || []).forEach((o) => p.append("orgUnit", o.id));
         p.append("filter", `${deUid}:ilike:${debounced}`);
         const base = p.toString();
-        const extraFilter = eventSearchFilter(programId)?.filter || "";
-        return base + extraFilter;
+        const extraFilter2 = eventSearchFilter(programId)?.filter || "";
+        return base + extraFilter2;
       };
       const results = await Promise.allSettled(
         dataElementUids.map(async (uid) => {
@@ -20139,7 +20411,20 @@ const normalizeValue$1 = (v) => {
 
 const isTruthyFlag = (raw) => {
   const v = normalizeValue$1(raw);
-  return v === "true" || v === "yes" || v === "1" || v === "y";
+  return v === "true" || v === "yes" || v === "1" || v === "y" || v === "approved";
+};
+
+const isFalsyFlag = (raw) => {
+  const v = normalizeValue$1(raw);
+  return (
+    v === "false" ||
+    v === "no" ||
+    v === "0" ||
+    v === "n" ||
+    v === "rejected" ||
+    v === "declined" ||
+    v === "unapproved"
+  );
 };
 
 const isDeregisteredValue = (raw) => {
@@ -20180,15 +20465,22 @@ const filterRowsByApproval = (
     } = equipmentFilterConfig || {};
 
     if (!filter || filter === "") {
-      if (!deregisterStatusFieldId || !hideDeregisteredByDefault) {
-        return rows;
-      }
-
       return rows.filter((row) => {
-        const raw = resolveAttributeValue(row, deregisterStatusFieldId);
-        return !isDeregisteredValue(raw);
+        const deregRaw = deregisterStatusFieldId
+          ? resolveAttributeValue(row, deregisterStatusFieldId)
+          : "";
+
+        const isoRaw = isolationDateFieldId
+          ? resolveAttributeValue(row, isolationDateFieldId)
+          : "";
+
+        const isDereg = deregisterStatusFieldId ? isDeregisteredValue(deregRaw) : false;
+        const isIso = isolationDateFieldId ? normalizeValue$1(isoRaw) !== "" : false;
+
+        return !isDereg && !isIso;
       });
     }
+
 
     if (filter === "DEREGISTERED" && deregisterStatusFieldId) {
       return rows.filter((row) => {
@@ -20207,48 +20499,50 @@ const filterRowsByApproval = (
     return rows;
   }
 
-  if (!approvalFieldKey || !filter) return rows;
+if (!approvalFieldKey || !filter) return rows;
 
-  return rows.filter((row) => {
-    const normalized = normalizeValue$1(row?.[approvalFieldKey]);
+return rows.filter((row) => {
+  const v = normalizeValue$1(row?.[approvalFieldKey]);
 
-    if (filter === "APPROVED") {
-      return normalized !== "";
-    }
+  if (filter === "APPROVED") {
+    return v !== "" && !isFalsyFlag(v);
+  }
 
-    if (filter === "UNAPPROVED") {
-      return normalized === "";
-    }
+  if (filter === "PENDING") {
+    return v === "";
+  }
 
-    return true;
-  });
+  if (filter === "REJECTED") {
+    return v !== "" && isFalsyFlag(v);
+  }
+
+  return true;
+});
+
 };
-
-// const ROW_FILTER_CONFIG_KEY = "dataStore/memis/rowFilterConfig";
 
 const getProgramRowFilterConfig = async (programId, type = null) => {
   if (!programId) return null;
 
-  const response = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
-  const cfg = response?.rowFilterConfig?.data ?? response;
-  if (!cfg) return null;
+  const store = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
+  if (!store) return null;
 
-  let programs = [];
+  const rowFilterConfig =
+    store?.rowFilterConfig?.data ??
+    store?.rowFilterConfig ??
+    store;
 
-  if (Array.isArray(cfg.programs)) {
-    programs = cfg.programs;
-  } else if (Array.isArray(cfg)) {
-    programs = cfg;
-  }
+  const programs =
+    rowFilterConfig?.programs ??
+    rowFilterConfig?.data?.programs ??
+    (Array.isArray(rowFilterConfig) ? rowFilterConfig : null);
 
-  if (!programs.length) return null;
+  if (!Array.isArray(programs) || programs.length === 0) return null;
 
-  const match =
-    programs.find(
-      (p) => p.programId === programId && (!type || p.type === type)
-    ) || null;
-
-  return match;
+  return (
+    programs.find((p) => p?.programId === programId && (!type || p?.type === type)) ||
+    null
+  );
 };
 
 const getProgramApprovalConfig = async (programId, type = "WITHOUT_REGISTRATION") => {
@@ -20302,7 +20596,7 @@ const hasActionPermission = (allowedRoles, currentUserRoleIds) => {
     });
 };
 
-const {useContext: useContext$x,useEffect: useEffect$K,useMemo: useMemo$r,useRef: useRef$d,useState: useState$N} = await importShared('react');
+const {useContext: useContext$y,useEffect: useEffect$L,useMemo: useMemo$r,useRef: useRef$d,useState: useState$O} = await importShared('react');
 const extractBaseProgramId = (id) => {
   if (!id) return null;
   return id.split("?")[0];
@@ -20310,19 +20604,19 @@ const extractBaseProgramId = (id) => {
 function Event({ id, onEdit, onClick }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useContext$x(MEMISContext.UserRolesContext);
-  const [rows, setRows] = useState$N([]);
-  const [priorities, setPriorities] = useState$N(null);
-  const [loading, setLoading] = useState$N(false);
-  const [loadingRows, setLoadingRows] = useState$N(false);
-  const [searchText, setSearchText] = useState$N("");
-  const [rawRows, setRawRows] = useState$N([]);
-  const [filterOptions, setFilterOptions] = useState$N({ approval: null });
-  const [approvalFieldKey, setApprovalFieldKey] = useState$N(null);
-  const { menuItems, userAccessData } = useContext$x(MEMISContext.MenuContext);
+  const { user } = useContext$y(MEMISContext.UserRolesContext);
+  const [rows, setRows] = useState$O([]);
+  const [priorities, setPriorities] = useState$O(null);
+  const [loading, setLoading] = useState$O(false);
+  const [loadingRows, setLoadingRows] = useState$O(false);
+  const [searchText, setSearchText] = useState$O("");
+  const [rawRows, setRawRows] = useState$O([]);
+  const [filterOptions, setFilterOptions] = useState$O({ approval: null });
+  const [approvalFieldKey, setApprovalFieldKey] = useState$O(null);
+  const { menuItems, userAccessData } = useContext$y(MEMISContext.MenuContext);
   const orgUnitCacheRef = useRef$d(/* @__PURE__ */ new Map());
-  const [allColumnsOrdered, setAllColumnsOrdered] = useState$N([]);
-  const [visibleColumnKeys, setVisibleColumnKeys] = useState$N(/* @__PURE__ */ new Set());
+  const [allColumnsOrdered, setAllColumnsOrdered] = useState$O([]);
+  const [visibleColumnKeys, setVisibleColumnKeys] = useState$O(/* @__PURE__ */ new Set());
   const visibleColumns = useMemo$r(
     () => allColumnsOrdered.filter((c) => visibleColumnKeys.has(c.key)),
     [allColumnsOrdered, visibleColumnKeys]
@@ -20334,12 +20628,12 @@ function Event({ id, onEdit, onClick }) {
     const shown = labels.slice(0, max).join(", ");
     return `Search by ${shown}${labels.length > max ? "..." : ""}`;
   }, [visibleColumns]);
-  const [selectedRow, setSelectedRow] = useState$N(null);
-  const [selectedRowId, setSelectedRowId] = useState$N(null);
-  const [showActions, setShowActions] = useState$N(false);
-  const [pendingDelete, setPendingDelete] = useState$N(null);
-  const [approvalStatusColors, setAprovalStatusColors] = useState$N(null);
-  const [deletingId, setDeletingId] = useState$N(null);
+  const [selectedRow, setSelectedRow] = useState$O(null);
+  const [selectedRowId, setSelectedRowId] = useState$O(null);
+  const [showActions, setShowActions] = useState$O(false);
+  const [pendingDelete, setPendingDelete] = useState$O(null);
+  const [approvalStatusColors, setAprovalStatusColors] = useState$O(null);
+  const [deletingId, setDeletingId] = useState$O(null);
   const getRowId = (row) => row?.id || row?.event || row?.enrollment || row?.trackedEntity || null;
   const getProgramDE = async (programId) => {
     const showAttrId = "xB2M6NH1qUf";
@@ -20376,7 +20670,7 @@ function Event({ id, onEdit, onClick }) {
       showToast("Failed to load program details. Please try again.", "error");
     }
   };
-  const [pagination, setPagination] = useState$N({
+  const [pagination, setPagination] = useState$O({
     page: 1,
     pageCount: 1,
     pageSize: 50,
@@ -20389,8 +20683,16 @@ function Event({ id, onEdit, onClick }) {
       const viewAccess = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
       const stageData = viewAccess?.navigationLayout?.configuration?.find((st) => st?.id === programId);
       const userRole = stageData?.viewAccessFilter?.find((role) => user?.userRoles?.some((r) => r?.id === role?.userRoleId));
+      const approvalProcessConfigs = viewAccess?.approvalProcesses?.configurations?.filter(
+        (cfg) => cfg?.programId === programId
+      ) || [];
+      const isApprover = approvalProcessConfigs.some(
+        (cfg) => cfg?.userRoles?.some(
+          (approverRole) => user?.userRoles?.some((userRole2) => userRole2?.id === approverRole?.id)
+        )
+      );
       let filterValue;
-      if (userRole) {
+      if (userRole && !isApprover) {
         filterValue = userRole?.filterValue;
       }
       const approvalConfig = await getProgramApprovalConfig(programId);
@@ -20460,7 +20762,8 @@ function Event({ id, onEdit, onClick }) {
                   obj[dv?.dataElement] = orgUnitCacheRef.current.get(rawValue);
                 } else {
                   try {
-                    const userOrgUnits = await LocalForageServiceInstance.getItem("userOrganisationUnits", "userOrgUnits");
+                    const userOrgUnits = await LocalForageServiceInstance.getItem("organisationUnits", "organisationUnits");
+                    console.log({ userOrgUnits });
                     const ouRes = userOrgUnits?.find((ou) => ou?.id === rawValue);
                     const ouName = ouRes?.name || rawValue;
                     orgUnitCacheRef.current.set(rawValue, ouName);
@@ -20476,8 +20779,12 @@ function Event({ id, onEdit, onClick }) {
               obj[dv?.dataElement] = rawValue;
             }
             if (approvalConfig && approvalConfig.source === "DATA_ELEMENT" && approvalConfig.dataElementId === dv?.dataElement && approvalConfig.rowKey) {
-              obj[approvalConfig.rowKey] = obj[dv?.dataElement];
+              obj[approvalConfig.rowKey] = rawValue;
             }
+          }
+          if (approvalConfig?.source === "DATA_ELEMENT" && approvalConfig?.dataElementId && approvalConfig?.rowKey) {
+            const rawApproval = obj?._rawDataValues?.[approvalConfig.dataElementId];
+            obj[approvalConfig.rowKey] = rawApproval ?? "";
           }
           return obj;
         })
@@ -20492,16 +20799,6 @@ function Event({ id, onEdit, onClick }) {
       setRawRows(list);
       const keyFromConfig = approvalConfig?.rowKey || null;
       setApprovalFieldKey(keyFromConfig);
-      const filtered = filterRowsByApproval(
-        list,
-        filterOptions.approval,
-        keyFromConfig
-      );
-      const sorted = sortRowsByApproval(filtered, keyFromConfig);
-      setRows(sorted);
-      if (onClick && typeof onClick === "function") {
-        onClick(filtered);
-      }
     } catch (error) {
       console.error("[MEMIS] getEvents failed:", error);
     } finally {
@@ -20557,7 +20854,7 @@ function Event({ id, onEdit, onClick }) {
     setAprovalStatusColors(res);
   };
   const isLoading = loading || loadingRows;
-  useEffect$K(() => {
+  useEffect$L(() => {
     if (id) {
       getProgramDE(id);
       getPriorityColors(id);
@@ -20565,7 +20862,7 @@ function Event({ id, onEdit, onClick }) {
     }
     if (user?.organisationUnits && id) getEvents(id, user?.organisationUnits, pagination?.page);
   }, [user, id, location]);
-  useEffect$K(() => {
+  useEffect$L(() => {
     if (!id || !user?.organisationUnits || allColumnsOrdered.length === 0) return;
     if ((searchText ?? "").trim().length < 2) {
       getEvents(id, user.organisationUnits, 1);
@@ -20587,10 +20884,15 @@ function Event({ id, onEdit, onClick }) {
   const handleApprovalFilterChange = (value) => {
     const v = value || null;
     setFilterOptions((prev) => ({ ...prev, approval: v }));
-    const filtered = filterRowsByApproval(rawRows, v, approvalFieldKey);
+  };
+  useEffect$L(() => {
+    const filtered = filterRowsByApproval(rawRows, filterOptions.approval, approvalFieldKey);
     const sorted = sortRowsByApproval(filtered, approvalFieldKey);
     setRows(sorted);
-  };
+    if (onClick && typeof onClick === "function") {
+      onClick(filtered);
+    }
+  }, [rawRows, filterOptions.approval, approvalFieldKey]);
   const actionSheetButtons = useMemo$r(() => {
     const buttons = [];
     if (canEdit) {
@@ -20670,7 +20972,9 @@ function Event({ id, onEdit, onClick }) {
         visibleColumns,
         searchText,
         pageSize: pagination?.pageSize || 50,
-        onResults: (rowsFound) => setRows(rowsFound),
+        onResults: (rowsFound) => {
+          setRawRows(rowsFound || []);
+        },
         onLoadingChange: (v) => setLoadingRows(v)
       }
     ),
@@ -20844,11 +21148,11 @@ const DeleteAttributeController = {
     deleteTrackerUnit,
 };
 
-const {useContext: useContext$w,useEffect: useEffect$J,useMemo: useMemo$q,useRef: useRef$c,useState: useState$M} = await importShared('react');
+const {useContext: useContext$x,useEffect: useEffect$K,useMemo: useMemo$q,useRef: useRef$c,useState: useState$N} = await importShared('react');
 function Tracker({ id, onEdit, onClick }) {
-  const { user } = useContext$w(MEMISContext.UserRolesContext);
-  const [allColumnsOrdered, setAllColumnsOrdered] = useState$M([]);
-  const [visibleColumnKeys, setVisibleColumnKeys] = useState$M(/* @__PURE__ */ new Set());
+  const { user } = useContext$x(MEMISContext.UserRolesContext);
+  const [allColumnsOrdered, setAllColumnsOrdered] = useState$N([]);
+  const [visibleColumnKeys, setVisibleColumnKeys] = useState$N(/* @__PURE__ */ new Set());
   const visibleColumns = useMemo$q(
     () => allColumnsOrdered.filter((c) => visibleColumnKeys.has(c.key)),
     [allColumnsOrdered, visibleColumnKeys]
@@ -20860,21 +21164,21 @@ function Tracker({ id, onEdit, onClick }) {
     const shown = labels.slice(0, max).join(", ");
     return `Search by ${shown}${labels.length > max ? "..." : ""}`;
   }, [visibleColumns]);
-  const [rows, setRows] = useState$M([]);
+  const [rows, setRows] = useState$N([]);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState$M(false);
-  const [loadingColumns, setLoadingColumns] = useState$M(false);
-  const [loadingRows, setLoadingRows] = useState$M(false);
-  const [searchText, setSearchText] = useState$M("");
-  const [rawRows, setRawRows] = useState$M([]);
-  const [filterOptions, setFilterOptions] = useState$M({ approval: null });
-  const [equipmentFilterConfig, setEquipmentFilterConfig] = useState$M(null);
+  const [loading, setLoading] = useState$N(false);
+  const [loadingColumns, setLoadingColumns] = useState$N(false);
+  const [loadingRows, setLoadingRows] = useState$N(false);
+  const [searchText, setSearchText] = useState$N("");
+  const [rawRows, setRawRows] = useState$N([]);
+  const [filterOptions, setFilterOptions] = useState$N({ approval: null });
+  const [equipmentFilterConfig, setEquipmentFilterConfig] = useState$N(null);
   const orgUnitCacheRef = useRef$c(/* @__PURE__ */ new Map());
-  const [showActions, setShowActions] = useState$M(false);
-  const [selectedRow, setSelectedRow] = useState$M(null);
-  const [selectedTeiId, setSelectedTeiId] = useState$M(null);
-  const [confirmDelete, setConfirmDelete] = useState$M(false);
-  const [deleting, setDeleting] = useState$M(false);
+  const [showActions, setShowActions] = useState$N(false);
+  const [selectedRow, setSelectedRow] = useState$N(null);
+  const [selectedTeiId, setSelectedTeiId] = useState$N(null);
+  const [confirmDelete, setConfirmDelete] = useState$N(false);
+  const [deleting, setDeleting] = useState$N(false);
   const currentProgramIdRef = useRef$c(null);
   const getRowId = (row) => row?.id || row?.trackedEntity || null;
   const hasEquipmentFilter = !!equipmentFilterConfig;
@@ -20922,7 +21226,7 @@ function Tracker({ id, onEdit, onClick }) {
       setLoadingColumns(false);
     }
   };
-  const [pagination, setPagination] = useState$M({
+  const [pagination, setPagination] = useState$N({
     page: 1,
     numPages: 1,
     pageSize: 50,
@@ -20946,7 +21250,11 @@ function Tracker({ id, onEdit, onClick }) {
         fields: "trackedEntity,orgUnit,attributes,enrollments"
         // Get all necessary fields
       });
-      ou?.forEach((o) => params.append("orgUnit", o?.id));
+      const orgUnit = ou?.sort((a, b) => a?.level - b?.level);
+      if (orgUnit?.length > 1) {
+        params.append("orgUnits", orgUnit?.slice(-1)[0]?.id);
+        params.append("orgUnitMode", "SELECTED");
+      }
       const programMetadata = await dataStore.get(
         `programs/${programId}?fields=programTrackedEntityAttributes[trackedEntityAttribute[id,name,valueType,optionSet[id,options[id,code,name]]]]`
       );
@@ -20967,6 +21275,9 @@ function Tracker({ id, onEdit, onClick }) {
         total: res?.data?.pager ? res?.data?.pager?.total : prev?.total
       }));
       for (const entity of res?.data?.trackedEntities || []) {
+        const isStateDeregistered = entity.attributes?.some(
+          (attr) => attr.attribute === DEREGISTRATION_CONFIG.EQUIPMENT_STATE_FIELD_ID && attr.value === DEREGISTRATION_CONFIG.DEREGISTERED_STATE
+        );
         const obj = {
           id: entity?.trackedEntity,
           orgUnit: entity?.orgUnit,
@@ -21039,14 +21350,7 @@ function Tracker({ id, onEdit, onClick }) {
         }
         rw.push(obj);
       }
-      setRows(rw);
       setRawRows(rw);
-      const filtered = applyFilter(rw, filterOptions.approval);
-      setRows(filtered);
-      if (onClick && typeof onClick === "function") {
-        onClick(filtered);
-      }
-      ;
     } catch (e) {
       console.error("Error fetching tracked entities:", e);
     } finally {
@@ -21139,7 +21443,7 @@ function Tracker({ id, onEdit, onClick }) {
       setSelectedTeiId(null);
     }
   };
-  useEffect$J(() => {
+  useEffect$K(() => {
     if (id) {
       currentProgramIdRef.current = id;
       setAllColumnsOrdered([]);
@@ -21148,18 +21452,18 @@ function Tracker({ id, onEdit, onClick }) {
       getAttr(id);
     }
   }, [id]);
-  useEffect$J(() => {
+  useEffect$K(() => {
     if (id && user?.organisationUnits && allColumnsOrdered?.length > 0) {
       getTEI(id, user?.organisationUnits, pagination?.page, pagination?.pageSize);
     }
   }, [id, user?.organisationUnits, allColumnsOrdered]);
-  useEffect$J(() => {
+  useEffect$K(() => {
     if (!id || !user?.organisationUnits || allColumnsOrdered?.length === 0) return;
     if ((searchText ?? "").trim().length < 2) {
       getTEI(id, user?.organisationUnits, 1, pagination?.pageSize);
     }
   }, [searchText, id, user?.organisationUnits, allColumnsOrdered, pagination?.pageSize]);
-  useEffect$J(() => {
+  useEffect$K(() => {
     if (!id) {
       setEquipmentFilterConfig(null);
       return;
@@ -21171,20 +21475,25 @@ function Tracker({ id, onEdit, onClick }) {
       const eqFilter = cfg?.equipmentFilter || null;
       setEquipmentFilterConfig(eqFilter);
       if (eqFilter) {
-        setRows((prevRows) => applyFilter(prevRows, filterOptions.approval));
+        setRows(applyFilter(rawRows, filterOptions.approval));
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, [id]);
+  }, [id, rawRows, filterOptions.approval]);
   const isLoading = loadingColumns || loadingRows || deleting;
   const handleApprovalFilterChange = (value) => {
     const v = value || null;
     setFilterOptions((prev) => ({ ...prev, approval: v }));
-    const filtered = applyFilter(rawRows, v);
-    setRows(filtered);
   };
+  useEffect$K(() => {
+    const filtered = applyFilter(rawRows, filterOptions.approval);
+    setRows(filtered);
+    if (onClick && typeof onClick === "function") {
+      onClick(filtered);
+    }
+  }, [rawRows, filterOptions.approval, equipmentFilterConfig]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       SearchFilterCard,
@@ -21296,29 +21605,29 @@ function Tracker({ id, onEdit, onClick }) {
   ] });
 }
 
-const {useContext: useContext$v,useEffect: useEffect$I,useMemo: useMemo$p,useRef: useRef$b,useState: useState$L} = await importShared('react');
+const {useContext: useContext$w,useEffect: useEffect$J,useMemo: useMemo$p,useRef: useRef$b,useState: useState$M} = await importShared('react');
 function StageEvents({ id, programId: programIdProp, stageId: stageIdProp, onEdit, onClick }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useContext$v(MEMISContext.UserRolesContext);
-  const { menuItems } = useContext$v(MEMISContext.MenuContext);
-  const [rows, setRows] = useState$L([]);
-  const [priorities, setPriorities] = useState$L(null);
-  const [loading, setLoading] = useState$L(false);
-  const [searchText, setSearchText] = useState$L("");
+  const { user } = useContext$w(MEMISContext.UserRolesContext);
+  const { menuItems } = useContext$w(MEMISContext.MenuContext);
+  const [rows, setRows] = useState$M([]);
+  const [priorities, setPriorities] = useState$M(null);
+  const [loading, setLoading] = useState$M(false);
+  const [searchText, setSearchText] = useState$M("");
   const orgUnitCacheRef = useRef$b(/* @__PURE__ */ new Map());
-  const [allColumnsOrdered, setAllColumnsOrdered] = useState$L([]);
-  const [visibleColumnKeys, setVisibleColumnKeys] = useState$L(/* @__PURE__ */ new Set());
+  const [allColumnsOrdered, setAllColumnsOrdered] = useState$M([]);
+  const [visibleColumnKeys, setVisibleColumnKeys] = useState$M(/* @__PURE__ */ new Set());
   const visibleColumns = useMemo$p(
     () => allColumnsOrdered.filter((c) => visibleColumnKeys.has(c.key)),
     [allColumnsOrdered, visibleColumnKeys]
   );
-  const [selectedRow, setSelectedRow] = useState$L(null);
-  const [selectedRowId, setSelectedRowId] = useState$L(null);
-  const [showActions, setShowActions] = useState$L(false);
-  const [pendingDelete, setPendingDelete] = useState$L(null);
-  const [deletingId, setDeletingId] = useState$L(null);
-  const [fallbackStageId, setFallbackStageId] = useState$L(null);
+  const [selectedRow, setSelectedRow] = useState$M(null);
+  const [selectedRowId, setSelectedRowId] = useState$M(null);
+  const [showActions, setShowActions] = useState$M(false);
+  const [pendingDelete, setPendingDelete] = useState$M(null);
+  const [deletingId, setDeletingId] = useState$M(null);
+  const [fallbackStageId, setFallbackStageId] = useState$M(null);
   const getRowId = (row) => row?.id || row?.event || row?.enrollment || row?.trackedEntity || null;
   const { resolvedProgramId, resolvedStageId } = useMemo$p(() => {
     const match = menuItems?.find((m) => m?.id === (stageIdProp || id)) || null;
@@ -21339,10 +21648,10 @@ function StageEvents({ id, programId: programIdProp, stageId: stageIdProp, onEdi
     if (fallbackStageId) return fallbackStageId;
     return rawStage || null;
   }, [stageIdProp, resolvedStageId, fallbackStageId, effectiveProgramId]);
-  useEffect$I(() => {
+  useEffect$J(() => {
     setFallbackStageId(null);
   }, [effectiveProgramId, stageIdProp, resolvedStageId]);
-  useEffect$I(() => {
+  useEffect$J(() => {
     const needsLookup = !effectiveStageId || effectiveProgramId && effectiveStageId === effectiveProgramId;
     if (!effectiveProgramId || !needsLookup) return;
     (async () => {
@@ -21394,7 +21703,7 @@ function StageEvents({ id, programId: programIdProp, stageId: stageIdProp, onEdi
       showToast("Failed to load program details. Please try again.", "error");
     }
   };
-  const [pagination, setPagination] = useState$L({
+  const [pagination, setPagination] = useState$M({
     page: 1,
     pageCount: 1,
     pageSize: 10,
@@ -21537,7 +21846,7 @@ function StageEvents({ id, programId: programIdProp, stageId: stageIdProp, onEdi
     const res = response?.programDataItemsSortingKeys?.data?.find((r) => r?.programId === pId);
     setPriorities(res);
   };
-  useEffect$I(() => {
+  useEffect$J(() => {
     if (effectiveProgramId && effectiveStageId) {
       getProgramDE(effectiveProgramId, effectiveStageId);
       getPriorityColors(effectiveProgramId);
@@ -21573,29 +21882,29 @@ function StageEvents({ id, programId: programIdProp, stageId: stageIdProp, onEdi
   ) });
 }
 
-const {useContext: useContext$u,useEffect: useEffect$H,useMemo: useMemo$o,useRef: useRef$a,useState: useState$K} = await importShared('react');
+const {useContext: useContext$v,useEffect: useEffect$I,useMemo: useMemo$o,useRef: useRef$a,useState: useState$L} = await importShared('react');
 function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdProp, onEdit, onClick }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useContext$u(MEMISContext.UserRolesContext);
-  const { menuItems } = useContext$u(MEMISContext.MenuContext);
-  const [rows, setRows] = useState$K([]);
-  const [priorities, setPriorities] = useState$K(null);
-  const [loading, setLoading] = useState$K(false);
-  const [searchText, setSearchText] = useState$K("");
+  const { user } = useContext$v(MEMISContext.UserRolesContext);
+  const { menuItems } = useContext$v(MEMISContext.MenuContext);
+  const [rows, setRows] = useState$L([]);
+  const [priorities, setPriorities] = useState$L(null);
+  const [loading, setLoading] = useState$L(false);
+  const [searchText, setSearchText] = useState$L("");
   const orgUnitCacheRef = useRef$a(/* @__PURE__ */ new Map());
-  const [allColumnsOrdered, setAllColumnsOrdered] = useState$K([]);
-  const [visibleColumnKeys, setVisibleColumnKeys] = useState$K(/* @__PURE__ */ new Set());
+  const [allColumnsOrdered, setAllColumnsOrdered] = useState$L([]);
+  const [visibleColumnKeys, setVisibleColumnKeys] = useState$L(/* @__PURE__ */ new Set());
   const visibleColumns = useMemo$o(
     () => allColumnsOrdered?.filter((c) => visibleColumnKeys?.has(c?.key)),
     [allColumnsOrdered, visibleColumnKeys]
   );
-  const [selectedRow, setSelectedRow] = useState$K(null);
-  const [selectedRowId, setSelectedRowId] = useState$K(null);
-  const [showActions, setShowActions] = useState$K(false);
-  const [pendingDelete, setPendingDelete] = useState$K(null);
-  const [deletingId, setDeletingId] = useState$K(null);
-  const [fallbackStageId, setFallbackStageId] = useState$K(null);
+  const [selectedRow, setSelectedRow] = useState$L(null);
+  const [selectedRowId, setSelectedRowId] = useState$L(null);
+  const [showActions, setShowActions] = useState$L(false);
+  const [pendingDelete, setPendingDelete] = useState$L(null);
+  const [deletingId, setDeletingId] = useState$L(null);
+  const [fallbackStageId, setFallbackStageId] = useState$L(null);
   const getRowId = (row) => row?.id || row?.event || row?.enrollment || row?.trackedEntity || null;
   const { resolvedProgramId, resolvedStageId } = useMemo$o(() => {
     const match = menuItems?.find((m) => m?.id === (stageIdProp || id)) || null;
@@ -21616,10 +21925,10 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
     if (fallbackStageId) return fallbackStageId;
     return rawStage || null;
   }, [stageIdProp, resolvedStageId, fallbackStageId, effectiveProgramId]);
-  useEffect$H(() => {
+  useEffect$I(() => {
     setFallbackStageId(null);
   }, [effectiveProgramId, stageIdProp, resolvedStageId]);
-  useEffect$H(() => {
+  useEffect$I(() => {
     const needsLookup = !effectiveStageId || effectiveProgramId && effectiveStageId === effectiveProgramId;
     if (!effectiveProgramId || !needsLookup) return;
     (async () => {
@@ -21674,14 +21983,15 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
       console.error("[MEMIS] Failed to fetch Program DE:", error);
     }
   };
-  const [pagination, setPagination] = useState$K({
+  const [pagination, setPagination] = useState$L({
     page: 1,
     pageCount: 1,
     pageSize: 10,
     total: 0
   });
   const getEvents = async (programId, programStageId, orgUnits, page) => {
-    if (!programId || !programStageId) return;
+    const cookeData = api.get("memis_cookie") && JSON.parse(api.get("memis_cookie"));
+    if (!programId || !programStageId || !cookeData) return;
     setLoading(true);
     try {
       const sortedOrgUnits = orgUnits?.sort((a, b) => a?.level - b?.level);
@@ -21697,7 +22007,7 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
         }
       }
       const params = new URLSearchParams({
-        program: programId,
+        program: cookeData?.activeProgramId && programId,
         order: "occurredAt:desc",
         pageSize: 10,
         page,
@@ -21764,9 +22074,9 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
                 obj[dv?.dataElement] = orgUnitCacheRef.current.get(rawValue);
               } else {
                 try {
-                  const ouRes = await dataStore.get(`organisationUnits/${rawValue}?fields=id,name`);
-                  let ou = await LocalForageServiceInstance.getItem("userOrgUnits", "userOrgUnits");
-                  const ouName = ouRes?.data?.name || rawValue;
+                  let ou = await LocalForageServiceInstance.getItem("userOrganisationUnits", "userOrgUnits");
+                  const ouRes = ou?.find((org) => org?.id === rawValue);
+                  const ouName = ouRes?.name || rawValue;
                   orgUnitCacheRef.current.set(rawValue, ouName);
                   obj[dv?.dataElement] = ouName;
                 } catch (error) {
@@ -21783,9 +22093,6 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
         return obj;
       }));
       setRows(list);
-      if (onClick && typeof onClick === "function") {
-        onClick(list);
-      }
     } catch (error) {
       console.error("[MEMIS] getEvents failed:", error);
     } finally {
@@ -21818,7 +22125,7 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
     const res = response?.programDataItemsSortingKeys?.data?.find((r) => r?.programId === pId);
     setPriorities(res);
   };
-  useEffect$H(() => {
+  useEffect$I(() => {
     if (effectiveProgramId && effectiveStageId) {
       getProgramDE(effectiveProgramId, effectiveStageId);
       getPriorityColors(effectiveProgramId);
@@ -21826,7 +22133,7 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
     if (user?.organisationUnits && effectiveProgramId && effectiveStageId) {
       getEvents(effectiveProgramId, effectiveStageId, user?.organisationUnits, pagination?.page, user?.userRoles);
     }
-  }, [user, effectiveProgramId, effectiveStageId, location]);
+  }, [id, user, effectiveProgramId, effectiveStageId, location]);
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(
     SearchFilterCard,
     {
@@ -21839,7 +22146,8 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
           columns: visibleColumns,
           rows,
           rowClick: (item) => {
-            navigate(`/memis/program/${item?.program}/${item?.trackedEntity}/${item?.programStage}/${item?.id}`);
+            const tei = rows?.find((t) => t?.id === item?.id);
+            navigate(`/memis/program/${item?.program}/${tei?.trackedEntity}/${item?.programStage}/${item?.id}`);
           },
           onOpenRowActions: openRowMenu,
           loading,
@@ -21854,8 +22162,8 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
   ) });
 }
 
-const React$A = await importShared('react');
-const {useState: useState$J,useMemo: useMemo$n} = React$A;
+const React$B = await importShared('react');
+const {useState: useState$K,useMemo: useMemo$n} = React$B;
 
 const {createPortal: createPortal$3} = await importShared('react-dom');
 function EquipmentPicker({
@@ -21866,8 +22174,8 @@ function EquipmentPicker({
   loading = false,
   error = null
 }) {
-  const [searchTerm, setSearchTerm] = useState$J("");
-  const [selectedItem, setSelectedItem] = useState$J(null);
+  const [searchTerm, setSearchTerm] = useState$K("");
+  const [selectedItem, setSelectedItem] = useState$K(null);
   const filteredEquipment = useMemo$n(() => {
     if (!searchTerm.trim()) return availableEquipment;
     const term = searchTerm.toLowerCase();
@@ -22247,7 +22555,7 @@ function EquipmentPicker({
   );
 }
 
-const {useCallback: useCallback$g,useContext: useContext$t,useEffect: useEffect$G,useMemo: useMemo$m,useState: useState$I} = await importShared('react');
+const {useCallback: useCallback$g,useContext: useContext$u,useEffect: useEffect$H,useMemo: useMemo$m,useState: useState$J} = await importShared('react');
 function readActiveProgramIdFromCookie() {
   try {
     const rawPair = document.cookie.split(";").find((c) => c.trim().startsWith("memis_cookie="));
@@ -22260,34 +22568,34 @@ function readActiveProgramIdFromCookie() {
   }
 }
 function GeneralComponent({ programProp }) {
-  const { programs, loading: programsLoading } = useContext$t(MEMISContext.ProgramContext);
-  const { menuItems, loading: menuLoading } = useContext$t(MEMISContext.MenuContext);
-  const { user } = useContext$t(MEMISContext.UserRolesContext);
-  const [workflow, setapplicableDE] = useState$I({});
+  const { programs, loading: programsLoading } = useContext$u(MEMISContext.ProgramContext);
+  const { menuItems, loading: menuLoading } = useContext$u(MEMISContext.MenuContext);
+  const { user } = useContext$u(MEMISContext.UserRolesContext);
+  const [workflow, setapplicableDE] = useState$J({});
   const { canModifyProgram } = usePermissions();
-  const [program, setProgram] = useState$I(null);
-  const [formActive, setFormActive] = useState$I(false);
-  const [query, setQuery] = useState$I("");
-  const [itemsData, setItemsData] = useState$I([]);
-  const [editData, setEditData] = useState$I(null);
-  const [crumbs, setCrumbs] = useState$I([]);
-  const [resolutionComplete, setResolutionComplete] = useState$I(false);
-  const [buttonConfig, setButtonConfig] = useState$I(null);
-  const [loadingButtonConfig, setLoadingButtonConfig] = useState$I(true);
+  const [program, setProgram] = useState$J(null);
+  const [formActive, setFormActive] = useState$J(false);
+  const [query, setQuery] = useState$J("");
+  const [itemsData, setItemsData] = useState$J([]);
+  const [editData, setEditData] = useState$J(null);
+  const [crumbs, setCrumbs] = useState$J([]);
+  const [resolutionComplete, setResolutionComplete] = useState$J(false);
+  const [buttonConfig, setButtonConfig] = useState$J(null);
+  const [loadingButtonConfig, setLoadingButtonConfig] = useState$J(true);
   const isNativeMobile = Capacitor.getPlatform() === "android" || Capacitor.getPlatform() === "ios";
-  const [isMobileView, setIsMobileView] = useState$I(() => {
+  const [isMobileView, setIsMobileView] = useState$J(() => {
     if (isNativeMobile) return true;
     return typeof window !== "undefined" ? window.innerWidth <= 600 : false;
   });
-  useEffect$G(() => {
+  useEffect$H(() => {
     if (!isNativeMobile) {
       const handleResize = () => setIsMobileView(window.innerWidth <= 600);
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }
   }, [isNativeMobile]);
-  const [pendingAction, setPendingAction] = useState$I(null);
-  const [persistedEquipment, setPersistedEquipment] = useState$I(null);
+  const [pendingAction, setPendingAction] = useState$J(null);
+  const [persistedEquipment, setPersistedEquipment] = useState$J(null);
   const {
     contextConfig,
     selectedEquipment,
@@ -22507,7 +22815,7 @@ function GeneralComponent({ programProp }) {
     }
     handleQuery("add", null, extra);
   };
-  useEffect$G(() => {
+  useEffect$H(() => {
     const params2 = new URLSearchParams(location.search);
     const q = params2.get("q");
     const refId = params2.get("ref");
@@ -22655,16 +22963,16 @@ function GeneralComponent({ programProp }) {
     } catch (error) {
     }
   };
-  useEffect$G(() => {
+  useEffect$H(() => {
     resolveProgram();
   }, [resolveProgram]);
-  useEffect$G(() => {
+  useEffect$H(() => {
     const isLoading = menuLoading || programsLoading;
     if (!isLoading && !program && resolutionComplete && menuItems !== void 0 && programs !== void 0 && !formActive) {
       navigate("/", { replace: true });
     }
   }, [program, menuItems, programs, menuLoading, programsLoading, formActive, navigate, resolutionComplete]);
-  useEffect$G(() => {
+  useEffect$H(() => {
     getProgramView();
     getWorkflow();
   }, [menuItems, programs, program]);
@@ -22673,7 +22981,7 @@ function GeneralComponent({ programProp }) {
   const addButtonLabel = useMemo$m(() => {
     return buttonConfig?.label || null;
   }, [buttonConfig]);
-  useEffect$G(() => {
+  useEffect$H(() => {
     if (selectedEquipment && pendingAction) {
       setPersistedEquipment(selectedEquipment);
       const extraWithEquipment = {
@@ -22692,7 +23000,7 @@ function GeneralComponent({ programProp }) {
     return handleActionButtonClick;
   }, [handleActionButtonClick]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonPage, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(IonHeader, { className: "ion-no-border", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonToolbar, { className: "ion-padding-horizontal", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(IonHeader, { className: "ion-no-border", color: "light", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonToolbar, { className: "ion-padding-horizontal", color: "light", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(IonTitle, { slot: "start", className: "ion-text-wrap toolbar-title", style: { fontSize: "1.2em", fontWeight: "bold" }, children: program ? program.name : /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
         " Loading program..."
@@ -22702,13 +23010,11 @@ function GeneralComponent({ programProp }) {
           IonButton,
           {
             fill: "outline",
-            expand: "block",
+            color: "primary",
             style: {
               "alignItems": "center",
               "display": "flex",
               "fontWeight": "bold",
-              "--background": "green",
-              "--background-hover": "#006400",
               "--color": "white",
               "--border-radius": "5px",
               "--padding-start": "20px",
@@ -22744,7 +23050,7 @@ function GeneralComponent({ programProp }) {
         )
       ] })
     ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-no-padding", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-no-padding", color: "light", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("style", { children: `
                     .add-button-animated:hover {
                         transform: translateY(-1px) scale(1.02);
@@ -22808,12 +23114,12 @@ function GeneralComponent({ programProp }) {
   ] });
 }
 
-const React$z = await importShared('react');
-const {useEffect: useEffect$F,useState: useState$H} = React$z;
+const React$A = await importShared('react');
+const {useEffect: useEffect$G,useState: useState$I} = React$A;
 const Login = () => {
-  const [username, setUsername] = useState$H("");
-  const [password, setPassword] = useState$H("");
-  const [loading, setLoading] = useState$H(false);
+  const [username, setUsername] = useState$I("");
+  const [password, setPassword] = useState$I("");
+  const [loading, setLoading] = useState$I(false);
   const navigate = useNavigate();
   const { reload: reloadDataStore } = useDataStore();
   const handleLogin = async (e) => {
@@ -22854,7 +23160,7 @@ const Login = () => {
       setLoading(false);
     }
   };
-  useEffect$F(() => {
+  useEffect$G(() => {
     const userData = localStorage.getItem("memisCredentials");
     const load = async () => {
       if (userData) {
@@ -26089,7 +26395,7 @@ const stageAddButtonAccess = async (programId, stageId, userRoles) => {
   return { access: true };
 };
 
-const {useEffect: useEffect$E,useState: useState$G,useContext: useContext$s} = await importShared('react');
+const {useEffect: useEffect$F,useState: useState$H,useContext: useContext$t} = await importShared('react');
 function DeregistrationStage({
   id,
   program,
@@ -26100,16 +26406,16 @@ function DeregistrationStage({
   refreshEvents
   // Add refresh callback
 }) {
-  const [open, setOpen] = useState$G(false);
-  const [lastEventCount, setLastEventCount] = useState$G(0);
-  const [stage] = useState$G(pgStages);
-  const [evnts, setEvnts] = useState$G([]);
-  const [canAddNew, setCanAddNew] = useState$G(false);
-  const [canApprove, setCanApprove] = useState$G(false);
+  const [open, setOpen] = useState$H(false);
+  const [lastEventCount, setLastEventCount] = useState$H(0);
+  const [stage] = useState$H(pgStages);
+  const [evnts, setEvnts] = useState$H([]);
+  const [canAddNew, setCanAddNew] = useState$H(false);
+  const [canApprove, setCanApprove] = useState$H(false);
   const navigate = useNavigate();
-  const [addButton, setAddButton] = useState$G(false);
-  const { user } = useContext$s(MEMISContext.UserRolesContext);
-  const [equipmentState, setEquipmentState] = useState$G(null);
+  const [addButton, setAddButton] = useState$H(false);
+  const { user } = useContext$t(MEMISContext.UserRolesContext);
+  const [equipmentState, setEquipmentState] = useState$H(null);
   const fetchEquipmentState = async () => {
     try {
       const DataStore = (await __vitePreload(async () => { const {default: __vite_default__} = await import('./index3.js').then(n => n.i);return { default: __vite_default__ }},true              ?__vite__mapDeps([0,1]):void 0)).default;
@@ -26123,7 +26429,7 @@ function DeregistrationStage({
       setEquipmentState(null);
     }
   };
-  useEffect$E(() => {
+  useEffect$F(() => {
     const filteredEvents = (events || [])?.filter((e) => e.programStage === stage.id);
     const sortedEvents = filteredEvents.sort((a, b) => {
       const dateA = new Date(a.occurredAt || a.createdAt);
@@ -26134,12 +26440,12 @@ function DeregistrationStage({
     setEvnts(sortedEvents);
     setLastEventCount(filteredEvents.length);
   }, [stage.id, events, lastEventCount, open]);
-  useEffect$E(() => {
+  useEffect$F(() => {
     if (id && program) {
       fetchEquipmentState();
     }
   }, [id, program, events]);
-  useEffect$E(() => {
+  useEffect$F(() => {
     let intervalId;
     if (open && refreshEvents && typeof refreshEvents === "function") {
       intervalId = setInterval(() => {
@@ -26210,7 +26516,7 @@ function DeregistrationStage({
     const res = await stageAddButtonAccess(program, stage.id, user?.userRoles);
     setAddButton(res?.access || false);
   };
-  useEffect$E(() => {
+  useEffect$F(() => {
     addNewAndApproval();
     showAddButton();
   }, []);
@@ -26301,15 +26607,15 @@ function DeregistrationStage({
   ] });
 }
 
-const {useContext: useContext$r,useEffect: useEffect$D,useState: useState$F} = await importShared('react');
+const {useContext: useContext$s,useEffect: useEffect$E,useState: useState$G} = await importShared('react');
 function Stages({ id, program, pgStages, events, handleAddEvent, formatDate, refreshEvents }) {
-  const [open, setOpen] = useState$F(false);
-  const [stage] = useState$F(pgStages);
-  const [evnts, setEvnts] = useState$F([]);
-  const [addButton, setAddButton] = useState$F(false);
+  const [open, setOpen] = useState$G(false);
+  const [stage] = useState$G(pgStages);
+  const [evnts, setEvnts] = useState$G([]);
+  const [addButton, setAddButton] = useState$G(false);
   const navigate = useNavigate();
-  const { user } = useContext$r(MEMISContext.UserRolesContext);
-  useEffect$D(() => {
+  const { user } = useContext$s(MEMISContext.UserRolesContext);
+  useEffect$E(() => {
     setEvnts((events || [])?.filter((e) => e.programStage === stage.id));
   }, [stage.id, events]);
   const showAddButton = async () => {
@@ -26317,7 +26623,7 @@ function Stages({ id, program, pgStages, events, handleAddEvent, formatDate, ref
     console.log({ res });
     setAddButton(res?.access || false);
   };
-  useEffect$D(() => {
+  useEffect$E(() => {
     showAddButton();
   }, [open]);
   if (isDeregistrationStage(stage.id, stage.name)) {
@@ -28641,7 +28947,7 @@ await importShared('react');
 
 await importShared('react');
 
-const {useContext: useContext$q} = await importShared('react');
+const {useContext: useContext$r} = await importShared('react');
 
 const {useCallback: useCallback$f,useMemo: useMemo$l} = await importShared('react');
 
@@ -28672,26 +28978,26 @@ new QueryClient(queryClientOptions);
 
 await importShared('react');
 
-const {useContext: useContext$p} = await importShared('react');
+const {useContext: useContext$q} = await importShared('react');
 
-const {useState: useState$E,useEffect: useEffect$C,useRef: useRef$9,useDebugValue: useDebugValue$1} = await importShared('react');
+const {useState: useState$F,useEffect: useEffect$D,useRef: useRef$9,useDebugValue: useDebugValue$1} = await importShared('react');
 
-const {useState: useState$D,useCallback: useCallback$e,useRef: useRef$8,useEffect: useEffect$B} = await importShared('react');
+const {useState: useState$E,useCallback: useCallback$e,useRef: useRef$8,useEffect: useEffect$C} = await importShared('react');
 
 const {useCallback: useCallback$d} = await importShared('react');
 
-const {useState: useState$C,useRef: useRef$7,useCallback: useCallback$c,useDebugValue} = await importShared('react');
+const {useState: useState$D,useRef: useRef$7,useCallback: useCallback$c,useDebugValue} = await importShared('react');
 
 await importShared('react');
 
 await importShared('react');
 
-const React$y = await importShared('react');
-const {useState: useState$B} = React$y;
+const React$z = await importShared('react');
+const {useState: useState$C} = React$z;
 
-const {useContext: useContext$o} = await importShared('react');
+const {useContext: useContext$p} = await importShared('react');
 
-const {useContext: useContext$n,useRef: useRef$6,useCallback: useCallback$b} = await importShared('react');
+const {useContext: useContext$o,useRef: useRef$6,useCallback: useCallback$b} = await importShared('react');
 
 var propTypes = {exports: {}};
 
@@ -31941,15 +32247,15 @@ function requireIsEqual () {
 
 requireIsEqual();
 
-const React$x = await importShared('react');
-const {useEffect: useEffect$A,useCallback: useCallback$a,useContext: useContext$m,useState: useState$A,useMemo: useMemo$k} = React$x;
+const React$y = await importShared('react');
+const {useEffect: useEffect$B,useCallback: useCallback$a,useContext: useContext$n,useState: useState$B,useMemo: useMemo$k} = React$y;
 ({
   children: PropTypes.node,
   store: PropTypes.shape({})
 });
 
-const React$w = await importShared('react');
-const {createContext,useContext: useContext$l} = React$w;
+const React$x = await importShared('react');
+const {createContext,useContext: useContext$m} = React$x;
 ({
   children: PropTypes.node,
   offlineInterface: PropTypes.shape({
@@ -31957,8 +32263,8 @@ const {createContext,useContext: useContext$l} = React$w;
   })
 });
 
-const React$v = await importShared('react');
-const {useEffect: useEffect$z,useCallback: useCallback$9,useMemo: useMemo$j} = React$v;
+const React$w = await importShared('react');
+const {useEffect: useEffect$A,useCallback: useCallback$9,useMemo: useMemo$j} = React$w;
 ({
   children: PropTypes.node
 });
@@ -49181,14 +49487,14 @@ if (shouldLog) {
 
 const {useCallback: useCallback$8} = await importShared('react');
 
-const React$u = await importShared('react');
-const {useCallback: useCallback$7,useState: useState$z,useRef: useRef$5,useMemo: useMemo$i,useEffect: useEffect$y,useContext: useContext$k} = React$u;
+const React$v = await importShared('react');
+const {useCallback: useCallback$7,useState: useState$A,useRef: useRef$5,useMemo: useMemo$i,useEffect: useEffect$z,useContext: useContext$l} = React$v;
 ({
   children: PropTypes.node
 });
 
-const React$t = await importShared('react');
-const {useContext: useContext$j,useState: useState$y} = React$t;
+const React$u = await importShared('react');
+const {useContext: useContext$k,useState: useState$z} = React$u;
 
 await importShared('react');
 ({
@@ -49198,8 +49504,8 @@ await importShared('react');
   })
 });
 
-const React$s = await importShared('react');
-const {useCallback: useCallback$6,useEffect: useEffect$x,useMemo: useMemo$h} = React$s;
+const React$t = await importShared('react');
+const {useCallback: useCallback$6,useEffect: useEffect$y,useMemo: useMemo$h} = React$t;
 
 const {flushSync} = await importShared('react-dom');
 ({
@@ -49610,47 +49916,47 @@ function requireDebounce () {
 
 requireDebounce();
 
-const {useState: useState$x,useEffect: useEffect$w,useCallback: useCallback$5,useMemo: useMemo$g} = await importShared('react');
+const {useState: useState$y,useEffect: useEffect$x,useCallback: useCallback$5,useMemo: useMemo$g} = await importShared('react');
 
 await importShared('react');
 
-const {useEffect: useEffect$v,useMemo: useMemo$f,useState: useState$w,useRef: useRef$4} = await importShared('react');
+const {useEffect: useEffect$w,useMemo: useMemo$f,useState: useState$x,useRef: useRef$4} = await importShared('react');
 const {createPortal: createPortal$2} = await importShared('react-dom');
 function TrackerPgStages() {
   const { program, id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const [crumbs, setCrumbs] = useState$w([]);
-  const [showActions, setShowActions] = useState$w(false);
-  const [printOpen, setPrintOpen] = useState$w(false);
+  const [crumbs, setCrumbs] = useState$x([]);
+  const [showActions, setShowActions] = useState$x(false);
+  const [printOpen, setPrintOpen] = useState$x(false);
   const canvasRef = useRef$4(null);
-  const [qrBusy, setQrBusy] = useState$w(false);
-  const [qrDataUrl, setQrDataUrl] = useState$w(null);
-  const [ev, setEvents] = useState$w([]);
-  const [tei, setTei] = useState$w({});
-  const [orgUnit, setOrgUnit] = useState$w(null);
-  const [primaryAttr, setPrimaryAttr] = useState$w(null);
-  const [listAttrs, setListAttrs] = useState$w([]);
-  const [pgStages, setPgStages] = useState$w([]);
-  const [attrWithOpt, setWithOpt] = useState$w([]);
-  const [options, setOptions] = useState$w([]);
-  const [qrCodeValuesToDisplay, setQRCodeValuesToDisplay] = useState$w([]);
-  const [showAllAttributes, setShowAllAttributes] = useState$w(false);
-  const [filePreviewOpen, setFilePreviewOpen] = useState$w(false);
-  const [selectedFile, setSelectedFile] = useState$w({
+  const [qrBusy, setQrBusy] = useState$x(false);
+  const [qrDataUrl, setQrDataUrl] = useState$x(null);
+  const [ev, setEvents] = useState$x([]);
+  const [tei, setTei] = useState$x({});
+  const [orgUnit, setOrgUnit] = useState$x(null);
+  const [primaryAttr, setPrimaryAttr] = useState$x(null);
+  const [listAttrs, setListAttrs] = useState$x([]);
+  const [pgStages, setPgStages] = useState$x([]);
+  const [attrWithOpt, setWithOpt] = useState$x([]);
+  const [options, setOptions] = useState$x([]);
+  const [qrCodeValuesToDisplay, setQRCodeValuesToDisplay] = useState$x([]);
+  const [showAllAttributes, setShowAllAttributes] = useState$x(false);
+  const [filePreviewOpen, setFilePreviewOpen] = useState$x(false);
+  const [selectedFile, setSelectedFile] = useState$x({
     fileId: null,
     fileName: null,
     valueType: null
   });
-  const [activeEnrollmentId, setActiveEnrollmentId] = useState$w(null);
-  const [pendingDelete, setPendingDelete] = useState$w(false);
-  const [deleting, setDeleting] = useState$w(false);
-  const [selectedStageId, setSelectedStageId] = useState$w("");
-  const [selectedStage, setSelectedStage] = useState$w({});
-  const [selectedProgram, setSelectedProgram] = useState$w({});
-  const [query, setQuery] = useState$w("");
-  const [formActive, setFormActive] = useState$w(false);
-  const [editData, setEditData] = useState$w(null);
+  const [activeEnrollmentId, setActiveEnrollmentId] = useState$x(null);
+  const [pendingDelete, setPendingDelete] = useState$x(false);
+  const [deleting, setDeleting] = useState$x(false);
+  const [selectedStageId, setSelectedStageId] = useState$x("");
+  const [selectedStage, setSelectedStage] = useState$x({});
+  const [selectedProgram, setSelectedProgram] = useState$x({});
+  const [query, setQuery] = useState$x("");
+  const [formActive, setFormActive] = useState$x(false);
+  const [editData, setEditData] = useState$x(null);
   const formatDate = (isoString) => {
     const date = new Date(isoString);
     return `${String(date.getDate()).padStart(2, "0")}-${String(
@@ -49709,7 +50015,7 @@ function TrackerPgStages() {
     } catch (e) {
     }
   };
-  useEffect$v(() => {
+  useEffect$w(() => {
     getAttr(program);
     getTEI(id, program);
   }, [program, id]);
@@ -49832,7 +50138,7 @@ function TrackerPgStages() {
     } catch (error) {
     }
   };
-  useEffect$v(() => {
+  useEffect$w(() => {
     const params = new URLSearchParams(location.search);
     const page = params.get("page");
     const stage = params.get("stage");
@@ -49880,7 +50186,7 @@ function TrackerPgStages() {
       setEditData(null);
     }
   }, [location.search, pgStages, ev]);
-  useEffect$v(() => {
+  useEffect$w(() => {
     if (!printOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -49975,7 +50281,7 @@ function TrackerPgStages() {
       return error;
     }
   };
-  useEffect$v(() => {
+  useEffect$w(() => {
     if (!tei?.trackedEntity || !selectedProgram?.id) return;
     const breadcrumbs = buildProgramBreadcrumbs(selectedProgram, [
       {
@@ -50448,140 +50754,6 @@ const evaluateVisibility = (fields, values) => {
   return Array.from(visible);
 };
 
-const valOf = (event, deId) => {
-  if (!deId) return "";
-  const m = getEventValueMap(event);
-  const raw = m.get(deId);
-  return raw == null ? "" : String(raw).toLowerCase();
-};
-
-const deVal = (event, deId) => {
-  if (!deId) return "";
-  const m = getEventValueMap(event);
-  const raw = m.get(deId);
-  return raw == null ? "" : String(raw).trim();
-};
-
-const getActionForSection = (maintenanceCfg, eventProgramId, sectionId) => {
-  const act = (maintenanceCfg?.programMaintenanceActions || []).find(
-    (x) => x.programId === eventProgramId && x.sectionId === sectionId
-  );
-  return {
-    approveValue: String(act?.approveValue ?? "true").toLowerCase(),
-    rejectValue: String(act?.rejectValue ?? "false").toLowerCase(),
-  };
-};
-
-const getMButtonForSection = (maintenanceButtons, eventProgramId, sectionId) => {
-  const btns = (maintenanceButtons || []).filter((b) => b.programId === eventProgramId);
-  return btns.find((b) => b.sectionId === sectionId) || btns.find((b) => !b.sectionId) || null;
-};
-
-const hasMaintenanceButton = (maintenanceButtons, programId, sectionId) =>
-  (maintenanceButtons || []).some(
-    (b) => b.programId === programId && b.sectionId === sectionId
-  );
-
-const canAccessJobCard = (maintenanceCfg, user, event, sectionId) => {
-  const acc = (maintenanceCfg?.jobCardAccess || []).find(
-    (x) => x.programId === event?.program && x.sectionId === sectionId
-  );
-  if (!acc) return true;
-
-  const meRoles = (user?.userRoles || []).map((r) => r.id);
-  const hasFallbackRole = (acc.fallbackRoles || []).some((rid) => meRoles.includes(rid));
-
-  switch (acc.gateTo) {
-    case "ROLE_ONLY": {
-      const allowed = new Set(acc.allowedRoles || []);
-      return meRoles.some((rid) => allowed.has(rid)) || hasFallbackRole;
-    }
-    case "ASSIGNED_ENGINEER": {
-      const assignFieldId = acc.assignFromFieldId;
-      const assignedRaw = deVal(event, assignFieldId).toLowerCase();
-      const meUser = (user?.username || "").toLowerCase();
-      if (!assignedRaw) return hasFallbackRole;
-      const isOwner =
-        assignedRaw === meUser ||
-        assignedRaw ===
-          `${(user?.firstName || "").toLowerCase()} ${(user?.surname || "").toLowerCase()}`.trim();
-      return isOwner || hasFallbackRole;
-    }
-    default:
-      return true;
-  }
-};
-
-const computeMVisibility = ({
-  maintenanceCfg,
-  maintenanceButtons,
-  sectionId,
-  event,
-  programData,
-  user, 
-}) => {
-  const btn = getMButtonForSection(maintenanceButtons, event?.program, sectionId);
-  if (!btn) return { show: false, approved: false, declined: false };
-
-  const decisionSectionId = btn.decisionSectionId || sectionId;
-  const controllerId = btn.decisionFieldId || btn.field;
-  const { approveValue, rejectValue } = getActionForSection(
-    maintenanceCfg,
-    event?.program,
-    decisionSectionId
-  );
-  const v = valOf(event, controllerId);
-
-  const unset = v === "";
-  const approved = v === approveValue;
-  const declined = v === rejectValue;
-
-  let show =
-    unset ||
-    (btn.showWhenApproved && approved) ||
-    (btn.showWhenDeclined && declined);
-
-  // Extra gate for job-card sections
-  const jcSectionId = (maintenanceCfg?.jobCardDefinitions || [])[0]?.sectionId;
-  if (jcSectionId && sectionId === jcSectionId) {
-    show = show && canAccessJobCard(maintenanceCfg, user, event, sectionId);
-  }
-  return { show, approved, declined };
-};
-
-/** Button label for maintenance action button. */
-function getMButtonLabel({
-  maintenanceButtons,
-  sectionId,
-  event,
-  maintenanceCfg,
-  programData, 
-  user,       
-  fallback = "Generate CMA Job Card",
-}) {
-  const source = Array.isArray(maintenanceButtons) && maintenanceButtons.length
-    ? maintenanceButtons
-    : (maintenanceCfg?.programMaintenanceButtons || []);
-
-  const btnCfg = source.find(
-    (b) => b.programId === event?.program && b.sectionId === sectionId
-  );
-
-  let label = btnCfg?.defaultButtonLabel || fallback;
-
-  const over = btnCfg?.labelWhenDeEquals;
-  if (over?.dataElementId) {
-    const dvMap = new Map(
-      (event?.dataValues || []).map((d) => [d.dataElement, String(d.value ?? "")])
-    );
-    const cur = (dvMap.get(over.dataElementId) || "").toLowerCase();
-    const expect = String(over.equals ?? "").toLowerCase();
-    if (cur === expect && over.label) label = over.label;
-  }
-
-  return label;
-}
-
 /** True if DS confirmations has an entry for the section or the stage. */
 const hasConfirmForSection = (maintenanceCfg, programId, sectionId, stageId) => {
   const list = maintenanceCfg?.confirmations || [];
@@ -50629,7 +50801,8 @@ const getJobCardFields = (maintenanceCfg, programId) =>
 /** Build printable HTML for job card (mobile/desktop friendly). */
 const buildJobCardPrintableHtml = ({ title = "CMA Job Card", rows = [] }) => {
   const safe = (s) => (s == null ? "" : String(s));
-  const rs = rows.map(r => `
+  console.log(rows);
+  const rs = rows.filter(r => r.label && r.value).map(r => `
     <div class="row">
       <div class="label">${safe(r.label)}</div>
       <div class="sep">:</div>
@@ -50678,7 +50851,10 @@ const prepareJobCardRows = async ({ maintenanceCfg, programId, event }) => {
   const fields = getJobCardFields(maintenanceCfg, programId);
   const dv = new Map((event?.dataValues || []).map(d => [d.dataElement, d.value]));
   const rows = [];
+  console.log(fields);
+  console.log(dv);
   for (const f of fields) {
+    console.log(dv.get(f.id));
     const raw = dv.get(f.id);
     let val = await resolveDisplayValue(f, raw);
     // Date pretty-print for readability
@@ -50697,7 +50873,7 @@ const prepareJobCardRows = async ({ maintenanceCfg, programId, event }) => {
 };
 
 /** Print via hidden iframe (works on mobile too) with labels instead of codes/ids. */
-const printJobCard = async ({ maintenanceCfg, programId, event, title = "CMA Job Card" }) => {
+const printJobCard = async ({ maintenanceCfg, programId, event, title = "Maintenance Job Card" }) => {
   try {
     const rows = await prepareJobCardRows({ maintenanceCfg, programId, event });
     const html = buildJobCardPrintableHtml({ title, rows });
@@ -50800,8 +50976,8 @@ const resolveDisplayValue = async (field, raw) => {
   }
 };
 
-const React$r = await importShared('react');
-const {useEffect: useEffect$u,useMemo: useMemo$e,useState: useState$v} = React$r;
+const React$s = await importShared('react');
+const {useEffect: useEffect$v,useMemo: useMemo$e,useState: useState$w} = React$s;
 const loadFlowRules = async () => {
   try {
     let data = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
@@ -50829,18 +51005,18 @@ function ApproveModal({
   statusFieldId,
   statusOptions = {}
 }) {
-  const [fields, setFields] = useState$v([]);
-  const [formData, setFormData] = useState$v({});
-  const [loading, setLoading] = useState$v(true);
-  const [saving, setSaving] = useState$v(false);
-  const [error, setError] = useState$v(null);
-  const [openModal, setOpenModal] = useState$v(false);
-  const [visibleFields, setVisibleFields] = useState$v([]);
-  const [hideApprovalButton, setHideApprovalButton] = useState$v(false);
-  const [hideCheckDone, setHideCheckDone] = useState$v(false);
-  const [activeActionConfig, setActiveActionConfig] = useState$v(null);
-  const [equipmentNameOptionMap, setEquipmentNameOptionMap] = useState$v({});
-  useEffect$u(() => {
+  const [fields, setFields] = useState$w([]);
+  const [formData, setFormData] = useState$w({});
+  const [loading, setLoading] = useState$w(true);
+  const [saving, setSaving] = useState$w(false);
+  const [error, setError] = useState$w(null);
+  const [openModal, setOpenModal] = useState$w(false);
+  const [visibleFields, setVisibleFields] = useState$w([]);
+  const [hideApprovalButton, setHideApprovalButton] = useState$w(false);
+  const [hideCheckDone, setHideCheckDone] = useState$w(false);
+  const [activeActionConfig, setActiveActionConfig] = useState$w(null);
+  const [equipmentNameOptionMap, setEquipmentNameOptionMap] = useState$w({});
+  useEffect$v(() => {
     let cancelled = false;
     const loadOptionMap = async () => {
       try {
@@ -50950,6 +51126,15 @@ function ApproveModal({
   const evaluateHideApprovalForRequester = async () => {
     try {
       if (!program?.id || !event) {
+        setHideApprovalButton(false);
+        setHideCheckDone(true);
+        return;
+      }
+      const currentStatusValue = (event?.dataValues || []).find(
+        (dv) => dv.dataElement === statusFieldId
+      )?.value || "";
+      const isCurrentlyDraft = normalizeStatusKey(currentStatusValue) === "draft";
+      if (isCurrentlyDraft) {
         setHideApprovalButton(false);
         setHideCheckDone(true);
         return;
@@ -51346,10 +51531,10 @@ function ApproveModal({
     }
     return initial;
   };
-  useEffect$u(() => {
+  useEffect$v(() => {
     getFields();
   }, []);
-  useEffect$u(() => {
+  useEffect$v(() => {
     if (openModal && fields.length > 0) {
       const initial = prefillFromEvent(fields, event);
       const approvedField = fields.find((f) => f.valueType === "BOOLEAN");
@@ -51393,7 +51578,7 @@ function ApproveModal({
     setFormData(nextData);
     setVisibleFields(Array.from(nextVisible));
   };
-  useEffect$u(() => {
+  useEffect$v(() => {
     setHideCheckDone(false);
     evaluateHideApprovalForRequester();
   }, [program?.id, event?.event]);
@@ -51553,8 +51738,8 @@ const getAvailableEquipmentCount = async (event) => {
     }
 };
 
-const React$q = await importShared('react');
-const {useContext: useContext$i,useEffect: useEffect$t,useState: useState$u} = React$q;
+const React$r = await importShared('react');
+const {useContext: useContext$j,useEffect: useEffect$u,useState: useState$v} = React$r;
 const A$4 = (x) => Array.isArray(x) ? x : [];
 function AllocateEquipmentModal({
   program,
@@ -51564,18 +51749,18 @@ function AllocateEquipmentModal({
   getEventDetails,
   buttonPositiveName = "Save"
 }) {
-  const [fields, setFields] = useState$u([]);
-  const [formData, setFormData] = useState$u({});
-  const [loading, setLoading] = useState$u(true);
-  const [saving, setSaving] = useState$u(false);
-  const [error, setError] = useState$u(null);
-  const [openModal, setOpenModal] = useState$u(false);
-  const [visibleFields, setVisibleFields] = useState$u([]);
-  const [targetProgram, setTargetProgram] = useState$u(null);
-  const [equipmentOptions, setEquipmentOptions] = useState$u({});
-  const [programDataTEI, setProgramDataTEI] = useState$u([]);
+  const [fields, setFields] = useState$v([]);
+  const [formData, setFormData] = useState$v({});
+  const [loading, setLoading] = useState$v(true);
+  const [saving, setSaving] = useState$v(false);
+  const [error, setError] = useState$v(null);
+  const [openModal, setOpenModal] = useState$v(false);
+  const [visibleFields, setVisibleFields] = useState$v([]);
+  const [targetProgram, setTargetProgram] = useState$v(null);
+  const [equipmentOptions, setEquipmentOptions] = useState$v({});
+  const [programDataTEI, setProgramDataTEI] = useState$v([]);
   useLocation();
-  const { userOrganisationUnits } = useContext$i(MEMISContext.UserContext);
+  const { userOrganisationUnits } = useContext$j(MEMISContext.UserContext);
   const getFields = async () => {
     setLoading(true);
     try {
@@ -51824,10 +52009,10 @@ function AllocateEquipmentModal({
     setError(null);
     setOpenModal(false);
   };
-  useEffect$t(() => {
+  useEffect$u(() => {
     getFields();
   }, []);
-  useEffect$t(() => {
+  useEffect$u(() => {
     if (openModal && fields.length > 0) {
       setVisibleFields(fields.map((f) => f.id));
       setFormData({});
@@ -51883,7 +52068,7 @@ const SPARE_PART_ATTRIBUTE_IDS = {
 
 const SPARE_PART_PROGRAM_ID = "kth8UcvwybE";
 
-const {useEffect: useEffect$s,useRef: useRef$3,useState: useState$t} = await importShared('react');
+const {useEffect: useEffect$t,useRef: useRef$3,useState: useState$u} = await importShared('react');
 
 const ATTR = SPARE_PART_ATTRIBUTE_IDS;
 
@@ -51914,10 +52099,10 @@ function useSparePartOptions({
                                       selectedOrganisationUnit,
                                     } = {}) {
   const cacheRef = useRef$3(new Map());
-  const [sparePartOptions, setSparePartOptions] = useState$t([]);
-  const [sparePartLoading, setSparePartLoading] = useState$t(false);
+  const [sparePartOptions, setSparePartOptions] = useState$u([]);
+  const [sparePartLoading, setSparePartLoading] = useState$u(false);
 
-  useEffect$s(() => {
+  useEffect$t(() => {
     let active = true;
 
     const load = async () => {
@@ -51976,8 +52161,8 @@ function useSparePartOptions({
   return { sparePartOptions, sparePartLoading };
 }
 
-const React$p = await importShared('react');
-const {useEffect: useEffect$r,useMemo: useMemo$d,useState: useState$s} = React$p;
+const React$q = await importShared('react');
+const {useEffect: useEffect$s,useMemo: useMemo$d,useState: useState$t} = React$q;
 function buildDeMetaById(program) {
   const m = /* @__PURE__ */ new Map();
   (program?.programStages || []).forEach(
@@ -52066,16 +52251,16 @@ function CollectionModal({
   const formSection = flow?.onApprove?.formSection || flow?.formSection || { fields: [] };
   const fields = Array.isArray(formSection?.fields) ? formSection.fields : [];
   const prefillCfg = formSection?.prefill || null;
-  const [formData, setFormData] = useState$s({});
-  const [loading, setLoading] = useState$s(true);
-  const [error, setError] = useState$s(null);
-  const [optionsCache, setOptionsCache] = useState$s(/* @__PURE__ */ new Map());
-  const [qtyError, setQtyError] = useState$s("");
-  const [saving, setSaving] = useState$s(false);
-  const [quantitiesId, setQuantitiesId] = useState$s({});
+  const [formData, setFormData] = useState$t({});
+  const [loading, setLoading] = useState$t(true);
+  const [error, setError] = useState$t(null);
+  const [optionsCache, setOptionsCache] = useState$t(/* @__PURE__ */ new Map());
+  const [qtyError, setQtyError] = useState$t("");
+  const [saving, setSaving] = useState$t(false);
+  const [quantitiesId, setQuantitiesId] = useState$t({});
   const validationCfg = flow?.onApprove?.collectionValidation || flow?.collectionValidation || null;
-  const [collectionAllowed, setCollectionAllowed] = useState$s(true);
-  const [permissionChecked, setPermissionChecked] = useState$s(false);
+  const [collectionAllowed, setCollectionAllowed] = useState$t(true);
+  const [permissionChecked, setPermissionChecked] = useState$t(false);
   const byKey = useMemo$d(() => {
     const m = /* @__PURE__ */ new Map();
     fields.forEach((f) => f?.key && m.set(f.key, f));
@@ -52210,7 +52395,7 @@ function CollectionModal({
     }
     return null;
   };
-  useEffect$r(() => {
+  useEffect$s(() => {
     const init = async () => {
       if (!isOpen) return;
       setLoading(true);
@@ -52318,7 +52503,7 @@ function CollectionModal({
     };
     init();
   }, [isOpen]);
-  useEffect$r(() => {
+  useEffect$s(() => {
     if (!isOpen) {
       setPermissionChecked(false);
       return;
@@ -52348,7 +52533,7 @@ function CollectionModal({
     };
     check();
   }, [isOpen, flow, event]);
-  useEffect$r(() => {
+  useEffect$s(() => {
     const load = async () => {
       const result = await getRequestedApprovedCollectedQuantitiesId(
         program?.id,
@@ -52633,8 +52818,8 @@ function CollectionModal({
   );
 }
 
-const React$o = await importShared('react');
-const {useEffect: useEffect$q,useState: useState$r} = React$o;
+const React$p = await importShared('react');
+const {useEffect: useEffect$r,useState: useState$s} = React$p;
 function TrainingFeedbackModal({
   program,
   event,
@@ -52643,10 +52828,10 @@ function TrainingFeedbackModal({
   buttonLabel = "Training Feedback",
   fields = []
 }) {
-  const [formData, setFormData] = useState$r({});
-  const [loading, setLoading] = useState$r(false);
-  const [openModal, setOpenModal] = useState$r(false);
-  const [visibleFields, setVisibleFields] = useState$r([]);
+  const [formData, setFormData] = useState$s({});
+  const [loading, setLoading] = useState$s(false);
+  const [openModal, setOpenModal] = useState$s(false);
+  const [visibleFields, setVisibleFields] = useState$s([]);
   const handleSubmit = async () => {
     try {
       setLoading(true);
@@ -52697,29 +52882,14 @@ function TrainingFeedbackModal({
         "tracker?async=false&importStrategy=UPDATE",
         { events: [payload] }
       );
-      if (result?.status === "OK") {
+      if (result?.status === 200) {
         showToast("Feedback submitted successfully", "success");
         handleCloseModal();
-        const flowRules = await dataStore.get("dataStore/memis/flowRules");
-        const flow = flowRules?.flows?.find((f) => f.programId === program?.id);
-        const notifyList = flow?.onFeedback?.notify ?? [];
-        for (const n of notifyList) {
-          await triggerNotifications({
-            programId: program?.id,
-            sectionId: n?.sectionId || null,
-            orgUnitId: event.orgUnit,
-            teiId: event.event,
-            program,
-            taskId: null,
-            operation: "FEEDBACK_SUBMITTED"
-          });
-        }
         await getEventDetails(event?.event);
       } else {
         showToast("Failed to submit feedback", "danger");
       }
     } catch (err) {
-      console.error("Failed to submit feedback:", err);
       showToast("An error occurred", "danger");
     } finally {
       setLoading(false);
@@ -52754,7 +52924,7 @@ function TrainingFeedbackModal({
     });
     return visible;
   };
-  useEffect$q(() => {
+  useEffect$r(() => {
     if (openModal && fields.length > 0) {
       const initial = prefillFromEvent();
       const trainingTookPlaceField = fields.find((f) => f.key === "trainingTookPlace");
@@ -52868,11 +53038,19 @@ function TrainingFeedbackModal({
         disabledPositiveButtonController: isSaveDisabled,
         positiveButtonText: "Submit",
         cancelButton: "Close",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", children: [
-          loading && /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
-          !loading && fields.length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: "No feedback fields configured." }),
-          !loading && fields.filter((field) => visibleFields.includes(field.id)).map((field) => renderField(field))
-        ] })
+        title: "Training Feedback",
+        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          IonContent,
+          {
+            className: "ion-padding",
+            style: { position: "relative", minHeight: 220 },
+            children: [
+              loading && /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
+              !loading && fields.length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: "No feedback fields configured." }),
+              !loading && fields.filter((field) => visibleFields.includes(field.id)).map((field) => renderField(field))
+            ]
+          }
+        )
       }
     )
   ] });
@@ -60639,7 +60817,7 @@ const ReportProgressAlert = ({
   );
 };
 
-const {useContext: useContext$h,useMemo: useMemo$c,useState: useState$q} = await importShared('react');
+const {useContext: useContext$i,useMemo: useMemo$c,useState: useState$r} = await importShared('react');
 
 const deriveInputType = (valueType) => {
   switch (valueType) {
@@ -60669,7 +60847,7 @@ const ReportFiltersSection = ({
   facilityDisplay,
   wardDisplay
 }) => {
-  const { userOrganisationUnits } = useContext$h(MEMISContext.UserContext) || {};
+  const { userOrganisationUnits } = useContext$i(MEMISContext.UserContext) || {};
   const userOrgUnitOptions = useMemo$c(() => {
     if (!Array.isArray(userOrganisationUnits)) return [];
     return userOrganisationUnits.map((ou) => ({
@@ -60696,7 +60874,7 @@ const ReportFiltersSection = ({
     });
     return out;
   }, [userOrganisationUnits]);
-  const [dateRangePopover, setDateRangePopover] = useState$q({
+  const [dateRangePopover, setDateRangePopover] = useState$r({
     from: false,
     to: false,
     fieldId: null
@@ -61045,7 +61223,7 @@ const ReportActionButtons = ({
 ] });
 
 var define_process_env_default = {};
-const {useState: useState$p,useContext: useContext$g,useCallback: useCallback$4,useEffect: useEffect$p,useMemo: useMemo$b,useRef: useRef$2} = await importShared('react');
+const {useState: useState$q,useContext: useContext$h,useCallback: useCallback$4,useEffect: useEffect$q,useMemo: useMemo$b,useRef: useRef$2} = await importShared('react');
 const DHIS_UID_REGEX = /^[A-Za-z0-9]{11}$/;
 const TRACKER_PROGRAM_FIELDS = PROGRAM_STAGES_FIELDS + ",programTrackedEntityAttributes[mandatory,trackedEntityAttribute[id,name,formName,displayName,code,valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]]]]";
 const PROGRAM_STAGE_FIELDS_PARAM = encodeURIComponent(TRACKER_PROGRAM_FIELDS);
@@ -61145,18 +61323,18 @@ const ReportExportButtons = ({ reportData, program }) => {
     },
     [reportData?.dataValues]
   );
-  const { programs } = useContext$g(MEMISContext.ProgramContext);
-  const [isGenerating, setIsGenerating] = useState$p(false);
-  const [showProgress, setShowProgress] = useState$p(false);
-  const [progressStage, setProgressStage] = useState$p("");
-  const [progressPercent, setProgressPercent] = useState$p(0);
-  const [analyticsData, setAnalyticsData] = useState$p(null);
-  const [error, setError] = useState$p(null);
+  const { programs } = useContext$h(MEMISContext.ProgramContext);
+  const [isGenerating, setIsGenerating] = useState$q(false);
+  const [showProgress, setShowProgress] = useState$q(false);
+  const [progressStage, setProgressStage] = useState$q("");
+  const [progressPercent, setProgressPercent] = useState$q(0);
+  const [analyticsData, setAnalyticsData] = useState$q(null);
+  const [error, setError] = useState$q(null);
   const normalizedStatus = (reportData?.status || "").trim().toLowerCase();
   const isSensitiveStatus = normalizedStatus === "under review" || normalizedStatus === "under_review" || normalizedStatus === "feedback required" || normalizedStatus === "feedback_required";
-  const [filterDefinitions, setFilterDefinitions] = useState$p([]);
-  const [filterValues, setFilterValues] = useState$p({});
-  const [filtersLoading, setFiltersLoading] = useState$p(true);
+  const [filterDefinitions, setFilterDefinitions] = useState$q([]);
+  const [filterValues, setFilterValues] = useState$q({});
+  const [filtersLoading, setFiltersLoading] = useState$q(true);
   const visibleFilters = useMemo$b(
     () => filterDefinitions.filter((f) => f?.dataElementId),
     [filterDefinitions]
@@ -61492,7 +61670,7 @@ const ReportExportButtons = ({ reportData, program }) => {
     setProgressPercent(0);
     setProgressStage("");
   }, []);
-  useEffect$p(() => {
+  useEffect$q(() => {
     let isActive = true;
     if (!reportNameTypeValue && programReferenceCandidates.length === 0) {
       clearFilterState();
@@ -63084,8 +63262,8 @@ const taskController = async (event) => {
   }
 };
 
-const React$n = await importShared('react');
-const {useEffect: useEffect$o,useState: useState$o} = React$n;
+const React$o = await importShared('react');
+const {useEffect: useEffect$p,useState: useState$p} = React$o;
 function ScheduleTrainingModal({
   program,
   event,
@@ -63094,9 +63272,9 @@ function ScheduleTrainingModal({
   buttonLabel = "Schedule",
   trainingDateFieldId
 }) {
-  const [trainingDate, setTrainingDate] = useState$o("");
-  const [loading, setLoading] = useState$o(false);
-  const [openModal, setOpenModal] = useState$o(false);
+  const [trainingDate, setTrainingDate] = useState$p("");
+  const [loading, setLoading] = useState$p(false);
+  const [openModal, setOpenModal] = useState$p(false);
   const handleSubmit = async () => {
     try {
       setLoading(true);
@@ -63130,7 +63308,7 @@ function ScheduleTrainingModal({
         "tracker?async=false&importStrategy=UPDATE",
         { events: [payload] }
       );
-      if (result?.status === "OK") {
+      if (result?.status === 200) {
         showToast("Training scheduled successfully", "success");
         handleCloseModal();
         await getEventDetails(event?.event);
@@ -63138,7 +63316,6 @@ function ScheduleTrainingModal({
         showToast("Failed to schedule training", "danger");
       }
     } catch (err) {
-      console.error("Failed to schedule training:", err);
       showToast("An error occurred", "danger");
     } finally {
       setLoading(false);
@@ -63148,7 +63325,7 @@ function ScheduleTrainingModal({
     setTrainingDate("");
     setOpenModal(false);
   };
-  useEffect$o(() => {
+  useEffect$p(() => {
     if (openModal) {
       const existingDate = event?.dataValues?.find(
         (dv) => dv.dataElement === trainingDateFieldId
@@ -63177,23 +63354,31 @@ function ScheduleTrainingModal({
         disabledPositiveButtonController: loading || !trainingDate,
         positiveButtonText: "Save",
         cancelButton: "Close",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", children: [
-          loading && /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
-          !loading && /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { className: "ion-margin-bottom", position: "stacked", children: "Training Date" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              IonInput,
-              {
-                className: "ion-margin-top",
-                type: "date",
-                fill: "outline",
-                value: trainingDate,
-                min: todayYMD(),
-                onIonChange: (e) => setTrainingDate(e.detail.value)
-              }
-            )
-          ] })
-        ] })
+        title: "Schedule Training",
+        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          IonContent,
+          {
+            className: "ion-padding",
+            style: { position: "relative", minHeight: 150 },
+            children: [
+              loading && /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
+              !loading && /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { className: "ion-margin-bottom", position: "stacked", children: "Training Date" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  IonInput,
+                  {
+                    className: "ion-margin-top",
+                    type: "date",
+                    fill: "outline",
+                    value: trainingDate,
+                    min: todayYMD(),
+                    onIonChange: (e) => setTrainingDate(e.detail.value)
+                  }
+                )
+              ] })
+            ]
+          }
+        )
       }
     )
   ] });
@@ -63430,7 +63615,7 @@ const hideApprovalButtonBasedOnTransferType = async (event, user) => {
     return hasAccess;
 };
 
-const {useContext: useContext$f,useEffect: useEffect$n,useMemo: useMemo$9,useState: useState$n} = await importShared('react');
+const {useContext: useContext$g,useEffect: useEffect$o,useMemo: useMemo$9,useState: useState$o} = await importShared('react');
 const norm = (s) => String(s ?? "").trim().toLowerCase();
 const truthy = (v) => {
   if (v === true) return true;
@@ -63460,45 +63645,45 @@ const isCollectionCompletedDynamic = (event, formSection) => {
 };
 const displayVal$1 = (val) => val === null || val === void 0 || val === "" ? "N/A" : val;
 function EventPage() {
-  const [showApprovalButtonBasedOnTransferType, setShowApprovalButtonBasedOnTransferType] = useState$n(false);
+  const [showApprovalButtonBasedOnTransferType, setShowApprovalButtonBasedOnTransferType] = useState$o(false);
   const { event: eventId } = useParams();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const navigate = useNavigate();
-  const [isApproved, setIsApproved] = useState$n(false);
-  const [uid] = useState$n(queryParams.get("uid") || "");
-  const [allocationTag] = useState$n(queryParams.get("q") || "");
-  const { programs } = useContext$f(MEMISContext.ProgramContext);
-  const [openModal, setOpenModal] = useState$n(false);
-  const [pg, setPg] = useState$n(null);
-  const [event, setEvent] = useState$n(null);
-  const [orgUnit, setOu] = useState$n({});
-  const [orgUnitNames, setOrgUnitNames] = useState$n({});
-  const [crumbs, setCrumbs] = useState$n([]);
-  const [user, setUser] = useState$n(null);
-  const [isUserCreateEvent, setIsUserCreateEvent] = useState$n(false);
-  const [userApprovalConfig, setUserApprovalConfig] = useState$n(null);
-  const [hideApproveButton, setHideApproveButton] = useState$n([]);
-  const [allocationsUserRoles, setAllocationsUserRoles] = useState$n({});
-  const [isAllocated, setIsAllocated] = useState$n(false);
-  const [allocationSection, setAllocationSection] = useState$n(null);
-  const [approvalStatusConfig, setApprovalStatusConfig] = useState$n(null);
-  const [loading, setLoading] = useState$n(true);
-  const [error, setError] = useState$n(null);
-  const [flowRules, setFlowRules] = useState$n(null);
-  const [openCollection, setOpenCollection] = useState$n(false);
-  const [programIndicatorAvailableCount, setProgramIndicatorAvailableCount] = useState$n(0);
-  const [declineReasonFieldId, setDeclineReasonFieldId] = useState$n(null);
-  const [fieldNames, setFieldNames] = useState$n({});
-  const [statusFieldId, setStatusFieldId] = useState$n(null);
-  const [statusOptionMap, setStatusOptionMap] = useState$n({});
-  const [programApprovalButtons, setProgramApprovalButtons] = useState$n([]);
-  const [reportRequiresApproval, setReportRequiresApproval] = useState$n(null);
-  const [infoCardExpanded, setInfoCardExpanded] = useState$n(false);
-  const [expandedSections, setExpandedSections] = useState$n({});
-  const [showRegisterButton, setShowRegisterButton] = useState$n(false);
-  const [showRegisterButtonByUserRole, setShowRegisterButtonByUserRole] = useState$n(false);
-  const [openApprovalButtonWhenInNoFlowRules, setOpenApprovalButtonWhenInNoFlowRules] = useState$n(false);
+  const [isApproved, setIsApproved] = useState$o(false);
+  const [uid] = useState$o(queryParams.get("uid") || "");
+  const [allocationTag] = useState$o(queryParams.get("q") || "");
+  const { programs } = useContext$g(MEMISContext.ProgramContext);
+  const [openModal, setOpenModal] = useState$o(false);
+  const [pg, setPg] = useState$o(null);
+  const [event, setEvent] = useState$o(null);
+  const [orgUnit, setOu] = useState$o({});
+  const [orgUnitNames, setOrgUnitNames] = useState$o({});
+  const [crumbs, setCrumbs] = useState$o([]);
+  const [user, setUser] = useState$o(null);
+  const [isUserCreateEvent, setIsUserCreateEvent] = useState$o(false);
+  const [userApprovalConfig, setUserApprovalConfig] = useState$o(null);
+  const [hideApproveButton, setHideApproveButton] = useState$o([]);
+  const [allocationsUserRoles, setAllocationsUserRoles] = useState$o({});
+  const [isAllocated, setIsAllocated] = useState$o(false);
+  const [allocationSection, setAllocationSection] = useState$o(null);
+  const [approvalStatusConfig, setApprovalStatusConfig] = useState$o(null);
+  const [loading, setLoading] = useState$o(true);
+  const [error, setError] = useState$o(null);
+  const [flowRules, setFlowRules] = useState$o(null);
+  const [openCollection, setOpenCollection] = useState$o(false);
+  const [programIndicatorAvailableCount, setProgramIndicatorAvailableCount] = useState$o(0);
+  const [declineReasonFieldId, setDeclineReasonFieldId] = useState$o(null);
+  const [fieldNames, setFieldNames] = useState$o({});
+  const [statusFieldId, setStatusFieldId] = useState$o(null);
+  const [statusOptionMap, setStatusOptionMap] = useState$o({});
+  const [programApprovalButtons, setProgramApprovalButtons] = useState$o([]);
+  const [reportRequiresApproval, setReportRequiresApproval] = useState$o(null);
+  const [infoCardExpanded, setInfoCardExpanded] = useState$o(false);
+  const [expandedSections, setExpandedSections] = useState$o({});
+  const [showRegisterButton, setShowRegisterButton] = useState$o(false);
+  const [showRegisterButtonByUserRole, setShowRegisterButtonByUserRole] = useState$o(false);
+  const [openApprovalButtonWhenInNoFlowRules, setOpenApprovalButtonWhenInNoFlowRules] = useState$o(false);
   const getUser = async () => {
     const me = await LocalForageServiceInstance.getItem("userRes", "user");
     setUser(me);
@@ -63761,12 +63946,12 @@ function EventPage() {
       [id]: !prev[id]
     }));
   };
-  useEffect$n(() => {
+  useEffect$o(() => {
     if (eventId) {
       getEventDetails(eventId);
     }
   }, [eventId]);
-  useEffect$n(() => {
+  useEffect$o(() => {
     getUser();
   }, []);
   const getVal = (de) => {
@@ -63814,9 +63999,12 @@ function EventPage() {
     const allPrograms = programs?.programs ?? programs ?? [];
     const prog = allPrograms.find((pt) => pt?.id === dataValue?.value);
     if (prog) return prog?.name;
+    const vt = getDeValueType(de);
+    if (vt === "ORGANISATION_UNIT") {
+      return getName(dataValue.value);
+    }
     const value = getVal(de);
-    if (de?.valueType === "ORGANISATION_UNIT") return getName(value);
-    if (de?.valueType === "DATE" || de?.valueType === "DATETIME") {
+    if (vt === "DATE" || vt === "DATETIME") {
       const d = new Date(value);
       return isNaN(d.getTime()) ? value : d.toLocaleString();
     }
@@ -64049,7 +64237,7 @@ function EventPage() {
       )
     );
   }, [approvalConfigList, user]);
-  useEffect$n(() => {
+  useEffect$o(() => {
     const rs = async () => {
       const gg = await hideApprovalButtonBasedOnTransferType(event, user);
       setShowApprovalButtonBasedOnTransferType(gg);
@@ -64235,9 +64423,11 @@ function EventPage() {
                   if (!needsAccessCheck) {
                     return null;
                   }
+                  const isDraftStatus = normalizedStatusValue === "draft";
+                  const isCreatorWithDraftAccess = isUserCreateEvent && isDraftStatus;
                   const hasAccess = sectionConfig?.userRoles?.find(
                     (usr) => user?.userRoles?.some((r) => r?.id === usr?.id)
-                  ) || isFeedbackSection;
+                  ) || isCreatorWithDraftAccess || isFeedbackSection;
                   if (!hasAccess && !isFeedbackSection) {
                     return null;
                   }
@@ -64444,11 +64634,11 @@ function AccessDenied503({ title = "Service Unavailable", message = "You do not 
   ] }) }) });
 }
 
-const React$m = await importShared('react');
-const {useEffect: useEffect$m} = React$m;
+const React$n = await importShared('react');
+const {useEffect: useEffect$n} = React$n;
 const NotFoundHandler = () => {
   const navigate = useNavigation();
-  useEffect$m(() => {
+  useEffect$n(() => {
     navigate("/memis");
   }, []);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -64462,13 +64652,13 @@ const NotFoundHandler = () => {
   );
 };
 
-const React$l = await importShared('react');
-const {useState: useState$m} = React$l;
+const React$m = await importShared('react');
+const {useState: useState$n} = React$m;
 const AppDetailsCard = () => {
-  const [isEditing, setIsEditing] = useState$m(false);
-  const [system, setSystem] = useState$m("MEMIS");
-  const [version, setVersion] = useState$m("1.0.0");
-  const [isSaving, setIsSaving] = useState$m(false);
+  const [isEditing, setIsEditing] = useState$n(false);
+  const [system, setSystem] = useState$n("MEMIS");
+  const [version, setVersion] = useState$n("1.0.0");
+  const [isSaving, setIsSaving] = useState$n(false);
   const toggleEdit = async () => {
     if (isEditing) {
       try {
@@ -64543,18 +64733,18 @@ const AppDetailsCard = () => {
   ] }) });
 };
 
-const React$k = await importShared('react');
-const {useContext: useContext$e,useState: useState$l} = React$k;
+const React$l = await importShared('react');
+const {useContext: useContext$f,useState: useState$m} = React$l;
 const QRCodeGeneratorModal = ({ loadConfigs }) => {
-  const { programs } = useContext$e(MEMISContext.ProgramContext);
-  const [loading, setLoading] = useState$l(false);
-  const [showModal, setShowModal] = useState$l(false);
-  const [selectedProgram, setSelectedProgram] = useState$l("");
-  const [selectedItems, setSelectedItems] = useState$l([]);
-  const [saveTarget, setSaveTarget] = useState$l("");
-  const [elements, setElements] = useState$l([]);
-  const [trigger, setTrigger] = useState$l("AFTER_ENROLMENT");
-  const [searchKey, setSearchKey] = useState$l("");
+  const { programs } = useContext$f(MEMISContext.ProgramContext);
+  const [loading, setLoading] = useState$m(false);
+  const [showModal, setShowModal] = useState$m(false);
+  const [selectedProgram, setSelectedProgram] = useState$m("");
+  const [selectedItems, setSelectedItems] = useState$m([]);
+  const [saveTarget, setSaveTarget] = useState$m("");
+  const [elements, setElements] = useState$m([]);
+  const [trigger, setTrigger] = useState$m("AFTER_ENROLMENT");
+  const [searchKey, setSearchKey] = useState$m("");
   const allPrograms = programs?.programs || [];
   const getProgramElements = (programId) => {
     if (!programId) return [];
@@ -64779,18 +64969,18 @@ const QRCodeGeneratorModal = ({ loadConfigs }) => {
   ] });
 };
 
-const React$j = await importShared('react');
-const {useEffect: useEffect$l,useMemo: useMemo$8,useState: useState$k} = React$j;
+const React$k = await importShared('react');
+const {useEffect: useEffect$m,useMemo: useMemo$8,useState: useState$l} = React$k;
 const QRCodeDataTable = () => {
-  const [qrConfigs, setQrConfigs] = useState$k([]);
-  const [loading, setLoading] = useState$k(false);
-  const [openQRCodeValuesAlert, setOpenQRCodeValuesAlert] = useState$k(false);
-  const [openQRCodeValuesModal, setOpenQRCodeValuesModal] = useState$k(null);
-  const [confirmOpen, setConfirmOpen] = useState$k(false);
-  const [rowToDelete, setRowToDelete] = useState$k(null);
-  const [deleting, setDeleting] = useState$k(false);
-  const [isMobile, setIsMobile] = useState$k(() => window.innerWidth <= 576);
-  useEffect$l(() => {
+  const [qrConfigs, setQrConfigs] = useState$l([]);
+  const [loading, setLoading] = useState$l(false);
+  const [openQRCodeValuesAlert, setOpenQRCodeValuesAlert] = useState$l(false);
+  const [openQRCodeValuesModal, setOpenQRCodeValuesModal] = useState$l(null);
+  const [confirmOpen, setConfirmOpen] = useState$l(false);
+  const [rowToDelete, setRowToDelete] = useState$l(null);
+  const [deleting, setDeleting] = useState$l(false);
+  const [isMobile, setIsMobile] = useState$l(() => window.innerWidth <= 576);
+  useEffect$m(() => {
     const onResize = () => setIsMobile(window.innerWidth <= 576);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
@@ -64807,7 +64997,7 @@ const QRCodeDataTable = () => {
       setLoading(false);
     }
   };
-  useEffect$l(() => {
+  useEffect$m(() => {
     loadConfigs();
   }, []);
   const rows = useMemo$8(() => {
@@ -65110,8 +65300,8 @@ const QRCodeDataTable = () => {
   ] }) });
 };
 
-const React$i = await importShared('react');
-const {useContext: useContext$d,useState: useState$j,useEffect: useEffect$k,useMemo: useMemo$7} = React$i;
+const React$j = await importShared('react');
+const {useContext: useContext$e,useState: useState$k,useEffect: useEffect$l,useMemo: useMemo$7} = React$j;
 const BASE_OPERATORS = [
   { id: "EQ", name: "equals" },
   { id: "EQ_STR", name: "equals (string only)" },
@@ -65147,13 +65337,13 @@ const DATE_DIFF_OPERATORS = [
 ];
 const OPERATORS = [...BASE_OPERATORS, ...DATE_DIFF_OPERATORS];
 function SearchableSelect({ open, onClose, title, options, value, onChange }) {
-  const [q, setQ] = useState$j("");
+  const [q, setQ] = useState$k("");
   const filtered = useMemo$7(() => {
     const query = (q || "").toLowerCase();
     if (!query) return options;
     return options.filter((o) => (o.name || "").toLowerCase().includes(query));
   }, [q, options]);
-  useEffect$k(() => {
+  useEffect$l(() => {
     if (!open) setQ("");
   }, [open]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonModal, { isOpen: open, onDidDismiss: onClose, cssClass: "wide-modal", children: [
@@ -65178,23 +65368,23 @@ function SearchableSelect({ open, onClose, title, options, value, onChange }) {
   ] });
 }
 const NotificationsConfigurationForm = ({ loadConfigs }) => {
-  const { programs } = useContext$d(MEMISContext.ProgramContext);
-  const { userRoles } = useContext$d(MEMISContext.UserRolesContext);
-  const [loading, setLoading] = useState$j(false);
-  const [showModal, setShowModal] = useState$j(false);
-  const [selectedProgram, setSelectedProgram] = useState$j("");
-  const [selectedNotificationType, setSelectedNotificationType] = useState$j("FORM_SECTION_NOTIFICATION");
-  const [selectedSection, setSelectedSection] = useState$j("");
-  const [message, setMessage] = useState$j("");
-  const [selectedUserRole, setSelectedUserRole] = useState$j("");
-  const [selectedReceiverType, setSelectedReceiverType] = useState$j("");
-  const [selectedOrgUnitLevel, setSelectedOrgUnitLevel] = useState$j("");
-  const [orgUnitsLevel, setOrgUnitsLevels] = useState$j([]);
-  const [fieldOptions, setFieldOptions] = useState$j([]);
-  const [userOnlyField, setUserOnlyField] = useState$j("");
-  const [logic, setLogic] = useState$j("ALL");
-  const [conditions, setConditions] = useState$j([]);
-  const [pickFieldOpen, setPickFieldOpen] = useState$j(false);
+  const { programs } = useContext$e(MEMISContext.ProgramContext);
+  const { userRoles } = useContext$e(MEMISContext.UserRolesContext);
+  const [loading, setLoading] = useState$k(false);
+  const [showModal, setShowModal] = useState$k(false);
+  const [selectedProgram, setSelectedProgram] = useState$k("");
+  const [selectedNotificationType, setSelectedNotificationType] = useState$k("FORM_SECTION_NOTIFICATION");
+  const [selectedSection, setSelectedSection] = useState$k("");
+  const [message, setMessage] = useState$k("");
+  const [selectedUserRole, setSelectedUserRole] = useState$k("");
+  const [selectedReceiverType, setSelectedReceiverType] = useState$k("");
+  const [selectedOrgUnitLevel, setSelectedOrgUnitLevel] = useState$k("");
+  const [orgUnitsLevel, setOrgUnitsLevels] = useState$k([]);
+  const [fieldOptions, setFieldOptions] = useState$k([]);
+  const [userOnlyField, setUserOnlyField] = useState$k("");
+  const [logic, setLogic] = useState$k("ALL");
+  const [conditions, setConditions] = useState$k([]);
+  const [pickFieldOpen, setPickFieldOpen] = useState$k(false);
   const programById = (pid) => programs?.programs?.find((p) => p.id === pid);
   const getOrgUnitHierarchy = async () => {
     const orgUnits = await dataStore.get("organisationUnits?fields=level&paging=false");
@@ -65276,7 +65466,7 @@ const NotificationsConfigurationForm = ({ loadConfigs }) => {
     }
     return [];
   }, [programs, selectedProgram]);
-  useEffect$k(() => {
+  useEffect$l(() => {
     if (!selectedProgram) {
       setFieldOptions([]);
       return;
@@ -65637,8 +65827,8 @@ const NotificationsConfigurationForm = ({ loadConfigs }) => {
   ] });
 };
 
-const React$h = await importShared('react');
-const {useState: useState$i,useEffect: useEffect$j,useMemo: useMemo$6} = React$h;
+const React$i = await importShared('react');
+const {useState: useState$j,useEffect: useEffect$k,useMemo: useMemo$6} = React$i;
 const summarize = (cfg) => {
   const parts = (cfg.conditions || []).map((c) => {
     const label = c.sourceName || c.sourceId;
@@ -65650,15 +65840,15 @@ const summarize = (cfg) => {
   return `${logic === "ALL" ? "All" : "Any"}: ${parts.join("  •  ")}`;
 };
 const NotificationsConfigurations = () => {
-  const [configs, setConfigs] = useState$i([]);
-  const [loading, setLoading] = useState$i(false);
-  const [openConfigDetails, setOpenConfigDetails] = useState$i(false);
-  const [selectedConfig, setSelectedConfig] = useState$i(null);
-  const [confirmOpen, setConfirmOpen] = useState$i(false);
-  const [rowToDelete, setRowToDelete] = useState$i(null);
-  const [deleting, setDeleting] = useState$i(false);
-  const [isMobile, setIsMobile] = useState$i(() => window.innerWidth <= 576);
-  useEffect$j(() => {
+  const [configs, setConfigs] = useState$j([]);
+  const [loading, setLoading] = useState$j(false);
+  const [openConfigDetails, setOpenConfigDetails] = useState$j(false);
+  const [selectedConfig, setSelectedConfig] = useState$j(null);
+  const [confirmOpen, setConfirmOpen] = useState$j(false);
+  const [rowToDelete, setRowToDelete] = useState$j(null);
+  const [deleting, setDeleting] = useState$j(false);
+  const [isMobile, setIsMobile] = useState$j(() => window.innerWidth <= 576);
+  useEffect$k(() => {
     const onResize = () => setIsMobile(window.innerWidth <= 576);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
@@ -65672,7 +65862,7 @@ const NotificationsConfigurations = () => {
       setLoading(false);
     }
   };
-  useEffect$j(() => {
+  useEffect$k(() => {
     loadConfigs();
   }, []);
   const rows = useMemo$6(
@@ -65942,19 +66132,19 @@ const NotificationsConfigurations = () => {
   ] }) });
 };
 
-const React$g = await importShared('react');
-const {useEffect: useEffect$i,useMemo: useMemo$5,useState: useState$h} = React$g;
+const React$h = await importShared('react');
+const {useEffect: useEffect$j,useMemo: useMemo$5,useState: useState$i} = React$h;
 const ViewProgramSectionsAccess = ({ onEdit }) => {
-  const [confirmOpen, setConfirmOpen] = useState$h(false);
-  const [rowToDelete, setRowToDelete] = useState$h(null);
-  const [deleting, setDeleting] = useState$h(false);
-  const [sharingSettings, setSharingSettings] = useState$h([]);
-  const [rawData, seRawData] = useState$h(null);
-  const [loading, setLoading] = useState$h(true);
-  const [isMobile, setIsMobile] = useState$h(
+  const [confirmOpen, setConfirmOpen] = useState$i(false);
+  const [rowToDelete, setRowToDelete] = useState$i(null);
+  const [deleting, setDeleting] = useState$i(false);
+  const [sharingSettings, setSharingSettings] = useState$i([]);
+  const [rawData, seRawData] = useState$i(null);
+  const [loading, setLoading] = useState$i(true);
+  const [isMobile, setIsMobile] = useState$i(
     () => typeof window !== "undefined" ? window.matchMedia("(max-width: 576px)").matches : false
   );
-  useEffect$i(() => {
+  useEffect$j(() => {
     const mq = window.matchMedia("(max-width: 576px)");
     const handler = (e) => setIsMobile(e.matches);
     setIsMobile(mq.matches);
@@ -66034,7 +66224,7 @@ const ViewProgramSectionsAccess = ({ onEdit }) => {
       setRowToDelete(null);
     }
   };
-  useEffect$i(() => {
+  useEffect$j(() => {
     getSharingSettings();
   }, []);
   const openDeleteConfirm = (idx) => {
@@ -66197,15 +66387,15 @@ const ViewProgramSectionsAccess = ({ onEdit }) => {
   ] }) });
 };
 
-const React$f = await importShared('react');
-const {useContext: useContext$c,useEffect: useEffect$h,useState: useState$g} = React$f;
+const React$g = await importShared('react');
+const {useContext: useContext$d,useEffect: useEffect$i,useState: useState$h} = React$g;
 function SectionAccessUserRoles() {
-  const { programs } = useContext$c(MEMISContext.ProgramContext);
-  const { userRoles } = useContext$c(MEMISContext.UserRolesContext);
-  const [sections, setSections] = useState$g([]);
-  const [formActive, setFormActive] = useState$g(false);
-  const [isLoading, setIsLoading] = useState$g(false);
-  const [query, setQuery] = useState$g("");
+  const { programs } = useContext$d(MEMISContext.ProgramContext);
+  const { userRoles } = useContext$d(MEMISContext.UserRolesContext);
+  const [sections, setSections] = useState$h([]);
+  const [formActive, setFormActive] = useState$h(false);
+  const [isLoading, setIsLoading] = useState$h(false);
+  const [query, setQuery] = useState$h("");
   const location = useLocation();
   const navigate = useNavigate();
   const accessRights = [
@@ -66214,10 +66404,10 @@ function SectionAccessUserRoles() {
     { id: "update", name: "Update" },
     { id: "delete", name: "Delete" }
   ];
-  const [programId, setProgramId] = useState$g("");
-  const [sectionId, setSectionId] = useState$g("");
-  const [userRole, setUserRole] = useState$g("");
-  const [selectedRights, setSelectedRights] = useState$g([]);
+  const [programId, setProgramId] = useState$h("");
+  const [sectionId, setSectionId] = useState$h("");
+  const [userRole, setUserRole] = useState$h("");
+  const [selectedRights, setSelectedRights] = useState$h([]);
   const sectionsData = (programIdToUse, preselectSectionId = null) => {
     if (!programIdToUse) return;
     const program = programs?.find((p) => p.id === programIdToUse);
@@ -66326,7 +66516,7 @@ function SectionAccessUserRoles() {
       setIsLoading(false);
     }
   };
-  useEffect$h(() => {
+  useEffect$i(() => {
     if (programId) sectionsData(programId);
   }, [programs, programId]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonPage, { className: "section-access-user-roles", children: [
@@ -66471,8 +66661,8 @@ function SectionAccessUserRoles() {
   ] });
 }
 
-const React$e = await importShared('react');
-const {useContext: useContext$b,useState: useState$f,useEffect: useEffect$g,useMemo: useMemo$4} = React$e;
+const React$f = await importShared('react');
+const {useContext: useContext$c,useState: useState$g,useEffect: useEffect$h,useMemo: useMemo$4} = React$f;
 
 const {createPortal: createPortal$1} = await importShared('react-dom');
 const DS_KEY = "enrollmentAccessSettings";
@@ -66480,16 +66670,16 @@ const DS_PATH = `dataStore/memis/${DS_KEY}`;
 const TEXT_MD = { color: "#000", fontSize: 15, lineHeight: 1.35 };
 const HEAD_MD = { color: "#000", fontSize: 17, lineHeight: 1.3, margin: 0 };
 function InlineEditor({ open, onClose, onSave, programs, roles, initial, usedProgramIds }) {
-  const [programId, setProgramId] = useState$f(initial?.programId || "");
-  const [roleIds, setRoleIds] = useState$f(initial?.roleIds || []);
-  const [query, setQuery] = useState$f("");
-  const [isMobile, setIsMobile] = useState$f(() => window.innerWidth <= 576);
-  useEffect$g(() => {
+  const [programId, setProgramId] = useState$g(initial?.programId || "");
+  const [roleIds, setRoleIds] = useState$g(initial?.roleIds || []);
+  const [query, setQuery] = useState$g("");
+  const [isMobile, setIsMobile] = useState$g(() => window.innerWidth <= 576);
+  useEffect$h(() => {
     const onResize = () => setIsMobile(window.innerWidth <= 576);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
-  useEffect$g(() => {
+  useEffect$h(() => {
     setProgramId(initial?.programId || "");
     setRoleIds(initial?.roleIds || []);
     setQuery("");
@@ -66709,17 +66899,17 @@ function InlineEditor({ open, onClose, onSave, programs, roles, initial, usedPro
   );
 }
 function EnrollmentAccessSettings() {
-  const [rows, setRows] = useState$f([]);
-  const [loading, setLoading] = useState$f(true);
-  const [confirmIdx, setConfirmIdx] = useState$f(null);
-  const [editorOpen, setEditorOpen] = useState$f(false);
-  const [editRow, setEditRow] = useState$f(null);
-  const programsCtx = useContext$b(MEMISContext.ProgramContext);
-  const rolesCtx = useContext$b(MEMISContext.UserRolesContext);
+  const [rows, setRows] = useState$g([]);
+  const [loading, setLoading] = useState$g(true);
+  const [confirmIdx, setConfirmIdx] = useState$g(null);
+  const [editorOpen, setEditorOpen] = useState$g(false);
+  const [editRow, setEditRow] = useState$g(null);
+  const programsCtx = useContext$c(MEMISContext.ProgramContext);
+  const rolesCtx = useContext$c(MEMISContext.UserRolesContext);
   const programsReady = !!programsCtx?.programs?.length;
   const rolesReady = !!rolesCtx?.userRoles?.length;
-  const [isMobile, setIsMobile] = useState$f(() => window.innerWidth <= 576);
-  useEffect$g(() => {
+  const [isMobile, setIsMobile] = useState$g(() => window.innerWidth <= 576);
+  useEffect$h(() => {
     const onResize = () => setIsMobile(window.innerWidth <= 576);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
@@ -66758,7 +66948,7 @@ function EnrollmentAccessSettings() {
       return null;
     }
   };
-  useEffect$g(() => {
+  useEffect$h(() => {
     const load = async () => {
       if (!programsReady || !rolesReady) return;
       const cached = readCache();
@@ -67028,11 +67218,11 @@ function EnrollmentAccessSettings() {
   ] }) });
 }
 
-const React$d = await importShared('react');
-const {useEffect: useEffect$f,useState: useState$e} = React$d;
+const React$e = await importShared('react');
+const {useEffect: useEffect$g,useState: useState$f} = React$e;
 function Settings() {
   const navigate = useNavigate();
-  const [superuser, setSuperUser] = useState$e(null);
+  const [superuser, setSuperUser] = useState$f(null);
   const getUser = () => {
     try {
       const superUserData = localStorage.getItem("memisViewSettings");
@@ -67043,7 +67233,7 @@ function Settings() {
       navigate("/login", { replace: true });
     }
   };
-  useEffect$f(() => {
+  useEffect$g(() => {
     getUser();
   }, []);
   if (superuser?.data?.name !== "Superuser") {
@@ -67075,11 +67265,11 @@ function Settings() {
   ] });
 }
 
-const React$c = await importShared('react');
-const {useContext: useContext$a,useMemo: useMemo$3} = React$c;
+const React$d = await importShared('react');
+const {useContext: useContext$b,useMemo: useMemo$3} = React$d;
 function ProgramAccessGuard({ children, programId }) {
   const { program } = useParams();
-  const permissions = useContext$a(MEMISContext.PermissionContext);
+  const permissions = useContext$b(MEMISContext.PermissionContext);
   const isPermissionsReady = !!permissions && typeof permissions.hasProgramRight === "function";
   const hasRead = useMemo$3(() => {
     const pid = programId || program;
@@ -67105,8 +67295,8 @@ function ProgramAccessGuard({ children, programId }) {
   return children;
 }
 
-const React$b = await importShared('react');
-const {useContext: useContext$9,useEffect: useEffect$e,useState: useState$d} = React$b;
+const React$c = await importShared('react');
+const {useContext: useContext$a,useEffect: useEffect$f,useState: useState$e} = React$c;
 const A$2 = (x) => Array.isArray(x) ? x : [];
 function UpdateCollectionStatus({
   // program,
@@ -67117,19 +67307,19 @@ function UpdateCollectionStatus({
   buttonPositiveName = "Save"
 }) {
   const { program, tei, stage, evnt } = useParams();
-  const [fields, setFields] = useState$d([]);
-  const [formData, setFormData] = useState$d({});
-  const [loading, setLoading] = useState$d(true);
-  const [saving, setSaving] = useState$d(false);
-  const [error, setError] = useState$d(null);
-  const [openModal, setOpenModal] = useState$d(false);
-  const [visibleFields, setVisibleFields] = useState$d([]);
-  const [targetProgram, setTargetProgram] = useState$d(null);
-  const [equipmentOptions, setEquipmentOptions] = useState$d({});
-  const [programDataTEI, setProgramDataTEI] = useState$d([]);
-  const [currentUsername, setCurrentUsername] = useState$d("");
-  const [autofillConfig, setAutofillConfig] = useState$d(null);
-  useEffect$e(() => {
+  const [fields, setFields] = useState$e([]);
+  const [formData, setFormData] = useState$e({});
+  const [loading, setLoading] = useState$e(true);
+  const [saving, setSaving] = useState$e(false);
+  const [error, setError] = useState$e(null);
+  const [openModal, setOpenModal] = useState$e(false);
+  const [visibleFields, setVisibleFields] = useState$e([]);
+  const [targetProgram, setTargetProgram] = useState$e(null);
+  const [equipmentOptions, setEquipmentOptions] = useState$e({});
+  const [programDataTEI, setProgramDataTEI] = useState$e([]);
+  const [currentUsername, setCurrentUsername] = useState$e("");
+  const [autofillConfig, setAutofillConfig] = useState$e(null);
+  useEffect$f(() => {
     const userData = localStorage.getItem("memisCredentials");
     if (userData) {
       try {
@@ -67330,10 +67520,10 @@ function UpdateCollectionStatus({
     setError(null);
     setOpenModal(false);
   };
-  useEffect$e(() => {
+  useEffect$f(() => {
     getFields();
   }, []);
-  useEffect$e(() => {
+  useEffect$f(() => {
     if (openModal && fields.length > 0 && autofillConfig) {
       setVisibleFields(fields.map((f) => f.id));
       const initialData = {};
@@ -67408,8 +67598,8 @@ const prefillAcknowledgingReceiver = async (allocationData) => {
   }
 };
 
-const React$a = await importShared('react');
-const {useContext: useContext$8,useEffect: useEffect$d,useState: useState$c} = React$a;
+const React$b = await importShared('react');
+const {useContext: useContext$9,useEffect: useEffect$e,useState: useState$d} = React$b;
 const A$1 = (x) => Array.isArray(x) ? x : [];
 function AcknowledgeCollectionStatus({
   program,
@@ -67420,16 +67610,16 @@ function AcknowledgeCollectionStatus({
   buttonPositiveName = "Save",
   prefillReceiverName
 }) {
-  const [fields, setFields] = useState$c([]);
-  const [formData, setFormData] = useState$c({});
-  const [loading, setLoading] = useState$c(true);
-  const [saving, setSaving] = useState$c(false);
-  const [error, setError] = useState$c(null);
-  const [openModal, setOpenModal] = useState$c(false);
-  const [visibleFields, setVisibleFields] = useState$c([]);
-  const [targetProgram, setTargetProgram] = useState$c(null);
-  const [equipmentOptions, setEquipmentOptions] = useState$c({});
-  const [programDataTEI, setProgramDataTEI] = useState$c([]);
+  const [fields, setFields] = useState$d([]);
+  const [formData, setFormData] = useState$d({});
+  const [loading, setLoading] = useState$d(true);
+  const [saving, setSaving] = useState$d(false);
+  const [error, setError] = useState$d(null);
+  const [openModal, setOpenModal] = useState$d(false);
+  const [visibleFields, setVisibleFields] = useState$d([]);
+  const [targetProgram, setTargetProgram] = useState$d(null);
+  const [equipmentOptions, setEquipmentOptions] = useState$d({});
+  const [programDataTEI, setProgramDataTEI] = useState$d([]);
   const getFields = async () => {
     setLoading(true);
     try {
@@ -67595,10 +67785,10 @@ function AcknowledgeCollectionStatus({
     setError(null);
     setOpenModal(false);
   };
-  useEffect$d(() => {
+  useEffect$e(() => {
     getFields();
   }, []);
-  useEffect$d(() => {
+  useEffect$e(() => {
     const load = async () => {
       if (openModal && fields.length > 0) {
         const initial = {};
@@ -67646,41 +67836,41 @@ function AcknowledgeCollectionStatus({
   ] });
 }
 
-const {useContext: useContext$7,useEffect: useEffect$c,useState: useState$b} = await importShared('react');
+const {useContext: useContext$8,useEffect: useEffect$d,useState: useState$c} = await importShared('react');
 const {createPortal} = await importShared('react-dom');
 const displayVal = (val) => val === null || val === void 0 || val === "" ? "N/A" : val;
 function DeregistrationEventView() {
   const { program, tei, stage, evnt } = useParams();
   useSearchParams();
   const navigate = useNavigate();
-  const [pg, setPg] = useState$b();
-  const [event, setEvent] = useState$b();
-  const [orgUnit, setOu] = useState$b();
-  const [programData, setProgramData] = useState$b(null);
-  const [ouName, setName] = useState$b();
-  const [crumbs, setCrumbs] = useState$b([{
+  const [pg, setPg] = useState$c();
+  const [event, setEvent] = useState$c();
+  const [orgUnit, setOu] = useState$c();
+  const [programData, setProgramData] = useState$c(null);
+  const [ouName, setName] = useState$c();
+  const [crumbs, setCrumbs] = useState$c([{
     label: "Home",
     ref: "/memis"
   }]);
-  const { user } = useContext$7(MEMISContext.UserRolesContext);
-  const [currentUser, setCurrentUser] = useState$b(null);
-  const [confirmingDeregistration, setConfirmingDeregistration] = useState$b(false);
-  const [showConfirmAlert, setShowConfirmAlert] = useState$b(false);
-  const [equipmentState, setEquipmentState] = useState$b(null);
-  const [activeSectionModal, setActiveSectionModal] = useState$b(null);
-  const [modalSectionData, setModalSectionData] = useState$b(null);
-  const [sectionFormData, setSectionFormData] = useState$b({});
-  const [savingSectionData, setSavingSectionData] = useState$b(false);
-  const [filePreviewOpen, setFilePreviewOpen] = useState$b(false);
-  const [previewFileId, setPreviewFileId] = useState$b(null);
-  const [previewFileName, setPreviewFileName] = useState$b(null);
-  const [previewValueType, setPreviewValueType] = useState$b(null);
-  const [previewAttributeId, setPreviewAttributeId] = useState$b(null);
-  const [infoCardExpanded, setInfoCardExpanded] = useState$b(false);
-  const [expandedSections, setExpandedSections] = useState$b({});
-  const [dataStoreData, setDataStoreData] = useState$b({});
-  const [programsLocalData, setProgramsLocalData] = useState$b([]);
-  const [userOrganisationUnits, setUserOrganisationUnits] = useState$b([]);
+  const { user } = useContext$8(MEMISContext.UserRolesContext);
+  const [currentUser, setCurrentUser] = useState$c(null);
+  const [confirmingDeregistration, setConfirmingDeregistration] = useState$c(false);
+  const [showConfirmAlert, setShowConfirmAlert] = useState$c(false);
+  const [equipmentState, setEquipmentState] = useState$c(null);
+  const [activeSectionModal, setActiveSectionModal] = useState$c(null);
+  const [modalSectionData, setModalSectionData] = useState$c(null);
+  const [sectionFormData, setSectionFormData] = useState$c({});
+  const [savingSectionData, setSavingSectionData] = useState$c(false);
+  const [filePreviewOpen, setFilePreviewOpen] = useState$c(false);
+  const [previewFileId, setPreviewFileId] = useState$c(null);
+  const [previewFileName, setPreviewFileName] = useState$c(null);
+  const [previewValueType, setPreviewValueType] = useState$c(null);
+  const [previewAttributeId, setPreviewAttributeId] = useState$c(null);
+  const [infoCardExpanded, setInfoCardExpanded] = useState$c(false);
+  const [expandedSections, setExpandedSections] = useState$c({});
+  const [dataStoreData, setDataStoreData] = useState$c({});
+  const [programsLocalData, setProgramsLocalData] = useState$c([]);
+  const [userOrganisationUnits, setUserOrganisationUnits] = useState$c([]);
   const formatDate = (isoString) => {
     if (!isoString) return "";
     const date = new Date(isoString);
@@ -67802,12 +67992,12 @@ function DeregistrationEventView() {
       [id]: !prev[id]
     }));
   };
-  useEffect$c(() => {
+  useEffect$d(() => {
     getEventDetails(evnt, stage);
     getCurrentUser();
     fetchEquipmentState();
   }, [evnt, stage, dataStoreData, programsLocalData, userOrganisationUnits]);
-  useEffect$c(() => {
+  useEffect$d(() => {
     fetchOuValues();
   }, [event, pg]);
   const getSectionAccess = (sectionId) => {
@@ -68268,7 +68458,7 @@ function DeregistrationEventView() {
     return { status: "pending", label: "Pending Review", color: "medium", icon: timeOutline };
   };
   const eventStatus = getEventStatus();
-  useEffect$c(() => {
+  useEffect$d(() => {
     const load = async () => {
       try {
         const [dataStoreResponse, programsResponse, userOrganisationUnitsResponse] = await Promise.all([
@@ -68559,62 +68749,16 @@ function DeregistrationEventView() {
   ] });
 }
 
-const React$9 = await importShared('react');
-const {useCallback: useCallback$3,useEffect: useEffect$b,useMemo: useMemo$2,useRef: useRef$1,useState: useState$a} = React$9;
-function computeVisibleStrict(fields, values) {
-  const idSet = new Set(fields.map((f) => f.id));
-  const controllers = new Set(
-    fields.filter((f) => Array.isArray(f.skipLogic) && f.skipLogic.length > 0).map((f) => f.id)
-  );
-  const targets = /* @__PURE__ */ new Set();
-  for (const f of fields) {
-    (f.skipLogic || []).forEach((r) => {
-      (r.show || []).forEach((t) => targets.add(t));
-      (r.hide || []).forEach((t) => targets.add(t));
-    });
-  }
-  const visible = new Set(
-    fields.filter((f) => controllers.has(f.id) || !targets.has(f.id)).map((f) => f.id)
-  );
-  for (const f of fields) {
-    if (!controllers.has(f.id)) continue;
-    const cur = values?.[f.id];
-    const curStr = cur == null ? "" : String(cur).toLowerCase();
-    for (const rule of f.skipLogic || []) {
-      const expected = String(rule.value ?? "").toLowerCase();
-      if (expected !== "" && curStr === expected) {
-        (rule.show || []).forEach((id) => {
-          if (idSet.has(id)) visible.add(id);
-        });
-        (rule.hide || []).forEach((id) => visible.delete(id));
-      }
-    }
-  }
-  return Array.from(visible);
-}
-const dmy = (iso) => {
-  if (!iso) return "";
-  const d = new Date(iso);
-  const dd = String(d.getDate()).padStart(2, "0");
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
-  const yy = d.getFullYear();
-  return `${dd}-${mm}-${yy}`;
-};
-const flattenStageDEs = (stage) => {
-  const out = [];
-  (stage?.programStageSections || []).forEach((sec) => {
-    (sec.dataElements || []).forEach((de) => out.push(de));
-  });
-  return out;
-};
-const FieldRenderer = React$9.memo(function FieldRenderer2({
+const React$a = await importShared('react');
+const {useCallback: useCallback$3,useEffect: useEffect$c,useMemo: useMemo$2,useRef: useRef$1,useState: useState$b} = React$a;
+React$a.memo(function FieldRenderer2({
   f,
   getDEMeta,
   formValue,
   onChange
 }) {
-  const [meta, setMeta] = useState$a(null);
-  useEffect$b(() => {
+  const [meta, setMeta] = useState$b(null);
+  useEffect$c(() => {
     let mounted = true;
     (async () => {
       const m = await getDEMeta(f.id);
@@ -68690,588 +68834,10 @@ const FieldRenderer = React$9.memo(function FieldRenderer2({
       ] });
   }
 });
-function MaintenanceModal({
-  program,
-  event,
-  section,
-  buttonLabel = "Approve Maintenance Request",
-  getEventDetails
-}) {
-  const [fields, setFields] = useState$a([]);
-  const [visible, setVisible] = useState$a([]);
-  const [formData, setFormData] = useState$a({});
-  const [openModal, setOpenModal] = useState$a(false);
-  const [loading, setLoading] = useState$a(true);
-  const [saving, setSaving] = useState$a(false);
-  const [actions, setActions] = useState$a(null);
-  const [buttonCfg, setButtonCfg] = useState$a(null);
-  const [eventsCfg, setEventsCfg] = useState$a(null);
-  const [dataStoreData, setDataStoreData] = useState$a({});
-  const [wslam, setWslam] = useState$a({
-    loading: false,
-    values: null,
-    occurredAt: null,
-    stageName: null
-  });
-  const deMetaRef = useRef$1(/* @__PURE__ */ new Map());
-  useEffect$b(() => {
-    const map = /* @__PURE__ */ new Map();
-    (program?.programStageSections || []).forEach((s) => {
-      (s.dataElements || []).forEach((de) => map.set(de.id, de));
-    });
-    deMetaRef.current = map;
-  }, [program]);
-  const getDEMeta = useCallback$3(async (id) => {
-    const existing = deMetaRef.current.get(id);
-    if (existing?.optionSet?.options && Array.isArray(existing.optionSet.options))
-      return existing;
-    try {
-      const fresh = await dataStore.get(
-        `dataElements/${id}?fields=id,formName,name,valueType,code,optionSet[id,options[id,code,name]]`
-      );
-      const merged = { ...existing, ...fresh };
-      deMetaRef.current.set(id, merged);
-      return merged;
-    } catch {
-      return existing || null;
-    }
-  }, []);
-  const loadConfig = useCallback$3(async () => {
-    setLoading(true);
-    try {
-      const r = await dataStore.get("dataStore/memis/maintenanceProcesses");
-      const f = (r?.programMaintenanceFields || []).find(
-        (x) => x.programId === program?.id && x.sectionId === section?.id
-      ) || (r?.programMaintenanceFields || []).find(
-        (x) => x.programId === program?.id && !x.sectionId
-      );
-      setFields(f?.fields || []);
-      const act = (r?.programMaintenanceActions || []).find(
-        (x) => x.programId === program?.id && x.sectionId === section?.id
-      ) || null;
-      const btn = (r?.programMaintenanceButtons || []).find(
-        (x) => x.programId === program?.id && x.sectionId === section?.id
-      ) || null;
-      const ev = (r?.events || []).find(
-        (x) => x.programId === program?.id && x.sectionId === section?.id
-      ) || null;
-      setActions(act);
-      setButtonCfg(btn);
-      setEventsCfg(ev);
-    } catch {
-      showToast("Failed to load maintenance config", "danger");
-    } finally {
-      setLoading(false);
-    }
-  }, [program?.id, section?.id]);
-  useEffect$b(() => {
-    loadConfig();
-  }, [loadConfig]);
-  const prefetchMissingOptions = useCallback$3(async () => {
-    const missing = (fields || []).map((f) => f.id).filter((id) => {
-      const meta = deMetaRef.current.get(id);
-      return !meta?.optionSet?.options?.length;
-    });
-    if (!missing.length) return;
-    await Promise.all(
-      missing.map(
-        (id) => dataStore.get(
-          `dataElements/${id}?fields=id,formName,name,valueType,code,optionSet[id,options[id,code,name]]`
-        ).then((fresh) => {
-          const existing = deMetaRef.current.get(id);
-          deMetaRef.current.set(id, { ...existing, ...fresh });
-        }).catch(() => {
-        })
-      )
-    );
-  }, [fields]);
-  const prefill = useCallback$3(async () => {
-    const map = new Map(
-      (event?.dataValues || []).map((d) => [d.dataElement, d.value])
-    );
-    const init = {};
-    for (const f of fields) {
-      if (map.has(f.id)) init[f.id] = String(map.get(f.id));
-    }
-    const vis = computeVisibleStrict(fields, init);
-    for (const f of fields) {
-      if (f.valueType === "DATE" && vis.includes(f.id) && !init[f.id])
-        init[f.id] = todayYMD();
-    }
-    setFormData(init);
-    setVisible(vis);
-  }, [event?.dataValues, fields]);
-  useEffect$b(() => {
-    if (openModal && fields.length) {
-      prefetchMissingOptions();
-      prefill();
-    }
-  }, [openModal, fields, prefill, prefetchMissingOptions]);
-  const fetchAndPrefillWslam = useCallback$3(async () => {
-    const approveValue = String(actions?.approveValue ?? "true").toLowerCase();
-    const controllerId2 = buttonCfg?.field;
-    const isYes = String(formData[controllerId2] ?? "").toLowerCase() === approveValue;
-    if (!isYes) {
-      setWslam({
-        loading: false,
-        values: null,
-        occurredAt: null,
-        stageName: null
-      });
-      return;
-    }
-    if (!program?.id || !event?.trackedEntity) return;
-    setWslam((p) => ({ ...p, loading: true }));
-    let cfgWS = null;
-    try {
-      cfgWS = await dataStore.get("dataStore/memis/wslamSummaryConfig");
-    } catch {
-      cfgWS = null;
-    }
-    if (!cfgWS || cfgWS.programId && cfgWS.programId !== program.id) {
-      setWslam({
-        loading: false,
-        values: null,
-        occurredAt: null,
-        stageName: null
-      });
-      return;
-    }
-    let stageId = cfgWS.stageId || null;
-    let stageNameResolved = null;
-    if (!stageId) {
-      const programRes = await dataStore.get(
-        `programs/${program.id}?fields=id,name,programStages[id,name,displayName]`.replace(
-          /\s+/g,
-          ""
-        )
-      );
-      const stages = programRes?.programStages || [];
-      const byName = (cfgWS.stageName || "").toLowerCase();
-      const s = stages.find(
-        (x) => [x.name, x.displayName].some((n) => (n || "").toLowerCase() === byName)
-      );
-      if (!s) {
-        setWslam({
-          loading: false,
-          values: null,
-          occurredAt: null,
-          stageName: null
-        });
-        return;
-      }
-      stageId = s.id;
-      stageNameResolved = s.name || s.displayName || "WSLAM";
-    }
-    const baseFields = "event,occurredAt,eventDate,program,programStage,enrollment,dataValues[dataElement,value]";
-    const urls = [
-      event.enrollment ? `tracker/events?enrollment=${event.enrollment}&program=${program.id}&programStage=${stageId}&order=occurredAt:desc&pageSize=5&fields=${baseFields}` : null,
-      `tracker/events?trackedEntity=${event.trackedEntity}&program=${program.id}&programStage=${stageId}&order=occurredAt:desc&pageSize=5&fields=${baseFields}`
-    ].filter(Boolean);
-    const coalesceEvents = (res) => Array.isArray(res) && res || Array.isArray(res?.events) && res.events || Array.isArray(res?.instances) && res.instances || [];
-    let latest = null;
-    for (const url of urls) {
-      const res = await dataStore.get(url);
-      const list = coalesceEvents(res);
-      latest = list.find((e) => Array.isArray(e.dataValues) && e.dataValues.length) || list[0] || null;
-      if (latest) break;
-    }
-    if (!latest) {
-      setWslam({
-        loading: false,
-        values: null,
-        occurredAt: null,
-        stageName: stageNameResolved
-      });
-      return;
-    }
-    const stageWithDEs = await dataStore.get(
-      `programStages/${stageId}?fields=id,name,displayName,programStageSections[id,name,dataElements[id,name,formName,code,valueType,optionSet[id,name,options[id,code,name]]]]`.replace(
-        /\s+/g,
-        ""
-      )
-    );
-    const allDes = flattenStageDEs(stageWithDEs);
-    stageNameResolved = stageWithDEs?.name || stageWithDEs?.displayName || stageNameResolved || "WSLAM";
-    const picks = cfgWS.map || {};
-    const resolvePick = (p) => {
-      if (!p) return null;
-      const val = String(p.value || "").trim().toLowerCase();
-      switch (p.matchBy) {
-        case "id":
-          return allDes.find((d) => d.id === p.value) || null;
-        case "name":
-          return allDes.find((d) => (d.name || "").trim().toLowerCase() === val) || null;
-        case "code":
-          return allDes.find((d) => (d.code || "").trim().toLowerCase() === val) || null;
-        default:
-          return allDes.find(
-            (d) => (d.formName || "").trim().toLowerCase() === val
-          ) || null;
-      }
-    };
-    const deCompanyName = resolvePick(picks.companyName);
-    const deContactPerson = resolvePick(picks.contactPerson);
-    const deScopeCoverage = resolvePick(picks.scopeCoverage);
-    const deStartDate = resolvePick(picks.startDate);
-    const deEndDate = resolvePick(picks.endDate);
-    const mapVals = new Map(
-      (latest.dataValues || []).map((d) => [d.dataElement, d.value])
-    );
-    const mat = (meta, raw) => {
-      if (raw == null) return "";
-      if (meta?.optionSet?.options?.length) {
-        const opt = meta.optionSet.options.find(
-          (o) => o.code === raw || o.name === raw || o.id === raw
-        );
-        return opt ? opt.name : raw;
-      }
-      return raw;
-    };
-    const vals = {
-      companyName: deCompanyName ? mat(deCompanyName, mapVals.get(deCompanyName.id)) : "",
-      contactPerson: deContactPerson ? mat(deContactPerson, mapVals.get(deContactPerson.id)) : "",
-      scopeCoverage: deScopeCoverage ? mat(deScopeCoverage, mapVals.get(deScopeCoverage.id)) : "",
-      startDate: deStartDate ? mapVals.get(deStartDate.id) : "",
-      endDate: deEndDate ? mapVals.get(deEndDate.id) : ""
-    };
-    try {
-      const mnt = await dataStore.get("dataStore/memis/maintenanceProcesses");
-      const fCfg = (mnt?.programMaintenanceFields || []).find(
-        (x) => x.programId === program?.id && x.sectionId === section?.id
-      ) || (mnt?.programMaintenanceFields || []).find(
-        (x) => x.programId === program?.id && !x.sectionId
-      );
-      const targetField = (fCfg?.fields || []).find(
-        (ff) => (ff.name || "").trim().toLowerCase() === "responsible service/warrant provider".toLowerCase()
-      );
-      const targetId = targetField?.id || null;
-      if (targetId && vals.contactPerson) {
-        setFormData(
-          (prev) => prev[targetId] ? prev : { ...prev, [targetId]: vals.contactPerson }
-        );
-      }
-    } catch {
-    }
-    setWslam({
-      loading: false,
-      values: {
-        companyName: vals.companyName,
-        contactPerson: vals.contactPerson,
-        scopeCoverage: vals.scopeCoverage,
-        startDate: vals.startDate ? new Date(vals.startDate).toISOString().slice(0, 10) : "",
-        endDate: vals.endDate ? new Date(vals.endDate).toISOString().slice(0, 10) : ""
-      },
-      occurredAt: latest.occurredAt || latest.eventDate || null,
-      stageName: stageNameResolved
-    });
-  }, [
-    actions?.approveValue,
-    buttonCfg?.field,
-    formData,
-    program?.id,
-    event?.trackedEntity,
-    event?.enrollment,
-    section?.id
-  ]);
-  const onChange = useCallback$3(
-    (id, value) => {
-      setFormData((prev) => {
-        const next = { ...prev, [id]: value };
-        const visList = computeVisibleStrict(fields, next);
-        const visSet = new Set(visList);
-        for (const f of fields) {
-          if (!visSet.has(f.id) && next[f.id] != null) delete next[f.id];
-        }
-        setVisible(visList);
-        const decisionApprove2 = String(
-          actions?.approveValue ?? "true"
-        ).toLowerCase();
-        if (id === buttonCfg?.field) {
-          const nowYes = String(value ?? "").toLowerCase() === decisionApprove2;
-          if (nowYes) setTimeout(() => fetchAndPrefillWslam(), 0);
-          else
-            setWslam({
-              loading: false,
-              values: null,
-              occurredAt: null,
-              stageName: null
-            });
-        }
-        return next;
-      });
-    },
-    [fields, actions?.approveValue, buttonCfg?.field, fetchAndPrefillWslam]
-  );
-  useEffect$b(() => {
-    if (openModal && actions && buttonCfg) fetchAndPrefillWslam();
-  }, [openModal, actions, buttonCfg]);
-  useCallback$3(async () => {
-    try {
-      const mp = await dataStore.get("dataStore/memis/maintenanceProcesses");
-      return mp || {};
-    } catch {
-      return {};
-    }
-  }, []);
-  const submit = useCallback$3(async () => {
-    if (!event) return;
-    setSaving(true);
-    try {
-      const dv = [
-        ...(event?.dataValues || []).map((d) => ({
-          dataElement: d.dataElement,
-          value: d.value
-        }))
-      ];
-      Object.entries(formData).forEach(([id, val]) => {
-        const hit = dv.find((x) => x.dataElement === id);
-        if (hit) hit.value = val;
-        else dv.push({ dataElement: id, value: val });
-      });
-      fields.forEach((field) => {
-        (field.skipLogic || []).forEach((rule) => {
-          const t = formData[field.id];
-          if (t !== void 0 && String(t) === String(rule.value)) {
-            (rule.hide || []).forEach((hid) => {
-              const idx = dv.findIndex((x) => x.dataElement === hid);
-              if (idx >= 0 && !Object.prototype.hasOwnProperty.call(formData, hid))
-                dv.splice(idx, 1);
-            });
-          }
-        });
-      });
-      let status = event.status;
-      if (actions?.completeEventOnApprove) {
-        const decisionApprove2 = String(
-          actions?.approveValue ?? "true"
-        ).toLowerCase();
-        const approved = String(formData[buttonCfg?.field] ?? "").toLowerCase() === decisionApprove2;
-        if (approved) status = "COMPLETED";
-      }
-      let enrollmentId = event?.enrollment;
-      if (!enrollmentId && event?.trackedEntity && event?.program) {
-        try {
-          const tei = await dataStore.get(
-            `tracker/trackedEntities/${event.trackedEntity}?program=${event.program}&fields=enrollments[enrollment,program,status]`
-          );
-          enrollmentId = tei?.enrollments?.find(
-            (e) => e.program === event.program && e.status === "ACTIVE"
-          )?.enrollment || tei?.enrollments?.[0]?.enrollment || enrollmentId;
-        } catch {
-        }
-      }
-      const payload = Object.fromEntries(
-        Object.entries({
-          event: event.event,
-          program: event.program,
-          programStage: event.programStage,
-          orgUnit: event.orgUnit,
-          enrollment: enrollmentId,
-          trackedEntity: event?.trackedEntity,
-          occurredAt: event.occurredAt,
-          status,
-          dataValues: dv
-        }).filter(([, v]) => v !== void 0 && v !== null)
-      );
-      const res = await dataStore.post(
-        "tracker?async=false&importStrategy=UPDATE",
-        {
-          events: [payload]
-        }
-      );
-      if (res?.status === "OK") {
-        showToast("Saved", "success");
-        setOpenModal(false);
-        const valuesMap = Object.fromEntries(
-          dv.map((d) => [d.dataElement, d.value])
-        );
-        try {
-          await triggerNotifications({
-            programId: program?.id,
-            sectionId: section?.id || null,
-            orgUnitId: event.orgUnit,
-            teiId: event?.trackedEntity || null,
-            program,
-            taskId: null,
-            CREATED_STAGE: event.programStage,
-            eventId: event.event,
-            values: valuesMap,
-            allValues: valuesMap
-          });
-        } catch {
-        }
-        await getEventDetails(event.event, event.programStage);
-      } else {
-        showToast("Save failed", "danger");
-      }
-    } catch (e) {
-      console.error(e);
-      showToast("Error while saving", "danger");
-    } finally {
-      setSaving(false);
-    }
-  }, [
-    event,
-    formData,
-    fields,
-    actions,
-    buttonCfg?.field,
-    eventsCfg,
-    program?.id,
-    section?.id,
-    getEventDetails
-  ]);
-  const visibleFields = useMemo$2(
-    () => fields.filter((f) => visible.includes(f.id)),
-    [fields, visible]
-  );
-  useEffect$b(() => {
-    const load = async () => {
-      try {
-        const resp = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
-        console.log({ resp });
-        setDataStoreData(resp);
-      } catch (error) {
-        setDataStoreData({});
-      }
-    };
-    load();
-  }, [
-    openModal,
-    program,
-    event,
-    section,
-    buttonCfg
-  ]);
-  const isDisabled = loading || saving || visible.length === 0 || visible.every(
-    (id) => formData[id] === void 0 || formData[id] === "" || formData[id] === null
-  );
-  const controllerId = buttonCfg?.field;
-  const decisionApprove = String(actions?.approveValue ?? "true").toLowerCase();
-  const isWarrantyYes = String(formData[controllerId] ?? "").toLowerCase() === decisionApprove;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(IonButton, { onClick: () => setOpenModal(true), children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: buttonLabel }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      CustomModal,
-      {
-        title: "Evaluate Maintenance Request",
-        isOpen: openModal,
-        onClose: () => setOpenModal(false),
-        height: "50%",
-        width: "35%",
-        onSave: submit,
-        disabledPositiveButtonController: isDisabled,
-        positiveButtonText: saving ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
-          " Saving…"
-        ] }) : buttonLabel,
-        cancelButton: "Close",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", children: [
-          loading && /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
-          !loading && fields.length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: "No maintenance fields found." }),
-          !loading && visibleFields.map((f) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-            FieldRenderer,
-            {
-              f,
-              getDEMeta,
-              formValue: formData[f.id],
-              onChange
-            },
-            f.id
-          )),
-          isWarrantyYes && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            "div",
-            {
-              className: "ion-padding ion-margin-top",
-              style: {
-                border: "1px solid var(--ion-color-step-150)",
-                borderRadius: 12
-              },
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(IonText, { children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { style: { margin: 0 }, children: "Warranty / SLA Summary" }),
-                  wslam.stageName && wslam.occurredAt && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { fontSize: 12, opacity: 0.8 }, children: [
-                    wslam.stageName,
-                    " • ",
-                    dmy(wslam.occurredAt)
-                  ] })
-                ] }),
-                wslam.loading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "ion-text-center ion-padding", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }) }) : wslam.values ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { marginTop: 8 }, children: [
-                  ["Company Name", wslam.values.companyName],
-                  ["Companies contact person", wslam.values.contactPerson],
-                  ["Scope coverage", wslam.values.scopeCoverage],
-                  ["Start date", wslam.values.startDate],
-                  ["End date", wslam.values.endDate]
-                ].map(([label, value]) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                  "div",
-                  {
-                    style: { display: "flex", gap: 8, padding: "4px 0" },
-                    children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { minWidth: 190, fontWeight: 600 }, children: label }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: ":" }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: value || /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { opacity: 0.6 }, children: "—" }) })
-                    ]
-                  },
-                  label
-                )) }) : /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "medium", children: /* @__PURE__ */ jsxRuntimeExports.jsx("i", { children: "No WSLAM record found for this equipment." }) })
-              ]
-            }
-          )
-        ] })
-      }
-    )
-  ] });
-}
 
-const React$8 = await importShared('react');
-const {useCallback: useCallback$2,useEffect: useEffect$a,useMemo: useMemo$1,useRef,useState: useState$9} = React$8;
-function formatFromPattern(fmt, ev) {
-  if (!fmt) return "";
-  const d = /* @__PURE__ */ new Date();
-  const YYYY = String(d.getFullYear());
-  const MM = String(d.getMonth() + 1).padStart(2, "0");
-  const DD = String(d.getDate()).padStart(2, "0");
-  const EVENT5 = (ev?.event || "").slice(-5);
-  return fmt.replaceAll("{YYYY}", YYYY).replaceAll("{MM}", MM).replaceAll("{DD}", DD).replaceAll("{EVENT5}", EVENT5);
-}
-function computeVisible(fields, values) {
-  const idSet = new Set(fields.map((f) => f.id));
-  const controllers = new Set(
-    fields.filter((f) => Array.isArray(f.skipLogic) && f.skipLogic.length > 0).map((f) => f.id)
-  );
-  const targets = /* @__PURE__ */ new Set();
-  for (const f of fields) {
-    (f.skipLogic || []).forEach((r) => {
-      (r.show || []).forEach((t) => targets.add(t));
-      (r.hide || []).forEach((t) => targets.add(t));
-    });
-  }
-  const visible = new Set(
-    fields.filter((f) => controllers.has(f.id) || !targets.has(f.id)).map((f) => f.id)
-  );
-  for (const f of fields) {
-    if (!controllers.has(f.id)) continue;
-    const cur = values?.[f.id];
-    const curStr = cur == null ? "" : String(cur).toLowerCase();
-    for (const rule of f.skipLogic || []) {
-      const expected = String(rule.value ?? "").toLowerCase();
-      if (expected !== "" && curStr === expected) {
-        (rule.show || []).forEach((id) => {
-          if (idSet.has(id)) visible.add(id);
-        });
-        (rule.hide || []).forEach((id) => visible.delete(id));
-      }
-    }
-  }
-  return Array.from(visible);
-}
-function findOption(options, raw) {
-  if (!options || raw == null) return null;
-  const v = String(raw);
-  return options.find((o) => o.code === v) || options.find((o) => o.id === v) || options.find((o) => o.name === v) || null;
-}
-const Field = React$8.memo(function Field2({ meta, value, onChange }) {
+const React$9 = await importShared('react');
+const {useCallback: useCallback$2,useEffect: useEffect$b,useMemo: useMemo$1,useRef,useState: useState$a} = React$9;
+React$9.memo(function Field2({ meta, value, onChange }) {
   const f = meta;
   const label = f.name || f.formName || f.id;
   if (f.optionSet?.options?.length) {
@@ -69347,318 +68913,18 @@ const Field = React$8.memo(function Field2({ meta, value, onChange }) {
       ] });
   }
 });
-function CMAJobCardModal({
-  program,
-  event,
-  section,
-  buttonLabel,
-  getEventDetails
-}) {
+
+const React$8 = await importShared('react');
+const {useCallback: useCallback$1,useEffect: useEffect$a,useMemo,useState: useState$9} = React$8;
+function ConfirmMaintenanceModal({ program, event, section, getEventDetails, buttonLabel }) {
   const [open, setOpen] = useState$9(false);
+  const [matches, setMatches] = useState$9([]);
   const [saving, setSaving] = useState$9(false);
   const [loading, setLoading] = useState$9(true);
-  const [cfg, setCfg] = useState$9(null);
-  const [defs, setDefs] = useState$9(null);
-  const metaRef = useRef(/* @__PURE__ */ new Map());
-  const [form, setForm] = useState$9({});
-  const [visibleIds, setVisibleIds] = useState$9([]);
-  const fields = useMemo$1(() => cfg?.fields || [], [cfg]);
-  const shouldShowTrigger = useMemo$1(() => {
-    return !!(cfg && Array.isArray(cfg.fields) && cfg.fields.length > 0);
-  }, [cfg]);
+  const [decisionValue, setDecisionValue] = useState$9("");
+  const [user, setUser] = useState$9(null);
+  const [maintenanceCfg, setMaintenanceCfg] = useState$9(null);
   useEffect$a(() => {
-    (async () => {
-      setLoading(true);
-      try {
-        const mnt = await dataStore.get("dataStore/memis/maintenanceProcesses").catch(() => null);
-        if (mnt) {
-          const _cfg = (mnt.jobCardFields || []).find(
-            (x) => x.programId === program?.id && x.sectionId === section?.id
-          ) || null;
-          const _defs = (mnt.jobCardDefinitions || []).find(
-            (x) => x.programId === program?.id && x.sectionId === section?.id
-          ) || null;
-          setCfg(_cfg);
-          setDefs(_defs);
-        }
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, [program?.id, section?.id]);
-  const ensureFieldMeta = useCallback$2(async () => {
-    if (!fields.length) return;
-    const jobs = fields.map(async (f) => {
-      const cached = metaRef.current.get(f.id);
-      if (cached?.optionSet?.options?.length || !f.optionSetId && !f.optionSet) {
-        if (!f.optionSetId && !f.optionSet && !cached?.__checkedDE) {
-          try {
-            const de = await dataStore.get(
-              `dataElements/${f.id}?fields=id,valueType,optionSet[id,options[id,code,name]]`
-            );
-            if (de?.optionSet?.options?.length || de?.valueType) {
-              metaRef.current.set(f.id, {
-                ...cached,
-                ...f,
-                valueType: de?.valueType || cached?.valueType,
-                optionSet: de?.optionSet || cached?.optionSet,
-                __checkedDE: true
-              });
-            } else {
-              metaRef.current.set(f.id, { ...cached, ...f, __checkedDE: true });
-            }
-          } catch {
-            metaRef.current.set(f.id, { ...cached, ...f, __checkedDE: true });
-          }
-        } else {
-          metaRef.current.set(f.id, { ...cached, ...f });
-        }
-        return;
-      }
-      let withMeta = { ...cached, ...f };
-      if (withMeta.optionSet?.options?.length) {
-        metaRef.current.set(f.id, withMeta);
-        return;
-      }
-      if (f.optionSetId) {
-        try {
-          const os = await dataStore.get(
-            `optionSets/${f.optionSetId}?fields=id,name,options[id,code,name]`
-          );
-          if (os?.options?.length) withMeta.optionSet = os;
-        } catch {
-        }
-      }
-      if (!withMeta.optionSet?.options?.length) {
-        try {
-          const de = await dataStore.get(
-            `dataElements/${f.id}?fields=id,valueType,optionSet[id,options[id,code,name]]`
-          );
-          if (de?.valueType) withMeta.valueType = de.valueType;
-          if (de?.optionSet?.options?.length) withMeta.optionSet = de.optionSet;
-        } catch {
-        }
-      }
-      metaRef.current.set(f.id, withMeta);
-    });
-    await Promise.all(jobs);
-  }, [fields]);
-  const hydrateForm = useCallback$2(async () => {
-    const patch = {};
-    const dvMap = new Map(
-      (event?.dataValues || []).map((d) => [d.dataElement, d.value])
-    );
-    for (const f of fields) {
-      const meta = metaRef.current.get(f.id) || f;
-      const raw = dvMap.get(f.id);
-      if (raw == null) continue;
-      if (meta.optionSet?.options?.length) {
-        const opt = findOption(meta.optionSet.options, raw);
-        patch[f.id] = opt?.code ?? raw;
-      } else {
-        patch[f.id] = String(raw);
-      }
-    }
-    if (cfg?.prefill?.length) {
-      let me = null, ou = null;
-      try {
-        me = await dataStore.get("me?fields=username,firstName,surname");
-      } catch {
-      }
-      try {
-        if (event?.orgUnit)
-          ou = await dataStore.get(
-            `organisationUnits/${event.orgUnit}?fields=id,name`
-          );
-      } catch {
-      }
-      for (const p of cfg.prefill) {
-        const targetId = p.targetId;
-        if (!targetId) continue;
-        if (patch[targetId]) continue;
-        if (p.source === "today") {
-          patch[targetId] = todayYMD();
-        } else if (p.source === "orgUnit.name") {
-          patch[targetId] = ou?.name || "";
-        } else if (p.source === "me.username") {
-          patch[targetId] = me?.username || "";
-        } else if (p.source === "me.fullNameOrUsername") {
-          const full = `${me?.firstName || ""} ${me?.surname || ""}`.trim();
-          patch[targetId] = full || me?.username || "";
-        } else if (p.source === "format" && p.format) {
-          patch[targetId] = formatFromPattern(p.format, event);
-        }
-      }
-    }
-    fields.forEach((f) => {
-      const meta = metaRef.current.get(f.id) || f;
-      if (meta.valueType === "DATE" && !patch[f.id]) patch[f.id] = todayYMD();
-    });
-    const vis = computeVisible(fields, { ...form, ...patch });
-    setVisibleIds(vis);
-    setForm((prev) => ({ ...patch, ...prev }));
-  }, [cfg?.prefill, event, fields, form]);
-  useEffect$a(() => {
-    (async () => {
-      if (!open || !fields.length) return;
-      await ensureFieldMeta();
-      await hydrateForm();
-    })();
-  }, [open, fields, ensureFieldMeta, hydrateForm]);
-  const onChange = useCallback$2(
-    (id, value) => {
-      setForm((prev) => {
-        const nextVal = value === void 0 || value === null ? "" : typeof value === "string" ? value : String(value);
-        const next = { ...prev, [id]: nextVal };
-        setVisibleIds(computeVisible(fields, next));
-        return next;
-      });
-    },
-    [fields]
-  );
-  const visibleFields = useMemo$1(
-    () => fields.filter((f) => visibleIds.includes(f.id)),
-    [fields, visibleIds]
-  );
-  const isDisabled = useMemo$1(() => {
-    if (loading || saving) return true;
-    if (!visibleFields.length) return true;
-    return visibleFields.every((f) => !form[f.id]);
-  }, [loading, saving, visibleFields, form]);
-  const sectionIdForNotifications = useMemo$1(
-    () => defs && defs.sectionId || section && section.id || event && event.programStage || null,
-    [defs?.sectionId, section?.id, event?.programStage]
-  );
-  const save = useCallback$2(async () => {
-    if (!event) return;
-    setSaving(true);
-    try {
-      const base = new Map(
-        (event?.dataValues || []).map((d) => [d.dataElement, d.value])
-      );
-      for (const f of visibleFields) {
-        const meta = metaRef.current.get(f.id) || f;
-        const v = form[f.id];
-        if (v == null) continue;
-        if (meta.optionSet?.options?.length) {
-          const opt = findOption(meta.optionSet.options, v) || findOption(meta.optionSet.options, String(v));
-          base.set(f.id, opt?.code ?? String(v));
-        } else {
-          base.set(f.id, String(v));
-        }
-      }
-      const dataValues = Array.from(base.entries()).map(
-        ([dataElement, value]) => ({ dataElement, value })
-      );
-      const payload = {
-        event: event.event,
-        program: event.program,
-        programStage: event.programStage,
-        orgUnit: event.orgUnit,
-        enrollment: event.enrollment,
-        trackedEntity: event.trackedEntity,
-        occurredAt: event.occurredAt,
-        status: event.status,
-        dataValues
-      };
-      const res = await dataStore.post(
-        "tracker?async=false&importStrategy=UPDATE",
-        { events: [payload] }
-      );
-      if (res?.status === "OK") {
-        showToast("CMA Job Card saved", "success");
-        setOpen(false);
-        const freshMap = Object.fromEntries(
-          dataValues.map(({ dataElement, value }) => [dataElement, value])
-        );
-        try {
-          await triggerNotifications({
-            programId: program?.id,
-            sectionId: sectionIdForNotifications,
-            orgUnitId: event.orgUnit,
-            teiId: event.trackedEntity,
-            program,
-            taskId: null,
-            operation: void 0,
-            key: void 0,
-            CREATED_STAGE: event.programStage,
-            eventId: event.event,
-            values: freshMap,
-            allValues: freshMap
-          });
-        } catch (e) {
-          showToast(
-            "Saved, but unable to send notifications (permissions).",
-            "warning"
-          );
-        }
-        await getEventDetails(event.event, event.programStage);
-        async function buildJobCardSummaryRows(maintenanceCfg, programId, ev) {
-          const fields2 = (maintenanceCfg?.jobCardFields || []).find(
-            (x) => x.programId === programId
-          )?.fields || [];
-          const dvMap = new Map(
-            (ev?.dataValues || []).map((d) => [d.dataElement, d.value])
-          );
-        }
-      } else {
-        showToast("Save failed", "danger");
-      }
-    } catch (e) {
-      console.error(e);
-      showToast("Error while saving", "danger");
-    } finally {
-      setSaving(false);
-    }
-  }, [event, form, visibleFields, getEventDetails, program, section]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-    shouldShowTrigger && !open && /* @__PURE__ */ jsxRuntimeExports.jsx(IonButton, { onClick: () => setOpen(true), children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: buttonLabel || "Generate CMA Job Card" }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      CustomModal,
-      {
-        isOpen: open,
-        onClose: () => setOpen(false),
-        height: "50%",
-        width: "35%",
-        onSave: save,
-        disabledPositiveButtonController: isDisabled,
-        positiveButtonText: saving ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
-          " Saving…"
-        ] }) : buttonLabel || "Save Job Card",
-        cancelButton: "Close",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", children: [
-          loading && /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
-          !loading && !fields.length && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: "No job card fields configured." }),
-          !loading && visibleFields.map((f) => {
-            const meta = metaRef.current.get(f.id) || f;
-            return /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Field,
-              {
-                meta,
-                value: form[f.id],
-                onChange
-              },
-              f.id
-            );
-          })
-        ] })
-      }
-    )
-  ] });
-}
-
-const React$7 = await importShared('react');
-const {useCallback: useCallback$1,useEffect: useEffect$9,useMemo,useState: useState$8} = React$7;
-function ConfirmMaintenanceModal({ program, event, section, getEventDetails, buttonLabel }) {
-  const [open, setOpen] = useState$8(false);
-  const [matches, setMatches] = useState$8([]);
-  const [saving, setSaving] = useState$8(false);
-  const [loading, setLoading] = useState$8(true);
-  const [decisionValue, setDecisionValue] = useState$8("");
-  const [user, setUser] = useState$8(null);
-  const [maintenanceCfg, setMaintenanceCfg] = useState$8(null);
-  useEffect$9(() => {
     (async () => {
       setLoading(true);
       try {
@@ -69673,7 +68939,7 @@ function ConfirmMaintenanceModal({ program, event, section, getEventDetails, but
       }
     })();
   }, [program?.id, section?.id, event?.programStage]);
-  useEffect$9(() => {
+  useEffect$a(() => {
     (async () => {
       try {
         const me = await dataStore.get(
@@ -69936,10 +69202,10 @@ const hideAcknowledgeButton = async (allocationData) => {
   }
 };
 
-const React$6 = await importShared('react');
-const {useContext: useContext$6,useEffect: useEffect$8,useState: useState$7} = React$6;
+const React$7 = await importShared('react');
+const {useContext: useContext$7,useEffect: useEffect$9,useState: useState$8} = React$7;
 
-const {useEffect: useEffect$7,useState: useState$6} = await importShared('react');
+const {useEffect: useEffect$8,useState: useState$7} = await importShared('react');
 
 const A = (x) => Array.isArray(x) ? x : [];
 const RequiredLabel = ({ label, required }) => /* @__PURE__ */ jsxRuntimeExports.jsxs(IonLabel, { position: "stacked", className: "ion-text-wrap", children: [
@@ -69952,15 +69218,10 @@ function RenderField({ field, required, missing, formData, handleChange, getVal,
   const type = field?.valueType;
   const value = formData?.[field?.id] || getVal(field?.id) || "";
   const label = field?.formName || field?.name || field?.id;
-  const [options, setOptions] = useState$6([]);
-  useEffect$7(() => {
-    if (!field?.optionSetValue) return;
-    const res = getOptions(field?.optionSet?.id);
-    if (res instanceof Promise) {
-      res.then((r) => setOptions(r || []));
-    } else {
-      setOptions(res || []);
-    }
+  const [options, setOptions] = useState$7([]);
+  useEffect$8(() => {
+    if (!field?.optionSet) return;
+    setOptions(field?.optionSet?.options || []);
   }, []);
   const showError = missing;
   switch (type) {
@@ -69988,7 +69249,7 @@ function RenderField({ field, required, missing, formData, handleChange, getVal,
       ] }, field?.id);
     case "TEXT":
     case "USERNAME":
-      if (field?.optionSetValue) {
+      if (field?.optionSet) {
         return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(RequiredLabel, { label, required }),
@@ -70048,13 +69309,106 @@ function RenderField({ field, required, missing, formData, handleChange, getVal,
   }
 }
 
-const React$5 = await importShared('react');
-const {useContext: useContext$5,useEffect: useEffect$6,useState: useState$5} = React$5;
+const React$6 = await importShared('react');
+const {useContext: useContext$6,useEffect: useEffect$7,useState: useState$6} = React$6;
 function Schedule({
   event,
   section,
   getEventDetails,
-  getVal
+  getVal,
+  elements
+}) {
+  const [openModal, setOpenModal] = useState$6(false);
+  const [formData, setFormData] = useState$6({});
+  const [saving, setSaving] = useState$6(false);
+  const [error, setError] = useState$6(null);
+  const [dataElements, setDataElements] = useState$6([]);
+  let buttonPositiveName = "Save";
+  const handleChange = (fieldId, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [fieldId]: value
+    }));
+  };
+  const handleSubmit = async () => {
+    setSaving(true);
+    try {
+      if (!event) return console.error("Event data missing");
+      const values = formData ? Object.keys(formData).map((key) => ({ dataElement: key, value: formData[key] })) : [];
+      const payload = {
+        event: event?.event,
+        enrollment: event?.enrollment || null,
+        programStage: event?.programStage,
+        program: event?.program,
+        orgUnit: event?.orgUnit,
+        eventDate: event?.createdAt,
+        occurredAt: event?.occurredAt,
+        trackedEntity: event?.trackedEntity,
+        status: "ACTIVE",
+        dataValues: values
+      };
+      const result = await dataStore.post("tracker?async=false&importStrategy=UPDATE", { events: [payload] });
+      if (result?.status === 200) {
+        showToast("Saved", "success");
+        setOpenModal(false);
+        getEventDetails(event?.event, event?.programStage);
+        setSaving(false);
+      }
+    } catch (err) {
+      setError(err.message || "An error occurred");
+      showToast(err.message || "An error occurred", "danger");
+      setSaving(false);
+    }
+  };
+  useEffect$7(() => {
+    setDataElements(section?.dataElements.filter((de) => elements.some((el) => el === de.id)));
+  }, [openModal]);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(IonButton, { onClick: () => setOpenModal(true), children: "Schedule Maintenance" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      CustomModal,
+      {
+        title: "Schedule Maintenance",
+        isOpen: openModal,
+        onClose: () => setOpenModal(false),
+        height: "60%",
+        width: "50%",
+        onSave: handleSubmit,
+        positiveButtonText: saving ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
+          " ",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Saving..." })
+        ] }) : buttonPositiveName,
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonContent, { className: "ion-padding", children: dataElements?.map((de) => {
+          if (getVal("EbJI5Loxjbl") === "Corrective_maintenance" && de.id === "rq944zY0g89") {
+            return null;
+          }
+          return /* @__PURE__ */ jsxRuntimeExports.jsx(
+            RenderField,
+            {
+              field: de,
+              formData,
+              handleChange,
+              getVal,
+              opt: de?.optionSet?.options
+            },
+            de.id
+          );
+        }) })
+      }
+    )
+  ] });
+}
+
+const React$5 = await importShared('react');
+const {useContext: useContext$5,useEffect: useEffect$6,useState: useState$5} = React$5;
+function JobCardGenerate({
+  event,
+  section,
+  getEventDetails,
+  getVal,
+  elements,
+  maintenanceCfg
 }) {
   const [openModal, setOpenModal] = useState$5(false);
   const [formData, setFormData] = useState$5({});
@@ -70085,111 +69439,11 @@ function Schedule({
         status: "ACTIVE",
         dataValues: values
       };
-      const result = await dataStore.post("tracker?async=false&importStrategy=UPDATE", { events: [payload] });
-      if (result?.status === "OK") {
-        showToast("Saved", "success");
-        setOpenModal(false);
-        getEventDetails(event?.event, event?.programStage);
-        setSaving(false);
-      }
-    } catch (err) {
-      setError(err.message || "An error occurred");
-      showToast(err.message || "An error occurred", "danger");
-      setSaving(false);
-    }
-  };
-  const getOptions = async (optionSet) => {
-    const opt = await dataStore.query(`optionSets/${optionSet}?fields=options[id,code,name]`);
-    return opt.options || [];
-  };
-  useEffect$6(() => {
-    setDataElements(section?.dataElements);
-  }, [openModal]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(IonButton, { onClick: () => setOpenModal(true), children: "Schedule Maintenance" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      CustomModal,
-      {
-        isOpen: openModal,
-        onClose: () => setOpenModal(false),
-        height: "70%",
-        width: "70%",
-        onSave: handleSubmit,
-        positiveButtonText: saving ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
-          " ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Saving..." })
-        ] }) : buttonPositiveName,
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("h4", { children: "Assign Responsible Engineer" }) }),
-          dataElements.map((de) => {
-            if (getVal("EbJI5Loxjbl") === "Corrective_maintenance" && de.id === "rq944zY0g89") {
-              return null;
-            }
-            return /* @__PURE__ */ jsxRuntimeExports.jsx(
-              RenderField,
-              {
-                field: de,
-                formData,
-                handleChange,
-                getVal,
-                getOptions
-              },
-              de.id
-            );
-          })
-        ] })
-      }
-    )
-  ] });
-}
-
-const React$4 = await importShared('react');
-const {useContext: useContext$4,useEffect: useEffect$5,useState: useState$4} = React$4;
-function JobCardGenerate({
-  event,
-  section,
-  getEventDetails,
-  getVal,
-  elements,
-  maintenanceCfg
-}) {
-  const [openModal, setOpenModal] = useState$4(false);
-  const [formData, setFormData] = useState$4({});
-  const [saving, setSaving] = useState$4(false);
-  const [error, setError] = useState$4(null);
-  const [dataElements, setDataElements] = useState$4([]);
-  let buttonPositiveName = "Save";
-  const handleChange = (fieldId, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      [fieldId]: value
-    }));
-  };
-  const handleSubmit = async () => {
-    setSaving(true);
-    try {
-      if (!event) return console.error("Event data missing");
-      const values = formData ? Object.keys(formData).map((key) => ({ dataElement: key, value: formData[key] })) : [];
-      const payload = {
-        event: event?.event,
-        enrollment: event?.enrollment || null,
-        programStage: event?.programStage,
-        program: event?.program,
-        orgUnit: event?.orgUnit,
-        eventDate: event?.createdAt,
-        occurredAt: event?.occurredAt,
-        trackedEntity: event?.trackedEntity,
-        status: "ACTIVE",
-        dataValues: values
-      };
       await dataStore.post("tracker?async=false&importStrategy=UPDATE", { events: [payload] }).then(async (res) => {
-        if (res?.status === "OK") {
+        if (res?.status === 200) {
           getEventDetails(event?.event, event?.programStage);
-          await printJobCard({ maintenanceCfg, programId: event?.program, event }).then(() => {
-            showToast("Saved", "success");
-            setOpenModal(false);
-          });
+          showToast("Saved", "success");
+          setOpenModal(false);
         }
       });
       {
@@ -70205,8 +69459,8 @@ function JobCardGenerate({
     const opt = await dataStore.query(`optionSets/${optionSet}?fields=options[id,code,name]`);
     return opt.options || [];
   };
-  useEffect$5(() => {
-    setDataElements(section?.dataElements);
+  useEffect$6(() => {
+    setDataElements(section?.dataElements.filter((de) => elements.some((el) => el === de.id)));
   }, [openModal]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(IonButton, { onClick: () => setOpenModal(true), children: "Generate Job card" }),
@@ -70249,19 +69503,19 @@ function JobCardGenerate({
   ] });
 }
 
-const React$3 = await importShared('react');
-const {useContext: useContext$3,useEffect: useEffect$4,useState: useState$3} = React$3;
+const React$4 = await importShared('react');
+const {useContext: useContext$4,useEffect: useEffect$5,useState: useState$4} = React$4;
 function Approve({
   event,
   section,
   getEventDetails,
   getVal
 }) {
-  const [openModal, setOpenModal] = useState$3(false);
-  const [formData, setFormData] = useState$3({});
-  const [saving, setSaving] = useState$3(false);
-  const [error, setError] = useState$3(null);
-  const [dataElements, setDataElements] = useState$3([]);
+  const [openModal, setOpenModal] = useState$4(false);
+  const [formData, setFormData] = useState$4({});
+  const [saving, setSaving] = useState$4(false);
+  const [error, setError] = useState$4(null);
+  const [dataElements, setDataElements] = useState$4([]);
   let buttonPositiveName = "Save";
   const handleChange = (fieldId, value) => {
     setFormData((prev) => ({
@@ -70288,7 +69542,7 @@ function Approve({
       };
       console.log("Payload to be sent:", payload);
       const result = await dataStore.post("tracker?async=false&importStrategy=UPDATE", { events: [payload] });
-      if (result?.status === "OK") {
+      if (result?.status === 200) {
         showToast("Saved", "success");
         setOpenModal(false);
         getEventDetails(event?.event, event?.programStage);
@@ -70304,7 +69558,7 @@ function Approve({
     const opt = await dataStore.query(`optionSets/${optionSet}?fields=options[id,code,name]`);
     return opt.options || [];
   };
-  useEffect$4(() => {
+  useEffect$5(() => {
     setDataElements(section?.dataElements);
   }, [openModal]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
@@ -70346,13 +69600,17 @@ function Approve({
   ] });
 }
 
+const React$3 = await importShared('react');
+const {useContext: useContext$3,useEffect: useEffect$4,useState: useState$3} = React$3;
+
 const React$2 = await importShared('react');
 const {useContext: useContext$2,useEffect: useEffect$3,useState: useState$2} = React$2;
-function ReferMaintenance({
+function ConfirmMaintenance({
   event,
   section,
   getEventDetails,
-  getVal
+  getVal,
+  elements
 }) {
   const [openModal, setOpenModal] = useState$2(false);
   const [formData, setFormData] = useState$2({});
@@ -70384,7 +69642,7 @@ function ReferMaintenance({
         dataValues: values
       };
       const result = await dataStore.post("tracker?async=false&importStrategy=UPDATE", { events: [payload] });
-      if (result?.status === "OK") {
+      if (result?.status === 200) {
         showToast("Saved", "success");
         setOpenModal(false);
         getEventDetails(event?.event, event?.programStage);
@@ -70396,47 +69654,42 @@ function ReferMaintenance({
       setSaving(false);
     }
   };
-  const getOptions = async (optionSet) => {
-    const opt = await dataStore.query(`optionSets/${optionSet}?fields=options[id,code,name]`);
-    return opt.options || [];
-  };
   useEffect$3(() => {
-    setDataElements(section?.dataElements);
+    setDataElements(section?.dataElements.filter((de) => elements.some((el) => el === de.id)));
   }, [openModal]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(IonButton, { onClick: () => setOpenModal(true), children: "Refer Maintainance" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(IonButton, { onClick: () => setOpenModal(true), children: "Confirm Maintenance" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       CustomModal,
       {
+        title: "Confirm Maintenance",
         isOpen: openModal,
         onClose: () => setOpenModal(false),
-        height: "70%",
-        width: "70%",
+        height: "40%",
+        width: "60%",
         onSave: handleSubmit,
         positiveButtonText: saving ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
           " ",
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Saving..." })
         ] }) : buttonPositiveName,
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("h4", { children: section.name }) }),
-          dataElements.map((de) => {
-            if (getVal("EbJI5Loxjbl") === "Corrective_maintenance" && de.id === "rq944zY0g89") {
-              return null;
-            }
-            return /* @__PURE__ */ jsxRuntimeExports.jsx(
-              RenderField,
-              {
-                field: de,
-                formData,
-                handleChange,
-                getVal,
-                getOptions
-              },
-              de.id
-            );
-          })
-        ] })
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonContent, { className: "ion-padding", children: dataElements.map((de) => {
+          console.log("de", de?.optionSet?.options);
+          if (getVal("EbJI5Loxjbl") === "Corrective_maintenance" && de.id === "rq944zY0g89") {
+            return null;
+          }
+          return /* @__PURE__ */ jsxRuntimeExports.jsx(
+            RenderField,
+            {
+              field: de,
+              formData,
+              handleChange,
+              getVal,
+              opt: de?.optionSet?.options
+            },
+            de.id
+          );
+        }) })
       }
     )
   ] });
@@ -70473,32 +69726,14 @@ function TeiEvents() {
   useLocation();
   const [infoCardExpanded, setInfoCardExpanded] = useState$1(false);
   const [expandedSections, setExpandedSections] = useState$1({});
-  const hasMaintenanceButton$1 = (sectionId) => hasMaintenanceButton(maintenanceButtons, programData?.id, sectionId);
-  const isScheduleButtonSection = (sectionId) => (maintenanceButtons || []).some((b) => {
-    const label = String(b.defaultButtonLabel || "").toUpperCase();
-    const mode = String(b.visibilityMode || "").toLowerCase();
-    return b.sectionId === sectionId && mode === "bypresence" && label.includes("SCHEDULE");
-  });
-  const isMaintRequestSection = (sectionId) => (maintenanceCfg?.configurations || []).some(
-    (cfg) => cfg.programId === programData?.id && cfg.sectionId === sectionId && String(cfg.sectionName || "").toLowerCase().includes("maintenance request evaluation")
-  );
+  const isScheduleButtonSection = (sectionId) => {
+    return (maintenanceButtons || []).some((b) => {
+      const label = String(b.defaultButtonLabel || "").toUpperCase();
+      const mode = String(b.visibilityMode || "").toLowerCase();
+      return b.sectionId === sectionId && mode === "bypresence" && label.includes("SCHEDULE");
+    });
+  };
   const isDeregistrationStageCheck = stage === DEREGISTRATION_CONFIG.STAGE_ID;
-  const computeMVisibility$1 = (sectionId) => computeMVisibility({
-    maintenanceCfg,
-    maintenanceButtons,
-    sectionId,
-    event,
-    programData,
-    user
-  });
-  const getMButtonLabel$1 = (sectionId) => getMButtonLabel({
-    maintenanceButtons,
-    sectionId,
-    event,
-    maintenanceCfg,
-    programData,
-    user
-  });
   const hasConfirmForSection$1 = (sectionId) => hasConfirmForSection(
     maintenanceCfg,
     programData?.id,
@@ -70568,14 +69803,14 @@ function TeiEvents() {
         const allocationProc = results?.equipmentCollectionProcesses;
         const acknowledgeResult = results?.acknowledgementEquipmentReceiptProcesses;
         const mnt = results?.maintenanceProcesses;
-        if (mnt?.data) {
-          const mBtn = (mnt?.data?.programMaintenanceButtons || []).filter(
+        if (mnt) {
+          const mBtn = (mnt?.programMaintenanceButtons || []).filter(
             (b) => b.programId === progEvent?.data?.program
           );
-          const mRole = (mnt?.data?.configurations || []).find(
+          const mRole = (mnt?.configurations || []).find(
             (c) => c.programId === progEvent?.data?.program
           );
-          setMaintenanceCfg(mnt?.data);
+          setMaintenanceCfg(mnt);
           setMaintenanceButtons(mBtn);
           setMaintenanceRoles(mRole?.userRoles || []);
         }
@@ -70698,6 +69933,42 @@ function TeiEvents() {
   if (isDeregistrationStageCheck) {
     return /* @__PURE__ */ jsxRuntimeExports.jsx(DeregistrationEventView, {});
   }
+  function userHasAllowedRole(user2, btn) {
+    if (!user2?.userRoles?.length || !btn?.rolesAllowed?.length) {
+      return false;
+    }
+    const userRoleIds = new Set(
+      user2?.userRoles?.map((role) => role?.id)
+    );
+    return btn?.rolesAllowed?.some(
+      (allowedRole) => userRoleIds?.has(allowedRole?.id)
+    );
+  }
+  const buttonGaurd = (sectionId, Wrkflow) => {
+    const btn = maintenanceButtons?.find((b) => b?.sectionId === sectionId);
+    if (userHasAllowedRole(user, btn)) {
+      const btns = Wrkflow?.buttons?.filter((e) => e?.section === sectionId);
+      const bool = [];
+      console.log(sectionId);
+      btns?.forEach((b) => {
+        const va = getVal(b?.source);
+        if (b?.condition === "hasValue") {
+          bool.push(va !== null && va !== void 0 && va !== "");
+        } else if (b?.condition === "null") {
+          bool.push(va === null || va === void 0 || va === "");
+        } else if (b?.condition === "notNul") {
+          bool.push(va !== null || va !== void 0 || va !== "");
+        } else if (b.condition === "false") {
+          console.log(b);
+          console.log("value : ", va);
+          bool.push(va === "No");
+        }
+      });
+      if (bool?.length === 0) return false;
+      return bool?.every((b) => b === true);
+    }
+    return false;
+  };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonPage, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       FormTitle,
@@ -70758,164 +70029,150 @@ function TeiEvents() {
       ] }),
       pg?.programStageSections?.map((section) => {
         const wf = appworkFlow();
-        const sectionFlow = isMaintenanceSection ? wf?.sections?.includes(section.id) : { sections: pg?.programStageSections?.map((s) => s.id) };
-        if (sectionFlow) {
-          return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            "div",
-            {
-              className: "form-section-card",
-              style: { marginBottom: "20px" },
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                  "div",
+        if (wf) {
+          const sectionFlow = isMaintenanceSection ? wf?.sections?.includes(section?.id) : { sections: pg?.programStageSections?.map((s) => s.id) };
+          if (!sectionFlow) return null;
+        }
+        console.log(section);
+        return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "div",
+          {
+            className: "form-section-card",
+            style: { marginBottom: "20px" },
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "div",
+                {
+                  style: {
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    cursor: "pointer",
+                    padding: "8px 0"
+                  },
+                  onClick: () => toggleSection(section?.id),
+                  children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "form-section-title", children: section?.name }),
+                      section?.description && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "form-section-instructions", children: section?.description })
+                    ] }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      IonIcon,
+                      {
+                        icon: expandedSections[section?.id] ? chevronUpOutline : chevronDownOutline,
+                        style: { fontSize: 24, color: "#6e6e6e" }
+                      }
+                    )
+                  ]
+                }
+              ),
+              expandedSections[section?.id] && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginTop: 10 }, children: [
+                section?.dataElements?.map((de2) => {
+                  const val = de2?.valueType === "ORGANISATION_UNIT" ? ouName : getVal(de2?.id, de2);
+                  if (val === void 0) return null;
+                  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginBottom: 18 }, children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "form-field-label", children: de2?.formName }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "form-field-value", children: displayVal(
+                      val
+                    ) })
+                  ] }, de2?.id);
+                }),
+                isCollected && allocationsUserRoles?.userRoles?.find(
+                  (usr) => user?.userRoles?.some((r) => r?.id === usr?.id)
+                ) && allocationsUserRoles?.sectionId === section?.id && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  UpdateCollectionStatus,
                   {
-                    style: {
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      cursor: "pointer",
-                      padding: "8px 0"
-                    },
-                    onClick: () => toggleSection(section.id),
-                    children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "form-section-title", children: section?.name }),
-                        section?.description && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "form-section-instructions", children: section.description })
-                      ] }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        IonIcon,
-                        {
-                          icon: expandedSections[section.id] ? chevronUpOutline : chevronDownOutline,
-                          style: { fontSize: 24, color: "#6e6e6e" }
-                        }
-                      )
-                    ]
+                    getEventDetails,
+                    program: programData,
+                    openModal,
+                    event,
+                    onClose: () => setOpenModal(false),
+                    setOpenModal,
+                    section,
+                    buttonPositiveName: "Update",
+                    buttonNegativeName: "Cancel"
                   }
                 ),
-                expandedSections[section.id] && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginTop: 10 }, children: [
-                  section.dataElements.map((de2) => {
-                    const val = de2.valueType === "ORGANISATION_UNIT" ? ouName : getVal(de2?.id, de2);
-                    if (val === void 0) return null;
-                    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginBottom: 18 }, children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "form-field-label", children: de2.formName }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "form-field-value", children: displayVal(
-                        val
-                      ) })
-                    ] }, de2.id);
-                  }),
-                  isCollected && allocationsUserRoles?.userRoles?.find(
-                    (usr) => user?.userRoles?.some((r) => r?.id === usr?.id)
-                  ) && allocationsUserRoles?.sectionId === section?.id && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    UpdateCollectionStatus,
-                    {
-                      getEventDetails,
-                      program: programData,
-                      openModal,
-                      event,
-                      onClose: () => setOpenModal(false),
-                      setOpenModal,
-                      section,
-                      buttonPositiveName: "Update",
-                      buttonNegativeName: "Cancel"
-                    }
-                  ),
-                  maintenanceCfg && maintenanceCfg && hasMaintenanceButton$1(section?.id) && !isScheduleButtonSection(section?.id) && isMaintRequestSection(section?.id) && !(maintenanceCfg?.jobCardDefinitions || []).some(
-                    (d) => d.programId === programData?.id && d.sectionId === section?.id
-                  ) && (user?.userRoles || []).some(
-                    (r) => (maintenanceRoles || []).some((u) => u.id === r.id)
-                  ) && computeMVisibility$1(section?.id).show && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    MaintenanceModal,
-                    {
-                      program: programData,
-                      event,
-                      section,
-                      buttonLabel: getMButtonLabel$1(section?.id),
-                      getEventDetails
-                    }
-                  ),
-                  maintenanceCfg && (maintenanceCfg?.jobCardDefinitions || []).some(
-                    (d) => d.programId === programData?.id && d.sectionId === section?.id
-                  ) && computeMVisibility$1(section?.id).show && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    CMAJobCardModal,
-                    {
-                      program: programData,
-                      event,
-                      section,
-                      buttonLabel: getMButtonLabel$1(section?.id),
-                      getEventDetails
-                    }
-                  ),
-                  maintenanceCfg && !getVal("YjhRG2PMTMG") && hasConfirmForSection$1(section?.id) && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    ConfirmMaintenanceModal,
-                    {
-                      program: programData,
-                      event,
-                      section,
-                      getEventDetails,
-                      buttonLabel: getConfirmButtonLabel$1(section?.id)
-                    }
-                  ),
-                  getVal("ZRmJ2n29bEk") !== "Yes" && getVal("ikEZkhoaTTU") && maintenanceCfg && isScheduleButtonSection(section?.id) && computeMVisibility$1(section?.id).show && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    Schedule,
-                    {
-                      event,
-                      section,
-                      getEventDetails,
-                      getVal
-                    }
-                  ),
-                  getVal("YjhRG2PMTMG") === "Yes" && section.id === "s8LwpQzWeNc" && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    JobCardGenerate,
-                    {
-                      event,
-                      elements: wf.dataElements,
-                      section,
-                      maintenanceCfg,
-                      getEventDetails,
-                      getVal
-                    }
-                  ),
-                  (getVal("yzba4I39QEK") === null || getVal("yzba4I39QEK") === "Yes") && section.name === "Referral for maintenance" && userHasMaintenanceRole() && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    ReferMaintenance,
-                    {
-                      event,
-                      section,
-                      getEventDetails,
-                      getVal
-                    }
-                  ),
-                  (getVal("yzba4I39QEK") === null || getVal("yzba4I39QEK") === "No") && section.name === "Approve Referral Request" && userHasMaintenanceRole() && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    Approve,
-                    {
-                      event,
-                      section,
-                      getEventDetails,
-                      getVal
-                    }
-                  ),
-                  isAllocated && acknowledgesUserRoles?.userRoles?.find(
-                    (usr) => user?.userRoles?.some((r) => r?.id === usr?.id)
-                  ) && acknowledgesUserRoles?.sectionId === section?.id && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    AcknowledgeCollectionStatus,
-                    {
-                      getEventDetails,
-                      program: programData,
-                      openModal: openModalAck,
-                      event,
-                      onClose: () => setOpenModalAck(false),
-                      setOpenModal: setOpenModalAck,
-                      section,
-                      buttonPositiveName: "Acknowledge",
-                      buttonNegativeName: "Cancel",
-                      prefillReceiverName: event
-                    }
-                  )
-                ] })
-              ]
-            },
-            section.id
-          );
-        }
+                maintenanceCfg && !getVal("YjhRG2PMTMG") && getVal("vXT4KkXeRus") && hasConfirmForSection$1(section?.id) && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  ConfirmMaintenanceModal,
+                  {
+                    program: programData,
+                    event,
+                    section,
+                    getEventDetails,
+                    buttonLabel: getConfirmButtonLabel$1(section?.id)
+                  }
+                ),
+                isScheduleButtonSection(section?.id) && getVal("ZRmJ2n29bEk") !== "Yes" && !getVal("vXT4KkXeRus") && userHasMaintenanceRole() && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  Schedule,
+                  {
+                    event,
+                    section,
+                    elements: wf?.dataElements,
+                    getEventDetails,
+                    getVal
+                  }
+                ),
+                buttonGaurd(section?.id, wf) && section?.id === "fdK9OHcaIcV" && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  ConfirmMaintenance,
+                  {
+                    event,
+                    section,
+                    elements: wf?.dataElements,
+                    getEventDetails,
+                    getVal
+                  }
+                ),
+                buttonGaurd(section?.id, wf) && section?.id === "s8LwpQzWeNc" && (getVal("AnJ695Tt41W") ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  IonButton,
+                  {
+                    onClick: async () => {
+                      await printJobCard({ maintenanceCfg, programId: program, event, title: "Maintenance Job Card" });
+                    },
+                    children: "Print Job Card"
+                  }
+                ) : /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  JobCardGenerate,
+                  {
+                    event,
+                    elements: wf?.dataElements,
+                    section,
+                    maintenanceCfg,
+                    getEventDetails,
+                    getVal
+                  }
+                )),
+                buttonGaurd(section.id, wf) && section?.name === "Approve Referral Request" && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  Approve,
+                  {
+                    event,
+                    section,
+                    getEventDetails,
+                    getVal
+                  }
+                ),
+                isAllocated && acknowledgesUserRoles?.userRoles?.find(
+                  (usr) => user?.userRoles?.some((r) => r?.id === usr?.id)
+                ) && acknowledgesUserRoles?.sectionId === section?.id && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  AcknowledgeCollectionStatus,
+                  {
+                    getEventDetails,
+                    program: programData,
+                    openModal: openModalAck,
+                    event,
+                    onClose: () => setOpenModalAck(false),
+                    setOpenModal: setOpenModalAck,
+                    section,
+                    buttonPositiveName: "Acknowledge",
+                    buttonNegativeName: "Cancel",
+                    prefillReceiverName: event
+                  }
+                )
+              ] })
+            ]
+          },
+          section?.id
+        );
       })
     ] })
   ] });

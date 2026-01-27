@@ -1,6 +1,6 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Layout.js","assets/__federation_fn_import.js","assets/breadCrumb.js","assets/index3.js","assets/_commonjsHelpers.js"])))=>i.map(i=>d[i]);
 import { importShared } from './__federation_fn_import.js';
-import { j as jsxRuntimeExports, M as MEMISContext, u as useDataStore, d as documentText, P as PROGRAMS_FIELDS, a as PROGRAM_RULES_FIELDS, U as USER_ORGANISATION_UNITS, O as ORGANISATION_UNITS_DESCENDANTS, D as DataStoreProvider, b as PermissionsProvider, s as sendNotification, c as setupIonicReact, _ as __vitePreload, e as setActiveProgramCookie, B as BrowserRouter, T as ToastItem, R as Route, f as Routes, S as SuspenseLoader } from './breadCrumb.js';
+import { j as jsxRuntimeExports, M as MEMISContext, u as useDataStore, d as documentText, P as PROGRAMS_FIELDS, a as PROGRAM_RULES_FIELDS, U as USER_ORGANISATION_UNITS, O as ORGANISATION_UNITS_DESCENDANTS, D as DataStoreProvider, b as PermissionsProvider, s as sendNotification, c as setupIonicReact, _ as __vitePreload, e as setActiveProgramCookie, B as BrowserRouter, T as ToastItem, R as Route, f as Routes, g as api, S as SuspenseLoader } from './breadCrumb.js';
 import { r as requireReact } from './index.js';
 import { r as requireReactDom } from './index2.js';
 import { d as dataStore, L as LocalForageServiceInstance } from './index3.js';
@@ -15789,138 +15789,6 @@ function requireClient () {
 
 var clientExports = requireClient();
 
-/*! js-cookie v3.0.5 | MIT */
-/* eslint-disable no-var */
-function assign (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-    for (var key in source) {
-      target[key] = source[key];
-    }
-  }
-  return target
-}
-/* eslint-enable no-var */
-
-/* eslint-disable no-var */
-var defaultConverter = {
-  read: function (value) {
-    if (value[0] === '"') {
-      value = value.slice(1, -1);
-    }
-    return value.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent)
-  },
-  write: function (value) {
-    return encodeURIComponent(value).replace(
-      /%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g,
-      decodeURIComponent
-    )
-  }
-};
-/* eslint-enable no-var */
-
-/* eslint-disable no-var */
-
-function init (converter, defaultAttributes) {
-  function set (name, value, attributes) {
-    if (typeof document === 'undefined') {
-      return
-    }
-
-    attributes = assign({}, defaultAttributes, attributes);
-
-    if (typeof attributes.expires === 'number') {
-      attributes.expires = new Date(Date.now() + attributes.expires * 864e5);
-    }
-    if (attributes.expires) {
-      attributes.expires = attributes.expires.toUTCString();
-    }
-
-    name = encodeURIComponent(name)
-      .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
-      .replace(/[()]/g, escape);
-
-    var stringifiedAttributes = '';
-    for (var attributeName in attributes) {
-      if (!attributes[attributeName]) {
-        continue
-      }
-
-      stringifiedAttributes += '; ' + attributeName;
-
-      if (attributes[attributeName] === true) {
-        continue
-      }
-
-      // Considers RFC 6265 section 5.2:
-      // ...
-      // 3.  If the remaining unparsed-attributes contains a %x3B (";")
-      //     character:
-      // Consume the characters of the unparsed-attributes up to,
-      // not including, the first %x3B (";") character.
-      // ...
-      stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
-    }
-
-    return (document.cookie =
-      name + '=' + converter.write(value, name) + stringifiedAttributes)
-  }
-
-  function get (name) {
-    if (typeof document === 'undefined' || (arguments.length && !name)) {
-      return
-    }
-
-    // To prevent the for loop in the first place assign an empty array
-    // in case there are no cookies at all.
-    var cookies = document.cookie ? document.cookie.split('; ') : [];
-    var jar = {};
-    for (var i = 0; i < cookies.length; i++) {
-      var parts = cookies[i].split('=');
-      var value = parts.slice(1).join('=');
-
-      try {
-        var found = decodeURIComponent(parts[0]);
-        jar[found] = converter.read(value, found);
-
-        if (name === found) {
-          break
-        }
-      } catch (e) {}
-    }
-
-    return name ? jar[name] : jar
-  }
-
-  return Object.create(
-    {
-      set,
-      get,
-      remove: function (name, attributes) {
-        set(
-          name,
-          '',
-          assign({}, attributes, {
-            expires: -1
-          })
-        );
-      },
-      withAttributes: function (attributes) {
-        return init(this.converter, assign({}, this.attributes, attributes))
-      },
-      withConverter: function (converter) {
-        return init(assign({}, this.converter, converter), this.attributes)
-      }
-    },
-    {
-      attributes: { value: Object.freeze(defaultAttributes) },
-      converter: { value: Object.freeze(converter) }
-    }
-  )
-}
-
-var api = init(defaultConverter, { path: '/' });
-
 const React$4 = await importShared('react');
 const {useEffect: useEffect$6,useState: useState$5,useCallback: useCallback$4} = React$4;
 const UserRolesProvider = ({ children }) => {
@@ -16420,7 +16288,6 @@ function ProgramProvider({ children }) {
         "dataStore"
       );
       const remote = remoteData?.enrollmentPrograms;
-      console.log({ remote });
       const programs2 = remote?.programs || [];
       await LocalForageServiceInstance.setItem(
         "enrollmentPrograms",
@@ -16484,10 +16351,27 @@ function UserProvider({ children }) {
           b.displayName || b.name || ""
         )
       );
+      const allOrgUnits = await dataStore.get(
+        `organisationUnits.json?fields=id,name,level&paging=false`
+      );
       await LocalForageServiceInstance.setItem(
         "userOrganisationUnits",
         orgUnits,
         "userOrgUnits"
+      );
+      await LocalForageServiceInstance.setItem(
+        "organisationUnits",
+        allOrgUnits?.data?.organisationUnits || [],
+        "organisationUnits"
+      );
+      const cachedUser = await LocalForageServiceInstance.getItem("userRes", "user");
+      const userOnlyOrgUnits = await dataStore.get(
+        `users/${cachedUser?.id}?fields=organisationUnits[id,name,displayName,level]`
+      );
+      await LocalForageServiceInstance.setItem(
+        "userOnlyOrgUnits",
+        userOnlyOrgUnits?.data?.organisationUnits || [],
+        "userOnlyOrgUnits"
       );
       setUserOrganisationUnits(orgUnits);
       return orgUnits;
