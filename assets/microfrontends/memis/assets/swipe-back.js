@@ -1,4 +1,4 @@
-import { bq as isRTL, br as createGesture, bs as clamp } from './breadCrumb.js';
+import { bp as isRTL, bq as createGesture, br as clamp } from './breadCrumb.js';
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License

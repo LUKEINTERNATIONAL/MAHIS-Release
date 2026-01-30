@@ -1,4 +1,4 @@
-import { bv as readTask, bw as findClosestIonContent, bx as componentOnReady, by as writeTask, bz as scrollToTop } from './breadCrumb.js';
+import { bu as readTask, bv as findClosestIonContent, bw as componentOnReady, bx as writeTask, by as scrollToTop } from './breadCrumb.js';
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License

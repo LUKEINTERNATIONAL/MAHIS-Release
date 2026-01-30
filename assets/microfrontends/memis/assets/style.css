@@ -1453,24 +1453,21 @@ html.ios, html.md {
 /* Field Label */
 .form-field-label {
     font-weight: 600;
-    margin-bottom: 6px;
-    font-size: 0.875rem;
-    color: #5a5a5a;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    font-size: 0.75rem;
 }
 
 .form-field-value {
-    color: #333333;
-    margin-bottom: 16px;
-    font-size: 1rem;
-    line-height: 1.5;
+    color: #8a8a8a;
+    margin-bottom: 12px;
+    font-size: 0.75rem;
 }
 
 /* Top title */
 .form-page-title {
     font-size: 1.5rem;
     font-weight: 700;
+    margin-bottom: 12px;
 }
 
 .form-title-divider {
