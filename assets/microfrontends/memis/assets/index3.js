@@ -2893,6 +2893,11 @@ class LocalForageServiceInstance {
 
 const LocalForageServiceInstance$1 = new LocalForageServiceInstance();
 
+const LocalForageService = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+	__proto__: null,
+	default: LocalForageServiceInstance$1
+}, Symbol.toStringTag, { value: 'Module' }));
+
 class DataStore {
   constructor() {
     const savedCreds = localStorage.getItem("memisCredentials");
@@ -3145,4 +3150,4 @@ const index = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 	qrConfigService
 }, Symbol.toStringTag, { value: 'Module' }));
 
-export { LocalForageServiceInstance$1 as L, commonjsRequire as c, dataStore as d, index as i, qrConfigService as q };
+export { LocalForageServiceInstance$1 as L, LocalForageService as a, commonjsRequire as c, dataStore as d, index as i, qrConfigService as q };
