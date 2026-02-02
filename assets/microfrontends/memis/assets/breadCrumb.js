@@ -39623,6 +39623,104 @@ const metadataInit = async (forceRefresh = false) => {
   }
 };
 
+// src/dhis2/queries.js
+
+// --- Fields needed for menus + forms (adds TEAs & sections for tracker programs) ---
+const PROGRAMS_FIELDS = [
+  "id",
+  "name",
+  "displayName",
+  "trackedEntityType",
+  "programType",
+  "organisationUnits[id,name,parent[id,name]]",
+
+  // For tracker programs: TEAs needed for enrollment forms
+  "programTrackedEntityAttributes[mandatory,trackedEntityAttribute[id,name,formName,attributeValues[value,attribute[id,code,name]],valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]]]]",
+  // Optional sectioning for TEAs
+  "programSections[id,name,formName,trackedEntityAttributes[id,name,formName,valueType,attributeValues[value,attribute[id,code,name]],optionSetValue,optionSet[id,name,code,options[id,name,code]]]]",
+
+  // For event & tracker-event forms: stages + their sections/DEs
+  "programStages[id,name,displayName,programStageSections[id,name,programStage[id,name],formName,dataElements[id,name,sortOrder,formName,domainType,valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]]]],programStageDataElements[id,programStage[id],dataElement[id,name,code,domainType,formName,valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]],attributeValues[value,attribute[id,name]]]]]",
+  "programRules[id,name,displayName,description,condition,priority,programRuleActions[id,programRuleActionType,dataElement[id,name,valueType],trackedEntityAttribute[id,name,valueType],data,content,location,programStageSection[id,name],programStage[id,name]]]",
+  "programRuleVariables[id,name,displayName,programRuleVariableSourceType,useCodeForOptionSet,dataElement[id,name,valueType,optionSet[id]],trackedEntityAttribute[id,name,valueType,optionSet[id]],programStage[id,name]]",
+
+  // NEW: required for grouping + ordering in navigation
+  "attributeValues[value,attribute[id,code,name]]",
+].join(",");
+
+const PROGRAM_RULES_FIELDS =
+  "id,name,displayName,description,condition,priority,program[id,name]," +
+  "programRuleActions[id,programRuleActionType,dataElement[id,name,valueType],trackedEntityAttribute[id,name,valueType],data,content,location,programStageSection[id,name],programStage[id,name]]";
+
+// --- Heavy fields for a single program drill (unchanged) ---
+const PROGRAM_STAGES_FIELDS =
+  "id,name,displayName,programType,attributeValues[value,attribute[id,code,name]]," +
+  "programStages[id,name,displayName,formType,program[id,formType,programType]," +
+  "programStageDataElements[id,programStage[id]," +
+  "dataElement[id,name,formName,displayName,code,valueType,domainType,optionSetValue," +
+  "optionSet[id,name,code,options[id,name,code]]]]," +
+  "programStageSections[id,name,description,program[id,programType,formType]," +
+  "programStage[id,name]," +
+  "dataElements[id,name,formName,displayName,code,valueType,domainType,optionSetValue," +
+  "optionSet[id,name,code,options[id,name,code]]],sortOrder]]";
+
+// --- keep these (referenced elsewhere) ---
+const USER_ORGANISATION_UNITS =
+  "userOnly=true&fields=id,name,level,displayName&paging=false";
+
+const ORGANISATION_UNITS_DESCENDANTS =
+  "fields=id,name,level,displayName,parent[id,name,level,displayName],children[id,name,level,displayName]&paging=false";
+
+// src/dhis2/metadataInit.js
+
+/**
+ * Initialize and cache DHIS2 metadata (Programs, etc.)
+ * This runs once on login to cache frequently accessed metadata
+ */
+const programsMetadata = async (forceRefresh = false) => {
+  try {
+    // Check if we already have cached metadata (unless forcing refresh)
+    if (!forceRefresh) {
+      const cachedPrograms = await LocalForageServiceInstance.getItem("programs", "programs");
+      if (cachedPrograms && Array.isArray(cachedPrograms) && cachedPrograms.length > 0) {
+        console.log("Programs loaded from cache:", cachedPrograms.length, "programs");
+        return null;
+      }
+    }
+
+    console.log("Fetching programs from API...");
+    const encodeFields = (fields) => encodeURIComponent(fields || "");
+
+    // Cache Programs
+    // await LocalForageServiceInstance.setItem("Programs", Programs, "metadata");
+    const programPayload = await dataStore.get(
+      `programs?fields=${encodeFields(PROGRAMS_FIELDS)}&paging=false`
+    );
+    const programs = programPayload?.data?.programs || [];
+
+    const rulesPayload = await dataStore.get(
+      `programRules?fields=${encodeFields(PROGRAM_RULES_FIELDS)}&paging=false`
+    );
+
+    const asArray = (p, key) =>
+      Array.isArray(p?.[key]) ? p[key] : Array.isArray(p) ? p : [];
+
+    const programList = asArray(programPayload?.data, "programs");
+    const rulesList = asArray(rulesPayload?.data, "programRules");
+
+    // Cache results
+    await LocalForageServiceInstance.setItem("programs", programList, "programs");
+    await LocalForageServiceInstance.setItem("programRules", rulesList, "programRules");
+
+    console.log("Programs metadata initialized and cached:", programs.length, "programs");
+    return null;
+
+  } catch (error) {
+    console.error("Metadata initialization failed:", error);
+    return error;
+  }
+};
+
 const React = await importShared('react');
 const {createContext,useContext,useEffect: useEffect$1,useState: useState$1} = React;
 const DataStoreContext = createContext({
@@ -39655,6 +39753,14 @@ function DataStoreProvider({ children }) {
       const dataStoreResult = await dataStoreInit(forceRefresh);
       if (dataStoreResult) {
         setError(dataStoreResult);
+        setIsReady(false);
+        setIsLoading(false);
+        setInitialized(true);
+        return;
+      }
+      const programsResult = await programsMetadata(forceRefresh);
+      if (programsResult) {
+        setError(programsResult);
         setIsReady(false);
         setIsLoading(false);
         setInitialized(true);
@@ -39704,54 +39810,6 @@ function DataStoreProvider({ children }) {
     }
   );
 }
-
-// src/dhis2/queries.js
-
-// --- Fields needed for menus + forms (adds TEAs & sections for tracker programs) ---
-const PROGRAMS_FIELDS = [
-  "id",
-  "name",
-  "displayName",
-  "trackedEntityType",
-  "programType",
-  "organisationUnits[id,name,parent[id,name]]",
-
-  // For tracker programs: TEAs needed for enrollment forms
-  "programTrackedEntityAttributes[mandatory,trackedEntityAttribute[id,name,formName,attributeValues[value,attribute[id,code,name]],valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]]]]",
-  // Optional sectioning for TEAs
-  "programSections[id,name,formName,trackedEntityAttributes[id,name,formName,valueType,attributeValues[value,attribute[id,code,name]],optionSetValue,optionSet[id,name,code,options[id,name,code]]]]",
-
-  // For event & tracker-event forms: stages + their sections/DEs
-  "programStages[id,name,displayName,programStageSections[id,name,programStage[id,name],formName,dataElements[id,name,sortOrder,formName,domainType,valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]]]],programStageDataElements[id,programStage[id],dataElement[id,name,code,domainType,formName,valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]],attributeValues[value,attribute[id,name]]]]]",
-  "programRules[id,name,displayName,description,condition,priority,programRuleActions[id,programRuleActionType,dataElement[id,name,valueType],trackedEntityAttribute[id,name,valueType],data,content,location,programStageSection[id,name],programStage[id,name]]]",
-  "programRuleVariables[id,name,displayName,programRuleVariableSourceType,useCodeForOptionSet,dataElement[id,name,valueType,optionSet[id]],trackedEntityAttribute[id,name,valueType,optionSet[id]],programStage[id,name]]",
-
-  // NEW: required for grouping + ordering in navigation
-  "attributeValues[value,attribute[id,code,name]]",
-].join(",");
-
-const PROGRAM_RULES_FIELDS =
-  "id,name,displayName,description,condition,priority,program[id,name]," +
-  "programRuleActions[id,programRuleActionType,dataElement[id,name,valueType],trackedEntityAttribute[id,name,valueType],data,content,location,programStageSection[id,name],programStage[id,name]]";
-
-// --- Heavy fields for a single program drill (unchanged) ---
-const PROGRAM_STAGES_FIELDS =
-  "id,name,displayName,programType,attributeValues[value,attribute[id,code,name]]," +
-  "programStages[id,name,displayName,formType,program[id,formType,programType]," +
-  "programStageDataElements[id,programStage[id]," +
-  "dataElement[id,name,formName,displayName,code,valueType,domainType,optionSetValue," +
-  "optionSet[id,name,code,options[id,name,code]]]]," +
-  "programStageSections[id,name,description,program[id,programType,formType]," +
-  "programStage[id,name]," +
-  "dataElements[id,name,formName,displayName,code,valueType,domainType,optionSetValue," +
-  "optionSet[id,name,code,options[id,name,code]]],sortOrder]]";
-
-// --- keep these (referenced elsewhere) ---
-const USER_ORGANISATION_UNITS =
-  "userOnly=true&fields=id,name,level,displayName&paging=false";
-
-const ORGANISATION_UNITS_DESCENDANTS =
-  "fields=id,name,level,displayName,parent[id,name,level,displayName],children[id,name,level,displayName]&paging=false";
 
 /**
  * Sets active program id.
@@ -39804,22 +39862,6 @@ const showToast = (message, type = "info") => {
   };
   const showNotification = toastTypes[type] || y.info;
   showNotification(message, toastConfig);
-};
-const parseApiError = (err, fallback = "Something went wrong.") => {
-  const status = err?.response?.status;
-  const data = err?.response?.data;
-  const detail = data?.message || data?.error || data?.description;
-  if (status === 400) return detail || "Validation error. Please check your inputs.";
-  if (status === 401) return "You're not signed in. Please sign in and try again.";
-  if (status === 403) return "You don't have permission to perform this action.";
-  if (status === 404) return "Resource not found.";
-  if (status === 409) return detail || "There's a conflict. This may already exist.";
-  if (status && detail) return detail;
-  const msg = err?.message || "";
-  if (typeof msg === "string" && msg.toLowerCase().includes("network"))
-    return "Network error. Check your connection and try again.";
-  if (msg) return msg;
-  return fallback;
 };
 const ToastItem = () => /* @__PURE__ */ jsxRuntimeExports.jsx(Lt, { ...toastConfig });
 
@@ -40154,4 +40196,4 @@ const sendNotification = async (
   }
 };
 
-export { IonCardContent as $, IonAccordionGroup as A, BrowserRouter as B, IonAccordion as C, DataStoreProvider as D, albumsOutline as E, settingsSharp as F, IonButtons as G, IonMenuButton as H, IonMenuToggle as I, IonButton as J, mailOutline as K, Link as L, MEMISContext as M, notificationsOutline as N, ORGANISATION_UNITS_DESCENDANTS as O, PROGRAMS_FIELDS as P, IonBadge as Q, Route as R, SuspenseLoader as S, ToastItem as T, USER_ORGANISATION_UNITS as U, personCircleOutline as V, logOutOutline as W, showToast as X, Outlet as Y, IonCard as Z, __vitePreload as _, PROGRAM_RULES_FIELDS as a, downloadOutline as a$, chevronDownOutline as a0, searchOutline as a1, checkmarkOutline as a2, y as a3, IonSegment as a4, IonSegmentButton as a5, IonSegmentView as a6, IonSegmentContent as a7, IonRow as a8, IonCol as a9, filterOutline as aA, optionsOutline as aB, ellipsisVertical as aC, arrowUp as aD, arrowDown as aE, removeOutline as aF, pencilOutline as aG, trashOutline as aH, closeOutline as aI, IonActionSheet as aJ, IonAlert as aK, addCircleOutline as aL, IonInputPasswordToggle as aM, chevronUpOutline as aN, checkmarkDoneOutline as aO, timeOutline as aP, createOutline as aQ, IonBreadcrumbs as aR, IonBreadcrumb as aS, chevronForward as aT, useParams as aU, IonAvatar as aV, qrCodeOutline as aW, IonSelect as aX, IonSelectOption as aY, closeCircle as aZ, statsChartOutline as a_, IonPage as aa, IonGrid as ab, IonInput as ac, addOutline as ad, IonSpinner as ae, close as af, imageOutline as ag, document$1 as ah, alertCircleOutline as ai, IonText as aj, arrowBackCircleOutline as ak, chevronBackOutline as al, chevronForwardOutline as am, saveOutline as an, IonLoading as ao, IonCheckbox as ap, IonRadioGroup as aq, IonRadio as ar, IonPopover as as, IonDatetime as at, IonTextarea as au, IonCardHeader as av, IonCardTitle as aw, useSearchParams as ax, parseApiError as ay, IonSearchbar as az, PermissionsProvider as b, printOutline as b0, PROGRAM_STAGES_FIELDS as b1, informationCircleOutline as b2, homeOutline as b3, arrowBackOutline as b4, useNavigation as b5, add as b6, eyeOutline as b7, trash as b8, chatbubble as b9, addEventListener$1 as bA, removeEventListener as bB, KeyboardResize as bC, win$2 as bD, raf as bE, getScrollElement as bF, scrollByPoint as bG, createAnimation as bH, getIonPageElement as bI, IonItemDivider as ba, IonModal as bb, funnelOutline as bc, addCircle as bd, refresh as be, IonTabs as bf, IonTabBar as bg, IonTabButton as bh, settings as bi, lockClosed as bj, documentLock as bk, IonTab as bl, checkmarkCircleOutline as bm, chatbubbleOutline as bn, Navigate as bo, isRTL$1 as bp, createGesture as bq, clamp as br, doc as bs, pointerCoord as bt, readTask as bu, findClosestIonContent as bv, componentOnReady as bw, writeTask$1 as bx, scrollToTop as by, Keyboard as bz, setupIonicReact as c, documentText as d, setActiveProgramCookie as e, Routes as f, api as g, useLocation as h, useNavigate as i, jsxRuntimeExports as j, icons as k, IonItem as l, IonIcon as m, IonLabel as n, IonRefresher as o, IonRefresherContent as p, usePermissions as q, IonMenu as r, sendNotification as s, IonHeader as t, useDataStore as u, IonToolbar as v, IonTitle as w, IonContent as x, IonList as y, home as z };
+export { IonCardContent as $, IonAccordionGroup as A, BrowserRouter as B, IonAccordion as C, DataStoreProvider as D, albumsOutline as E, settingsSharp as F, IonButtons as G, IonMenuButton as H, IonMenuToggle as I, IonButton as J, mailOutline as K, Link as L, MEMISContext as M, notificationsOutline as N, ORGANISATION_UNITS_DESCENDANTS as O, PROGRAMS_FIELDS as P, IonBadge as Q, Route as R, SuspenseLoader as S, ToastItem as T, USER_ORGANISATION_UNITS as U, personCircleOutline as V, logOutOutline as W, showToast as X, Outlet as Y, IonCard as Z, __vitePreload as _, PROGRAM_RULES_FIELDS as a, printOutline as a$, chevronDownOutline as a0, searchOutline as a1, checkmarkOutline as a2, y as a3, IonSegment as a4, IonSegmentButton as a5, IonSegmentView as a6, IonSegmentContent as a7, IonRow as a8, IonCol as a9, optionsOutline as aA, ellipsisVertical as aB, arrowUp as aC, arrowDown as aD, removeOutline as aE, pencilOutline as aF, trashOutline as aG, closeOutline as aH, IonActionSheet as aI, IonAlert as aJ, addCircleOutline as aK, IonInputPasswordToggle as aL, chevronUpOutline as aM, checkmarkDoneOutline as aN, timeOutline as aO, createOutline as aP, IonBreadcrumbs as aQ, IonBreadcrumb as aR, chevronForward as aS, useParams as aT, IonAvatar as aU, qrCodeOutline as aV, IonSelect as aW, IonSelectOption as aX, closeCircle as aY, statsChartOutline as aZ, downloadOutline as a_, IonPage as aa, IonGrid as ab, IonInput as ac, addOutline as ad, IonSpinner as ae, close as af, imageOutline as ag, document$1 as ah, alertCircleOutline as ai, IonText as aj, arrowBackCircleOutline as ak, chevronBackOutline as al, chevronForwardOutline as am, saveOutline as an, IonLoading as ao, IonCheckbox as ap, IonRadioGroup as aq, IonRadio as ar, IonPopover as as, IonDatetime as at, IonTextarea as au, IonCardHeader as av, IonCardTitle as aw, useSearchParams as ax, IonSearchbar as ay, filterOutline as az, PermissionsProvider as b, PROGRAM_STAGES_FIELDS as b0, informationCircleOutline as b1, homeOutline as b2, arrowBackOutline as b3, useNavigation as b4, add as b5, eyeOutline as b6, trash as b7, chatbubble as b8, IonItemDivider as b9, removeEventListener as bA, KeyboardResize as bB, win$2 as bC, raf as bD, getScrollElement as bE, scrollByPoint as bF, createAnimation as bG, getIonPageElement as bH, IonModal as ba, funnelOutline as bb, addCircle as bc, refresh as bd, IonTabs as be, IonTabBar as bf, IonTabButton as bg, settings as bh, lockClosed as bi, documentLock as bj, IonTab as bk, checkmarkCircleOutline as bl, chatbubbleOutline as bm, Navigate as bn, isRTL$1 as bo, createGesture as bp, clamp as bq, doc as br, pointerCoord as bs, readTask as bt, findClosestIonContent as bu, componentOnReady as bv, writeTask$1 as bw, scrollToTop as bx, Keyboard as by, addEventListener$1 as bz, setupIonicReact as c, documentText as d, setActiveProgramCookie as e, Routes as f, api as g, useLocation as h, useNavigate as i, jsxRuntimeExports as j, icons as k, IonItem as l, IonIcon as m, IonLabel as n, IonRefresher as o, IonRefresherContent as p, usePermissions as q, IonMenu as r, sendNotification as s, IonHeader as t, useDataStore as u, IonToolbar as v, IonTitle as w, IonContent as x, IonList as y, home as z };

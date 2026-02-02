@@ -1,6 +1,6 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/index3.js","assets/_commonjsHelpers.js","assets/index.es.js"])))=>i.map(i=>d[i]);
 import { importShared } from './__federation_fn_import.js';
-import { h as useLocation, i as useNavigate, k as icons, j as jsxRuntimeExports, I as IonMenuToggle, l as IonItem, m as IonIcon, n as IonLabel, _ as __vitePreload, o as IonRefresher, p as IonRefresherContent, M as MEMISContext, q as usePermissions, r as IonMenu, t as IonHeader, v as IonToolbar, w as IonTitle, x as IonContent, y as IonList, L as Link, z as home, A as IonAccordionGroup, C as IonAccordion, E as albumsOutline, e as setActiveProgramCookie, F as settingsSharp, G as IonButtons, H as IonMenuButton, J as IonButton, K as mailOutline, N as notificationsOutline, Q as IonBadge, V as personCircleOutline, W as logOutOutline, X as showToast, Y as Outlet, Z as IonCard, $ as IonCardContent, a0 as chevronDownOutline, a1 as searchOutline, a2 as checkmarkOutline, a3 as y$1, s as sendNotification, a4 as IonSegment, a5 as IonSegmentButton, a6 as IonSegmentView, a7 as IonSegmentContent, a8 as IonRow, a9 as IonCol, aa as IonPage, ab as IonGrid, ac as IonInput, ad as addOutline, ae as IonSpinner, af as close, d as documentText, ag as imageOutline, ah as document$1, ai as alertCircleOutline, aj as IonText, ak as arrowBackCircleOutline, al as chevronBackOutline, am as chevronForwardOutline, an as saveOutline, ao as IonLoading, ap as IonCheckbox, aq as IonRadioGroup, ar as IonRadio, as as IonPopover, at as IonDatetime, au as IonTextarea, av as IonCardHeader, aw as IonCardTitle, ax as useSearchParams, ay as parseApiError, az as IonSearchbar, aA as filterOutline, aB as optionsOutline, aC as ellipsisVertical, aD as arrowUp, aE as arrowDown, aF as removeOutline, aG as pencilOutline, aH as trashOutline, aI as closeOutline, aJ as IonActionSheet, aK as IonAlert, g as api, aL as addCircleOutline, u as useDataStore, aM as IonInputPasswordToggle, aN as chevronUpOutline, aO as checkmarkDoneOutline, aP as timeOutline, aQ as createOutline, aR as IonBreadcrumbs, aS as IonBreadcrumb, aT as chevronForward, aU as useParams, aV as IonAvatar, aW as qrCodeOutline, P as PROGRAMS_FIELDS, aX as IonSelect, aY as IonSelectOption, aZ as closeCircle, a_ as statsChartOutline, a$ as downloadOutline, b0 as printOutline, b1 as PROGRAM_STAGES_FIELDS, b2 as informationCircleOutline, b3 as homeOutline, b4 as arrowBackOutline, b5 as useNavigation, b6 as add, b7 as eyeOutline, b8 as trash, b9 as chatbubble, ba as IonItemDivider, bb as IonModal, bc as funnelOutline, bd as addCircle, be as refresh, bf as IonTabs, bg as IonTabBar, bh as IonTabButton, bi as settings, bj as lockClosed, bk as documentLock, bl as IonTab, bm as checkmarkCircleOutline, bn as chatbubbleOutline, S as SuspenseLoader, f as Routes, R as Route, bo as Navigate } from './breadCrumb.js';
+import { h as useLocation, i as useNavigate, k as icons, j as jsxRuntimeExports, I as IonMenuToggle, l as IonItem, m as IonIcon, n as IonLabel, _ as __vitePreload, o as IonRefresher, p as IonRefresherContent, M as MEMISContext, q as usePermissions, r as IonMenu, t as IonHeader, v as IonToolbar, w as IonTitle, x as IonContent, y as IonList, L as Link, z as home, A as IonAccordionGroup, C as IonAccordion, E as albumsOutline, e as setActiveProgramCookie, F as settingsSharp, G as IonButtons, H as IonMenuButton, J as IonButton, K as mailOutline, N as notificationsOutline, Q as IonBadge, V as personCircleOutline, W as logOutOutline, X as showToast, Y as Outlet, Z as IonCard, $ as IonCardContent, a0 as chevronDownOutline, a1 as searchOutline, a2 as checkmarkOutline, a3 as y$1, s as sendNotification, a4 as IonSegment, a5 as IonSegmentButton, a6 as IonSegmentView, a7 as IonSegmentContent, a8 as IonRow, a9 as IonCol, aa as IonPage, ab as IonGrid, ac as IonInput, ad as addOutline, ae as IonSpinner, af as close, d as documentText, ag as imageOutline, ah as document$1, ai as alertCircleOutline, aj as IonText, ak as arrowBackCircleOutline, al as chevronBackOutline, am as chevronForwardOutline, an as saveOutline, ao as IonLoading, ap as IonCheckbox, aq as IonRadioGroup, ar as IonRadio, as as IonPopover, at as IonDatetime, au as IonTextarea, av as IonCardHeader, aw as IonCardTitle, ax as useSearchParams, ay as IonSearchbar, az as filterOutline, aA as optionsOutline, aB as ellipsisVertical, aC as arrowUp, aD as arrowDown, aE as removeOutline, aF as pencilOutline, aG as trashOutline, aH as closeOutline, aI as IonActionSheet, aJ as IonAlert, g as api, aK as addCircleOutline, u as useDataStore, aL as IonInputPasswordToggle, aM as chevronUpOutline, aN as checkmarkDoneOutline, aO as timeOutline, aP as createOutline, aQ as IonBreadcrumbs, aR as IonBreadcrumb, aS as chevronForward, aT as useParams, aU as IonAvatar, aV as qrCodeOutline, P as PROGRAMS_FIELDS, aW as IonSelect, aX as IonSelectOption, aY as closeCircle, aZ as statsChartOutline, a_ as downloadOutline, a$ as printOutline, b0 as PROGRAM_STAGES_FIELDS, b1 as informationCircleOutline, b2 as homeOutline, b3 as arrowBackOutline, b4 as useNavigation, b5 as add, b6 as eyeOutline, b7 as trash, b8 as chatbubble, b9 as IonItemDivider, ba as IonModal, bb as funnelOutline, bc as addCircle, bd as refresh, be as IonTabs, bf as IonTabBar, bg as IonTabButton, bh as settings, bi as lockClosed, bj as documentLock, bk as IonTab, bl as checkmarkCircleOutline, bm as chatbubbleOutline, S as SuspenseLoader, f as Routes, R as Route, bn as Navigate } from './breadCrumb.js';
 import { c as commonjsRequire, L as LocalForageServiceInstance, d as dataStore, q as qrConfigService } from './index3.js';
 import { a as getAugmentedNamespace, c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers.js';
 
@@ -33,7 +33,7 @@ function NavItems({
     if (location.pathname !== target || location.search) navigate(target);
   };
   const isActive = (item) => location.pathname === `/memis/program/${item.id}`;
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { position: "relative" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonMenuToggle, { autoHide: false, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { position: "relative" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonMenuToggle, { autoHide: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
     IonItem,
     {
       button: true,
@@ -693,11 +693,11 @@ const App = registerPlugin('App', {
     web: () => __vitePreload(() => import('./web.js'),true              ?[]:void 0).then(m => new m.AppWeb()),
 });
 
-const {useEffect: useEffect$1b} = await importShared('react');
+const {useEffect: useEffect$1c} = await importShared('react');
 const useAndroidBackButton = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  useEffect$1b(() => {
+  useEffect$1c(() => {
     let backHandler;
     const setupBackHandler = async () => {
       backHandler = await App.addListener("backButton", () => {
@@ -8258,7 +8258,7 @@ var cryptoJsExports = requireCryptoJs();
 const CryptoJS = /*@__PURE__*/getDefaultExportFromCjs(cryptoJsExports);
 
 const React$H = await importShared('react');
-const {useContext: useContext$E,useEffect: useEffect$1a,useRef: useRef$m,useState: useState$1e,useMemo: useMemo$J} = React$H;
+const {useContext: useContext$E,useEffect: useEffect$1b,useRef: useRef$n,useState: useState$1e,useMemo: useMemo$J} = React$H;
 const MainLayout = ({ children }) => {
   const navigate = useNavigate();
   const isApk = Capacitor.isNativePlatform();
@@ -8271,8 +8271,8 @@ const MainLayout = ({ children }) => {
   const [messageCount, setMessageCount] = useState$1e(0);
   const [showDropdown, setShowDropdown] = useState$1e(false);
   const [userOrgUnit, setUserOrgUnits] = useState$1e("");
-  const notificationsRef = useRef$m(null);
-  const dropdownRef = useRef$m(null);
+  const notificationsRef = useRef$n(null);
+  const dropdownRef = useRef$n(null);
   function bridgeNavigate(target) {
     try {
       const d = document;
@@ -8413,7 +8413,7 @@ const MainLayout = ({ children }) => {
       console.error("Error handling notification click", err);
     }
   };
-  useEffect$1a(() => {
+  useEffect$1b(() => {
     const handleOutside = (e) => {
       if (notificationsRef.current && !notificationsRef.current.contains(e.target)) setShowNotifications(false);
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) setShowDropdown(false);
@@ -8449,7 +8449,7 @@ const MainLayout = ({ children }) => {
       window.location.replace("https://mahistest.health.gov.mw/logout");
     }
   };
-  useEffect$1a(() => {
+  useEffect$1b(() => {
     getUser();
   }, []);
   useAndroidBackButton();
@@ -8499,7 +8499,6 @@ const MainLayout = ({ children }) => {
       window.dispatchEvent(new CustomEvent("mfe:logout-success"));
       if (isApk) ; else {
         setTimeout(() => {
-          window.location.replace("https://mahistest.health.gov.mw/logout");
         }, 300);
       }
     }
@@ -8507,17 +8506,27 @@ const MainLayout = ({ children }) => {
   const onRefresh = async () => {
     await Promise.all([refreshMenu?.(), getUser(), refreshPrograms?.(), getMessages()]);
   };
-  useEffect$1a(() => {
+  useEffect$1b(() => {
     const loadUser = async () => {
       const us = await LocalForageServiceInstance.getItem("userRes", "user");
       const orgUnit = us?.organisationUnits;
       if (orgUnit && orgUnit?.length > 1) {
         orgUnit?.sort((a, b) => a?.level - b?.level);
         setUserOrgUnits(orgUnit[1]);
+      } else {
+        setUserOrgUnits(orgUnit[0]);
       }
     };
     loadUser();
   }, [user]);
+  useEffect$1b(() => {
+    if (menuItems?.length === 0) {
+      refreshMenu?.();
+      getUser();
+      refreshPrograms?.();
+      getMessages();
+    }
+  }, [menuItems]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(IonMenu, { contentId: "main-content", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(IonHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonToolbar, { color: "primary", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonTitle, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -8546,7 +8555,7 @@ const MainLayout = ({ children }) => {
         }
       ) }) }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(IonContent, { className: "ion-padding", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonList, { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(IonMenuToggle, { autoHide: false, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/memis", style: { textDecoration: "none", color: "inherit" }, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { button: true, detail: false, onClick: () => setActiveLink?.("dashboard"), children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(IonMenuToggle, { autoHide: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/memis", style: { textDecoration: "none", color: "inherit" }, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { button: true, detail: false, onClick: () => setActiveLink?.("dashboard"), children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(IonIcon, { src: home, slot: "start" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: "Dashboard" })
         ] }) }) }),
@@ -8580,7 +8589,7 @@ const MainLayout = ({ children }) => {
             it.id
           ))
         ] }),
-        superuser?.data?.name === "Superuser" && /* @__PURE__ */ jsxRuntimeExports.jsx(IonMenuToggle, { autoHide: false, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/settings", style: { textDecoration: "none", color: "inherit" }, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { button: true, detail: false, children: [
+        superuser?.data?.name === "Superuser" && /* @__PURE__ */ jsxRuntimeExports.jsx(IonMenuToggle, { autoHide: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/settings", style: { textDecoration: "none", color: "inherit" }, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { button: true, detail: false, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(IonIcon, { src: settingsSharp, slot: "start" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: "Settings" })
         ] }) }) })
@@ -19131,7 +19140,7 @@ class TimeSeriesScale extends TimeScale {
     }
 }
 
-const {forwardRef,useRef: useRef$l,useEffect: useEffect$19} = await importShared('react');
+const {forwardRef,useRef: useRef$m,useEffect: useEffect$1a} = await importShared('react');
 
 const defaultDatasetIdKey = 'label';
 function reforwardRef(ref, value) {
@@ -19178,8 +19187,8 @@ function cloneData(data, datasetIdKey = defaultDatasetIdKey) {
 
 function ChartComponent(props, ref) {
     const { height = 150, width = 300, redraw = false, datasetIdKey, type, data, options, plugins = [], fallbackContent, updateMode, ...canvasProps } = props;
-    const canvasRef = useRef$l(null);
-    const chartRef = useRef$l(null);
+    const canvasRef = useRef$m(null);
+    const chartRef = useRef$m(null);
     const renderChart = ()=>{
         if (!canvasRef.current) return;
         chartRef.current = new Chart$1(canvasRef.current, {
@@ -19199,7 +19208,7 @@ function ChartComponent(props, ref) {
             chartRef.current = null;
         }
     };
-    useEffect$19(()=>{
+    useEffect$1a(()=>{
         if (!redraw && chartRef.current && options) {
             setOptions(chartRef.current, options);
         }
@@ -19207,7 +19216,7 @@ function ChartComponent(props, ref) {
         redraw,
         options
     ]);
-    useEffect$19(()=>{
+    useEffect$1a(()=>{
         if (!redraw && chartRef.current) {
             setLabels(chartRef.current.config.data, data.labels);
         }
@@ -19215,7 +19224,7 @@ function ChartComponent(props, ref) {
         redraw,
         data.labels
     ]);
-    useEffect$19(()=>{
+    useEffect$1a(()=>{
         if (!redraw && chartRef.current && data.datasets) {
             setDatasets(chartRef.current.config.data, data.datasets, datasetIdKey);
         }
@@ -19223,7 +19232,7 @@ function ChartComponent(props, ref) {
         redraw,
         data.datasets
     ]);
-    useEffect$19(()=>{
+    useEffect$1a(()=>{
         if (!chartRef.current) return;
         if (redraw) {
             destroyChart();
@@ -19238,14 +19247,14 @@ function ChartComponent(props, ref) {
         data.datasets,
         updateMode
     ]);
-    useEffect$19(()=>{
+    useEffect$1a(()=>{
         if (!chartRef.current) return;
         destroyChart();
         setTimeout(renderChart);
     }, [
         type
     ]);
-    useEffect$19(()=>{
+    useEffect$1a(()=>{
         renderChart();
         return ()=>destroyChart();
     }, []);
@@ -19364,10 +19373,10 @@ const DonutChart = ({ title, items }) => {
 };
 
 const React$G = await importShared('react');
-const {useEffect: useEffect$18,useState: useState$1d} = React$G;
+const {useEffect: useEffect$19,useState: useState$1d} = React$G;
 function ChartLayout({ data }) {
   const [chartData, setChartData] = useState$1d([]);
-  useEffect$18(() => {
+  useEffect$19(() => {
     const getData = async () => {
       try {
         const ou = await LocalForageServiceInstance.getItem("userOnlyOrgUnits", "userOnlyOrgUnits");
@@ -19434,7 +19443,6 @@ function ChartLayout({ data }) {
         const newTotal = chartData.filter(
           (el) => el?.dataValues?.some((att) => att?.dataElement === cfg?.dependencyField && att?.value === cfg?.dependencyValue)
         ).length;
-        console.log({ account: count, newTotal });
         totalCount = newTotal;
       }
       return {
@@ -19464,7 +19472,7 @@ function ChartLayout({ data }) {
 }
 
 const React$F = await importShared('react');
-const {useState: useState$1c,useEffect: useEffect$17,useMemo: useMemo$I,useCallback: useCallback$j} = React$F;
+const {useState: useState$1c,useEffect: useEffect$18,useMemo: useMemo$I,useCallback: useCallback$j} = React$F;
 
 const {createPortal: createPortal$4} = await importShared('react-dom');
 const SearchableSelect$1 = ({
@@ -19482,7 +19490,7 @@ const SearchableSelect$1 = ({
   const [isOpen, setIsOpen] = useState$1c(false);
   const [searchTerm, setSearchTerm] = useState$1c("");
   const [selectedItems, setSelectedItems] = useState$1c([]);
-  useEffect$17(() => {
+  useEffect$18(() => {
     if (value == null) {
       if (selectedItems?.length > 0) setSelectedItems([]);
       return;
@@ -19500,7 +19508,7 @@ const SearchableSelect$1 = ({
     );
     if (!isEqual) setSelectedItems(newSelected);
   }, [value, multiple, itemValueField, data, selectedItems]);
-  useEffect$17(() => {
+  useEffect$18(() => {
     if (closeOnSignal) {
       setIsOpen(false);
       setSearchTerm("");
@@ -20039,7 +20047,7 @@ const DE_TRANSFER_TO_LOCATION = "Hk2JSouuvga";
 const DE_TRANSFER_EQUIPMENT_NAME = "wObkfr29dtK";
 const DE_TRANSFER_EQUIPMENT_TO_BE_TRANSFERRED = "oIEtXbVslFN";
 
-const {useEffect: useEffect$16,useRef: useRef$k,useState: useState$1b} = await importShared('react');
+const {useEffect: useEffect$17,useRef: useRef$l,useState: useState$1b} = await importShared('react');
 
 const NO_WARD_ALLOCATED_MESSAGE = "THE USER HAS NO WARD ALLOCATED";
 let facilityOrgUnitsCache = null;
@@ -20080,8 +20088,8 @@ function useTransferDefaults({
     setFormData,
     userOrganisationUnits,
 }) {
-    const transferLocationDefaultAppliedRef = useRef$k(false);
-    const transferToLocationDefaultAppliedRef = useRef$k(false);
+    const transferLocationDefaultAppliedRef = useRef$l(false);
+    const transferToLocationDefaultAppliedRef = useRef$l(false);
 
     const isWardInChargeForTransfer =
         user &&
@@ -20114,7 +20122,7 @@ function useTransferDefaults({
 
     const transferLocationValue = formData?.[DE_TRANSFER_LOCATION_TYPE];
 
-    useEffect$16(() => {
+    useEffect$17(() => {
         if (transferLocationDefaultAppliedRef.current) return;
         if (!isWardInChargeForTransfer && !isHospitalAdminForTransfer) return;
         if (isEdit) return;
@@ -20147,7 +20155,7 @@ function useTransferDefaults({
         setFormData,
     ]);
 
-    useEffect$16(() => {
+    useEffect$17(() => {
         const shouldPrefill =
             isWardInChargeForTransfer || isHospitalAdminForTransfer;
         if (!shouldPrefill) return;
@@ -20201,14 +20209,14 @@ function useTransferOrganisationUnitOptions({
 }) {
     const [facilityOrgUnits, setFacilityOrgUnits] = useState$1b([]);
     const [facilityOrgUnitsLoading, setFacilityOrgUnitsLoading] = useState$1b(false);
-    const facilityOrgUnitsLoadedRef = useRef$k(false);
+    const facilityOrgUnitsLoadedRef = useRef$l(false);
 
     const shouldUseFacilityGroup =
         isHospitalAdminForTransfer &&
         transferLocationValue &&
         String(transferLocationValue).trim() === OPTION_CODE_OUTSIDE_FACILITY;
 
-    useEffect$16(() => {
+    useEffect$17(() => {
         if (!shouldUseFacilityGroup) return;
         if (facilityOrgUnitsLoadedRef.current) return;
 
@@ -20315,7 +20323,7 @@ async function getEquipmentListOnTransferOutside(event) {
     }
 }
 
-const {useState: useState$1a,useEffect: useEffect$15,useRef: useRef$j} = await importShared('react');
+const {useState: useState$1a,useEffect: useEffect$16,useRef: useRef$k} = await importShared('react');
 
 const ATTR$1 = ATTRIBUTE_FOR_EQUIPMENT_LOOKUP;
 
@@ -20330,7 +20338,7 @@ function useEquipmentOptions(
     selectedOrganisationUnit = null,
     event = null
 ) {
-    const equipmentCacheRef = useRef$j(new Map());
+    const equipmentCacheRef = useRef$k(new Map());
     const [equipmentOptions, setEquipmentOptions] = useState$1a([]);
     const [equipmentLoading, setEquipmentLoading] = useState$1a(false);
 
@@ -20465,7 +20473,7 @@ function useEquipmentOptions(
     /* ---------------------------------------------------------
        Effect trigger
        --------------------------------------------------------- */
-    useEffect$15(() => {
+    useEffect$16(() => {
         let active = true;
 
         const run = async () => {
@@ -20496,7 +20504,7 @@ function useEquipmentOptions(
     };
 }
 
-const {useState: useState$19,useEffect: useEffect$14,useRef: useRef$i} = await importShared('react');
+const {useState: useState$19,useEffect: useEffect$15,useRef: useRef$j} = await importShared('react');
 
 /**
  * Custom hook to manage status field initialization and tracking
@@ -20505,9 +20513,9 @@ const {useState: useState$19,useEffect: useEffect$14,useRef: useRef$i} = await i
 function useStatusField({ programObj, programKey, selectedStageId, isEdit, formData, setFormData }) {
     const [statusFieldId, setStatusFieldId] = useState$19(null);
     const [statusOptionCodes, setStatusOptionCodes] = useState$19({});
-    const lastApproverNotificationRef = useRef$i(null);
+    const lastApproverNotificationRef = useRef$j(null);
 
-    useEffect$14(() => {
+    useEffect$15(() => {
         if (!programObj || isEdit) return;
 
         let statusDE = null;
@@ -20682,7 +20690,7 @@ function useSections({ programObj, stageObj, programKey, selectedStageId }) {
     }, [programObj, stageObj, programKey, selectedStageId]);
 }
 
-const {useMemo: useMemo$F,useEffect: useEffect$13,useState: useState$16} = await importShared('react');
+const {useMemo: useMemo$F,useEffect: useEffect$14,useState: useState$16} = await importShared('react');
 
 function useSectionsList({
   sections,
@@ -20694,7 +20702,7 @@ function useSectionsList({
   const [sectionAccessMap, setSectionAccessMap] = useState$16(null);
 
   // 🔹 1. Load section access asynchronously
-  useEffect$13(() => {
+  useEffect$14(() => {
 
     if (!sections || !user || !programId) return;
 
@@ -20874,7 +20882,7 @@ const applyOtherFieldRules = ({
   });
 };
 
-const {useState: useState$15,useEffect: useEffect$12,useMemo: useMemo$E,useRef: useRef$h} = await importShared('react');
+const {useState: useState$15,useEffect: useEffect$13,useMemo: useMemo$E,useRef: useRef$i} = await importShared('react');
 
 /**
  * Hook to manage field visibility based on skip logic and OTHER field rules
@@ -20904,10 +20912,10 @@ function useHiddenFields({
   }, [selectedStage, isEdit, otherFieldMappings]);
 
   const [hiddenFields, setHiddenFields] = useState$15(initialHiddenFields);
-  const hiddenFieldsRef = useRef$h(hiddenFields);
+  const hiddenFieldsRef = useRef$i(hiddenFields);
 
   // Apply skip-logic whenever relevant formData changes
-  useEffect$12(() => {
+  useEffect$13(() => {
     const newHidden = new Set();
 
     // Initialize with OTHER fields that should be hidden by default (create mode)
@@ -21051,7 +21059,7 @@ function useTaskPrefill() {
     };
 }
 
-const {useEffect: useEffect$11} = await importShared('react');
+const {useEffect: useEffect$12} = await importShared('react');
 
 /**
  * Hook to handle task prefill logic
@@ -21063,7 +21071,7 @@ function useTaskPrefillLogic({
     setFormLoading,
     setFormData,
 }) {
-    useEffect$11(() => {
+    useEffect$12(() => {
         const loadTaskPrefill = async () => {
             const taskId = queryParams.get("taskId");
             if (!taskId) return;
@@ -21165,7 +21173,7 @@ function usePopoverState(initialState = false) {
     };
 }
 
-const {useState: useState$12,useEffect: useEffect$10} = await importShared('react');
+const {useState: useState$12,useEffect: useEffect$11} = await importShared('react');
 
 
 /**
@@ -21180,7 +21188,7 @@ function useViewport() {
         return false;
     });
 
-    useEffect$10(() => {
+    useEffect$11(() => {
         const handleResize = () => setIsMobile(window.innerWidth <= 600);
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
@@ -21189,7 +21197,7 @@ function useViewport() {
     return { isMobile };
 }
 
-const {useState: useState$11,useEffect: useEffect$$} = await importShared('react');
+const {useState: useState$11,useEffect: useEffect$10} = await importShared('react');
 
 /**
  * Hook to manage OTHER field configuration and mappings
@@ -21200,7 +21208,7 @@ function useOtherFieldLogic({ selectedStageId, programObj }) {
   const [otherFieldMappings, setOtherFieldMappings] = useState$11([]);
 
   // Fetch OTHER field configuration on mount
-  useEffect$$(() => {
+  useEffect$10(() => {
     let mounted = true;
 
     const loadConfig = async () => {
@@ -21217,7 +21225,7 @@ function useOtherFieldLogic({ selectedStageId, programObj }) {
   }, []);
 
   // Load OTHER field mappings when stage/program changes
-  useEffect$$(() => {
+  useEffect$10(() => {
     const stageIdFromProgram =
       !selectedStageId && Array.isArray(programObj?.programStages) && programObj.programStages.length > 0
         ? programObj.programStages[0]?.id
@@ -21245,9 +21253,9 @@ function useOtherFieldLogic({ selectedStageId, programObj }) {
   };
 }
 
-const {useState: useState$10,useEffect: useEffect$_} = await importShared('react');
+const {useState: useState$10,useEffect: useEffect$$} = await importShared('react');
 
-const {useEffect: useEffect$Z} = await importShared('react');
+const {useEffect: useEffect$_} = await importShared('react');
 
 /**
  * Hook to load image URLs for IMAGE type fields when editing
@@ -21296,7 +21304,7 @@ function useImageLoader({
     /**
      * When editing a TEI, load existing IMAGE values for data elements so they can be previewed.
      */
-    useEffect$Z(() => {
+    useEffect$_(() => {
         const load = async () => {
             if (!trackedEntityUID || !programId) return;
 
@@ -21349,7 +21357,7 @@ function useImageLoader({
     }, [trackedEntityUID, programId, programObj, stageObj, selectedStageId]);
 }
 
-const {useState: useState$$,useEffect: useEffect$Y} = await importShared('react');
+const {useState: useState$$,useEffect: useEffect$Z} = await importShared('react');
 
 /**
  * Hook to manage equipment context for workflows that require equipment selection
@@ -21365,7 +21373,7 @@ function useEquipmentContext({ stageId, programId, routeEquipmentId, resetTrigge
     const [configLoaded, setConfigLoaded] = useState$$(false);
 
     // Reset state when stage/program changes OR when resetTrigger changes (new action)
-    useEffect$Y(() => {
+    useEffect$Z(() => {
         setContextConfig(null);
         setSelectedEquipment(null);
         setAvailableEquipment([]);
@@ -21708,7 +21716,7 @@ function useRequiredFields({
     return { requiredById };
 }
 
-const {useState: useState$_,useEffect: useEffect$X,useMemo: useMemo$C} = await importShared('react');
+const {useState: useState$_,useEffect: useEffect$Y,useMemo: useMemo$C} = await importShared('react');
 
 
 /**
@@ -21767,7 +21775,7 @@ function useStepNavigation({
     };
 
     // Update current section when active section changes
-    useEffect$X(() => {
+    useEffect$Y(() => {
         if (typeof setCurrentSection === "function" && activeSection) {
             setCurrentSection(activeSection);
         }
@@ -22006,7 +22014,7 @@ const triggerNotifications = async ({
   }
 };
 
-const {useEffect: useEffect$W} = await importShared('react');
+const {useEffect: useEffect$X} = await importShared('react');
 
 /**
  * Hook to manage approval officer assignment and notifications
@@ -22063,7 +22071,7 @@ function useApprovalNotifications({
      * Ensure the "approving officer" TEI is set:
      *   - On new forms when navigation is locked for review.
      */
-    useEffect$W(() => {
+    useEffect$X(() => {
         if (!isAddFlow || !approvingOfficerFieldId) return;
 
         setFormData((prev) => {
@@ -22099,7 +22107,7 @@ function useApprovalNotifications({
      *   - On new forms when navigation is locked for review.
      *   - On edits when status transitions to "Feedback required".
      */
-    useEffect$W(() => {
+    useEffect$X(() => {
         if (!programObj?.id) return;
         if (!assignedApprover || !approvingOfficerFieldId || !approvingSectionId)
             return;
@@ -22180,7 +22188,7 @@ function ChartsInTabs({ config }) {
   } = config;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(IonSegment, { value: config?.tabs[0]?.loadFirst && config?.tabs[0]?.id, children: config?.tabs?.map((tabValue, key) => {
-      return /* @__PURE__ */ jsxRuntimeExports.jsx(IonSegmentButton, { value: tabValue?.id, contentId: tabValue?.id, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: tabValue?.name }) }, key);
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(IonSegmentButton, { value: tabValue?.id, contentId: tabValue?.id, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { style: { textTransform: "none" }, children: tabValue?.name }) }, key);
     }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(IonSegmentView, { children: config?.tabs?.map((tabValue, key) => {
       return /* @__PURE__ */ jsxRuntimeExports.jsx(IonSegmentContent, { id: tabValue?.id, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonRow, { children: items?.filter((it) => it?.tab === tabValue?.id)?.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -22199,9 +22207,10 @@ function ChartsInTabs({ config }) {
   ] });
 }
 
-const {useContext: useContext$D,useState: useState$Z} = await importShared('react');
+const {useContext: useContext$D,useEffect: useEffect$W,useState: useState$Z} = await importShared('react');
 const Dashboard = () => {
-  const { dashboardConfigs } = useContext$D(MEMISContext.DashboardContext);
+  const { programs = [], loading: programsLoading = false, refresh: refreshPrograms } = useContext$D(MEMISContext.ProgramContext) || {};
+  const { dashboardConfigs, loadDashboardConfigurations } = useContext$D(MEMISContext.DashboardContext);
   const [periods, setPeriods] = useState$Z([
     { id: "THIS_MONTH", name: "This Month" },
     { id: "LAST_MONTH", name: "Last Month" },
@@ -22211,6 +22220,12 @@ const Dashboard = () => {
     { id: "LAST_YEAR", name: "Last Year" }
   ]);
   const [selectedPeriod, setSelectedPeriod] = useState$Z(periods[0]?.id || "");
+  useEffect$W(() => {
+    if (dashboardConfigs?.length === 0) {
+      console.log({ dashboardConfigs });
+      loadDashboardConfigurations();
+    }
+  }, [dashboardConfigs]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonPage, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(IonHeader, { color: "light", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonToolbar, { color: "light", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonTitle, { children: "Dashboard" }) }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { fullscreen: true, className: "ion-padding", children: [
@@ -22230,7 +22245,7 @@ const Dashboard = () => {
           }
         }
       ) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(IonGrid, { children: dashboardConfigs?.map((config) => {
+      /* @__PURE__ */ jsxRuntimeExports.jsx(IonGrid, { children: dashboardConfigs?.map((config, key) => {
         const {
           id,
           items,
@@ -22254,7 +22269,7 @@ const Dashboard = () => {
             children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChartLayout, { data: item })
           },
           `${id}-${item.item}`
-        )) }, id);
+        )) }, key + "_" + id);
       }) })
     ] })
   ] });
@@ -23395,6 +23410,131 @@ function FilePreviewModal({
   );
 }
 
+const DEFAULT_CONTEXT = {
+  flags: {},
+  now: new Date(),
+};
+
+const toDayTimestamp = (value) => {
+  if (value === undefined || value === null || value === "") return null;
+  const date = value instanceof Date ? new Date(value) : new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  date.setHours(0, 0, 0, 0);
+  return date;
+};
+
+const parseNumber = (value) => {
+  if (value === undefined || value === null || value === "") return null;
+  const number = typeof value === "number" ? value : Number(value);
+  if (Number.isNaN(number)) return null;
+  return number;
+};
+
+const getProgramConfig = (programId, validationConfig) =>
+  validationConfig?.programs?.find((program) => program?.programId === programId);
+
+const getFieldConfig = (programConfig, fieldId) =>
+  programConfig?.fields?.find((field) => field?.fieldId === fieldId);
+
+const getReferenceValue = (refKey, formData, context) => {
+  if (!refKey) return null;
+  if (formData?.hasOwnProperty(refKey)) {
+    return formData[refKey];
+  }
+  return context?.[refKey] ?? null;
+};
+
+const ruleHandlers = {
+  DATE_NOT_IN_FUTURE(rule, value, formData, context) {
+    const ruleDate = toDayTimestamp(value);
+    const now = toDayTimestamp(context.now);
+    if (!ruleDate || !now) return null;
+    if (ruleDate > now) return rule.message || "";
+    return null;
+  },
+
+  DATE_NOT_IN_PAST(rule, value, formData, context) {
+    const ruleDate = toDayTimestamp(value);
+    const now = toDayTimestamp(context.now);
+    if (!ruleDate || !now) return null;
+    if (ruleDate < now) return rule.message || "";
+    return null;
+  },
+
+  DATE_NOT_IN_PAST_WHEN(rule, value, formData, context) {
+    if (!rule.params) return null;
+    const flagName = rule.params.flag;
+    const expectedValue = rule.params.flagValue;
+    const flag = context.flags?.[flagName];
+    if (flag !== expectedValue) return null;
+    const ruleDate = toDayTimestamp(value);
+    const now = toDayTimestamp(context.now);
+    if (!ruleDate || !now) return null;
+    if (ruleDate < now) return rule.message || "";
+    return null;
+  },
+
+  DATE_MIN_REF(rule, value, formData, context) {
+    if (!rule.params) return null;
+    const refKey = rule.params.ref;
+    const referenceValue = getReferenceValue(refKey, formData, context);
+    const ruleDate = toDayTimestamp(value);
+    const refDate = toDayTimestamp(referenceValue);
+    if (!ruleDate || !refDate) return null;
+    if (ruleDate < refDate) return rule.message || "";
+    return null;
+  },
+
+  NUMBER_MIN(rule, value) {
+    if (!rule.params) return null;
+    const limit = rule.params.min;
+    if (typeof limit !== "number") return null;
+    const numberValue = parseNumber(value);
+    if (numberValue === null) return null;
+    if (numberValue < limit) return rule.message || "";
+    return null;
+  },
+
+  NUMBER_MAX(rule, value) {
+    if (!rule.params) return null;
+    const limit = rule.params.max;
+    if (typeof limit !== "number") return null;
+    const numberValue = parseNumber(value);
+    if (numberValue === null) return null;
+    if (numberValue > limit) return rule.message || "";
+    return null;
+  },
+};
+
+const evaluateRule = (rule, value, formData, context) => {
+  if (!rule || !rule.type) return null;
+  const handler = ruleHandlers[rule.type];
+  if (!handler) return null;
+  return handler(rule, value, formData, context) || null;
+};
+
+const normaliseContext = (context) => ({
+  ...DEFAULT_CONTEXT,
+  ...context,
+  flags: { ...(DEFAULT_CONTEXT.flags || {}), ...(context?.flags || {}) },
+});
+
+function validateProgramField(programId, fieldId, formData = {}, validationConfig = {}, context = {}) {
+  const cfg = getProgramConfig(programId, validationConfig);
+  if (!cfg) return [];
+  const field = getFieldConfig(cfg, fieldId);
+  if (!field || !field.rules?.length) return [];
+
+  const enrichedContext = normaliseContext(context);
+  const value = formData?.[fieldId];
+
+  return field.rules.reduce((acc, rule) => {
+    const error = evaluateRule(rule, value, formData, enrichedContext);
+    if (error) acc.push(error);
+    return acc;
+  }, []);
+}
+
 const {useContext: useContext$C,useEffect: useEffect$S,useMemo: useMemo$z,useState: useState$V} = await importShared('react');
 function ConfigurableForm({
   handleSubmit,
@@ -23435,7 +23575,9 @@ function ConfigurableForm({
   const [futureDateFields, setFutureDateFields] = useState$V([]);
   const [wlsDuration, setWlsDuration] = useState$V({});
   const [dataStoreData, setDataStoreData] = useState$V({});
+  const [validationErrors, setValidationErrors] = useState$V({});
   const [firstStageDe, setfirstDE] = useState$V([]);
+  const validationConfig = dataStoreData?.formValidations;
   const [componentInputs, setComponentInputs] = useState$V({});
   const { showPopover, setShowPopover } = usePopoverState();
   const { setDateRangePopover } = useDateRangePopover();
@@ -23587,11 +23729,14 @@ function ConfigurableForm({
     setImageLoading
   });
   const handleChange = (id, value) => {
-    console.log({ id, value });
-    setFormData((prev) => ({
-      ...prev,
-      [id]: value
-    }));
+    setFormData((prev) => {
+      const next = {
+        ...prev,
+        [id]: value
+      };
+      runFieldValidation(id, next);
+      return next;
+    });
   };
   const { handleSparePartLookup } = useSparePartLookup({
     programId,
@@ -23599,8 +23744,133 @@ function ConfigurableForm({
     isCheckingRegistration,
     setIsCheckingRegistration
   });
-  useEffect$S(() => {
-  }, [sectionAccessMap, sectionsList]);
+  const buildValidationContext = (currentFormData = formData) => ({
+    now: /* @__PURE__ */ new Date(),
+    flags: currentFormData?.flags || {}
+  });
+  const runFieldValidation = (fieldId, currentFormData) => {
+    if (!programId || !validationConfig || !fieldId) return [];
+    const context = buildValidationContext(currentFormData);
+    const errors = validateProgramField(
+      programId,
+      fieldId,
+      currentFormData,
+      validationConfig,
+      context
+    );
+    setValidationErrors((prevErrors) => {
+      const updated = { ...prevErrors };
+      if (errors.length) {
+        updated[fieldId] = errors;
+      } else {
+        delete updated[fieldId];
+      }
+      return updated;
+    });
+    return errors;
+  };
+  const getTodayYMD = () => {
+    const today = /* @__PURE__ */ new Date();
+    today.setHours(0, 0, 0, 0);
+    return today.toISOString().split("T")[0];
+  };
+  const toYMD = (value) => {
+    if (!value) return null;
+    const date = value instanceof Date ? new Date(value) : new Date(value);
+    if (Number.isNaN(date.getTime())) return null;
+    date.setHours(0, 0, 0, 0);
+    return date.toISOString().split("T")[0];
+  };
+  const latestDate = (a, b) => {
+    if (!a) return b;
+    if (!b) return a;
+    return a > b ? a : b;
+  };
+  const earliestDate = (a, b) => {
+    if (!a) return b;
+    if (!b) return a;
+    return a < b ? a : b;
+  };
+  const safeNumber = (value) => {
+    if (value === void 0 || value === null || value === "") return null;
+    const number = typeof value === "number" ? value : Number(value);
+    return Number.isNaN(number) ? null : number;
+  };
+  const getFieldRules = (programId2, fieldId, config) => {
+    if (!programId2 || !fieldId || !config) return [];
+    const program = config?.programs?.find((pg) => pg?.programId === programId2);
+    return program?.fields?.find((field) => field?.fieldId === fieldId)?.rules || [];
+  };
+  const getFieldConstraints = (programId2, fieldId, currentFormData, config, context) => {
+    const rules2 = getFieldRules(programId2, fieldId, config);
+    if (!rules2?.length) return {};
+    let minDate;
+    let maxDate;
+    let minNumber;
+    let maxNumber;
+    const today = getTodayYMD();
+    rules2.forEach((rule) => {
+      switch (rule?.type) {
+        case "DATE_NOT_IN_FUTURE": {
+          maxDate = earliestDate(maxDate, today);
+          break;
+        }
+        case "DATE_NOT_IN_PAST": {
+          minDate = latestDate(minDate, today);
+          break;
+        }
+        case "DATE_MIN_REF": {
+          if (!rule.params) break;
+          const ref = rule.params.ref;
+          if (ref === "now") {
+            minDate = latestDate(minDate, today);
+            break;
+          }
+          const refValue = currentFormData?.[ref] ?? context?.[ref];
+          const refYMD = toYMD(refValue);
+          if (refYMD) {
+            minDate = latestDate(minDate, refYMD);
+          }
+          break;
+        }
+        case "NUMBER_MIN": {
+          if (!rule.params) break;
+          const candidate = safeNumber(rule.params.min);
+          if (candidate !== null) {
+            if (minNumber === void 0 || candidate > minNumber) {
+              minNumber = candidate;
+            }
+          }
+          break;
+        }
+        case "NUMBER_MAX": {
+          if (!rule.params) break;
+          const candidate = safeNumber(rule.params.max);
+          if (candidate !== null) {
+            if (maxNumber === void 0 || candidate < maxNumber) {
+              maxNumber = candidate;
+            }
+          }
+          break;
+        }
+      }
+    });
+    return {
+      minDate,
+      maxDate,
+      minNumber,
+      maxNumber
+    };
+  };
+  const wrapWithValidationErrors = (fieldId, node) => {
+    if (!node) return null;
+    const fieldErrors = validationErrors[fieldId] || [];
+    if (fieldErrors.length === 0) return node;
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+      node,
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { marginTop: 4 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "danger", style: { fontSize: "0.75rem" }, children: fieldErrors.map((error, index) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: error }, `${fieldId}-error-${index}`)) }) })
+    ] });
+  };
   const getPreFilled = (id, preFill) => {
     try {
       if (Array.isArray(preFill)) {
@@ -23631,6 +23901,14 @@ function ConfigurableForm({
     const forceReadOnlyTransferLocation = fieldId === DE_TRANSFER_LOCATION_TYPE && (isWardInChargeForTransfer || isHospitalAdminForTransfer);
     const forceReadOnlyTransferToLocation = fieldId === DE_TRANSFER_TO_LOCATION && isWardInChargeForTransfer;
     const isFieldDisabled = !canAddUpdateSection || isFieldLocked || forceReadOnlyTransferLocation || forceReadOnlyTransferToLocation || wardData?.field === el?.id && wardData?.use && wardData?.disabled;
+    const validationContext = buildValidationContext(formData);
+    const fieldConstraints = getFieldConstraints(
+      programId,
+      fieldId,
+      formData,
+      validationConfig,
+      validationContext
+    );
     if (fieldId === COMPONENTS_LIST) {
       const currentInput = componentInputs[fieldId] || "";
       const updateInput = (newValue) => {
@@ -23765,23 +24043,37 @@ function ConfigurableForm({
       case "UNIT_INTERVAL":
       case "PERCENTAGE":
       case "AGE": {
-        const min = vt === "INTEGER_ZERO_OR_POSITIVE" || vt === "INTEGER_POSITIVE" ? 0 : vt === "INTEGER_NEGATIVE" ? void 0 : void 0;
+        const typeMin = vt === "INTEGER_ZERO_OR_POSITIVE" || vt === "INTEGER_POSITIVE" ? 0 : vt === "INTEGER_NEGATIVE" ? void 0 : void 0;
         const step = vt?.includes("INTEGER") ? 1 : "any";
+        const fieldMinConstraint = fieldConstraints?.minNumber;
+        const fieldMaxConstraint = fieldConstraints?.maxNumber;
+        const minAttr = fieldMinConstraint !== void 0 && typeMin !== void 0 ? Math.max(fieldMinConstraint, typeMin) : fieldMinConstraint ?? typeMin;
+        const maxAttr = fieldMaxConstraint;
         return /* @__PURE__ */ jsxRuntimeExports.jsx(
           IonInput,
           {
             disabled: isFieldDisabled,
             fill: "outline",
             type: "number",
-            min,
+            min: minAttr ?? void 0,
+            max: maxAttr ?? void 0,
             step,
             value,
-            onIonChange: (e) => {
-              let val = e.detail.value;
+            onIonInput: (e) => {
+              let val = e.detail?.value;
               if (vt?.includes("INTEGER") && val !== null && val !== "") {
                 val = Math.floor(Number(val));
                 if (vt === "INTEGER_ZERO_OR_POSITIVE" && val < 0) val = 0;
                 if (vt === "INTEGER_POSITIVE" && val <= 0) val = 1;
+              }
+              const numeric = safeNumber(val);
+              if (numeric !== null) {
+                if (minAttr !== void 0 && numeric < minAttr) {
+                  val = minAttr;
+                }
+                if (maxAttr !== void 0 && numeric > maxAttr) {
+                  val = maxAttr;
+                }
               }
               handleChange(el.id, val);
             }
@@ -23792,6 +24084,9 @@ function ConfigurableForm({
         const description = el?.description || el?.dataElement?.description || "";
         const fieldName = (el?.formName || el?.name || "").toLowerCase();
         const dataField = futureDateFields.find((p) => p?.fieldId === fieldId);
+        const futureDateLimit = dataField ? getTodayYMD() : void 0;
+        const constraintMaxDate = earliestDate(fieldConstraints?.maxDate, futureDateLimit);
+        const constraintMinDate = fieldConstraints?.minDate;
         const isDateRange = description.toLowerCase().includes("from date until date") || description.toLowerCase().includes("from") && description.toLowerCase().includes("until") || fieldName.includes("date range") || fieldName.includes("period");
         if (isDateRange) {
           const [fromDate = "", toDate = ""] = (value || "").split(" to ");
@@ -23824,11 +24119,11 @@ function ConfigurableForm({
                         disabled: isFieldDisabled,
                         fill: "outline",
                         type: "date",
-                        max: dataField && (/* @__PURE__ */ new Date()).toISOString().split("T")[0],
+                        min: constraintMinDate ?? void 0,
+                        max: constraintMaxDate ?? void 0,
                         presentation: "date",
                         value: fromDate || void 0,
                         onIonChange: (e) => {
-                          (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
                           const newFromDate = e.detail.value ? e.detail.value.split("T")[0] : "";
                           const currentToDate = toDate;
                           const rangeValue = newFromDate && currentToDate ? `${newFromDate} to ${currentToDate}` : newFromDate || currentToDate || "";
@@ -23856,7 +24151,7 @@ function ConfigurableForm({
                         disabled: isFieldDisabled,
                         fill: "outline",
                         type: "date",
-                        max: dataField && (/* @__PURE__ */ new Date()).toISOString().split("T")[0],
+                        max: constraintMaxDate ?? void 0,
                         presentation: "date",
                         detail: false,
                         placeholder: "Select until date",
@@ -23900,7 +24195,8 @@ function ConfigurableForm({
             disabled: isFieldDisabled,
             fill: "outline",
             type: "date",
-            max: dataField && (/* @__PURE__ */ new Date()).toISOString().split("T")[0],
+            min: constraintMinDate ?? void 0,
+            max: constraintMaxDate ?? void 0,
             value,
             onIonChange: (e) => handleChange(el.id, e.detail.value)
           }
@@ -24062,7 +24358,6 @@ function ConfigurableForm({
               disabled: isFieldDisabled,
               type: "file",
               accept: "image/*",
-              capture: "environment",
               onChange: (e) => {
                 const file = e.target.files?.[0] || null;
                 handleChange(el.id, file);
@@ -24591,6 +24886,28 @@ function ConfigurableForm({
       getDe(j);
     }
   }, [workflow, pM]);
+  useEffect$S(() => {
+    const loadUser = async () => {
+      const us = await LocalForageServiceInstance.getItem("userRes", "user");
+      const { userShowOrgUnit } = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
+      const orgUnits = us?.organisationUnits || [];
+      const showOrgUnit = userShowOrgUnit?.configuration?.find(
+        (org) => us?.userRoles?.some((usr) => usr?.id === org?.role)
+      );
+      if (!orgUnits.length) return;
+      const sortedOrgUnits = [...orgUnits].sort(
+        (a, b) => (a?.level || 0) - (b?.level || 0)
+      );
+      let selected;
+      if (sortedOrgUnits.length > 1 && showOrgUnit?.userLowerOrgUnit) {
+        selected = sortedOrgUnits[1];
+      } else {
+        selected = sortedOrgUnits[0];
+      }
+      setSelectedOrganisationUnit(selected?.id);
+    };
+    loadUser();
+  }, [user, selectedOrganisationUnit]);
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "", children: isInitiallyLoading ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "div",
     {
@@ -24621,19 +24938,26 @@ function ConfigurableForm({
       ]
     }
   ) : Array.isArray(activeSection?.fields) && sectionsList?.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Block, { style: { marginBottom: 12 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-      OrganisationUnitsWidget,
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
       {
-        disabled: true,
-        programOrgUnits: user?.organisationUnits,
-        selectedOrganisationUnit,
-        setSelectedOrganisationUnit,
-        teiOu,
-        dataStoreData,
-        program: programId,
-        user
+        className: "",
+        style: { display: "none" },
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(Block, { style: { marginBottom: 12 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          OrganisationUnitsWidget,
+          {
+            disabled: true,
+            programOrgUnits: user?.organisationUnits,
+            selectedOrganisationUnit,
+            setSelectedOrganisationUnit,
+            teiOu,
+            dataStoreData,
+            program: programId,
+            user
+          }
+        ) })
       }
-    ) }),
+    ),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Stepper, {}),
     reviewNavigationLocked && /* @__PURE__ */ jsxRuntimeExports.jsxs(
       IonItem,
@@ -24706,10 +25030,13 @@ function ConfigurableForm({
                 ]
               }
             ),
-            renderInput(
-              el,
-              sectionAccess?.canWrite,
-              prefilledValues
+            wrapWithValidationErrors(
+              id,
+              renderInput(
+                el,
+                sectionAccess?.canWrite,
+                prefilledValues
+              )
             )
           ]
         },
@@ -24748,10 +25075,13 @@ function ConfigurableForm({
                 ]
               }
             ),
-            renderInput(
-              el,
-              sectionAccess?.canWrite,
-              prefilledValues
+            wrapWithValidationErrors(
+              id,
+              renderInput(
+                el,
+                sectionAccess?.canWrite,
+                prefilledValues
+              )
             )
           ]
         },
@@ -25413,11 +25743,8 @@ const equipmentRegistrationNotification = async (config, options) => {
         option = optionData?.find(opt => opt?.id === config?.equipment?.optionSetId);
       }
 
-      // setTei(data);
       const ouData = await LocalForageServiceInstance.getItem("userOrganisationUnits", "userOrgUnits");
-      // dataStore.get(
-      //   `organisationUnits/${data?.data.orgUnit}?fields=name,id`
-      // );
+      
       const ou = ouData?.find(org => org?.id === data?.data.orgUnit);
       const optionName = option?.options.find(
         (op) => op.code === attribute?.value
@@ -25427,7 +25754,6 @@ const equipmentRegistrationNotification = async (config, options) => {
       const body = `${options?.count} ${optionName?.name
         } has been registered at ${ou?.name}.`;
       const usersId = users.map((id) => id?.id);
-      console.log({ usersId, body, subject });
 
       sendNotificationHandler(subject, body, usersId);
     }
@@ -26796,7 +27122,6 @@ const getUsers$3 = async ({ targetOrgUnitId, userRoleId }) => {
   return usersResp?.data?.users?.map((u) => ({ id: u.id })) || [];
 };
 const reportCreationNotificationApproval = async (config, options) => {
-  console.log({ config, options });
 
   try {
     const data = await dataStore.get(
@@ -26806,25 +27131,24 @@ const reportCreationNotificationApproval = async (config, options) => {
     const dataElement = data?.data?.dataValues?.find(
       (d) => d?.dataElement === config?.equipment?.dataElement
     );
-    const oUnits = await LocalForageServiceInstance.getItem("userOrganisationUnits", "userOrgUnit");
-    const ou = oUnits?.find(org => org?.id === data?.data?.orgUnit);
-    // await dataStore.get(
-    //   `organisationUnits/${data.orgUnit}?fields=name,id,parent(id,name)`
-    // );
+
 
     let users = [];
     const isApproved = dataElement?.value === "true";
 
     // Always notify the creator (requester)
     if (config?.userSource?.createdBy) {
-      users.push({ id: data?.createdBy?.uid });
+      users.push({ id: data?.data?.createdBy?.uid });
     }
+    const oUnits = await LocalForageServiceInstance.getItem("userOrganisationUnits", "userOrgUnit");
+    const ou = oUnits?.find(org => org?.id === data?.data?.orgUnit);
 
     // If approved, also notify engineers/stores clerk
     if (isApproved) {
       const approvedRole = config?.userRoles?.find(
         (roles) => roles.accepted === "true"
       );
+
       if (approvedRole) {
         const approvedUsers = await getUsers$3({
           targetOrgUnitId:
@@ -26840,6 +27164,7 @@ const reportCreationNotificationApproval = async (config, options) => {
       const declinedRole = config?.userRoles?.find(
         (roles) => roles.accepted === "false"
       );
+
       if (declinedRole) {
         const declinedUsers = await getUsers$3({
           targetOrgUnitId:
@@ -26854,16 +27179,16 @@ const reportCreationNotificationApproval = async (config, options) => {
 
     let option;
     let optionName;
+
     if (config.equipment.isOptionCode) {
       const options = await LocalForageServiceInstance.getItem("optionSets", "metadata");
       option = options?.find(opt => opt?.id === config?.equipment?.optionSetId);
-      // await dataStore.get(
-      //   `optionSets/${config?.equipment?.optionSetId}?fields=id,name,displayName,code,options(id,name,displayName,code)`
-      // );
-      const messageDE = data?.dataValues?.find(
+
+      const messageDE = data?.data?.dataValues?.find(
         (d) => d?.dataElement === config?.equipment?.messageDE
       );
       optionName = option?.options.find((op) => op.code === messageDE?.value);
+
     } else {
       option = await dataStore.get(
         `dataElements/${config?.equipment?.messageDE}?fields=id,name,displayName,code`
@@ -26871,11 +27196,13 @@ const reportCreationNotificationApproval = async (config, options) => {
       optionName = { name: option?.data?.displayName || option?.data?.name };
     }
 
-    const subject = `${optionName?.name || "equipment"} requisition ${dataElement?.value === "true" ? "approved" : "declined."
+    const subject = `${optionName?.name || "Report"} is reviewed and ${dataElement?.value === "true"
+      ? "approved" : "declined."
       } | ${data?.data?.program}.${data?.event}`;
-    const body = `${optionName?.name || "equipment"
-      } requisition request has been updated.`;
+    const body = `${optionName?.name || "Report"
+      } review request has been completed.`;
     const usersId = users?.map((id) => id?.id);
+
     sendNotificationHandler(subject, body, usersId);
   } catch (error) { }
 };
@@ -27566,7 +27893,7 @@ async function programWithoutRegistration(
         // This matches by displayName or reportCode
         const formValues = Object.values(formData).filter(v => typeof v === "string");
 
-        const matchingReport = reports.find(report => {
+        const matchingReport = reports?.find(report => {
           const reportName = (report.displayName || report.name || "").toLowerCase();
           const reportCode = report.reportCode || "";
 
@@ -28314,7 +28641,7 @@ const calculateDeregistrationAutofill = (teiAttributes, isolationDate = null, cu
     return autofillValues;
 };
 
-const {useState: useState$T,useEffect: useEffect$Q,useContext: useContext$A,useMemo: useMemo$x,useRef: useRef$g} = await importShared('react');
+const {useState: useState$T,useEffect: useEffect$Q,useContext: useContext$A,useMemo: useMemo$x,useRef: useRef$h} = await importShared('react');
 
 /**
  * Hook to automatically fill facility/org unit based on DataStore configuration
@@ -28338,8 +28665,8 @@ function useFacilityAutoFill(
   const [loading, setLoading] = useState$T(false);
 
   // Track if we've already loaded to prevent re-fetching
-  const hasLoadedRef = useRef$g(false);
-  const configCacheRef = useRef$g(null);
+  const hasLoadedRef = useRef$h(false);
+  const configCacheRef = useRef$h(null);
 
   // Stable reference to user org units
   useMemo$x(() => {
@@ -28769,7 +29096,7 @@ function AcknowledgementReferralMaintenance({
   );
 }
 
-const {useContext: useContext$z,useEffect: useEffect$P,useState: useState$S,useMemo: useMemo$w,useRef: useRef$f} = await importShared('react');
+const {useContext: useContext$z,useEffect: useEffect$P,useState: useState$S,useMemo: useMemo$w,useRef: useRef$g} = await importShared('react');
 const A$5 = (x) => Array.isArray(x) ? x : [];
 function FormComponent({
   program,
@@ -28812,7 +29139,7 @@ function FormComponent({
     editData?.trackedEntity || editData?.id || null
   );
   const [ackModalOpen, setAckModalOpen] = useState$S(false);
-  const autoFillFacilityAppliedRef = useRef$f(false);
+  const autoFillFacilityAppliedRef = useRef$g(false);
   const isEditMode = useMemo$w(() => {
     return query === "edit" || !!editData;
   }, [query, editData]);
@@ -28850,7 +29177,6 @@ function FormComponent({
     if (!autoFilledOrgUnit) return;
     if (selectedOrganisationUnit) return;
     if (autoFillLoading) return;
-    setSelectedOrganisationUnit(autoFilledOrgUnit);
     autoFillFacilityAppliedRef.current = true;
   }, [autoFilledOrgUnit, autoFillLoading, isEditMode]);
   useEffect$P(() => {
@@ -28867,7 +29193,6 @@ function FormComponent({
     }
   };
   const getWarrant = async (maintainanceType) => {
-    console.log("Fetching warrant data for:", maintainanceType);
     try {
       const data = await dataStore.get(
         `tracker/events?trackedEntity=${trackedEntity}&program=${program?.id}&programStage=oQC7mT3EpN2`
@@ -28912,7 +29237,6 @@ function FormComponent({
   };
   useEffect$P(() => {
     getRules();
-    console.log("triggerAt changed", queryParams.get("triggerAt"));
     const q = queryParams.get("triggerAt");
     if (q === "Corrective Maintenance") {
       getWarrant(q);
@@ -29144,26 +29468,17 @@ function FormComponent({
       const rawStatus = response?.data?.status ?? response?.status ?? response?.data?.httpStatus ?? response?.data?.httpStatusCode ?? response?.httpStatusCode;
       const okLike = rawStatus === "OK" || rawStatus === "ok" || rawStatus === 200 || rawStatus === 201 || rawStatus === "200" || rawStatus === "201";
       if (okLike) {
-        const message = buildSuccess({ isEditMode: isEditMode2 });
-        afterSuccess(message);
-        if (!isEditMode2 && program?.programType === "WITHOUT_REGISTRATION") {
-          try {
-            const reportTypesConfig = await dataStore.get("dataStore/memis/reportTypesConfigurations");
-            const reports = reportTypesConfig?.reports || [];
-          } catch (notifErr) {
-            console.error("Failed to send notification to system admins:", notifErr);
-          }
-        }
         if (queryDataTaskId) {
-          const fetchTask = await dataStore.get("dataStore/memis/registrationTaskStatusUpdate");
-          if (fetchTask.task.programTrigger === program?.id) {
+          const resu = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
+          const fetchTask = resu?.registrationTaskStatusUpdate;
+          if (fetchTask?.task?.programTrigger === program?.id) {
             const task = queryDataTaskId.split(".")[1];
             const fetchEvent = await dataStore.get(`tracker/events/${task}.json`);
             const payload = {
-              event: fetchEvent?.event,
-              orgUnit: fetchEvent.orgUnit,
-              program: fetchEvent?.program,
-              occurredAt: fetchEvent?.occurredAt,
+              event: fetchEvent?.data?.event,
+              orgUnit: fetchEvent?.data?.orgUnit,
+              program: fetchEvent?.data?.program,
+              occurredAt: fetchEvent?.data?.occurredAt,
               dataValues: [{
                 dataElement: fetchTask.task.onSuccess.fieldToUpdate,
                 value: fetchTask.task.onSuccess.value
@@ -29176,6 +29491,8 @@ function FormComponent({
             );
           }
         }
+        const message = buildSuccess({ isEditMode: isEditMode2 });
+        afterSuccess(message);
       } else {
         showToast(
           "Failed to save.",
@@ -29183,11 +29500,7 @@ function FormComponent({
         );
       }
     } catch (err) {
-      const friendlyResponse = parseApiError(
-        err,
-        "Unexpected error occurred while saving."
-      );
-      showToast(friendlyResponse, "error");
+      showToast("Unexpected error occurred while saving.", "error");
     } finally {
       setLoading(false);
     }
@@ -29338,6 +29651,9 @@ function FormComponent({
       fetchEquipmentDataAndPrefill();
     }
   }, [selectedStage, trackedEntity, program, editData, user, location.search]);
+  useEffect$P(() => {
+    console.log({ selectedOrganisationUnit });
+  }, [selectedOrganisationUnit]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonPage, { children: [
     !ackModalOpen && /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", fullscreen: true, children: [
       queryParams.get("q") === "add" && program?.programType === "WITH_REGISTRATION" && !selectedStage && /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -29443,7 +29759,7 @@ function FormComponent({
 }
 
 const React$C = await importShared('react');
-const {useState: useState$R,useEffect: useEffect$O,useMemo: useMemo$v} = React$C;
+const {useState: useState$R,useEffect: useEffect$O,useMemo: useMemo$v,useRef: useRef$f} = React$C;
 const SearchFilterCard = ({
   children,
   searchText,
@@ -29457,10 +29773,13 @@ const SearchFilterCard = ({
   includeDeregistered = false,
   includeIsolated = false,
   showApprovalFilters = true,
-  showFilterButton = true
+  showFilterButton = true,
+  rows
 }) => {
   const [popoverEvent, setPopoverEvent] = useState$R(null);
   const [filterPopoverEvent, setFilterPopoverEvent] = useState$R(null);
+  const [localApproval, setLocalApproval] = useState$R(filterOptions?.approval ?? "");
+  const lastExternalApprovalRef = useRef$f(filterOptions?.approval ?? "");
   const placeHolder = useMemo$v(() => {
     if (searchPlaceholder) return searchPlaceholder;
     const labels = (filterColumns || []).map((c) => c.label).filter(Boolean);
@@ -29550,8 +29869,29 @@ const SearchFilterCard = ({
       document.head.appendChild(style);
     }
   }, []);
+  useEffect$O(() => {
+    const external = filterOptions?.approval ?? "";
+    if (lastExternalApprovalRef.current !== external) {
+      lastExternalApprovalRef.current = external;
+      setLocalApproval(external);
+    }
+  }, [filterOptions?.approval]);
+  const closeFilterPopover = () => {
+    setFilterPopoverEvent(null);
+  };
+  const applyFilterValue = (value) => {
+    const nextValue = value ?? "";
+    setLocalApproval(nextValue);
+    onToggleFilter?.(nextValue);
+    requestAnimationFrame(() => {
+      closeFilterPopover();
+    });
+  };
+  const handleColumnToggle = (key) => {
+    onToggleColumn?.(key);
+  };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(IonCard, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(IonHeader, { className: "ion-no-border", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonToolbar, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonButtons, { slot: "start", className: "search-filter-toolbar", children: [
+    rows?.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(IonHeader, { className: "ion-no-border", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonToolbar, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonButtons, { slot: "start", className: "search-filter-toolbar", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         IonSearchbar,
         {
@@ -29608,38 +29948,32 @@ const SearchFilterCard = ({
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonList, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
           IonRadioGroup,
           {
-            value: filterOptions?.approval ?? "",
-            onIonChange: (e) => {
-              const value = e.detail.value;
-              onToggleFilter?.(value);
-              setTimeout(() => {
-                setFilterPopoverEvent(null);
-              }, 0);
-            },
+            value: localApproval,
+            onIonChange: (e) => applyFilterValue(e.detail.value),
             children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { button: true, detail: false, onClick: () => applyFilterValue(""), children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: "None" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(IonRadio, { slot: "start", value: "" })
               ] }),
               showApprovalFilters && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { button: true, detail: false, onClick: () => applyFilterValue("APPROVED"), children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: "Approved" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx(IonRadio, { slot: "start", value: "APPROVED" })
                 ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { button: true, detail: false, onClick: () => applyFilterValue("PENDING"), children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: "Pending" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx(IonRadio, { slot: "start", value: "PENDING" })
                 ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { button: true, detail: false, onClick: () => applyFilterValue("REJECTED"), children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: "Rejected" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx(IonRadio, { slot: "start", value: "REJECTED" })
                 ] })
               ] }),
-              includeIsolated && /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
+              includeIsolated && /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { button: true, detail: false, onClick: () => applyFilterValue("ISOLATED"), children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: "Isolated" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(IonRadio, { slot: "start", value: "ISOLATED" })
               ] }),
-              includeDeregistered && /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
+              includeDeregistered && /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { button: true, detail: false, onClick: () => applyFilterValue("DEREGISTERED"), children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: "Deregistered" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(IonRadio, { slot: "start", value: "DEREGISTERED" })
               ] })
@@ -29654,17 +29988,28 @@ const SearchFilterCard = ({
         isOpen: !!popoverEvent,
         event: popoverEvent,
         onDidDismiss: () => setPopoverEvent(null),
-        children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonList, { children: filterColumns.map((col) => /* @__PURE__ */ jsxRuntimeExports.jsxs(IonItem, { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            IonCheckbox,
-            {
-              checked: visibleColumnKeys.has(col.key),
-              onIonChange: () => onToggleColumn?.(col.key),
-              slot: "start"
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: col.label })
-        ] }, col.key)) })
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonList, { children: filterColumns.map((col) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          IonItem,
+          {
+            button: true,
+            onClick: (e) => {
+              if (e?.target?.tagName === "ION-CHECKBOX") return;
+              handleColumnToggle(col.key);
+            },
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                IonCheckbox,
+                {
+                  checked: visibleColumnKeys.has(col.key),
+                  onIonChange: () => handleColumnToggle(col.key),
+                  slot: "start"
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(IonLabel, { children: col.label })
+            ]
+          },
+          col.key
+        )) })
       }
     )
   ] });
@@ -30288,16 +30633,59 @@ async function getOptionSetMap(optionSetId) {
     }
 }
 
+let dataElementIdSet = null;
+let dataElementIdSetLoading = null;
+
+async function loadDataElementIdSet() {
+    if (dataElementIdSet) return dataElementIdSet;
+    if (dataElementIdSetLoading) return dataElementIdSetLoading;
+
+    dataElementIdSetLoading = (async () => {
+        try {
+            const programs = await LocalForageServiceInstance.getItem("programs", "programs");
+            const set = new Set();
+            (programs || []).forEach((p) => {
+                (p?.programStages || []).forEach((stage) => {
+                    (stage?.programStageDataElements || []).forEach((psde) => {
+                        const deId = psde?.dataElement?.id;
+                        if (deId) set.add(deId);
+                    });
+                    (stage?.programStageSections || []).forEach((sec) => {
+                        (sec?.dataElements || []).forEach((de) => {
+                            if (de?.id) set.add(de.id);
+                        });
+                    });
+                });
+            });
+            dataElementIdSet = set;
+            return set;
+        } catch {
+            return null;
+        } finally {
+            dataElementIdSetLoading = null;
+        }
+    })();
+
+    return dataElementIdSetLoading;
+}
+
 /** Get option set ID from a data element (cached) */
 async function getOptionSetIdFromDataElement(deId) {
     if (cache.dataElementOptionSets.has(deId)) return cache.dataElementOptionSets.get(deId);
 
     try {
+        const idSet = await loadDataElementIdSet();
+        if (idSet && !idSet.has(deId)) {
+            cache.dataElementOptionSets.set(deId, null);
+            saveCacheToStorage();
+            return null;
+        }
+
         const res = await dataStore.get(`dataElements/${deId}.json`, {
             fields: "id,displayName,optionSet[id,displayName]",
         });
 
-        const osId = res?.data?.dataElements?.id || null;
+        const osId = res?.data?.optionSet?.id || null;
         cache.dataElementOptionSets.set(deId, osId);
         saveCacheToStorage();
         return osId;
@@ -30609,6 +30997,7 @@ const DataTable = ({
     }
   };
   const displayColumns = correctedColumns;
+  if (sortByKeyValue(displayRows)?.length == 0) return;
   if (isMobile) {
     return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { width: "100%", overflowX: "hidden" }, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { padding: "8px" }, children: loading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", justifyContent: "center", padding: 20 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }) }) : displayRows.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { padding: 20, textAlign: "center" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "medium", children: "No data available" }) }) : sortByKeyValue(displayRows)?.map((item, idx) => {
@@ -30973,9 +31362,10 @@ function useTeiSearch(columns = []) {
       });
 
       return Array.from(merged.values()).map((tei) => {
-        const row = { id: tei.trackedEntity };
+        const row = { id: tei.trackedEntity, _attributeValues: {} };
 
         tei.attributes?.forEach((a) => {
+          row._attributeValues[a.attribute] = a.value;
           if (!colKeySet.has(a.attribute)) return;
 
           const fieldMeta = attrMap.get(a.attribute);
@@ -31045,6 +31435,8 @@ const eventSearchFilter = async (programId, data) => {
 const {useEffect: useEffect$M,useRef: useRef$e,useState: useState$P,useMemo: useMemo$s,useCallback: useCallback$h} = await importShared('react');
 function ItemSearch({
   programId,
+  programStageId,
+  forceEventSearch = false,
   orgUnits,
   visibleColumns = [],
   searchText = "",
@@ -31069,6 +31461,19 @@ function ItemSearch({
     [visibleColumns]
   );
   const colKeys = useMemo$s(() => Array.from(keySet), [keySet]);
+  const eventSearchKeys = useMemo$s(() => {
+    const nonEventKeys = /* @__PURE__ */ new Set([
+      "id",
+      "event",
+      "trackedEntity",
+      "orgUnit",
+      "program",
+      "programStage",
+      "occurredAt",
+      "createdBy"
+    ]);
+    return colKeys.filter((k) => !nonEventKeys.has(k));
+  }, [colKeys]);
   const colKeysKey = useMemo$s(() => colKeys.join(","), [colKeys]);
   const orgUnitsKey = useMemo$s(
     () => (orgUnits || []).map((o) => o.id).join(","),
@@ -31077,6 +31482,52 @@ function ItemSearch({
   const EQUIP_SET = useMemo$s(() => SEARCH_SETS.equipment || [], []);
   const SPARE_SET = useMemo$s(() => SEARCH_SETS.spare || [], []);
   const teiSearch = useTeiSearch(visibleColumns);
+  const eventFieldMapRef = useRef$e({ key: null, map: /* @__PURE__ */ new Map() });
+  const resolveDisplayValue = (field, rawValue) => {
+    if (!field || rawValue == null || rawValue === "") return rawValue;
+    const valueType = String(field.valueType || "").toUpperCase();
+    if (field.optionSet?.options) {
+      const options = field.optionSet.options;
+      if (rawValue.includes(",")) {
+        const codes = rawValue.split(",").map((code) => code.trim());
+        const resolvedNames = codes.map((code) => {
+          const match2 = options.find(
+            (opt) => opt.code === code || opt.id === code || opt.name === code
+          );
+          return match2?.name || code;
+        });
+        return resolvedNames.join(", ");
+      }
+      const match = options.find(
+        (opt) => opt.code === rawValue || opt.id === rawValue || opt.name === rawValue
+      );
+      return match?.name || rawValue;
+    }
+    if (valueType === "BOOLEAN" || valueType === "TRUE_ONLY") {
+      if (rawValue === "true") return "Yes";
+      if (rawValue === "false") return "No";
+      return rawValue;
+    }
+    return rawValue;
+  };
+  const getEventFieldMap = useCallback$h(async () => {
+    if (!programId) return /* @__PURE__ */ new Map();
+    const cacheKey = `${programId}:${programStageId || ""}`;
+    if (eventFieldMapRef.current.key === cacheKey) return eventFieldMapRef.current.map;
+    const res = await dataStore.get(
+      `programs/${encodeURIComponent(programId)}?fields=programStages[id,programStageDataElements[dataElement[id,name,valueType,optionSet[id,options[id,code,name]]]]]`
+    );
+    const map = /* @__PURE__ */ new Map();
+    (res?.data?.programStages || []).forEach((stage) => {
+      if (programStageId && stage?.id !== programStageId) return;
+      (stage?.programStageDataElements || []).forEach((psde) => {
+        const de = psde?.dataElement;
+        if (de?.id) map.set(de.id, de);
+      });
+    });
+    eventFieldMapRef.current = { key: cacheKey, map };
+    return map;
+  }, [programId, programStageId]);
   const pickTeiScope = useCallback$h(() => {
     const hasAny = (uids) => uids.some((u) => keySet.has(u));
     if (hasAny(EQUIP_SET)) return EQUIP_SET;
@@ -31148,27 +31599,31 @@ function ItemSearch({
       }
     };
     const runEvent = async () => {
-      const dataElementUids = colKeys;
+      const dataElementUids = eventSearchKeys;
       if (!dataElementUids.length) {
         onResultsRef.current?.([]);
         return;
       }
+      const fieldMap = await getEventFieldMap();
       const viewAccess = await LocalForageServiceInstance.getItem("dataStore", "dataStore");
       const viewSearchFilter = await eventSearchFilter(programId, viewAccess);
-      viewSearchFilter?.filter || "";
+      const extraFilter = viewSearchFilter?.filter || "";
       const buildQueryString = (deUid) => {
         const p = new URLSearchParams({
           program: programId,
           page: "1",
           pageSize: String(pageSize),
           order: "occurredAt:desc",
-          fields: "event,dataValues[dataElement,value]"
+          fields: "event,dataValues[dataElement,value]",
+          orgUnitMode: "DESCENDANTS"
         });
         (orgUnits || []).forEach((o) => p.append("orgUnit", o.id));
+        if (programStageId) {
+          p.append("programStage", programStageId);
+        }
         p.append("filter", `${deUid}:ilike:${debounced}`);
         const base = p.toString();
-        const extraFilter2 = eventSearchFilter(programId)?.filter || "";
-        return base + extraFilter2;
+        return base + extraFilter;
       };
       const results = await Promise.allSettled(
         dataElementUids.map(async (uid) => {
@@ -31183,7 +31638,16 @@ function ItemSearch({
         if (r.status !== "fulfilled") return;
         (r.value?.events || []).forEach((ev) => merged.set(ev.event, ev));
       });
-      const rows = shapeEventRows(Array.from(merged.values()));
+      const rows = Array.from(merged.values()).map((ev) => {
+        const row = { id: ev.event, _rawDataValues: {} };
+        (ev.dataValues || []).forEach((dv) => {
+          if (!colKeys.includes(dv.dataElement)) return;
+          const fieldMeta = fieldMap.get(dv.dataElement);
+          row._rawDataValues[dv.dataElement] = dv.value;
+          row[dv.dataElement] = resolveDisplayValue(fieldMeta, dv.value);
+        });
+        return row;
+      });
       if (!cancelled && mountedRef.current) {
         onResultsRef.current?.(rows);
       }
@@ -31198,7 +31662,7 @@ function ItemSearch({
       }
       onLoadingRef.current?.(true);
       try {
-        if (programType === "WITHOUT_REGISTRATION") {
+        if (forceEventSearch || programType === "WITHOUT_REGISTRATION") {
           await runEvent();
         } else {
           await runTei();
@@ -31225,7 +31689,8 @@ function ItemSearch({
     colKeysKey,
     teiSearch,
     pickTeiScope,
-    shapeEventRows
+    shapeEventRows,
+    getEventFieldMap
   ]);
   return null;
 }
@@ -31440,6 +31905,7 @@ function Event({ id, onEdit, onClick }) {
   const [rawRows, setRawRows] = useState$O([]);
   const [filterOptions, setFilterOptions] = useState$O({ approval: null });
   const [approvalFieldKey, setApprovalFieldKey] = useState$O(null);
+  const [approvalConfig, setApprovalConfig] = useState$O(null);
   const { menuItems, userAccessData } = useContext$y(MEMISContext.MenuContext);
   const orgUnitCacheRef = useRef$d(/* @__PURE__ */ new Map());
   const [allColumnsOrdered, setAllColumnsOrdered] = useState$O([]);
@@ -31522,7 +31988,8 @@ function Event({ id, onEdit, onClick }) {
       if (userRole && !isApprover) {
         filterValue = userRole?.filterValue;
       }
-      const approvalConfig = await getProgramApprovalConfig(programId);
+      const approvalConfig2 = await getProgramApprovalConfig(programId);
+      setApprovalConfig(approvalConfig2 || null);
       const params = new URLSearchParams({
         program: programId,
         order: "occurredAt:desc",
@@ -31590,7 +32057,6 @@ function Event({ id, onEdit, onClick }) {
                 } else {
                   try {
                     const userOrgUnits = await LocalForageServiceInstance.getItem("organisationUnits", "organisationUnits");
-                    console.log({ userOrgUnits });
                     const ouRes = userOrgUnits?.find((ou) => ou?.id === rawValue);
                     const ouName = ouRes?.name || rawValue;
                     orgUnitCacheRef.current.set(rawValue, ouName);
@@ -31605,13 +32071,13 @@ function Event({ id, onEdit, onClick }) {
             } else {
               obj[dv?.dataElement] = rawValue;
             }
-            if (approvalConfig && approvalConfig.source === "DATA_ELEMENT" && approvalConfig.dataElementId === dv?.dataElement && approvalConfig.rowKey) {
-              obj[approvalConfig.rowKey] = rawValue;
+            if (approvalConfig2 && approvalConfig2.source === "DATA_ELEMENT" && approvalConfig2.dataElementId === dv?.dataElement && approvalConfig2.rowKey) {
+              obj[approvalConfig2.rowKey] = rawValue;
             }
           }
-          if (approvalConfig?.source === "DATA_ELEMENT" && approvalConfig?.dataElementId && approvalConfig?.rowKey) {
-            const rawApproval = obj?._rawDataValues?.[approvalConfig.dataElementId];
-            obj[approvalConfig.rowKey] = rawApproval ?? "";
+          if (approvalConfig2?.source === "DATA_ELEMENT" && approvalConfig2?.dataElementId && approvalConfig2?.rowKey) {
+            const rawApproval = obj?._rawDataValues?.[approvalConfig2.dataElementId];
+            obj[approvalConfig2.rowKey] = rawApproval ?? "";
           }
           return obj;
         })
@@ -31624,7 +32090,7 @@ function Event({ id, onEdit, onClick }) {
         list = needMyApproval.concat(createdByMe);
       }
       setRawRows(list);
-      const keyFromConfig = approvalConfig?.rowKey || null;
+      const keyFromConfig = approvalConfig2?.rowKey || null;
       setApprovalFieldKey(keyFromConfig);
     } catch (error) {
       console.error("[MEMIS] getEvents failed:", error);
@@ -31800,7 +32266,14 @@ function Event({ id, onEdit, onClick }) {
         searchText,
         pageSize: pagination?.pageSize || 50,
         onResults: (rowsFound) => {
-          setRawRows(rowsFound || []);
+          const base = rowsFound || [];
+          if (approvalConfig?.source === "DATA_ELEMENT" && approvalConfig?.dataElementId && approvalConfig?.rowKey) {
+            base.forEach((row) => {
+              const raw = row?._rawDataValues?.[approvalConfig.dataElementId];
+              row[approvalConfig.rowKey] = raw ?? row[approvalConfig.rowKey] ?? "";
+            });
+          }
+          setRawRows(base);
         },
         onLoadingChange: (v) => setLoadingRows(v)
       }
@@ -32094,6 +32567,7 @@ function Tracker({ id, onEdit, onClick }) {
       });
       const rw = [];
       const res = await dataStore.get(`tracker/trackedEntities?${params}`);
+      console.log({ res });
       setPagination((prev) => ({
         ...prev,
         page,
@@ -32337,6 +32811,7 @@ function Tracker({ id, onEdit, onClick }) {
         showApprovalFilters: false,
         showFilterButton: hasEquipmentFilter,
         searchPlaceholder,
+        rows,
         children: isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx(
           "div",
           {
@@ -32441,7 +32916,12 @@ function StageEvents({ id, programId: programIdProp, stageId: stageIdProp, onEdi
   const [rows, setRows] = useState$M([]);
   const [priorities, setPriorities] = useState$M(null);
   const [loading, setLoading] = useState$M(false);
+  const [loadingRows, setLoadingRows] = useState$M(false);
   const [searchText, setSearchText] = useState$M("");
+  const [rawRows, setRawRows] = useState$M([]);
+  const [filterOptions, setFilterOptions] = useState$M({ approval: null });
+  const [approvalFieldKey, setApprovalFieldKey] = useState$M(null);
+  const [approvalConfig, setApprovalConfig] = useState$M(null);
   const orgUnitCacheRef = useRef$b(/* @__PURE__ */ new Map());
   const [allColumnsOrdered, setAllColumnsOrdered] = useState$M([]);
   const [visibleColumnKeys, setVisibleColumnKeys] = useState$M(/* @__PURE__ */ new Set());
@@ -32449,6 +32929,13 @@ function StageEvents({ id, programId: programIdProp, stageId: stageIdProp, onEdi
     () => allColumnsOrdered.filter((c) => visibleColumnKeys.has(c.key)),
     [allColumnsOrdered, visibleColumnKeys]
   );
+  const searchPlaceholder = useMemo$p(() => {
+    const labels = visibleColumns.map((c) => c.label).filter(Boolean);
+    if (!labels.length) return "Search events...";
+    const max = 10;
+    const shown = labels.slice(0, max).join(", ");
+    return `Search by ${shown}${labels.length > max ? "..." : ""}`;
+  }, [visibleColumns]);
   const [selectedRow, setSelectedRow] = useState$M(null);
   const [selectedRowId, setSelectedRowId] = useState$M(null);
   const [showActions, setShowActions] = useState$M(false);
@@ -32566,9 +33053,12 @@ function StageEvents({ id, programId: programIdProp, stageId: stageIdProp, onEdi
         params.append("filter", filterParams);
       }
       params.append("orgUnit", sortedOrgUnits[0]?.id);
+      const viewSearchFilter = await eventSearchFilter(programId, viewAccess);
       let res;
-      res = await dataStore.get(`tracker/events?${params}${eventSearchFilter(programId)?.filter || ""}`);
+      res = await dataStore.get(`tracker/events?${params}${viewSearchFilter?.filter || ""}`);
       setPagination(res?.data?.pager);
+      const approvalCfg = await getProgramApprovalConfig(programId);
+      setApprovalConfig(approvalCfg || null);
       const programMetadata = await dataStore.get(
         `programs/${programId}.json?fields=programStages[id,programStageDataElements[dataElement[id,name,valueType,optionSet[id,options[id,code,name]]]]]`
       );
@@ -32588,11 +33078,13 @@ function StageEvents({ id, programId: programIdProp, stageId: stageIdProp, onEdi
           occurredAt: ev?.occurredAt,
           trackedEntity: ev?.trackedEntity,
           program: ev?.program,
-          programStage: ev?.programStage
+          programStage: ev?.programStage,
+          _rawDataValues: {}
         };
         for (const dv of ev.dataValues || []) {
           const field = fieldMap.get(dv?.dataElement);
           const rawValue = dv?.value;
+          obj._rawDataValues[dv?.dataElement] = rawValue;
           if (field && rawValue != null && rawValue !== "") {
             const valueType = String(field.valueType || "").toUpperCase();
             if (field.optionSet?.options) {
@@ -32634,10 +33126,18 @@ function StageEvents({ id, programId: programIdProp, stageId: stageIdProp, onEdi
           } else {
             obj[dv?.dataElement] = rawValue;
           }
+          if (approvalCfg && approvalCfg.source === "DATA_ELEMENT" && approvalCfg.dataElementId === dv?.dataElement && approvalCfg.rowKey) {
+            obj[approvalCfg.rowKey] = rawValue;
+          }
         }
         return obj;
       }));
-      setRows(list);
+      setRawRows(list);
+      const keyFromConfig = approvalCfg?.rowKey || null;
+      setApprovalFieldKey(keyFromConfig);
+      const filtered = filterRowsByApproval(list, filterOptions.approval, keyFromConfig);
+      const sorted = sortRowsByApproval(filtered, keyFromConfig);
+      setRows(sorted);
       if (onClick && typeof onClick === "function") {
         onClick(list);
       }
@@ -32682,31 +33182,77 @@ function StageEvents({ id, programId: programIdProp, stageId: stageIdProp, onEdi
       getEvents(effectiveProgramId, effectiveStageId, user?.organisationUnits, pagination?.page, user?.userRoles);
     }
   }, [user, effectiveProgramId, effectiveStageId, location]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-    SearchFilterCard,
-    {
-      filterColumns: allColumnsOrdered,
-      visibleColumnKeys,
-      onToggleColumn: handleToggleColumn,
-      children: loading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", justifyContent: "center", padding: 20 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }) }) : /* @__PURE__ */ jsxRuntimeExports.jsx(
-        DataTable,
-        {
-          columns: visibleColumns,
-          rows,
-          rowClick: (item) => {
-            navigate(`/memis/program/${item?.program}/${item?.trackedEntity}/${item?.programStage}/${item?.id}`);
-          },
-          onOpenRowActions: openRowMenu,
-          loading,
-          prev: () => {
-          },
-          next: () => {
-          },
-          priorities
-        }
-      )
+  useEffect$J(() => {
+    const filtered = filterRowsByApproval(rawRows, filterOptions.approval, approvalFieldKey);
+    const sorted = sortRowsByApproval(filtered, approvalFieldKey);
+    setRows(sorted);
+  }, [rawRows, filterOptions.approval, approvalFieldKey]);
+  const handleApprovalFilterChange = (value) => {
+    const v = value || null;
+    setFilterOptions((prev) => ({ ...prev, approval: v }));
+  };
+  useEffect$J(() => {
+    if (!effectiveProgramId || !effectiveStageId || !user?.organisationUnits || allColumnsOrdered.length === 0) return;
+    if ((searchText ?? "").trim().length < 2) {
+      getEvents(effectiveProgramId, effectiveStageId, user?.organisationUnits, 1);
     }
-  ) });
+  }, [searchText, effectiveProgramId, effectiveStageId, user?.organisationUnits, allColumnsOrdered]);
+  const isLoading = loading || loadingRows;
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      SearchFilterCard,
+      {
+        searchText,
+        onSearchChange: setSearchText,
+        filterColumns: allColumnsOrdered,
+        visibleColumnKeys,
+        onToggleColumn: handleToggleColumn,
+        filterOptions,
+        onToggleFilter: handleApprovalFilterChange,
+        searchPlaceholder,
+        children: isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", justifyContent: "center", padding: 20 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }) }) : /* @__PURE__ */ jsxRuntimeExports.jsx(
+          DataTable,
+          {
+            columns: visibleColumns,
+            rows,
+            rowClick: (item) => {
+              navigate(`/memis/program/${item?.program}/${item?.trackedEntity}/${item?.programStage}/${item?.id}`);
+            },
+            onOpenRowActions: openRowMenu,
+            loading: isLoading,
+            prev: () => {
+            },
+            next: () => {
+            },
+            priorities
+          }
+        )
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      ItemSearch,
+      {
+        programId: effectiveProgramId,
+        programStageId: effectiveStageId,
+        forceEventSearch: true,
+        orgUnits: user?.organisationUnits || [],
+        visibleColumns,
+        searchText,
+        pageSize: pagination?.pageSize || 10,
+        onResults: (rowsFound) => {
+          const base = rowsFound || [];
+          if (approvalConfig?.source === "DATA_ELEMENT" && approvalConfig?.dataElementId && approvalConfig?.rowKey) {
+            base.forEach((row) => {
+              const raw = row?._rawDataValues?.[approvalConfig.dataElementId];
+              row[approvalConfig.rowKey] = raw ?? row[approvalConfig.rowKey] ?? "";
+            });
+          }
+          setRawRows(base);
+        },
+        onLoadingChange: (v) => setLoadingRows(v)
+      }
+    )
+  ] });
 }
 
 const {useContext: useContext$v,useEffect: useEffect$I,useMemo: useMemo$o,useRef: useRef$a,useState: useState$L} = await importShared('react');
@@ -32718,7 +33264,12 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
   const [rows, setRows] = useState$L([]);
   const [priorities, setPriorities] = useState$L(null);
   const [loading, setLoading] = useState$L(false);
+  const [loadingRows, setLoadingRows] = useState$L(false);
   const [searchText, setSearchText] = useState$L("");
+  const [rawRows, setRawRows] = useState$L([]);
+  const [filterOptions, setFilterOptions] = useState$L({ approval: null });
+  const [approvalFieldKey, setApprovalFieldKey] = useState$L(null);
+  const [approvalConfig, setApprovalConfig] = useState$L(null);
   const orgUnitCacheRef = useRef$a(/* @__PURE__ */ new Map());
   const [allColumnsOrdered, setAllColumnsOrdered] = useState$L([]);
   const [visibleColumnKeys, setVisibleColumnKeys] = useState$L(/* @__PURE__ */ new Set());
@@ -32726,6 +33277,13 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
     () => allColumnsOrdered?.filter((c) => visibleColumnKeys?.has(c?.key)),
     [allColumnsOrdered, visibleColumnKeys]
   );
+  const searchPlaceholder = useMemo$o(() => {
+    const labels = visibleColumns.map((c) => c.label).filter(Boolean);
+    if (!labels.length) return "Search events...";
+    const max = 10;
+    const shown = labels.slice(0, max).join(", ");
+    return `Search by ${shown}${labels.length > max ? "..." : ""}`;
+  }, [visibleColumns]);
   const [selectedRow, setSelectedRow] = useState$L(null);
   const [selectedRowId, setSelectedRowId] = useState$L(null);
   const [showActions, setShowActions] = useState$L(false);
@@ -32850,9 +33408,12 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
         params.append("filter", stageData?.filterByType);
       }
       params.append("orgUnit", sortedOrgUnits[0]?.id);
+      const viewSearchFilter = await eventSearchFilter(programId, viewAccess);
       let res;
-      res = await dataStore.get(`tracker/events?${params}${eventSearchFilter(programId)?.filter || ""}`);
+      res = await dataStore.get(`tracker/events?${params}${viewSearchFilter?.filter || ""}`);
       setPagination(res?.data?.pager);
+      const approvalCfg = await getProgramApprovalConfig(programId);
+      setApprovalConfig(approvalCfg || null);
       let program = await LocalForageServiceInstance.getItem("programs", "programs");
       const filtered = program?.find((p) => p?.id === programId);
       const fieldMap = /* @__PURE__ */ new Map();
@@ -32870,11 +33431,13 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
           occurredAt: ev?.occurredAt,
           trackedEntity: ev?.trackedEntity,
           program: ev?.program,
-          programStage: ev?.programStage
+          programStage: ev?.programStage,
+          _rawDataValues: {}
         };
         for (const dv of ev.dataValues || []) {
           const field = fieldMap.get(dv?.dataElement);
           const rawValue = dv?.value;
+          obj._rawDataValues[dv?.dataElement] = rawValue;
           if (field && rawValue != null && rawValue !== "") {
             const valueType = String(field.valueType || "").toUpperCase();
             if (field.optionSet?.options) {
@@ -32916,10 +33479,18 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
           } else {
             obj[dv?.dataElement] = rawValue;
           }
+          if (approvalCfg && approvalCfg.source === "DATA_ELEMENT" && approvalCfg.dataElementId === dv?.dataElement && approvalCfg.rowKey) {
+            obj[approvalCfg.rowKey] = rawValue;
+          }
         }
         return obj;
       }));
-      setRows(list);
+      setRawRows(list);
+      const keyFromConfig = approvalCfg?.rowKey || null;
+      setApprovalFieldKey(keyFromConfig);
+      const filteredRows = filterRowsByApproval(list, filterOptions.approval, keyFromConfig);
+      const sorted = sortRowsByApproval(filteredRows, keyFromConfig);
+      setRows(sorted);
     } catch (error) {
       console.error("[MEMIS] getEvents failed:", error);
     } finally {
@@ -32961,32 +33532,78 @@ function StageSectionsEvents({ id, programId: programIdProp, stageId: stageIdPro
       getEvents(effectiveProgramId, effectiveStageId, user?.organisationUnits, pagination?.page, user?.userRoles);
     }
   }, [id, user, effectiveProgramId, effectiveStageId, location]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-    SearchFilterCard,
-    {
-      filterColumns: allColumnsOrdered,
-      visibleColumnKeys,
-      onToggleColumn: handleToggleColumn,
-      children: loading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", justifyContent: "center", padding: 20 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }) }) : /* @__PURE__ */ jsxRuntimeExports.jsx(
-        DataTable,
-        {
-          columns: visibleColumns,
-          rows,
-          rowClick: (item) => {
-            const tei = rows?.find((t) => t?.id === item?.id);
-            navigate(`/memis/program/${item?.program}/${tei?.trackedEntity}/${item?.programStage}/${item?.id}`);
-          },
-          onOpenRowActions: openRowMenu,
-          loading,
-          prev: () => {
-          },
-          next: () => {
-          },
-          priorities
-        }
-      )
+  useEffect$I(() => {
+    const filteredRows = filterRowsByApproval(rawRows, filterOptions.approval, approvalFieldKey);
+    const sorted = sortRowsByApproval(filteredRows, approvalFieldKey);
+    setRows(sorted);
+  }, [rawRows, filterOptions.approval, approvalFieldKey]);
+  const handleApprovalFilterChange = (value) => {
+    const v = value || null;
+    setFilterOptions((prev) => ({ ...prev, approval: v }));
+  };
+  useEffect$I(() => {
+    if (!effectiveProgramId || !effectiveStageId || !user?.organisationUnits || allColumnsOrdered.length === 0) return;
+    if ((searchText ?? "").trim().length < 2) {
+      getEvents(effectiveProgramId, effectiveStageId, user?.organisationUnits, 1);
     }
-  ) });
+  }, [searchText, effectiveProgramId, effectiveStageId, user?.organisationUnits, allColumnsOrdered]);
+  const isLoading = loading || loadingRows;
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      SearchFilterCard,
+      {
+        searchText,
+        onSearchChange: setSearchText,
+        filterColumns: allColumnsOrdered,
+        visibleColumnKeys,
+        onToggleColumn: handleToggleColumn,
+        filterOptions,
+        onToggleFilter: handleApprovalFilterChange,
+        searchPlaceholder,
+        children: isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", justifyContent: "center", padding: 20 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }) }) : /* @__PURE__ */ jsxRuntimeExports.jsx(
+          DataTable,
+          {
+            columns: visibleColumns,
+            rows,
+            rowClick: (item) => {
+              const tei = rows?.find((t) => t?.id === item?.id);
+              navigate(`/memis/program/${item?.program}/${tei?.trackedEntity}/${item?.programStage}/${item?.id}`);
+            },
+            onOpenRowActions: openRowMenu,
+            loading: isLoading,
+            prev: () => {
+            },
+            next: () => {
+            },
+            priorities
+          }
+        )
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      ItemSearch,
+      {
+        programId: effectiveProgramId,
+        programStageId: effectiveStageId,
+        forceEventSearch: true,
+        orgUnits: user?.organisationUnits || [],
+        visibleColumns,
+        searchText,
+        pageSize: pagination?.pageSize || 10,
+        onResults: (rowsFound) => {
+          const base = rowsFound || [];
+          if (approvalConfig?.source === "DATA_ELEMENT" && approvalConfig?.dataElementId && approvalConfig?.rowKey) {
+            base.forEach((row) => {
+              const raw = row?._rawDataValues?.[approvalConfig.dataElementId];
+              row[approvalConfig.rowKey] = raw ?? row[approvalConfig.rowKey] ?? "";
+            });
+          }
+          setRawRows(base);
+        },
+        onLoadingChange: (v) => setLoadingRows(v)
+      }
+    )
+  ] });
 }
 
 const React$B = await importShared('react');
@@ -33996,6 +34613,7 @@ const Login = () => {
           if (data?.username?.trim() != "" || data?.password?.trim() != "") {
             console.log({ data });
             navigate("/memis");
+            window.location.reload();
           }
         } catch (err) {
           localStorage.removeItem("memisCredentials");
@@ -62031,8 +62649,24 @@ function ApproveModal({
           "tracker?async=false&importStrategy=UPDATE",
           { events: [payload2] }
         );
-        if (result2?.status === 200) {
-          showToast("Report submitted for review successfully", "success");
+        if (result2?.status === 200 || result2?.status === 201) {
+          showToast("Successed", "success");
+          try {
+            const programId = program?.id || event?.program;
+            const configData = await getNotificationEvent(programId, "APPROVAL");
+            console.log({ configData });
+            if (configData?.event) {
+              await notificationSendTrigger(configData.event, {
+                orgUnit: event.orgUnit,
+                program: programId,
+                count: 1,
+                teiId: event.event,
+                event: event.event
+              });
+            }
+          } catch (notificationError) {
+            console.error("Failed to send notification:", notificationError);
+          }
           handleCloseModal();
           await getEventDetails(event?.event);
         } else {
@@ -62865,12 +63499,19 @@ function AllocateEquipmentModal({
         ] }) : buttonPositiveName,
         cancelButton: "Close",
         title: "Allocate",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(IonContent, { className: "ion-padding", children: [
-          loading && /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
-          error && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "danger", children: error }),
-          !loading && !error && fields.length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: "No approval fields found for this program." }),
-          !loading && !error && fields.filter((field) => visibleFields.includes(field.id)).map((field) => renderField(field))
-        ] })
+        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          IonContent,
+          {
+            className: "ion-padding",
+            style: { position: "relative", minHeight: 220 },
+            children: [
+              loading && /* @__PURE__ */ jsxRuntimeExports.jsx(IonSpinner, { name: "crescent" }),
+              error && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { color: "danger", children: error }),
+              !loading && !error && fields.length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(IonText, { children: "No approval fields found for this program." }),
+              !loading && !error && fields.filter((field) => visibleFields.includes(field.id)).map((field) => renderField(field))
+            ]
+          }
+        )
       }
     )
   ] });

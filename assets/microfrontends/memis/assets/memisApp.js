@@ -16431,7 +16431,8 @@ const DashboardProvider = ({ children }) => {
   };
   const value = useMemo(
     () => ({
-      dashboardConfigs
+      dashboardConfigs,
+      loadDashboardConfigurations
     }),
     [dashboardConfigs]
   );
