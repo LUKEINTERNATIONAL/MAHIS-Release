@@ -6716,7 +6716,7 @@ const createColorClasses$1 = (color) => {
         }
         : null;
 };
-function defineCustomElement$1h() {
+function defineCustomElement$1i() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7080,7 +7080,7 @@ const Accordion = /*@__PURE__*/ proxyCustomElement$1(class Accordion extends H$1
         "value": ["valueChanged"]
     }]);
 let accordionIds = 0;
-function defineCustomElement$1$C() {
+function defineCustomElement$1$D() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7093,12 +7093,12 @@ function defineCustomElement$1$C() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
     } });
 }
-const defineCustomElement$1g = defineCustomElement$1$C;
+const defineCustomElement$1h = defineCustomElement$1$D;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7349,7 +7349,7 @@ const AccordionGroup = /*@__PURE__*/ proxyCustomElement$1(class AccordionGroup e
         "disabled": ["disabledChanged"],
         "readonly": ["readonlyChanged"]
     }]);
-function defineCustomElement$1$B() {
+function defineCustomElement$1$C() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7362,7 +7362,7 @@ function defineCustomElement$1$B() {
             break;
     } });
 }
-const defineCustomElement$1f = defineCustomElement$1$B;
+const defineCustomElement$1g = defineCustomElement$1$C;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7386,7 +7386,7 @@ const Avatar = /*@__PURE__*/ proxyCustomElement$1(class Avatar extends H$1 {
         md: avatarMdCss
     }; }
 }, [289, "ion-avatar"]);
-function defineCustomElement$1$A() {
+function defineCustomElement$1$B() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7399,7 +7399,7 @@ function defineCustomElement$1$A() {
             break;
     } });
 }
-const defineCustomElement$1e = defineCustomElement$1$A;
+const defineCustomElement$1f = defineCustomElement$1$B;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7457,7 +7457,7 @@ const Backdrop = /*@__PURE__*/ proxyCustomElement$1(class Backdrop extends H$1 {
         "tappable": [4],
         "stopPropagation": [4, "stop-propagation"]
     }, [[2, "click", "onMouseDown"]]]);
-function defineCustomElement$1d() {
+function defineCustomElement$1e() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7498,7 +7498,7 @@ const Badge = /*@__PURE__*/ proxyCustomElement$1(class Badge extends H$1 {
 }, [289, "ion-badge", {
         "color": [513]
     }]);
-function defineCustomElement$1$z() {
+function defineCustomElement$1$A() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7511,7 +7511,7 @@ function defineCustomElement$1$z() {
             break;
     } });
 }
-const defineCustomElement$1c = defineCustomElement$1$z;
+const defineCustomElement$1d = defineCustomElement$1$A;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7657,7 +7657,7 @@ const Breadcrumbs = /*@__PURE__*/ proxyCustomElement$1(class Breadcrumbs extends
         "itemsBeforeCollapse": ["maxItemsChanged"],
         "itemsAfterCollapse": ["maxItemsChanged"]
     }]);
-function defineCustomElement$1$y() {
+function defineCustomElement$1$z() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7670,7 +7670,7 @@ function defineCustomElement$1$y() {
             break;
     } });
 }
-const defineCustomElement$1b = defineCustomElement$1$y;
+const defineCustomElement$1c = defineCustomElement$1$z;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7712,7 +7712,7 @@ const Buttons = /*@__PURE__*/ proxyCustomElement$1(class Buttons extends H$1 {
 }, [294, "ion-buttons", {
         "collapse": [4]
     }]);
-function defineCustomElement$1a() {
+function defineCustomElement$1b() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7729,7 +7729,7 @@ function defineCustomElement$1a() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$19 = defineCustomElement$1a;
+const defineCustomElement$1a = defineCustomElement$1b;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7757,7 +7757,7 @@ const CardContent = /*@__PURE__*/ proxyCustomElement$1(class CardContent extends
         md: cardContentMdCss
     }; }
 }, [288, "ion-card-content"]);
-function defineCustomElement$1$x() {
+function defineCustomElement$1$y() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7770,7 +7770,7 @@ function defineCustomElement$1$x() {
             break;
     } });
 }
-const defineCustomElement$18 = defineCustomElement$1$x;
+const defineCustomElement$19 = defineCustomElement$1$y;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7808,7 +7808,7 @@ const CardHeader = /*@__PURE__*/ proxyCustomElement$1(class CardHeader extends H
         "color": [513],
         "translucent": [4]
     }]);
-function defineCustomElement$1$w() {
+function defineCustomElement$1$x() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7817,6 +7817,49 @@ function defineCustomElement$1$w() {
         case "ion-card-header":
             if (!customElements.get(tagName)) {
                 customElements.define(tagName, CardHeader);
+            }
+            break;
+    } });
+}
+const defineCustomElement$18 = defineCustomElement$1$x;
+
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+
+const cardSubtitleIosCss = ":host{display:block;position:relative;color:var(--color)}:host(.ion-color){color:var(--ion-color-base)}:host{--color:var(--ion-color-step-600, var(--ion-text-color-step-400, #666666));margin-left:0;margin-right:0;margin-top:0;margin-bottom:4px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;font-size:0.75rem;font-weight:700;letter-spacing:0.4px;text-transform:uppercase}";
+
+const cardSubtitleMdCss = ":host{display:block;position:relative;color:var(--color)}:host(.ion-color){color:var(--ion-color-base)}:host{--color:var(--ion-color-step-550, var(--ion-text-color-step-450, #737373));margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;font-size:0.875rem;font-weight:500}";
+
+const CardSubtitle = /*@__PURE__*/ proxyCustomElement$1(class CardSubtitle extends H$1 {
+    constructor() {
+        super();
+        this.__registerHost();
+        this.__attachShadow();
+    }
+    render() {
+        const mode = getIonMode$2(this);
+        return (h$1(Host$1, { key: '84d820a19d9074f9c8bc61ccba1ca40062a60b73', role: "heading", "aria-level": "3", class: createColorClasses$2(this.color, {
+                'ion-inherit-color': true,
+                [mode]: true,
+            }) }, h$1("slot", { key: 'e4d07d395a1f4469a90847636083101b32b776a1' })));
+    }
+    static get style() { return {
+        ios: cardSubtitleIosCss,
+        md: cardSubtitleMdCss
+    }; }
+}, [289, "ion-card-subtitle", {
+        "color": [513]
+    }]);
+function defineCustomElement$1$w() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["ion-card-subtitle"];
+    components.forEach(tagName => { switch (tagName) {
+        case "ion-card-subtitle":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, CardSubtitle);
             }
             break;
     } });
@@ -13736,7 +13779,7 @@ function defineCustomElement$X() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1d();
+                defineCustomElement$1e();
             }
             break;
     } });
@@ -15686,7 +15729,7 @@ function defineCustomElement$1$t() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1d();
+                defineCustomElement$1e();
             }
             break;
         case "ion-button":
@@ -15696,12 +15739,12 @@ function defineCustomElement$1$t() {
             break;
         case "ion-buttons":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1a();
+                defineCustomElement$1b();
             }
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
         case "ion-picker":
@@ -17603,7 +17646,7 @@ function defineCustomElement$1$r() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
     } });
@@ -17717,7 +17760,7 @@ function defineCustomElement$1$q() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
         case "ion-ripple-effect":
@@ -18761,7 +18804,7 @@ function defineCustomElement$1$o() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1d();
+                defineCustomElement$1e();
             }
             break;
     } });
@@ -18864,7 +18907,7 @@ function defineCustomElement$1$n() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
         case "ion-ripple-effect":
@@ -21318,7 +21361,7 @@ function defineCustomElement$1$j() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
         case "ion-spinner":
@@ -21875,7 +21918,7 @@ function defineCustomElement$1$h() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
     } });
@@ -23223,12 +23266,12 @@ function defineCustomElement$t() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1d();
+                defineCustomElement$1e();
             }
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
         case "ion-ripple-effect":
@@ -23826,7 +23869,7 @@ function defineCustomElement$s() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1d();
+                defineCustomElement$1e();
             }
             break;
         case "ion-ripple-effect":
@@ -24121,7 +24164,7 @@ function defineCustomElement$r() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
         case "ion-ripple-effect":
@@ -26671,7 +26714,7 @@ function defineCustomElement$q() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1d();
+                defineCustomElement$1e();
             }
             break;
     } });
@@ -26943,7 +26986,7 @@ function defineCustomElement$n() {
             break;
         case "ion-buttons":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1a();
+                defineCustomElement$1b();
             }
             break;
         case "ion-checkbox":
@@ -26963,7 +27006,7 @@ function defineCustomElement$n() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
         case "ion-item":
@@ -27139,7 +27182,7 @@ function defineCustomElement$m() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
         case "ion-item":
@@ -28026,7 +28069,7 @@ function defineCustomElement$1$c() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1d();
+                defineCustomElement$1e();
             }
             break;
         case "ion-button":
@@ -28036,7 +28079,7 @@ function defineCustomElement$1$c() {
             break;
         case "ion-buttons":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1a();
+                defineCustomElement$1b();
             }
             break;
         case "ion-checkbox":
@@ -28056,7 +28099,7 @@ function defineCustomElement$1$c() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
         case "ion-item":
@@ -29349,7 +29392,7 @@ function defineCustomElement$1$7() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1d();
+                defineCustomElement$1e();
             }
             break;
         case "ion-spinner":
@@ -29603,7 +29646,7 @@ function defineCustomElement$1$5() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1h();
+                defineCustomElement$1i();
             }
             break;
         case "ion-ripple-effect":
@@ -32324,14 +32367,15 @@ const createReactComponent = (tagName, ReactComponentContext, manipulatePropsFun
 /* eslint-disable */
 /* tslint:disable */
 /* auto-generated react proxies */
-const IonAccordion = /*@__PURE__*/ createReactComponent('ion-accordion', undefined, undefined, defineCustomElement$1g);
-const IonAccordionGroup = /*@__PURE__*/ createReactComponent('ion-accordion-group', undefined, undefined, defineCustomElement$1f);
-const IonAvatar = /*@__PURE__*/ createReactComponent('ion-avatar', undefined, undefined, defineCustomElement$1e);
-const IonBadge = /*@__PURE__*/ createReactComponent('ion-badge', undefined, undefined, defineCustomElement$1c);
-const IonBreadcrumbs = /*@__PURE__*/ createReactComponent('ion-breadcrumbs', undefined, undefined, defineCustomElement$1b);
-const IonButtons = /*@__PURE__*/ createReactComponent('ion-buttons', undefined, undefined, defineCustomElement$19);
-const IonCardContent = /*@__PURE__*/ createReactComponent('ion-card-content', undefined, undefined, defineCustomElement$18);
-const IonCardHeader = /*@__PURE__*/ createReactComponent('ion-card-header', undefined, undefined, defineCustomElement$17);
+const IonAccordion = /*@__PURE__*/ createReactComponent('ion-accordion', undefined, undefined, defineCustomElement$1h);
+const IonAccordionGroup = /*@__PURE__*/ createReactComponent('ion-accordion-group', undefined, undefined, defineCustomElement$1g);
+const IonAvatar = /*@__PURE__*/ createReactComponent('ion-avatar', undefined, undefined, defineCustomElement$1f);
+const IonBadge = /*@__PURE__*/ createReactComponent('ion-badge', undefined, undefined, defineCustomElement$1d);
+const IonBreadcrumbs = /*@__PURE__*/ createReactComponent('ion-breadcrumbs', undefined, undefined, defineCustomElement$1c);
+const IonButtons = /*@__PURE__*/ createReactComponent('ion-buttons', undefined, undefined, defineCustomElement$1a);
+const IonCardContent = /*@__PURE__*/ createReactComponent('ion-card-content', undefined, undefined, defineCustomElement$19);
+const IonCardHeader = /*@__PURE__*/ createReactComponent('ion-card-header', undefined, undefined, defineCustomElement$18);
+const IonCardSubtitle = /*@__PURE__*/ createReactComponent('ion-card-subtitle', undefined, undefined, defineCustomElement$17);
 const IonCardTitle = /*@__PURE__*/ createReactComponent('ion-card-title', undefined, undefined, defineCustomElement$16);
 const IonCheckbox = /*@__PURE__*/ createReactComponent('ion-checkbox', undefined, undefined, defineCustomElement$14);
 const IonCol = /*@__PURE__*/ createReactComponent('ion-col', undefined, undefined, defineCustomElement$12);
@@ -40198,4 +40242,4 @@ const sendNotification = async (
   }
 };
 
-export { IonSegmentButton as $, IonAccordionGroup as A, BrowserRouter as B, IonAccordion as C, DataStoreProvider as D, albumsOutline as E, IonButtons as F, IonMenuButton as G, IonButton as H, IonMenuToggle as I, mailOutline as J, notificationsOutline as K, Link as L, MEMISContext as M, IonBadge as N, ORGANISATION_UNITS_DESCENDANTS as O, PROGRAMS_FIELDS as P, personCircleOutline as Q, Route as R, SuspenseLoader as S, ToastItem as T, USER_ORGANISATION_UNITS as U, logOutOutline as V, Outlet as W, IonCard as X, IonCardContent as Y, IonSegment as Z, __vitePreload as _, PROGRAM_RULES_FIELDS as a, printOutline as a$, IonSegmentView as a0, IonSegmentContent as a1, IonRow as a2, IonCol as a3, chevronDownOutline as a4, searchOutline as a5, checkmarkOutline as a6, funnel as a7, IonGrid as a8, IonInput as a9, ellipsisVertical as aA, arrowUp as aB, arrowDown as aC, removeOutline as aD, pencilOutline as aE, trashOutline as aF, closeOutline as aG, IonActionSheet as aH, IonAlert as aI, usePermissions as aJ, addCircleOutline as aK, IonInputPasswordToggle as aL, chevronUpOutline as aM, checkmarkDoneOutline as aN, timeOutline as aO, createOutline as aP, IonBreadcrumbs as aQ, IonBreadcrumb as aR, chevronForward as aS, useParams as aT, IonAvatar as aU, qrCodeOutline as aV, IonSelect as aW, IonSelectOption as aX, closeCircle as aY, statsChartOutline as aZ, downloadOutline as a_, IonPage as aa, IonLoading as ab, addOutline as ac, y as ad, IonSpinner as ae, close as af, imageOutline as ag, document$1 as ah, alertCircleOutline as ai, IonText as aj, arrowBackCircleOutline as ak, chevronBackOutline as al, chevronForwardOutline as am, saveOutline as an, IonCheckbox as ao, IonRadioGroup as ap, IonRadio as aq, IonPopover as ar, IonDatetime as as, IonTextarea as at, IonCardHeader as au, IonCardTitle as av, useSearchParams as aw, IonSearchbar as ax, filterOutline as ay, optionsOutline as az, PermissionsProvider as b, PROGRAM_STAGES_FIELDS as b0, informationCircleOutline as b1, homeOutline as b2, arrowBackOutline as b3, useNavigation as b4, add as b5, eyeOutline as b6, trash as b7, chatbubble as b8, IonItemDivider as b9, removeEventListener as bA, KeyboardResize as bB, win$2 as bC, raf as bD, getScrollElement as bE, scrollByPoint as bF, createAnimation as bG, getIonPageElement as bH, IonModal as ba, funnelOutline as bb, addCircle as bc, refresh as bd, IonTabs as be, IonTabBar as bf, IonTabButton as bg, settings as bh, lockClosed as bi, documentLock as bj, IonTab as bk, checkmarkCircleOutline as bl, chatbubbleOutline as bm, Navigate as bn, isRTL$1 as bo, createGesture as bp, clamp as bq, doc as br, pointerCoord as bs, readTask as bt, findClosestIonContent as bu, componentOnReady as bv, writeTask$1 as bw, scrollToTop as bx, Keyboard as by, addEventListener$1 as bz, setupIonicReact as c, documentText as d, setActiveProgramCookie as e, Routes as f, api as g, useLocation as h, useNavigate as i, jsxRuntimeExports as j, icons as k, IonItem as l, IonIcon as m, IonLabel as n, IonRefresher as o, IonRefresherContent as p, showToast as q, IonMenu as r, sendNotification as s, IonHeader as t, useDataStore as u, IonToolbar as v, IonTitle as w, IonContent as x, IonList as y, home as z };
+export { IonCardContent as $, IonAccordionGroup as A, BrowserRouter as B, IonAccordion as C, DataStoreProvider as D, albumsOutline as E, settingsSharp as F, IonButtons as G, IonMenuButton as H, IonMenuToggle as I, IonButton as J, mailOutline as K, Link as L, MEMISContext as M, notificationsOutline as N, ORGANISATION_UNITS_DESCENDANTS as O, PROGRAMS_FIELDS as P, IonBadge as Q, Route as R, SuspenseLoader as S, ToastItem as T, USER_ORGANISATION_UNITS as U, personCircleOutline as V, logOutOutline as W, showToast as X, Outlet as Y, IonCard as Z, __vitePreload as _, PROGRAM_RULES_FIELDS as a, closeCircle as a$, IonSegment as a0, IonSegmentButton as a1, IonSegmentView as a2, IonSegmentContent as a3, IonRow as a4, IonCol as a5, chevronDownOutline as a6, searchOutline as a7, checkmarkOutline as a8, funnel as a9, filterOutline as aA, optionsOutline as aB, ellipsisVertical as aC, arrowUp as aD, arrowDown as aE, removeOutline as aF, pencilOutline as aG, trashOutline as aH, closeOutline as aI, IonActionSheet as aJ, IonAlert as aK, addCircleOutline as aL, IonInputPasswordToggle as aM, chevronUpOutline as aN, checkmarkDoneOutline as aO, timeOutline as aP, createOutline as aQ, IonBreadcrumbs as aR, IonBreadcrumb as aS, chevronForward as aT, useParams as aU, IonAvatar as aV, qrCodeOutline as aW, IonSelect as aX, IonSelectOption as aY, closeCircleOutline as aZ, checkmarkCircleOutline as a_, IonGrid as aa, IonInput as ab, IonPage as ac, IonLoading as ad, addOutline as ae, y as af, IonSpinner as ag, close as ah, imageOutline as ai, document$1 as aj, alertCircleOutline as ak, IonText as al, arrowBackCircleOutline as am, chevronBackOutline as an, chevronForwardOutline as ao, saveOutline as ap, IonCheckbox as aq, IonRadioGroup as ar, IonRadio as as, IonPopover as at, IonDatetime as au, IonTextarea as av, IonCardHeader as aw, IonCardTitle as ax, useSearchParams as ay, IonSearchbar as az, PermissionsProvider as b, downloadOutline as b0, printOutline as b1, IonCardSubtitle as b2, PROGRAM_STAGES_FIELDS as b3, informationCircleOutline as b4, homeOutline as b5, arrowBackOutline as b6, useNavigation as b7, add as b8, eyeOutline as b9, Keyboard as bA, addEventListener$1 as bB, removeEventListener as bC, KeyboardResize as bD, win$2 as bE, raf as bF, getScrollElement as bG, scrollByPoint as bH, createAnimation as bI, getIonPageElement as bJ, trash as ba, chatbubble as bb, IonItemDivider as bc, IonModal as bd, funnelOutline as be, addCircle as bf, refresh as bg, IonTabs as bh, IonTabBar as bi, IonTabButton as bj, settings as bk, lockClosed as bl, documentLock as bm, IonTab as bn, chatbubbleOutline as bo, Navigate as bp, isRTL$1 as bq, createGesture as br, clamp as bs, doc as bt, pointerCoord as bu, readTask as bv, findClosestIonContent as bw, componentOnReady as bx, writeTask$1 as by, scrollToTop as bz, setupIonicReact as c, documentText as d, setActiveProgramCookie as e, Routes as f, api as g, useLocation as h, useNavigate as i, jsxRuntimeExports as j, icons as k, IonItem as l, IonIcon as m, IonLabel as n, IonRefresher as o, IonRefresherContent as p, usePermissions as q, IonMenu as r, sendNotification as s, IonHeader as t, useDataStore as u, IonToolbar as v, IonTitle as w, IonContent as x, IonList as y, home as z };
