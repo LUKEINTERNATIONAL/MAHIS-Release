@@ -18880,7 +18880,7 @@ const defineCustomElement$I = defineCustomElement$1$n;
  * (C) Ionic http://ionicframework.com - MIT License
  */
 
-const menuToggleCss = ":host(.menu-toggle-hidden){display:none}";
+const menuToggleCss = ":host(.menu-toggle-hidden){display:block}";
 
 const MenuToggle = /*@__PURE__*/ proxyCustomElement$1(class MenuToggle extends H$1 {
     constructor() {
@@ -18913,6 +18913,7 @@ const MenuToggle = /*@__PURE__*/ proxyCustomElement$1(class MenuToggle extends H
                 'menu-toggle-hidden': hidden,
             } }, h$1("slot", { key: '773d4cff95ca75f23578b1e1dca53c9933f28a33' })));
     }
+
     static get style() { return menuToggleCss; }
 }, [257, "ion-menu-toggle", {
         "menu": [1],
