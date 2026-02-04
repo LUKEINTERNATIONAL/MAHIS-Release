@@ -1,6 +1,6 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Layout.js","assets/__federation_fn_import.js","assets/breadCrumb.js","assets/index3.js","assets/_commonjsHelpers.js"])))=>i.map(i=>d[i]);
 import { importShared } from './__federation_fn_import.js';
-import { j as jsxRuntimeExports, M as MEMISContext, u as useDataStore, d as documentText, P as PROGRAMS_FIELDS, a as PROGRAM_RULES_FIELDS, U as USER_ORGANISATION_UNITS, O as ORGANISATION_UNITS_DESCENDANTS, D as DataStoreProvider, b as PermissionsProvider, s as sendNotification, c as setupIonicReact, _ as __vitePreload, e as setActiveProgramCookie, B as BrowserRouter, T as ToastItem, R as Route, f as Routes, g as api, S as SuspenseLoader } from './breadCrumb.js';
+import { j as jsxRuntimeExports, M as MEMISContext, d as documentText, P as PROGRAMS_FIELDS, a as PROGRAM_RULES_FIELDS, U as USER_ORGANISATION_UNITS, O as ORGANISATION_UNITS_DESCENDANTS, D as DataStoreProvider, b as PermissionsProvider, s as sendNotification, c as setupIonicReact, _ as __vitePreload, e as setActiveProgramCookie, B as BrowserRouter, T as ToastItem, R as Route, f as Routes, g as api, S as SuspenseLoader } from './breadCrumb.js';
 import { r as requireReact } from './index.js';
 import { r as requireReactDom } from './index2.js';
 import { d as dataStore, L as LocalForageServiceInstance } from './index3.js';
@@ -15912,14 +15912,9 @@ function MenuProvider({ children }) {
   const [menuError, setMenuError] = useState$4(null);
   const [userAccessData, setUserAccessData] = useState$4(null);
   const [userAccessLoaded, setUserAccessLoaded] = useState$4(false);
-  const {
-    programs = [],
-    loading: programLoading = false,
-    programsReady = false
-  } = useContext(MEMISContext.ProgramContext) || {};
+  const [programs, setPrograms] = useState$4([]);
   const { user } = useContext(MEMISContext.UserRolesContext) || {};
   useContext(MEMISContext.PermissionContext) || {};
-  const { isReady: dataStoreReady } = useDataStore();
   const getUserAccessData = useCallback$3(async () => {
     try {
       setUserAccessLoaded(false);
@@ -15944,13 +15939,9 @@ function MenuProvider({ children }) {
       console.error("Error loading navigation layout", error);
       setNavigationMenu([]);
       setMenuError(error);
-      setMenuLoaded(false);
+      setMenuLoaded(true);
     }
-  }, []);
-  useEffect$5(() => {
-    getNavMenu();
-    getUserAccessData();
-  }, [getNavMenu, getUserAccessData]);
+  }, [user]);
   const extractBaseProgramId = (id) => {
     if (!id) return null;
     return id.split("?")[0];
@@ -16077,7 +16068,6 @@ function MenuProvider({ children }) {
     return { groups, ungrouped, flat };
   }, [visiblePrograms]);
   const menuItems = menuModel.flat;
-  const loading = Boolean(programLoading) || !programsReady || !menuLoaded || !dataStoreReady;
   const refresh = useCallback$3(async () => {
     setMenuLoaded(false);
     setUserAccessLoaded(false);
@@ -16086,6 +16076,18 @@ function MenuProvider({ children }) {
     setUserAccessLoaded(true);
   }, [getNavMenu, getUserAccessData]);
   const showErrorState = userAccessLoaded && !userAccessData;
+  useEffect$5(() => {
+    if (!user) return;
+    (async () => {
+      const progr = await LocalForageServiceInstance.getItem("programs", "programs");
+      setPrograms(Array.isArray(progr) ? progr : []);
+    })();
+  }, [user]);
+  useEffect$5(() => {
+    getNavMenu();
+    getUserAccessData();
+  }, [getNavMenu, getUserAccessData]);
+  const loading = !menuLoaded;
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     MEMISContext.MenuContext.Provider,
     {
