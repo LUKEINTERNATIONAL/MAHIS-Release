@@ -1,4 +1,4 @@
-import { bt as doc, bA as Keyboard, bB as addEventListener, bC as removeEventListener, bx as componentOnReady, bw as findClosestIonContent, bD as KeyboardResize, bE as win, bF as raf, bG as getScrollElement, bH as scrollByPoint } from './breadCrumb.js';
+import { bx as doc, bE as Keyboard, bF as addEventListener, bG as removeEventListener, bB as componentOnReady, bA as findClosestIonContent, bH as KeyboardResize, bI as win, bJ as raf, bK as getScrollElement, bL as scrollByPoint } from './breadCrumb.js';
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License

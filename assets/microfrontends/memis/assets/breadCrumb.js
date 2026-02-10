@@ -4382,7 +4382,7 @@ const index3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
  */
 
 const getPlatforms = (win) => setupPlatforms(win);
-const isPlatform = (winOrPlatform, platform) => {
+const isPlatform$1 = (winOrPlatform, platform) => {
     if (typeof winOrPlatform === 'string') {
         platform = winOrPlatform;
         winOrPlatform = undefined;
@@ -4495,7 +4495,7 @@ const initialize = (userConfig = {}) => {
     // which could have been set by the user, or by pre-rendering
     // otherwise get the mode via config settings, and fallback to md
     Ionic.config = config;
-    Ionic.mode = defaultMode = config.get('mode', doc.documentElement.getAttribute('mode') || (isPlatform(win, 'ios') ? 'ios' : 'md'));
+    Ionic.mode = defaultMode = config.get('mode', doc.documentElement.getAttribute('mode') || (isPlatform$1(win, 'ios') ? 'ios' : 'md'));
     config.set('mode', defaultMode);
     doc.documentElement.setAttribute('mode', defaultMode);
     doc.documentElement.classList.add(defaultMode);
@@ -6184,7 +6184,7 @@ const createTriggerController = () => {
 const hideAnimatingOverlayFromScreenReaders = (overlay) => {
     if (doc === undefined)
         return;
-    if (isPlatform('android')) {
+    if (isPlatform$1('android')) {
         /**
          * Once the animation is complete, this attribute will be removed.
          * This is done at the end of the `present` method.
@@ -6716,7 +6716,7 @@ const createColorClasses$1 = (color) => {
         }
         : null;
 };
-function defineCustomElement$1i() {
+function defineCustomElement$1e() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7080,7 +7080,7 @@ const Accordion = /*@__PURE__*/ proxyCustomElement$1(class Accordion extends H$1
         "value": ["valueChanged"]
     }]);
 let accordionIds = 0;
-function defineCustomElement$1$D() {
+function defineCustomElement$1$z() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7093,12 +7093,12 @@ function defineCustomElement$1$D() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1e();
             }
             break;
     } });
 }
-const defineCustomElement$1h = defineCustomElement$1$D;
+const defineCustomElement$1d = defineCustomElement$1$z;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7349,7 +7349,7 @@ const AccordionGroup = /*@__PURE__*/ proxyCustomElement$1(class AccordionGroup e
         "disabled": ["disabledChanged"],
         "readonly": ["readonlyChanged"]
     }]);
-function defineCustomElement$1$C() {
+function defineCustomElement$1$y() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7362,7 +7362,7 @@ function defineCustomElement$1$C() {
             break;
     } });
 }
-const defineCustomElement$1g = defineCustomElement$1$C;
+const defineCustomElement$1c = defineCustomElement$1$y;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7386,7 +7386,7 @@ const Avatar = /*@__PURE__*/ proxyCustomElement$1(class Avatar extends H$1 {
         md: avatarMdCss
     }; }
 }, [289, "ion-avatar"]);
-function defineCustomElement$1$B() {
+function defineCustomElement$1$x() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7399,7 +7399,7 @@ function defineCustomElement$1$B() {
             break;
     } });
 }
-const defineCustomElement$1f = defineCustomElement$1$B;
+const defineCustomElement$1b = defineCustomElement$1$x;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7457,7 +7457,7 @@ const Backdrop = /*@__PURE__*/ proxyCustomElement$1(class Backdrop extends H$1 {
         "tappable": [4],
         "stopPropagation": [4, "stop-propagation"]
     }, [[2, "click", "onMouseDown"]]]);
-function defineCustomElement$1e() {
+function defineCustomElement$1a() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7498,7 +7498,7 @@ const Badge = /*@__PURE__*/ proxyCustomElement$1(class Badge extends H$1 {
 }, [289, "ion-badge", {
         "color": [513]
     }]);
-function defineCustomElement$1$A() {
+function defineCustomElement$1$w() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7511,7 +7511,7 @@ function defineCustomElement$1$A() {
             break;
     } });
 }
-const defineCustomElement$1d = defineCustomElement$1$A;
+const defineCustomElement$19 = defineCustomElement$1$w;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7657,7 +7657,7 @@ const Breadcrumbs = /*@__PURE__*/ proxyCustomElement$1(class Breadcrumbs extends
         "itemsBeforeCollapse": ["maxItemsChanged"],
         "itemsAfterCollapse": ["maxItemsChanged"]
     }]);
-function defineCustomElement$1$z() {
+function defineCustomElement$1$v() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7670,7 +7670,7 @@ function defineCustomElement$1$z() {
             break;
     } });
 }
-const defineCustomElement$1c = defineCustomElement$1$z;
+const defineCustomElement$18 = defineCustomElement$1$v;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7712,7 +7712,7 @@ const Buttons = /*@__PURE__*/ proxyCustomElement$1(class Buttons extends H$1 {
 }, [294, "ion-buttons", {
         "collapse": [4]
     }]);
-function defineCustomElement$1b() {
+function defineCustomElement$17() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7729,7 +7729,7 @@ function defineCustomElement$1b() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$1a = defineCustomElement$1b;
+const defineCustomElement$16 = defineCustomElement$17;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7757,7 +7757,7 @@ const CardContent = /*@__PURE__*/ proxyCustomElement$1(class CardContent extends
         md: cardContentMdCss
     }; }
 }, [288, "ion-card-content"]);
-function defineCustomElement$1$y() {
+function defineCustomElement$1$u() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7770,7 +7770,7 @@ function defineCustomElement$1$y() {
             break;
     } });
 }
-const defineCustomElement$19 = defineCustomElement$1$y;
+const defineCustomElement$15 = defineCustomElement$1$u;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7808,7 +7808,7 @@ const CardHeader = /*@__PURE__*/ proxyCustomElement$1(class CardHeader extends H
         "color": [513],
         "translucent": [4]
     }]);
-function defineCustomElement$1$x() {
+function defineCustomElement$1$t() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7821,7 +7821,7 @@ function defineCustomElement$1$x() {
             break;
     } });
 }
-const defineCustomElement$18 = defineCustomElement$1$x;
+const defineCustomElement$14 = defineCustomElement$1$t;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7851,7 +7851,7 @@ const CardSubtitle = /*@__PURE__*/ proxyCustomElement$1(class CardSubtitle exten
 }, [289, "ion-card-subtitle", {
         "color": [513]
     }]);
-function defineCustomElement$1$w() {
+function defineCustomElement$1$s() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7864,7 +7864,7 @@ function defineCustomElement$1$w() {
             break;
     } });
 }
-const defineCustomElement$17 = defineCustomElement$1$w;
+const defineCustomElement$13 = defineCustomElement$1$s;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7894,7 +7894,7 @@ const CardTitle = /*@__PURE__*/ proxyCustomElement$1(class CardTitle extends H$1
 }, [289, "ion-card-title", {
         "color": [513]
     }]);
-function defineCustomElement$1$v() {
+function defineCustomElement$1$r() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7907,7 +7907,7 @@ function defineCustomElement$1$v() {
             break;
     } });
 }
-const defineCustomElement$16 = defineCustomElement$1$v;
+const defineCustomElement$12 = defineCustomElement$1$r;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -8101,7 +8101,7 @@ const Checkbox = /*@__PURE__*/ proxyCustomElement$1(class Checkbox extends H$1 {
         "setFocus": [64]
     }]);
 let checkboxIds = 0;
-function defineCustomElement$15() {
+function defineCustomElement$11() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -8118,7 +8118,7 @@ function defineCustomElement$15() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$14 = defineCustomElement$15;
+const defineCustomElement$10 = defineCustomElement$11;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -8213,7 +8213,7 @@ const removeRipple = (ripple) => {
 };
 const PADDING = 10;
 const INITIAL_ORIGIN_SCALE = 0.5;
-function defineCustomElement$13() {
+function defineCustomElement$$() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -8371,7 +8371,7 @@ const Col = /*@__PURE__*/ proxyCustomElement$1(class Col extends H$1 {
         "sizeLg": [1, "size-lg"],
         "sizeXl": [1, "size-xl"]
     }, [[9, "resize", "onResize"]]]);
-function defineCustomElement$1$u() {
+function defineCustomElement$1$q() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -8384,7 +8384,7 @@ function defineCustomElement$1$u() {
             break;
     } });
 }
-const defineCustomElement$12 = defineCustomElement$1$u;
+const defineCustomElement$_ = defineCustomElement$1$q;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -8571,7 +8571,7 @@ const Content = /*@__PURE__*/ proxyCustomElement$1(class Content extends H$1 {
     shouldForceOverscroll() {
         const { forceOverscroll } = this;
         const mode = getIonMode$2(this);
-        return forceOverscroll === undefined ? mode === 'ios' && isPlatform('ios') : forceOverscroll;
+        return forceOverscroll === undefined ? mode === 'ios' && isPlatform$1('ios') : forceOverscroll;
     }
     resize() {
         /**
@@ -8848,7 +8848,7 @@ const updateScrollDetail = (detail, el, timestamp, shouldStart) => {
         detail.velocityY = velocityY * 0.7 + detail.velocityY * 0.3;
     }
 };
-function defineCustomElement$11() {
+function defineCustomElement$Z() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -8865,7 +8865,7 @@ function defineCustomElement$11() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$10 = defineCustomElement$11;
+const defineCustomElement$Y = defineCustomElement$Z;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -10859,7 +10859,7 @@ const Button = /*@__PURE__*/ proxyCustomElement$1(class Button extends H$1 {
         "aria-checked": ["onAriaChanged"],
         "aria-label": ["onAriaChanged"]
     }]);
-function defineCustomElement$$() {
+function defineCustomElement$X() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -10872,7 +10872,7 @@ function defineCustomElement$$() {
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$$();
             }
             break;
     } });
@@ -11360,7 +11360,7 @@ const Picker = /*@__PURE__*/ proxyCustomElement$1(class Picker extends H$1 {
 }, [289, "ion-picker", {
         "exitInputMode": [64]
     }, [[1, "touchstart", "preventTouchStartPropagation"]]]);
-function defineCustomElement$_() {
+function defineCustomElement$W() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -11653,7 +11653,7 @@ const PickerColumn = /*@__PURE__*/ proxyCustomElement$1(class PickerColumn exten
              * an iOS-only feature. As a result, they should
              * be disabled on Android.
              */
-            const enableHaptics = isPlatform('ios');
+            const enableHaptics = isPlatform$1('ios');
             const { el, scrollEl } = this;
             let timeout;
             let activeEl = this.activeItem;
@@ -11896,7 +11896,7 @@ const PickerColumn = /*@__PURE__*/ proxyCustomElement$1(class PickerColumn exten
              * cause the next option to be selected. The Home/End operations remain
              * unchanged because those always represent the first/last options, respectively.
              */
-            const mobile = isPlatform('mobile');
+            const mobile = isPlatform$1('mobile');
             let newOption = null;
             switch (ev.key) {
                 case 'ArrowDown':
@@ -12145,7 +12145,7 @@ const PickerColumn = /*@__PURE__*/ proxyCustomElement$1(class PickerColumn exten
         "value": ["valueChange"]
     }]);
 const PICKER_ITEM_ACTIVE_CLASS = 'option-active';
-function defineCustomElement$Z() {
+function defineCustomElement$V() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -12277,7 +12277,7 @@ const PickerColumnOption = /*@__PURE__*/ proxyCustomElement$1(class PickerColumn
     }, undefined, {
         "aria-label": ["onAriaLabelChange"]
     }]);
-function defineCustomElement$Y() {
+function defineCustomElement$U() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -13704,7 +13704,7 @@ const Popover = /*@__PURE__*/ proxyCustomElement$1(class Popover extends H$1 {
     render() {
         const mode = getIonMode$2(this);
         const { onLifecycle, parentPopover, dismissOnSelect, side, arrow, htmlAttributes, focusTrap } = this;
-        const desktop = isPlatform('desktop');
+        const desktop = isPlatform$1('desktop');
         const enableArrow = arrow && !parentPopover;
         return (h$1(Host$1, Object.assign({ key: '16866c02534968c982cf4730d2936d03a5107c8b', "aria-modal": "true", "no-router": true, tabindex: "-1" }, htmlAttributes, { style: {
                 zIndex: `${20000 + this.overlayIndex}`,
@@ -13766,7 +13766,7 @@ const LIFECYCLE_MAP$1 = {
     ionPopoverWillDismiss: 'ionViewWillLeave',
     ionPopoverDidDismiss: 'ionViewDidLeave',
 };
-function defineCustomElement$X() {
+function defineCustomElement$T() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -13779,7 +13779,7 @@ function defineCustomElement$X() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1a();
             }
             break;
     } });
@@ -15716,7 +15716,7 @@ const CANCEL_ROLE = 'datetime-cancel';
 const CONFIRM_ROLE = 'datetime-confirm';
 const WHEEL_ITEM_PART = 'wheel-item';
 const WHEEL_ITEM_ACTIVE_PART = `active`;
-function defineCustomElement$1$t() {
+function defineCustomElement$1$p() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -15729,52 +15729,52 @@ function defineCustomElement$1$t() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1a();
             }
             break;
         case "ion-button":
             if (!customElements.get(tagName)) {
-                defineCustomElement$$();
+                defineCustomElement$X();
             }
             break;
         case "ion-buttons":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1b();
+                defineCustomElement$17();
             }
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1e();
             }
             break;
         case "ion-picker":
             if (!customElements.get(tagName)) {
-                defineCustomElement$_();
+                defineCustomElement$W();
             }
             break;
         case "ion-picker-column":
             if (!customElements.get(tagName)) {
-                defineCustomElement$Z();
+                defineCustomElement$V();
             }
             break;
         case "ion-picker-column-option":
             if (!customElements.get(tagName)) {
-                defineCustomElement$Y();
+                defineCustomElement$U();
             }
             break;
         case "ion-popover":
             if (!customElements.get(tagName)) {
-                defineCustomElement$X();
+                defineCustomElement$T();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$$();
             }
             break;
     } });
 }
-const defineCustomElement$W = defineCustomElement$1$t;
+const defineCustomElement$S = defineCustomElement$1$p;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -16167,7 +16167,7 @@ const Grid = /*@__PURE__*/ proxyCustomElement$1(class Grid extends H$1 {
 }, [257, "ion-grid", {
         "fixed": [4]
     }]);
-function defineCustomElement$1$s() {
+function defineCustomElement$1$o() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -16180,7 +16180,7 @@ function defineCustomElement$1$s() {
             break;
     } });
 }
-const defineCustomElement$V = defineCustomElement$1$s;
+const defineCustomElement$R = defineCustomElement$1$o;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -16542,7 +16542,7 @@ const Header = /*@__PURE__*/ proxyCustomElement$1(class Header extends H$1 {
         "collapse": [1],
         "translucent": [4]
     }]);
-function defineCustomElement$U() {
+function defineCustomElement$Q() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -16559,7 +16559,7 @@ function defineCustomElement$U() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$T = defineCustomElement$U;
+const defineCustomElement$P = defineCustomElement$Q;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -16767,7 +16767,7 @@ const buildLine = (spinner, duration, index, total) => {
     data.style['animation-duration'] = duration + 'ms';
     return (h$1("svg", { viewBox: data.viewBox || '0 0 64 64', style: data.style }, h$1("line", { transform: "translate(32,32)", y1: data.y1, y2: data.y2 })));
 };
-function defineCustomElement$S() {
+function defineCustomElement$O() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -17633,7 +17633,7 @@ const Input = /*@__PURE__*/ proxyCustomElement$1(class Input extends H$1 {
         "dir": ["onDirChanged"]
     }]);
 let inputIds = 0;
-function defineCustomElement$1$r() {
+function defineCustomElement$1$n() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -17646,12 +17646,12 @@ function defineCustomElement$1$r() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1e();
             }
             break;
     } });
 }
-const defineCustomElement$R = defineCustomElement$1$r;
+const defineCustomElement$N = defineCustomElement$1$n;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -17742,7 +17742,7 @@ const InputPasswordToggle = /*@__PURE__*/ proxyCustomElement$1(class InputPasswo
     }, undefined, {
         "type": ["onTypeChange"]
     }]);
-function defineCustomElement$1$q() {
+function defineCustomElement$1$m() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -17755,22 +17755,22 @@ function defineCustomElement$1$q() {
             break;
         case "ion-button":
             if (!customElements.get(tagName)) {
-                defineCustomElement$$();
+                defineCustomElement$X();
             }
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1e();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$$();
             }
             break;
     } });
 }
-const defineCustomElement$Q = defineCustomElement$1$q;
+const defineCustomElement$M = defineCustomElement$1$m;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -17811,7 +17811,7 @@ const ItemDivider = /*@__PURE__*/ proxyCustomElement$1(class ItemDivider extends
         "color": [513],
         "sticky": [4]
     }]);
-function defineCustomElement$1$p() {
+function defineCustomElement$1$l() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -17824,7 +17824,7 @@ function defineCustomElement$1$p() {
             break;
     } });
 }
-const defineCustomElement$P = defineCustomElement$1$p;
+const defineCustomElement$L = defineCustomElement$1$l;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -17955,7 +17955,7 @@ const Label = /*@__PURE__*/ proxyCustomElement$1(class Label extends H$1 {
         "color": ["colorChanged"],
         "position": ["positionChanged"]
     }]);
-function defineCustomElement$O() {
+function defineCustomElement$K() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -17972,7 +17972,7 @@ function defineCustomElement$O() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$N = defineCustomElement$O;
+const defineCustomElement$J = defineCustomElement$K;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -18026,7 +18026,7 @@ const List = /*@__PURE__*/ proxyCustomElement$1(class List extends H$1 {
         "inset": [4],
         "closeSlidingItems": [64]
     }]);
-function defineCustomElement$M() {
+function defineCustomElement$I() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -18043,7 +18043,7 @@ function defineCustomElement$M() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$L = defineCustomElement$M;
+const defineCustomElement$H = defineCustomElement$I;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -18075,7 +18075,7 @@ const ListHeader = /*@__PURE__*/ proxyCustomElement$1(class ListHeader extends H
         "color": [513],
         "lines": [1]
     }]);
-function defineCustomElement$K() {
+function defineCustomElement$G() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -18588,7 +18588,7 @@ const Menu = /*@__PURE__*/ proxyCustomElement$1(class Menu extends H$1 {
          * VoiceOver not being able to update the accessibility tree when the
          * `aria-hidden` is removed.
          */
-        if (isPlatform('android')) {
+        if (isPlatform$1('android')) {
             this.el.setAttribute('aria-hidden', 'true');
         }
         // this places the menu into the correct location before it animates in
@@ -18650,7 +18650,7 @@ const Menu = /*@__PURE__*/ proxyCustomElement$1(class Menu extends H$1 {
              * transition to prevent this. Once the transition is complete, the menu
              * is shown again.
              */
-            if (isPlatform('android')) {
+            if (isPlatform$1('android')) {
                 this.el.removeAttribute('aria-hidden');
             }
             // emit open event
@@ -18791,7 +18791,7 @@ const checkEdgeSide = (win, posX, isEndSide, maxEdgeStart) => {
 const SHOW_MENU = 'show-menu';
 const SHOW_BACKDROP = 'show-backdrop';
 const MENU_CONTENT_OPEN = 'menu-content-open';
-function defineCustomElement$1$o() {
+function defineCustomElement$1$k() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -18804,12 +18804,12 @@ function defineCustomElement$1$o() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1a();
             }
             break;
     } });
 }
-const defineCustomElement$J = defineCustomElement$1$o;
+const defineCustomElement$F = defineCustomElement$1$k;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -18894,7 +18894,7 @@ const MenuButton = /*@__PURE__*/ proxyCustomElement$1(class MenuButton extends H
         "type": [1],
         "visible": [32]
     }, [[16, "ionMenuChange", "visibilityChanged"], [16, "ionSplitPaneVisible", "visibilityChanged"]]]);
-function defineCustomElement$1$n() {
+function defineCustomElement$1$j() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -18907,17 +18907,17 @@ function defineCustomElement$1$n() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1e();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$$();
             }
             break;
     } });
 }
-const defineCustomElement$I = defineCustomElement$1$n;
+const defineCustomElement$E = defineCustomElement$1$j;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -18962,7 +18962,7 @@ const MenuToggle = /*@__PURE__*/ proxyCustomElement$1(class MenuToggle extends H
         "autoHide": [4, "auto-hide"],
         "visible": [32]
     }, [[16, "ionMenuChange", "visibilityChanged"], [16, "ionSplitPaneVisible", "visibilityChanged"]]]);
-function defineCustomElement$1$m() {
+function defineCustomElement$1$i() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -18975,7 +18975,7 @@ function defineCustomElement$1$m() {
             break;
     } });
 }
-const defineCustomElement$H = defineCustomElement$1$m;
+const defineCustomElement$D = defineCustomElement$1$i;
 
 const VIEW_STATE_NEW = 1;
 const VIEW_STATE_ATTACHED = 2;
@@ -19901,7 +19901,7 @@ const Nav = /*@__PURE__*/ proxyCustomElement$1(class Nav extends H$1 {
         "swipeGesture": ["swipeGestureChanged"],
         "root": ["rootChanged"]
     }]);
-function defineCustomElement$1$l() {
+function defineCustomElement$1$h() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -19914,7 +19914,7 @@ function defineCustomElement$1$l() {
             break;
     } });
 }
-const defineCustomElement$G = defineCustomElement$1$l;
+const defineCustomElement$C = defineCustomElement$1$h;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -20127,7 +20127,7 @@ const Radio = /*@__PURE__*/ proxyCustomElement$1(class Radio extends H$1 {
         "value": ["valueChanged"]
     }]);
 let radioButtonIds = 0;
-function defineCustomElement$F() {
+function defineCustomElement$B() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -20144,7 +20144,7 @@ function defineCustomElement$F() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$E = defineCustomElement$F;
+const defineCustomElement$A = defineCustomElement$B;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -20363,7 +20363,7 @@ const RadioGroup = /*@__PURE__*/ proxyCustomElement$1(class RadioGroup extends H
         "value": ["valueChanged"]
     }]);
 let radioGroupIds = 0;
-function defineCustomElement$D() {
+function defineCustomElement$z() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -20380,7 +20380,7 @@ function defineCustomElement$D() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$C = defineCustomElement$D;
+const defineCustomElement$y = defineCustomElement$z;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -21279,7 +21279,7 @@ const Refresher = /*@__PURE__*/ proxyCustomElement$1(class Refresher extends H$1
     }, undefined, {
         "disabled": ["disabledChanged"]
     }]);
-function defineCustomElement$1$k() {
+function defineCustomElement$1$g() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -21292,7 +21292,7 @@ function defineCustomElement$1$k() {
             break;
     } });
 }
-const defineCustomElement$B = defineCustomElement$1$k;
+const defineCustomElement$x = defineCustomElement$1$g;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -21348,7 +21348,7 @@ const RefresherContent = /*@__PURE__*/ proxyCustomElement$1(class RefresherConte
         "refreshingSpinner": [1025, "refreshing-spinner"],
         "refreshingText": [1, "refreshing-text"]
     }]);
-function defineCustomElement$1$j() {
+function defineCustomElement$1$f() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -21361,17 +21361,17 @@ function defineCustomElement$1$j() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1e();
             }
             break;
         case "ion-spinner":
             if (!customElements.get(tagName)) {
-                defineCustomElement$S();
+                defineCustomElement$O();
             }
             break;
     } });
 }
-const defineCustomElement$A = defineCustomElement$1$j;
+const defineCustomElement$w = defineCustomElement$1$f;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -21390,7 +21390,7 @@ const Row = /*@__PURE__*/ proxyCustomElement$1(class Row extends H$1 {
     }
     static get style() { return rowCss; }
 }, [257, "ion-row"]);
-function defineCustomElement$1$i() {
+function defineCustomElement$1$e() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -21403,7 +21403,7 @@ function defineCustomElement$1$i() {
             break;
     } });
 }
-const defineCustomElement$z = defineCustomElement$1$i;
+const defineCustomElement$v = defineCustomElement$1$e;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -21905,7 +21905,7 @@ const Searchbar = /*@__PURE__*/ proxyCustomElement$1(class Searchbar extends H$1
         "showCancelButton": ["showCancelButtonChanged"]
     }]);
 let searchbarIds = 0;
-function defineCustomElement$1$h() {
+function defineCustomElement$1$d() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -21918,932 +21918,7 @@ function defineCustomElement$1$h() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
-            }
-            break;
-    } });
-}
-const defineCustomElement$y = defineCustomElement$1$h;
-
-const segmentIosCss = ":host{--ripple-color:currentColor;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:grid;grid-auto-columns:1fr;position:relative;-ms-flex-align:stretch;align-items:stretch;-ms-flex-pack:center;justify-content:center;width:100%;background:var(--background);font-family:var(--ion-font-family, inherit);text-align:center;contain:paint;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}:host(.segment-scrollable){-ms-flex-pack:start;justify-content:start;width:auto;overflow-x:auto;grid-auto-columns:minmax(-webkit-min-content, 1fr);grid-auto-columns:minmax(min-content, 1fr)}:host(.segment-scrollable::-webkit-scrollbar){display:none}:host{--background:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.065);border-radius:8px;overflow:hidden;z-index:0}:host(.ion-color){background:rgba(var(--ion-color-base-rgb), 0.065)}:host(.in-toolbar){-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto;margin-top:0;margin-bottom:0;width:auto}:host(.in-toolbar:not(.ion-color)){background:var(--ion-toolbar-segment-background, var(--background))}:host(.in-toolbar-color:not(.ion-color)){background:rgba(var(--ion-color-contrast-rgb), 0.11)}";
-
-const segmentMdCss = ":host{--ripple-color:currentColor;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:grid;grid-auto-columns:1fr;position:relative;-ms-flex-align:stretch;align-items:stretch;-ms-flex-pack:center;justify-content:center;width:100%;background:var(--background);font-family:var(--ion-font-family, inherit);text-align:center;contain:paint;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}:host(.segment-scrollable){-ms-flex-pack:start;justify-content:start;width:auto;overflow-x:auto;grid-auto-columns:minmax(-webkit-min-content, 1fr);grid-auto-columns:minmax(min-content, 1fr)}:host(.segment-scrollable::-webkit-scrollbar){display:none}:host{--background:transparent;grid-auto-columns:minmax(auto, 360px)}:host(.in-toolbar){min-height:var(--min-height)}:host(.segment-scrollable) ::slotted(ion-segment-button){min-width:auto}";
-
-const Segment = /*@__PURE__*/ proxyCustomElement$1(class Segment extends H$1 {
-    constructor() {
-        super();
-        this.__registerHost();
-        this.__attachShadow();
-        this.ionChange = createEvent(this, "ionChange", 7);
-        this.ionSelect = createEvent(this, "ionSelect", 7);
-        this.ionStyle = createEvent(this, "ionStyle", 7);
-        this.segmentViewEl = null;
-        this.activated = false;
-        /**
-         * If `true`, the user cannot interact with the segment.
-         */
-        this.disabled = false;
-        /**
-         * If `true`, the segment buttons will overflow and the user can swipe to see them.
-         * In addition, this will disable the gesture to drag the indicator between the buttons
-         * in order to swipe to see hidden buttons.
-         */
-        this.scrollable = false;
-        /**
-         * If `true`, users will be able to swipe between segment buttons to activate them.
-         */
-        this.swipeGesture = true;
-        /**
-         * If `true`, navigating to an `ion-segment-button` with the keyboard will focus and select the element.
-         * If `false`, keyboard navigation will only focus the `ion-segment-button` element.
-         */
-        this.selectOnFocus = false;
-        this.onClick = (ev) => {
-            const current = ev.target;
-            const previous = this.checked;
-            // If the current element is a segment then that means
-            // the user tried to swipe to a segment button and
-            // click a segment button at the same time so we should
-            // not update the checked segment button
-            if (current.tagName === 'ION-SEGMENT') {
-                return;
-            }
-            this.value = current.value;
-            if (current !== previous) {
-                this.emitValueChange();
-            }
-            if (this.segmentViewEl) {
-                this.updateSegmentView();
-                if (this.scrollable && previous) {
-                    this.checkButton(previous, current);
-                }
-            }
-            else if (this.scrollable || !this.swipeGesture) {
-                if (previous) {
-                    this.checkButton(previous, current);
-                }
-                else {
-                    this.setCheckedClasses();
-                }
-            }
-        };
-        this.onSlottedItemsChange = () => {
-            /**
-             * When the slotted segment buttons change we need to
-             * ensure that the new segment buttons are checked if
-             * the value matches the segment button value.
-             */
-            this.valueChanged(this.value);
-        };
-        this.getSegmentButton = (selector) => {
-            var _a, _b;
-            const buttons = this.getButtons().filter((button) => !button.disabled);
-            const currIndex = buttons.findIndex((button) => button === document.activeElement);
-            switch (selector) {
-                case 'first':
-                    return buttons[0];
-                case 'last':
-                    return buttons[buttons.length - 1];
-                case 'next':
-                    return (_a = buttons[currIndex + 1]) !== null && _a !== void 0 ? _a : buttons[0];
-                case 'previous':
-                    return (_b = buttons[currIndex - 1]) !== null && _b !== void 0 ? _b : buttons[buttons.length - 1];
-                default:
-                    return null;
-            }
-        };
-    }
-    colorChanged(value, oldValue) {
-        /**
-         * If color is set after not having
-         * previously been set (or vice versa),
-         * we need to emit style so the segment-buttons
-         * can apply their color classes properly.
-         */
-        if ((oldValue === undefined && value !== undefined) || (oldValue !== undefined && value === undefined)) {
-            this.emitStyle();
-        }
-    }
-    swipeGestureChanged() {
-        this.gestureChanged();
-    }
-    valueChanged(value, oldValue) {
-        // Force a value to exist if we're using a segment view
-        if (this.segmentViewEl && value === undefined) {
-            this.value = this.getButtons()[0].value;
-            return;
-        }
-        if (oldValue !== undefined && value !== undefined) {
-            const buttons = this.getButtons();
-            const previous = buttons.find((button) => button.value === oldValue);
-            const current = buttons.find((button) => button.value === value);
-            if (previous && current) {
-                if (!this.segmentViewEl) {
-                    this.checkButton(previous, current);
-                }
-                else if (this.triggerScrollOnValueChange !== false) {
-                    this.updateSegmentView();
-                }
-            }
-        }
-        else if (value !== undefined && oldValue === undefined && this.segmentViewEl) {
-            this.updateSegmentView();
-        }
-        /**
-         * `ionSelect` is emitted every time the value changes (internal or external changes).
-         * Used by `ion-segment-button` to determine if the button should be checked.
-         */
-        this.ionSelect.emit({ value });
-        // The scroll listener should handle scrolling the active button into view as needed
-        if (!this.segmentViewEl) {
-            this.scrollActiveButtonIntoView();
-        }
-        this.triggerScrollOnValueChange = undefined;
-    }
-    disabledChanged() {
-        this.gestureChanged();
-        if (!this.segmentViewEl) {
-            const buttons = this.getButtons();
-            for (const button of buttons) {
-                button.disabled = this.disabled;
-            }
-        }
-        else {
-            this.segmentViewEl.disabled = this.disabled;
-        }
-    }
-    gestureChanged() {
-        if (this.gesture) {
-            this.gesture.enable(!this.scrollable && !this.disabled && this.swipeGesture);
-        }
-    }
-    connectedCallback() {
-        this.emitStyle();
-        this.segmentViewEl = this.getSegmentView();
-    }
-    disconnectedCallback() {
-        this.segmentViewEl = null;
-    }
-    componentWillLoad() {
-        this.emitStyle();
-    }
-    async componentDidLoad() {
-        this.segmentViewEl = this.getSegmentView();
-        this.setCheckedClasses();
-        /**
-         * We need to wait for the buttons to all be rendered
-         * before we can scroll.
-         */
-        raf(() => {
-            /**
-             * When the segment loads for the first
-             * time we just want to snap the active button into
-             * place instead of scroll. Smooth scrolling should only
-             * happen when the user interacts with the segment.
-             */
-            this.scrollActiveButtonIntoView(false);
-        });
-        this.gesture = (await __vitePreload(async () => { const {createGesture} = await Promise.resolve().then(() => index3);return { createGesture }},true              ?void 0:void 0)).createGesture({
-            el: this.el,
-            gestureName: 'segment',
-            gesturePriority: 100,
-            threshold: 0,
-            passive: false,
-            onStart: (ev) => this.onStart(ev),
-            onMove: (ev) => this.onMove(ev),
-            onEnd: (ev) => this.onEnd(ev),
-        });
-        this.gestureChanged();
-        if (this.disabled) {
-            this.disabledChanged();
-        }
-        // Update segment view based on the initial value,
-        // but do not animate the scroll
-        this.updateSegmentView(false);
-    }
-    onStart(detail) {
-        this.valueBeforeGesture = this.value;
-        this.activate(detail);
-    }
-    onMove(detail) {
-        this.setNextIndex(detail);
-    }
-    onEnd(detail) {
-        this.setActivated(false);
-        this.setNextIndex(detail, true);
-        detail.event.stopImmediatePropagation();
-        const value = this.value;
-        if (value !== undefined) {
-            if (this.valueBeforeGesture !== value) {
-                this.emitValueChange();
-                this.updateSegmentView();
-            }
-        }
-        this.valueBeforeGesture = undefined;
-    }
-    /**
-     * Emits an `ionChange` event.
-     *
-     * This API should be called for user committed changes.
-     * This API should not be used for external value changes.
-     */
-    emitValueChange() {
-        const { value } = this;
-        this.ionChange.emit({ value });
-    }
-    getButtons() {
-        return Array.from(this.el.querySelectorAll('ion-segment-button'));
-    }
-    get checked() {
-        return this.getButtons().find((button) => button.value === this.value);
-    }
-    /*
-     * Activate both the segment and the buttons
-     * due to a bug with ::slotted in Safari
-     */
-    setActivated(activated) {
-        const buttons = this.getButtons();
-        buttons.forEach((button) => {
-            button.classList.toggle('segment-button-activated', activated);
-        });
-        this.activated = activated;
-    }
-    activate(detail) {
-        const clicked = detail.event.target;
-        const buttons = this.getButtons();
-        const checked = buttons.find((button) => button.value === this.value);
-        // Make sure we are only checking for activation on a segment button
-        // since disabled buttons will get the click on the segment
-        if (clicked.tagName !== 'ION-SEGMENT-BUTTON') {
-            return;
-        }
-        // If there are no checked buttons, set the current button to checked
-        if (!checked) {
-            this.value = clicked.value;
-            this.setCheckedClasses();
-        }
-        // If the gesture began on the clicked button with the indicator
-        // then we should activate the indicator
-        if (this.value === clicked.value) {
-            this.setActivated(true);
-        }
-    }
-    getIndicator(button) {
-        const root = button.shadowRoot || button;
-        return root.querySelector('.segment-button-indicator');
-    }
-    checkButton(previous, current) {
-        const previousIndicator = this.getIndicator(previous);
-        const currentIndicator = this.getIndicator(current);
-        if (previousIndicator === null || currentIndicator === null) {
-            return;
-        }
-        const previousClientRect = previousIndicator.getBoundingClientRect();
-        const currentClientRect = currentIndicator.getBoundingClientRect();
-        const widthDelta = previousClientRect.width / currentClientRect.width;
-        const xPosition = previousClientRect.left - currentClientRect.left;
-        // Scale the indicator width to match the previous indicator width
-        // and translate it on top of the previous indicator
-        const transform = `translate3d(${xPosition}px, 0, 0) scaleX(${widthDelta})`;
-        writeTask$1(() => {
-            // Remove the transition before positioning on top of the previous indicator
-            currentIndicator.classList.remove('segment-button-indicator-animated');
-            currentIndicator.style.setProperty('transform', transform);
-            // Force a repaint to ensure the transform happens
-            currentIndicator.getBoundingClientRect();
-            // Add the transition to move the indicator into place
-            currentIndicator.classList.add('segment-button-indicator-animated');
-            // Remove the transform to slide the indicator back to the button clicked
-            currentIndicator.style.setProperty('transform', '');
-            this.scrollActiveButtonIntoView(true);
-        });
-        this.value = current.value;
-        this.setCheckedClasses();
-    }
-    setCheckedClasses() {
-        const buttons = this.getButtons();
-        const index = buttons.findIndex((button) => button.value === this.value);
-        const next = index + 1;
-        for (const button of buttons) {
-            button.classList.remove('segment-button-after-checked');
-        }
-        if (next < buttons.length) {
-            buttons[next].classList.add('segment-button-after-checked');
-        }
-    }
-    getSegmentView() {
-        const buttons = this.getButtons();
-        // Get the first button with a contentId
-        const firstContentId = buttons.find((button) => button.contentId);
-        // Get the segment content with an id matching the button's contentId
-        const segmentContent = document.querySelector(`ion-segment-content[id="${firstContentId === null || firstContentId === void 0 ? void 0 : firstContentId.contentId}"]`);
-        // Return the segment view for that matching segment content
-        return segmentContent === null || segmentContent === void 0 ? void 0 : segmentContent.closest('ion-segment-view');
-    }
-    handleSegmentViewScroll(ev) {
-        const { scrollRatio, isManualScroll } = ev.detail;
-        if (!isManualScroll) {
-            return;
-        }
-        const dispatchedFrom = ev.target;
-        const segmentViewEl = this.segmentViewEl;
-        const segmentEl = this.el;
-        // Only update the indicator if the event was dispatched from the correct segment view
-        if (ev.composedPath().includes(segmentViewEl) || (dispatchedFrom === null || dispatchedFrom === void 0 ? void 0 : dispatchedFrom.contains(segmentEl))) {
-            const buttons = this.getButtons();
-            // If no buttons are found or there is no value set then do nothing
-            if (!buttons.length)
-                return;
-            const index = buttons.findIndex((button) => button.value === this.value);
-            const current = buttons[index];
-            const nextIndex = Math.round(scrollRatio * (buttons.length - 1));
-            if (this.lastNextIndex === undefined || this.lastNextIndex !== nextIndex) {
-                this.lastNextIndex = nextIndex;
-                this.triggerScrollOnValueChange = false;
-                this.checkButton(current, buttons[nextIndex]);
-                this.emitValueChange();
-            }
-        }
-    }
-    /**
-     * Finds the related segment view and sets its current content
-     * based on the selected segment button. This method
-     * should be called on initial load of the segment,
-     * after the gesture is completed (if dragging between segments)
-     * and when a segment button is clicked directly.
-     */
-    updateSegmentView(smoothScroll = true) {
-        const buttons = this.getButtons();
-        const button = buttons.find((btn) => btn.value === this.value);
-        // If the button does not have a contentId then there is
-        // no associated segment view to update
-        if (!(button === null || button === void 0 ? void 0 : button.contentId)) {
-            return;
-        }
-        const segmentView = this.segmentViewEl;
-        if (segmentView) {
-            segmentView.setContent(button.contentId, smoothScroll);
-        }
-    }
-    scrollActiveButtonIntoView(smoothScroll = true) {
-        const { scrollable, value, el } = this;
-        if (scrollable) {
-            const buttons = this.getButtons();
-            const activeButton = buttons.find((button) => button.value === value);
-            if (activeButton !== undefined) {
-                const scrollContainerBox = el.getBoundingClientRect();
-                const activeButtonBox = activeButton.getBoundingClientRect();
-                /**
-                 * Subtract the active button x position from the scroll
-                 * container x position. This will give us the x position
-                 * of the active button within the scroll container.
-                 */
-                const activeButtonLeft = activeButtonBox.x - scrollContainerBox.x;
-                /**
-                 * If we just used activeButtonLeft, then the active button
-                 * would be aligned with the left edge of the scroll container.
-                 * Instead, we want the segment button to be centered. As a result,
-                 * we subtract half of the scroll container width. This will position
-                 * the left edge of the active button at the midpoint of the scroll container.
-                 * We then add half of the active button width. This will position the active
-                 * button such that the midpoint of the active button is at the midpoint of the
-                 * scroll container.
-                 */
-                const centeredX = activeButtonLeft - scrollContainerBox.width / 2 + activeButtonBox.width / 2;
-                /**
-                 * newScrollPosition is the absolute scroll position that the
-                 * container needs to move to in order to center the active button.
-                 * It is calculated by adding the current scroll position
-                 * (scrollLeft) to the offset needed to center the button
-                 * (centeredX).
-                 */
-                const newScrollPosition = el.scrollLeft + centeredX;
-                /**
-                 * We intentionally use scrollTo here instead of scrollIntoView
-                 * to avoid a WebKit bug where accelerated animations break
-                 * when using scrollIntoView. Using scrollIntoView will cause the
-                 * segment container to jump during the transition and then snap into place.
-                 * This is because scrollIntoView can potentially cause parent element
-                 * containers to also scroll. scrollTo does not have this same behavior, so
-                 * we use this API instead.
-                 *
-                 * scrollTo is used instead of scrollBy because there is a
-                 * Webkit bug that causes scrollBy to not work smoothly when
-                 * the active button is near the edge of the scroll container.
-                 * This leads to the buttons to jump around during the transition.
-                 *
-                 * Note that if there is not enough scrolling space to center the element
-                 * within the scroll container, the browser will attempt
-                 * to center by as much as it can.
-                 */
-                el.scrollTo({
-                    top: 0,
-                    left: newScrollPosition,
-                    behavior: smoothScroll ? 'smooth' : 'instant',
-                });
-            }
-        }
-    }
-    setNextIndex(detail, isEnd = false) {
-        const rtl = isRTL$1(this.el);
-        const activated = this.activated;
-        const buttons = this.getButtons();
-        const index = buttons.findIndex((button) => button.value === this.value);
-        const previous = buttons[index];
-        let current;
-        let nextIndex;
-        if (index === -1) {
-            return;
-        }
-        // Get the element that the touch event started on in case
-        // it was the checked button, then we will move the indicator
-        const rect = previous.getBoundingClientRect();
-        const left = rect.left;
-        const width = rect.width;
-        // Get the element that the gesture is on top of based on the currentX of the
-        // gesture event and the Y coordinate of the starting element, since the gesture
-        // can move up and down off of the segment
-        const currentX = detail.currentX;
-        const previousY = rect.top + rect.height / 2;
-        /**
-         * Segment can be used inside the shadow dom
-         * so doing document.elementFromPoint would never
-         * return a segment button in that instance.
-         * We use getRootNode to which will return the parent
-         * shadow root if used inside a shadow component and
-         * returns document otherwise.
-         */
-        const root = this.el.getRootNode();
-        const nextEl = root.elementFromPoint(currentX, previousY);
-        const decreaseIndex = rtl ? currentX > left + width : currentX < left;
-        const increaseIndex = rtl ? currentX < left : currentX > left + width;
-        // If the indicator is currently activated then we have started the gesture
-        // on top of the checked button so we need to slide the indicator
-        // by checking the button next to it as we move
-        if (activated && !isEnd) {
-            // Decrease index, move left in LTR & right in RTL
-            if (decreaseIndex) {
-                const newIndex = index - 1;
-                if (newIndex >= 0) {
-                    nextIndex = newIndex;
-                }
-                // Increase index, moves right in LTR & left in RTL
-            }
-            else if (increaseIndex) {
-                if (activated && !isEnd) {
-                    const newIndex = index + 1;
-                    if (newIndex < buttons.length) {
-                        nextIndex = newIndex;
-                    }
-                }
-            }
-            if (nextIndex !== undefined && !buttons[nextIndex].disabled) {
-                current = buttons[nextIndex];
-            }
-        }
-        // If the indicator is not activated then we will just set the indicator
-        // to the element where the gesture ended
-        if (!activated && isEnd) {
-            current = nextEl;
-        }
-        if (current != null) {
-            /**
-             * If current element is ion-segment then that means
-             * user tried to select a disabled ion-segment-button,
-             * and we should not update the ripple.
-             */
-            if (current.tagName === 'ION-SEGMENT') {
-                return false;
-            }
-            if (previous !== current) {
-                this.checkButton(previous, current);
-            }
-        }
-        return true;
-    }
-    emitStyle() {
-        this.ionStyle.emit({
-            segment: true,
-        });
-    }
-    onKeyDown(ev) {
-        const rtl = isRTL$1(this.el);
-        let keyDownSelectsButton = this.selectOnFocus;
-        let current;
-        switch (ev.key) {
-            case 'ArrowRight':
-                ev.preventDefault();
-                current = rtl ? this.getSegmentButton('previous') : this.getSegmentButton('next');
-                break;
-            case 'ArrowLeft':
-                ev.preventDefault();
-                current = rtl ? this.getSegmentButton('next') : this.getSegmentButton('previous');
-                break;
-            case 'Home':
-                ev.preventDefault();
-                current = this.getSegmentButton('first');
-                break;
-            case 'End':
-                ev.preventDefault();
-                current = this.getSegmentButton('last');
-                break;
-            case ' ':
-            case 'Enter':
-                ev.preventDefault();
-                current = document.activeElement;
-                keyDownSelectsButton = true;
-        }
-        if (!current) {
-            return;
-        }
-        if (keyDownSelectsButton) {
-            const previous = this.checked;
-            this.checkButton(previous || current, current);
-            if (current !== previous) {
-                this.emitValueChange();
-            }
-        }
-        current.setFocus();
-    }
-    render() {
-        const mode = getIonMode$2(this);
-        return (h$1(Host$1, { key: 'e67ed512739cf2cfe657b0c44ebc3dfb1e9fbb79', role: "tablist", onClick: this.onClick, class: createColorClasses$2(this.color, {
-                [mode]: true,
-                'in-toolbar': hostContext('ion-toolbar', this.el),
-                'in-toolbar-color': hostContext('ion-toolbar[color]', this.el),
-                'segment-activated': this.activated,
-                'segment-disabled': this.disabled,
-                'segment-scrollable': this.scrollable,
-            }) }, h$1("slot", { key: '804d8acfcb9abfeeee38244b015fbc5c36330b9e', onSlotchange: this.onSlottedItemsChange })));
-    }
-    get el() { return this; }
-    static get watchers() { return {
-        "color": ["colorChanged"],
-        "swipeGesture": ["swipeGestureChanged"],
-        "value": ["valueChanged"],
-        "disabled": ["disabledChanged"]
-    }; }
-    static get style() { return {
-        ios: segmentIosCss,
-        md: segmentMdCss
-    }; }
-}, [289, "ion-segment", {
-        "color": [513],
-        "disabled": [4],
-        "scrollable": [4],
-        "swipeGesture": [4, "swipe-gesture"],
-        "value": [1032],
-        "selectOnFocus": [4, "select-on-focus"],
-        "activated": [32]
-    }, [[16, "ionSegmentViewScroll", "handleSegmentViewScroll"], [0, "keydown", "onKeyDown"]], {
-        "color": ["colorChanged"],
-        "swipeGesture": ["swipeGestureChanged"],
-        "value": ["valueChanged"],
-        "disabled": ["disabledChanged"]
-    }]);
-function defineCustomElement$1$g() {
-    if (typeof customElements === "undefined") {
-        return;
-    }
-    const components = ["ion-segment"];
-    components.forEach(tagName => { switch (tagName) {
-        case "ion-segment":
-            if (!customElements.get(tagName)) {
-                customElements.define(tagName, Segment);
-            }
-            break;
-    } });
-}
-const defineCustomElement$x = defineCustomElement$1$g;
-
-/*!
- * (C) Ionic http://ionicframework.com - MIT License
- */
-
-const segmentButtonIosCss = ":host{--color:initial;--color-hover:var(--color);--color-checked:var(--color);--color-disabled:var(--color);--padding-start:0;--padding-end:0;--padding-top:0;--padding-bottom:0;border-radius:var(--border-radius);display:-ms-flexbox;display:flex;position:relative;-ms-flex-direction:column;flex-direction:column;height:auto;background:var(--background);color:var(--color);text-decoration:none;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;grid-row:1;-webkit-font-kerning:none;font-kerning:none}.button-native{border-radius:0;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;-webkit-margin-start:var(--margin-start);margin-inline-start:var(--margin-start);-webkit-margin-end:var(--margin-end);margin-inline-end:var(--margin-end);margin-top:var(--margin-top);margin-bottom:var(--margin-bottom);-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);-webkit-transform:translate3d(0,  0,  0);transform:translate3d(0,  0,  0);display:-ms-flexbox;display:flex;position:relative;-ms-flex-direction:inherit;flex-direction:inherit;-ms-flex-positive:1;flex-grow:1;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;min-width:inherit;max-width:inherit;height:auto;min-height:inherit;max-height:inherit;-webkit-transition:var(--transition);transition:var(--transition);border:none;outline:none;background:transparent;contain:content;pointer-events:none;overflow:hidden;z-index:2}.button-native::after{left:0;right:0;top:0;bottom:0;position:absolute;content:\"\";opacity:0}.button-inner{display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:inherit;flex-flow:inherit;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;z-index:1}:host(.segment-button-checked){background:var(--background-checked);color:var(--color-checked)}:host(.segment-button-disabled){cursor:default;pointer-events:none}:host(.ion-focused) .button-native{color:var(--color-focused)}:host(.ion-focused) .button-native::after{background:var(--background-focused);opacity:var(--background-focused-opacity)}:host(:focus){outline:none}@media (any-hover: hover){:host(:hover) .button-native{color:var(--color-hover)}:host(:hover) .button-native::after{background:var(--background-hover);opacity:var(--background-hover-opacity)}:host(.segment-button-checked:hover) .button-native{color:var(--color-checked)}}::slotted(ion-icon){-ms-flex-negative:0;flex-shrink:0;-ms-flex-order:-1;order:-1;pointer-events:none}::slotted(ion-label){display:block;-ms-flex-item-align:center;align-self:center;max-width:100%;line-height:22px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;-webkit-box-sizing:border-box;box-sizing:border-box;pointer-events:none}:host(.segment-button-layout-icon-top) .button-native{-ms-flex-direction:column;flex-direction:column}:host(.segment-button-layout-icon-start) .button-native{-ms-flex-direction:row;flex-direction:row}:host(.segment-button-layout-icon-end) .button-native{-ms-flex-direction:row-reverse;flex-direction:row-reverse}:host(.segment-button-layout-icon-bottom) .button-native{-ms-flex-direction:column-reverse;flex-direction:column-reverse}:host(.segment-button-layout-icon-hide) ::slotted(ion-icon){display:none}:host(.segment-button-layout-label-hide) ::slotted(ion-label){display:none}ion-ripple-effect{color:var(--ripple-color, var(--color-checked))}.segment-button-indicator{-webkit-transform-origin:left;transform-origin:left;position:absolute;opacity:0;-webkit-box-sizing:border-box;box-sizing:border-box;will-change:transform, opacity;pointer-events:none}.segment-button-indicator-background{width:100%;height:var(--indicator-height);-webkit-transform:var(--indicator-transform);transform:var(--indicator-transform);-webkit-box-shadow:var(--indicator-box-shadow);box-shadow:var(--indicator-box-shadow);pointer-events:none}.segment-button-indicator-animated{-webkit-transition:var(--indicator-transition);transition:var(--indicator-transition)}:host(.segment-button-checked) .segment-button-indicator{opacity:1}@media (prefers-reduced-motion: reduce){.segment-button-indicator-background{-webkit-transform:none;transform:none}.segment-button-indicator-animated{-webkit-transition:none;transition:none}}:host{--background:none;--background-checked:none;--background-hover:none;--background-hover-opacity:0;--background-focused:none;--background-focused-opacity:0;--border-radius:7px;--border-width:1px;--border-color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.12);--border-style:solid;--indicator-box-shadow:0 0 5px rgba(0, 0, 0, 0.16);--indicator-color:var(--ion-color-step-350, var(--ion-background-color-step-350, var(--ion-background-color, #fff)));--indicator-height:100%;--indicator-transition:transform 260ms cubic-bezier(0.4, 0, 0.2, 1);--indicator-transform:none;--transition:100ms all linear;--padding-top:0;--padding-end:13px;--padding-bottom:0;--padding-start:13px;margin-top:2px;margin-bottom:2px;position:relative;-ms-flex-direction:row;flex-direction:row;min-width:70px;min-height:28px;-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0);font-size:13px;font-weight:450;line-height:37px}:host::before{margin-left:0;margin-right:0;margin-top:5px;margin-bottom:5px;-webkit-transition:160ms opacity ease-in-out;transition:160ms opacity ease-in-out;-webkit-transition-delay:100ms;transition-delay:100ms;border-left:var(--border-width) var(--border-style) var(--border-color);content:\"\";opacity:1;will-change:opacity}:host(:first-of-type)::before{border-left-color:transparent}:host(.segment-button-disabled){opacity:0.3}::slotted(ion-icon){font-size:24px}:host(.segment-button-layout-icon-start) ::slotted(ion-label){-webkit-margin-start:2px;margin-inline-start:2px;-webkit-margin-end:0;margin-inline-end:0}:host(.segment-button-layout-icon-end) ::slotted(ion-label){-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:2px;margin-inline-end:2px}.segment-button-indicator{-webkit-padding-start:2px;padding-inline-start:2px;-webkit-padding-end:2px;padding-inline-end:2px;left:0;right:0;top:0;bottom:0}.segment-button-indicator-background{border-radius:var(--border-radius);background:var(--indicator-color)}.segment-button-indicator-background{-webkit-transition:var(--indicator-transition);transition:var(--indicator-transition)}:host(.segment-button-checked)::before,:host(.segment-button-after-checked)::before{opacity:0}:host(.segment-button-checked){z-index:-1}:host(.segment-button-activated){--indicator-transform:scale(0.95)}:host(.ion-focused) .button-native{opacity:0.7}@media (any-hover: hover){:host(:hover) .button-native{opacity:0.5}:host(.segment-button-checked:hover) .button-native{opacity:1}}:host(.in-segment-color){background:none;color:var(--ion-text-color, #000)}:host(.in-segment-color) .segment-button-indicator-background{background:var(--ion-color-step-350, var(--ion-background-color-step-350, var(--ion-background-color, #fff)))}@media (any-hover: hover){:host(.in-segment-color:hover) .button-native,:host(.in-segment-color.segment-button-checked:hover) .button-native{color:var(--ion-text-color, #000)}}:host(.in-toolbar:not(.in-segment-color)){--background-checked:var(--ion-toolbar-segment-background-checked, none);--color:var(--ion-toolbar-segment-color, var(--ion-toolbar-color), initial);--color-checked:var(--ion-toolbar-segment-color-checked, var(--ion-toolbar-color), initial);--indicator-color:var(--ion-toolbar-segment-indicator-color, var(--ion-color-step-350, var(--ion-background-color-step-350, var(--ion-background-color, #fff))))}:host(.in-toolbar-color) .segment-button-indicator-background{background:var(--ion-color-contrast)}:host(.in-toolbar-color:not(.in-segment-color)) .button-native{color:var(--ion-color-contrast)}:host(.in-toolbar-color.segment-button-checked:not(.in-segment-color)) .button-native{color:var(--ion-color-base)}@media (any-hover: hover){:host(.in-toolbar-color:not(.in-segment-color):hover) .button-native{color:var(--ion-color-contrast)}:host(.in-toolbar-color.segment-button-checked:not(.in-segment-color):hover) .button-native{color:var(--ion-color-base)}}";
-
-const segmentButtonMdCss = ":host{--color:initial;--color-hover:var(--color);--color-checked:var(--color);--color-disabled:var(--color);--padding-start:0;--padding-end:0;--padding-top:0;--padding-bottom:0;border-radius:var(--border-radius);display:-ms-flexbox;display:flex;position:relative;-ms-flex-direction:column;flex-direction:column;height:auto;background:var(--background);color:var(--color);text-decoration:none;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;grid-row:1;-webkit-font-kerning:none;font-kerning:none}.button-native{border-radius:0;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;-webkit-margin-start:var(--margin-start);margin-inline-start:var(--margin-start);-webkit-margin-end:var(--margin-end);margin-inline-end:var(--margin-end);margin-top:var(--margin-top);margin-bottom:var(--margin-bottom);-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);-webkit-transform:translate3d(0,  0,  0);transform:translate3d(0,  0,  0);display:-ms-flexbox;display:flex;position:relative;-ms-flex-direction:inherit;flex-direction:inherit;-ms-flex-positive:1;flex-grow:1;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;min-width:inherit;max-width:inherit;height:auto;min-height:inherit;max-height:inherit;-webkit-transition:var(--transition);transition:var(--transition);border:none;outline:none;background:transparent;contain:content;pointer-events:none;overflow:hidden;z-index:2}.button-native::after{left:0;right:0;top:0;bottom:0;position:absolute;content:\"\";opacity:0}.button-inner{display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:inherit;flex-flow:inherit;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;z-index:1}:host(.segment-button-checked){background:var(--background-checked);color:var(--color-checked)}:host(.segment-button-disabled){cursor:default;pointer-events:none}:host(.ion-focused) .button-native{color:var(--color-focused)}:host(.ion-focused) .button-native::after{background:var(--background-focused);opacity:var(--background-focused-opacity)}:host(:focus){outline:none}@media (any-hover: hover){:host(:hover) .button-native{color:var(--color-hover)}:host(:hover) .button-native::after{background:var(--background-hover);opacity:var(--background-hover-opacity)}:host(.segment-button-checked:hover) .button-native{color:var(--color-checked)}}::slotted(ion-icon){-ms-flex-negative:0;flex-shrink:0;-ms-flex-order:-1;order:-1;pointer-events:none}::slotted(ion-label){display:block;-ms-flex-item-align:center;align-self:center;max-width:100%;line-height:22px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;-webkit-box-sizing:border-box;box-sizing:border-box;pointer-events:none}:host(.segment-button-layout-icon-top) .button-native{-ms-flex-direction:column;flex-direction:column}:host(.segment-button-layout-icon-start) .button-native{-ms-flex-direction:row;flex-direction:row}:host(.segment-button-layout-icon-end) .button-native{-ms-flex-direction:row-reverse;flex-direction:row-reverse}:host(.segment-button-layout-icon-bottom) .button-native{-ms-flex-direction:column-reverse;flex-direction:column-reverse}:host(.segment-button-layout-icon-hide) ::slotted(ion-icon){display:none}:host(.segment-button-layout-label-hide) ::slotted(ion-label){display:none}ion-ripple-effect{color:var(--ripple-color, var(--color-checked))}.segment-button-indicator{-webkit-transform-origin:left;transform-origin:left;position:absolute;opacity:0;-webkit-box-sizing:border-box;box-sizing:border-box;will-change:transform, opacity;pointer-events:none}.segment-button-indicator-background{width:100%;height:var(--indicator-height);-webkit-transform:var(--indicator-transform);transform:var(--indicator-transform);-webkit-box-shadow:var(--indicator-box-shadow);box-shadow:var(--indicator-box-shadow);pointer-events:none}.segment-button-indicator-animated{-webkit-transition:var(--indicator-transition);transition:var(--indicator-transition)}:host(.segment-button-checked) .segment-button-indicator{opacity:1}@media (prefers-reduced-motion: reduce){.segment-button-indicator-background{-webkit-transform:none;transform:none}.segment-button-indicator-animated{-webkit-transition:none;transition:none}}:host{--background:none;--background-checked:none;--background-hover:var(--color-checked);--background-focused:var(--color-checked);--background-activated-opacity:0;--background-focused-opacity:.12;--background-hover-opacity:.04;--color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.6);--color-checked:var(--ion-color-primary, #0054e9);--indicator-box-shadow:none;--indicator-color:var(--color-checked);--indicator-height:2px;--indicator-transition:transform 250ms cubic-bezier(0.4, 0, 0.2, 1);--indicator-transform:none;--padding-top:0;--padding-end:16px;--padding-bottom:0;--padding-start:16px;--transition:color 0.15s linear 0s, opacity 0.15s linear 0s;min-width:90px;min-height:48px;border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);font-size:14px;font-weight:500;letter-spacing:0.06em;line-height:40px;text-transform:uppercase}:host(.segment-button-disabled){opacity:0.3}:host(.in-segment-color){background:none;color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.6)}:host(.in-segment-color) ion-ripple-effect{color:var(--ion-color-base)}:host(.in-segment-color) .segment-button-indicator-background{background:var(--ion-color-base)}:host(.in-segment-color.segment-button-checked) .button-native{color:var(--ion-color-base)}:host(.in-segment-color.ion-focused) .button-native::after{background:var(--ion-color-base)}@media (any-hover: hover){:host(.in-segment-color:hover) .button-native{color:rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.6)}:host(.in-segment-color:hover) .button-native::after{background:var(--ion-color-base)}:host(.in-segment-color.segment-button-checked:hover) .button-native{color:var(--ion-color-base)}}:host(.in-toolbar:not(.in-segment-color)){--background:var(--ion-toolbar-segment-background, none);--background-checked:var(--ion-toolbar-segment-background-checked, none);--color:var(--ion-toolbar-segment-color, rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.6));--color-checked:var(--ion-toolbar-segment-color-checked, var(--ion-color-primary, #0054e9));--indicator-color:var(--ion-toolbar-segment-color-checked, var(--color-checked))}:host(.in-toolbar-color:not(.in-segment-color)) .button-native{color:rgba(var(--ion-color-contrast-rgb), 0.6)}:host(.in-toolbar-color.segment-button-checked:not(.in-segment-color)) .button-native{color:var(--ion-color-contrast)}@media (any-hover: hover){:host(.in-toolbar-color:not(.in-segment-color)) .button-native::after{background:var(--ion-color-contrast)}}::slotted(ion-icon){margin-top:12px;margin-bottom:12px;font-size:24px}::slotted(ion-label){margin-top:12px;margin-bottom:12px}:host(.segment-button-layout-icon-top) ::slotted(ion-label),:host(.segment-button-layout-icon-bottom) ::slotted(ion-icon){margin-top:0}:host(.segment-button-layout-icon-top) ::slotted(ion-icon),:host(.segment-button-layout-icon-bottom) ::slotted(ion-label){margin-bottom:0}:host(.segment-button-layout-icon-start) ::slotted(ion-label){-webkit-margin-start:8px;margin-inline-start:8px;-webkit-margin-end:0;margin-inline-end:0}:host(.segment-button-layout-icon-end) ::slotted(ion-label){-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:8px;margin-inline-end:8px}:host(.segment-button-has-icon-only) ::slotted(ion-icon){margin-top:12px;margin-bottom:12px}:host(.segment-button-has-label-only) ::slotted(ion-label){margin-top:12px;margin-bottom:12px}.segment-button-indicator{left:0;right:0;bottom:0}.segment-button-indicator-background{background:var(--indicator-color)}:host(.in-toolbar:not(.in-segment-color)) .segment-button-indicator-background{background:var(--ion-toolbar-segment-indicator-color, var(--indicator-color))}:host(.in-toolbar-color:not(.in-segment-color)) .segment-button-indicator-background{background:var(--ion-color-contrast)}";
-
-let ids$1 = 0;
-const SegmentButton = /*@__PURE__*/ proxyCustomElement$1(class SegmentButton extends H$1 {
-    constructor() {
-        super();
-        this.__registerHost();
-        this.__attachShadow();
-        this.segmentEl = null;
-        this.inheritedAttributes = {};
-        this.checked = false;
-        /**
-         * If `true`, the user cannot interact with the segment button.
-         */
-        this.disabled = false;
-        /**
-         * Set the layout of the text and icon in the segment.
-         */
-        this.layout = 'icon-top';
-        /**
-         * The type of the button.
-         */
-        this.type = 'button';
-        /**
-         * The value of the segment button.
-         */
-        this.value = 'ion-sb-' + ids$1++;
-        this.updateStyle = () => {
-            forceUpdate(this);
-        };
-        this.updateState = () => {
-            const { segmentEl } = this;
-            if (segmentEl) {
-                this.checked = segmentEl.value === this.value;
-                if (segmentEl.disabled) {
-                    this.disabled = true;
-                }
-            }
-        };
-    }
-    valueChanged() {
-        this.updateState();
-    }
-    connectedCallback() {
-        const segmentEl = (this.segmentEl = this.el.closest('ion-segment'));
-        if (segmentEl) {
-            this.updateState();
-            addEventListener$1(segmentEl, 'ionSelect', this.updateState);
-            addEventListener$1(segmentEl, 'ionStyle', this.updateStyle);
-        }
-        // Prevent buttons from being disabled when associated with segment content
-        if (this.contentId && this.disabled) {
-            printIonWarning(`[ion-segment-button] - Segment buttons cannot be disabled when associated with an <ion-segment-content>.`);
-            this.disabled = false;
-        }
-    }
-    disconnectedCallback() {
-        const segmentEl = this.segmentEl;
-        if (segmentEl) {
-            removeEventListener(segmentEl, 'ionSelect', this.updateState);
-            removeEventListener(segmentEl, 'ionStyle', this.updateStyle);
-            this.segmentEl = null;
-        }
-    }
-    componentWillLoad() {
-        this.inheritedAttributes = Object.assign({}, inheritAttributes$2(this.el, ['aria-label']));
-        // Return if there is no contentId defined
-        if (!this.contentId)
-            return;
-        // Attempt to find the Segment Content by its contentId
-        const segmentContent = document.getElementById(this.contentId);
-        // If no associated Segment Content exists, log an error and return
-        if (!segmentContent) {
-            printIonError(`[ion-segment-button] - Unable to find Segment Content with id="${this.contentId}".`);
-            return;
-        }
-        // Ensure the found element is a valid ION-SEGMENT-CONTENT
-        if (segmentContent.tagName !== 'ION-SEGMENT-CONTENT') {
-            printIonError(`[ion-segment-button] - Element with id="${this.contentId}" is not an <ion-segment-content> element.`);
-            return;
-        }
-    }
-    get hasLabel() {
-        return !!this.el.querySelector('ion-label');
-    }
-    get hasIcon() {
-        return !!this.el.querySelector('ion-icon');
-    }
-    /**
-     * @internal
-     * Focuses the native <button> element
-     * inside of ion-segment-button.
-     */
-    async setFocus() {
-        const { nativeEl } = this;
-        if (nativeEl !== undefined) {
-            nativeEl.focus();
-        }
-    }
-    render() {
-        const { checked, type, disabled, hasIcon, hasLabel, layout, segmentEl } = this;
-        const mode = getIonMode$2(this);
-        const hasSegmentColor = () => (segmentEl === null || segmentEl === void 0 ? void 0 : segmentEl.color) !== undefined;
-        return (h$1(Host$1, { key: '26cb7ee90455bcaa6416125802d7e5729fa05b5b', class: {
-                [mode]: true,
-                'in-toolbar': hostContext('ion-toolbar', this.el),
-                'in-toolbar-color': hostContext('ion-toolbar[color]', this.el),
-                'in-segment': hostContext('ion-segment', this.el),
-                'in-segment-color': hasSegmentColor(),
-                'segment-button-has-label': hasLabel,
-                'segment-button-has-icon': hasIcon,
-                'segment-button-has-label-only': hasLabel && !hasIcon,
-                'segment-button-has-icon-only': hasIcon && !hasLabel,
-                'segment-button-disabled': disabled,
-                'segment-button-checked': checked,
-                [`segment-button-layout-${layout}`]: true,
-                'ion-activatable': true,
-                'ion-activatable-instant': true,
-                'ion-focusable': true,
-            } }, h$1("button", Object.assign({ key: '75add37f11c107d1e2cfdb154e08004e9579e863', "aria-selected": checked ? 'true' : 'false', role: "tab", ref: (el) => (this.nativeEl = el), type: type, class: "button-native", part: "native", disabled: disabled }, this.inheritedAttributes), h$1("span", { key: '8e720d2a3e304903685bf09d226a64e944d78a22', class: "button-inner" }, h$1("slot", { key: 'c8e7b3ebf8f03042a1001155643b585283c73c65' })), mode === 'md' && h$1("ion-ripple-effect", { key: '3586ac317b8d82c92b0ccfbfae42f8778612321b' })), h$1("div", { key: '9cf93957da9e8dc333c8b05327bb903385b1c5f4', part: "indicator", class: "segment-button-indicator segment-button-indicator-animated" }, h$1("div", { key: 'd3b6f0b3860ec6896b46703f64ed1cc8c75612e3', part: "indicator-background", class: "segment-button-indicator-background" }))));
-    }
-    get el() { return this; }
-    static get watchers() { return {
-        "value": ["valueChanged"]
-    }; }
-    static get style() { return {
-        ios: segmentButtonIosCss,
-        md: segmentButtonMdCss
-    }; }
-}, [289, "ion-segment-button", {
-        "contentId": [513, "content-id"],
-        "disabled": [1028],
-        "layout": [1],
-        "type": [1],
-        "value": [8],
-        "checked": [32],
-        "setFocus": [64]
-    }, undefined, {
-        "value": ["valueChanged"]
-    }]);
-function defineCustomElement$1$f() {
-    if (typeof customElements === "undefined") {
-        return;
-    }
-    const components = ["ion-segment-button", "ion-ripple-effect"];
-    components.forEach(tagName => { switch (tagName) {
-        case "ion-segment-button":
-            if (!customElements.get(tagName)) {
-                customElements.define(tagName, SegmentButton);
-            }
-            break;
-        case "ion-ripple-effect":
-            if (!customElements.get(tagName)) {
-                defineCustomElement$13();
-            }
-            break;
-    } });
-}
-const defineCustomElement$w = defineCustomElement$1$f;
-
-/*!
- * (C) Ionic http://ionicframework.com - MIT License
- */
-
-const segmentContentCss = ":host{scroll-snap-align:center;scroll-snap-stop:always;-ms-flex-negative:0;flex-shrink:0;width:100%;min-height:1px;overflow-y:scroll;scrollbar-width:none;-ms-overflow-style:none;}:host::-webkit-scrollbar{display:none}";
-
-const SegmentContent = /*@__PURE__*/ proxyCustomElement$1(class SegmentContent extends H$1 {
-    constructor() {
-        super();
-        this.__registerHost();
-        this.__attachShadow();
-    }
-    render() {
-        return (h$1(Host$1, { key: 'db6876f2aee7afa1ea8bc147337670faa68fae1c' }, h$1("slot", { key: 'bc05714a973a5655668679033f5809a1da6db8cc' })));
-    }
-    static get style() { return segmentContentCss; }
-}, [257, "ion-segment-content"]);
-function defineCustomElement$1$e() {
-    if (typeof customElements === "undefined") {
-        return;
-    }
-    const components = ["ion-segment-content"];
-    components.forEach(tagName => { switch (tagName) {
-        case "ion-segment-content":
-            if (!customElements.get(tagName)) {
-                customElements.define(tagName, SegmentContent);
-            }
-            break;
-    } });
-}
-const defineCustomElement$v = defineCustomElement$1$e;
-
-/*!
- * (C) Ionic http://ionicframework.com - MIT License
- */
-
-const segmentViewIosCss = ":host{display:-ms-flexbox;display:flex;height:100%;overflow-x:scroll;-webkit-scroll-snap-type:x mandatory;-ms-scroll-snap-type:x mandatory;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none}:host::-webkit-scrollbar{display:none}:host(.segment-view-disabled){-ms-touch-action:none;touch-action:none;overflow-x:hidden}:host(.segment-view-scroll-disabled){pointer-events:none}:host(.segment-view-disabled){opacity:0.3}";
-
-const segmentViewMdCss = ":host{display:-ms-flexbox;display:flex;height:100%;overflow-x:scroll;-webkit-scroll-snap-type:x mandatory;-ms-scroll-snap-type:x mandatory;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none}:host::-webkit-scrollbar{display:none}:host(.segment-view-disabled){-ms-touch-action:none;touch-action:none;overflow-x:hidden}:host(.segment-view-scroll-disabled){pointer-events:none}:host(.segment-view-disabled){opacity:0.3}";
-
-const SegmentView = /*@__PURE__*/ proxyCustomElement$1(class SegmentView extends H$1 {
-    constructor() {
-        super();
-        this.__registerHost();
-        this.__attachShadow();
-        this.ionSegmentViewScroll = createEvent(this, "ionSegmentViewScroll", 7);
-        this.scrollEndTimeout = null;
-        this.isTouching = false;
-        /**
-         * If `true`, the segment view cannot be interacted with.
-         */
-        this.disabled = false;
-    }
-    handleScroll(ev) {
-        var _a;
-        const { scrollLeft, scrollWidth, clientWidth } = ev.target;
-        const scrollRatio = scrollLeft / (scrollWidth - clientWidth);
-        this.ionSegmentViewScroll.emit({
-            scrollRatio,
-            isManualScroll: (_a = this.isManualScroll) !== null && _a !== void 0 ? _a : true,
-        });
-        // Reset the timeout to check for scroll end
-        this.resetScrollEndTimeout();
-    }
-    /**
-     * Handle touch start event to know when the user is actively dragging the segment view.
-     */
-    handleScrollStart() {
-        if (this.scrollEndTimeout) {
-            clearTimeout(this.scrollEndTimeout);
-            this.scrollEndTimeout = null;
-        }
-        this.isTouching = true;
-    }
-    /**
-     * Handle touch end event to know when the user is no longer dragging the segment view.
-     */
-    handleTouchEnd() {
-        this.isTouching = false;
-    }
-    /**
-     * Reset the scroll end detection timer. This is called on every scroll event.
-     */
-    resetScrollEndTimeout() {
-        if (this.scrollEndTimeout) {
-            clearTimeout(this.scrollEndTimeout);
-            this.scrollEndTimeout = null;
-        }
-        this.scrollEndTimeout = setTimeout(() => {
-            this.checkForScrollEnd();
-        }, 
-        // Setting this to a lower value may result in inconsistencies in behavior
-        // across browsers (particularly Firefox).
-        // Ideally, all of this logic is removed once the scroll end event is
-        // supported on all browsers (https://caniuse.com/?search=scrollend)
-        100);
-    }
-    /**
-     * Check if the scroll has ended and the user is not actively touching.
-     * If the conditions are met (active content is enabled and no active touch),
-     * reset the scroll position and emit the scroll end event.
-     */
-    checkForScrollEnd() {
-        // Only emit scroll end event if the active content is not disabled and
-        // the user is not touching the segment view
-        if (!this.isTouching) {
-            this.isManualScroll = undefined;
-        }
-    }
-    /**
-     * @internal
-     *
-     * This method is used to programmatically set the displayed segment content
-     * in the segment view. Calling this method will update the `value` of the
-     * corresponding segment button.
-     *
-     * @param id: The id of the segment content to display.
-     * @param smoothScroll: Whether to animate the scroll transition.
-     */
-    async setContent(id, smoothScroll = true) {
-        const contents = this.getSegmentContents();
-        const index = contents.findIndex((content) => content.id === id);
-        if (index === -1)
-            return;
-        this.isManualScroll = false;
-        this.resetScrollEndTimeout();
-        const contentWidth = this.el.offsetWidth;
-        this.el.scrollTo({
-            top: 0,
-            left: index * contentWidth,
-            behavior: smoothScroll ? 'smooth' : 'instant',
-        });
-    }
-    getSegmentContents() {
-        return Array.from(this.el.querySelectorAll('ion-segment-content'));
-    }
-    render() {
-        const { disabled, isManualScroll } = this;
-        return (h$1(Host$1, { key: '754a374e89fd4dd682eb00497e717242a6f83357', class: {
-                'segment-view-disabled': disabled,
-                'segment-view-scroll-disabled': isManualScroll === false,
-            } }, h$1("slot", { key: '77366044eb61f0d4bba305bd6f0ef8fd1e25194b' })));
-    }
-    get el() { return this; }
-    static get style() { return {
-        ios: segmentViewIosCss,
-        md: segmentViewMdCss
-    }; }
-}, [289, "ion-segment-view", {
-        "disabled": [4],
-        "isManualScroll": [32],
-        "setContent": [64]
-    }, [[1, "scroll", "handleScroll"], [1, "touchstart", "handleScrollStart"], [1, "touchend", "handleTouchEnd"]]]);
-function defineCustomElement$1$d() {
-    if (typeof customElements === "undefined") {
-        return;
-    }
-    const components = ["ion-segment-view"];
-    components.forEach(tagName => { switch (tagName) {
-        case "ion-segment-view":
-            if (!customElements.get(tagName)) {
-                customElements.define(tagName, SegmentView);
+                defineCustomElement$1e();
             }
             break;
     } });
@@ -23266,17 +22341,17 @@ function defineCustomElement$t() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1a();
             }
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1e();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$$();
             }
             break;
     } });
@@ -23869,12 +22944,12 @@ function defineCustomElement$s() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1a();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$$();
             }
             break;
     } });
@@ -24164,12 +23239,12 @@ function defineCustomElement$r() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1e();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$$();
             }
             break;
     } });
@@ -26714,7 +25789,7 @@ function defineCustomElement$q() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1a();
             }
             break;
     } });
@@ -26981,32 +26056,32 @@ function defineCustomElement$n() {
             break;
         case "ion-button":
             if (!customElements.get(tagName)) {
-                defineCustomElement$$();
+                defineCustomElement$X();
             }
             break;
         case "ion-buttons":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1b();
+                defineCustomElement$17();
             }
             break;
         case "ion-checkbox":
             if (!customElements.get(tagName)) {
-                defineCustomElement$15();
+                defineCustomElement$11();
             }
             break;
         case "ion-content":
             if (!customElements.get(tagName)) {
-                defineCustomElement$11();
+                defineCustomElement$Z();
             }
             break;
         case "ion-header":
             if (!customElements.get(tagName)) {
-                defineCustomElement$U();
+                defineCustomElement$Q();
             }
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1e();
             }
             break;
         case "ion-item":
@@ -27016,22 +26091,22 @@ function defineCustomElement$n() {
             break;
         case "ion-list":
             if (!customElements.get(tagName)) {
-                defineCustomElement$M();
+                defineCustomElement$I();
             }
             break;
         case "ion-radio":
             if (!customElements.get(tagName)) {
-                defineCustomElement$F();
+                defineCustomElement$B();
             }
             break;
         case "ion-radio-group":
             if (!customElements.get(tagName)) {
-                defineCustomElement$D();
+                defineCustomElement$z();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$$();
             }
             break;
         case "ion-title":
@@ -27177,12 +26252,12 @@ function defineCustomElement$m() {
             break;
         case "ion-checkbox":
             if (!customElements.get(tagName)) {
-                defineCustomElement$15();
+                defineCustomElement$11();
             }
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1e();
             }
             break;
         case "ion-item":
@@ -27192,32 +26267,32 @@ function defineCustomElement$m() {
             break;
         case "ion-label":
             if (!customElements.get(tagName)) {
-                defineCustomElement$O();
+                defineCustomElement$K();
             }
             break;
         case "ion-list":
             if (!customElements.get(tagName)) {
-                defineCustomElement$M();
+                defineCustomElement$I();
             }
             break;
         case "ion-list-header":
             if (!customElements.get(tagName)) {
-                defineCustomElement$K();
+                defineCustomElement$G();
             }
             break;
         case "ion-radio":
             if (!customElements.get(tagName)) {
-                defineCustomElement$F();
+                defineCustomElement$B();
             }
             break;
         case "ion-radio-group":
             if (!customElements.get(tagName)) {
-                defineCustomElement$D();
+                defineCustomElement$z();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$$();
             }
             break;
     } });
@@ -28069,37 +27144,37 @@ function defineCustomElement$1$c() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1a();
             }
             break;
         case "ion-button":
             if (!customElements.get(tagName)) {
-                defineCustomElement$$();
+                defineCustomElement$X();
             }
             break;
         case "ion-buttons":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1b();
+                defineCustomElement$17();
             }
             break;
         case "ion-checkbox":
             if (!customElements.get(tagName)) {
-                defineCustomElement$15();
+                defineCustomElement$11();
             }
             break;
         case "ion-content":
             if (!customElements.get(tagName)) {
-                defineCustomElement$11();
+                defineCustomElement$Z();
             }
             break;
         case "ion-header":
             if (!customElements.get(tagName)) {
-                defineCustomElement$U();
+                defineCustomElement$Q();
             }
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1e();
             }
             break;
         case "ion-item":
@@ -28109,17 +27184,17 @@ function defineCustomElement$1$c() {
             break;
         case "ion-label":
             if (!customElements.get(tagName)) {
-                defineCustomElement$O();
+                defineCustomElement$K();
             }
             break;
         case "ion-list":
             if (!customElements.get(tagName)) {
-                defineCustomElement$M();
+                defineCustomElement$I();
             }
             break;
         case "ion-list-header":
             if (!customElements.get(tagName)) {
-                defineCustomElement$K();
+                defineCustomElement$G();
             }
             break;
         case "ion-modal":
@@ -28129,22 +27204,22 @@ function defineCustomElement$1$c() {
             break;
         case "ion-popover":
             if (!customElements.get(tagName)) {
-                defineCustomElement$X();
+                defineCustomElement$T();
             }
             break;
         case "ion-radio":
             if (!customElements.get(tagName)) {
-                defineCustomElement$F();
+                defineCustomElement$B();
             }
             break;
         case "ion-radio-group":
             if (!customElements.get(tagName)) {
-                defineCustomElement$D();
+                defineCustomElement$z();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$$();
             }
             break;
         case "ion-select-modal":
@@ -28216,7 +27291,7 @@ const defineCustomElement$k = defineCustomElement$1$b;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$j = defineCustomElement$S;
+const defineCustomElement$j = defineCustomElement$O;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -29392,12 +28467,12 @@ function defineCustomElement$1$7() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1a();
             }
             break;
         case "ion-spinner":
             if (!customElements.get(tagName)) {
-                defineCustomElement$S();
+                defineCustomElement$O();
             }
             break;
     } });
@@ -29417,7 +28492,7 @@ const defineCustomElement$a = defineCustomElement$q;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$9 = defineCustomElement$X;
+const defineCustomElement$9 = defineCustomElement$T;
 
 const appCss = "html.plt-mobile ion-app{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}html.plt-mobile ion-app [contenteditable]{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}ion-app.force-statusbar-padding{--ion-safe-area-top:20px}";
 
@@ -29429,7 +28504,7 @@ const App = /*@__PURE__*/ proxyCustomElement$1(class App extends H$1 {
     componentDidLoad() {
         {
             rIC(async () => {
-                const isHybrid = isPlatform(window, 'hybrid');
+                const isHybrid = isPlatform$1(window, 'hybrid');
                 if (!config.getBoolean('_testing')) {
                     __vitePreload(() => import('./index7.js'),true              ?[]:void 0).then((module) => module.startTapClick(config));
                 }
@@ -29441,7 +28516,7 @@ const App = /*@__PURE__*/ proxyCustomElement$1(class App extends H$1 {
                      * needInputShims() ensures that only iOS and Android
                      * platforms proceed into this block.
                      */
-                    const platform = isPlatform(window, 'ios') ? 'ios' : 'android';
+                    const platform = isPlatform$1(window, 'ios') ? 'ios' : 'android';
                     __vitePreload(() => import('./input-shims.js'),true              ?[]:void 0).then((module) => module.startInputShims(config, platform));
                 }
                 const hardwareBackButtonModule = await __vitePreload(() => Promise.resolve().then(() => hardwareBackButton),true              ?void 0:void 0);
@@ -29499,7 +28574,7 @@ const needInputShims = () => {
     /**
      * iOS always needs input shims
      */
-    const needsShimsIOS = isPlatform(window, 'ios') && isPlatform(window, 'mobile');
+    const needsShimsIOS = isPlatform$1(window, 'ios') && isPlatform$1(window, 'mobile');
     if (needsShimsIOS) {
         return true;
     }
@@ -29508,7 +28583,7 @@ const needInputShims = () => {
      * in the browser and only if the browser is using the
      * new Chrome 108+ resize behavior: https://developer.chrome.com/blog/viewport-resize-behavior/
      */
-    const isAndroidMobileWeb = isPlatform(window, 'android') && isPlatform(window, 'mobileweb');
+    const isAndroidMobileWeb = isPlatform$1(window, 'android') && isPlatform$1(window, 'mobileweb');
     if (isAndroidMobileWeb) {
         return true;
     }
@@ -29646,12 +28721,12 @@ function defineCustomElement$1$5() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1e();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$$();
             }
             break;
     } });
@@ -30081,7 +29156,7 @@ function defineCustomElement$1$2() {
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$$();
             }
             break;
     } });
@@ -32367,40 +31442,36 @@ const createReactComponent = (tagName, ReactComponentContext, manipulatePropsFun
 /* eslint-disable */
 /* tslint:disable */
 /* auto-generated react proxies */
-const IonAccordion = /*@__PURE__*/ createReactComponent('ion-accordion', undefined, undefined, defineCustomElement$1h);
-const IonAccordionGroup = /*@__PURE__*/ createReactComponent('ion-accordion-group', undefined, undefined, defineCustomElement$1g);
-const IonAvatar = /*@__PURE__*/ createReactComponent('ion-avatar', undefined, undefined, defineCustomElement$1f);
-const IonBadge = /*@__PURE__*/ createReactComponent('ion-badge', undefined, undefined, defineCustomElement$1d);
-const IonBreadcrumbs = /*@__PURE__*/ createReactComponent('ion-breadcrumbs', undefined, undefined, defineCustomElement$1c);
-const IonButtons = /*@__PURE__*/ createReactComponent('ion-buttons', undefined, undefined, defineCustomElement$1a);
-const IonCardContent = /*@__PURE__*/ createReactComponent('ion-card-content', undefined, undefined, defineCustomElement$19);
-const IonCardHeader = /*@__PURE__*/ createReactComponent('ion-card-header', undefined, undefined, defineCustomElement$18);
-const IonCardSubtitle = /*@__PURE__*/ createReactComponent('ion-card-subtitle', undefined, undefined, defineCustomElement$17);
-const IonCardTitle = /*@__PURE__*/ createReactComponent('ion-card-title', undefined, undefined, defineCustomElement$16);
-const IonCheckbox = /*@__PURE__*/ createReactComponent('ion-checkbox', undefined, undefined, defineCustomElement$14);
-const IonCol = /*@__PURE__*/ createReactComponent('ion-col', undefined, undefined, defineCustomElement$12);
-const IonContent = /*@__PURE__*/ createReactComponent('ion-content', undefined, undefined, defineCustomElement$10);
-const IonDatetime = /*@__PURE__*/ createReactComponent('ion-datetime', undefined, undefined, defineCustomElement$W);
-const IonGrid = /*@__PURE__*/ createReactComponent('ion-grid', undefined, undefined, defineCustomElement$V);
-const IonHeader = /*@__PURE__*/ createReactComponent('ion-header', undefined, undefined, defineCustomElement$T);
-const IonInput = /*@__PURE__*/ createReactComponent('ion-input', undefined, undefined, defineCustomElement$R);
-const IonInputPasswordToggle = /*@__PURE__*/ createReactComponent('ion-input-password-toggle', undefined, undefined, defineCustomElement$Q);
-const IonItemDivider = /*@__PURE__*/ createReactComponent('ion-item-divider', undefined, undefined, defineCustomElement$P);
-const IonLabel = /*@__PURE__*/ createReactComponent('ion-label', undefined, undefined, defineCustomElement$N);
-const IonList = /*@__PURE__*/ createReactComponent('ion-list', undefined, undefined, defineCustomElement$L);
-const IonMenu = /*@__PURE__*/ createReactComponent('ion-menu', undefined, undefined, defineCustomElement$J);
-const IonMenuButton = /*@__PURE__*/ createReactComponent('ion-menu-button', undefined, undefined, defineCustomElement$I);
-const IonMenuToggle = /*@__PURE__*/ createReactComponent('ion-menu-toggle', undefined, undefined, defineCustomElement$H);
-const IonRadio = /*@__PURE__*/ createReactComponent('ion-radio', undefined, undefined, defineCustomElement$E);
-const IonRadioGroup = /*@__PURE__*/ createReactComponent('ion-radio-group', undefined, undefined, defineCustomElement$C);
-const IonRefresher = /*@__PURE__*/ createReactComponent('ion-refresher', undefined, undefined, defineCustomElement$B);
-const IonRefresherContent = /*@__PURE__*/ createReactComponent('ion-refresher-content', undefined, undefined, defineCustomElement$A);
-const IonRow = /*@__PURE__*/ createReactComponent('ion-row', undefined, undefined, defineCustomElement$z);
-const IonSearchbar = /*@__PURE__*/ createReactComponent('ion-searchbar', undefined, undefined, defineCustomElement$y);
-const IonSegment = /*@__PURE__*/ createReactComponent('ion-segment', undefined, undefined, defineCustomElement$x);
-const IonSegmentButton = /*@__PURE__*/ createReactComponent('ion-segment-button', undefined, undefined, defineCustomElement$w);
-const IonSegmentContent = /*@__PURE__*/ createReactComponent('ion-segment-content', undefined, undefined, defineCustomElement$v);
-const IonSegmentView = /*@__PURE__*/ createReactComponent('ion-segment-view', undefined, undefined, defineCustomElement$u);
+const IonAccordion = /*@__PURE__*/ createReactComponent('ion-accordion', undefined, undefined, defineCustomElement$1d);
+const IonAccordionGroup = /*@__PURE__*/ createReactComponent('ion-accordion-group', undefined, undefined, defineCustomElement$1c);
+const IonAvatar = /*@__PURE__*/ createReactComponent('ion-avatar', undefined, undefined, defineCustomElement$1b);
+const IonBadge = /*@__PURE__*/ createReactComponent('ion-badge', undefined, undefined, defineCustomElement$19);
+const IonBreadcrumbs = /*@__PURE__*/ createReactComponent('ion-breadcrumbs', undefined, undefined, defineCustomElement$18);
+const IonButtons = /*@__PURE__*/ createReactComponent('ion-buttons', undefined, undefined, defineCustomElement$16);
+const IonCardContent = /*@__PURE__*/ createReactComponent('ion-card-content', undefined, undefined, defineCustomElement$15);
+const IonCardHeader = /*@__PURE__*/ createReactComponent('ion-card-header', undefined, undefined, defineCustomElement$14);
+const IonCardSubtitle = /*@__PURE__*/ createReactComponent('ion-card-subtitle', undefined, undefined, defineCustomElement$13);
+const IonCardTitle = /*@__PURE__*/ createReactComponent('ion-card-title', undefined, undefined, defineCustomElement$12);
+const IonCheckbox = /*@__PURE__*/ createReactComponent('ion-checkbox', undefined, undefined, defineCustomElement$10);
+const IonCol = /*@__PURE__*/ createReactComponent('ion-col', undefined, undefined, defineCustomElement$_);
+const IonContent = /*@__PURE__*/ createReactComponent('ion-content', undefined, undefined, defineCustomElement$Y);
+const IonDatetime = /*@__PURE__*/ createReactComponent('ion-datetime', undefined, undefined, defineCustomElement$S);
+const IonGrid = /*@__PURE__*/ createReactComponent('ion-grid', undefined, undefined, defineCustomElement$R);
+const IonHeader = /*@__PURE__*/ createReactComponent('ion-header', undefined, undefined, defineCustomElement$P);
+const IonInput = /*@__PURE__*/ createReactComponent('ion-input', undefined, undefined, defineCustomElement$N);
+const IonInputPasswordToggle = /*@__PURE__*/ createReactComponent('ion-input-password-toggle', undefined, undefined, defineCustomElement$M);
+const IonItemDivider = /*@__PURE__*/ createReactComponent('ion-item-divider', undefined, undefined, defineCustomElement$L);
+const IonLabel = /*@__PURE__*/ createReactComponent('ion-label', undefined, undefined, defineCustomElement$J);
+const IonList = /*@__PURE__*/ createReactComponent('ion-list', undefined, undefined, defineCustomElement$H);
+const IonMenu = /*@__PURE__*/ createReactComponent('ion-menu', undefined, undefined, defineCustomElement$F);
+const IonMenuButton = /*@__PURE__*/ createReactComponent('ion-menu-button', undefined, undefined, defineCustomElement$E);
+const IonMenuToggle = /*@__PURE__*/ createReactComponent('ion-menu-toggle', undefined, undefined, defineCustomElement$D);
+const IonRadio = /*@__PURE__*/ createReactComponent('ion-radio', undefined, undefined, defineCustomElement$A);
+const IonRadioGroup = /*@__PURE__*/ createReactComponent('ion-radio-group', undefined, undefined, defineCustomElement$y);
+const IonRefresher = /*@__PURE__*/ createReactComponent('ion-refresher', undefined, undefined, defineCustomElement$x);
+const IonRefresherContent = /*@__PURE__*/ createReactComponent('ion-refresher-content', undefined, undefined, defineCustomElement$w);
+const IonRow = /*@__PURE__*/ createReactComponent('ion-row', undefined, undefined, defineCustomElement$v);
+const IonSearchbar = /*@__PURE__*/ createReactComponent('ion-searchbar', undefined, undefined, defineCustomElement$u);
 const IonSelect = /*@__PURE__*/ createReactComponent('ion-select', undefined, undefined, defineCustomElement$l);
 const IonSelectOption = /*@__PURE__*/ createReactComponent('ion-select-option', undefined, undefined, defineCustomElement$k);
 const IonSpinner = /*@__PURE__*/ createReactComponent('ion-spinner', undefined, undefined, defineCustomElement$j);
@@ -32417,6 +31488,9 @@ displayName) => {
     };
     forwardRef.displayName = displayName;
     return React$4.forwardRef(forwardRef);
+};
+const isPlatform = (platform) => {
+    return isPlatform$1(window, platform);
 };
 const getConfig = () => {
     if (typeof window !== 'undefined') {
@@ -32950,7 +32024,7 @@ const ReactDelegate = (addView, removeView) => {
     };
 };
 
-const IonNavInner = createReactComponent('ion-nav', undefined, undefined, defineCustomElement$G);
+const IonNavInner = createReactComponent('ion-nav', undefined, undefined, defineCustomElement$C);
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const IonNavInternal = ({ children, forwardedRef, ...restOfProps }) => {
     const [views, setViews] = useState$3([]);
@@ -34813,13 +33887,6 @@ function useRouteId() {
     "useRouteId"
     /* UseRouteId */
   );
-}
-function useNavigation() {
-  let state = useDataRouterState(
-    "useNavigation"
-    /* UseNavigation */
-  );
-  return state.navigation;
 }
 function useRouteError() {
   let error = React2.useContext(RouteErrorContext);
@@ -39579,6 +38646,54 @@ const icons = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   womanSharp
 }, Symbol.toStringTag, { value: 'Module' }));
 
+// src/dhis2/queries.js
+
+// --- Fields needed for menus + forms (adds TEAs & sections for tracker programs) ---
+const PROGRAMS_FIELDS = [
+  "id",
+  "name",
+  "displayName",
+  "trackedEntityType",
+  "programType",
+  "organisationUnits[id,name,parent[id,name]]",
+
+  // For tracker programs: TEAs needed for enrollment forms
+  "programTrackedEntityAttributes[mandatory,trackedEntityAttribute[id,name,formName,attributeValues[value,attribute[id,code,name]],valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]]]]",
+  // Optional sectioning for TEAs
+  "programSections[id,name,formName,trackedEntityAttributes[id,name,formName,valueType,attributeValues[value,attribute[id,code,name]],optionSetValue,optionSet[id,name,code,options[id,name,code]]]]",
+
+  // For event & tracker-event forms: stages + their sections/DEs
+  "programStages[id,name,displayName,programStageSections[id,name,programStage[id,name],formName,dataElements[id,name,sortOrder,formName,domainType,valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]]]],programStageDataElements[id,programStage[id],dataElement[id,name,code,domainType,formName,valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]],attributeValues[value,attribute[id,name]]]]]",
+  "programRules[id,name,displayName,description,condition,priority,programRuleActions[id,programRuleActionType,dataElement[id,name,valueType],trackedEntityAttribute[id,name,valueType],data,content,location,programStageSection[id,name],programStage[id,name]]]",
+  "programRuleVariables[id,name,displayName,programRuleVariableSourceType,useCodeForOptionSet,dataElement[id,name,valueType,optionSet[id]],trackedEntityAttribute[id,name,valueType,optionSet[id]],programStage[id,name]]",
+
+  // NEW: required for grouping + ordering in navigation
+  "attributeValues[value,attribute[id,code,name]]",
+].join(",");
+
+const PROGRAM_RULES_FIELDS =
+  "id,name,displayName,description,condition,priority,program[id,name]," +
+  "programRuleActions[id,programRuleActionType,dataElement[id,name,valueType],trackedEntityAttribute[id,name,valueType],data,content,location,programStageSection[id,name],programStage[id,name]]";
+
+// --- Heavy fields for a single program drill (unchanged) ---
+const PROGRAM_STAGES_FIELDS =
+  "id,name,displayName,programType,attributeValues[value,attribute[id,code,name]]," +
+  "programStages[id,name,displayName,formType,program[id,formType,programType]," +
+  "programStageDataElements[id,programStage[id]," +
+  "dataElement[id,name,formName,displayName,code,valueType,domainType,optionSetValue," +
+  "optionSet[id,name,code,options[id,name,code]]]]," +
+  "programStageSections[id,name,description,program[id,programType,formType]," +
+  "programStage[id,name]," +
+  "dataElements[id,name,formName,displayName,code,valueType,domainType,optionSetValue," +
+  "optionSet[id,name,code,options[id,name,code]]],sortOrder]]";
+
+// --- keep these (referenced elsewhere) ---
+const USER_ORGANISATION_UNITS =
+  "userOnly=true&fields=id,name,level,displayName&paging=false";
+
+const ORGANISATION_UNITS_DESCENDANTS =
+  "fields=id,name,level,displayName,parent[id,name,level,displayName],children[id,name,level,displayName]&paging=false";
+
 // src/dhis2/dataStoreInit.js
 
 const dataStoreInit = async (forceRefresh = false) => {
@@ -39667,54 +38782,6 @@ const metadataInit = async (forceRefresh = false) => {
   }
 };
 
-// src/dhis2/queries.js
-
-// --- Fields needed for menus + forms (adds TEAs & sections for tracker programs) ---
-const PROGRAMS_FIELDS = [
-  "id",
-  "name",
-  "displayName",
-  "trackedEntityType",
-  "programType",
-  "organisationUnits[id,name,parent[id,name]]",
-
-  // For tracker programs: TEAs needed for enrollment forms
-  "programTrackedEntityAttributes[mandatory,trackedEntityAttribute[id,name,formName,attributeValues[value,attribute[id,code,name]],valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]]]]",
-  // Optional sectioning for TEAs
-  "programSections[id,name,formName,trackedEntityAttributes[id,name,formName,valueType,attributeValues[value,attribute[id,code,name]],optionSetValue,optionSet[id,name,code,options[id,name,code]]]]",
-
-  // For event & tracker-event forms: stages + their sections/DEs
-  "programStages[id,name,displayName,programStageSections[id,name,programStage[id,name],formName,dataElements[id,name,sortOrder,formName,domainType,valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]]]],programStageDataElements[id,programStage[id],dataElement[id,name,code,domainType,formName,valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]],attributeValues[value,attribute[id,name]]]]]",
-  "programRules[id,name,displayName,description,condition,priority,programRuleActions[id,programRuleActionType,dataElement[id,name,valueType],trackedEntityAttribute[id,name,valueType],data,content,location,programStageSection[id,name],programStage[id,name]]]",
-  "programRuleVariables[id,name,displayName,programRuleVariableSourceType,useCodeForOptionSet,dataElement[id,name,valueType,optionSet[id]],trackedEntityAttribute[id,name,valueType,optionSet[id]],programStage[id,name]]",
-
-  // NEW: required for grouping + ordering in navigation
-  "attributeValues[value,attribute[id,code,name]]",
-].join(",");
-
-const PROGRAM_RULES_FIELDS =
-  "id,name,displayName,description,condition,priority,program[id,name]," +
-  "programRuleActions[id,programRuleActionType,dataElement[id,name,valueType],trackedEntityAttribute[id,name,valueType],data,content,location,programStageSection[id,name],programStage[id,name]]";
-
-// --- Heavy fields for a single program drill (unchanged) ---
-const PROGRAM_STAGES_FIELDS =
-  "id,name,displayName,programType,attributeValues[value,attribute[id,code,name]]," +
-  "programStages[id,name,displayName,formType,program[id,formType,programType]," +
-  "programStageDataElements[id,programStage[id]," +
-  "dataElement[id,name,formName,displayName,code,valueType,domainType,optionSetValue," +
-  "optionSet[id,name,code,options[id,name,code]]]]," +
-  "programStageSections[id,name,description,program[id,programType,formType]," +
-  "programStage[id,name]," +
-  "dataElements[id,name,formName,displayName,code,valueType,domainType,optionSetValue," +
-  "optionSet[id,name,code,options[id,name,code]]],sortOrder]]";
-
-// --- keep these (referenced elsewhere) ---
-const USER_ORGANISATION_UNITS =
-  "userOnly=true&fields=id,name,level,displayName&paging=false";
-
-const ORGANISATION_UNITS_DESCENDANTS =
-  "fields=id,name,level,displayName,parent[id,name,level,displayName],children[id,name,level,displayName]&paging=false";
-
 // src/dhis2/metadataInit.js
 
 /**
@@ -39727,10 +38794,9 @@ const programsMetadata = async (forceRefresh = false) => {
     if (!forceRefresh) {
 
       const cachedPrograms = await LocalForageServiceInstance.getItem("programs", "programs");
-      console.log({ cachedPrograms });
       if (cachedPrograms && Array.isArray(cachedPrograms) && cachedPrograms.length > 0) {
         console.log("Programs loaded from cache:", cachedPrograms.length, "programs");
-        return null;
+        return cachedPrograms;
       }
     }
 
@@ -39763,6 +38829,44 @@ const programsMetadata = async (forceRefresh = false) => {
 
   } catch (error) {
     console.error("Metadata initialization failed:", error);
+    return error;
+  }
+};
+
+// src/dhis2/optionGroupsInit.js
+
+/**
+ * Initialize and cache DHIS2 optionGroups (optionGroups, etc.)
+ * This runs once on login to cache frequently accessed optionGroups
+ */
+const optionsGroupsInit = async (forceRefresh = false) => {
+  try {
+    // Check if we already have cached optionGroups (unless forcing refresh)
+    if (!forceRefresh) {
+      const cachedoptionGroups = await LocalForageServiceInstance.getItem("optionGroups", "optionGroups");
+      if (cachedoptionGroups && Array.isArray(cachedoptionGroups) && cachedoptionGroups.length > 0) {
+        console.log("optionGroups loaded from cache:", cachedoptionGroups.length, "optionGroups");
+        return null;
+      }
+    }
+
+    console.log("Fetching optionGroups from API...");
+
+    // Fetch all optionGroups with their options
+    const optionGroupsResponse = await dataStore.get(
+      "optionGroups?fields=id,name,code,displayName,options[id,code,name,displayName]&paging=false"
+    );
+
+    const optionGroups = optionGroupsResponse?.data?.optionGroups || [];
+
+    // Cache optionGroups
+    await LocalForageServiceInstance.setItem("optionGroups", optionGroups, "optionGroups");
+
+    console.log("optionGroups initialized and cached:", optionGroups.length, "optionGroups");
+    return null;
+
+  } catch (error) {
+    console.error("optionGroups initialization failed:", error);
     return error;
   }
 };
@@ -39806,6 +38910,14 @@ function DataStoreProvider({ children }) {
       }
       const programsResult = await programsMetadata(forceRefresh);
       if (programsResult) {
+        setError(programsResult);
+        setIsReady(false);
+        setIsLoading(false);
+        setInitialized(true);
+        return;
+      }
+      const optionGroups = await optionsGroupsInit(forceRefresh);
+      if (optionGroups) {
         setError(programsResult);
         setIsReady(false);
         setIsLoading(false);
@@ -40242,4 +39354,4 @@ const sendNotification = async (
   }
 };
 
-export { IonCardContent as $, IonAccordionGroup as A, BrowserRouter as B, IonAccordion as C, DataStoreProvider as D, albumsOutline as E, settingsSharp as F, IonButtons as G, IonMenuButton as H, IonMenuToggle as I, IonButton as J, mailOutline as K, Link as L, MEMISContext as M, notificationsOutline as N, ORGANISATION_UNITS_DESCENDANTS as O, PROGRAMS_FIELDS as P, IonBadge as Q, Route as R, SuspenseLoader as S, ToastItem as T, USER_ORGANISATION_UNITS as U, personCircleOutline as V, logOutOutline as W, showToast as X, Outlet as Y, IonCard as Z, __vitePreload as _, PROGRAM_RULES_FIELDS as a, closeCircle as a$, IonSegment as a0, IonSegmentButton as a1, IonSegmentView as a2, IonSegmentContent as a3, IonRow as a4, IonCol as a5, chevronDownOutline as a6, searchOutline as a7, checkmarkOutline as a8, funnel as a9, filterOutline as aA, optionsOutline as aB, ellipsisVertical as aC, arrowUp as aD, arrowDown as aE, removeOutline as aF, pencilOutline as aG, trashOutline as aH, closeOutline as aI, IonActionSheet as aJ, IonAlert as aK, addCircleOutline as aL, IonInputPasswordToggle as aM, chevronUpOutline as aN, checkmarkDoneOutline as aO, timeOutline as aP, createOutline as aQ, IonBreadcrumbs as aR, IonBreadcrumb as aS, chevronForward as aT, useParams as aU, IonAvatar as aV, qrCodeOutline as aW, IonSelect as aX, IonSelectOption as aY, closeCircleOutline as aZ, checkmarkCircleOutline as a_, IonGrid as aa, IonInput as ab, IonPage as ac, IonLoading as ad, addOutline as ae, y as af, IonSpinner as ag, close as ah, imageOutline as ai, document$1 as aj, alertCircleOutline as ak, IonText as al, arrowBackCircleOutline as am, chevronBackOutline as an, chevronForwardOutline as ao, saveOutline as ap, IonCheckbox as aq, IonRadioGroup as ar, IonRadio as as, IonPopover as at, IonDatetime as au, IonTextarea as av, IonCardHeader as aw, IonCardTitle as ax, useSearchParams as ay, IonSearchbar as az, PermissionsProvider as b, downloadOutline as b0, printOutline as b1, IonCardSubtitle as b2, PROGRAM_STAGES_FIELDS as b3, informationCircleOutline as b4, homeOutline as b5, arrowBackOutline as b6, useNavigation as b7, add as b8, eyeOutline as b9, Keyboard as bA, addEventListener$1 as bB, removeEventListener as bC, KeyboardResize as bD, win$2 as bE, raf as bF, getScrollElement as bG, scrollByPoint as bH, createAnimation as bI, getIonPageElement as bJ, trash as ba, chatbubble as bb, IonItemDivider as bc, IonModal as bd, funnelOutline as be, addCircle as bf, refresh as bg, IonTabs as bh, IonTabBar as bi, IonTabButton as bj, settings as bk, lockClosed as bl, documentLock as bm, IonTab as bn, chatbubbleOutline as bo, Navigate as bp, isRTL$1 as bq, createGesture as br, clamp as bs, doc as bt, pointerCoord as bu, readTask as bv, findClosestIonContent as bw, componentOnReady as bx, writeTask$1 as by, scrollToTop as bz, setupIonicReact as c, documentText as d, setActiveProgramCookie as e, Routes as f, api as g, useLocation as h, useNavigate as i, jsxRuntimeExports as j, icons as k, IonItem as l, IonIcon as m, IonLabel as n, IonRefresher as o, IonRefresherContent as p, usePermissions as q, IonMenu as r, sendNotification as s, IonHeader as t, useDataStore as u, IonToolbar as v, IonTitle as w, IonContent as x, IonList as y, home as z };
+export { archiveOutline as $, IonAccordion as A, BrowserRouter as B, albumsOutline as C, DataStoreProvider as D, settingsSharp as E, IonButtons as F, IonMenuButton as G, IonButton as H, IonMenuToggle as I, mailOutline as J, notificationsOutline as K, Link as L, MEMISContext as M, IonBadge as N, ORGANISATION_UNITS_DESCENDANTS as O, PROGRAMS_FIELDS as P, personCircleOutline as Q, Route as R, SuspenseLoader as S, ToastItem as T, USER_ORGANISATION_UNITS as U, logOutOutline as V, showToast as W, Outlet as X, settingsOutline as Y, hammerOutline as Z, __vitePreload as _, PROGRAM_RULES_FIELDS as a, IonAvatar as a$, banOutline as a0, arrowUpOutline as a1, arrowDownOutline as a2, IonCard as a3, IonCardContent as a4, IonCardHeader as a5, IonCardTitle as a6, gitPullRequestOutline as a7, shieldCheckmarkOutline as a8, buildOutline as a9, IonDatetime as aA, IonTextarea as aB, useSearchParams as aC, IonSearchbar as aD, filterOutline as aE, optionsOutline as aF, ellipsisVertical as aG, arrowUp as aH, arrowDown as aI, removeOutline as aJ, pencilOutline as aK, trashOutline as aL, closeOutline as aM, IonActionSheet as aN, IonAlert as aO, usePermissions as aP, addCircleOutline as aQ, useDataStore as aR, IonInputPasswordToggle as aS, chevronUpOutline as aT, checkmarkDoneOutline as aU, timeOutline as aV, createOutline as aW, IonBreadcrumbs as aX, IonBreadcrumb as aY, chevronForward as aZ, useParams as a_, chevronDownOutline as aa, searchOutline as ab, checkmarkOutline as ac, funnel as ad, IonGrid as ae, IonRow as af, IonCol as ag, IonInput as ah, IonPage as ai, IonLoading as aj, addOutline as ak, y as al, IonSpinner as am, close as an, imageOutline as ao, document$1 as ap, alertCircleOutline as aq, IonText as ar, arrowBackCircleOutline as as, chevronBackOutline as at, chevronForwardOutline as au, saveOutline as av, IonCheckbox as aw, IonRadioGroup as ax, IonRadio as ay, IonPopover as az, PermissionsProvider as b, qrCodeOutline as b0, IonSelect as b1, IonSelectOption as b2, closeCircle as b3, downloadOutline as b4, printOutline as b5, IonCardSubtitle as b6, PROGRAM_STAGES_FIELDS as b7, informationCircleOutline as b8, homeOutline as b9, findClosestIonContent as bA, componentOnReady as bB, writeTask$1 as bC, scrollToTop as bD, Keyboard as bE, addEventListener$1 as bF, removeEventListener as bG, KeyboardResize as bH, win$2 as bI, raf as bJ, getScrollElement as bK, scrollByPoint as bL, createAnimation as bM, getIonPageElement as bN, arrowBackOutline as ba, add as bb, eyeOutline as bc, trash as bd, chatbubble as be, IonItemDivider as bf, IonModal as bg, funnelOutline as bh, addCircle as bi, refresh as bj, IonTabs as bk, IonTabBar as bl, IonTabButton as bm, settings as bn, lockClosed as bo, documentLock as bp, IonTab as bq, checkmarkCircleOutline as br, chatbubbleOutline as bs, Navigate as bt, isRTL$1 as bu, createGesture as bv, clamp as bw, doc as bx, pointerCoord as by, readTask as bz, setupIonicReact as c, documentText as d, setActiveProgramCookie as e, Routes as f, api as g, useNavigate as h, icons as i, jsxRuntimeExports as j, IonItem as k, IonIcon as l, IonLabel as m, IonRefresher as n, IonRefresherContent as o, isPlatform as p, IonMenu as q, IonHeader as r, sendNotification as s, IonToolbar as t, useLocation as u, IonTitle as v, IonContent as w, IonList as x, home as y, IonAccordionGroup as z };
