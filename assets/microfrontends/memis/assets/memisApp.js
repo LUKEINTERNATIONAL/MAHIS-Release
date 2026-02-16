@@ -16033,7 +16033,10 @@ function MenuProvider({ children }) {
         isSection: p?.isSection,
         groupLabel: category || null,
         dependentProgram: p?.dependentProgram || null,
-        dependentStage: p?.dependentStage || null
+        dependentStage: p?.dependentStage || null,
+        editRoles: p?.editRoles || [],
+        deleteRoles: p?.deleteRoles || [],
+        accessRoles: p?.accessRoles || []
       };
       if (!category || position === "") {
         if (!placed.has(p.id)) {

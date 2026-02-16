@@ -1,4 +1,4 @@
-import { bx as doc, by as pointerCoord } from './breadCrumb.js';
+import { bw as doc, bx as pointerCoord } from './breadCrumb.js';
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
