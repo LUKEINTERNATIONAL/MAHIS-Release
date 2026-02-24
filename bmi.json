@@ -216,11 +216,35 @@
 		}
 	},
 	"colors": {
-		"Severely Underweight": ["#F9A639","#ffffff","#DE8107"],
-		"Moderately Underweight": ["#B9E6FE","#026AA2","#9ADBFE"],
-		"Mildly Underweight": ["#B9E6FE","#026AA2","#9ADBFE"],
-		"Normal": ["#DDEEDD","#016302","#BBDDBC"],
-		"overweight": ["#FEDF89","#B54708","#FED667"],
-		"Obese": ["#FECDCA","#B42318","#FDA19B"]
+		"Severely Underweight": [
+			"#fedf89",
+			"#B54708",
+			"#DE8107"
+		],
+		"Moderately Underweight": [
+			"#B9E6FE",
+			"#026AA2",
+			"#9ADBFE"
+		],
+		"Mildly Underweight": [
+			"#B9E6FE",
+			"#026AA2",
+			"#9ADBFE"
+		],
+		"Normal": [
+			"#DDEEDD",
+			"#016302",
+			"#BBDDBC"
+		],
+		"overweight": [
+			"#FEDF89",
+			"#B54708",
+			"#FED667"
+		],
+		"Obese": [
+			"#FECDCA",
+			"#B42318",
+			"#FDA19B"
+		]
 	}
 }
