@@ -15789,13 +15789,13 @@ function requireClient () {
 
 var clientExports = requireClient();
 
-const React$4 = await importShared('react');
-const {useEffect: useEffect$6,useState: useState$5,useCallback: useCallback$5} = React$4;
+const React$5 = await importShared('react');
+const {useEffect: useEffect$7,useState: useState$6,useCallback: useCallback$6} = React$5;
 const UserRolesProvider = ({ children }) => {
-  const [userRoles, setUserRoles] = useState$5(null);
-  const [user, setUser] = useState$5(null);
-  const [loading, setLoading] = useState$5(true);
-  const computeUserPermissions = useCallback$5((userRes, storeRes) => {
+  const [userRoles, setUserRoles] = useState$6(null);
+  const [user, setUser] = useState$6(null);
+  const [loading, setLoading] = useState$6(true);
+  const computeUserPermissions = useCallback$6((userRes, storeRes) => {
     if (!userRes || !userRes.userRoles || !storeRes || !storeRes.programs) {
       return { ...userRes, permissions: [] };
     }
@@ -15822,7 +15822,7 @@ const UserRolesProvider = ({ children }) => {
     }
     return { ...userRes, permissions };
   }, []);
-  const fetchUserOnline = useCallback$5(async () => {
+  const fetchUserOnline = useCallback$6(async () => {
     try {
       const userRes = await dataStore.get(
         "me?fields=id,username,name,organisationUnits[id,name,path,parent[id,name,level],level],userRoles[id,name,authorities],programs[id,name]"
@@ -15838,7 +15838,7 @@ const UserRolesProvider = ({ children }) => {
       return null;
     }
   }, [computeUserPermissions]);
-  const fetchRolesOnline = useCallback$5(async () => {
+  const fetchRolesOnline = useCallback$6(async () => {
     try {
       const result = await dataStore.get("userRoles?fields=id,name");
       const roles = result?.data?.userRoles || [];
@@ -15850,7 +15850,7 @@ const UserRolesProvider = ({ children }) => {
       return [];
     }
   }, []);
-  const loadUserOfflineFirst = useCallback$5(async () => {
+  const loadUserOfflineFirst = useCallback$6(async () => {
     const cachedUser = await LocalForageServiceInstance.getItem("userRes", "user");
     const cachedSharing = await LocalForageServiceInstance.getItem("sharingSettings", "sharingSettings");
     if (cachedUser && cachedSharing) {
@@ -15860,7 +15860,7 @@ const UserRolesProvider = ({ children }) => {
     }
     return fetchUserOnline();
   }, [computeUserPermissions, fetchUserOnline]);
-  const loadRolesOfflineFirst = useCallback$5(async () => {
+  const loadRolesOfflineFirst = useCallback$6(async () => {
     const cached = await LocalForageServiceInstance.getItem("userRoles", "userRoles");
     if (cached) {
       setUserRoles(cached);
@@ -15868,7 +15868,7 @@ const UserRolesProvider = ({ children }) => {
     }
     return fetchRolesOnline();
   }, [fetchRolesOnline]);
-  useEffect$6(() => {
+  useEffect$7(() => {
     let active = true;
     const init = async () => {
       setLoading(true);
@@ -15900,22 +15900,22 @@ const UserRolesProvider = ({ children }) => {
   );
 };
 
-const {useContext,useEffect: useEffect$5,useMemo: useMemo$4,useState: useState$4,useCallback: useCallback$4} = await importShared('react');
+const {useContext,useEffect: useEffect$6,useMemo: useMemo$5,useState: useState$5,useCallback: useCallback$5} = await importShared('react');
 const toNum = (v) => {
   const n = Number(v);
   return Number.isFinite(n) ? n : Number.POSITIVE_INFINITY;
 };
 function MenuProvider({ children }) {
-  const [activeLink, setActiveLink] = useState$4("/");
-  const [navigationMenu, setNavigationMenu] = useState$4([]);
-  const [menuLoaded, setMenuLoaded] = useState$4(false);
-  const [menuError, setMenuError] = useState$4(null);
-  const [userAccessData, setUserAccessData] = useState$4(null);
-  const [userAccessLoaded, setUserAccessLoaded] = useState$4(false);
-  const [programs, setPrograms] = useState$4([]);
+  const [activeLink, setActiveLink] = useState$5("/");
+  const [navigationMenu, setNavigationMenu] = useState$5([]);
+  const [menuLoaded, setMenuLoaded] = useState$5(false);
+  const [menuError, setMenuError] = useState$5(null);
+  const [userAccessData, setUserAccessData] = useState$5(null);
+  const [userAccessLoaded, setUserAccessLoaded] = useState$5(false);
+  const [programs, setPrograms] = useState$5([]);
   const { user } = useContext(MEMISContext.UserRolesContext) || {};
   useContext(MEMISContext.PermissionContext) || {};
-  const getUserAccessData = useCallback$4(async () => {
+  const getUserAccessData = useCallback$5(async () => {
     try {
       setUserAccessLoaded(false);
       const userData = await LocalForageServiceInstance.getItem("userRes", "user");
@@ -15927,7 +15927,7 @@ function MenuProvider({ children }) {
       setUserAccessLoaded(true);
     }
   }, []);
-  const getNavMenu = useCallback$4(async () => {
+  const getNavMenu = useCallback$5(async () => {
     setMenuLoaded(false);
     setMenuError(null);
     try {
@@ -15946,7 +15946,7 @@ function MenuProvider({ children }) {
     if (!id) return null;
     return id.split("?")[0];
   };
-  const hasAccessToMenuItem = useCallback$4((item) => {
+  const hasAccessToMenuItem = useCallback$5((item) => {
     if (!userAccessData) return false;
     const userPrograms = userAccessData.programs || [];
     const userRoleIds = (userAccessData.userRoles || []).map((role) => role.id);
@@ -15981,7 +15981,7 @@ function MenuProvider({ children }) {
     }
     return true;
   }, [userAccessData]);
-  const mergedPrograms = useMemo$4(() => {
+  const mergedPrograms = useMemo$5(() => {
     if (Array.isArray(navigationMenu) && navigationMenu.length > 0) {
       const programsById = new Map((programs || []).map((p) => [p.id, p]));
       return navigationMenu.map((cfg) => {
@@ -15994,7 +15994,7 @@ function MenuProvider({ children }) {
     }
     return Array.isArray(programs) ? programs : [];
   }, [navigationMenu, programs]);
-  const allPrograms = useMemo$4(() => {
+  const allPrograms = useMemo$5(() => {
     const raw = Array.isArray(mergedPrograms) ? mergedPrograms : [];
     const seen = /* @__PURE__ */ new Set();
     return raw.filter((p) => {
@@ -16003,13 +16003,13 @@ function MenuProvider({ children }) {
       return true;
     });
   }, [mergedPrograms]);
-  const visiblePrograms = useMemo$4(() => {
+  const visiblePrograms = useMemo$5(() => {
     if (!userAccessLoaded || !userAccessData) {
       return [];
     }
     return allPrograms.filter((item) => hasAccessToMenuItem(item));
   }, [allPrograms, userAccessLoaded, userAccessData, hasAccessToMenuItem]);
-  const menuModel = useMemo$4(() => {
+  const menuModel = useMemo$5(() => {
     const groupsMap = /* @__PURE__ */ new Map();
     const ungrouped = [];
     const placed = /* @__PURE__ */ new Set();
@@ -16071,7 +16071,7 @@ function MenuProvider({ children }) {
     return { groups, ungrouped, flat };
   }, [visiblePrograms]);
   const menuItems = menuModel.flat;
-  const refresh = useCallback$4(async () => {
+  const refresh = useCallback$5(async () => {
     setMenuLoaded(false);
     setUserAccessLoaded(false);
     await Promise.all([getNavMenu(), getUserAccessData()]);
@@ -16079,14 +16079,14 @@ function MenuProvider({ children }) {
     setUserAccessLoaded(true);
   }, [getNavMenu, getUserAccessData]);
   const showErrorState = userAccessLoaded && !userAccessData;
-  useEffect$5(() => {
+  useEffect$6(() => {
     if (!user) return;
     (async () => {
       const progr = await LocalForageServiceInstance.getItem("programs", "programs");
       setPrograms(Array.isArray(progr) ? progr : []);
     })();
   }, [user]);
-  useEffect$5(() => {
+  useEffect$6(() => {
     getNavMenu();
     getUserAccessData();
   }, [getNavMenu, getUserAccessData]);
@@ -16110,8 +16110,8 @@ function MenuProvider({ children }) {
   );
 }
 
-const React$3 = await importShared('react');
-const {useCallback: useCallback$3,useEffect: useEffect$4,useMemo: useMemo$3,useRef,useState: useState$3} = React$3;
+const React$4 = await importShared('react');
+const {useCallback: useCallback$4,useEffect: useEffect$5,useMemo: useMemo$4,useRef,useState: useState$4} = React$4;
 function readActiveProgramIdFromCookie() {
   try {
     const rawPair = document.cookie.split(";").find((c) => c.trim().startsWith("memis_cookie="));
@@ -16124,12 +16124,12 @@ function readActiveProgramIdFromCookie() {
   }
 }
 function ProgramStageProvider({ children }) {
-  const [programId, setProgramId] = useState$3(() => readActiveProgramIdFromCookie());
-  const [programStages, setProgramStages] = useState$3([]);
-  const [loading, setLoading] = useState$3(false);
-  const [error, setError] = useState$3(null);
+  const [programId, setProgramId] = useState$4(() => readActiveProgramIdFromCookie());
+  const [programStages, setProgramStages] = useState$4([]);
+  const [loading, setLoading] = useState$4(false);
+  const [error, setError] = useState$4(null);
   const reqSeq = useRef(0);
-  const fetchProgramStages = useCallback$3(async (id) => {
+  const fetchProgramStages = useCallback$4(async (id) => {
     if (!id) {
       setProgramStages([]);
       return [];
@@ -16167,23 +16167,23 @@ function ProgramStageProvider({ children }) {
       if (mySeq === reqSeq?.current) setLoading(false);
     }
   }, []);
-  useEffect$4(() => {
+  useEffect$5(() => {
     if (programId) fetchProgramStages(programId);
     else setProgramStages([]);
   }, [programId, fetchProgramStages]);
-  const refresh = useCallback$3(() => {
+  const refresh = useCallback$4(() => {
     const id = readActiveProgramIdFromCookie();
     setProgramId(id);
     return id ? fetchProgramStages(id) : Promise.resolve([]);
   }, [fetchProgramStages]);
-  const setActiveProgramIdLocal = useCallback$3(
+  const setActiveProgramIdLocal = useCallback$4(
     (id) => {
       setProgramId(id);
       return id ? fetchProgramStages(id) : Promise.resolve([]);
     },
     [fetchProgramStages]
   );
-  const value = useMemo$3(
+  const value = useMemo$4(
     () => ({
       programId,
       programStages,
@@ -16198,15 +16198,15 @@ function ProgramStageProvider({ children }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(MEMISContext.ProgramStageContext.Provider, { value, children });
 }
 
-const {useCallback: useCallback$2,useEffect: useEffect$3,useState: useState$2,useMemo: useMemo$2} = await importShared('react');
+const {useCallback: useCallback$3,useEffect: useEffect$4,useState: useState$3,useMemo: useMemo$3} = await importShared('react');
 function ProgramProvider({ children }) {
-  const [programs, setPrograms] = useState$2([]);
-  const [enrollmentPrograms, setEnrollmentPrograms] = useState$2([]);
-  const [loading, setLoading] = useState$2(true);
-  const [programsReady, setProgramsReady] = useState$2(false);
-  const [error, setError] = useState$2(null);
+  const [programs, setPrograms] = useState$3([]);
+  const [enrollmentPrograms, setEnrollmentPrograms] = useState$3([]);
+  const [loading, setLoading] = useState$3(true);
+  const [programsReady, setProgramsReady] = useState$3(false);
+  const [error, setError] = useState$3(null);
   const encodeFields = (fields) => encodeURIComponent(fields || "");
-  const fetchProgramsFromOnline = useCallback$2(async () => {
+  const fetchProgramsFromOnline = useCallback$3(async () => {
     setLoading(true);
     setProgramsReady(false);
     try {
@@ -16242,7 +16242,7 @@ function ProgramProvider({ children }) {
       return [];
     }
   }, []);
-  const fetchPrograms = useCallback$2(async () => {
+  const fetchPrograms = useCallback$3(async () => {
     setLoading(true);
     setProgramsReady(false);
     try {
@@ -16278,7 +16278,7 @@ function ProgramProvider({ children }) {
       return [];
     }
   }, [fetchProgramsFromOnline]);
-  const fetchEnrollmentPrograms = useCallback$2(async () => {
+  const fetchEnrollmentPrograms = useCallback$3(async () => {
     try {
       const cached = await LocalForageServiceInstance.getItem(
         "enrollmentPrograms",
@@ -16306,16 +16306,16 @@ function ProgramProvider({ children }) {
       return [];
     }
   }, []);
-  useEffect$3(() => {
+  useEffect$4(() => {
     (async () => {
       await fetchPrograms();
       await fetchEnrollmentPrograms();
     })();
   }, []);
-  const refresh = useCallback$2(() => fetchProgramsFromOnline(), [
+  const refresh = useCallback$3(() => fetchProgramsFromOnline(), [
     fetchProgramsFromOnline
   ]);
-  const value = useMemo$2(
+  const value = useMemo$3(
     () => ({
       programs,
       enrollmentPrograms,
@@ -16332,12 +16332,12 @@ function ProgramProvider({ children }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(MEMISContext.ProgramContext.Provider, { value, children });
 }
 
-const React$2 = await importShared('react');
-const {useCallback: useCallback$1,useEffect: useEffect$2,useMemo: useMemo$1,useState: useState$1} = React$2;
+const React$3 = await importShared('react');
+const {useCallback: useCallback$2,useEffect: useEffect$3,useMemo: useMemo$2,useState: useState$2} = React$3;
 function UserProvider({ children }) {
-  const [userOrganisationUnits, setUserOrganisationUnits] = useState$1([]);
-  const [loading, setLoading] = useState$1(true);
-  const fetchOrgUnitsOnline = useCallback$1(async () => {
+  const [userOrganisationUnits, setUserOrganisationUnits] = useState$2([]);
+  const [loading, setLoading] = useState$2(true);
+  const fetchOrgUnitsOnline = useCallback$2(async () => {
     try {
       setLoading(true);
       const root = await dataStore.get(
@@ -16387,7 +16387,7 @@ function UserProvider({ children }) {
       setLoading(false);
     }
   }, []);
-  useEffect$2(() => {
+  useEffect$3(() => {
     let mounted = true;
     const load = async () => {
       setLoading(true);
@@ -16406,7 +16406,7 @@ function UserProvider({ children }) {
     load();
     return () => mounted = false;
   }, [fetchOrgUnitsOnline]);
-  const value = useMemo$1(
+  const value = useMemo$2(
     () => ({
       userOrganisationUnits,
       loading,
@@ -16418,13 +16418,13 @@ function UserProvider({ children }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(MEMISContext.UserContext.Provider, { value, children });
 }
 
-const React$1 = await importShared('react');
-const {useEffect: useEffect$1,useState,useMemo,useCallback} = React$1;
+const React$2 = await importShared('react');
+const {useEffect: useEffect$2,useState: useState$1,useMemo: useMemo$1,useCallback: useCallback$1} = React$2;
 const DashboardProvider = ({ children }) => {
-  const [dashboardConfigs, setDashboardConfigs] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const loadDashboardConfigurations = useCallback(async () => {
+  const [dashboardConfigs, setDashboardConfigs] = useState$1([]);
+  const [isLoading, setIsLoading] = useState$1(true);
+  const [error, setError] = useState$1(null);
+  const loadDashboardConfigurations = useCallback$1(async () => {
     setIsLoading(true);
     setError(null);
     let attempts = 0;
@@ -16455,10 +16455,10 @@ const DashboardProvider = ({ children }) => {
       setIsLoading(false);
     }
   }, []);
-  useEffect$1(() => {
+  useEffect$2(() => {
     loadDashboardConfigurations();
   }, [loadDashboardConfigurations]);
-  const value = useMemo(
+  const value = useMemo$1(
     () => ({
       dashboardConfigs,
       isLoading,
@@ -16468,6 +16468,29 @@ const DashboardProvider = ({ children }) => {
     [dashboardConfigs, isLoading, error, loadDashboardConfigurations]
   );
   return /* @__PURE__ */ jsxRuntimeExports.jsx(MEMISContext.DashboardContext.Provider, { value, children });
+};
+
+const React$1 = await importShared('react');
+const {useEffect: useEffect$1,useState,useMemo,useCallback} = React$1;
+const TrackedEntitiesProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [equipmentList, setEquipmentList] = useState([]);
+  const getEquipmentList = async (programId, ou, page, pageSize) => {
+  };
+  useEffect$1(() => {
+    getEquipmentList();
+  }, [getEquipmentList]);
+  const value = useMemo(
+    () => ({
+      equipmentList,
+      isLoading,
+      error,
+      reload: getEquipmentList
+    }),
+    [equipmentList, isLoading, error, getEquipmentList]
+  );
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(MEMISContext.TrackedEntitiesContext.Provider, { value, children });
 };
 
 await importShared('react');
@@ -16486,8 +16509,9 @@ const providers = [
   // 5. requires program
   DashboardProvider,
   // 6. requires data store configs
-  MenuProvider
+  MenuProvider,
   // 6. LAST: depends on user + roles + permissions + programs
+  TrackedEntitiesProvider
 ];
 function ProviderController({ children }) {
   return providers.reduceRight(
