@@ -1,6 +1,5 @@
 import { W as WebPlugin, C as CapacitorBarcodeScannerScanOrientation, H as Html5Qrcode, a as CapacitorBarcodeScannerTypeHint } from './Layout.js';
 
-/* eslint-env browser */
 /**
  * Implements OSBarcodePlugin to provide web functionality for barcode scanning.
  */
@@ -16,7 +15,8 @@ class CapacitorBarcodeScannerWeb extends WebPlugin {
             await window.OSBarcodeWebScanner.stop();
             window.OSBarcodeWebScanner = null;
         }
-        document.getElementById("cap-os-barcode-scanner-container-dialog").style.display = "none";
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        document.getElementById('cap-os-barcode-scanner-container-dialog').style.display = 'none';
     }
     /**
      * Builds the HTML elements necessary for the barcode scanner UI.
@@ -25,35 +25,31 @@ class CapacitorBarcodeScannerWeb extends WebPlugin {
      * @private
      */
     buildScannerElement() {
-        if (document.getElementById("cap-os-barcode-scanner-container")) {
-            document.getElementById("cap-os-barcode-scanner-container").className =
-                "scanner-container-display";
+        if (document.getElementById('cap-os-barcode-scanner-container')) {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            document.getElementById('cap-os-barcode-scanner-container').className = 'scanner-container-display';
             return;
         }
         // Create and configure scanner container elements
-        const caposbarcodescannercontainer = document.body.appendChild(document.createElement("div"));
-        caposbarcodescannercontainer.id = "cap-os-barcode-scanner-container";
-        const caposbarcodescannercontainerdialog = document.createElement("div");
-        caposbarcodescannercontainerdialog.id =
-            "cap-os-barcode-scanner-container-dialog";
-        caposbarcodescannercontainerdialog.className = "scanner-dialog";
+        const caposbarcodescannercontainer = document.body.appendChild(document.createElement('div'));
+        caposbarcodescannercontainer.id = 'cap-os-barcode-scanner-container';
+        const caposbarcodescannercontainerdialog = document.createElement('div');
+        caposbarcodescannercontainerdialog.id = 'cap-os-barcode-scanner-container-dialog';
+        caposbarcodescannercontainerdialog.className = 'scanner-dialog';
         // Inner dialog elements including the close button and scanner view
-        const caposbarcodescannercontainerdialoginner = document.createElement("div");
-        caposbarcodescannercontainerdialoginner.className = "scanner-dialog-inner";
-        const caposbarcodescannercontainerdialoginnerclose = document.createElement("span");
-        caposbarcodescannercontainerdialoginnerclose.id =
-            "cap-os-barcode-scanner-close-button";
-        caposbarcodescannercontainerdialoginnerclose.className = "close-button";
-        caposbarcodescannercontainerdialoginnerclose.innerHTML = "&times;";
+        const caposbarcodescannercontainerdialoginner = document.createElement('div');
+        caposbarcodescannercontainerdialoginner.className = 'scanner-dialog-inner';
+        const caposbarcodescannercontainerdialoginnerclose = document.createElement('span');
+        caposbarcodescannercontainerdialoginnerclose.id = 'cap-os-barcode-scanner-close-button';
+        caposbarcodescannercontainerdialoginnerclose.className = 'close-button';
+        caposbarcodescannercontainerdialoginnerclose.innerHTML = '&times;';
         caposbarcodescannercontainerdialoginner.appendChild(caposbarcodescannercontainerdialoginnerclose);
-        const caposbarcodescannercontainerdialoginnercontainerp = document.createElement("p");
-        caposbarcodescannercontainerdialoginnercontainerp.innerHTML = "&nbsp;";
+        const caposbarcodescannercontainerdialoginnercontainerp = document.createElement('p');
+        caposbarcodescannercontainerdialoginnercontainerp.innerHTML = '&nbsp;';
         caposbarcodescannercontainerdialoginner.appendChild(caposbarcodescannercontainerdialoginnercontainerp);
-        const caposbarcodescannercontainerdialoginnercontainer = document.createElement("div");
-        caposbarcodescannercontainerdialoginnercontainer.className =
-            "scanner-container-full-width";
-        caposbarcodescannercontainerdialoginnercontainer.id =
-            "cap-os-barcode-scanner-container-scanner";
+        const caposbarcodescannercontainerdialoginnercontainer = document.createElement('div');
+        caposbarcodescannercontainerdialoginnercontainer.className = 'scanner-container-full-width';
+        caposbarcodescannercontainerdialoginnercontainer.id = 'cap-os-barcode-scanner-container-scanner';
         caposbarcodescannercontainerdialoginner.appendChild(caposbarcodescannercontainerdialoginnercontainer);
         caposbarcodescannercontainerdialog.appendChild(caposbarcodescannercontainerdialoginner);
         caposbarcodescannercontainer.appendChild(caposbarcodescannercontainerdialog);
@@ -66,39 +62,36 @@ class CapacitorBarcodeScannerWeb extends WebPlugin {
      */
     async scanBarcode(options) {
         this.buildScannerElement();
-        document.getElementById("cap-os-barcode-scanner-container-dialog").style.display = "block";
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        document.getElementById('cap-os-barcode-scanner-container-dialog').style.display = 'block';
         return new Promise((resolve, reject) => {
             var _a, _b;
             const param = {
-                facingMode: options.cameraDirection === 1 ? "environment" : "user",
+                facingMode: options.cameraDirection === 1 ? 'environment' : 'user',
                 scanButton: options.scanButton === undefined ? false : options.scanButton,
-                scanInstructions: options.scanInstructions
-                    ? options.scanInstructions
-                    : "",
+                scanInstructions: options.scanInstructions ? options.scanInstructions : '',
                 orientation: options.scanOrientation
                     ? options.scanOrientation
                     : CapacitorBarcodeScannerScanOrientation.PORTRAIT,
-                showCameraSelection: ((_a = options.web) === null || _a === void 0 ? void 0 : _a.showCameraSelection)
-                    ? options.web.showCameraSelection
-                    : false,
+                showCameraSelection: ((_a = options.web) === null || _a === void 0 ? void 0 : _a.showCameraSelection) ? options.web.showCameraSelection : false,
                 typeHint: options.hint === 17 ? undefined : options.hint,
                 scannerFPS: ((_b = options.web) === null || _b === void 0 ? void 0 : _b.scannerFPS) ? options.web.scannerFPS : 50,
             };
             let alreadyCancelled = false;
-            const closeButton = document.getElementById("cap-os-barcode-scanner-close-button");
+            const closeButton = document.getElementById('cap-os-barcode-scanner-close-button');
             if (closeButton) {
                 closeButton.onclick = async () => {
                     if (alreadyCancelled)
                         return;
                     alreadyCancelled = true;
                     await this.stopAndHideScanner();
-                    reject(new Error("Couldn’t scan because the process was cancelled."));
+                    reject(new Error('Couldn’t scan because the process was cancelled.'));
                 };
             }
             // Set up and start the scanner
-            const scannerElement = document.getElementById("cap-os-barcode-scanner-container-scanner");
+            const scannerElement = document.getElementById('cap-os-barcode-scanner-container-scanner');
             if (!scannerElement) {
-                throw new Error("Scanner Element is required for web");
+                throw new Error('Scanner Element is required for web');
             }
             window.OSBarcodeWebScanner = new Html5Qrcode(scannerElement.id, {
                 formatsToSupport: param.typeHint !== undefined ? [param.typeHint] : undefined,
@@ -109,7 +102,7 @@ class CapacitorBarcodeScannerWeb extends WebPlugin {
                 qrbox: scannerElement.getBoundingClientRect().width * (9 / 16) - 10,
                 aspectRatio: 16 / 9,
                 videoConstraints: {
-                    focusMode: "continuous",
+                    focusMode: 'continuous',
                     height: { min: 576, ideal: 1920 },
                     deviceId: undefined,
                     facingMode: param.facingMode,
@@ -126,9 +119,9 @@ class CapacitorBarcodeScannerWeb extends WebPlugin {
             };
             const OSBarcodeWebScannerErrorCallback = (error) => {
                 const allowedErrors = [
-                    "NotFoundException",
-                    "No barcode or QR code detected",
-                    "No MultiFormat Readers were able to detect the code",
+                    'NotFoundException',
+                    'No barcode or QR code detected',
+                    'No MultiFormat Readers were able to detect the code',
                 ];
                 if (!allowedErrors.find((e) => error.indexOf(e) !== -1)) {
                     this.stopAndHideScanner();
