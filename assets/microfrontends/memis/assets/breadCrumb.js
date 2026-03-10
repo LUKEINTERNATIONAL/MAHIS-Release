@@ -39955,14 +39955,15 @@ const showToast = (message, type = "info") => {
 const ToastItem = () => /* @__PURE__ */ jsxRuntimeExports.jsx(Lt, { ...toastConfig });
 
 const {useState,useEffect} = await importShared('react');
-const SuspenseLoader = () => {
-  const messages = [
+const SuspenseLoader = ({
+  messages = [
     "Loading MEMIS...",
     "Getting everything ready...",
     "Preparing your experience...",
     "Almost there...",
     "Setting things up..."
-  ];
+  ]
+}) => {
   const loaderIcons = [medkit, construct, thermometer, cog];
   const [messageIndex, setMessageIndex] = useState(0);
   useEffect(() => {
@@ -40025,12 +40026,18 @@ const SuspenseLoader = () => {
             ]
           }
         ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: {
-          color: "#666",
-          fontSize: "14px",
-          minHeight: "20px",
-          transition: "opacity 0.3s ease-in-out"
-        }, children: messages[messageIndex] })
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "p",
+          {
+            style: {
+              color: "#666",
+              fontSize: "14px",
+              minHeight: "20px",
+              transition: "opacity 0.3s ease-in-out"
+            },
+            children: messages[messageIndex]
+          }
+        )
       ]
     }
   ) }) }) });

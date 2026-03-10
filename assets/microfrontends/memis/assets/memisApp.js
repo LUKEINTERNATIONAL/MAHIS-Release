@@ -16463,7 +16463,8 @@ const DashboardProvider = ({ children }) => {
       dashboardConfigs,
       isLoading,
       error,
-      reload: loadDashboardConfigurations
+      reload: loadDashboardConfigurations,
+      setIsLoading
     }),
     [dashboardConfigs, isLoading, error, loadDashboardConfigurations]
   );
