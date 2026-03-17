@@ -1,4 +1,4 @@
-import { bK as getIonPageElement, bJ as createAnimation } from './breadCrumb.js';
+import { bL as getIonPageElement, bK as createAnimation } from './breadCrumb.js';
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
