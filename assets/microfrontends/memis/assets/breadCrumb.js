@@ -6696,7 +6696,7 @@ const createColorClasses$1 = (color) => {
         }
         : null;
 };
-function defineCustomElement$1i() {
+function defineCustomElement$1j() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7060,7 +7060,7 @@ const Accordion = /*@__PURE__*/ proxyCustomElement$1(class Accordion extends H$1
         "value": ["valueChanged"]
     }]);
 let accordionIds = 0;
-function defineCustomElement$1$D() {
+function defineCustomElement$1$E() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7073,12 +7073,12 @@ function defineCustomElement$1$D() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
     } });
 }
-const defineCustomElement$1h = defineCustomElement$1$D;
+const defineCustomElement$1i = defineCustomElement$1$E;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7329,7 +7329,7 @@ const AccordionGroup = /*@__PURE__*/ proxyCustomElement$1(class AccordionGroup e
         "disabled": ["disabledChanged"],
         "readonly": ["readonlyChanged"]
     }]);
-function defineCustomElement$1$C() {
+function defineCustomElement$1$D() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7342,7 +7342,7 @@ function defineCustomElement$1$C() {
             break;
     } });
 }
-const defineCustomElement$1g = defineCustomElement$1$C;
+const defineCustomElement$1h = defineCustomElement$1$D;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7366,7 +7366,7 @@ const Avatar = /*@__PURE__*/ proxyCustomElement$1(class Avatar extends H$1 {
         md: avatarMdCss
     }; }
 }, [289, "ion-avatar"]);
-function defineCustomElement$1$B() {
+function defineCustomElement$1$C() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7379,7 +7379,7 @@ function defineCustomElement$1$B() {
             break;
     } });
 }
-const defineCustomElement$1f = defineCustomElement$1$B;
+const defineCustomElement$1g = defineCustomElement$1$C;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7437,7 +7437,7 @@ const Backdrop = /*@__PURE__*/ proxyCustomElement$1(class Backdrop extends H$1 {
         "tappable": [4],
         "stopPropagation": [4, "stop-propagation"]
     }, [[2, "click", "onMouseDown"]]]);
-function defineCustomElement$1e() {
+function defineCustomElement$1f() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7478,7 +7478,7 @@ const Badge = /*@__PURE__*/ proxyCustomElement$1(class Badge extends H$1 {
 }, [289, "ion-badge", {
         "color": [513]
     }]);
-function defineCustomElement$1$A() {
+function defineCustomElement$1$B() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7491,7 +7491,7 @@ function defineCustomElement$1$A() {
             break;
     } });
 }
-const defineCustomElement$1d = defineCustomElement$1$A;
+const defineCustomElement$1e = defineCustomElement$1$B;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7637,7 +7637,7 @@ const Breadcrumbs = /*@__PURE__*/ proxyCustomElement$1(class Breadcrumbs extends
         "itemsBeforeCollapse": ["maxItemsChanged"],
         "itemsAfterCollapse": ["maxItemsChanged"]
     }]);
-function defineCustomElement$1$z() {
+function defineCustomElement$1$A() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7650,7 +7650,7 @@ function defineCustomElement$1$z() {
             break;
     } });
 }
-const defineCustomElement$1c = defineCustomElement$1$z;
+const defineCustomElement$1d = defineCustomElement$1$A;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7692,7 +7692,7 @@ const Buttons = /*@__PURE__*/ proxyCustomElement$1(class Buttons extends H$1 {
 }, [294, "ion-buttons", {
         "collapse": [4]
     }]);
-function defineCustomElement$1b() {
+function defineCustomElement$1c() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7709,7 +7709,7 @@ function defineCustomElement$1b() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$1a = defineCustomElement$1b;
+const defineCustomElement$1b = defineCustomElement$1c;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7737,7 +7737,7 @@ const CardContent = /*@__PURE__*/ proxyCustomElement$1(class CardContent extends
         md: cardContentMdCss
     }; }
 }, [288, "ion-card-content"]);
-function defineCustomElement$1$y() {
+function defineCustomElement$1$z() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7750,7 +7750,7 @@ function defineCustomElement$1$y() {
             break;
     } });
 }
-const defineCustomElement$19 = defineCustomElement$1$y;
+const defineCustomElement$1a = defineCustomElement$1$z;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7788,7 +7788,7 @@ const CardHeader = /*@__PURE__*/ proxyCustomElement$1(class CardHeader extends H
         "color": [513],
         "translucent": [4]
     }]);
-function defineCustomElement$1$x() {
+function defineCustomElement$1$y() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7801,7 +7801,7 @@ function defineCustomElement$1$x() {
             break;
     } });
 }
-const defineCustomElement$18 = defineCustomElement$1$x;
+const defineCustomElement$19 = defineCustomElement$1$y;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7831,7 +7831,7 @@ const CardSubtitle = /*@__PURE__*/ proxyCustomElement$1(class CardSubtitle exten
 }, [289, "ion-card-subtitle", {
         "color": [513]
     }]);
-function defineCustomElement$1$w() {
+function defineCustomElement$1$x() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7844,7 +7844,7 @@ function defineCustomElement$1$w() {
             break;
     } });
 }
-const defineCustomElement$17 = defineCustomElement$1$w;
+const defineCustomElement$18 = defineCustomElement$1$x;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -7874,7 +7874,7 @@ const CardTitle = /*@__PURE__*/ proxyCustomElement$1(class CardTitle extends H$1
 }, [289, "ion-card-title", {
         "color": [513]
     }]);
-function defineCustomElement$1$v() {
+function defineCustomElement$1$w() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -7887,7 +7887,7 @@ function defineCustomElement$1$v() {
             break;
     } });
 }
-const defineCustomElement$16 = defineCustomElement$1$v;
+const defineCustomElement$17 = defineCustomElement$1$w;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -8081,7 +8081,7 @@ const Checkbox = /*@__PURE__*/ proxyCustomElement$1(class Checkbox extends H$1 {
         "setFocus": [64]
     }]);
 let checkboxIds = 0;
-function defineCustomElement$15() {
+function defineCustomElement$16() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -8098,7 +8098,7 @@ function defineCustomElement$15() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$14 = defineCustomElement$15;
+const defineCustomElement$15 = defineCustomElement$16;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -8193,7 +8193,7 @@ const removeRipple = (ripple) => {
 };
 const PADDING = 10;
 const INITIAL_ORIGIN_SCALE = 0.5;
-function defineCustomElement$13() {
+function defineCustomElement$14() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -8351,7 +8351,7 @@ const Col = /*@__PURE__*/ proxyCustomElement$1(class Col extends H$1 {
         "sizeLg": [1, "size-lg"],
         "sizeXl": [1, "size-xl"]
     }, [[9, "resize", "onResize"]]]);
-function defineCustomElement$1$u() {
+function defineCustomElement$1$v() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -8364,7 +8364,7 @@ function defineCustomElement$1$u() {
             break;
     } });
 }
-const defineCustomElement$12 = defineCustomElement$1$u;
+const defineCustomElement$13 = defineCustomElement$1$v;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -8828,7 +8828,7 @@ const updateScrollDetail = (detail, el, timestamp, shouldStart) => {
         detail.velocityY = velocityY * 0.7 + detail.velocityY * 0.3;
     }
 };
-function defineCustomElement$11() {
+function defineCustomElement$12() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -8845,7 +8845,7 @@ function defineCustomElement$11() {
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$10 = defineCustomElement$11;
+const defineCustomElement$11 = defineCustomElement$12;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -10839,7 +10839,7 @@ const Button = /*@__PURE__*/ proxyCustomElement$1(class Button extends H$1 {
         "aria-checked": ["onAriaChanged"],
         "aria-label": ["onAriaChanged"]
     }]);
-function defineCustomElement$$() {
+function defineCustomElement$10() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -10852,7 +10852,7 @@ function defineCustomElement$$() {
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
     } });
@@ -11340,7 +11340,7 @@ const Picker = /*@__PURE__*/ proxyCustomElement$1(class Picker extends H$1 {
 }, [289, "ion-picker", {
         "exitInputMode": [64]
     }, [[1, "touchstart", "preventTouchStartPropagation"]]]);
-function defineCustomElement$_() {
+function defineCustomElement$$() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -12125,7 +12125,7 @@ const PickerColumn = /*@__PURE__*/ proxyCustomElement$1(class PickerColumn exten
         "value": ["valueChange"]
     }]);
 const PICKER_ITEM_ACTIVE_CLASS = 'option-active';
-function defineCustomElement$Z() {
+function defineCustomElement$_() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -12257,7 +12257,7 @@ const PickerColumnOption = /*@__PURE__*/ proxyCustomElement$1(class PickerColumn
     }, undefined, {
         "aria-label": ["onAriaLabelChange"]
     }]);
-function defineCustomElement$Y() {
+function defineCustomElement$Z() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -13746,7 +13746,7 @@ const LIFECYCLE_MAP$1 = {
     ionPopoverWillDismiss: 'ionViewWillLeave',
     ionPopoverDidDismiss: 'ionViewDidLeave',
 };
-function defineCustomElement$X() {
+function defineCustomElement$Y() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -13759,7 +13759,7 @@ function defineCustomElement$X() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1f();
             }
             break;
     } });
@@ -15696,7 +15696,7 @@ const CANCEL_ROLE = 'datetime-cancel';
 const CONFIRM_ROLE = 'datetime-confirm';
 const WHEEL_ITEM_PART = 'wheel-item';
 const WHEEL_ITEM_ACTIVE_PART = `active`;
-function defineCustomElement$1$t() {
+function defineCustomElement$1$u() {
     if (typeof customElements === "undefined") {
         return;
     }
@@ -15709,52 +15709,52 @@ function defineCustomElement$1$t() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1f();
             }
             break;
         case "ion-button":
             if (!customElements.get(tagName)) {
-                defineCustomElement$$();
+                defineCustomElement$10();
             }
             break;
         case "ion-buttons":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1b();
+                defineCustomElement$1c();
             }
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
         case "ion-picker":
             if (!customElements.get(tagName)) {
-                defineCustomElement$_();
+                defineCustomElement$$();
             }
             break;
         case "ion-picker-column":
             if (!customElements.get(tagName)) {
-                defineCustomElement$Z();
+                defineCustomElement$_();
             }
             break;
         case "ion-picker-column-option":
             if (!customElements.get(tagName)) {
-                defineCustomElement$Y();
+                defineCustomElement$Z();
             }
             break;
         case "ion-popover":
             if (!customElements.get(tagName)) {
-                defineCustomElement$X();
+                defineCustomElement$Y();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
     } });
 }
-const defineCustomElement$W = defineCustomElement$1$t;
+const defineCustomElement$X = defineCustomElement$1$u;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -16119,6 +16119,158 @@ const createKeyboardController = async (keyboardChangeCallback) => {
     await init();
     return { init, destroy, isKeyboardVisible };
 };
+
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+
+const handleFooterFade = (scrollEl, baseEl) => {
+    readTask(() => {
+        const scrollTop = scrollEl.scrollTop;
+        const maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
+        /**
+         * Toolbar background will fade
+         * out over fadeDuration in pixels.
+         */
+        const fadeDuration = 10;
+        /**
+         * Begin fading out maxScroll - 30px
+         * from the bottom of the content.
+         * Also determine how close we are
+         * to starting the fade. If we are
+         * before the starting point, the
+         * scale value will get clamped to 0.
+         * If we are after the maxScroll (rubber
+         * band scrolling), the scale value will
+         * get clamped to 1.
+         */
+        const fadeStart = maxScroll - fadeDuration;
+        const distanceToStart = scrollTop - fadeStart;
+        const scale = clamp(0, 1 - distanceToStart / fadeDuration, 1);
+        writeTask$1(() => {
+            baseEl.style.setProperty('--opacity-scale', scale.toString());
+        });
+    });
+};
+
+const footerIosCss = "ion-footer{display:block;position:relative;-ms-flex-order:1;order:1;width:100%;z-index:10}ion-footer.footer-toolbar-padding ion-toolbar:last-of-type{padding-bottom:var(--ion-safe-area-bottom, 0)}.footer-ios ion-toolbar:first-of-type{--border-width:0.55px 0 0}@supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))){.footer-background{left:0;right:0;top:0;bottom:0;position:absolute;-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}.footer-translucent-ios ion-toolbar{--opacity:.8}}.footer-ios.ion-no-border ion-toolbar:first-of-type{--border-width:0}.footer-collapse-fade ion-toolbar{--opacity-scale:inherit}";
+
+const footerMdCss = "ion-footer{display:block;position:relative;-ms-flex-order:1;order:1;width:100%;z-index:10}ion-footer.footer-toolbar-padding ion-toolbar:last-of-type{padding-bottom:var(--ion-safe-area-bottom, 0)}.footer-md{-webkit-box-shadow:0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);box-shadow:0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12)}.footer-md.ion-no-border{-webkit-box-shadow:none;box-shadow:none}";
+
+const Footer = /*@__PURE__*/ proxyCustomElement$1(class Footer extends H$1 {
+    constructor() {
+        super();
+        this.__registerHost();
+        this.keyboardCtrl = null;
+        this.keyboardVisible = false;
+        /**
+         * If `true`, the footer will be translucent.
+         * Only applies when the mode is `"ios"` and the device supports
+         * [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
+         *
+         * Note: In order to scroll content behind the footer, the `fullscreen`
+         * attribute needs to be set on the content.
+         */
+        this.translucent = false;
+        this.checkCollapsibleFooter = () => {
+            const mode = getIonMode$2(this);
+            if (mode !== 'ios') {
+                return;
+            }
+            const { collapse } = this;
+            const hasFade = collapse === 'fade';
+            this.destroyCollapsibleFooter();
+            if (hasFade) {
+                const pageEl = this.el.closest('ion-app,ion-page,.ion-page,page-inner');
+                const contentEl = pageEl ? findIonContent(pageEl) : null;
+                if (!contentEl) {
+                    printIonContentErrorMsg(this.el);
+                    return;
+                }
+                this.setupFadeFooter(contentEl);
+            }
+        };
+        this.setupFadeFooter = async (contentEl) => {
+            const scrollEl = (this.scrollEl = await getScrollElement(contentEl));
+            /**
+             * Handle fading of toolbars on scroll
+             */
+            this.contentScrollCallback = () => {
+                handleFooterFade(scrollEl, this.el);
+            };
+            scrollEl.addEventListener('scroll', this.contentScrollCallback);
+            handleFooterFade(scrollEl, this.el);
+        };
+    }
+    componentDidLoad() {
+        this.checkCollapsibleFooter();
+    }
+    componentDidUpdate() {
+        this.checkCollapsibleFooter();
+    }
+    async connectedCallback() {
+        this.keyboardCtrl = await createKeyboardController(async (keyboardOpen, waitForResize) => {
+            /**
+             * If the keyboard is hiding, then we need to wait
+             * for the webview to resize. Otherwise, the footer
+             * will flicker before the webview resizes.
+             */
+            if (keyboardOpen === false && waitForResize !== undefined) {
+                await waitForResize;
+            }
+            this.keyboardVisible = keyboardOpen; // trigger re-render by updating state
+        });
+    }
+    disconnectedCallback() {
+        if (this.keyboardCtrl) {
+            this.keyboardCtrl.destroy();
+        }
+    }
+    destroyCollapsibleFooter() {
+        if (this.scrollEl && this.contentScrollCallback) {
+            this.scrollEl.removeEventListener('scroll', this.contentScrollCallback);
+            this.contentScrollCallback = undefined;
+        }
+    }
+    render() {
+        const { translucent, collapse } = this;
+        const mode = getIonMode$2(this);
+        const tabs = this.el.closest('ion-tabs');
+        const tabBar = tabs === null || tabs === void 0 ? void 0 : tabs.querySelector(':scope > ion-tab-bar');
+        return (h$1(Host$1, { key: 'ddc228f1a1e7fa4f707dccf74db2490ca3241137', role: "contentinfo", class: {
+                [mode]: true,
+                // Used internally for styling
+                [`footer-${mode}`]: true,
+                [`footer-translucent`]: translucent,
+                [`footer-translucent-${mode}`]: translucent,
+                ['footer-toolbar-padding']: !this.keyboardVisible && (!tabBar || tabBar.slot !== 'bottom'),
+                [`footer-collapse-${collapse}`]: collapse !== undefined,
+            } }, mode === 'ios' && translucent && h$1("div", { key: 'e16ed4963ff94e06de77eb8038201820af73937c', class: "footer-background" }), h$1("slot", { key: 'f186934febf85d37133d9351a96c1a64b0a4b203' })));
+    }
+    get el() { return this; }
+    static get style() { return {
+        ios: footerIosCss,
+        md: footerMdCss
+    }; }
+}, [292, "ion-footer", {
+        "collapse": [1],
+        "translucent": [4],
+        "keyboardVisible": [32]
+    }]);
+function defineCustomElement$1$t() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["ion-footer"];
+    components.forEach(tagName => { switch (tagName) {
+        case "ion-footer":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, Footer);
+            }
+            break;
+    } });
+}
+const defineCustomElement$W = defineCustomElement$1$t;
 
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
@@ -17626,7 +17778,7 @@ function defineCustomElement$1$r() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
     } });
@@ -17735,17 +17887,17 @@ function defineCustomElement$1$q() {
             break;
         case "ion-button":
             if (!customElements.get(tagName)) {
-                defineCustomElement$$();
+                defineCustomElement$10();
             }
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
     } });
@@ -18784,7 +18936,7 @@ function defineCustomElement$1$o() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1f();
             }
             break;
     } });
@@ -18887,12 +19039,12 @@ function defineCustomElement$1$n() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
     } });
@@ -21341,7 +21493,7 @@ function defineCustomElement$1$j() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
         case "ion-spinner":
@@ -21898,7 +22050,7 @@ function defineCustomElement$1$h() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
     } });
@@ -22655,7 +22807,7 @@ function defineCustomElement$1$f() {
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
     } });
@@ -23246,17 +23398,17 @@ function defineCustomElement$t() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1f();
             }
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
     } });
@@ -23849,12 +24001,12 @@ function defineCustomElement$s() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1f();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
     } });
@@ -24144,12 +24296,12 @@ function defineCustomElement$r() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
     } });
@@ -26694,7 +26846,7 @@ function defineCustomElement$q() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1f();
             }
             break;
     } });
@@ -26961,22 +27113,22 @@ function defineCustomElement$n() {
             break;
         case "ion-button":
             if (!customElements.get(tagName)) {
-                defineCustomElement$$();
+                defineCustomElement$10();
             }
             break;
         case "ion-buttons":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1b();
+                defineCustomElement$1c();
             }
             break;
         case "ion-checkbox":
             if (!customElements.get(tagName)) {
-                defineCustomElement$15();
+                defineCustomElement$16();
             }
             break;
         case "ion-content":
             if (!customElements.get(tagName)) {
-                defineCustomElement$11();
+                defineCustomElement$12();
             }
             break;
         case "ion-header":
@@ -26986,7 +27138,7 @@ function defineCustomElement$n() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
         case "ion-item":
@@ -27011,7 +27163,7 @@ function defineCustomElement$n() {
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
         case "ion-title":
@@ -27157,12 +27309,12 @@ function defineCustomElement$m() {
             break;
         case "ion-checkbox":
             if (!customElements.get(tagName)) {
-                defineCustomElement$15();
+                defineCustomElement$16();
             }
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
         case "ion-item":
@@ -27197,7 +27349,7 @@ function defineCustomElement$m() {
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
     } });
@@ -28049,27 +28201,27 @@ function defineCustomElement$1$c() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1f();
             }
             break;
         case "ion-button":
             if (!customElements.get(tagName)) {
-                defineCustomElement$$();
+                defineCustomElement$10();
             }
             break;
         case "ion-buttons":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1b();
+                defineCustomElement$1c();
             }
             break;
         case "ion-checkbox":
             if (!customElements.get(tagName)) {
-                defineCustomElement$15();
+                defineCustomElement$16();
             }
             break;
         case "ion-content":
             if (!customElements.get(tagName)) {
-                defineCustomElement$11();
+                defineCustomElement$12();
             }
             break;
         case "ion-header":
@@ -28079,7 +28231,7 @@ function defineCustomElement$1$c() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
         case "ion-item":
@@ -28109,7 +28261,7 @@ function defineCustomElement$1$c() {
             break;
         case "ion-popover":
             if (!customElements.get(tagName)) {
-                defineCustomElement$X();
+                defineCustomElement$Y();
             }
             break;
         case "ion-radio":
@@ -28124,7 +28276,7 @@ function defineCustomElement$1$c() {
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
         case "ion-select-modal":
@@ -29372,7 +29524,7 @@ function defineCustomElement$1$7() {
             break;
         case "ion-backdrop":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1e();
+                defineCustomElement$1f();
             }
             break;
         case "ion-spinner":
@@ -29397,7 +29549,7 @@ const defineCustomElement$a = defineCustomElement$q;
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
-const defineCustomElement$9 = defineCustomElement$X;
+const defineCustomElement$9 = defineCustomElement$Y;
 
 const appCss = "html.plt-mobile ion-app{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}html.plt-mobile ion-app [contenteditable]{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}ion-app.force-statusbar-padding{--ion-safe-area-top:20px}";
 
@@ -29626,12 +29778,12 @@ function defineCustomElement$1$5() {
             break;
         case "ion-icon":
             if (!customElements.get(tagName)) {
-                defineCustomElement$1i();
+                defineCustomElement$1j();
             }
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
     } });
@@ -30061,7 +30213,7 @@ function defineCustomElement$1$2() {
             break;
         case "ion-ripple-effect":
             if (!customElements.get(tagName)) {
-                defineCustomElement$13();
+                defineCustomElement$14();
             }
             break;
     } });
@@ -32347,20 +32499,21 @@ const createReactComponent = (tagName, ReactComponentContext, manipulatePropsFun
 /* eslint-disable */
 /* tslint:disable */
 /* auto-generated react proxies */
-const IonAccordion = /*@__PURE__*/ createReactComponent('ion-accordion', undefined, undefined, defineCustomElement$1h);
-const IonAccordionGroup = /*@__PURE__*/ createReactComponent('ion-accordion-group', undefined, undefined, defineCustomElement$1g);
-const IonAvatar = /*@__PURE__*/ createReactComponent('ion-avatar', undefined, undefined, defineCustomElement$1f);
-const IonBadge = /*@__PURE__*/ createReactComponent('ion-badge', undefined, undefined, defineCustomElement$1d);
-const IonBreadcrumbs = /*@__PURE__*/ createReactComponent('ion-breadcrumbs', undefined, undefined, defineCustomElement$1c);
-const IonButtons = /*@__PURE__*/ createReactComponent('ion-buttons', undefined, undefined, defineCustomElement$1a);
-const IonCardContent = /*@__PURE__*/ createReactComponent('ion-card-content', undefined, undefined, defineCustomElement$19);
-const IonCardHeader = /*@__PURE__*/ createReactComponent('ion-card-header', undefined, undefined, defineCustomElement$18);
-const IonCardSubtitle = /*@__PURE__*/ createReactComponent('ion-card-subtitle', undefined, undefined, defineCustomElement$17);
-const IonCardTitle = /*@__PURE__*/ createReactComponent('ion-card-title', undefined, undefined, defineCustomElement$16);
-const IonCheckbox = /*@__PURE__*/ createReactComponent('ion-checkbox', undefined, undefined, defineCustomElement$14);
-const IonCol = /*@__PURE__*/ createReactComponent('ion-col', undefined, undefined, defineCustomElement$12);
-const IonContent = /*@__PURE__*/ createReactComponent('ion-content', undefined, undefined, defineCustomElement$10);
-const IonDatetime = /*@__PURE__*/ createReactComponent('ion-datetime', undefined, undefined, defineCustomElement$W);
+const IonAccordion = /*@__PURE__*/ createReactComponent('ion-accordion', undefined, undefined, defineCustomElement$1i);
+const IonAccordionGroup = /*@__PURE__*/ createReactComponent('ion-accordion-group', undefined, undefined, defineCustomElement$1h);
+const IonAvatar = /*@__PURE__*/ createReactComponent('ion-avatar', undefined, undefined, defineCustomElement$1g);
+const IonBadge = /*@__PURE__*/ createReactComponent('ion-badge', undefined, undefined, defineCustomElement$1e);
+const IonBreadcrumbs = /*@__PURE__*/ createReactComponent('ion-breadcrumbs', undefined, undefined, defineCustomElement$1d);
+const IonButtons = /*@__PURE__*/ createReactComponent('ion-buttons', undefined, undefined, defineCustomElement$1b);
+const IonCardContent = /*@__PURE__*/ createReactComponent('ion-card-content', undefined, undefined, defineCustomElement$1a);
+const IonCardHeader = /*@__PURE__*/ createReactComponent('ion-card-header', undefined, undefined, defineCustomElement$19);
+const IonCardSubtitle = /*@__PURE__*/ createReactComponent('ion-card-subtitle', undefined, undefined, defineCustomElement$18);
+const IonCardTitle = /*@__PURE__*/ createReactComponent('ion-card-title', undefined, undefined, defineCustomElement$17);
+const IonCheckbox = /*@__PURE__*/ createReactComponent('ion-checkbox', undefined, undefined, defineCustomElement$15);
+const IonCol = /*@__PURE__*/ createReactComponent('ion-col', undefined, undefined, defineCustomElement$13);
+const IonContent = /*@__PURE__*/ createReactComponent('ion-content', undefined, undefined, defineCustomElement$11);
+const IonDatetime = /*@__PURE__*/ createReactComponent('ion-datetime', undefined, undefined, defineCustomElement$X);
+const IonFooter = /*@__PURE__*/ createReactComponent('ion-footer', undefined, undefined, defineCustomElement$W);
 const IonGrid = /*@__PURE__*/ createReactComponent('ion-grid', undefined, undefined, defineCustomElement$V);
 const IonHeader = /*@__PURE__*/ createReactComponent('ion-header', undefined, undefined, defineCustomElement$T);
 const IonInput = /*@__PURE__*/ createReactComponent('ion-input', undefined, undefined, defineCustomElement$R);
@@ -39501,4 +39654,4 @@ const sendNotification = async (
   }
 };
 
-export { IonCardHeader as $, IonAccordion as A, BrowserRouter as B, albumsOutline as C, DataStoreProvider as D, settingsSharp as E, IonButtons as F, IonMenuButton as G, IonButton as H, IonMenuToggle as I, mailOutline as J, notificationsOutline as K, Link as L, MEMISContext as M, IonBadge as N, ORGANISATION_UNITS_DESCENDANTS as O, PROGRAMS_FIELDS as P, personCircleOutline as Q, Route as R, SuspenseLoader as S, ToastItem as T, USER_ORGANISATION_UNITS as U, logOutOutline as V, showToast as W, Outlet as X, IonCard as Y, IonCardContent as Z, __vitePreload as _, PROGRAM_RULES_FIELDS as a, chevronForward as a$, IonCardTitle as a0, gitPullRequestOutline as a1, shieldCheckmarkOutline as a2, buildOutline as a3, IonSegment as a4, IonSegmentButton as a5, IonSegmentView as a6, IonSegmentContent as a7, chevronDownOutline as a8, searchOutline as a9, IonDatetime as aA, IonTextarea as aB, useSearchParams as aC, IonSearchbar as aD, qrCodeOutline as aE, filterOutline as aF, optionsOutline as aG, ellipsisVertical as aH, arrowUp as aI, arrowDown as aJ, removeOutline as aK, pencilOutline as aL, trashOutline as aM, closeOutline as aN, IonActionSheet as aO, IonAlert as aP, businessOutline as aQ, usePermissions as aR, addCircleOutline as aS, useDataStore as aT, IonInputPasswordToggle as aU, chevronUpOutline as aV, checkmarkDoneOutline as aW, timeOutline as aX, createOutline as aY, IonBreadcrumbs as aZ, IonBreadcrumb as a_, checkmarkOutline as aa, IonGrid as ab, IonRow as ac, IonCol as ad, IonSelect as ae, IonSelectOption as af, IonPage as ag, IonInput as ah, addOutline as ai, y as aj, closeCircle as ak, IonSpinner as al, close as am, imageOutline as an, document$1 as ao, alertCircleOutline as ap, IonText as aq, arrowBackCircleOutline as ar, chevronBackOutline as as, chevronForwardOutline as at, saveOutline as au, IonLoading as av, IonCheckbox as aw, IonRadioGroup as ax, IonRadio as ay, IonPopover as az, PermissionsProvider as b, useParams as b0, IonAvatar as b1, downloadOutline as b2, eyeOutline as b3, printOutline as b4, IonCardSubtitle as b5, PROGRAM_STAGES_FIELDS as b6, informationCircleOutline as b7, homeOutline as b8, arrowBackOutline as b9, writeTask$1 as bA, scrollToTop as bB, Keyboard as bC, addEventListener$1 as bD, removeEventListener as bE, KeyboardResize as bF, win$2 as bG, raf as bH, getScrollElement as bI, scrollByPoint as bJ, createAnimation as bK, getIonPageElement as bL, add as ba, trash as bb, chatbubble as bc, IonItemDivider as bd, IonModal as be, funnelOutline as bf, addCircle as bg, refresh as bh, IonTabs as bi, IonTabBar as bj, IonTabButton as bk, settings as bl, lockClosed as bm, documentLock as bn, IonTab as bo, checkmarkCircleOutline as bp, chatbubbleOutline as bq, Navigate as br, isRTL$1 as bs, createGesture as bt, clamp as bu, doc as bv, pointerCoord as bw, readTask as bx, findClosestIonContent as by, componentOnReady as bz, setupIonicReact as c, documentText as d, setActiveProgramCookie as e, Routes as f, api as g, useNavigate as h, icons as i, jsxRuntimeExports as j, IonItem as k, IonIcon as l, IonLabel as m, IonRefresher as n, IonRefresherContent as o, isPlatform as p, IonMenu as q, IonHeader as r, sendNotification as s, IonToolbar as t, useLocation as u, IonTitle as v, IonContent as w, IonList as x, home as y, IonAccordionGroup as z };
+export { IonCardHeader as $, IonAccordion as A, BrowserRouter as B, albumsOutline as C, DataStoreProvider as D, settingsSharp as E, IonButtons as F, IonMenuButton as G, IonButton as H, IonMenuToggle as I, mailOutline as J, notificationsOutline as K, Link as L, MEMISContext as M, IonBadge as N, ORGANISATION_UNITS_DESCENDANTS as O, PROGRAMS_FIELDS as P, personCircleOutline as Q, Route as R, SuspenseLoader as S, ToastItem as T, USER_ORGANISATION_UNITS as U, logOutOutline as V, showToast as W, Outlet as X, IonCard as Y, IonCardContent as Z, __vitePreload as _, PROGRAM_RULES_FIELDS as a, chevronForward as a$, IonCardTitle as a0, gitPullRequestOutline as a1, shieldCheckmarkOutline as a2, buildOutline as a3, IonSegment as a4, IonSegmentButton as a5, IonSegmentView as a6, IonSegmentContent as a7, chevronDownOutline as a8, searchOutline as a9, useSearchParams as aA, IonSearchbar as aB, qrCodeOutline as aC, filterOutline as aD, optionsOutline as aE, ellipsisVertical as aF, arrowUp as aG, arrowDown as aH, removeOutline as aI, pencilOutline as aJ, trashOutline as aK, closeOutline as aL, IonActionSheet as aM, IonAlert as aN, businessOutline as aO, IonSelect as aP, IonSelectOption as aQ, usePermissions as aR, addCircleOutline as aS, useDataStore as aT, IonInputPasswordToggle as aU, chevronUpOutline as aV, checkmarkDoneOutline as aW, timeOutline as aX, createOutline as aY, IonBreadcrumbs as aZ, IonBreadcrumb as a_, checkmarkOutline as aa, closeCircle as ab, IonGrid as ac, IonRow as ad, IonCol as ae, IonInput as af, IonRadioGroup as ag, IonRadio as ah, IonPage as ai, addOutline as aj, y as ak, IonSpinner as al, close as am, imageOutline as an, document$1 as ao, alertCircleOutline as ap, IonText as aq, arrowBackCircleOutline as ar, chevronBackOutline as as, chevronForwardOutline as at, saveOutline as au, IonLoading as av, IonCheckbox as aw, IonPopover as ax, IonDatetime as ay, IonTextarea as az, PermissionsProvider as b, useParams as b0, IonAvatar as b1, IonModal as b2, IonFooter as b3, downloadOutline as b4, eyeOutline as b5, printOutline as b6, IonCardSubtitle as b7, PROGRAM_STAGES_FIELDS as b8, informationCircleOutline as b9, componentOnReady as bA, writeTask$1 as bB, scrollToTop as bC, Keyboard as bD, addEventListener$1 as bE, removeEventListener as bF, KeyboardResize as bG, win$2 as bH, raf as bI, getScrollElement as bJ, scrollByPoint as bK, createAnimation as bL, getIonPageElement as bM, homeOutline as ba, arrowBackOutline as bb, add as bc, trash as bd, chatbubble as be, IonItemDivider as bf, funnelOutline as bg, addCircle as bh, refresh as bi, IonTabs as bj, IonTabBar as bk, IonTabButton as bl, settings as bm, lockClosed as bn, documentLock as bo, IonTab as bp, checkmarkCircleOutline as bq, chatbubbleOutline as br, Navigate as bs, isRTL$1 as bt, createGesture as bu, clamp as bv, doc as bw, pointerCoord as bx, readTask as by, findClosestIonContent as bz, setupIonicReact as c, documentText as d, setActiveProgramCookie as e, Routes as f, api as g, useNavigate as h, icons as i, jsxRuntimeExports as j, IonItem as k, IonIcon as l, IonLabel as m, IonRefresher as n, IonRefresherContent as o, isPlatform as p, IonMenu as q, IonHeader as r, sendNotification as s, IonToolbar as t, useLocation as u, IonTitle as v, IonContent as w, IonList as x, home as y, IonAccordionGroup as z };
