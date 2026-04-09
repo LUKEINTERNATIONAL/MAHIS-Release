@@ -19055,7 +19055,7 @@ const defineCustomElement$I = defineCustomElement$1$n;
  * (C) Ionic http://ionicframework.com - MIT License
  */
 
-const menuToggleCss = ":host(.menu-toggle-hidden){display:none}";
+const menuToggleCss = ":host(.menu-toggle-hidden){display:block}";
 
 const MenuToggle = /*@__PURE__*/ proxyCustomElement$1(class MenuToggle extends H$1 {
     constructor() {
