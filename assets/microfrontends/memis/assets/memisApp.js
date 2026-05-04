@@ -180,8 +180,8 @@ function MenuProvider({ children }) {
   };
   const hasAccessToMenuItem = useCallback$6((item) => {
     if (!userAccessData) return false;
-    const userPrograms = userAccessData.programs || [];
-    const userRoleIds = (userAccessData.userRoles || []).map((role) => role.id);
+    const userPrograms = userAccessData?.programs || [];
+    const userRoleIds = (userAccessData?.userRoles || []).map((role) => role.id);
     let programIdToCheck = null;
     if (item.isProgram) {
       programIdToCheck = extractBaseProgramId(item.id);
@@ -190,7 +190,7 @@ function MenuProvider({ children }) {
     } else {
       programIdToCheck = extractBaseProgramId(item.id);
     }
-    const hasProgramAccess = programIdToCheck ? userPrograms.includes(programIdToCheck) : false;
+    const hasProgramAccess = programIdToCheck ? userPrograms?.includes(programIdToCheck) : false;
     if (!hasProgramAccess) return false;
     if (item.accessRoles && Array.isArray(item.accessRoles) && item.accessRoles.length > 0) {
       const validRoles = item.accessRoles.filter((role) => {
@@ -198,7 +198,7 @@ function MenuProvider({ children }) {
           return role.trim() !== "";
         }
         if (typeof role === "object" && role !== null) {
-          return role.userRoleId && role.userRoleId.trim() !== "";
+          return role?.userRoleId && role?.userRoleId.trim() !== "";
         }
         return false;
       });
@@ -206,8 +206,8 @@ function MenuProvider({ children }) {
         return true;
       }
       const hasRoleAccess = validRoles.some((role) => {
-        const roleIdToCheck = typeof role === "string" ? role : role.userRoleId;
-        return userRoleIds.includes(roleIdToCheck);
+        const roleIdToCheck = typeof role === "string" ? role : role?.userRoleId;
+        return userRoleIds?.includes(roleIdToCheck);
       });
       return hasRoleAccess;
     }
@@ -217,7 +217,7 @@ function MenuProvider({ children }) {
     if (Array.isArray(navigationMenu) && navigationMenu.length > 0) {
       const programsById = new Map((programs || []).map((p) => [p.id, p]));
       return navigationMenu.map((cfg) => {
-        const p = programsById.get(cfg.id);
+        const p = programsById?.get(cfg.id);
         if (p) {
           return { ...p, ...cfg };
         }
