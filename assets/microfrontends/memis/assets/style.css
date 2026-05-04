@@ -1044,10 +1044,14 @@
     padding: 0 !important;
   }
 }
+.allocation-modal {
+  --height: auto;
+}
 /* Desktop modal size */
 .allocation-modal::part(content) {
   width: 35%;
   height: 70%;
+  --max-height: 80%;
   max-width: 95vw;
   max-height: 90vh;
   border-radius: 12px;
@@ -1724,6 +1728,68 @@ ion-modal {
     height: 85%;
     border-radius: 10px;
   }
+}
+.search-controls-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Default (desktop) */
+.searchbar {
+  flex: 2;
+}
+
+.select {
+  flex: 1;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  flex: 1;
+}
+.location-style{
+    display: flex;
+    flex-direction: row;
+    gap: 10;
+    align-items: center;
+    justify-content: space-between;
+}
+/* MOBILE */
+@media (max-width: 768px) {
+  .search-controls-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchbar {
+    width: 100%;
+  }
+
+  .select {
+    width: 100%;
+  }
+
+  .action-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .action-buttons ion-button {
+    flex: 1;
+  }
+}
+.search-filter-card {
+display: flex;
+flex-direction: row;
+width: 100%;
+justify-content: space-between;
+gap: 10;
 }.new-btn {
   --background: green;         /* button background color */
   --background-hover: #006400; /* darker green on hover */

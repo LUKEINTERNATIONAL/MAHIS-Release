@@ -1,6 +1,6 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Layout.js","assets/__federation_fn_import.js","assets/breadCrumb.js","assets/index2.js","assets/_commonjsHelpers.js","assets/index3.js"])))=>i.map(i=>d[i]);
 import { importShared } from './__federation_fn_import.js';
-import { j as jsxRuntimeExports, M as MEMISContext, d as documentText, P as PROGRAMS_FIELDS, a as PROGRAM_RULES_FIELDS, U as USER_ORGANISATION_UNITS, O as ORGANISATION_UNITS_DESCENDANTS, D as DataStoreProvider, b as PermissionsProvider, s as sendNotification, c as setupIonicReact, _ as __vitePreload, e as setActiveProgramCookie, B as BrowserRouter, T as ToastItem, R as Route, f as Routes, g as api, S as SuspenseLoader } from './breadCrumb.js';
+import { j as jsxRuntimeExports, M as MEMISContext, d as documentText, P as PROGRAMS_FIELDS, a as PROGRAM_RULES_FIELDS, U as USER_ORGANISATION_UNITS, O as ORGANISATION_UNITS_DESCENDANTS, D as DataStoreProvider, b as PermissionsProvider, s as sendNotification, c as setupIonicReact, _ as __vitePreload, e as setActiveProgramCookie, B as BrowserRouter, T as ToastItem, S as SuspenseLoader } from './breadCrumb.js';
 import { r as requireReactDom } from './index.js';
 import { d as dataStore, L as LocalForageServiceInstance } from './index2.js';
 
@@ -21,13 +21,13 @@ function requireClient () {
 
 var clientExports = requireClient();
 
-const React$5 = await importShared('react');
-const {useEffect: useEffect$7,useState: useState$6,useCallback: useCallback$6} = React$5;
+const React$6 = await importShared('react');
+const {useEffect: useEffect$8,useState: useState$7,useCallback: useCallback$7} = React$6;
 const UserRolesProvider = ({ children }) => {
-  const [userRoles, setUserRoles] = useState$6(null);
-  const [user, setUser] = useState$6(null);
-  const [loading, setLoading] = useState$6(true);
-  const computeUserPermissions = useCallback$6((userRes, storeRes) => {
+  const [userRoles, setUserRoles] = useState$7(null);
+  const [user, setUser] = useState$7(null);
+  const [loading, setLoading] = useState$7(true);
+  const computeUserPermissions = useCallback$7((userRes, storeRes) => {
     if (!userRes || !userRes.userRoles || !storeRes || !storeRes.programs) {
       return { ...userRes, permissions: [] };
     }
@@ -54,7 +54,7 @@ const UserRolesProvider = ({ children }) => {
     }
     return { ...userRes, permissions };
   }, []);
-  const fetchUserOnline = useCallback$6(async () => {
+  const fetchUserOnline = useCallback$7(async () => {
     try {
       const userRes = await dataStore.get(
         "me?fields=id,username,name,organisationUnits[id,name,path,parent[id,name,level],level],userRoles[id,name,authorities],programs[id,name]"
@@ -70,7 +70,7 @@ const UserRolesProvider = ({ children }) => {
       return null;
     }
   }, [computeUserPermissions]);
-  const fetchRolesOnline = useCallback$6(async () => {
+  const fetchRolesOnline = useCallback$7(async () => {
     try {
       const result = await dataStore.get("userRoles?fields=id,name");
       const roles = result?.data?.userRoles || [];
@@ -82,7 +82,7 @@ const UserRolesProvider = ({ children }) => {
       return [];
     }
   }, []);
-  const loadUserOfflineFirst = useCallback$6(async () => {
+  const loadUserOfflineFirst = useCallback$7(async () => {
     const cachedUser = await LocalForageServiceInstance.getItem("userRes", "user");
     const cachedSharing = await LocalForageServiceInstance.getItem("sharingSettings", "sharingSettings");
     if (cachedUser && cachedSharing) {
@@ -92,7 +92,7 @@ const UserRolesProvider = ({ children }) => {
     }
     return fetchUserOnline();
   }, [computeUserPermissions, fetchUserOnline]);
-  const loadRolesOfflineFirst = useCallback$6(async () => {
+  const loadRolesOfflineFirst = useCallback$7(async () => {
     const cached = await LocalForageServiceInstance.getItem("userRoles", "userRoles");
     if (cached) {
       setUserRoles(cached);
@@ -100,7 +100,7 @@ const UserRolesProvider = ({ children }) => {
     }
     return fetchRolesOnline();
   }, [fetchRolesOnline]);
-  useEffect$7(() => {
+  useEffect$8(() => {
     let active = true;
     const init = async () => {
       setLoading(true);
@@ -132,22 +132,22 @@ const UserRolesProvider = ({ children }) => {
   );
 };
 
-const {useContext,useEffect: useEffect$6,useMemo: useMemo$5,useState: useState$5,useCallback: useCallback$5} = await importShared('react');
+const {useContext,useEffect: useEffect$7,useMemo: useMemo$6,useState: useState$6,useCallback: useCallback$6} = await importShared('react');
 const toNum = (v) => {
   const n = Number(v);
   return Number.isFinite(n) ? n : Number.POSITIVE_INFINITY;
 };
 function MenuProvider({ children }) {
-  const [activeLink, setActiveLink] = useState$5("/");
-  const [navigationMenu, setNavigationMenu] = useState$5([]);
-  const [menuLoaded, setMenuLoaded] = useState$5(false);
-  const [menuError, setMenuError] = useState$5(null);
-  const [userAccessData, setUserAccessData] = useState$5(null);
-  const [userAccessLoaded, setUserAccessLoaded] = useState$5(false);
-  const [programs, setPrograms] = useState$5([]);
+  const [activeLink, setActiveLink] = useState$6("/");
+  const [navigationMenu, setNavigationMenu] = useState$6([]);
+  const [menuLoaded, setMenuLoaded] = useState$6(false);
+  const [menuError, setMenuError] = useState$6(null);
+  const [userAccessData, setUserAccessData] = useState$6(null);
+  const [userAccessLoaded, setUserAccessLoaded] = useState$6(false);
+  const [programs, setPrograms] = useState$6([]);
   const { user } = useContext(MEMISContext.UserRolesContext) || {};
   useContext(MEMISContext.PermissionContext) || {};
-  const getUserAccessData = useCallback$5(async () => {
+  const getUserAccessData = useCallback$6(async () => {
     try {
       setUserAccessLoaded(false);
       const userData = await LocalForageServiceInstance.getItem("userRes", "user");
@@ -159,7 +159,7 @@ function MenuProvider({ children }) {
       setUserAccessLoaded(true);
     }
   }, []);
-  const getNavMenu = useCallback$5(async () => {
+  const getNavMenu = useCallback$6(async () => {
     setMenuLoaded(false);
     setMenuError(null);
     try {
@@ -178,7 +178,7 @@ function MenuProvider({ children }) {
     if (!id) return null;
     return id.split("?")[0];
   };
-  const hasAccessToMenuItem = useCallback$5((item) => {
+  const hasAccessToMenuItem = useCallback$6((item) => {
     if (!userAccessData) return false;
     const userPrograms = userAccessData.programs || [];
     const userRoleIds = (userAccessData.userRoles || []).map((role) => role.id);
@@ -213,7 +213,7 @@ function MenuProvider({ children }) {
     }
     return true;
   }, [userAccessData]);
-  const mergedPrograms = useMemo$5(() => {
+  const mergedPrograms = useMemo$6(() => {
     if (Array.isArray(navigationMenu) && navigationMenu.length > 0) {
       const programsById = new Map((programs || []).map((p) => [p.id, p]));
       return navigationMenu.map((cfg) => {
@@ -226,7 +226,7 @@ function MenuProvider({ children }) {
     }
     return Array.isArray(programs) ? programs : [];
   }, [navigationMenu, programs]);
-  const allPrograms = useMemo$5(() => {
+  const allPrograms = useMemo$6(() => {
     const raw = Array.isArray(mergedPrograms) ? mergedPrograms : [];
     const seen = /* @__PURE__ */ new Set();
     return raw.filter((p) => {
@@ -235,13 +235,13 @@ function MenuProvider({ children }) {
       return true;
     });
   }, [mergedPrograms]);
-  const visiblePrograms = useMemo$5(() => {
+  const visiblePrograms = useMemo$6(() => {
     if (!userAccessLoaded || !userAccessData) {
       return [];
     }
     return allPrograms.filter((item) => hasAccessToMenuItem(item));
   }, [allPrograms, userAccessLoaded, userAccessData, hasAccessToMenuItem]);
-  const menuModel = useMemo$5(() => {
+  const menuModel = useMemo$6(() => {
     const groupsMap = /* @__PURE__ */ new Map();
     const ungrouped = [];
     const placed = /* @__PURE__ */ new Set();
@@ -303,7 +303,7 @@ function MenuProvider({ children }) {
     return { groups, ungrouped, flat };
   }, [visiblePrograms]);
   const menuItems = menuModel.flat;
-  const refresh = useCallback$5(async () => {
+  const refresh = useCallback$6(async () => {
     setMenuLoaded(false);
     setUserAccessLoaded(false);
     await Promise.all([getNavMenu(), getUserAccessData()]);
@@ -311,14 +311,14 @@ function MenuProvider({ children }) {
     setUserAccessLoaded(true);
   }, [getNavMenu, getUserAccessData]);
   const showErrorState = userAccessLoaded && !userAccessData;
-  useEffect$6(() => {
+  useEffect$7(() => {
     if (!user) return;
     (async () => {
       const progr = await LocalForageServiceInstance.getItem("programs", "programs");
       setPrograms(Array.isArray(progr) ? progr : []);
     })();
   }, [user]);
-  useEffect$6(() => {
+  useEffect$7(() => {
     getNavMenu();
     getUserAccessData();
   }, [getNavMenu, getUserAccessData]);
@@ -342,8 +342,8 @@ function MenuProvider({ children }) {
   );
 }
 
-const React$4 = await importShared('react');
-const {useCallback: useCallback$4,useEffect: useEffect$5,useMemo: useMemo$4,useRef,useState: useState$4} = React$4;
+const React$5 = await importShared('react');
+const {useCallback: useCallback$5,useEffect: useEffect$6,useMemo: useMemo$5,useRef,useState: useState$5} = React$5;
 function readActiveProgramIdFromCookie() {
   try {
     const rawPair = document.cookie.split(";").find((c) => c.trim().startsWith("memis_cookie="));
@@ -356,12 +356,12 @@ function readActiveProgramIdFromCookie() {
   }
 }
 function ProgramStageProvider({ children }) {
-  const [programId, setProgramId] = useState$4(() => readActiveProgramIdFromCookie());
-  const [programStages, setProgramStages] = useState$4([]);
-  const [loading, setLoading] = useState$4(false);
-  const [error, setError] = useState$4(null);
+  const [programId, setProgramId] = useState$5(() => readActiveProgramIdFromCookie());
+  const [programStages, setProgramStages] = useState$5([]);
+  const [loading, setLoading] = useState$5(false);
+  const [error, setError] = useState$5(null);
   const reqSeq = useRef(0);
-  const fetchProgramStages = useCallback$4(async (id) => {
+  const fetchProgramStages = useCallback$5(async (id) => {
     if (!id) {
       setProgramStages([]);
       return [];
@@ -399,23 +399,23 @@ function ProgramStageProvider({ children }) {
       if (mySeq === reqSeq?.current) setLoading(false);
     }
   }, []);
-  useEffect$5(() => {
+  useEffect$6(() => {
     if (programId) fetchProgramStages(programId);
     else setProgramStages([]);
   }, [programId, fetchProgramStages]);
-  const refresh = useCallback$4(() => {
+  const refresh = useCallback$5(() => {
     const id = readActiveProgramIdFromCookie();
     setProgramId(id);
     return id ? fetchProgramStages(id) : Promise.resolve([]);
   }, [fetchProgramStages]);
-  const setActiveProgramIdLocal = useCallback$4(
+  const setActiveProgramIdLocal = useCallback$5(
     (id) => {
       setProgramId(id);
       return id ? fetchProgramStages(id) : Promise.resolve([]);
     },
     [fetchProgramStages]
   );
-  const value = useMemo$4(
+  const value = useMemo$5(
     () => ({
       programId,
       programStages,
@@ -430,15 +430,15 @@ function ProgramStageProvider({ children }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(MEMISContext.ProgramStageContext.Provider, { value, children });
 }
 
-const {useCallback: useCallback$3,useEffect: useEffect$4,useState: useState$3,useMemo: useMemo$3} = await importShared('react');
+const {useCallback: useCallback$4,useEffect: useEffect$5,useState: useState$4,useMemo: useMemo$4} = await importShared('react');
 function ProgramProvider({ children }) {
-  const [programs, setPrograms] = useState$3([]);
-  const [enrollmentPrograms, setEnrollmentPrograms] = useState$3([]);
-  const [loading, setLoading] = useState$3(true);
-  const [programsReady, setProgramsReady] = useState$3(false);
-  const [error, setError] = useState$3(null);
+  const [programs, setPrograms] = useState$4([]);
+  const [enrollmentPrograms, setEnrollmentPrograms] = useState$4([]);
+  const [loading, setLoading] = useState$4(true);
+  const [programsReady, setProgramsReady] = useState$4(false);
+  const [error, setError] = useState$4(null);
   const encodeFields = (fields) => encodeURIComponent(fields || "");
-  const fetchProgramsFromOnline = useCallback$3(async () => {
+  const fetchProgramsFromOnline = useCallback$4(async () => {
     setLoading(true);
     setProgramsReady(false);
     try {
@@ -474,7 +474,7 @@ function ProgramProvider({ children }) {
       return [];
     }
   }, []);
-  const fetchPrograms = useCallback$3(async () => {
+  const fetchPrograms = useCallback$4(async () => {
     setLoading(true);
     setProgramsReady(false);
     try {
@@ -510,7 +510,7 @@ function ProgramProvider({ children }) {
       return [];
     }
   }, [fetchProgramsFromOnline]);
-  const fetchEnrollmentPrograms = useCallback$3(async () => {
+  const fetchEnrollmentPrograms = useCallback$4(async () => {
     try {
       const cached = await LocalForageServiceInstance.getItem(
         "enrollmentPrograms",
@@ -538,16 +538,16 @@ function ProgramProvider({ children }) {
       return [];
     }
   }, []);
-  useEffect$4(() => {
+  useEffect$5(() => {
     (async () => {
       await fetchPrograms();
       await fetchEnrollmentPrograms();
     })();
   }, []);
-  const refresh = useCallback$3(() => fetchProgramsFromOnline(), [
+  const refresh = useCallback$4(() => fetchProgramsFromOnline(), [
     fetchProgramsFromOnline
   ]);
-  const value = useMemo$3(
+  const value = useMemo$4(
     () => ({
       programs,
       enrollmentPrograms,
@@ -564,12 +564,12 @@ function ProgramProvider({ children }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(MEMISContext.ProgramContext.Provider, { value, children });
 }
 
-const React$3 = await importShared('react');
-const {useCallback: useCallback$2,useEffect: useEffect$3,useMemo: useMemo$2,useState: useState$2} = React$3;
+const React$4 = await importShared('react');
+const {useCallback: useCallback$3,useEffect: useEffect$4,useMemo: useMemo$3,useState: useState$3} = React$4;
 function UserProvider({ children }) {
-  const [userOrganisationUnits, setUserOrganisationUnits] = useState$2([]);
-  const [loading, setLoading] = useState$2(true);
-  const fetchOrgUnitsOnline = useCallback$2(async () => {
+  const [userOrganisationUnits, setUserOrganisationUnits] = useState$3([]);
+  const [loading, setLoading] = useState$3(true);
+  const fetchOrgUnitsOnline = useCallback$3(async () => {
     try {
       setLoading(true);
       const root = await dataStore.get(
@@ -619,7 +619,7 @@ function UserProvider({ children }) {
       setLoading(false);
     }
   }, []);
-  useEffect$3(() => {
+  useEffect$4(() => {
     let mounted = true;
     const load = async () => {
       setLoading(true);
@@ -638,7 +638,7 @@ function UserProvider({ children }) {
     load();
     return () => mounted = false;
   }, [fetchOrgUnitsOnline]);
-  const value = useMemo$2(
+  const value = useMemo$3(
     () => ({
       userOrganisationUnits,
       loading,
@@ -650,13 +650,13 @@ function UserProvider({ children }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(MEMISContext.UserContext.Provider, { value, children });
 }
 
-const React$2 = await importShared('react');
-const {useEffect: useEffect$2,useState: useState$1,useMemo: useMemo$1,useCallback: useCallback$1} = React$2;
+const React$3 = await importShared('react');
+const {useEffect: useEffect$3,useState: useState$2,useMemo: useMemo$2,useCallback: useCallback$2} = React$3;
 const DashboardProvider = ({ children }) => {
-  const [dashboardConfigs, setDashboardConfigs] = useState$1([]);
-  const [isLoading, setIsLoading] = useState$1(true);
-  const [error, setError] = useState$1(null);
-  const loadDashboardConfigurations = useCallback$1(async () => {
+  const [dashboardConfigs, setDashboardConfigs] = useState$2([]);
+  const [isLoading, setIsLoading] = useState$2(true);
+  const [error, setError] = useState$2(null);
+  const loadDashboardConfigurations = useCallback$2(async () => {
     setIsLoading(true);
     setError(null);
     let attempts = 0;
@@ -687,10 +687,10 @@ const DashboardProvider = ({ children }) => {
       setIsLoading(false);
     }
   }, []);
-  useEffect$2(() => {
+  useEffect$3(() => {
     loadDashboardConfigurations();
   }, [loadDashboardConfigurations]);
-  const value = useMemo$1(
+  const value = useMemo$2(
     () => ({
       dashboardConfigs,
       isLoading,
@@ -703,27 +703,289 @@ const DashboardProvider = ({ children }) => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(MEMISContext.DashboardContext.Provider, { value, children });
 };
 
-const React$1 = await importShared('react');
-const {useEffect: useEffect$1,useState,useMemo,useCallback} = React$1;
+const React$2 = await importShared('react');
+const {useState: useState$1,useMemo: useMemo$1,useCallback: useCallback$1,useEffect: useEffect$2} = React$2;
 const TrackedEntitiesProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [equipmentList, setEquipmentList] = useState([]);
-  const getEquipmentList = async (programId, ou, page, pageSize) => {
-  };
-  useEffect$1(() => {
-    getEquipmentList();
-  }, [getEquipmentList]);
-  const value = useMemo(
+  const [isLoading, setIsLoading] = useState$1(false);
+  const [error, setError] = useState$1(null);
+  const [equipmentList, setEquipmentList] = useState$1([]);
+  const [allowedAttributes, setAllowedAttributes] = useState$1([]);
+  const [pagination, setPagination] = useState$1({
+    page: 1,
+    pageSize: 50,
+    totalPages: 1
+  });
+  const [columns, setColumns] = useState$1([]);
+  const getEquipmentList = useCallback$1(
+    async ({
+      programId,
+      options = {},
+      page = 1,
+      pageSize = 50
+    }) => {
+      if (!programId) return [];
+      setIsLoading(true);
+      setError(null);
+      try {
+        const params = new URLSearchParams();
+        params.append("program", programId);
+        const fields = [
+          "trackedEntity",
+          "orgUnit",
+          "attributes[attribute,value]",
+          "enrollments[events[programStage,dataValues[dataElement,value]]]"
+        ];
+        if (options.filterType && options?.filterType?.trim() !== "" && options?.filterValue) {
+          params.append(
+            "filter",
+            `${options?.filterType}:like:${options?.filterValue}`
+          );
+        }
+        if (options.orgUnit) {
+          params.append("orgUnits", options.orgUnit);
+          params.append("orgUnitMode", "DESCENDANTS");
+        }
+        params.append("fields", fields.join(","));
+        params.append("totalPages", "true");
+        params.append("pageSize", pageSize);
+        params.append("page", page);
+        const serial = options?.searchWithSerialNumber;
+        console.log({ options });
+        if (typeof serial === "string" && serial.trim()) {
+          const key = options?.searchKey;
+          if (!key) {
+            console.warn("Missing searchKey in options");
+            return;
+          }
+          const value2 = serial.trim();
+          params.append("filter", `${key}:ilike:${value2}`);
+        }
+        const response = await dataStore.get(
+          `tracker/trackedEntities?${params.toString()}`
+        );
+        const trackedEntities = response?.data?.trackedEntities || [];
+        setPagination((prev) => ({ ...prev, ...response?.data?.pager }));
+        const optionSetMap = {};
+        const columnsMeta = await dataStore.get(
+          `programs/${programId}?fields=programTrackedEntityAttributes[trackedEntityAttribute[id,displayName,formName,optionSetValue,optionSet[options[code,name]]]]`
+        );
+        const programAttributes = columnsMeta?.data?.programTrackedEntityAttributes || [];
+        programAttributes.forEach((attr) => {
+          const a = attr.trackedEntityAttribute;
+          if (a?.optionSetValue && a?.optionSet?.options) {
+            optionSetMap[a.id] = {};
+            a.optionSet.options.forEach((opt) => {
+              optionSetMap[a.id][opt.code] = opt.name;
+            });
+          }
+        });
+        const programAttributesResult = await LocalForageServiceInstance.getItem(
+          "dataStore",
+          "dataStore"
+        );
+        const attributesResult = programAttributesResult?.programAttributesDisplay?.configuration;
+        const attributes = attributesResult.find((att) => att?.programId === programId)?.attributes || [];
+        const transformed = trackedEntities.map((tei) => {
+          const obj = {
+            trackedentity: tei.trackedEntity,
+            orgUnit: tei.orgUnit
+          };
+          tei.attributes?.forEach((attr) => {
+            const key = attr.attribute;
+            if (!attributes.includes(key)) return;
+            let value2 = attr.value;
+            if (optionSetMap[key]) {
+              value2 = optionSetMap[key][value2] ?? value2;
+            }
+            obj[key] = value2 === "" || value2 == null ? null : value2;
+          });
+          return obj;
+        });
+        setEquipmentList(transformed);
+        const dynamicColumns = attributes.map((id) => {
+          const meta = programAttributes.find(
+            (a) => a.trackedEntityAttribute.id === id
+          )?.trackedEntityAttribute;
+          return {
+            key: id,
+            label: meta?.formName || meta?.displayName || id,
+            valueType: meta?.valueType || "TEXT"
+          };
+        });
+        setColumns(dynamicColumns);
+        return transformed;
+      } catch (e) {
+        console.error("[TrackedEntities] fetch error:", e);
+        setError(e);
+        setEquipmentList([]);
+        return [];
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    []
+  );
+  const value = useMemo$1(
     () => ({
       equipmentList,
+      columns,
       isLoading,
       error,
-      reload: getEquipmentList
+      reload: getEquipmentList,
+      pagination,
+      setPagination
     }),
-    [equipmentList, isLoading, error, getEquipmentList]
+    [
+      equipmentList,
+      columns,
+      isLoading,
+      error,
+      getEquipmentList,
+      pagination,
+      setPagination
+    ]
   );
   return /* @__PURE__ */ jsxRuntimeExports.jsx(MEMISContext.TrackedEntitiesContext.Provider, { value, children });
+};
+
+const React$1 = await importShared('react');
+const {useState,useMemo,useCallback,useEffect: useEffect$1} = React$1;
+const EventsProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [eventsList, setEventsList] = useState([]);
+  const [allowedAttributes, setAllowedAttributes] = useState([]);
+  const [pagination, setPagination] = useState({
+    page: 1,
+    pageSize: 50,
+    totalPages: 1
+  });
+  const [columns, setColumns] = useState([]);
+  const getEventsList = useCallback(
+    async ({ programId, options = {}, page = 1, pageSize = 50 }) => {
+      if (!programId) return [];
+      setIsLoading(true);
+      setError(null);
+      try {
+        const params = new URLSearchParams();
+        params.append("program", programId);
+        const fields = [
+          "event",
+          "orgUnit",
+          "programStage",
+          "program",
+          "dataValues"
+        ];
+        if (Array.isArray(options?.filters) && options?.filters?.length > 0) {
+          for (let index = 0; index < options?.filters?.length; index++) {
+            const element = options?.filters[index];
+            params.append("filter", `${element?.id}:like:${element?.value}`);
+          }
+        }
+        if (options.orgUnit) {
+          params.append("orgUnit", options.orgUnit);
+          params.append("orgUnitMode", "DESCENDANTS");
+        }
+        params.append("fields", fields.join(","));
+        params.append("totalPages", "true");
+        params.append("pageSize", pageSize);
+        params.append("page", page);
+        const serial = options?.searchWithSerialNumber;
+        if (typeof serial === "string" && serial.trim()) {
+          const key = options?.searchKey;
+          if (!key) {
+            console.warn("Missing searchKey in options");
+            return;
+          }
+          const value2 = serial.trim();
+          params.append("filter", `${key}:ilike:${value2}`);
+        }
+        const response = await dataStore.get(
+          `tracker/events?${params.toString()}`
+        );
+        const events = response?.data?.events || [];
+        setPagination((prev) => ({ ...prev, ...response?.data?.pager }));
+        const optionSetMap = {};
+        const columnsMeta = await dataStore.get(
+          `programs/${programId}?fields=name,id,programStages[id,name,displayName,programStageSections[id,name,programStage[id,name],formName,dataElements[id,name,sortOrder,formName,domainType,valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]]]],programStageDataElements[id,compulsory,programStage[id],dataElement[id,name,code,domainType,formName,valueType,optionSetValue,optionSet[id,name,code,options[id,name,code]],attributeValues[value,attribute[id,name]]]]]`
+        );
+        const programAttributes = columnsMeta?.data?.programStages[0]?.programStageDataElements || [];
+        programAttributes.forEach((attr) => {
+          const a = attr.dataElement;
+          if (a?.optionSetValue && a?.optionSet?.options) {
+            optionSetMap[a.id] = {};
+            a.optionSet.options.forEach((opt) => {
+              optionSetMap[a.id][opt.code] = opt.name;
+            });
+          }
+        });
+        const programAttributesResult = await LocalForageServiceInstance.getItem(
+          "dataStore",
+          "dataStore"
+        );
+        const attributesResult = programAttributesResult?.programAttributesDisplay?.configuration;
+        const attributes = attributesResult.find((att) => att?.programId === programId)?.attributes || [];
+        const transformed = events.map((event) => {
+          const obj = {
+            event: event.event,
+            orgUnit: event.orgUnit
+          };
+          event.dataValues?.forEach((de) => {
+            const key = de.dataElement;
+            if (!attributes.includes(key)) return;
+            let value2 = de.value;
+            if (optionSetMap[key]) {
+              value2 = optionSetMap[key][value2] ?? value2;
+            }
+            obj[key] = value2 === "" || value2 == null ? null : value2 === "true" || value2 === true ? "Yes" : value2 === "false" || value2 === false ? "No" : value2;
+          });
+          return obj;
+        });
+        setEventsList(transformed);
+        const dynamicColumns = attributes.map((id) => {
+          const meta = programAttributes.find(
+            (a) => a.dataElement.id === id
+          )?.dataElement;
+          return {
+            key: id,
+            label: meta?.formName || meta?.displayName || id,
+            valueType: meta?.valueType || "TEXT"
+          };
+        });
+        setColumns(dynamicColumns);
+        return transformed;
+      } catch (e) {
+        console.error("[events] fetch error:", e);
+        setError(e);
+        setEventsList([]);
+        return [];
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    []
+  );
+  const value = useMemo(
+    () => ({
+      eventsList,
+      columns,
+      isLoading,
+      error,
+      reload: getEventsList,
+      pagination,
+      setPagination
+    }),
+    [
+      eventsList,
+      columns,
+      isLoading,
+      error,
+      getEventsList,
+      pagination,
+      setPagination
+    ]
+  );
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(MEMISContext.EventsContext.Provider, { value, children });
 };
 
 await importShared('react');
@@ -744,7 +1006,8 @@ const providers = [
   // 6. requires data store configs
   MenuProvider,
   // 6. LAST: depends on user + roles + permissions + programs
-  TrackedEntitiesProvider
+  TrackedEntitiesProvider,
+  EventsProvider
 ];
 function ProviderController({ children }) {
   return providers.reduceRight(
@@ -1170,14 +1433,7 @@ function App() {
   }, []);
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(BrowserRouter, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(ToastItem, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Suspense, { fallback: /* @__PURE__ */ jsxRuntimeExports.jsx(SuspenseLoader, {}), children: /* @__PURE__ */ jsxRuntimeExports.jsx(ProviderController, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Layout,
-      {
-        authKey: api.get()?.JSESSIONID?.trim() !== "" ? "authenticated" : "not-authenticated",
-        Routes,
-        Route
-      }
-    ) }) })
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Suspense, { fallback: /* @__PURE__ */ jsxRuntimeExports.jsx(SuspenseLoader, {}), children: /* @__PURE__ */ jsxRuntimeExports.jsx(ProviderController, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Layout, {}) }) })
   ] }) });
 }
 
